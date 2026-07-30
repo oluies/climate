@@ -1,0 +1,28 @@
+# The value of renewable energy as it scales
+
+*Editor's note: this chapter is new in the 2026 revision. It is not David MacKay's writing. It extends his balance-sheet method into a question the 2008 book leaves largely open: what happens to the economic value of renewable electricity as it grows to the scale the balance sheet calls for. Written by Orjan Lundberg; every figure is sourced.*
+
+MacKay's book answers one question with great care. Can sustainable sources physically supply as much energy as we consume? The balance sheet adds up kWh per person per day on each side and asks whether the green stack can match the red. By 2026 the answer, for electricity at least, is yes in many places. The physical potential is real, and the cost of building it has fallen a long way: solar modules cost roughly a tenth of their 2008 price, and onshore wind and battery costs have dropped steeply too.[^costs]
+
+A second question then takes over, and the 2008 book barely touches it, because in 2008 there was not yet enough weather-dependent generation for it to bite. The question is what a unit of renewable electricity is worth once a great deal of it has been built.
+
+A wind turbine or a solar panel has no fuel cost, so it bids into the electricity market at close to zero and sets the price in every hour it runs. Add more panels and the price falls in exactly the sunny hours when they all produce at once, because their output is correlated. The revenue each panel earns per unit of energy therefore falls as more panels are built. This is not a market failure. It is the market working. The effect has a name, cannibalization, and a measure, the capture price: the average price a generator actually realises, weighted by its own output, rather than the flat average price.[^capture]
+
+The gap is already large. In the German solar market the capture price has fallen as installed capacity has grown, and in a detailed study of the Swedish system a wind-dominated 2035 shows one thousand to fifteen hundred hours a year at a price of zero.[^zero] Weather-dependent generators earn the lowest per-unit prices of any source, because they are all selling at once.
+
+This changes the useful question. MacKay asks how much we can build. Once it is built, the question becomes what absorbs the surplus, because whatever drains the cheap hours decides where the value lands. A study of the German energy system to 2045 makes the point sharply: a system short of flexibility does not deliver cheap power. It delivers a wider spread of prices, with both more zero-price hours and a higher average price, because the peak still has to be covered by plant that now earns its keep in fewer hours.[^flex]
+
+The surplus does not reach demand on its own. Between the cheap hours and the demand that would use them stand two gates. The first is a price gate. A flat per-unit electricity tax puts a floor under what a buyer pays, so however deep the surplus goes the delivered cost stops falling, and the strongest signal a market can send, a negative price, never reaches the meter. Sweden and Finland run the cleanest natural experiment on this. With comparable district-heating hardware but opposite tax treatment, Finnish electric boilers supplied about 8% of district heat in 2025 while the larger Swedish fleet sat almost idle.[^gate1] The second gate is physical. A project can be economic on every hour of the year and still wait years for a grid connection, or be refused one.[^gate2]
+
+There is a reading of all this that connects back to the reason MacKay wrote the book. Cheap energy, if it reaches industry, is what keeps energy-intensive industry alive, and that industry is a large part of what an economy runs on. The same surplus that starves a generator's revenue is, read at the buyer's meter, cheap input, but only if the gates let it through. Germany shows the loop run backward: after its gas price rose, energy-intensive output fell to about 82% of its 2021 level and stayed there.[^germany]
+
+None of this argues against building renewables. MacKay's arithmetic still holds, and the build-out has largely happened. It argues that the balance sheet needs a second page. The first page asks whether we can produce enough clean energy. The second asks who bears the cost of turning an intermittent surplus into firm, useful supply, and whether policy lets the cheap hours reach the demand that would value them. A fuller treatment, with the feedback loops drawn out and the Swedish and European data behind each figure, is at oluies.github.io/elmix.[^model]
+
+[^costs]: Cost declines from IRENA, *Renewable Power Generation Costs*, and the BloombergNEF battery price survey. Exact 2008-to-present values are added in the data-refresh pass.
+[^capture]: Capture price = the sum of (production times spot price) divided by the sum of production. Source list at https://oluies.github.io/elmix/modell/referenser.html .
+[^zero]: Goransson, Johnsson and others, "Tre elsystem som kan mota omstallningen av industri- och transportsektorerna", Chalmers / Mistra Electrification, 2025.
+[^flex]: Geis, Lindner and Brown, "Managing the mismatch: The role of flexibility on the path to a carbon-neutral energy system", Advances in Applied Energy 23 (2026) 100284.
+[^gate1]: Energiateollisuus district-heating statistics, 2025; Fernqvist, Broberg, Toren and Svensson, "District heating as a flexibility service", Energy Policy 172 (2023) 113332.
+[^gate2]: Energimarknadsinspektionen finding of 11 June 2026 on connection times; the Power2Earth refusal at Lulea, autumn 2025.
+[^germany]: Destatis, production index for energy-intensive branches, 2025.
+[^model]: The elmix cannibalization model, https://oluies.github.io/elmix/modell/system.html .
