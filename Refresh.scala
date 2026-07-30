@@ -127,3 +127,112 @@ def uk(): Unit = {
   println(f"Solar: 2008 ${at(2008, "Solar")}%5.0f TWh  ->  $yMax ${at(yMax, "Solar")}%5.0f TWh")
   println(s"wrote $outImg")
 }
+
+// ---- GB capture prices (the cannibalization figure) from Elexon BMRS ----
+// Half-hourly GB generation by fuel type and the market-index price (APXMIDP),
+// joined on the settlement period. Capture price = sum(generation*price)/sum(generation);
+// value factor = capture / time-weighted average price. Free, no ENTSO-E key.
+
+import java.time.LocalDate
+
+def gbCat(psr: String): String = psr match {
+  case "Wind Offshore" | "Wind Onshore" => "Wind"
+  case "Solar"     => "Solar"
+  case "Nuclear"   => "Nuclear"
+  case "Fossil Gas" => "Gas"
+  case "Biomass"   => "Biomass"
+  case _           => null
+}
+
+def cachedGet(url: String, cache: os.Path): String =
+  if (os.exists(cache)) os.read(cache)
+  else {
+    val t = requests.get(url, readTimeout = 120000, connectTimeout = 30000).text()
+    os.makeDir.all(cache / os.up); os.write.over(cache, t); t
+  }
+
+@main
+def gbCapture(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val year = 2025
+  val cache = os.pwd / "data-refresh" / "gb-cache"
+
+  println("GB generation by fuel type (Elexon, monthly) ...")
+  val gen = scala.collection.mutable.ArrayBuffer[(String, String, Double)]()
+  for (m <- 1 to 12) {
+    val d0 = LocalDate.of(year, m, 1); val d1 = d0.plusMonths(1)
+    val url = s"https://data.elexon.co.uk/bmrs/api/v1/generation/actual/per-type?from=${d0}T00:00Z&to=${d1}T00:00Z&format=json"
+    for (p <- ujson.read(cachedGet(url, cache / s"gen-$year-$m.json"))("data").arr) {
+      val ts = p("startTime").str
+      for (row <- p("data").arr) {
+        val cat = gbCat(row("psrType").str)
+        if (cat != null) gen += ((ts, cat, row("quantity").num))
+      }
+    }
+  }
+  println("GB market-index price APXMIDP (Elexon, weekly) ...")
+  val price = scala.collection.mutable.ArrayBuffer[(String, Double)]()
+  var d = LocalDate.of(year, 1, 1)
+  while (d.getYear == year) {
+    val e = d.plusDays(7)
+    val url = s"https://data.elexon.co.uk/bmrs/api/v1/balancing/pricing/market-index?from=${d}T00:00Z&to=${e}T00:00Z&format=json"
+    for (x <- ujson.read(cachedGet(url, cache / s"price-$d.json"))("data").arr if x("dataProvider").str == "APXMIDP")
+      price += ((x("startTime").str, x("price").num))
+    d = e
+  }
+  println(s"  gen rows ${gen.size}, price rows ${price.size}")
+
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  conn.setAutoCommit(false)
+  val st = conn.createStatement()
+  st.execute("CREATE TABLE gen(ts VARCHAR, source VARCHAR, mw DOUBLE)")
+  st.execute("CREATE TABLE price(ts VARCHAR, p DOUBLE)")
+  val pg = conn.prepareStatement("INSERT INTO gen VALUES (?,?,?)")
+  for ((ts, s, mw) <- gen) { pg.setString(1, ts); pg.setString(2, s); pg.setDouble(3, mw); pg.addBatch() }
+  pg.executeBatch()
+  val pp = conn.prepareStatement("INSERT INTO price VALUES (?,?)")
+  for ((ts, p) <- price.groupBy(_._1).map { case (k, v) => (k, v.head._2) }) { pp.setString(1, ts); pp.setDouble(2, p); pp.addBatch() }
+  pp.executeBatch()
+  conn.commit()
+
+  val ar = st.executeQuery("SELECT avg(p) FROM price WHERE ts IN (SELECT DISTINCT ts FROM gen)")
+  ar.next(); val avgP = ar.getDouble(1)
+  val rs = st.executeQuery("SELECT g.source, sum(g.mw*pr.p)/sum(g.mw) FROM gen g JOIN price pr ON g.ts = pr.ts GROUP BY g.source")
+  val capMap = scala.collection.mutable.Map[String, Double]()
+  while (rs.next()) capMap(rs.getString(1)) = rs.getDouble(2)
+  conn.close()
+
+  val order = List("Gas", "Nuclear", "Biomass", "Wind", "Solar").filter(capMap.contains)
+  val tbl = new StringBuilder
+  tbl ++= s"GB $year capture price and value factor by source. Reference: time-weighted average market-index price (APXMIDP) = ${f"$avgP%.1f"} GBP/MWh. Source: Elexon BMRS.\n\n"
+  tbl ++= "| Source | Capture (GBP/MWh) | Value factor |\n|---|---|---|\n"
+  for (s <- order) tbl ++= f"| $s | ${capMap(s)}%.1f | ${capMap(s) / avgP}%.2f |\n"
+  os.write.over(os.pwd / "data-refresh" / "gb-capture-values.md", tbl.toString)
+  os.write.over(os.pwd / "without-hot-air" / "Images" / "fig-gb-capture.svg", renderCaptureSvg(year, order, capMap.toMap, avgP))
+  print(tbl.toString)
+  println(f"average market price ${avgP}%.1f GBP/MWh; wrote figure and values")
+}
+
+def renderCaptureSvg(year: Int, order: List[String], cap: Map[String, Double], avg: Double): String = {
+  val colors = Map("Gas" -> "#c0392b", "Nuclear" -> "#8e44ad", "Biomass" -> "#8a6d3b", "Wind" -> "#1a7f6b", "Solar" -> "#e1a731")
+  val W = 760; val H = 340; val ml = 92; val mr = 96; val mt = 48; val mb = 34
+  val pw = W - ml - mr; val ph = H - mt - mb
+  val maxV = math.max(avg, cap.values.max) * 1.18
+  def bx(v: Double) = ml + v / maxV * pw
+  val b = new StringBuilder
+  b ++= s"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 $W $H" font-family="system-ui,-apple-system,sans-serif">\n"""
+  b ++= s"""<rect width="$W" height="$H" fill="#ffffff"/>\n"""
+  b ++= s"""<text x="$ml" y="26" font-size="15" font-weight="700" fill="#161d1b">GB $year capture price by source (GBP per MWh)</text>\n"""
+  val gap = ph.toDouble / order.size; val bh = gap * 0.58
+  for ((s, i) <- order.zipWithIndex) {
+    val y = mt + i * gap + (gap - bh) / 2
+    b ++= f"""<rect x="$ml" y="$y%.1f" width="${bx(cap(s)) - ml}%.1f" height="$bh%.1f" fill="${colors(s)}" rx="2"/>\n"""
+    b ++= f"""<text x="${ml - 8}" y="${y + bh / 2 + 4}%.1f" font-size="12.5" text-anchor="end" fill="#161d1b">$s</text>\n"""
+    b ++= f"""<text x="${bx(cap(s)) + 6}%.1f" y="${y + bh / 2 + 4}%.1f" font-size="11.5" fill="#46534f">${cap(s)}%.0f  (${cap(s) / avg}%.2f×)</text>\n"""
+  }
+  val ax = bx(avg)
+  b ++= f"""<line x1="$ax%.1f" y1="${mt - 6}" x2="$ax%.1f" y2="${mt + ph + 4}" stroke="#161d1b" stroke-dasharray="4 3"/>\n"""
+  b ++= f"""<text x="$ax%.1f" y="${mt + ph + 26}" font-size="11.5" text-anchor="middle" fill="#161d1b">system average ${avg}%.0f</text>\n"""
+  b ++= "</svg>\n"
+  b.toString
+}
