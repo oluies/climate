@@ -1,0 +1,35 @@
+name: Build and deploy the book
+on:
+  push:
+    branches: ["revision/value-of-renewables"]
+    paths:
+      - "without-hot-air/**"
+      - "book/**"
+      - ".github/workflows/book.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: book-deploy
+  cancel-in-progress: true
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: quarto-dev/quarto-actions/setup@v2
+      - name: Prepare chapters (rewrite image paths, strip third-party figures)
+        run: python3 book/scripts/prep_book.py
+      - name: Render
+        run: quarto render book
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book/_book
+          publish_branch: gh-pages
