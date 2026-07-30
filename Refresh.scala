@@ -128,6 +128,81 @@ def uk(): Unit = {
   println(s"wrote $outImg")
 }
 
+// ---- Cost decline: two side-by-side panels, base year vs latest ----
+// Global weighted-average LCOE (IRENA via OWID) plus the solar module price.
+
+@main
+def costs(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"
+  os.makeDir.all(dir)
+  def fetch(slug: String, file: String): os.Path = {
+    val p = dir / file
+    if (!os.exists(p)) os.write.over(p, requests.get(s"https://ourworldindata.org/grapher/$slug.csv?csvType=full", readTimeout = 60000).text())
+    p
+  }
+  val modCsv = fetch("solar-pv-prices", "owid-solar-module.csv")
+  val lcoeCsv = fetch("levelized-cost-of-energy", "owid-lcoe.csv")
+
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val st = conn.createStatement()
+  def one(sql: String): Double = { val r = st.executeQuery(sql); r.next(); r.getDouble(1) }
+  val mod2008 = one(s"""SELECT "Solar PV module cost" FROM read_csv_auto('$modCsv') WHERE Entity='World' AND Year=2008""")
+  val modYr = one(s"""SELECT max(Year) FROM read_csv_auto('$modCsv') WHERE Entity='World' AND "Solar PV module cost" IS NOT NULL""").toInt
+  val modNow = one(s"""SELECT "Solar PV module cost" FROM read_csv_auto('$modCsv') WHERE Entity='World' AND Year=$modYr""")
+
+  val base = one(s"""SELECT min(Year) FROM read_csv_auto('$lcoeCsv') WHERE Entity='World' AND "Solar photovoltaic" IS NOT NULL""").toInt
+  val last = one(s"""SELECT max(Year) FROM read_csv_auto('$lcoeCsv') WHERE Entity='World' AND "Solar photovoltaic" IS NOT NULL""").toInt
+  val techs = List(("Solar PV", "Solar photovoltaic", "#e1a731"), ("Onshore wind", "Onshore wind", "#1a7f6b"), ("Offshore wind", "Offshore wind", "#2e86c1"))
+  def lcoe(col: String, yr: Int): Double =
+    one(s"""SELECT "$col"*1000 FROM read_csv_auto('$lcoeCsv') WHERE Entity='World' AND Year=$yr""") // $/kWh -> $/MWh
+  val rows = techs.map { case (label, col, color) => (label, color, lcoe(col, base), lcoe(col, last)) }
+  conn.close()
+
+  val tbl = new StringBuilder
+  tbl ++= f"Global weighted-average LCOE (USD/MWh), IRENA via Our World in Data. Solar module cost (USD/W): $mod2008%.2f (2008) to $modNow%.2f ($modYr).\n\n"
+  tbl ++= s"| Technology | $base | $last |\n|---|---|---|\n"
+  for ((l, _, b, n) <- rows) tbl ++= f"| $l | ${b}%.0f | ${n}%.0f |\n"
+  os.write.over(dir / "cost-decline-values.md", tbl.toString)
+  os.write.over(os.pwd / "without-hot-air" / "Images" / "fig-cost-decline.svg", renderCostSvg(base, last, rows))
+  print(tbl.toString)
+  println(f"solar module USD/W: $mod2008%.2f (2008) -> $modNow%.2f ($modYr); wrote figure")
+}
+
+def renderCostSvg(base: Int, last: Int, rows: List[(String, String, Double, Double)]): String = {
+  val W = 820; val H = 380; val mt = 66; val mb = 54; val ml = 62
+  val panelW = 300; val gap = 60; val p1 = ml; val p2 = ml + panelW + gap
+  val ph = H - mt - mb
+  val maxV = math.ceil(rows.flatMap(r => List(r._3, r._4)).max / 50) * 50
+  def by(v: Double) = mt + (1 - v / maxV) * ph
+  val n = rows.size
+  def panel(x0: Int, year: Int, pick: ((String, String, Double, Double)) => Double, b: StringBuilder): Unit = {
+    b ++= s"""<text x="${x0 + panelW / 2}" y="${mt - 14}" font-size="14" font-weight="700" text-anchor="middle" fill="#161d1b">$year</text>\n"""
+    val bw = panelW.toDouble / n * 0.56; val step = panelW.toDouble / n
+    for ((r, i) <- rows.zipWithIndex) {
+      val v = pick(r); val cx = x0 + i * step + step / 2; val bx = cx - bw / 2
+      b ++= f"""<rect x="$bx%.1f" y="${by(v)}%.1f" width="$bw%.1f" height="${mt + ph - by(v)}%.1f" fill="${r._2}" rx="2"/>\n"""
+      b ++= f"""<text x="$cx%.1f" y="${by(v) - 5}%.1f" font-size="11" text-anchor="middle" fill="#46534f">${v}%.0f</text>\n"""
+      b ++= f"""<text x="$cx%.1f" y="${mt + ph + 16}" font-size="10.5" text-anchor="middle" fill="#7b8683">${r._1}</text>\n"""
+    }
+  }
+  val b = new StringBuilder
+  b ++= s"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 $W $H" font-family="system-ui,-apple-system,sans-serif">\n"""
+  b ++= s"""<rect width="$W" height="$H" fill="#ffffff"/>\n"""
+  b ++= s"""<text x="$ml" y="26" font-size="15" font-weight="700" fill="#161d1b">Levelized cost of electricity, global weighted average (USD per MWh)</text>\n"""
+  var gy = 0.0
+  while (gy <= maxV) {
+    val y = by(gy)
+    b ++= f"""<line x1="$ml" y1="$y%.1f" x2="${p2 + panelW}" y2="$y%.1f" stroke="#ecefec"/>\n"""
+    b ++= f"""<text x="${ml - 8}" y="${y + 4}%.1f" font-size="10.5" text-anchor="end" fill="#7b8683">${gy}%.0f</text>\n"""
+    gy += 100
+  }
+  panel(p1, base, r => r._3, b)
+  panel(p2, last, r => r._4, b)
+  b ++= "</svg>\n"
+  b.toString
+}
+
 // ---- GB capture prices (the cannibalization figure) from Elexon BMRS ----
 // Half-hourly GB generation by fuel type and the market-index price (APXMIDP),
 // joined on the settlement period. Capture price = sum(generation*price)/sum(generation);
