@@ -10,7 +10,7 @@ ROOT = os.path.dirname(BOOK)
 SRC = os.path.join(ROOT, "without-hot-air", "src")
 IMGSRC = os.path.join(ROOT, "without-hot-air", "Images")
 CHAP = os.path.join(BOOK, "chapters")
-IMGDST = os.path.join(BOOK, "img", "without-hot-air")
+IMGDST = os.path.join(BOOK, "chapters", "img", "without-hot-air")
 os.makedirs(CHAP, exist_ok=True); os.makedirs(IMGDST, exist_ok=True)
 
 RIGHTS = re.compile(r'private eye|ordnance survey|crown copyright|photo by|photograph by|photo:|photograph:|getty', re.I)
