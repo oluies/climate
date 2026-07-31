@@ -287,6 +287,23 @@ def chapterKElec(): Unit = {
   println("  python figures/uk_electricity_percapita.py data-refresh/uk-electricity-percapita.csv without-hot-air/Images/fig-uk-electricity-percapita.svg")
 }
 
+// ---- Chapter K: GB demand over a winter week (MacKay's Fig K.3) from Elexon ----
+
+@main
+def chapterKDemand(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val url = "https://data.elexon.co.uk/bmrs/api/v1/demand/outturn?settlementDateFrom=2025-01-13&settlementDateTo=2025-01-19&format=json"
+  val js = ujson.read(cachedGet(url, dir / "gb-demand-week.json"))
+  val out = new StringBuilder; out ++= "ts,gw\n"
+  for (r <- js("data").arr.sortBy(_("startTime").str))
+    out ++= f"${r("startTime").str},${r("initialDemandOutturn").num / 1000.0}%.2f\n"
+  os.write.over(dir / "gb-demand-week.csv", out.toString)
+  println("wrote data-refresh/gb-demand-week.csv")
+  println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
+  println("  python figures/gb_demand_week.py data-refresh/gb-demand-week.csv without-hot-air/Images/fig-gb-demand-week.svg")
+}
+
 // ---- GB capture prices (the cannibalization figure) from Elexon BMRS ----
 // Half-hourly GB generation by fuel type and the market-index price (APXMIDP),
 // joined on the settlement period. Capture price = sum(generation*price)/sum(generation);

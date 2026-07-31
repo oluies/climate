@@ -48,6 +48,10 @@ Other renewables
 
 Figure K.3. Electricity demand in Great Britain (in kWh/d per person) during two winter weeks of 2006. The peaks in January are at 6pm each day. (If you’d like to obtain the national demand in GW, the top of the scale, 24 kWh/d per person, is the same as 60 GW per UK.)
 
+*A recent equivalent (this edition): the same daily rhythm, overnight lows near 24 GW and evening peaks around 42 GW, weekdays higher than the weekend. Peak demand now runs well below MacKay's era, whose scale topped out at 60 GW, because efficiency has cut it even as population and the economy grew.*
+
+![GB electricity demand over a winter week, 13 to 19 January 2025 (national demand in GW). The overnight low, morning rise and evening peak repeat each day; weekday peaks run higher than the weekend.](/img/without-hot-air/fig-gb-demand-week.svg)
+
 |             | 2006    | 2007    |
 | ----------------------------------- | ----------- | ----------- |
 | "Primary units" (the first 2 kWh/d) | 10.73 p/kWh | 17.43 p/kWh |
