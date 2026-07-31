@@ -164,9 +164,14 @@ def costs(): Unit = {
   tbl ++= s"| Technology | $base | $last |\n|---|---|---|\n"
   for ((l, _, b, n) <- rows) tbl ++= f"| $l | ${b}%.0f | ${n}%.0f |\n"
   os.write.over(dir / "cost-decline-values.md", tbl.toString)
-  os.write.over(os.pwd / "without-hot-air" / "Images" / "fig-cost-decline.svg", renderCostSvg(base, last, rows))
+  // Tidy CSV for the seaborn renderer (data in Scala/DuckDB, charting in Python).
+  val csv = new StringBuilder; csv ++= "tech,year,lcoe\n"
+  for ((l, _, b, n) <- rows) { csv ++= s"$l,$base,${b.round}\n"; csv ++= s"$l,$last,${n.round}\n" }
+  os.write.over(dir / "cost-decline.csv", csv.toString)
   print(tbl.toString)
-  println(f"solar module USD/W: $mod2008%.2f (2008) -> $modNow%.2f ($modYr); wrote figure")
+  println(f"solar module USD/W: $mod2008%.2f (2008) -> $modNow%.2f ($modYr); wrote data-refresh/cost-decline.csv")
+  println("render the figure: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
+  println("  python figures/cost_decline.py data-refresh/cost-decline.csv without-hot-air/Images/fig-cost-decline.svg")
 }
 
 def renderCostSvg(base: Int, last: Int, rows: List[(String, String, Double, Double)]): String = {
