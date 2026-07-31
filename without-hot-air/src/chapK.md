@@ -4,41 +4,16 @@
 
 ![UK primary energy consumption by source, 1965 to 2024 (TWh per year). Coal, the dominant fuel in the 1960s, has fallen close to zero; oil and gas remain large; renewables have grown sharply since 2010. Total primary energy peaked around 2005 and has fallen since.](/img/without-hot-air/fig-uk-primary-energy.svg)
 
-Primary fuel
+| Primary fuel | kWh/d/p | kWh(e)/d/p |
+| --- | --- | --- |
+| Oil | 43 | |
+| Natural gas | 47 | |
+| Coal | 20 | |
+| Nuclear | 9 | 3.4 |
+| Hydro | 0.2 | |
+| Other renewables | 0.8 | |
 
-kWh/d/p
-
-kWh(e)/d/p
-
-Oil
-
-43
-
-Natural gas
-
-47
-
-Coal
-
-20
-
-Nuclear
-
-9
-
-→
-
-3.4
-
-Hydro
-
-0.2
-
-Other renewables
-
-0.8
-
-<span class="figurenumber">Table K.1.</span> Breakdown of primary energy sources in the UK (2004–2006).
+<span class="figurenumber">Table K.1.</span> Breakdown of primary energy sources in the UK (2004–2006). The nuclear row shows both primary heat (9) and the electricity it produces (3.4).
 
 ![](/img/without-hot-air/figure316.gif)
 
