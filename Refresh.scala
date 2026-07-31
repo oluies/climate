@@ -373,6 +373,26 @@ def chapterJ(): Unit = {
   if (math.abs(renSum - renAgg) > 5)
     System.err.println(f"VARNING: wind+solar+other = $renSum%.0f TWh men Renewables-kolumnen = $renAgg%.0f TWh")
 
+  // -- electricity generation by region, 1985 to 2025: what China built --
+  // This sheet starts at 1985 in column B, so column i holds year 1984 + i.
+  val elecRegions = List("Total World", "China", "US", "Total Europe", "India", "Total Africa")
+  val egSel = (0 until 41).map(i => s"""TRY_CAST("${colName(i + 1)}" AS DOUBLE)""").mkString(", ")
+  val rs6 = st.executeQuery(
+    s"""SELECT A, $egSel FROM ${sheet("Electricity Generation - TWh", "A4:AP140")}
+        WHERE A IN (${elecRegions.map(r => s"'$r'").mkString(", ")})""")
+  val eg2 = new StringBuilder; eg2 ++= "region,year,twh\n"
+  val elecSeries = scala.collection.mutable.Map[String, Map[Int, Double]]()
+  while (rs6.next()) {
+    val name = rs6.getString(1).replace("Total ", "")
+    val m = scala.collection.mutable.Map[Int, Double]()
+    for (i <- 0 until 41) {
+      val v = rs6.getObject(i + 2)
+      if (v != null) { val d = v.toString.toDouble; m(1985 + i) = d; eg2 ++= f"$name,${1985 + i},$d%.0f\n" }
+    }
+    elecSeries(name) = m.toMap
+  }
+  os.write.over(dir / "world-electricity-history.csv", eg2.toString)
+
   // -- CO2 from energy: who is driving the increase, and since when --
   // Column AK is 2000 and BJ is 2025 on this sheet; BK and BL are growth rates.
   val co2Regions = List("Total World", "China", "India", "US", "Total Europe", "Total Africa",
@@ -425,6 +445,10 @@ def chapterJ(): Unit = {
   println(f"renewables  ${ren._2}%.2f -> ${ren._3}%.2f EJ (+${ren._3 - ren._2}%.2f, ${(ren._3 - ren._2) / ren._2 * 100}%.1f%%) - largest single contributor: ${energy.forall(x => x._1 == "Renewables" || x._3 - x._2 < ren._3 - ren._2)}")
   val cw = co2.find(_._1 == "World").get; val cc = co2.find(_._1 == "China").get
   println(f"CO2 2025    ${cw._3}%.0f Mt; since 2000 the world rose ${cw._3 - cw._2}%.0f Mt, China ${cc._3 - cc._2}%.0f Mt = ${(cc._3 - cc._2) / (cw._3 - cw._2) * 100}%.0f%% of it")
+  val cn = elecSeries("China"); val wd = elecSeries("World")
+  val cnAdd = cn(2025) - cn(2000); val wdAdd = wd(2025) - wd(2000)
+  println(f"China elec  ${cn(1985)}%.0f (1985) -> ${cn(2025)}%.0f TWh (2025), ${cn(2025) / cn(1985)}%.0fx; ${cn(2025) / wd(2025) * 100}%.0f%% of world")
+  println(f"            added $cnAdd%.0f TWh since 2000 = ${cnAdd / wdAdd * 100}%.0f%% of world growth; US+Europe generate ${elecSeries("US")(2025) + elecSeries("Europe")(2025)}%.0f TWh today")
   println(f"electricity $et24%.0f -> $et25%.0f TWh (+${et25 - et24}%.0f); fossil $fos24%.0f -> $fos25%.0f (${fos25 - fos24}%+.0f), now ${fos25 / et25 * 100}%.1f%%")
   println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
   println("  python figures/world_energy_2025.py data-refresh/world-energy-2025.csv without-hot-air/Images/fig-world-energy-2025.svg")
