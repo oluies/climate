@@ -248,6 +248,45 @@ def chapterK(): Unit = {
   println("  python figures/uk_primary_energy.py data-refresh/uk-primary-energy.csv without-hot-air/Images/fig-uk-primary-energy.svg")
 }
 
+// ---- Chapter K: UK electricity per person (MacKay's kWh/d/p units) ----
+
+@main
+def chapterKElec(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"
+  os.makeDir.all(dir)
+  val elec = dir / "owid-electricity.csv"
+  if (!os.exists(elec)) os.write.over(elec, requests.get(CSV_URL, readTimeout = 60000).text())
+  val popf = dir / "owid-population.csv"
+  if (!os.exists(popf)) os.write.over(popf, requests.get("https://ourworldindata.org/grapher/population.csv?csvType=full", readTimeout = 60000).text())
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val st = conn.createStatement()
+  val cols = SOURCES.map { case (s, _) => s""""$s"""" }.mkString(", ")
+  val sql =
+    s"""WITH pop AS (SELECT "Year" y, "Population" p FROM read_csv_auto('$popf') WHERE "Entity"='United Kingdom'),
+             lastp AS (SELECT p FROM pop ORDER BY y DESC LIMIT 1)
+        SELECT e."Year" AS y, $cols, COALESCE(pop.p, (SELECT p FROM lastp)) AS population
+        FROM read_csv_auto('${elec.toString.replace("'", "''")}') e LEFT JOIN pop ON pop.y = e."Year"
+        WHERE e."Entity"='United Kingdom' AND e."Year">=1985 ORDER BY e."Year""""
+  val rs = st.executeQuery(sql)
+  val out = new StringBuilder; out ++= "year,source,kwhdp\n"
+  var last = 0
+  while (rs.next()) {
+    val y = rs.getInt("y"); last = y
+    val pop = rs.getDouble("population")
+    for ((s, _) <- SOURCES) {
+      val twh = Option(rs.getObject(s)).map(_.toString.toDouble).getOrElse(0.0)
+      val kwhdp = if (pop > 0) twh * 1e9 / pop / 365.0 else 0.0
+      out ++= f"$y,$s,$kwhdp%.2f\n"
+    }
+  }
+  conn.close()
+  os.write.over(dir / "uk-electricity-percapita.csv", out.toString)
+  println(s"wrote data-refresh/uk-electricity-percapita.csv (1985-$last)")
+  println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
+  println("  python figures/uk_electricity_percapita.py data-refresh/uk-electricity-percapita.csv without-hot-air/Images/fig-uk-electricity-percapita.svg")
+}
+
 // ---- GB capture prices (the cannibalization figure) from Elexon BMRS ----
 // Half-hourly GB generation by fuel type and the market-index price (APXMIDP),
 // joined on the settlement period. Capture price = sum(generation*price)/sum(generation);

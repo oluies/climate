@@ -67,6 +67,10 @@ Table K.4. Domestic electricity charges (2006, 2007) for Powergen customers in C
 
 <span class="figurenumber">Figure K.5.</span> History of UK production of electricity, hydroelectricity, and nuclear electricity. Powers are expressed "per person" by dividing each power by 60 million.
 
+*Updated to 2025 (this edition), by source and in MacKay's kWh/d/p units, but dividing by the actual UK population each year rather than a fixed 60 million. Coal, which supplied about 10 kWh/d/p in the 1980s, is now near zero; wind has risen to about 3.4, close to gas.*
+
+![UK electricity generation per person, 1985 to 2025 (kWh per day per person). Coal's collapse and wind's rise are the two large movements; gas peaked in the 2000s and nuclear has drifted down.](/img/without-hot-air/fig-uk-electricity-percapita.svg)
+
 ![](/img/without-hot-air/figure319.gif)
 
 <span class="figurenumber">Figure K.6.</span> History of UK use of fossil fuels for electricity production. Powers are expressed "per person" by dividing each power by 60 million.
