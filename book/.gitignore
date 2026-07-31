@@ -2,3 +2,5 @@
 /img/
 /_book/
 /.quarto/
+
+**/*.quarto_ipynb
