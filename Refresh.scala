@@ -304,6 +304,45 @@ def chapterKDemand(): Unit = {
   println("  python figures/gb_demand_week.py data-refresh/gb-demand-week.csv without-hot-air/Images/fig-gb-demand-week.svg")
 }
 
+// ---- Chapter J: world energy in 2025, from the EI Statistical Review ----
+// The Energy Institute's 2026 edition (published 30 June 2026, data for 2025).
+// The consolidated workbook is behind an email gate, so these headline figures are
+// transcribed from the report rather than fetched; each is cited in the chapter.
+// Supply and growth in EJ, electricity in TWh.
+
+@main
+def chapterJ(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+
+  val supply = List("Oil" -> 201.0, "Coal" -> 166.0, "Gas" -> 150.7,
+                    "Renewables" -> 35.45, "Nuclear" -> 31.0, "Hydro" -> 16.0)
+  val growth = List("Renewables" -> 3.3, "Oil" -> 2.5, "Gas" -> 2.4,
+                    "Coal" -> 1.1, "Nuclear" -> 0.4, "Hydro" -> 0.1)
+  val elec   = List("Fossil" -> 18619.0, "Hydro" -> 4479.0, "Nuclear" -> 2834.0,
+                    "Solar" -> 2811.0, "Wind" -> 2714.0, "Other renewables" -> 745.0)
+
+  val s = new StringBuilder; s ++= "source,ej,growth_ej\n"
+  val gm = growth.toMap
+  for ((k, v) <- supply) s ++= f"$k,$v%.2f,${gm(k)}%.1f\n"
+  os.write.over(dir / "world-energy-2025.csv", s.toString)
+
+  val e = new StringBuilder; e ++= "source,twh\n"
+  for ((k, v) <- elec) e ++= f"$k,$v%.0f\n"
+  os.write.over(dir / "world-electricity-2025.csv", e.toString)
+
+  val tes = supply.map(_._2).sum
+  val fossil = supply.filter(x => Set("Oil", "Coal", "Gas")(x._1)).map(_._2).sum
+  val gTot = growth.map(_._2).sum
+  val tTot = elec.map(_._2).sum
+  println(f"total energy supply  $tes%.1f EJ  |  fossil $fossil%.1f EJ = ${fossil / tes * 100}%.1f%%")
+  println(f"growth               $gTot%.1f EJ  |  fossil ${growth.filter(x => Set("Oil","Coal","Gas")(x._1)).map(_._2).sum}%.1f EJ, renewables ${gm("Renewables")}%.1f EJ")
+  println(f"electricity          $tTot%.0f TWh |  solar ${elec.toMap.apply("Solar") / tTot * 100}%.1f%%  wind ${elec.toMap.apply("Wind") / tTot * 100}%.1f%%  nuclear ${elec.toMap.apply("Nuclear") / tTot * 100}%.1f%%")
+  println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
+  println("  python figures/world_energy_2025.py data-refresh/world-energy-2025.csv without-hot-air/Images/fig-world-energy-2025.svg")
+  println("  python figures/world_electricity_2025.py data-refresh/world-electricity-2025.csv without-hot-air/Images/fig-world-electricity-2025.svg")
+}
+
 // ---- Chapter 25: Germany's net electricity trade (export surplus -> import) ----
 // OWID "Net electricity imports" (Ember): imports minus exports, TWh per year.
 // Positive = net importer, negative = net exporter.
