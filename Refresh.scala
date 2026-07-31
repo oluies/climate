@@ -211,6 +211,43 @@ def renderCostSvg(base: Int, last: Int, rows: List[(String, String, Double, Doub
   b.toString
 }
 
+// ---- Chapter K: UK primary energy history (stacked area) from OWID ----
+
+@main
+def chapterK(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"
+  os.makeDir.all(dir)
+  val src = dir / "owid-energy-by-source.csv"
+  if (!os.exists(src))
+    os.write.over(src, requests.get("https://ourworldindata.org/grapher/energy-consumption-by-source-and-country.csv?csvType=full", readTimeout = 60000).text())
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val st = conn.createStatement()
+  val sql =
+    s"""SELECT "Year" AS y,
+         round(COALESCE("Coal",0))    AS Coal,
+         round(COALESCE("Oil",0))     AS Oil,
+         round(COALESCE("Gas",0))     AS Gas,
+         round(COALESCE("Nuclear",0)) AS Nuclear,
+         round(COALESCE("Wind",0)+COALESCE("Solar",0)+COALESCE("Hydropower",0)
+               +COALESCE("Other renewables",0)+COALESCE("Biofuels",0)) AS Renewables
+       FROM read_csv_auto('${src.toString.replace("'", "''")}')
+       WHERE "Entity"='United Kingdom' AND "Year">=1965 ORDER BY "Year""""
+  val rs = st.executeQuery(sql)
+  val cats = List("Coal", "Oil", "Gas", "Nuclear", "Renewables")
+  val out = new StringBuilder; out ++= "year,category,twh\n"
+  var last = 0
+  while (rs.next()) {
+    val y = rs.getInt(1); last = y
+    for ((c, i) <- cats.zipWithIndex) out ++= s"$y,$c,${rs.getInt(i + 2)}\n"
+  }
+  conn.close()
+  os.write.over(dir / "uk-primary-energy.csv", out.toString)
+  println(s"wrote data-refresh/uk-primary-energy.csv (1965-$last)")
+  println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
+  println("  python figures/uk_primary_energy.py data-refresh/uk-primary-energy.csv without-hot-air/Images/fig-uk-primary-energy.svg")
+}
+
 // ---- GB capture prices (the cannibalization figure) from Elexon BMRS ----
 // Half-hourly GB generation by fuel type and the market-index price (APXMIDP),
 // joined on the settlement period. Capture price = sum(generation*price)/sum(generation);
