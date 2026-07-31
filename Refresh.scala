@@ -304,6 +304,40 @@ def chapterKDemand(): Unit = {
   println("  python figures/gb_demand_week.py data-refresh/gb-demand-week.csv without-hot-air/Images/fig-gb-demand-week.svg")
 }
 
+// ---- Chapter 25: Germany's net electricity trade (export surplus -> import) ----
+// OWID "Net electricity imports" (Ember): imports minus exports, TWh per year.
+// Positive = net importer, negative = net exporter.
+
+@main
+def deTrade(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val src = dir / "owid-net-electricity-imports.csv"
+  if (!os.exists(src))
+    os.write.over(src, requests.get("https://ourworldindata.org/grapher/net-electricity-imports.csv?csvType=full", readTimeout = 60000).text())
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val rs = conn.createStatement().executeQuery(
+    s"""SELECT "Year" AS y, "Net electricity imports" AS twh
+        FROM read_csv_auto('${src.toString.replace("'", "''")}')
+        WHERE "Entity"='Germany' AND "Year">=1990 AND "Net electricity imports" IS NOT NULL
+        ORDER BY "Year"""")
+  val out = new StringBuilder; out ++= "year,twh\n"
+  var last = 0; var flip = 0; var prev = 0.0; var minY = 0; var minV = 0.0
+  while (rs.next()) {
+    val y = rs.getInt(1); val v = rs.getDouble(2); last = y
+    if (y > 1990 && prev < 0 && v > 0) flip = y // keep the most recent flip: the 1990s wobbled
+    if (v < minV) { minV = v; minY = y }
+    prev = v
+    out ++= f"$y,$v%.2f\n"
+  }
+  conn.close()
+  os.write.over(dir / "de-net-trade.csv", out.toString)
+  println(s"wrote data-refresh/de-net-trade.csv (1990-$last)")
+  println(f"largest export surplus: $minY ${-minV}%.1f TWh  |  turned net importer: $flip")
+  println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
+  println("  python figures/de_net_trade.py data-refresh/de-net-trade.csv without-hot-air/Images/fig-de-net-trade.svg")
+}
+
 // ---- GB capture prices (the cannibalization figure) from Elexon BMRS ----
 // Half-hourly GB generation by fuel type and the market-index price (APXMIDP),
 // joined on the settlement period. Capture price = sum(generation*price)/sum(generation);
