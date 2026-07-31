@@ -120,6 +120,9 @@ def uk(): Unit = {
     tbl ++= s"| $s | " + cells.mkString(" | ") + " |\n"
   }
   os.write.over(os.pwd / "data-refresh" / "uk-electricity-values.md", tbl.toString)
+  val csvU = new StringBuilder; csvU ++= "year,source,twh\n"
+  for (r <- rows; (s, _) <- SOURCES) csvU ++= s"${r.year},$s,${r.v(s).round}\n"
+  os.write.over(os.pwd / "data-refresh" / "uk-electricity-mix.csv", csvU.toString)
 
   def at(y: Int, s: String) = rows.find(_.year == y).map(_.v(s)).getOrElse(Double.NaN)
   println(f"Coal:  2008 ${at(2008, "Coal")}%5.0f TWh  ->  $yMax ${at(yMax, "Coal")}%5.0f TWh")
@@ -288,7 +291,9 @@ def gbCapture(): Unit = {
   tbl ++= "| Source | Capture (GBP/MWh) | Value factor |\n|---|---|---|\n"
   for (s <- order) tbl ++= f"| $s | ${capMap(s)}%.1f | ${capMap(s) / avgP}%.2f |\n"
   os.write.over(os.pwd / "data-refresh" / "gb-capture-values.md", tbl.toString)
-  os.write.over(os.pwd / "without-hot-air" / "Images" / "fig-gb-capture.svg", renderCaptureSvg(year, order, capMap.toMap, avgP))
+  val csvG = new StringBuilder; csvG ++= "source,capture,systemavg\n"
+  for (s <- order) csvG ++= f"$s,${capMap(s)}%.1f,${avgP}%.1f\n"
+  os.write.over(os.pwd / "data-refresh" / "gb-capture.csv", csvG.toString)
   print(tbl.toString)
   println(f"average market price ${avgP}%.1f GBP/MWh; wrote figure and values")
 }
