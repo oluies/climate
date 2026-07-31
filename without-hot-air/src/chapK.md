@@ -59,6 +59,10 @@ Table K.4. Domestic electricity charges (2006, 2007) for Powergen customers in C
 
 <span class="figurenumber">Figure K.7.</span> UK production and imports of coal, and UK consumption of gas. Powers are expressed "per person" by dividing each power by 60 million.
 
+*Updated to 2024 (this edition): coal consumption has fallen from about 1,365 TWh in 1965 to near zero, while gas rose through the 1990s "dash for gas" and has declined since its mid-2000s peak. The two crossed over in the mid-1990s.*
+
+![UK coal and gas consumption, 1965 to 2024 (TWh per year). Coal declines steadily, dips at the 1984 miners' strike, and collapses after 2012; gas rises through the 1990s and falls back from its mid-2000s peak.](/img/without-hot-air/fig-uk-coal-gas.svg)
+
 ![](/img/without-hot-air/figure318.gif)
 
 <span class="figurenumber">Figure K.5.</span> History of UK production of electricity, hydroelectricity, and nuclear electricity. Powers are expressed "per person" by dividing each power by 60 million.
