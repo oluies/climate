@@ -6,47 +6,18 @@
 
 We’ve found that it’s hard to get off fossil fuels by living on our own renewables. Nuclear has its problems too. So what else can we do? Well, how about living on someone else’s renewables? (Not that we have any entitlement to someone else’s renewables, of course, but perhaps they might be interested in selling them to us.)
 
-Power per unit land or water area
-
-Wind
-
-2 W/m<sup>2</sup>
-
-Offshore wind
-
-3 W/m<sup>2</sup>
-
-Tidal pools
-
-3 W/m<sup>2</sup>
-
-Tidal stream
-
-6 W/m<sup>2</sup>
-
-Solar PV panels
-
-5–20 W/m<sup>2</sup>
-
-Plants
-
-0.5 W/m<sup>2</sup>
-
-Rain-water (highlands)
-
-0.24 W/m<sup>2</sup>
-
-Hydroelectric facility
-
-11 W/m<sup>2</sup>
-
-Solar chimney
-
-0.1 W/m<sup>2</sup>
-
-**Concentrating solar power (desert)**
-
-15 W/m<sup>2</sup>
+| Technology | Power per unit land or water area |
+| --- | --- |
+| Wind | 2 W/m<sup>2</sup> |
+| Offshore wind | 3 W/m<sup>2</sup> |
+| Tidal pools | 3 W/m<sup>2</sup> |
+| Tidal stream | 6 W/m<sup>2</sup> |
+| Solar PV panels | 5–20 W/m<sup>2</sup> |
+| Plants | 0.5 W/m<sup>2</sup> |
+| Rain-water (highlands) | 0.24 W/m<sup>2</sup> |
+| Hydroelectric facility | 11 W/m<sup>2</sup> |
+| Solar chimney | 0.1 W/m<sup>2</sup> |
+| **Concentrating solar power (desert)** | **15 W/m<sup>2</sup>** |
 
 <span class="figurenumber">Table 25.1</span>. Renewable facilities have to be country-sized because all renewables are so diffuse.
 
@@ -343,6 +314,15 @@ A solar chimney or solar updraft tower uses solar power in a very simple way. [^
 <span class="figurenumber">Figure 25.11</span>. More geothermal power in Iceland. Photo by Rosie Ward.
 
 Indeed, Iceland already effectively exports energy by powering industries that make energy-intensive products. Iceland produces nearly one ton of aluminium per citizen per year, for example\! So from Iceland’s point of view, there are great profits to be made. But can Iceland save Europe? I would be surprised if Iceland’s power production could be scaled up enough to make sizeable electricity exports even to Britain alone. As a benchmark, let’s compare with the England–France Interconnector, which can deliver up to 2 GW across the English Channel. That maximum power is equivalent to 0.8 kWh per day per person in the UK, roughly 5% of British average electricity consumption. Iceland’s average geothermal electricity generation is just 0.3 GW, which is less than 1% of Britain’s average electricity consumption. Iceland’s average electricity production is 1.1 GW. [^6] So to create a link sending power equal to the capacity of the French interconnector, Iceland would have to *triple* its electricity production. To provide us with 4 kWh per day per person (roughly what Britain gets from its own nuclear power stations), Iceland’s electricity production would have to increase *ten-fold*. It is probably a good idea to build interconnectors to Iceland, but don’t expect them to deliver more than a small contribution.
+
+## The reverse case, and the politics of it
+
+*A note added in the 2026 revision.* MacKay frames this chapter as Britain buying other countries' renewables. The 2020s produced a live example running the other way. Germany closed its last three nuclear reactors in April 2023 and, for the first time in many years, became a net electricity importer, drawing on hydro- and wind-rich Scandinavia.[^de1] Because the Nordic and continental markets are coupled by interconnectors, German demand now reaches Swedish bills, and southern Sweden, wired directly to Germany, saw its prices rise. Swedish ministers publicly blamed Germany's nuclear exit for higher prices at home.[^de2] The counter-argument is that the feared German price spike never arrived: a year on, Germany had record renewable output and falling wholesale prices.[^de3] So the dispute is less about a supply crisis than about who bears the cost of a coupled market, which is the question MacKay's cheerful "living on someone else's renewables" leaves open. The same coupling sits under the cannibalization model on the companion site.[^model]
+
+[^de1]: The electricity-import shift after the April 2023 nuclear exit: Clean Energy Wire, "Q&A – Germany's nuclear exit: one year after"; on wider import dependence, Clean Energy Wire, "Germany and the EU remain heavily dependent on imported fossil fuels".
+[^de2]: Sweden's criticism of German energy policy as prices rose: France 24, "Sweden sees red over Germany's energy policy", December 2024.
+[^de3]: Fraunhofer ISE, "One year since Germany's nuclear exit", 2024. A study of the cross-border effects is in Energy Policy, <https://www.sciencedirect.com/science/article/pii/S0301421526004568> ; see also the German economy ministry's earlier "get away from gas", energiewende.bundeswirtschaftsministerium.de.
+[^model]: The cannibalization model and its references: <https://oluies.github.io/elmix/modell/referenser.html> .
 
 ## Notes and further reading
 
