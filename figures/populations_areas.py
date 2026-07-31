@@ -13,7 +13,10 @@ AGG = {"World", "Asia", "Africa", "Europe", "North America", "Latin America",
        "Oceania", "European Union"}
 df["kind"] = np.where(df.region.isin(AGG), "aggregate", "country")
 
-X0, X1, Y0, Y1 = 3e2, 3e8, 3e4, 3e10
+# MacKay's J.1 is the whole range; his J.2 is a detail from it. Pass --detail
+# for the second, which zooms on the crowded middle where most countries sit.
+DETAIL = "--detail" in sys.argv
+X0, X1, Y0, Y1 = (2e4, 3e7, 1e6, 3e9) if DETAIL else (3e2, 3e8, 3e4, 3e10)
 sns.set_theme(style="whitegrid", rc={"grid.color": "#f2f2ef", "axes.edgecolor": "#c9c9c4"})
 fig, ax = plt.subplots(figsize=(8.8, 6.4))
 
@@ -45,6 +48,15 @@ LABEL = {"World": (6, 4), "China": (6, 3), "India": (-6, 3), "USA (ex. Alaska)":
          "Russia": (6, -9), "Canada": (6, 2), "Australia": (6, -9), "Sweden": (6, 2),
          "Greenland": (-6, 2), "Iceland": (-6, 2), "Hong Kong": (6, 3), "Singapore": (-6, -8),
          "Africa": (7, 4), "Europe": (-7, 3)}
+if DETAIL:
+    LABEL = {"China": (6, 3), "India": (-6, 3), "USA (ex. Alaska)": (6, -10), "Bangladesh": (-6, 3),
+             "Japan": (6, 2), "England": (-6, 2), "Netherlands": (-6, 2), "Russia": (6, -9),
+             "Canada": (6, 2), "Australia": (6, -9), "Sweden": (6, 2), "Germany": (-6, 3),
+             "France": (6, -9), "Italy": (6, 2), "Spain": (-6, 2), "Poland": (-6, -11),
+             "Nigeria": (-6, -9), "Ethiopia": (6, -10), "Egypt": (-6, 2), "Brazil": (6, -10),
+             "Mexico": (6, 3), "Indonesia": (6, 2), "Pakistan": (-6, 3), "Vietnam": (6, 2),
+             "Turkey": (-6, 2), "Kazakhstan": (6, 2), "Finland": (-6, 2), "Norway": (6, 2),
+             "Ukraine": (-6, -10), "South Korea": (6, -9), "Saudi Arabia": (-6, 3), "Europe": (-7, 3)}
 for _, r in df[df.region.isin(LABEL)].iterrows():
     dx, dy = LABEL[r.region]
     ax.annotate(r.region, xy=(r.area_km2, r.population), xytext=(dx, dy),
@@ -58,9 +70,12 @@ ax.set_ylabel("Population", fontsize=10.5)
 ax.set_xlim(X0, X1); ax.set_ylim(Y0, Y1)
 for s in ("top", "right"): ax.spines[s].set_visible(False)
 ax.legend(frameon=False, loc="lower right", fontsize=9.5)
-ax.set_title("Populations and areas of the countries and regions of the world, 2023",
+if DETAIL: ax.get_legend().remove()
+ax.set_title("Populations and areas of the world's countries and regions, 2023"
+             + (" — detail" if DETAIL else ""),
              loc="left", fontsize=12.5, fontweight="bold", pad=12)
-ax.annotate(f"the world's diagonal has moved: {wd:.0f} people per km²,\nagainst 43 when this book was written",
-            xy=(0.015, 0.955), xycoords="axes fraction", va="top",
-            fontsize=9.5, color=MUTED)
+if not DETAIL:
+    ax.annotate(f"the world's diagonal has moved: {wd:.0f} people per km²,\nagainst 43 when this book was written",
+                xy=(0.015, 0.955), xycoords="axes fraction", va="top",
+                fontsize=9.5, color=MUTED)
 fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])

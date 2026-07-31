@@ -1,6 +1,8 @@
 project:
   type: book
   output-dir: _book
+  resources:
+    - assets/tes-percapita.parquet
 
 book:
   title: "Sustainable Energy — Without the Hot Air"

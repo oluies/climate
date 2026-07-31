@@ -402,6 +402,18 @@ def chapterJ(): Unit = {
     }
   }
   os.write.over(dir / "world-tes-percapita.csv", pc.toString)
+
+  // Every country, as Parquet, for the DuckDB-WASM chart in the chapter. The
+  // reader's browser queries this file directly; nothing is precomputed for it.
+  val assets = os.pwd / "book" / "assets"; os.makeDir.all(assets)
+  val allSel = (0 until 61).map(i => s"""TRY_CAST("${colName(i + 1)}" AS DOUBLE) AS "y${1965 + i}"""").mkString(", ")
+  val unpiv = (0 until 61).map(i => s"""SELECT replace(A, 'Total ', '') AS region, ${1965 + i} AS year,
+      round(TRY_CAST("${colName(i + 1)}" AS DOUBLE) * $GJ_PER_CAPITA_TO_KWH_PER_DAY, 2) AS kwh_per_day
+      FROM ${sheet("TES per Capita", "A4:BL124")} WHERE A IS NOT NULL""").mkString(" UNION ALL ")
+  st.execute(
+    s"""COPY (SELECT * FROM ($unpiv) WHERE kwh_per_day IS NOT NULL ORDER BY region, year)
+        TO '${(assets / "tes-percapita.parquet").toString.replace("'", "''")}' (FORMAT parquet)""")
+  println(s"wrote book/assets/tes-percapita.parquet")
   conn.close()
 
   val fossil25 = energy.filter(x => Set("Oil", "Gas", "Coal")(x._1)).map(_._3).sum

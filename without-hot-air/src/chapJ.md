@@ -14,9 +14,17 @@ The land areas have not moved, which is the point of putting them in a table wit
 
 <span class="figurenumber">Figure J.1.</span> Populations and areas of countries and regions of the world. Both scales are logarithmic. Each sloping line identifies a population density; countries with highest population density are towards the lower right, and lower population densities are towards the upper left. These data are provided in tabular form below.
 
+![Populations and areas of the countries and regions of the world in 2023, on logarithmic scales. Diagonals mark constant population density; the world's own diagonal, drawn dashed, now runs at 55 people per square kilometre. Continents and the world are marked separately from countries.](/img/without-hot-air/fig-populations-areas.svg)
+
+<span class="figurenumber">Figure J.1a.</span> *Redrawn for this edition.* The same plot from the 2023 data in table J.5, on the same logarithmic scales and with the same organising device. The dashed line is the world's own density, which has moved from 43 people per km<sup>2</sup> to 55 since MacKay drew figure J.1. Our World in Data keeps this quantity current at [ourworldindata.org/grapher/population-density](https://ourworldindata.org/grapher/population-density).
+
 ![](/img/without-hot-air/figure314.gif)
 
 <span class="figurenumber">Figure J.2.</span> Populations and areas of countries and regions of the world. Both scales are logarithmic. Sloping lines are lines of constant population density. This figure shows detail from figure J.1 (p338). These data are provided in tabular form below.
+
+![Detail of the previous figure, covering land areas from 20 000 to 30 million square kilometres and populations from one million to three billion, with about thirty countries labelled.](/img/without-hot-air/fig-populations-areas-detail.svg)
+
+<span class="figurenumber">Figure J.2a.</span> *Redrawn for this edition.* The detail view, on 2023 data, covering the crowded middle of figure J.1a where most countries sit.
 
 | Region | Population (2005) | Population (2023) | Land area (km²) | People per km² (2023) | Area each (m², 2023) |
 |---|---|---|---|---|---|
@@ -33,7 +41,7 @@ The land areas have not moved, which is the point of putting them in a table wit
 
 ![](/img/without-hot-air/figure315.gif)
 
-<span class="figurenumber">Figure J.4.</span> Populations and areas of the States of America and regions around Europe.
+<span class="figurenumber">Figure J.4.</span> Populations and areas of the States of America and regions around Europe. *Not redrawn for this edition:* table J.5 carries no data for individual American states, so there is nothing to redraw it from. Figures J.1 and J.2 have current equivalents above; this one does not.
 
 | Region | Population (2005) | Population (2023) | Land area (km²) | People per km² (2023) | Area each (m², 2023) |
 |---|---|---|---|---|---|
@@ -150,10 +158,6 @@ The land areas have not moved, which is the point of putting them in a table wit
 <span class="figurenumber">Table J.5.</span> Regions and their population densities. Populations above 50 million and areas greater than 5 million km<sup>2</sup> are highlighted. These data are displayed graphically in figure J.1 (p338). MacKay's populations are from 2005; the 2023 column and the densities computed from it were added in this edition. Country and continent figures are UN World Population Prospects via Our World in Data; England, Scotland and Wales are ONS mid-2023 estimates; Alaska is taken as 0.73 million, and "USA (ex. Alaska)" is the United States less that. Two rows carry no current figure: Antarctica, which has no permanent population, and the Gaza Strip, where no reliable current estimate exists. Three of MacKay's regions no longer exist as he named them: Serbia &amp; Montenegro separated in 2006 and is given here as the two states summed, the Republic of Macedonia is now North Macedonia, and the European Union has lost the United Kingdom and gained Croatia since 2005, so its two columns are not the same union.
 
 
-![Populations and areas of the countries and regions of the world in 2023, on logarithmic scales. Diagonals mark constant population density; the world's own diagonal now runs at 55 people per square kilometre. Continents and the world are marked separately from countries.](/img/without-hot-air/fig-populations-areas.svg)
-
-<span class="figurenumber">Figure J.6.</span> *Added in this edition.* MacKay's figures J.1 and J.2 redrawn from the 2023 data in table J.5, with the same organising device: both scales logarithmic, so lines of constant population density are straight diagonals. The dashed line is the world's own density. Our World in Data keeps this quantity current at [ourworldindata.org/grapher/population-density](https://ourworldindata.org/grapher/population-density).
-
 ## The world in 2025
 
 *A section added in the 2026 revision.* MacKay wrote in 2008 with 2005 numbers. What follows is the same kind of stock-taking for the most recent complete year, computed from the Energy Institute's Statistical Review of World Energy — the annual compilation BP published for seventy years, and which the Energy Institute, with Ember, has published since 2023.[^j1]
@@ -164,7 +168,235 @@ Before going further, it is worth checking this book's own arithmetic against th
 
 ![Energy supply per person from 1965 to 2025, in kWh per day per person. The US runs near 200, having peaked around 256 in 2000. Sweden falls from about 200 in the 1980s to 118. The United Kingdom falls from 130 in 1973 to 69. China rises from under 6 to 87, passing Europe in 2023. India reaches 20 and Africa 11. The world average rises from 34 to 55.](/img/without-hot-air/fig-world-percapita.svg)
 
-<span class="figurenumber">Figure J.9.</span> Energy supply per person, in the units of this book. The dashed line is the world average.
+<span class="figurenumber">Figure J.6.</span> Energy supply per person, in the units of this book. The dashed line is the world average.
+
+That figure shows eight series because eight is as many as a printed page can carry. The Statistical Review has 103, so the same data is below as something the reader can query directly. It runs DuckDB compiled to WebAssembly, inside the browser: the Parquet file is fetched once and every query after that is executed locally, with nothing sent anywhere. The SQL is editable, so any question this chapter does not answer can be asked of the same numbers.
+
+::: {#tes-explorer}
+```{=html}
+<div class="tes-explorer">
+  <div class="tes-controls">
+    <label for="tes-countries">Countries</label>
+    <select id="tes-countries" multiple size="8"></select>
+    <div class="tes-presets">
+      <button type="button" data-set="US,China,India,Europe,World">MacKay's comparison</button>
+      <button type="button" data-set="Sweden,Norway,Finland,Denmark">Nordics</button>
+      <button type="button" data-set="United Kingdom,Germany,France,Italy,Spain">Western Europe</button>
+      <button type="button" data-set="China,India,Indonesia,Vietnam,Bangladesh">Asia rising</button>
+    </div>
+  </div>
+  <svg id="tes-chart" viewBox="0 0 760 400" role="img"
+       aria-label="Energy supply per person over time for the selected countries"></svg>
+  <details class="tes-sql">
+    <summary>The query behind the chart — edit and run it</summary>
+    <textarea id="tes-query" rows="5" spellcheck="false"></textarea>
+    <div><button type="button" id="tes-run">Run</button>
+      <span id="tes-status">loading DuckDB…</span></div>
+    <div id="tes-table"></div>
+  </details>
+</div>
+
+<style>
+.tes-explorer{border:1px solid #dfe1de;border-radius:6px;padding:14px 16px;margin:18px 0;font-size:14px}
+.tes-explorer .tes-controls{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;margin-bottom:10px}
+.tes-explorer label{font-weight:600;display:block;margin-bottom:4px}
+.tes-explorer select{min-width:190px;font-size:13px;padding:2px}
+.tes-presets{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;max-width:520px}
+.tes-presets button,#tes-run{font-size:12.5px;padding:4px 9px;border:1px solid #c9c9c4;background:#fbfbfa;
+  border-radius:4px;cursor:pointer}
+.tes-presets button:hover,#tes-run:hover{background:#f0f0ec}
+#tes-chart{width:100%;height:auto;display:block}
+.tes-sql{margin-top:10px;font-size:13px}
+.tes-sql summary{cursor:pointer;color:#46534f}
+.tes-sql textarea{width:100%;font:12.5px/1.45 ui-monospace,Menlo,monospace;margin:8px 0;padding:8px;
+  border:1px solid #dfe1de;border-radius:4px}
+#tes-status{color:#7b8683;margin-left:8px}
+#tes-table{overflow-x:auto;max-height:240px;overflow-y:auto;margin-top:8px}
+#tes-table table{border-collapse:collapse;font-size:12.5px}
+#tes-table th,#tes-table td{border-bottom:1px solid #ecedec;padding:2px 10px 2px 0;text-align:right}
+#tes-table th:first-child,#tes-table td:first-child{text-align:left}
+@media (prefers-color-scheme:dark){
+  .tes-explorer{border-color:#333;}
+  .tes-presets button,#tes-run{background:#222;border-color:#444;color:#ddd}
+  .tes-sql textarea{background:#1a1a19;border-color:#333;color:#ddd}
+}
+</style>
+
+<script type="module">
+import * as duckdb from 'https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.29.0/+esm';
+
+// Colour follows the entity, so these match the printed figure J.6 above;
+// anything not named there falls back to the spare palette in order.
+const NAMED = {"US":"#7a5c3e","Sweden":"#4a3aa7","Europe":"#2a78d6","China":"#e34948",
+               "World":"#161d1b","United Kingdom":"#eb6834","India":"#1baf7a","Africa":"#eda100"};
+const PALETTE = ["#2a78d6","#e34948","#1baf7a","#eda100","#4a3aa7","#eb6834","#7a5c3e","#161d1b"];
+const DEFAULT = ["US","China","India","Europe","World"];
+const $ = id => document.getElementById(id);
+const status = m => { $("tes-status").textContent = m; };
+
+const sqlFor = names => `SELECT region, year, kwh_per_day
+FROM tes
+WHERE region IN (${names.map(n => `'${n.replace(/'/g, "''")}'`).join(", ")})
+ORDER BY region, year`;
+
+let conn;
+
+async function boot() {
+  try {
+    const bundle = await duckdb.selectBundle(duckdb.getJsDelivrBundles());
+    const workerUrl = URL.createObjectURL(new Blob(
+      [`importScripts("${bundle.mainWorker}");`], {type: "text/javascript"}));
+    const db = new duckdb.AsyncDuckDB(new duckdb.VoidLogger(), new Worker(workerUrl));
+    await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
+    URL.revokeObjectURL(workerUrl);
+
+    const url = new URL("../assets/tes-percapita.parquet", document.baseURI).href;
+    await db.registerFileURL("tes.parquet", url, duckdb.DuckDBDataProtocol.HTTP, false);
+    conn = await db.connect();
+    await conn.query(`CREATE VIEW tes AS SELECT * FROM read_parquet('tes.parquet')`);
+
+    const regions = (await conn.query(`SELECT DISTINCT region FROM tes ORDER BY region`))
+      .toArray().map(r => r.region);
+    const sel = $("tes-countries");
+    for (const r of regions) {
+      const o = document.createElement("option");
+      o.value = o.textContent = r;
+      o.selected = DEFAULT.includes(r);
+      sel.appendChild(o);
+    }
+    sel.addEventListener("change", refresh);
+    $("tes-run").addEventListener("click", () => run($("tes-query").value));
+    for (const b of document.querySelectorAll(".tes-presets button"))
+      b.addEventListener("click", () => {
+        const want = b.dataset.set.split(",");
+        for (const o of sel.options) o.selected = want.includes(o.value);
+        refresh();
+      });
+    status(`ready — ${regions.length} regions, 1965 to 2025`);
+    refresh();
+  } catch (e) {
+    status("could not start DuckDB in this browser: " + e.message);
+  }
+}
+
+function refresh() {
+  const names = [...$("tes-countries").selectedOptions].map(o => o.value);
+  const q = sqlFor(names.length ? names : DEFAULT);
+  $("tes-query").value = q;
+  run(q);
+}
+
+async function run(q) {
+  if (!conn) return;
+  try {
+    const rows = (await conn.query(q)).toArray().map(r => ({...r}));
+    draw(rows);
+    table(rows);
+    status(`${rows.length} rows`);
+  } catch (e) {
+    status("query error: " + e.message);
+  }
+}
+
+function draw(rows) {
+  const svg = $("tes-chart");
+  const W = 760, H = 400, ml = 52, mr = 128, mt = 16, mb = 34;
+  const pw = W - ml - mr, ph = H - mt - mb;
+  svg.textContent = "";
+  const ns = "http://www.w3.org/2000/svg";
+  const el = (t, a) => { const e = document.createElementNS(ns, t);
+    for (const k in a) e.setAttribute(k, a[k]); return e; };
+  if (!rows.length || !("year" in rows[0]) || !("kwh_per_day" in rows[0])) {
+    svg.appendChild(el("text", {x: ml, y: mt + 20, "font-size": 13, fill: "#7b8683"}))
+       .textContent = "select region, year and kwh_per_day to draw a chart";
+    return;
+  }
+  const groups = new Map();
+  for (const r of rows) {
+    const k = r.region ?? "series";
+    if (!groups.has(k)) groups.set(k, []);
+    groups.get(k).push({x: Number(r.year), y: Number(r.kwh_per_day)});
+  }
+  const xs = rows.map(r => Number(r.year)), ys = rows.map(r => Number(r.kwh_per_day));
+  const x0 = Math.min(...xs), x1 = Math.max(...xs);
+  const y1 = Math.max(10, Math.ceil(Math.max(...ys) / 25) * 25);
+  const sx = v => ml + (x1 === x0 ? 0 : (v - x0) / (x1 - x0) * pw);
+  const sy = v => mt + ph - v / y1 * ph;
+
+  for (let g = 0; g <= y1; g += y1 / 5) {
+    svg.appendChild(el("line", {x1: ml, y1: sy(g), x2: ml + pw, y2: sy(g), stroke: "#ededea"}));
+    const t = el("text", {x: ml - 8, y: sy(g) + 4, "font-size": 11, fill: "#7b8683",
+                          "text-anchor": "end"});
+    t.textContent = g.toFixed(0); svg.appendChild(t);
+  }
+  const step = Math.max(5, Math.ceil((x1 - x0) / 6 / 5) * 5);
+  for (let yr = Math.ceil(x0 / step) * step; yr <= x1; yr += step) {
+    const t = el("text", {x: sx(yr), y: mt + ph + 20, "font-size": 11, fill: "#7b8683",
+                          "text-anchor": "middle"});
+    t.textContent = yr; svg.appendChild(t);
+  }
+  const yl = el("text", {x: 13, y: mt + ph / 2, "font-size": 11, fill: "#7b8683",
+                         transform: `rotate(-90 13 ${mt + ph / 2})`, "text-anchor": "middle"});
+  yl.textContent = "kWh per day per person"; svg.appendChild(yl);
+
+  const ends = [];
+  let i = 0;
+  const spare = PALETTE.filter(c => ![...groups.keys()].some(k => NAMED[k] === c));
+  for (const [name, pts] of groups) {
+    const c = NAMED[name] ?? spare[i++ % spare.length];
+    pts.sort((a, b) => a.x - b.x);
+    svg.appendChild(el("polyline", {points: pts.map(p => `${sx(p.x)},${sy(p.y)}`).join(" "),
+                                    fill: "none", stroke: c, "stroke-width": 2}));
+    const last = pts[pts.length - 1];
+    ends.push({name, c, y: sy(last.y), v: last.y});
+  }
+  ends.sort((a, b) => a.y - b.y);
+  let prev = -100;
+  for (const e of ends) {
+    const y = e.y - prev < 14 ? prev + 14 : e.y;
+    prev = y;
+    const t = el("text", {x: ml + pw + 8, y: y + 4, "font-size": 11, fill: e.c});
+    t.textContent = `${e.name} ${e.v.toFixed(0)}`;
+    svg.appendChild(t);
+  }
+}
+
+function table(rows) {
+  const box = $("tes-table");
+  box.textContent = "";
+  if (!rows.length) return;
+  const cols = Object.keys(rows[0]);
+  const t = document.createElement("table");
+  const hr = t.insertRow();
+  for (const c of cols) { const th = document.createElement("th"); th.textContent = c; hr.appendChild(th); }
+  for (const r of rows.slice(0, 400)) {
+    const tr = t.insertRow();
+    for (const c of cols) tr.insertCell().textContent = r[c];
+  }
+  box.appendChild(t);
+}
+
+boot();
+</script>
+```
+:::
+
+
+<span class="figurenumber">Figure J.6a.</span> *Added in this edition.* Energy supply per person for any of the 103 countries and regions in the Statistical Review, 1965 to 2025, in kWh per day per person.
+
+### Electricity and income
+
+There is a companion to figure J.6 that says something the energy totals do not, and it is worth stating plainly because it cuts against a common reading of this chapter. Plot electricity consumption per person against national income and the two are very tightly related — an r² of about 0.83 across countries.[^j7] High-income countries average around 10 000 kWh per person a year, which is **27 kWh per day** in this book's units; low-income countries average 125 kWh a year, which is **0.34 kWh per day**. The gap is a factor of eighty.
+
+What makes the relationship interesting is the absence of exceptions at either end. There is no wealthy country with low electricity consumption: the lowest is Romania at 2 845 kWh per person, and its income is $15 692, only just inside the high-income band. And there is no low-income country above 500 kWh per person. The few apparent outliers — Mozambique, Tajikistan, Iceland — are countries whose consumption is dominated by an energy-intensive export industry such as aluminium smelting, and adjusting for that trade tightens the correlation rather than loosening it.
+
+<iframe src="https://ourworldindata.org/grapher/per-capita-electricity-demand?tab=map" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+
+<span class="figurenumber">Figure J.6b.</span> Per-capita electricity demand, from Our World in Data. The map view makes the eightyfold gap geographic.
+
+This is the counterweight to the framing of the whole chapter. Every earlier section has treated growth in energy demand as the problem — the thing outrunning renewables, the reason emissions keep rising. Read against income, most of that growth is people leaving poverty, and there is no historical instance of a country becoming rich while consuming 125 kWh of electricity a year. MacKay's own position was the same, and he stated it as an engineer would: the question is not whether the poor world's consumption will rise, because it will and it should, but what it will be supplied with.
+
+
 
 What that figure shows is that the world average has risen — from 34 kWh/d in 1965 to 55 — while the rich countries' averages have fallen. **Britain is now at 69 kWh/d, down 44% from the 123 of MacKay's data.** Sweden has fallen from about 200 in the 1980s to 118. America is where it was in 1965. Meanwhile China has gone from 5.7 to 87 kWh/d, a fifteenfold rise that took it past Europe in 2023, and India from 3.3 to 20. Africa, at 11 kWh/d, uses less per person than Britain did in the eighteenth century.
 
@@ -214,7 +446,7 @@ And a fourth, which is the one most often conflated with the others: **who is dr
 
 ![Change in CO2 from energy by region between 2000 and 2025, in million tonnes a year. China rose 7 912, India 2 002, the Middle East 1 311, Africa 663 and South and Central America 358, while the United States fell 986 and Europe fell 1 274. The world total rose 12 129.](/img/without-hot-air/fig-world-co2-since-2000.svg)
 
-<span class="figurenumber">Figure J.10.</span> The change in energy-related carbon dioxide emissions by region, 2000 to 2025. Note that two regions have negative bars.
+<span class="figurenumber">Figure J.9.</span> The change in energy-related carbon dioxide emissions by region, 2000 to 2025. Note that two regions have negative bars.
 
 Since 2000 world emissions have risen 12 129 Mt a year. China accounts for 7 912 Mt of that, **65% of the global increase**, and India for a further 2 002 Mt. Over the same quarter-century United States emissions fell by 986 Mt a year and Europe's by 1 274 — declines that were more than cancelled by growth elsewhere. So the answer to the fourth question is China, and it is not close.[^j4]
 
@@ -226,19 +458,27 @@ All four answers are true at once, and each is a different question. The atmosph
 
 There is a trap in every one of these year-on-year comparisons. Energy consumption depends heavily on the weather: a cold winter raises heating demand and makes a country look less efficient than it is, and a mild one flatters it. Comparing raw consumption between years measures the weather as much as the economy.
 
-The European instrument for separating the two is **ODEX**, the energy-efficiency index of the EU-funded ODYSSEE-MURE project, coordinated by Enerdata and published as an indicator by the European Environment Agency.[^j2] Its indicators are climate-corrected, so that year-to-year variation is independent of how cold the winter was, and it is a longitudinal index rather than a level: a sector starts at 100 in the base year and falls as it becomes more efficient. Across the EU, household energy efficiency improved 29% between 2000 and 2019, about 1.8% a year, with the index at 71 by 2019.
+The European instrument for separating the two is **ODEX**, the energy-efficiency index of the EU-funded ODYSSEE-MURE project, coordinated by Enerdata and published as an indicator by the European Environment Agency.[^j2] Its indicators are climate-corrected, so that year-to-year variation is independent of how cold the winter was, and it is a longitudinal index rather than a level: a sector starts at 100 in a base year and falls as it becomes more efficient. That is the right instrument for the question this chapter keeps running into, which is whether a fall in consumption is a real gain or just a warm year.
 
-Two things follow. Efficiency is improving steadily and unspectacularly, at a couple of per cent a year — and figure J.9 shows what that compounds to over decades, which is Britain's 44% fall. And a couple of per cent a year is close to the rate at which world energy demand has been growing, which is why the two have largely cancelled in the global total even as they diverge sharply by country.
+Across the EU, ODEX improved **1.4% a year between 2010 and 2023, 16% in total**. The sectoral detail matters more than the average. Households, industry and services all improved at about 1.6% a year over that period and then **accelerated after 2019**, to 2.4%, 2.4% and 2.2% respectively. Transport is the laggard, at 0.9% a year and 11% in total over thirteen years — which is what one would expect of a sector whose efficiency depends on replacing a vehicle fleet that lasts fifteen years. EU final energy consumption in 2023 was 868 Mtoe, the lowest since 2000, falling at 1.6% a year since 2018.
+
+Sweden is worth reading beside it, because it is the case the companion model is built around.[^j6] Swedish ODEX improved **1.12% a year between 2000 and 2023, 25.8% in total** — a longer window than the EU figures above, so the annual rates are not directly comparable, but the total is the more meaningful number anyway. Residential and services did best at over 1.6% a year, 31% in total; transport managed 0.8% a year; industry 1.2% a year overall, but with **little progress since 2006**, which is a long plateau for the sector that consumes most of Sweden's electricity. Final energy consumption fell from 32.2 Mtoe in 2000 to 29.6 in 2023, with industry down 1.0 Mtoe and transport 0.8, while services rose 0.35.
+
+Three things follow. Efficiency is improving steadily and unspectacularly, at one to two per cent a year — and figure J.6 shows what that compounds to over decades, which is Britain's 44% fall. That rate is close to the rate at which world energy demand has been growing, which is why the two have largely cancelled in the global total even as they diverge sharply by country. And the sector that has stalled in Sweden, industry, is precisely the one the electrification argument depends on: an efficiency index that has not moved since 2006 is a different problem from a price signal that never arrives, and the two are easily mistaken for each other.
 
 ### A caution about area per person
 
 This chapter's tables invite a particular argument, so it is worth stating what they can and cannot support. Land area per person says nothing on its own about how many people a country can feed or power, because a square metre is not the same everywhere. A square metre at 60°N receives roughly half the annual sunlight of one at 20°N, and grows correspondingly less. Sweden's 42 600 m² per person and Nigeria's 4 800 are not comparable quantities, and a table of densities that ignores latitude will mislead in whichever direction the reader was already inclined.
 
-The argument is made in Sweden in exactly this form — that the country is the most densely populated in the world *for its latitude*, and has therefore already exceeded what its own sunlight can support.[^j3] The observation about insolation is sound and is MacKay's own point in chapters 6 and 13: northern countries have less solar resource per square metre, and a country's renewable potential scales with its area times its insolation, not its area alone. What does not follow is the policy conclusion usually attached, that the population should therefore be reduced. That inference skips the trade that has existed for as long as agriculture, treats consumption per person as fixed when this book's whole method is to ask how far it can be lowered — and figure J.9 shows Sweden's own falling by 40% while nobody left — and rests on no published carrying-capacity estimate. The physics is worth keeping. The conclusion is not a physical result and should not be presented as one.
+The argument is made in Sweden in exactly this form — that the country is the most densely populated in the world *for its latitude*, and has therefore already exceeded what its own sunlight can support.[^j3] The observation about insolation is sound and is MacKay's own point in chapters 6 and 13: northern countries have less solar resource per square metre, and a country's renewable potential scales with its area times its insolation, not its area alone. What does not follow is the policy conclusion usually attached, that the population should therefore be reduced. That inference skips the trade that has existed for as long as agriculture, treats consumption per person as fixed when this book's whole method is to ask how far it can be lowered — and figure J.6 shows Sweden's own falling by 40% while nobody left — and rests on no published carrying-capacity estimate. The physics is worth keeping. The conclusion is not a physical result and should not be presented as one.
 
 [^j1]: *Statistical Review of World Energy*, Energy Institute with Ember, KPMG and Kearney, 2026 edition, published 30 June 2026, covering 2025: <https://www.energyinst.org/statistical-review>. Supply, generation and emissions figures in this section are from that edition. All figures in this section are computed from the Statistical Review's consolidated workbook by the `chapterJ` step of this edition's data pipeline, not transcribed from the report's text. One trap in that workbook is worth recording for anyone repeating the exercise: on the fuel sheets each block of columns repeats, and the year label sits at the *end* of its block, not the start, so the obvious reading has 2024 and 2025 the wrong way round.
 [^j2]: ODEX and the ODYSSEE-MURE project: <https://www.odyssee-mure.eu/publications/other/odex-indicators-database-definition.html>; the European Environment Agency publishes the EU-27 series at <https://www.eea.europa.eu/data-and-maps/figures/odyssee-energy-efficiency-index-odex-1>.
 [^j4]: The framing of this section — that "who emits most", "who emits most per person", "who put most of it there" and "who is driving the increase" are four different questions with four different answers — follows Robert Rapier, "Yes, China Is Largely Responsible For Rising Carbon Emissions", *Forbes*, 24 June 2026: <https://www.forbes.com/sites/rrapier/2026/06/24/yes-china-is-largely-responsible-for-rising-carbon-emissions/>. The numbers here are computed from the Statistical Review workbook rather than taken from that article, and differ slightly from it: measuring from 2000 gives China 65% of the global increase where he reports about 62%, the difference being the base year.
+
+[^j7]: Todd Moss, "Killer graphic shows why high income requires lots of energy", *Eating Policy*: <https://toddmoss.substack.com/p/killer-graphic-shows-why-high-income>, plotting the Our World in Data trade-adjusted electricity-demand dataset. The underlying series is at <https://ourworldindata.org/grapher/per-capita-electricity-demand>. Note the unit change: this section is electricity per person, where the rest of the chapter is total energy per person, and the two differ by roughly the factor by which primary energy exceeds electricity.
+
+[^j6]: Country profiles from ODYSSEE-MURE: the European Union at <https://www.odyssee-mure.eu/publications/efficiency-trends-policies-profiles/european-union.html> and Sweden at <https://www.odyssee-mure.eu/publications/efficiency-trends-policies-profiles/sweden.html>. The project also maintains a searchable database of the policy measures behind these numbers at <https://www.measures.odyssee-mure.eu/energy-efficiency-policies-database.html>. Note that the EU figures quoted here run from 2010 and the Swedish ones from 2000, so the annual rates are not like for like.
 
 [^j5]: Sweden's net-negative balance: Daniel Mellwing, "Svenska succén – ensamt om minusutsläpp i Europa", *Tidningen Näringslivet*, 8 June 2026: <https://www.tn.se/hallbarhet/48138/svenska-succen-ensamt-om-minusutslapp-i-europa-speciellt/>, reporting figures from Naturvårdsverket, SCB, SLU, Skogsstyrelsen and Eurostat, with Johanna Jeansson of Kunskapsverket quoted to the effect that Sweden is in practice alone among EU countries in meeting net-zero. The 39.4 Mt energy-only figure beside it is from the Statistical Review workbook, so the two are on deliberately different bases: whole-economy including land use, against carbon dioxide from energy alone.
 
