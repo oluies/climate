@@ -9,14 +9,14 @@ COL = {"Oil": "#7a5c3e", "Coal": "#3f3f46", "Gas": "#eb6834",
        "Renewables": "#1baf7a", "Nuclear": "#4a3aa7", "Hydro": "#2a78d6"}
 INK, MUTED = "#52514e", "#8a8a85"
 df = pd.read_csv(sys.argv[1])
-tes = df.ej.sum()
-fossil = df[df.source.isin(["Oil", "Coal", "Gas"])].ej.sum()
+tes = df.ej_2025.sum()
+fossil = df[df.source.isin(["Oil", "Coal", "Gas"])].ej_2025.sum()
 
 sns.set_theme(style="whitegrid", rc={"grid.color": "#ededea", "axes.edgecolor": "#c9c9c4"})
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9.6, 4.0))
 
 for ax, col, ttl, fmt in (
-        (ax1, "ej", f"Supply in 2025 — {tes:.0f} EJ in total", "%.0f"),
+        (ax1, "ej_2025", f"Supply in 2025 — {tes:.0f} EJ in total", "%.0f"),
         (ax2, "growth_ej", "Of which added during 2025", "%.1f")):
     d = df.sort_values(col, ascending=False)
     ax.barh(d.source, d[col], color=[COL[s] for s in d.source], height=0.68)

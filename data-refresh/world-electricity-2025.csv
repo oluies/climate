@@ -1,7 +1,8 @@
-source,twh
-Fossil,18619
-Hydro,4479
-Nuclear,2834
-Solar,2811
-Wind,2714
-Other renewables,745
+source,twh_2024,twh_2025
+Fossil,18314,18263
+Nuclear,2815,2845
+Hydro,4473,4479
+Other,336,344
+Wind,2515,2714
+Solar,2167,2811
+Other renewables,727,745

@@ -1,5 +1,5 @@
 //| mvnDeps:
-//| - org.duckdb:duckdb_jdbc:1.1.3
+//| - org.duckdb:duckdb_jdbc:1.5.5.0
 
 // Reusable data-refresh script for the "Without the Hot Air" 2026 revision.
 // Mill single-file Scala script (Mill 1.1+). Fetches an open dataset, loads it
@@ -304,43 +304,127 @@ def chapterKDemand(): Unit = {
   println("  python figures/gb_demand_week.py data-refresh/gb-demand-week.csv without-hot-air/Images/fig-gb-demand-week.svg")
 }
 
-// ---- Chapter J: world energy in 2025, from the EI Statistical Review ----
+// ---- Chapter J: world energy, from the EI Statistical Review workbook ----
 // The Energy Institute's 2026 edition (published 30 June 2026, data for 2025).
-// The consolidated workbook is behind an email gate, so these headline figures are
-// transcribed from the report rather than fetched; each is cited in the chapter.
-// Supply and growth in EJ, electricity in TWh.
+// The workbook is behind a registration form, so it is a manual download rather
+// than a fetch: put EI-Stats-Review-ALL-data.xlsx in data-refresh/ as
+// ei-stats-review-all-data.xlsx. Note the sheet layout: each fuel block repeats,
+// and the YEAR LABEL SITS AT THE END of its block (col H = 2024, col O = 2025 on
+// "TES by fuel"), which is the opposite of the obvious reading.
+
+val EI_XLSX = "data-refresh/ei-stats-review-all-data.xlsx"
+val GJ_PER_CAPITA_TO_KWH_PER_DAY = 1e9 / 3.6e6 / 365.0   // 1 GJ/person/year in kWh/d
 
 @main
 def chapterJ(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
   val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val xlsx = os.pwd / os.RelPath(EI_XLSX)
+  if (!os.exists(xlsx)) {
+    System.err.println(s"FEL: $EI_XLSX saknas. Ladda ner arbetsboken fran energyinst.org/statistical-review och lagg den dar.")
+    sys.exit(1)
+  }
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val st = conn.createStatement()
+  st.execute("INSTALL excel"); st.execute("LOAD excel")
+  def sheet(name: String, range: String) =
+    s"read_xlsx('${xlsx.toString.replace("'", "''")}', sheet='$name', header=false, all_varchar=true, range='$range')"
 
-  val supply = List("Oil" -> 201.0, "Coal" -> 166.0, "Gas" -> 150.7,
-                    "Renewables" -> 35.45, "Nuclear" -> 31.0, "Hydro" -> 16.0)
-  val growth = List("Renewables" -> 3.3, "Oil" -> 2.5, "Gas" -> 2.4,
-                    "Coal" -> 1.1, "Nuclear" -> 0.4, "Hydro" -> 0.1)
-  val elec   = List("Fossil" -> 18619.0, "Hydro" -> 4479.0, "Nuclear" -> 2834.0,
-                    "Solar" -> 2811.0, "Wind" -> 2714.0, "Other renewables" -> 745.0)
+  // -- energy supply by fuel, 2024 beside 2025 --
+  val fuels = List(("Oil", "B", "I"), ("Gas", "C", "J"), ("Coal", "D", "K"),
+                   ("Nuclear", "E", "L"), ("Hydro", "F", "M"), ("Renewables", "G", "N"))
+  val cols = fuels.map { case (n, a, b) => s"""TRY_CAST("$a" AS DOUBLE) AS ${n}_24, TRY_CAST("$b" AS DOUBLE) AS ${n}_25""" }.mkString(", ")
+  val rs = st.executeQuery(
+    s"""SELECT $cols, TRY_CAST("H" AS DOUBLE) t24, TRY_CAST("O" AS DOUBLE) t25 FROM ${sheet("TES by fuel", "A4:O99")} WHERE A = 'Total World'""")
+  rs.next()
+  val energy = fuels.map { case (n, _, _) => (n, rs.getDouble(s"${n}_24"), rs.getDouble(s"${n}_25")) }
+  val (t24, t25) = (rs.getDouble("t24"), rs.getDouble("t25"))
+  val se = new StringBuilder; se ++= "source,ej_2024,ej_2025,growth_ej\n"
+  for ((n, a, b) <- energy) se ++= f"$n,$a%.2f,$b%.2f,${b - a}%.2f\n"
+  os.write.over(dir / "world-energy-2025.csv", se.toString)
 
-  val s = new StringBuilder; s ++= "source,ej,growth_ej\n"
-  val gm = growth.toMap
-  for ((k, v) <- supply) s ++= f"$k,$v%.2f,${gm(k)}%.1f\n"
-  os.write.over(dir / "world-energy-2025.csv", s.toString)
+  // -- electricity generation by fuel; oil, gas and coal collapse to one bar --
+  val eg = List(("Oil", "B", "J"), ("Gas", "C", "K"), ("Coal", "D", "L"), ("Nuclear", "E", "M"),
+                ("Hydro", "F", "N"), ("Renewables", "G", "O"), ("Other", "H", "P"))
+  val ecols = eg.map { case (n, a, b) => s"""TRY_CAST("$a" AS DOUBLE) AS ${n}_24, TRY_CAST("$b" AS DOUBLE) AS ${n}_25""" }.mkString(", ")
+  val rs2 = st.executeQuery(
+    s"""SELECT $ecols, TRY_CAST("I" AS DOUBLE) t24, TRY_CAST("Q" AS DOUBLE) t25 FROM ${sheet("Elec generation by fuel", "A4:Q69")} WHERE A = 'Total World'""")
+  rs2.next()
+  val elec = eg.map { case (n, _, _) => (n, rs2.getDouble(s"${n}_24"), rs2.getDouble(s"${n}_25")) }
+  val et24 = rs2.getDouble("t24"); val et25 = rs2.getDouble("t25")
+  def sumOf(names: Set[String], f: ((String, Double, Double)) => Double) = elec.filter(x => names(x._1)).map(f).sum
+  val fos24 = sumOf(Set("Oil", "Gas", "Coal"), _._2); val fos25 = sumOf(Set("Oil", "Gas", "Coal"), _._3)
+  // Split the renewables bar into wind, solar and the rest; the interesting fact
+  // of 2025 is inside it (solar passing wind), and the aggregate would hide it.
+  val ren3 = List(("Wind", "B", "G"), ("Solar", "C", "H"), ("Other renewables", "E", "J"))
+  val rcols = ren3.map { case (n, a, b) => s"""TRY_CAST("$a" AS DOUBLE) AS "${n}_24", TRY_CAST("$b" AS DOUBLE) AS "${n}_25"""" }.mkString(", ")
+  val rs4 = st.executeQuery(
+    s"""SELECT $rcols FROM ${sheet("Renewables Generation by Source", "A4:K140")} WHERE A = 'Total World'""")
+  rs4.next()
+  val rensplit = ren3.map { case (n, _, _) => (n, rs4.getDouble(s"${n}_24"), rs4.getDouble(s"${n}_25")) }
 
-  val e = new StringBuilder; e ++= "source,twh\n"
-  for ((k, v) <- elec) e ++= f"$k,$v%.0f\n"
-  os.write.over(dir / "world-electricity-2025.csv", e.toString)
+  val ee = new StringBuilder; ee ++= "source,twh_2024,twh_2025\n"
+  ee ++= f"Fossil,$fos24%.0f,$fos25%.0f\n"
+  for ((n, a, b) <- elec if Set("Nuclear", "Hydro", "Other")(n)) ee ++= f"$n,$a%.0f,$b%.0f\n"
+  for ((n, a, b) <- rensplit) ee ++= f"$n,$a%.0f,$b%.0f\n"
+  os.write.over(dir / "world-electricity-2025.csv", ee.toString)
+  val renSum = rensplit.map(_._3).sum
+  val renAgg = elec.find(_._1 == "Renewables").map(_._3).getOrElse(0.0)
+  if (math.abs(renSum - renAgg) > 5)
+    System.err.println(f"VARNING: wind+solar+other = $renSum%.0f TWh men Renewables-kolumnen = $renAgg%.0f TWh")
 
-  val tes = supply.map(_._2).sum
-  val fossil = supply.filter(x => Set("Oil", "Coal", "Gas")(x._1)).map(_._2).sum
-  val gTot = growth.map(_._2).sum
-  val tTot = elec.map(_._2).sum
-  println(f"total energy supply  $tes%.1f EJ  |  fossil $fossil%.1f EJ = ${fossil / tes * 100}%.1f%%")
-  println(f"growth               $gTot%.1f EJ  |  fossil ${growth.filter(x => Set("Oil","Coal","Gas")(x._1)).map(_._2).sum}%.1f EJ, renewables ${gm("Renewables")}%.1f EJ")
-  println(f"electricity          $tTot%.0f TWh |  solar ${elec.toMap.apply("Solar") / tTot * 100}%.1f%%  wind ${elec.toMap.apply("Wind") / tTot * 100}%.1f%%  nuclear ${elec.toMap.apply("Nuclear") / tTot * 100}%.1f%%")
+  // -- CO2 from energy: who is driving the increase, and since when --
+  // Column AK is 2000 and BJ is 2025 on this sheet; BK and BL are growth rates.
+  val co2Regions = List("Total World", "China", "India", "US", "Total Europe", "Total Africa",
+                        "Total Middle East", "Total S. & Cent. America")
+  val rs5 = st.executeQuery(
+    s"""SELECT A, TRY_CAST("AK" AS DOUBLE) y2000, TRY_CAST("BJ" AS DOUBLE) y2025
+        FROM ${sheet("CO2 from Energy", "A4:BL140")}
+        WHERE A IN (${co2Regions.map(r => s"'$r'").mkString(", ")})""")
+  val co2 = scala.collection.mutable.ArrayBuffer[(String, Double, Double)]()
+  while (rs5.next()) co2 += ((rs5.getString(1).replace("Total ", ""), rs5.getDouble(2), rs5.getDouble(3)))
+  val sc = new StringBuilder; sc ++= "region,mt_2000,mt_2025,change_mt\n"
+  for ((n, a, b) <- co2.sortBy(x => -(x._3 - x._2))) sc ++= f"$n,$a%.0f,$b%.0f,${b - a}%.0f\n"
+  os.write.over(dir / "world-co2-since-2000.csv", sc.toString)
+
+  // -- supply per person, in MacKay's kWh/d, 1965 to 2025 --
+  val regions = List("Total World", "US", "Total Europe", "China", "India", "Total Africa", "Sweden", "United Kingdom")
+  // Column names are quoted: the workbook runs past column "AS", which is a keyword.
+  val pcSel = (0 until 61).map(i => s"""TRY_CAST("${colName(i + 1)}" AS DOUBLE)""").mkString(", ")
+  val rs3 = st.executeQuery(
+    s"SELECT A, $pcSel FROM ${sheet("TES per Capita", "A4:BL124")} WHERE A IN (${regions.map(r => s"'$r'").mkString(", ")})")
+  val pc = new StringBuilder; pc ++= "region,year,kwh_per_day\n"
+  while (rs3.next()) {
+    val name = rs3.getString(1)
+    for (i <- 0 until 61) {
+      val v = rs3.getObject(i + 2)
+      if (v != null) pc ++= f"${name.replace("Total ", "")},${1965 + i},${v.toString.toDouble * GJ_PER_CAPITA_TO_KWH_PER_DAY}%.1f\n"
+    }
+  }
+  os.write.over(dir / "world-tes-percapita.csv", pc.toString)
+  conn.close()
+
+  val fossil25 = energy.filter(x => Set("Oil", "Gas", "Coal")(x._1)).map(_._3).sum
+  val growth = t25 - t24
+  val fossilGrowth = energy.filter(x => Set("Oil", "Gas", "Coal")(x._1)).map(x => x._3 - x._2).sum
+  val ren = energy.find(_._1 == "Renewables").get
+  println(f"supply      $t24%.1f -> $t25%.1f EJ  (+$growth%.2f, ${growth / t24 * 100}%.2f%%)")
+  println(f"fossil      $fossil25%.1f EJ = ${fossil25 / t25 * 100}%.1f%% of supply; grew $fossilGrowth%.2f EJ = ${fossilGrowth / growth * 100}%.0f%% of growth")
+  println(f"renewables  ${ren._2}%.2f -> ${ren._3}%.2f EJ (+${ren._3 - ren._2}%.2f, ${(ren._3 - ren._2) / ren._2 * 100}%.1f%%) - largest single contributor: ${energy.forall(x => x._1 == "Renewables" || x._3 - x._2 < ren._3 - ren._2)}")
+  val cw = co2.find(_._1 == "World").get; val cc = co2.find(_._1 == "China").get
+  println(f"CO2 2025    ${cw._3}%.0f Mt; since 2000 the world rose ${cw._3 - cw._2}%.0f Mt, China ${cc._3 - cc._2}%.0f Mt = ${(cc._3 - cc._2) / (cw._3 - cw._2) * 100}%.0f%% of it")
+  println(f"electricity $et24%.0f -> $et25%.0f TWh (+${et25 - et24}%.0f); fossil $fos24%.0f -> $fos25%.0f (${fos25 - fos24}%+.0f), now ${fos25 / et25 * 100}%.1f%%")
   println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
   println("  python figures/world_energy_2025.py data-refresh/world-energy-2025.csv without-hot-air/Images/fig-world-energy-2025.svg")
   println("  python figures/world_electricity_2025.py data-refresh/world-electricity-2025.csv without-hot-air/Images/fig-world-electricity-2025.svg")
+  println("  python figures/world_percapita.py data-refresh/world-tes-percapita.csv without-hot-air/Images/fig-world-percapita.svg")
+}
+
+// Excel column name for a 0-based index (0 -> A, 25 -> Z, 26 -> AA).
+def colName(i: Int): String = {
+  var n = i; var s = ""
+  while (n >= 0) { s = ('A' + n % 26).toChar.toString + s; n = n / 26 - 1 }
+  s
 }
 
 // ---- Chapter 25: Germany's net electricity trade (export surplus -> import) ----
