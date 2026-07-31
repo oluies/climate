@@ -466,15 +466,25 @@ Carbon dioxide from energy rose 1.1% in 2025, to **35 806 million tonnes**. The 
 
 Arguments about who is responsible go wrong by switching between questions that have different answers, so it is worth separating them. **Who emits most now?** China, at 11 220 Mt, about 2.4 times the United States' 4 755. **Who emits most per person?** Not China: an American emits roughly 14 tonnes a year against a Chinese citizen's 8.7. **Who put most of it there?** The industrialised countries, by a wide margin, since carbon dioxide persists for centuries and they burned first.
 
+<iframe src="https://ourworldindata.org/grapher/share-of-cumulative-co2?tab=line" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+
+<span class="figurenumber">Figure J.9.</span> Share of cumulative carbon dioxide emissions, from Our World in Data — the third question drawn. Because carbon dioxide persists for centuries, this is the stock rather than the flow, and it is the chart the historical-responsibility argument rests on. Note that a country's share here can fall while its emissions rise, since the denominator is everyone's cumulative total.
+
 And a fourth, which is the one most often conflated with the others: **who is driving the increase?**
 
 ![Change in CO2 from energy by region between 2000 and 2025, in million tonnes a year. China rose 7 912, India 2 002, the Middle East 1 311, Africa 663 and South and Central America 358, while the United States fell 986 and Europe fell 1 274. The world total rose 12 129.](/img/without-hot-air/fig-world-co2-since-2000.svg)
 
-<span class="figurenumber">Figure J.9.</span> The change in energy-related carbon dioxide emissions by region, 2000 to 2025. Note that two regions have negative bars.
+<span class="figurenumber">Figure J.10.</span> The change in energy-related carbon dioxide emissions by region, 2000 to 2025. Note that two regions have negative bars.
 
 Since 2000 world emissions have risen 12 129 Mt a year. China accounts for 7 912 Mt of that, **65% of the global increase**, and India for a further 2 002 Mt. Over the same quarter-century United States emissions fell by 986 Mt a year and Europe's by 1 274 — declines that were more than cancelled by growth elsewhere. So the answer to the fourth question is China, and it is not close.[^j4]
 
 There is a fifth question hiding underneath the other four, and it is about the boundary rather than the denominator: **what counts as an emission?** Every number above is carbon dioxide *from energy*. It excludes cement chemistry, agriculture, and — most consequentially — whether a country's land absorbs carbon or releases it. Sweden makes the point sharply. On the Statistical Review's energy basis Sweden emitted 39.4 Mt of CO₂ in 2025. On its own national inventory, which counts the whole economy and includes the forest sink, Sweden's 2024 figures were 47 Mt emitted against 54 Mt absorbed: **net −7 Mt, the only country in the European Union whose balance is negative.**[^j5] Both numbers are correct. They are answers to different questions, and a country can be a positive emitter and a net absorber at the same time without any contradiction at all.
+
+Rather than take any of that on trust, the same data is below as Our World in Data's emissions explorer, which is the rare interactive that lets a reader change the thing being argued about. Its **Accounting** control switches between territorial and consumption-based; **Gas or warming** switches between carbon dioxide from energy and all greenhouse gases in CO<sub>2</sub>-equivalent, which is what brings cement chemistry and methane back inside the fence; and **Count** switches between national totals and per person. Every claim in this section can be checked, or broken, by moving one of those three controls.
+
+<iframe src="https://ourworldindata.org/explorers/co2?country=CHN~USA~IND~GBR~OWID_EU27&hideControls=false&Gas+or+warming=All+GHGs+%28CO%E2%82%82eq%29&Accounting=Territorial&Count=Per+country&Relative+to+world+total=false&tab=line" loading="lazy" style="width: 100%; height: 696px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+
+<span class="figurenumber">Figure J.10a.</span> Greenhouse-gas emissions for China, the United States, India, the United Kingdom and the EU-27, from Our World in Data. Opens on all greenhouse gases, territorial, by country. Switch *Accounting* to consumption-based to watch the British and European lines rise and the Chinese line fall — which is the trade correction of the earlier section, drawn rather than described.
 
 All four answers are true at once, and each is a different question. The atmosphere responds only to the total, which is why an argument that answers one question with another's answer is not an argument. MacKay's rule is the way through: state the quantity, state the denominator, then argue.
 
