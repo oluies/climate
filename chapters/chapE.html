@@ -76,6 +76,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -543,7 +572,14 @@ ul.task-list li input[type="checkbox"] {
 <p>0.7-0.9</p>
 <p><span class="figurenumber">Table E.2.</span> U-values of walls, floors, roofs, and windows.</p>
 <p>In the building trade, it’s conventional to describe the power-losses caused by ventilation of a space as the product of the number of changes <em>N</em> of the air per hour, the volume <em>V</em> of the space in cubic metres, the heat capacity <em>C</em>, and the temperature difference ΔT between the inside and outside of the building</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+\\
+{= C\frac{N}{\text{1\ h}}V\text{(}\text{m}^{3}\text{)}\Delta T\text{(}\text{K}\text{)}} \\
+{= \left( {1.2\text{~kJ/}\text{m}^{3}\text{/K}} \right)\frac{N}{\text{3000\ s}}V\text{(}\text{m}^{3}\text{)}\Delta T\text{(}\text{K}\text{)}} \\
+{= \frac{1}{3}NV\Delta T} \\
+\end{matrix}
+\]</span></p>
 </section>
 <section id="energy-loss-and-temperature-demand-degree-days" class="level3">
 <h3 class="anchored" data-anchor-id="energy-loss-and-temperature-demand-degree-days">Energy loss and temperature demand (degree-days)</h3>
@@ -925,7 +961,9 @@ Total ventilation leakiness
 <h5 class="anchored" data-anchor-id="leakiness-reduction-by-internal-wall-coverings">Leakiness reduction by internal wall-coverings</h5>
 <p>Can you reduce your walls’ leakiness by covering the <em>inside</em> of the wall with insulation? The answer is yes, but there may be two complications. First, the thickness of internal covering is bigger than you might expect. To transform an existing nine-inch solid brick wall (U-value 2.2 W/m<sup>2</sup>/K) into a decent 0.30 W/m<sup>2</sup>/K wall, roughly 6 cm of insulated lining board is required. [<a href="http://tinyurl.com/65h3cb"><span class="websitetitle">65h3cb</span></a>] Second, condensation may form on the hidden surface of such internal insulation layers, leading to damp problems.</p>
 <p>If you’re not looking for such a big reduction in wall leakiness, you can get by with a thinner internal covering. For example, you can buy 1.8-cmthick insulated wallboards with a U-value of 1.7 W/m<sup>2</sup>/K. With these over the existing wall, the U-value would be reduced from 2.2 W/m<sup>2</sup>/K to:</p>
-<p>[. 1/{( { + } ) ^{}} .]</p>
+<p><span class="math display">\[
+\left. 1/{\left( {\frac{1}{2.2} + \frac{1}{1.7}} \right) \approx 1\text{~W/}\text{m}^{\text{2}}\text{/K.}} \right.
+\]</span></p>
 <p>Definitely a worthwhile reduction.</p>
 </section>
 </section>
@@ -972,9 +1010,13 @@ Total ventilation leakiness
 <section id="theory-of-heat-pumps" class="level3">
 <h3 class="anchored" data-anchor-id="theory-of-heat-pumps">Theory of heat pumps</h3>
 <p>Here are the formulae for the ideal efficiency of a heat pump, that is, the electrical energy required per unit of heat pumped. If we are pumping heat from an outside place at temperature <em>T</em><span class="smallfont1"><sub>1</sub></span> into a place at higher temperature <em>T</em><span class="smallfont1"><sub>2</sub></span>, both temperatures being expressed relative to absolute zero (that is, <em>T</em><span class="smallfont1"><sub>2</sub></span>, in kelvin, is given in terms of the Celsius temperature <em>T</em><span class="smallfont1"><sub>in</sub></span>, by 273.15 + <em>T</em><span class="smallfont1"><sub>in</sub></span>), the ideal efficiency is:</p>
-<p>[ = ]</p>
+<p><span class="math display">\[
+\text{efficiency} = \frac{T_{2}}{T_{2} - T_{1}}\text{.}
+\]</span></p>
 <p>If we are pumping heat out from a place at temperature <em>T</em><span class="smallfont1"><sub>2</sub></span> to a warmer exterior at temperature <em>T</em><span class="smallfont1"><sub>1</sub></span>, the ideal efficiency is:</p>
-<p>[ = ]</p>
+<p><span class="math display">\[
+\text{efficiency} = \frac{T_{2}}{T_{1} - T_{2}}\text{.}
+\]</span></p>
 <p><img src="img/without-hot-air/figure294.gif" class="img-fluid"></p>
 <p><span class="figurenumber">Figure E.13.</span> Ideal heat pump efficiencies. Top left: ideal electrical energy required, according to the limits of thermodynamics, to pump heat <em>out</em> of a place at temperature <em>T</em><span class="smallfont2"><sub>in</sub></span> when the heat is being pumped to a place at temperature <em>T</em><span class="smallfont2"><sub>out</sub></span> = 35 °C. Right: ideal electrical energy required to pump heat <em>into</em> a place at temperature <em>T</em><span class="smallfont2"><sub>in</sub></span> when the heat is being pumped from a place at temperature <em>T</em><span class="smallfont2"><sub>out</sub></span> = 0 °C. Bottom row: the efficiency is conventionally expressed as a “coefficient of performance,” which is the heat pumped per unit electrical energy. In practice, I understand that well-installed ground-source heat pumps and the best air-source heat pumps usually have a coefficient of performance of 3 or 4; however, government regulations in Japan have driven the coefficient of performance as high as 6.6.</p>
 <p>These theoretical limits could only be achieved by systems that pump heat infinitely slowly. Notice that the ideal efficiency is bigger, the closer the inside temperature <em>T</em><span class="smallfont1"><sub>2</sub></span> is to the outside temperature <em>T</em><span class="smallfont1"><sub>1</sub></span>.</p>
@@ -995,7 +1037,13 @@ Total ventilation leakiness
 <section id="heating-and-the-ground" class="level2">
 <h2 class="anchored" data-anchor-id="heating-and-the-ground">Heating and the ground</h2>
 <p>Here’s an interesting calculation to do. Imagine having solar heating panels on your roof, and, whenever the water in the panels gets above 50 °C, pumping the water through a large rock under your house. When a dreary grey cold month comes along, you could then use the heat in the rock to warm your house. Roughly how big a 50 °C rock would you need to hold enough energy to heat a house for a whole month? Let’s assume we’re after 24 kWh per day for 30 days and that the house is at 16 °C. The heat capacity of granite is 0.195 × 4200 J/kg/K = 820 J/kg/K. The mass of granite required is:</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{= \frac{\text{energy}}{\text{heat\ capacity} \times \text{temperature\ difference}}} \\
+{= \frac{24 \times 30 \times 3.6\text{~MJ}}{\left( {820\text{~J/kg/°C}} \right)\left( {50\ {^\circ}\text{C} - 16\ {^\circ}\text{C}} \right)}} \\
+{= 100\ 000\text{~kg.}} \\
+\end{matrix}
+\]</span></p>
 <p>100 tonnes, which corresponds to a cuboid of rock of size 6 m × 6 m × 1 m.</p>
 <section id="ground-storage-without-walls" class="level3">
 <h3 class="anchored" data-anchor-id="ground-storage-without-walls">Ground storage without walls</h3>
@@ -1031,9 +1079,13 @@ Total ventilation leakiness
 </table>
 <p><span class="figurenumber">Table E.15.</span> Thermal conductivities. For more data see <a href="#tableE.18">table E.18</a>.</p>
 <p>OK, we’ve established the size of a useful ground store. But is it difficult to keep the heat in? Would you need to surround your rock cuboid with lots of insulation? It turns out that the ground itself is a pretty good insulator. A spike of heat put down a hole in the ground will spread as</p>
-<p>[( {- } )]</p>
+<p><span class="math display">\[
+\frac{1}{\sqrt{4\pi\kappa t}}\text{exp}\left( {- \frac{x^{2}}{4\left( {\kappa/\left( {C\rho} \right)} \right)t}} \right)
+\]</span></p>
 <p>where <em>κ</em> is the conductivity of the ground, <em>C</em> is its heat capacity, and <em>ρ</em> is its density. This describes a bell-shaped curve with width</p>
-<p>[]</p>
+<p><span class="math display">\[
+\sqrt{2\frac{\kappa}{C\rho}t}\text{~;}
+\]</span></p>
 <p>for example, after six months (<em>t</em> = 1.6 × 10<sup>7</sup> s), using the figures for granite (<em>C</em> = 0.82 kJ/kg/K, <em>ρ</em> = 2500 kg/m<sup>3</sup>, <em>κ</em> = 2.1 W/m/K), the width is 6 m.</p>
 <p>Using the figures for water (<em>C</em> = 4.2 kJ/kg/K, <em>ρ</em> = 1000 kg/m<sup>3</sup>, <em>κ</em> = 0.6 W/m/K), the width is 2 m.</p>
 <p>So if the storage region is bigger than 20 m × 20 m × 20 m then most of the heat stored will still be there in six months time (because 20 m is significantly bigger than 6 m and 2 m).</p>
@@ -1136,7 +1188,9 @@ Total ventilation leakiness
 <p>5.3</p>
 <p><span class="figurenumber"><span id="tableE.18">Table E.18</span></span>. Thermal conductivity and heat capacity of various materials and soil types, and the deduced length-scale <em>z</em><sub>0</sub> = √(2κ/(<em>C</em><sub>V</sub><em>ω</em>)) and peak flux <em>A</em>√(<em>C</em><sub>V</sub><em>κω</em>) associated with annual temperature variations with amplitude <em>A</em> = 8.3 °C. The sandy and clay soils have porosity 0.4; the peat soil has porosity 0.8. <a href="#chEn01"><span class="darkred">[1]</span></a></p>
 <p>Let’s do a second calculation, working out how much power we could steadily suck from a ground loop at a depth of <em>h</em> = 2 m. Let’s assume that we’ll allow ourselves to suck the temperature at the ground loop down to Δ<em>T</em> = 5 °C below the average ground temperature at the surface, and let’s assume that the surface temperature is constant. We can then deduce the heat flux from the surface. Assuming a conductivity of 1.2 W/m/K (typical of damp clay soil),</p>
-<p>[ = = 3^{2}]</p>
+<p><span class="math display">\[
+\text{Flux} = \kappa \times \frac{\Delta T}{h} = 3\text{~W/}\text{m}^{2}\text{.}
+\]</span></p>
 <p>If, as above, we assume a population density corresponding to 160 m<sup>2</sup> per person, then the maximum power per person deliverable by ground-source heat pumps, if everyone in a neighbourhood has them, is 480 W, which is 12 kWh/d per person.</p>
 <p>So again we come to the conclusion that in a typical suburban area composed of poorly insulated houses like mine, <em>not everyone can use groundsource heat pumps</em>, unless they are careful to actively dump heat back into the ground during the summer. And in cities with higher population density, ground-source heat pumps are unlikely to be viable.</p>
 <p>I therefore suggest air-source heat pumps are the best heating choice for most people.</p>
@@ -1151,17 +1205,41 @@ Total ventilation leakiness
 <h2 class="anchored" data-anchor-id="notes-and-further-reading">Notes and further reading</h2>
 <p><span id="boxE.19"></span></p>
 <p>If we assume the ground is made of solid homogenous material with conductivity <em>κ</em> and heat capacity <em>C</em><sub>V</sub>, then the temperature at depth <em>z</em> below the ground and time <em>t</em> responds to the imposed temperature at the surface in accordance with the diffusion equation</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{\frac{\partial T\left( z,t \right)}{\partial t} = \frac{\kappa}{C_{\text{V}}}\frac{\partial^{2}T\left( z,t \right)}{\partial z^{2}}\text{.}} \\
+\end{matrix}
+\]</span></p>
 <p>For a sinusoidal imposed temperature with frequency <em>ω</em> and amplitude <em>A</em> at depth <em>z</em> = 0,</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{T\left( 0,t \right) = T_{\text{surface}}\left( t \right) = T_{\text{average}} + A\text{cos}\left( \omega t \right)\text{,}} \\
+\end{matrix}
+\]</span></p>
 <p>the resulting temperature at depth <em>z</em> and time <em>t</em> is a decaying and oscillating function</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{T\left( z,t \right) = T_{\text{average}}\left( t \right) + A\text{e}^{- {z/z_{0}}}\text{cos}\left( {\omega t - {z/z_{0}}} \right)\text{,}} \\
+\end{matrix}
+\]</span></p>
 <p>where <em>z</em><span class="smallfont1"><sub>0</sub></span> is the characteristic length-scale of both the decay and the oscillation,</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+\text{(E.7)\quad} &amp; {z_{0} = \sqrt{\frac{2\kappa}{C_{\text{V}}\omega}\text{,}}} \\
+\end{matrix}
+\]</span></p>
 <p>The flux of heat (the power per unit area) at depth <em>z</em> is</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{\kappa\frac{\partial T}{\partial z} = \kappa\frac{A}{z_{0}}\sqrt{2}\text{e}^{- {z/z_{0}}}\text{sin}\left( {\omega t - z/z_{0} - \pi/4} \right)} \\
+\end{matrix}\text{.}
+\]</span></p>
 <p>For example, at the surface, the peak flux is</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{\kappa\frac{A}{z_{0}}\sqrt{2} = A\sqrt{C_{\text{V}}\kappa\omega}} \\
+\end{matrix}\text{.}
+\]</span></p>
 <p><span class="figurenumber">Box E.19.</span> Working out the natural flux caused by sinusoidal temperature variations.</p>
 
 

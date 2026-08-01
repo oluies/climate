@@ -76,6 +76,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -508,7 +537,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="a.-chemical-technologies-for-carbon-capture" class="level2">
 <h2 class="anchored" data-anchor-id="a.-chemical-technologies-for-carbon-capture">A. Chemical technologies for carbon capture</h2>
 <p>The chemical technologies typically deal with carbon dioxide in two steps.</p>
-<p>[<em>{}</em>{}_{}]</p>
+<p><span class="math display">\[
+\text{0.03\%~}\text{CO}_{\text{2}}\overset{\text{concentrate}}{\longrightarrow}\text{Pure~}\text{CO}_{\text{2}}\overset{\text{compress}}{\longrightarrow}\text{Liquid~}\text{CO}_{\text{2}}
+\]</span></p>
 <p>First, they <em>concentrate</em> CO<sub>2</sub> from its low concentration in the atmosphere; then they <em>compress</em> it into a small volume ready for shoving somewhere (either down a hole in the ground or deep in the ocean). <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> Each of these steps has an energy cost. The costs required by the laws of physics are shown in table 31.5.</p>
 <table class="caption-top table">
 <thead>

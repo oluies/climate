@@ -76,6 +76,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -458,17 +487,41 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="img/without-hot-air/figure297.gif" class="img-fluid"></p>
 <p><span class="figurenumber">Figure F.2.</span> A wave has energy in two forms: potential energy associated with raising water out of the light-shaded troughs into the heavy-shaded crests; and kinetic energy of all the water within a few wavelengths of the surface – the speed of the water is indicated by the small arrows. The speed of the wave, travelling from left to right, is indicated by the much bigger arrow at the top.</p>
 <p>For a wave of wavelength <em>λ</em> and period <em>T</em>, if the height of each crest and depth of each trough is <em>h</em> = 1 m, the potential energy passing per unit time, per unit length, is</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{P_{\text{potential}} \simeq m^{*}g\overline{h}/T\text{,}} \\
+\end{matrix}
+\]</span></p>
 <p>where <em>m</em>* is the mass per unit length, which is roughly <sup>1</sup>⁄<sub>2</sub><em>ρh</em>(<em>λ</em>/2) (approximating the area of the shaded crest in figure F.2 by the area of a triangle), and <em><span class="overbar">h</span></em> is the change in height of the centre-of-mass of the chunk of elevated water, which is roughly <em>h</em>. So</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{P_{\text{potential}} \simeq \frac{1}{2}\rho h\frac{\lambda}{2}gh/T\text{.}} \\
+\end{matrix}
+\]</span></p>
 <p>To find the potential energy properly, we should have done an integral here; it would have given the same answer.) Now <em>λ/T</em> is simply the speed at which the wave travels, <em>v</em>, so:</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{P_{\text{potential}} \simeq \frac{1}{4}\rho gh^{2}v\text{.}} \\
+\end{matrix}
+\]</span></p>
 <p>Waves have kinetic energy as well as potential energy, and, remarkably, these are exactly equal, although I don’t show that calculation here; so the total power of the waves is double the power calculated from potential energy.</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{P_{\text{total}} \simeq \frac{1}{2}\rho gh^{2}v\text{.}} \\
+\end{matrix}
+\]</span></p>
 <p>There’s only one thing wrong with this answer: it’s too big, because we’ve neglected a strange property of dispersive waves: the energy in the wave doesn’t actually travel at the same speed as the crests; it travels at a speed called the group velocity, which for deep-water waves is <em>half</em> of the speed <em>v</em>. You can see that the energy travels slower than the crests by chucking a pebble in a pond and watching the expanding waves carefully. What this means is that equation (F.4) is wrong: we need to halve it. The correct power per unit length of wave-front is</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{P_{\text{total}} = \frac{1}{4}\rho gh^{2}v\text{.}} \\
+\end{matrix}
+\]</span></p>
 <p>Plugging in <em>v</em> = 16 m/s and <em>h</em> = 1 m, we find</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{P_{\text{total}} = \frac{1}{4}\rho gh^{2}v = 40\text{~kW/m.}} \\
+\end{matrix}
+\]</span></p>
 <p>This rough estimate agrees with real measurements in the Atlantic (Mollison, 1986). (See <a href="../Text/chap12.xhtml#notes">notes</a>, chapter 12.)</p>
 <p>The losses from viscosity are minimal: a wave of 9 seconds period would have to go three times round the world to lose 10% of its amplitude.</p>
 </section>

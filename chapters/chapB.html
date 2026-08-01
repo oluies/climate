@@ -76,6 +76,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -513,9 +542,17 @@ ul.task-list li input[type="checkbox"] {
 <p>The mass of this piece of air is the product of its density <em>ρ</em>, its area <em>A</em>, and its length, which is <em>v</em> times <em>t</em>, where <em>t</em> is one second.</p>
 <p><img src="img/without-hot-air/figure503.gif" class="img-fluid"></p>
 <p>The kinetic energy of this piece of air is</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{\frac{1}{2}mv^{2} = \frac{1}{2}\rho Avt\ v^{2} = \frac{1}{2}\rho Atv^{3}} \\
+\end{matrix}
+\]</span></p>
 <p>So the power of the wind, for an area <em>A</em> – that is, the kinetic energy passing across that area per unit time – is</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{\frac{\frac{1}{2}mv^{2}}{t} = \frac{1}{2}\rho Av^{3}} \\
+\end{matrix}
+\]</span></p>
 <p>This formula may look familiar – we derived an identical expression when we were discussing the power requirement of a moving car.</p>
 <p>What’s a typical wind speed? On a windy day, a cyclist really notices the wind direction; if the wind is behind you, you can go much faster than normal; the speed of such a wind is therefore comparable to the typical speed of the cyclist, which is, let’s say, 21 km per hour (13 miles per hour, or 6 metres per second). In Cambridge, the wind is only occasionally this big. Nevertheless, let’s use this as a typical British figure (and bear in mind that we may need to revise our estimates).</p>
 <p><img src="img/without-hot-air/figure260.gif" class="img-fluid"></p>
@@ -525,14 +562,33 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <p><span class="figurenumber">Figure B.3.</span> The Brooklyn windmill above Wellington, New Zealand, with people providing a scale at the base. On a breezy day, this windmill was producing 60 kW, (1400 kWh per day). Photo by Philip Banks.</p>
 <p>The density of air is about 1.3 kg per m<sup>3</sup>. (I usually round this to 1 kg per m<sup>3</sup>, which is easier to remember, although I haven’t done so here.) Then the typical power of the wind per square metre of hoop is</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{\frac{1}{2}\rho v^{3} = \frac{1}{2} \times \text{1.3\ kg/}\text{m}^{\text{3}} \times \left( \text{6\ m/s} \right)^{\text{3}} = \text{140\ W/}\text{m}^{\text{2}}} \\
+\end{matrix}
+\]</span></p>
 <p>Not all of this energy can be extracted by a windmill. The windmill slows the air down quite a lot, but it has to leave the air with <em>some</em> kinetic energy, otherwise that slowed-down air would get in the way. Figure B.2 is a cartoon of the actual flow past a windmill. The maximum fraction of the incoming energy that can be extracted by a disc-like windmill was worked out by a German physicist called Albert Betz <a href="#chBn01"><span class="darkred">[1]</span></a> in 1919. If the departing wind speed is one third of the arriving wind speed, the power extracted is 16/27 of the total power in the wind. 16/27 is 0.59. In practice let’s guess that a windmill might be 50% efficient. In fact, real windmills are designed with particular wind speeds in mind; if the wind speed is significantly greater than the turbine’s ideal speed, it has to be switched off.</p>
 <p>As an example, let’s assume a diameter of <em>d</em> = 25m, and a hub height of 32 m, which is roughly the size of the lone windmill above the city of Wellington, New Zealand (figure B.3). The power of a single windmill is</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+\\
+{= \text{50\%} \times \frac{1}{2}\rho v^{3} \times \frac{1}{4}\pi d^{2}} \\
+{= \text{50\%} \times \text{140\ W/m}^{\text{2}} \times \frac{1}{4}\pi\left( \text{25\ m} \right)^{2}} \\
+{= \text{34\ kW}} \\
+\end{matrix}
+\]</span></p>
 <p>Indeed, when I visited this windmill on a very breezy day, its meter showed it was generating 60 kW.</p>
 <p>To estimate how much power we can get from wind, we need to decide how big our windmills are going to be, and how close together we can pack them.</p>
 <p>How densely could such windmills be packed? Too close and the upwind ones will cast wind-shadows on the downwind ones. Experts say that windmills can’t be spaced closer than 5 times their diameter without losing significant power. At this spacing, the <span id="power">power</span> that windmills can generate per unit land area is</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+\\
+{= \frac{\frac{1}{2}\rho v^{3}\frac{\pi}{8}d^{2}}{\left( 5d \right)^{2}}} \\
+{= \frac{\pi}{200}\frac{1}{2}\rho v^{3}} \\
+{= 0.016 \times 140\text{W/m}^{\text{2}}} \\
+{= 2.2\text{W/m}^{\text{2}}} \\
+\end{matrix}
+\]</span></p>
 <p><img src="img/without-hot-air/figure265.gif" class="img-fluid"></p>
 <p><span class="figurenumber">Figure B.4.</span> Wind farm layout.</p>
 <p>This number is worth remembering: a wind farm with a wind speed of 6 m/s produces a power of 2 W per m<sup>2</sup> of land area. Notice that our answer does not depend on the diameter of the windmill. The <em>ds</em> cancelled because bigger windmills have to be spaced further apart. Bigger windmills might be a good idea in order to catch bigger windspeeds that exist higher up (the taller a windmill is, the bigger the wind speed it encounters), or because of economies of scale, but those are the only reasons for preferring big windmills.</p>

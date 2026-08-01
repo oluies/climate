@@ -76,6 +76,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -476,7 +505,9 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="img/without-hot-air/figure214.gif" class="img-fluid"></p>
 <p><span class="figurenumber">Figure 26.3</span>. Electricity demand in Great Britain during two winter weeks of 2006. The left and right scales show the demand in national units (GW) and personal units (kWh/d per person) respectively. These are the same data as in figure 26.1.</p>
 <p>Let’s quantify the fluctuations in country-wide wind power. The two issues are short-term changes, and long-term lulls. Let’s find the fastest short-term change in a month of Irish wind data. On 11th February 2007, the Irish wind power fell steadily from 415 MW at midnight to 79 MW at 4am. That’s a slew rate of 84 MW per hour for a country-wide fleet of capacity 745 MW. (By slew rate I mean the rate at which the delivered power fell or rose – the slope of the graph on 11th February.) OK: if we scale British wind power up to a capacity of 33 GW (so that it delivers 10 GW on average), we can expect to have occasional slew rates of</p>
-<p>[ &nbsp;&nbsp; = ]</p>
+<p><span class="math display">\[
+\text{84\ MW/h~} \times \ \frac{\text{33\ 000\ MW}}{\text{745\ MW}}\  = \text{~3700\ MW/h,}
+\]</span></p>
 <p>assuming Britain is like Ireland. So we need to be able to either power <em>up</em> replacements for wind at a rate of 3.7 GW per hour – that’s 4 nuclear power stations going from no power to full power every hour, say – <em>or</em> we need to be able to suddenly turn <em>down</em> our <em>demand</em> at a rate of 3.7 GW per hour.</p>
 <p>Could these windy demands be met? In answering this question we’ll need to talk more about “gigawatts.” Gigawatts are big country-sized units of power. They are to a country what a kilowatt-hour-per-day is to a person: a nice convenient unit. The UK’s average electricity consumption is about 40 GW. We can relate this national number to personal consumption: 1 kWh per day per person is equivalent to 2.5 GW nationally. So if every person uses 16 kWh per day of electricity, then national consumption is 40 GW.</p>
 <p>Is a national slew-rate of <span class="darkblue">4 GW per hour</span> completely outside human experience? No.&nbsp;Every morning, as figure 26.3 shows, British demand climbs by about 13 GW between 6.30am and 8.30am. That’s a slew rate of <em><span class="darkblue">6.5 GW per hour</span></em>. So our power engineers already cope, every day, with slew rates bigger than 4GW per hour on the national grid. An extra occasional slew of 4 GW per hour induced by sudden wind variations is no reasonable cause for ditching the idea of country-sized wind farms. It’s a problem just like problems that engineers have already solved. We simply need to figure out how to match ever-changing supply and demand in a grid with no fossil fuels. I’m not saying that the wind-slew problem is <em>already</em> solved – just that it is a problem of the same size as other problems that have been solved.</p>

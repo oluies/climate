@@ -76,6 +76,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -456,31 +485,48 @@ ul.task-list li input[type="checkbox"] {
 <li>heat – 75% of the energy is thrown away as heat, because the energy-conversion chain is inefficient.</li>
 </ol>
 <p>The key formula for most of the calculations in this book is:</p>
-<p>[ = mv^{2}]</p>
+<p><span class="math display">\[
+\text{kinetic\ energy} = \frac{1}{2}mv^{2}
+\]</span></p>
 <p>For example, a car of mass <em>m</em> = 1000 kg moving at 100 km per hour or <em>v</em> = 28 m/s has an energy of</p>
-<p>[mv^{2} ]</p>
+<p><span class="math display">\[
+\frac{1}{2}mv^{2} \simeq \text{390~000~J} \simeq \text{0.1~kWh.}
+\]</span></p>
 <p><img src="img/without-hot-air/figure253.gif" class="img-fluid"></p>
 <p><span class="figurenumber">Figure A.2.</span>Our cartoon: a car moves at speed <em>v</em> between stops separated by a distance <em>d</em>.</p>
 <p>Initially our cartoon will ignore rolling resistance; we’ll add in this effect later in the chapter.</p>
 <p>Assume the driver accelerates rapidly up to a cruising speed <em>v</em>, and maintains that speed for a distance <em>d</em>, which is the distance between traffic lights, stop signs, or congestion events. At this point, he slams on the brakes and turns all his kinetic energy into heat in the brakes. (This vehicle doesn’t have fancy regenerative braking.) Once he’s able to move again, he accelerates back up to his cruising speed, <em>v</em>. This acceleration gives the car kinetic energy; braking throws that kinetic energy away.</p>
 <p>Energy goes not only into the brakes: while the car is moving, it makes air swirl around. A car leaves behind it a tube of swirling air, moving at a speed similar to <em>v</em>. Which of these two forms of energy is the bigger: kinetic energy of the swirling air, or heat in the brakes? Let’s work it out.</p>
 <p>The car speeds up and slows down once in each duration <em>d/v</em>. The rate at which energy pours into the brakes is:</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{\frac{\text{kinetic\ energy}}{\text{time\ between\ braking\ events}} = \frac{\frac{\text{1}}{\text{2}}m_{c}v^{2}}{d/v} = \frac{\frac{\text{1}}{\text{2}}m_{c}v^{3}}{d}} \\
+\end{matrix}
+\]</span></p>
 <p>where <em>m<sub>c</sub></em> is the mass of the car.</p>
 <p><img src="img/without-hot-air/figure251.gif" class="img-fluid"></p>
 <p><span class="figurenumber">Figure A.3.</span>A car moving at speed <em>v</em> creates behind it a tube of swirling air; the cross-sectional area of the tube is similar to the frontal area of the car, and the speed at which air in the tube swirls is roughly <em>v</em>.</p>
 <p>The tube of air created in a time <em>t</em> has a volume <em>Avt</em>, where <em>A</em> is the cross-sectional area of the tube, which is similar to the area of the front view of the car. (For a streamlined car, <em>A</em> is usually a little smaller than the frontal area <em>A</em><sub>car</sub>, and the ratio of the tube’s effective cross-sectional area to the car area is called the drag coefficient <em>c</em><sub>d</sub>. Throughout the following equations, <em>A</em> means the effective area of the car, <em>c</em><sub>d</sub><em>A</em><sub>car</sub>.) The tube has mass <em>m</em><sub>air</sub> = <em>ρAvt</em> (where <em>ρ</em> is the density of air) and swirls at speed <em>v</em>, so its kinetic energy is:</p>
 <p>I’m using this formula: mass = density × volume</p>
 <p>The symbol <em>ρ</em> (Greek letter ‘rho’) denotes the density.</p>
-<p>[m_{}v^{2} = Avt&nbsp;v^{2}]</p>
+<p><span class="math display">\[
+\frac{\text{1}}{\text{2}}m_{\text{air}}v^{2} = \frac{\text{1}}{\text{2}}\rho Avt\ v^{2}
+\]</span></p>
 <p>and the rate of generation of kinetic energy in swirling air is:</p>
-<p>[ = Av^{3}]</p>
+<p><span class="math display">\[
+\frac{\frac{\text{1}}{\text{2}}\rho Avt\ v^{2}}{t} = \frac{\text{1}}{\text{2}}\rho Av^{3}
+\]</span></p>
 <p><img src="img/without-hot-air/figure254.gif" class="img-fluid"></p>
 <p><span class="figurenumber">Figure A.4.</span> To know whether energy consumption is braking-dominated or air-swirling-dominated, we compare the mass of the car with the mass of the tube of air between stop-signs.</p>
 <p><img src="img/without-hot-air/figure255.gif" class="img-fluid"></p>
 <p><span class="figurenumber">Figure A.5.</span> Power consumed by a car is proportional to its cross-sectional area, during motorway driving, and to its mass, during town driving. Guess which gets better mileage – the VW on the left, or the spaceship?</p>
 <p>So the total rate of energy production by the car is:</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{\text{power\ going\ into\ brakes} + \text{power\ going\ into\ swirling\ air}} \\
+{= \frac{\text{1}}{\text{2}}{{m_{c}v^{3}}/d} + \frac{\text{1}}{\text{2}}\rho Av^{3}} \\
+\end{matrix}
+\]</span></p>
 <p>Both forms of energy dissipation scale as <em>v</em><sup>3</sup>. So this cartoon predicts that a driver who halves his speed <em>v</em> makes his power consumption 8 times smaller. If he ends up driving the same total distance, his journey will take twice as long, but the total energy consumed by his journey will be four times smaller.</p>
 <p>Which of the two forms of energy dissipation – brakes or air-swirling – is the bigger? It depends on the ratio of</p>
 <p>[{( {m_{c}/d} )/( {A} )}]</p>
@@ -515,7 +561,9 @@ ul.task-list li input[type="checkbox"] {
 <p>27 kWh/100 seat-km</p>
 <p><span class="figurenumber">Table A.6.</span> Facts worth remembering: car energy consumption.</p>
 <p>The actual energy consumption of the car will be the energy dissipation in equation (A.2), cranked up by a factor related to the inefficiency of the engine and the transmission. Typical petrol engines are about 25% efficient, <a href="#chAn02"><span class="darkred">[2]</span></a> so of the chemical energy that a car guzzles, three quarters is wasted in making the car’s engine and radiator hot, and just one quarter goes into “useful” energy:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\text{total\ power\ of\ car} \simeq 4\left\lbrack {\frac{\text{1}}{\text{2}}m_{\text{c}}v^{3}/d + \frac{\text{1}}{\text{2}}\rho Av^{3}} \right\rbrack
+\]</span></p>
 <p>Let’s check this theory of cars by plugging in plausible numbers for motorway driving. Let <em>v</em> = 70 miles per hour = 110 km/h = 31 m/s and ({A = c_{}A_{} = ^{2}}) The power consumed by the engine is estimated to be <span id="chA-80kW">roughly</span></p>
 <p>[4 Av^{3} = 2 ^{} ^{} ( 31/ )^{} = 80]</p>
 <p>Drag coefficients</p>
@@ -574,17 +622,34 @@ ul.task-list li input[type="checkbox"] {
 <p>Here’s a fun question: what’s the energy consumption of a bicycle, in kWh per 100 km? Pushing yourself along on a bicycle requires energy for the same reason as a car: you’re making air swirl around. Now, we could do all the calculations from scratch, replacing car-numbers by bike-numbers. But there’s a simple trick we can use to get the answer for the bike from the answer for the car. The energy consumed by a car, per distance travelled, is the power-consumption associated with air-swirling,</p>
 <p>[4 Av^{3}]</p>
 <p>divided by the speed, <em>v</em>; that is,</p>
-<p>[ = 4 Av^{2}]</p>
+<p><span class="math display">\[
+\text{energy\ per\ distance} = 4 \times \frac{\text{1}}{\text{2}}\rho Av^{2}
+\]</span></p>
 <p>The “4” came from engine inefficiency; <em>ρ</em> is the density of air; the area (A = c_{}A_{}) is the effective frontal area of a car; and <em>v</em> is its speed. Now, we can compare a bicycle with a car by dividing (4 Av^{2}) for the bicycle by (4 Av^{2}) for the car. All the fractions and <em>ρ</em> cancel, if the efficiency of the carbon-powered bicyclist’s engine is similar to the efficiency of the carbon-powered car engine (which it is). The ratio is:</p>
-<p>[ = ]</p>
+<p><span class="math display">\[
+\frac{\text{energy\ per\ distance\ of\ bike}}{\text{energy\ per\ distance\ of\ car}} = \frac{c_{\text{d}}^{\text{bike}}A_{\text{bike}}v_{\text{bike}}^{2}}{c_{\text{d}}^{\text{car}}A_{\text{car}}v_{\text{car}}^{2}}
+\]</span></p>
 <p>The trick we are using is called “scaling.” If we know how energy consumption scales with speed and area, then we can predict energy consumption of objects with completely different speeds and areas. Specifically, let’s assume that the area ratio is</p>
-<p>[ = ]</p>
+<p><span class="math display">\[
+\frac{A_{\text{bike}}}{A_{\text{car}}} = \frac{1}{4}
+\]</span></p>
 <p>(Four cyclists can sit shoulder to shoulder in the width of one car.) Let’s assume the bike is not very well streamlined:</p>
-<p>[ = ]</p>
+<p><span class="math display">\[
+\frac{c_{\text{d}}^{\text{bike}}}{c_{\text{d}}^{\text{car}}} = \frac{1}{\frac{\text{1}}{\text{3}}}
+\]</span></p>
 <p>And let’s assume the speed of the bike is 21 km/h (13 miles per hour), so</p>
-<p>[ = ]</p>
+<p><span class="math display">\[
+\frac{v_{\text{bike}}}{v_{\text{car}}} = \frac{1}{5}
+\]</span></p>
 <p>Then</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+\\
+{= \left( {\frac{c_{\text{d}}^{\text{bike}}}{c_{\text{d}}^{\text{car}}}\frac{A_{\text{bike}}}{A_{\text{car}}}} \right)\left( \frac{v_{\text{bike}}}{v_{\text{car}}} \right)^{2}} \\
+{= \left( \frac{3}{4} \right) \times \left( \frac{1}{5} \right)^{2}} \\
+{= \frac{3}{100}} \\
+\end{matrix}
+\]</span></p>
 <p>So a cyclist at 21 km/h consumes about 3% of the energy per kilometre of a lone car-driver on the motorway – about <strong>2.4 kWh per 100 km</strong>.</p>
 <p>If you would like a vehicle whose fuel efficiency is 30 times better than a car’s, it’s simple: ride a bike.</p>
 </section>
@@ -621,7 +686,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="cars" class="level5">
 <h5 class="anchored" data-anchor-id="cars"><em>Cars</em></h5>
 <p>The coefficient of rolling resistance for a car is about 0.01. The effect of rolling resistance is just like perpetually driving up a hill with a slope of one in a hundred. So rolling friction is about 100 newtons per ton, independent of speed. You can confirm this by pushing a typical one-ton car along a flat road. Once you’ve got it moving, you’ll find you can keep it moving with one hand. (100 newtons is the weight of 100 apples.) So at a speed of 31 m/s (70 mph), the power required to overcome rolling resistance, for a one-ton vehicle, is</p>
-<p>[ = ( ) ( ) = ]</p>
+<p><span class="math display">\[
+\text{force} \times \text{velocity} = \left( \text{100\ newtons} \right) \times \left( \text{31\ m/s} \right) = \text{3100\ W;}
+\]</span></p>
 <p>which, allowing for an engine efficiency of 25%, requires 12 kW of power to go into the engine; whereas the power required to overcome drag was estimated above to be 80 kW. So, at high speed, about 15% of the power is required for rolling resistance.</p>
 <p><img src="img/without-hot-air/figure321.gif" class="img-fluid"></p>
 <p><span class="figurenumber">Figure A.9.</span> Simple theory of car fuel consumption (energy per distance) when driving at steady speed. Assumptions: the car’s engine uses energy with an efficiency of 0.25, whatever the speed; <em>c</em><span class="smallsub1"><sub>d</sub></span><em>A</em><span class="smallsub1"><sub>car</sub></span> = 1 m<sup>2</sup>; <em>m</em><span class="smallsub1"><sub>car</sub></span> = 1000 kg; and <em>C</em><span class="smallsub1"><sub>rr</sub></span> = 0.01.</p>

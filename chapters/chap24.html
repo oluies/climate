@@ -76,6 +76,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -526,7 +555,12 @@ ul.task-list li input[type="checkbox"] {
 <section id="once-through-using-uranium-from-the-oceans" class="level3">
 <h3 class="anchored" data-anchor-id="once-through-using-uranium-from-the-oceans">Once-through, using uranium from the oceans</h3>
 <p>The oceans’ uranium, if completely extracted and used in once-through reactors, corresponds to a total energy of</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+\frac{\text{4.5\ billion\ tons\ per\ planet}}{\text{162\ tons\ uranium\ per\ GW-year}} \\
+{\text{\quad\quad\quad} = \text{~28\ million\ GW-years\ per\ planet.}} \\
+\end{matrix}
+\]</span></p>
 <p>How fast could uranium be extracted from the oceans? The oceans circulate slowly: half of the water is in the Pacific Ocean, and deep Pacific waters circulate to the surface on the great ocean conveyor only every 1600 years. Let’s imagine that 10% of the uranium is extracted over such a 1600-year period. That’s an extraction rate of 280 000 tons per year. In once-through reactors, this would deliver power at a rate of</p>
 <p>2.8 million GW-years / 1600 years = 1750 GW,</p>
 <p>which, shared between 6 billion people, is <span class="green">7 kWh per day per person</span>. (There’s currently 369 GW of nuclear reactors, so this figure corresponds to a 4-fold increase in nuclear power over today’s levels.) I conclude that ocean extraction of uranium would turn today’s once-through reactors into a “sustainable” option – assuming that the uranium reactors can cover the energy cost of the ocean extraction process.</p>
@@ -650,7 +684,14 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="building-a-nuclear-power-station-requires-huge-amounts-of-concrete-and-steel-materials-whose-creation-involves-huge-co2-pollution.">Building a nuclear power station requires huge amounts of concrete and steel, materials whose creation involves huge CO<sub>2</sub> pollution.</h4>
 <p>The steel and concrete in a 1 GW nuclear power station have a carbon footprint of roughly 300 000 t CO<sub>2</sub>. <a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></p>
 <p>Spreading this “huge” number over a 25-year reactor life we can express this contribution to the carbon intensity in the standard units (g CO<sub>2</sub> per kWh(e)),</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{\text{carbon\ intensity}\phantom{\text{construction}}} \\
+\text{associated\ with\ construction} \\
+{\quad = \ \frac{300 \times 10^{9}\text{~g}}{10^{6}\text{~kW(e)~} \times \text{~220\ 000\ h}}} \\
+{= \ 1.4\text{~g/kWh(e),}\phantom{\text{constru}}} \\
+\end{matrix}
+\]</span></p>
 <p>which is much smaller than the fossil-fuel benchmark of 400g CO<sub>2</sub>/kWh(e). The IPCC estimates that the total carbon intensity of nuclear power (including construction, fuel processing, and decommissioning) is less than 40 g CO<sub>2</sub>/kWh(e) (Sims et al., 2007).</p>
 <p>Please don’t get me wrong: I’m not trying to be pro-nuclear. I’m just pro-arithmetic.</p>
 </section>

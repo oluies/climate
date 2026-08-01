@@ -76,6 +76,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -443,9 +472,16 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="img/without-hot-air/figure334.gif" class="img-fluid"></p>
 <p>Imagine that you make one intercontinental trip per year by plane. How much energy does that cost?</p>
 <p>A Boeing 747-400 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> with 240 000 litres of fuel carries 416 passengers about 8 800 miles (14 200 km). And fuel’s calorific value is 10 kWh per litre. (We learned that in Chapter 3.) So the energy cost of one full-distance roundtrip on such a plane, if divided equally among the passengers, is</p>
-<p>[]</p>
+<p><span class="math display">\[
+\begin{matrix}
+{\frac{\text{2\ ×\ 240\ 000\ litre}}{\text{416\ passengers}} \times \text{10\ kWh/litre}} \\
+{\simeq \text{12\ 000\ kWh\ per\ passenger}} \\
+\end{matrix}
+\]</span></p>
 <p>If you make one such trip per year, then your average energy consumption per day is</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\frac{\text{12\ 000\ kWh}}{\text{365\ days}} \simeq \text{33\ kWh/day}
+\]</span></p>
 <p>14 200 km is a little further than London to Cape Town (10 000 km) and London to Los Angeles (9000km), so I think we’ve slightly overestimated the distance of a typical long-range intercontinental trip; but we’ve also overestimated the fullness of the plane, and the energy cost per person is more if the plane’s not full. Scaling down by 10 000 km/14 200 km to get an estimate for Cape Town, then up again by 100/80 to allow for the plane’s being 80% full, we arrive at 29 kWh per day. For ease of memorization, I’ll round this up to <span class="red">30 kWh per day</span>.</p>
 <p><img src="img/without-hot-air/figure29.gif" class="img-fluid"></p>
 <p><span class="figurenumber">Figure 5.1.</span> Taking one intercontinental trip per year uses about 30 kWh per day.</p>

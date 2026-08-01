@@ -76,6 +76,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -478,7 +507,9 @@ ul.task-list li input[type="checkbox"] {
 <p>Pork, madam? Pigs are around for longer – maybe 400 days from birth to bacon – so the steady consumption of half a pound a day of pork requires about 200 pounds of pork to be alive, preparing to be eaten.</p>
 <p>Cow? Beef production involves the longest lead times. It takes about 1000 days of cow-time to create a steak. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> So the steady consumption of half a pound a day of beef requires about 500 pounds of beef to be alive, preparing to be eaten.</p>
 <p>To condense all these ideas down to a single number, let’s assume you eat half a pound (227 g) per day of meat, made up of equal quantities of chicken, pork, and beef. <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> This meat habit requires the perpetual sustenance of 8 pounds of chicken meat, 70 pounds of pork meat, and 170 pounds of cow meat. That’s a total of 110 kg of meat, or 170 kg of animal (since about two thirds of the animal gets turned into meat). And if the 170 kg of animal has similar power requirements to a human (whose 65 kg burns 3 kWh/d) then the power required to fuel the meat habit is</p>
-<p>[ . / .]</p>
+<p><span class="math display">\[
+\text{170\ kg} \times \frac{\left. \text{3\ kWh}/\text{d} \right.}{\text{65\ kg}} \simeq \left. \text{8\ kWh}/\text{d} \right.
+\]</span></p>
 <p>I’ve again taken the physiological liberty of assuming “animals are like humans;” a more accurate estimate of the energy to make chicken is in this chapter’s endnotes. <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> No matter, I only want a ballpark estimate, and here it is. The power required to make the food for a typical consumer of vegetables, dairy, eggs, and meat is 1.5 + 1.5 + 1 + 8 = <span class="red">12 kWh per day</span>. (The daily calorific balance of this rough diet is 1.5 kWh from vegetables; 0.7 kWh from dairy; 0.2 kWh from eggs; and 0.5 kWh from meat – a total of 2.9 kWh per day.)</p>
 <p><img src="img/without-hot-air/figure93.gif" class="img-fluid"></p>
 <p><span class="figurenumber">Figure 13.6</span>. Will harvest energy crops for food.</p>
