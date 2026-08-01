@@ -101,6 +101,29 @@ In Chapter H, I estimate the energy cost of making a new house. Assuming we repl
 
 What about a <span id="car">car</span>, and a road? Some of us own the former, but we usually share the latter. A new car’s embodied energy is 76 000 kWh [^8] – so if you get one every 15 years, that’s an average energy cost of <span class="red">14 kWh per day</span>. A life-cycle analysis by Treloar, Love, and Crawford estimates that building an Australian road costs 7600 kWh per metre (a continuously reinforced concrete road), and that, including maintenance costs, the total cost over 40 years was 35 000 kWh per metre. Let’s turn this into a ballpark figure for the energy cost of British roads. There are 28 000 miles of trunk roads and class-1 roads in Britain (excluding motorways). Assuming 35 000 kWh per metre per 40 years, those roads cost us <span class="red">2 kWh/d per person</span>.
 
+### The car, recalculated for an electric one
+
+*A section added in the 2026 revision.* The 76 000 kWh above is the embodied energy of a car of MacKay's era: a steel body, an engine, and no battery worth speaking of. An electric car is a different object to build, and since chapter 3 now shows a third of new cars in Britain and half in China being electric, the sum is worth redoing.
+
+Almost all of the difference is the battery. Making cells is energy-intensive, and about half of a battery's manufacturing emissions are simply the electricity consumed in the factory — which means the answer depends on where the plant is and what powers it, and has been falling as those plants move onto cleaner grids. Tesla's own Impact Report puts the production emissions of a Model 3 at about **49% above a comparable combustion baseline**.[^ev15]
+
+Carry that premium across to MacKay's units and the arithmetic goes like this. If a combustion car embodies 76 000 kWh, an electric one of similar size embodies roughly **113 000 kWh**, which over a 15-year life is about **21 kWh per day** rather than 14. Making the car got substantially worse.
+
+Now put that beside chapter 3, which is where the point lands:
+
+| | making it | driving it | total |
+|---|---|---|---|
+| Petrol car, 33 mpg | 14 kWh/d | 40 kWh/d | **54 kWh/d** |
+| Electric car, 15 kWh/100 km | 21 kWh/d | 7.5 kWh/d | **28 kWh/d** |
+
+The electric car is worse to build by about 7 kWh a day and better to drive by about 32, so it wins on the total by roughly a factor of two. That margin is not delicate: it survives a considerably larger manufacturing penalty than the one assumed here, and it improves every year that battery factories run on cleaner electricity, because half the battery's burden is the grid behind the plant.
+
+Two warnings about this table. The first is a unit problem, and it is real: the 49% is a *carbon dioxide* premium, and I have applied it to an *energy* figure, which is only legitimate if the energy mixes behind the two are similar — they are not exactly, so treat 21 kWh/d as an order-of-magnitude figure rather than a measurement. The second is that the whole comparison is per-year, so it depends on how long cars last. If an electric car lasts twenty years instead of fifteen, its manufacturing column falls to 16 kWh/d; if the battery forces early retirement at ten, it rises to 31 and the advantage narrows sharply. Longevity does more work in this table than any of the engineering.
+
+The wider point is the one this chapter exists to make. Chapter 3 counts only the fuel, and on fuel alone the electric car looks five times better. Counting the stuff as well as the driving, it is about twice as good. Both numbers are true; the second is the honest one, and it is smaller.
+
+[^ev15]: Tesla's Impact Report gives Model 3 production emissions about 49% above a comparable internal-combustion baseline, and notes that around half of a battery's lifecycle emissions come from the electricity used to manufacture and assemble it. Independent estimates of cell manufacturing have improved over time, with one widely cited 2019 revision putting battery production near 85 kg CO<sub>2</sub> per kWh of capacity, roughly half earlier estimates. The conversion of a carbon premium into an energy premium in the table above is mine and is approximate; see the warning in the text.
+
 ### Transporting the stuff
 
 Up till now I’ve tried to make estimates of *personal* consumption. "If you chuck away five coke-cans, that’s 3 kWh; if you buy <span class="red">The Independent</span>, that’s 2 kWh." From here on, however, things are going to get a bit less personal. As we estimate the energy required to transport stuff around the country and around the planet, I’m going to look at national totals and divide them by the <span id="page91">population</span>.
