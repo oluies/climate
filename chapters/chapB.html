@@ -604,6 +604,10 @@ window.Quarto = {
 <p><img src="img/without-hot-air/figure261.gif" class="img-fluid"></p>
 <p><span class="figurenumber">Figure B.6.</span> Average summer windspeed (dark bar) and average winter windspeed (light bar) in eight locations around Britain. Speeds were measured at the standard weatherman’s height of 10 metres. Averages are over the period 1971–2000.</p>
 <p>On the other hand, to estimate the typical power, we shouldn’t take the mean wind speed and cube it; rather, we should find the mean cube of the windspeed. The average of the cube is bigger than the cube of the average. But if we start getting into these details, things get even more complicated, because real wind turbines don’t actually deliver a power proportional to wind-speed cubed. Rather, they typically have just a range of wind-speeds within which they deliver the ideal power; at higher or lower speeds real wind turbines deliver less than the ideal power.</p>
+<p><em>A note added in the 2026 revision.</em> That caution has turned out to have sharper teeth than it appears, and not only for estimating a level.</p>
+<p>There is a well-documented worry in the wind literature called <strong>global stilling</strong>: measured surface wind speeds appear to have been falling for decades, which would slowly erode every estimate in this chapter. Vest and Tych tested whether the effect is real or an artefact of how the wind is sampled, using a meteorological station and a wind turbine at Lancaster University and comparing daily averages against 10-minute resolution.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> They found that <strong>the daily and the 10-minute data give opposing trends</strong> from the same site over the same period.</p>
+<p>The reason is exactly the one stated above. Because power goes as the cube of the wind speed, and because the wind varies a great deal within a day, averaging first and cubing afterwards does not merely give a slightly wrong answer — it can give an answer that moves in the wrong direction over time. A run of gusty days and a run of steady days can share a daily mean and deliver quite different energy, and if the mix of the two shifts across decades the daily record will report a trend the turbines never experienced.</p>
+<p>Two things follow for this chapter. The 6 m/s used here is a long-term mean, and the objection above still applies to it in full. And anyone tempted to adjust these numbers downward for stilling should first ask at what resolution the decline was measured, because on this evidence that choice can determine the sign of the answer.</p>
 <section id="variation-of-wind-speed-with-height" class="level3">
 <h3 class="anchored" data-anchor-id="variation-of-wind-speed-with-height">Variation of wind speed with height</h3>
 <p><img src="img/without-hot-air/figure266.gif" class="img-fluid"></p>
@@ -649,6 +653,12 @@ window.Quarto = {
 <p>Watson et al.&nbsp;(2002) say a minimum annual mean wind speed of 7.0 m/s is currently thought to be necessary for commercial viability of wind power. About 33% of UK land area has such speeds.</p>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Kathryn Vest and Wlodek Tych, “Is the apparent global stilling effect on wind power generation an artefact of sampling rate? Evidence from high-frequency observations in the UK”, <em>Renewable Energy</em> 260 (2026), <a href="https://doi.org/10.1016/j.renene.2025.125097" class="uri">https://doi.org/10.1016/j.renene.2025.125097</a>. Their conclusion is that “the large spatiotemporal variability of wind speeds combined with the non-linearity of wind power generation necessitates high-resolution data”, and that the opposing patterns in the 10-minute and daily records matter for stilling research and for policy built on it.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
