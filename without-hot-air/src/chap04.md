@@ -85,11 +85,25 @@ Chapter B explains why, and predicted it: power per unit area does not depend on
 
 So the central claim of this chapter survives intact. **The constraint on wind is area, and bigger turbines have not relaxed it.** What Britain gained by going offshore is not a denser resource but a larger and less contested one — sea instead of land, and nobody's view of it. The 2 W/m<sup>2</sup> here remains the right order of magnitude, and for offshore it is if anything generous.
 
+### Will the wind still be there?
+
+There is a worry that would undo this chapter quietly if it were true: **global stilling**, the observed slowing of surface winds since the late twentieth century. Because power goes as the cube of wind speed, even a small decline compounds — one study found a 5.5% per decade fall in wind speed accompanied by a 24.5% per decade fall in power. Chapter B examines how much of the measured decline survives being sampled properly. Two recent results bear on whether Britain should discount its wind resource for it, and both say no, for different reasons.
+
+The first is that the climate signal is small. Giddings and colleagues modelled UK offshore generation to 2050 across an ensemble of climate projections and found the **mean annual capacity factor falling by about 2.3%** — a summer decline of 3.6% against a winter one of 1.5%.[^ukwind] They attribute the summer weakening to multi-decadal variability rather than to stilling, and note that year-to-year climate variability is large compared with the whole projected twenty-first-century climate effect. A resource that varies more between two consecutive years than it is expected to shift in thirty is not a resource being taken away.
+
+The second is more useful, because it identifies a lever. The same study compared three ways of distributing 140 GW of offshore capacity by 2050: concentrated on the east coast as now, following the Crown Estate's proposals, or spread evenly across all sixteen UK shipping zones. Spreading it **did not reduce mean generation at all**, and it transformed the worst hours: minimum daily generation rose **27.9%**, day-to-day variability fell **15.5%**, extreme hourly ramps fell **33.5%**, and the hours per year spent below 5% of capacity fell by **87%**.
+
+That last number deserves its own sentence. The single most quoted objection to wind — that sometimes it simply stops — is reduced roughly eightfold not by building storage or by burning gas, but by not putting all the turbines in the same weather. Capacity factor between zones correlates inversely with distance, so dispersal buys smoothing for free. It is the same insight as chapter 26's, arrived at geographically rather than through storage.
+
+For this chapter's arithmetic that means the 2 W/m<sup>2</sup> and the wind speed behind it can stand. What changes is the advice that follows from them: the binding question for British wind is no longer how much area is available, nor whether the wind is dying, but how correlated the chosen sites are with each other.
+
 ### What the wind now earns
 
 There is a second thing this chapter's method cannot see, and it has become the binding constraint in practice. MacKay counts kilowatt-hours; the market pays for kilowatt-hours *at the moment they arrive*, and wind arrives when other wind does.
 
 In Great Britain in 2025, against a time-weighted average market price of **£79.9/MWh**, wind captured **£72.0** and solar **£65.9** — value factors of **0.90 and 0.82**. Gas, which can choose its hours, captured £94.8, a factor of 1.19.[^capture] Every gigawatt of wind added lowers the price in precisely the hours that all the other wind is generating, so the resource this chapter sizes in W/m<sup>2</sup> is worth progressively less per unit as it grows. That is a different limit from the one MacKay identified, it binds long before the land runs out, and chapter 28a is about it.
+
+[^ukwind]: Josh Giddings, Hannah Bloomfield, Rachel James and Michael Blair, "The impact of future UK offshore wind farm distribution and climate change on generation performance and variability", *Environmental Research Letters*, 2024, <https://doi.org/10.1088/1748-9326/ad489b>. Their ERA5-derived historical mean annual capacity factor is 48.3%, or 45.4% once wake losses and curtailment are allowed for, against an observed 45.7% for 2020 — a useful check on the 33% load factor assumed elsewhere in this chapter. The 5.5%/24.5% per decade comparison in the paragraph above is cited in Vest and Tych, discussed in chapter B.
 
 [^capture]: GB capture prices for 2025, computed from Elexon BMRS half-hourly generation by fuel type and the market index price (APXMIDP), in this edition's data pipeline. Capture price is generation-weighted revenue per MWh; the value factor is that divided by the time-weighted system average of £79.9/MWh.
 
