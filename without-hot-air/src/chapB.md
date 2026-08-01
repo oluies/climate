@@ -204,6 +204,15 @@ $$
 
 This number is worth remembering: a wind farm with a wind speed of 6 m/s produces a power of 2 W per m<sup>2</sup> of land area. Notice that our answer does not depend on the diameter of the windmill. The *ds* cancelled because bigger windmills have to be spaced further apart. Bigger windmills might be a good idea in order to catch bigger windspeeds that exist higher up (the taller a windmill is, the bigger the wind speed it encounters), or because of economies of scale, but those are the only reasons for preferring big windmills.
 
+*A note added in the 2026 revision.* That last observation — that the answer does not depend on turbine diameter, because spacing scales with diameter — is the most testable prediction in this chapter, and eighteen years have provided a very large test of it.
+
+MacKay's reference machine below is a 54-metre rotor at 80 metres, rated 1 MW. The turbines going into Dogger Bank are GE Haliade-X units of **13 to 14.7 MW**, with a **220-metre rotor** and a tip height of 260 metres: thirteen times the capacity and about four times the diameter. If the scaling argument is right, that should have left the power per unit area alone.
+
+It did. What changed instead was the other input, and the chapter should be honest that it is the weaker one. The spacing here is assumed to be **5 diameters**. Dogger Bank A puts 95 turbines in 515 km<sup>2</sup>, which is 5.4 km<sup>2</sup> each, or a spacing of about 2.3 km — **10.6 diameters**. Dogger Bank B is wider still at 11.4. Modern offshore farms are spaced at roughly twice the separation assumed here, to cut the wake losses that matter more when the machines are this large and the sea this valuable.
+
+Power per unit area goes as the inverse square of the spacing, so doubling it cuts the density to about a quarter. That is why the arithmetic below, which gives 2 W/m<sup>2</sup> at 6 m/s, should not simply be rescaled to offshore wind speeds and believed: at Dogger Bank's wind the formula with 5*d* spacing would suggest something like 7 W/m<sup>2</sup>, and the farm actually delivers nearer **1.3**. The physics in this chapter is sound and the diameter-independence holds. It is the spacing constant that has moved, and it moved in the unhelpful direction.
+
+
 Power per unit area
 
 wind farm (speed 6 m/s)

@@ -69,6 +69,31 @@ wind farm
 
 The Whitelee wind farm being built near Glasgow in Scotland has 140 turbines with a combined *peak* capacity of 322 MW in an area of 55 km<sup>2</sup>. That’s 6 W/m<sup>2</sup>, *peak*. The average power produced is smaller because the turbines don’t run at peak output all the time. The ratio of the average power to the peak power is called the "load factor" or "capacity factor," and it varies from site to site, and with the choice of hardware plopped on the site; a typical factor for a good site with modern turbines is 30%. If we assume Whitelee has a load factor of 33% then the average power production per unit land area is <span class="green">2 W/m<sup>2</sup></span> – exactly the same as the power density we assumed above.
 
+## The turbines got bigger. The answer did not.
+
+*A section added in the 2026 revision.* Britain has moved offshore and upward since this chapter was written, and the scale of the change invites the assumption that the arithmetic above must be obsolete. It is not, and the reason is worth following.
+
+MacKay's typical machine was a 1 MW turbine with a 54-metre rotor. Dogger Bank, off the Yorkshire coast, is being built with GE Haliade-X units of **13 to 14.7 MW** — a 220-metre rotor and a tip height of 260 metres, taller than any building in Britain outside London. Thirteen times the capacity of his reference turbine. Each one produces about 70 GWh a year.
+
+Two things improved enormously and one did not.
+
+**Capacity factor improved.** This chapter assumes a load factor of 33%. Dogger Bank's site has been running above **55%**, and the turbine is rated for 60–64% in those conditions. Offshore wind at 130 kilometres from land is a different resource from a hill in Scotland, and a machine reaching 260 metres samples a wind that a 1 MW turbine never touched.
+
+**Power per unit area did not improve — it fell.** Dogger Bank A puts 1235 MW into 515 km<sup>2</sup>, Dogger Bank B the same into 599 km<sup>2</sup>, and neighbouring Sofia 1400 MW into 593 km<sup>2</sup>. Together that is 3870 MW in 1707 km<sup>2</sup>, or **2.3 W/m<sup>2</sup> of peak capacity**. At the 55% capacity factor actually achieved, the average is about **1.3 W/m<sup>2</sup>** — below the 2 W/m<sup>2</sup> this chapter assumes for onshore wind, despite far better wind.
+
+Chapter B explains why, and predicted it: power per unit area does not depend on turbine size, because spacing scales with diameter. What has changed is the spacing itself. This chapter assumes turbines 5 diameters apart; Dogger Bank spaces them about **10.6 diameters** apart, and density falls with the square of that.
+
+So the central claim of this chapter survives intact. **The constraint on wind is area, and bigger turbines have not relaxed it.** What Britain gained by going offshore is not a denser resource but a larger and less contested one — sea instead of land, and nobody's view of it. The 2 W/m<sup>2</sup> here remains the right order of magnitude, and for offshore it is if anything generous.
+
+### What the wind now earns
+
+There is a second thing this chapter's method cannot see, and it has become the binding constraint in practice. MacKay counts kilowatt-hours; the market pays for kilowatt-hours *at the moment they arrive*, and wind arrives when other wind does.
+
+In Great Britain in 2025, against a time-weighted average market price of **£79.9/MWh**, wind captured **£72.0** and solar **£65.9** — value factors of **0.90 and 0.82**. Gas, which can choose its hours, captured £94.8, a factor of 1.19.[^capture] Every gigawatt of wind added lowers the price in precisely the hours that all the other wind is generating, so the resource this chapter sizes in W/m<sup>2</sup> is worth progressively less per unit as it grows. That is a different limit from the one MacKay identified, it binds long before the land runs out, and chapter 28a is about it.
+
+[^capture]: GB capture prices for 2025, computed from Elexon BMRS half-hourly generation by fuel type and the market index price (APXMIDP), in this edition's data pipeline. Capture price is generation-weighted revenue per MWh; the value factor is that divided by the time-weighted system average of £79.9/MWh.
+
+
 ![](/img/without-hot-air/figure28.gif)
 
 <span class="figurenumber">Figure 4.6.</span> Histogram of Cambridge average wind speed in metres per second: daily averages (left), and half-hourly averages (right).
