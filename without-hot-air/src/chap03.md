@@ -93,9 +93,23 @@ Yes, that cost fell outside the boundary of this calculation too. We’ll talk a
 
 Of workers in England and Wales, **57.5% drove to work in 2011** and a further 5.1% travelled as passengers. By the **2021 census those had fallen to 45.1% and 3.9%**, while people working mainly from home went from 10.3% to **31.2%**.[^ttw] That looks like a transformation, and it is largely an artefact: Census 2021 was taken in March 2021, under lockdown and furlough. It is a photograph of an emergency, not of a new normal, and it cannot be compared with MacKay's 2001 figure as though the two measured the same thing.
 
+There is no later British census to settle it with, because the census is decennial and the next is due in 2031. But two places do publish the figure every year, and both show that 2021 was a peak rather than a plateau.
+
+| working from home | before | 2021 | latest |
+|---|---|---|---|
+| United States, ACS | 5.7% (2019) | **17.9%** | 13.3% (2024) |
+| EU, Eurostat, "usually" | 5.5% (2019) | **13.5%** | 8.9% (2024) |
+| England &amp; Wales, census | 10.3% (2011) | **31.2%** | *no census until 2031* |
+
+The American series has now fallen for three consecutive years from its 2021 high, and the European one likewise. Neither has gone back: the United States sits at more than twice its 2019 rate, the EU at about 1.6 times. American commuting shows the same shape from the other side — driving alone fell from 75.9% of workers in 2019 to 68.7% in 2022 and has since settled at 69.2%, about seven points below where it started, while public transport is recovering slowly at 3.7% against 5.0% before the pandemic.[^wfh]
+
+The three rows are not directly comparable in level, because each country asks a different question — the ACS asks for the principal means of getting to work, Eurostat asks whether someone *usually* works from home, and the census asks whether they mainly work at or from home. What they agree on is the shape, which is what matters here: a spike in 2021, a partial retreat, and a floor well above 2019. The British census caught the top of that spike and will not measure it again for five years.
+
 The settled position is more modest and more interesting. On ONS's 2025 figures, **28% of workers in Great Britain are hybrid** — the highest since the series began, and still rising — against roughly **55% who travel to a single workplace** as before. The average British worker is remote about **1.8 days a week**, which is the second-highest rate in the world after Canada. Hybrid working is also sharply stratified: graduates are about ten times more likely to have it than those with no qualifications, and its incidence climbs with income.
 
 What that does to this chapter's 40 kWh/d is less than it first appears, and the arithmetic is worth doing because the intuition runs ahead of it. If 28% of workers commute on 3.2 days instead of 5, total commuting journeys fall by roughly a tenth. But the 50 km per day this chapter assumes is *all* car travel, not just commuting, and commuting is only about a third of car mileage. A tenth off a third is about 3% — call it **1 kWh/d off 40**. Home working is a real reduction and a genuinely new feature of the system, but on its own it is a rounding error next to the factor of five available from changing what the car burns.
+
+[^wfh]: United States: American Community Survey, share of workers who worked from home — 5.7% (2019), 17.9% (2021), 15.2% (2022), 13.8% (2023), 13.3% (2024); drove alone 75.9% (2019), 68.7% (2022), 69.2% (2023 and 2024); public transport 5.0% (2019), 2.5% (2021), 3.7% (2024). European Union: Eurostat, employed persons usually working from home — about 5.5% (2019), 12.3% (2020), 13.5% (2021), 8.9% (2024); in 2023, 9% usually plus 13% occasionally. The definitions differ between the three sources and the levels should not be compared directly.
 
 [^ttw]: Method of travel to work, Census 2011 and Census 2021, England and Wales, ONS. The ONS itself warns that Census 2021 was conducted during the pandemic and that the home-working figures are additionally affected by a definitional change. Hybrid and remote working shares are from ONS, "Who has access to hybrid working in Great Britain?", covering 8 January to 30 March 2025; the 1.8 days a week figure is from the 2025 Global Survey of Working Arrangements. The 3% estimate in the text is my own arithmetic on those figures and assumes commuting is about a third of car mileage.
 
