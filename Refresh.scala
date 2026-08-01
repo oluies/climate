@@ -463,6 +463,67 @@ def colName(i: Int): String = {
   s
 }
 
+// ---- Chapter J figure 4: US states beside European countries ----
+// MacKay's figure J.4 plots the American states against regions around Europe.
+// Table J.5 carries no state-level rows, so the state data comes from the Census
+// Bureau directly: population estimates as CSV, land area from the gazetteer zip.
+
+@main
+def chapterJ4(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+
+  val popCsv = dir / "us-state-population.csv"
+  if (!os.exists(popCsv))
+    os.write.over(popCsv, requests.get(
+      "https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/state/totals/NST-EST2024-ALLDATA.csv",
+      readTimeout = 60000).text())
+
+  // The gazetteer ships as a zip with a single tab-separated member.
+  val gazTxt = dir / "us-state-area.tsv"
+  if (!os.exists(gazTxt)) {
+    val bytes = requests.get(
+      "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/2024_Gaz_state_national.zip",
+      readTimeout = 120000).bytes
+    val zis = new java.util.zip.ZipInputStream(new java.io.ByteArrayInputStream(bytes))
+    var e = zis.getNextEntry()
+    while (e != null && !e.getName.endsWith(".txt")) e = zis.getNextEntry()
+    if (e == null) { System.err.println("FEL: hittade ingen .txt i gazetteer-zippen"); sys.exit(1) }
+    os.write.over(gazTxt, new String(zis.readAllBytes(), "UTF-8"))
+  }
+
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val st = conn.createStatement()
+  // SUMLEV 040 is a state; ALAND is land area in square metres.
+  val rs = st.executeQuery(
+    s"""SELECT p."NAME" AS region, p."POPESTIMATE2024"::BIGINT AS population,
+               (g."ALAND"::DOUBLE / 1e6)::BIGINT AS area_km2
+        FROM read_csv_auto('${popCsv.toString.replace("'", "''")}') p
+        JOIN read_csv_auto('${gazTxt.toString.replace("'", "''")}', delim='\t', header=true) g
+          ON trim(g."NAME") = p."NAME"
+        WHERE p."SUMLEV" = 40
+        ORDER BY population DESC""")
+  val out = new StringBuilder; out ++= "region,population,area_km2,kind\n"
+  var n = 0
+  while (rs.next()) { out ++= s"${rs.getString(1)},${rs.getLong(2)},${rs.getLong(3)},US state\n"; n += 1 }
+  conn.close()
+
+  // European countries come from the chapter's own table, already at 2023.
+  val EURO = Set("Albania", "Austria", "Belarus", "Belgium", "Bosnia & Herzegovina", "Bulgaria",
+    "Croatia", "Czech Republic", "Denmark", "England", "Estonia", "Finland", "France", "Germany",
+    "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Latvia", "Lithuania", "Malta", "Moldova",
+    "Netherlands", "Norway", "Poland", "Portugal", "Republic of Macedonia", "Romania", "Scotland",
+    "Serbia & Montenegro", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "Wales")
+  for (line <- os.read.lines(dir / "populations-areas.csv").drop(1)) {
+    val c = line.split(",")
+    if (c.length >= 3 && EURO(c(0))) out ++= s"${c(0)},${c(1)},${c(2)},European country\n"
+  }
+  os.write.over(dir / "states-and-europe.csv", out.toString)
+  println(s"wrote data-refresh/states-and-europe.csv ($n US states + European countries)")
+  println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
+  println("  python figures/states_and_europe.py data-refresh/states-and-europe.csv without-hot-air/Images/fig-states-and-europe.svg")
+}
+
 // ---- Chapter 25: Germany's net electricity trade (export surplus -> import) ----
 // OWID "Net electricity imports" (Ember): imports minus exports, TWh per year.
 // Positive = net importer, negative = net exporter.
