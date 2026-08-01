@@ -1,4 +1,4 @@
-# The value of renewable energy as it scales
+# 28a The value of renewable energy as it scales
 
 *Editor's note: this chapter is new in the 2026 revision. It is not David MacKay's writing. It extends his balance-sheet method into a question the 2008 book leaves largely open: what happens to the economic value of renewable electricity as it grows to the scale the balance sheet calls for. Written by Örjan Lundberg; every figure is sourced.*
 
