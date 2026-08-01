@@ -229,6 +229,16 @@ This calculation depended sensitively on our estimate of the windspeed. Is 6 m/s
 
 On the other hand, to estimate the typical power, we shouldn’t take the mean wind speed and cube it; rather, we should find the mean cube of the windspeed. The average of the cube is bigger than the cube of the average. But if we start getting into these details, things get even more complicated, because real wind turbines don’t actually deliver a power proportional to wind-speed cubed. Rather, they typically have just a range of wind-speeds within which they deliver the ideal power; at higher or lower speeds real wind turbines deliver less than the ideal power.
 
+*A note added in the 2026 revision.* That caution has turned out to have sharper teeth than it appears, and not only for estimating a level.
+
+There is a well-documented worry in the wind literature called **global stilling**: measured surface wind speeds appear to have been falling for decades, which would slowly erode every estimate in this chapter. Vest and Tych tested whether the effect is real or an artefact of how the wind is sampled, using a meteorological station and a wind turbine at Lancaster University and comparing daily averages against 10-minute resolution.[^stilling] They found that **the daily and the 10-minute data give opposing trends** from the same site over the same period.
+
+The reason is exactly the one stated above. Because power goes as the cube of the wind speed, and because the wind varies a great deal within a day, averaging first and cubing afterwards does not merely give a slightly wrong answer — it can give an answer that moves in the wrong direction over time. A run of gusty days and a run of steady days can share a daily mean and deliver quite different energy, and if the mix of the two shifts across decades the daily record will report a trend the turbines never experienced.
+
+Two things follow for this chapter. The 6 m/s used here is a long-term mean, and the objection above still applies to it in full. And anyone tempted to adjust these numbers downward for stilling should first ask at what resolution the decline was measured, because on this evidence that choice can determine the sign of the answer.
+
+[^stilling]: Kathryn Vest and Wlodek Tych, "Is the apparent global stilling effect on wind power generation an artefact of sampling rate? Evidence from high-frequency observations in the UK", *Renewable Energy* 260 (2026), <https://doi.org/10.1016/j.renene.2025.125097>. Their conclusion is that "the large spatiotemporal variability of wind speeds combined with the non-linearity of wind power generation necessitates high-resolution data", and that the opposing patterns in the 10-minute and daily records matter for stilling research and for policy built on it.
+
 ### Variation of wind speed with height
 
 ![](/img/without-hot-air/figure266.gif)
