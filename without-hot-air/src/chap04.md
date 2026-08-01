@@ -118,6 +118,26 @@ In Great Britain in 2025, against a time-weighted average market price of **£79
 
 Chapter B explains. Bigger wind turbines deliver financial economies of scale, but they don’t greatly increase the total power per unit land area, because bigger windmills have to be spaced further apart. A wind farm that’s twice as tall will deliver roughly 30% more power.
 
+*Answered again in the 2026 revision, because half of this has held and half has reversed.*
+
+The physical half held exactly, and the section above sets out the evidence: turbines went from 1 MW to nearly 15 MW, and the power per unit area did not rise. If anything it fell, because the spacing widened from the 5 diameters assumed in chapter B to about 10.6 at Dogger Bank.
+
+The financial half — "bigger wind turbines deliver financial economies of scale" — was the reasonable expectation in 2008 and it stopped being true around 2021. Britain runs an auction that measures this cleanly, because the same contract is bid in the same 2012 pounds each round:
+
+| Allocation Round | Offshore wind strike price (2012 £/MWh) | Capacity secured |
+|---|---|---|
+| AR4, July 2022 | **37.35** | ~7 GW |
+| AR5, September 2023 | *no bids* | **0** |
+| AR6, September 2024 | **58.87** | 3.4 GW |
+
+Between AR4 and AR6 the price Britain had to offer for offshore wind rose by **58% in real terms in two years**, with an auction in between that attracted **no offshore bids at all** because the administrative price was set too low to build at. Over precisely that period the turbines being installed got substantially bigger. So the economies of scale were real and were swamped: steel, copper, cables, vessels and above all the cost of capital rose faster than the engineering could compensate.
+
+The AR6 price of £58.87 in 2012 money is about £82/MWh in today's money, against a GB market price averaging £80/MWh in 2025 — which is to say that new offshore wind now needs roughly the market price to proceed, where in 2022 it was contracting well below it. Chapter 28a takes up what that means, and adds the second half of the squeeze: the same build-out lowers the price it earns.
+
+None of this touches the arithmetic of this chapter, which is about area and wind speed. It bears on a different question — how much of the resource gets built, and at what price — and it is a reminder that the cost of a technology is not a physical constant with a downward slope.[^cfd]
+
+[^cfd]: Contracts for Difference allocation round results, DESNZ. AR4 cleared offshore wind at £37.35/MWh in 2012 prices across roughly 7 GW; AR5 in September 2023 received no offshore wind bids; AR6 in September 2024 cleared at £58.87/MWh in 2012 prices for 3.37 GW of new offshore capacity, with permitted-reduction projects at £54.23. CPI-indexed, £58.87 in 2012 money is about £82/MWh in 2024 money. The GB time-weighted average market price for 2025 was £79.9/MWh, computed from Elexon data in this edition's pipeline.
+
 #### Wind power fluctuates all the time. Surely that makes wind less useful?
 
 Maybe. We’ll come back to this issue in Chapter 26, where we’ll look at wind’s intermittency and discuss several possible solutions to this problem, including energy storage and demand management.
