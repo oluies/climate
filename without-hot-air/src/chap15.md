@@ -10,36 +10,15 @@ One of the main sinks of energy in the "developed" world is the creation of stuf
 
 Let’s say we want to understand the full energy-cost of a stuff, perhaps with a view to designing better stuff. This is called life-cycle analysis. It’s conventional to chop the energy-cost of anything from a hair-dryer to a cruise-ship into four chunks:
 
-embodied energy (kWh per kg)
-
-fossil fuel
-
-10
-
-wood
-
-5
-
-paper
-
-10
-
-glass
-
-7
-
-PET plastic
-
-30
-
-aluminium
-
-40
-
-steel
-
-6
-
+| Material | Embodied energy (kWh per kg) |
+|---|---|
+| fossil fuel | 10 |
+| wood | 5 |
+| paper | 10 |
+| glass | 7 |
+| PET plastic | 30 |
+| aluminium | 40 |
+| steel | 6 |
 <span class="figurenumber">Table 15.2</span>. Embodied energy of materials.
 
   - **Phase R:** Making **raw materials**.
@@ -54,6 +33,16 @@ steel
 ![](/img/without-hot-air/figure413.gif) ![](/img/without-hot-air/figure106.gif)
 
 <span class="figurenumber">Figure 15.3</span>. Five aluminium cans per day is 3 kWh/d. The embodied energy in other packaging chucked away by the average Brit is 4 kWh/d.
+
+*A note added in the 2026 revision.* That 3 kWh/d assumes the can is thrown away, and table 15.2 shows why the assumption matters so much: at 40 kWh per kg, aluminium is the most energy-dense material in the table, four times paper or glass and nearly seven times steel. It is also the one where recycling saves most, because remelting scrap aluminium takes roughly a twentieth of the energy of winning the metal from bauxite.
+
+Two countries have made that saving nearly complete, and the mechanism is a deposit rather than an appeal to virtue. Norway's Infinitum scheme returns **over 90% of all cans and bottles sold** — 92.5% of cans in 2023, and 1.6 of the 1.7 billion containers sold in 2024. Sweden's Returpack passed **3 billion containers deposited in 2025** for the first time, at an overall rate of 88.4% and **91% for cans specifically**, which is past the national target.[^pant]
+
+Put that through this chapter's arithmetic. If 91% of cans come back and a recycled can costs about a twentieth of a new one to make, five cans a day costs roughly **0.4 kWh/d instead of 3** — a sevenfold reduction in one of the items on the consumption stack, achieved without anyone drinking less. It is the same lesson as the standby regulation in chapter 22: the saving came from changing the system the object moves through, not from persuading the person holding it.
+
+Two honest qualifications. The 40 kWh/kg in table 15.2 is the figure for *primary* aluminium, so a can already made from recycled metal embodies far less to begin with and the saving is not additional to that. And the deposit covers cans and bottles, not the other 4 kWh/d of packaging in this figure, which has no deposit on it and comes back at nothing like 91%.
+
+[^pant]: Norway: Infinitum's deposit-return scheme, return rates above 90% sustained, 92.5% for cans in 2023 and 1.6 billion of 1.7 billion containers collected in 2024. Sweden: Returpack/Pantamera reported over 3 billion cans and bottles deposited in 2025, an overall rate of 88.4% against a national target of 90%, and 91% for cans alone. The ratio of recycled to primary aluminium energy is conventionally put at about 1:20.
 
 ![](/img/without-hot-air/figure107.gif)
 
