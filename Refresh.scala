@@ -463,6 +463,40 @@ def colName(i: Int): String = {
   s
 }
 
+// ---- Chapter 3: how far electrification of cars has actually got ----
+// Share of new cars sold that are electric (BEV + PHEV), IEA via Our World in Data.
+
+@main
+def chapter03(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val src = dir / "owid-ev-share.csv"
+  if (!os.exists(src))
+    os.write.over(src, requests.get(
+      "https://ourworldindata.org/grapher/electric-car-sales-share.csv?csvType=full",
+      readTimeout = 60000).text())
+  val want = List("Norway", "Sweden", "China", "United Kingdom", "World", "United States")
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val rs = conn.createStatement().executeQuery(
+    s"""SELECT "Entity" AS country, "Year" AS y,
+               "Share of new cars that are electric"::DOUBLE AS share
+        FROM read_csv_auto('${src.toString.replace("'", "''")}')
+        WHERE "Entity" IN (${want.map(w => s"'$w'").mkString(", ")}) AND "Year" >= 2015
+        ORDER BY "Entity", "Year"""")
+  val out = new StringBuilder; out ++= "country,year,share\n"
+  val latest = scala.collection.mutable.Map[String, (Int, Double)]()
+  while (rs.next()) {
+    val c = rs.getString(1); val y = rs.getInt(2); val v = rs.getDouble(3)
+    out ++= f"$c,$y,$v%.1f\n"
+    if (!latest.contains(c) || latest(c)._1 < y) latest(c) = (y, v)
+  }
+  conn.close()
+  os.write.over(dir / "ev-share.csv", out.toString)
+  for (c <- want; (y, v) <- latest.get(c)) println(f"$c%-16s $y: $v%5.1f%% of new cars")
+  println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
+  println("  python figures/ev_share.py data-refresh/ev-share.csv without-hot-air/Images/fig-ev-share.svg")
+}
+
 // ---- Chapter J figure 4: US states beside European countries ----
 // MacKay's figure J.4 plots the American states against regions around Europe.
 // Table J.5 carries no state-level rows, so the state data comes from the Census
