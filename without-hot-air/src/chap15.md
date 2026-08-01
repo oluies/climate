@@ -122,6 +122,21 @@ Two warnings about this table. The first is a unit problem, and it is real: the 
 
 The wider point is the one this chapter exists to make. Chapter 3 counts only the fuel, and on fuel alone the electric car looks five times better. Counting the stuff as well as the driving, it is about twice as good. Both numbers are true; the second is the honest one, and it is smaller.
 
+### Who makes the battery
+
+There is a second question hiding in that table, and it is the one this chapter raises about gizmos generally: not how much energy the battery embodies, but *where* it is embodied. MacKay notes below that Britain's imported goods do not appear in its energy accounts, and that a country which used to make its own things now buys them. The battery is that argument's largest single instance.
+
+The costs are not close. BloombergNEF's 2025 survey puts the global average lithium-ion pack price at **$108/kWh**, but the average conceals the thing that matters: **China at $84/kWh, Europe 56% higher, North America 44% higher**.[^packprice] And the gap is widening rather than closing. In the same year, Chinese pack prices fell 13%, European prices 8%, and North American prices 4%. A cost difference that grows while everyone is trying to close it is a structural difference, not a temporary one.
+
+Manufacturing is concentrated to match. Six Chinese firms supplied about **69% of all electric-vehicle batteries installed worldwide** in the first ten months of 2025, CATL alone accounting for roughly a third of global cell sales. Estimates of China's share of total cell *capacity* run from 75% to 85% depending on what is counted.
+
+The European response has been tariffs. Definitive countervailing duties on Chinese battery-electric cars took effect on 30 October 2024 at rates from 17.0% to 35.3%, on top of the standard 10% car duty — 17.4% for BYD, 19.9% for Geely, 35.3% for SAIC and for anyone who did not cooperate with the investigation, and 9.0% for Tesla exporting from Shanghai.[^evtariff] Set the arithmetic side by side: the duty is of the same order as the cost gap it is answering. It offsets the advantage without reversing it, and it is a fixed number set against a gap that moved 5 percentage points in China's favour in a single year.
+
+None of that is an energy calculation, and this book is careful to distinguish what physics settles from what politics does. The physics is settled and unglamorous: a battery embodies roughly what the table above says, wherever it is made. What is not settled is whether the country doing the driving is also the country doing the making — and on present numbers, for most of the world, it is not.
+
+[^packprice]: BloombergNEF's annual battery price survey, December 2025: global volume-weighted average pack price of $108/kWh, down 8% on 2024; China lowest at $84/kWh, with European packs 56% and North American packs 44% above that; annual declines of 13%, 8% and 4% respectively. Note that these are volume-weighted averages dominated by passenger vehicles. Packs for commercial vehicles, made in far smaller numbers, are dearer than these averages in Europe, and the European premium quoted for a truck pack can be nearer a factor of two than the 1.56 implied here.
+[^evtariff]: Definitive EU countervailing duties on Chinese battery-electric vehicles, in force 30 October 2024, additional to the standard 10% duty. The widely quoted "up to 38%" figure was the provisional rate announced in July 2024; the definitive top rate is 35.3%.
+
 [^ev15]: Tesla's Impact Report gives Model 3 production emissions about 49% above a comparable internal-combustion baseline, and notes that around half of a battery's lifecycle emissions come from the electricity used to manufacture and assemble it. Independent estimates of cell manufacturing have improved over time, with one widely cited 2019 revision putting battery production near 85 kg CO<sub>2</sub> per kWh of capacity, roughly half earlier estimates. The conversion of a carbon premium into an energy premium in the table above is mine and is approximate; see the warning in the text.
 
 ### Transporting the stuff
