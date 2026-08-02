@@ -1,7 +1,7 @@
 name: Build and deploy the book
 on:
   push:
-    branches: ["revision/value-of-renewables"]
+    branches: ["main"]
     paths:
       - "without-hot-air/**"
       - "book/**"
@@ -33,3 +33,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./book/_book
           publish_branch: gh-pages
+          # The Next.js site in main.yml publishes to the root of gh-pages;
+          # the book lives under /book so the two do not clobber each other.
+          destination_dir: book
