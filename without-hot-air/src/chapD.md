@@ -39,75 +39,26 @@ Sugar beet, in the UK, delivers an impressive yield of 53 t per hectare per year
 
 ### Bioethanol from sugar cane
 
-energy density (kWh/kg)
-
-softwood
-
- – air dried
-
-4.4
-
- – oven dried
-
-5.5
-
-hardwood
-
- – air dried
-
-3.75
-
- – oven dried
-
-5.0
-
-white office paper
-
-4.0
-
-glossy paper
-
-4.1
-
-newspaper
-
-4.9
-
-cardboard
-
-4.5
-
-coal
-
-8
-
-straw
-
-4.2
-
-poultry litter
-
-2.4
-
-general indust’l waste
-
-4.4
-
-hospital waste
-
-3.9
-
-municipal solid waste
-
-2.6
-
-refuse-derived waste
-
-5.1
-
-tyres
-
-8.9
+| Material | Energy density (kWh/kg) |
+|---|---|
+| softwood |  |
+| – air dried | 4.4 |
+| – oven dried | 5.5 |
+| hardwood |  |
+| – air dried | 3.75 |
+| – oven dried | 5.0 |
+| white office paper | 4.0 |
+| glossy paper | 4.1 |
+| newspaper | 4.9 |
+| cardboard | 4.5 |
+| coal | 8 |
+| straw | 4.2 |
+| poultry litter | 2.4 |
+| general indust’l waste | 4.4 |
+| hospital waste | 3.9 |
+| municipal solid waste | 2.6 |
+| refuse-derived waste | 5.1 |
+| tyres | 8.9 |
 
 <span class="figurenumber"><span id="tableD.3">Table</span> D.3.</span> Calorific value of wood and similar things. Sources: Yaros (1997); Ucuncu (1993), Digest of UK Energy Statistics 2005.
 

@@ -117,25 +117,11 @@ When the stops are significantly more than 750 m apart, energy dissipation is dr
 2.  by reducing its cross-sectional area; or
 3.  by driving more slowly.
 
-Energy-per-distance
-
-Car at 110 km/h
-
-↔
-
-80 kWh/(100 km)
-
-Bicycle at 21 km/h
-
-↔
-
-2.4 kWh/(100 km)
-
-Planes at 900 km/h
-
-A380
-
-27 kWh/100 seat-km
+| Vehicle |  | Energy per distance |
+|---|---|---|
+| Car at 110 km/h | ↔ | 80 kWh/(100 km) |
+| Bicycle at 21 km/h | ↔ | 2.4 kWh/(100 km) |
+| Planes at 900 km/h | A380 | 27 kWh/100 seat-km |
 
 <span class="figurenumber">Table A.6.</span> Facts worth remembering: car energy consumption.
 
@@ -229,17 +215,11 @@ Volvo 740
 
 **0.8**
 
-Honda Civic
-
-0.68
-
-VW Polo GTi
-
-0.65
-
-Honda Insight
-
-0.47
+| Car | Drag coefficient |
+|---|---|
+| Honda Civic | 0.68 |
+| VW Polo GTi | 0.65 |
+| Honda Insight | 0.47 |
 
 <span class="figurenumber">Table A.7.</span> Drag coefficients and drag areas.
 

@@ -61,51 +61,14 @@ This is a tentative first guess, made without specifying any technical <span id=
 
 One way to extract tidal energy would be to build tide farms, just like wind farms. The first such underwater windmill, or "tidal-stream" generator, to be connected to the grid was a "300 kW" turbine, installed in 2003 near the northerly city of Hammerfest, Norway. Detailed power production results have not been published, and no-one has yet built a tide farm with more than one turbine, so we’re going to have to rely on physics and guesswork to predict how much power tide farms could produce. Assuming that the rules for laying out a sensible tide farm are similar to those for wind farms, and that the efficiency of the tide turbines will be like that of the best wind turbines, table 14.7 shows the power of a tide farm for a few tidal currents.
 
-speed
-
-power density
-
-(m/s)
-
-(knots)
-
-(W/m<sup>2</sup>)
-
-0.5
-
-1
-
-1
-
-1
-
-2
-
-8
-
-2
-
-4
-
-60
-
-3
-
-6
-
-200
-
-4
-
-8
-
-500
-
-5
-
-10
-
-1000
+| speed (m/s) | speed (knots) | power density (W/m<sup>2</sup>) |
+|---|---|---|
+| 0.5 | 1 | 1 |
+| 1 | 2 | 8 |
+| 2 | 4 | 60 |
+| 3 | 6 | 200 |
+| 4 | 8 | 500 |
+| 5 | 10 | 1000 |
 
 <span class="figurenumber">Table 14.7</span>. Tide farm power density (in watts per square metre of sea-floor) as a function of flow speed. (1 knot = 1 nautical mile per hour = 0.514 m/s.)
 

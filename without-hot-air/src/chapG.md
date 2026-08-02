@@ -206,51 +206,14 @@ Using this formula, table G.6 shows this tide farm power for a few tidal current
 
 *U*
 
-tide farm
-
-(m/s)
-
-(knots)
-
-power
-
-(W/m<sup>2</sup>)
-
-0.5
-
-1
-
-1
-
-1
-
-2
-
-8
-
-2
-
-4
-
-60
-
-3
-
-6
-
-200
-
-4
-
-8
-
-500
-
-5
-
-10
-
-1000
+| speed (m/s) | speed (knots) | power density (W/m<sup>2</sup>) |
+|---|---|---|
+| 0.5 | 1 | 1 |
+| 1 | 2 | 8 |
+| 2 | 4 | 60 |
+| 3 | 6 | 200 |
+| 4 | 8 | 500 |
+| 5 | 10 | 1000 |
 
 <span class="figurenumber">Table G.6.</span> Tide farm power density (in watts per square metre of sea-floor) as a function of flow speed *U*. (1 knot = 1 nautical mile per hour = 0.514 m/s.) The power density is computed using (*π*/200)<sup>1</sup>⁄<sub>2</sub>*ρU*<sup>3</sup> (equation (G.10)).
 
@@ -293,153 +256,15 @@ raw power
 
 *ω*
 
-N
-
-S
-
-N
-
-S
-
-(W/m<sup>2</sup>)
-
-(km<sup>2</sup>)
-
-(kWh/d/p)
-
-(m)
-
-(km)
-
-(kWh/d/p)
-
-1
-
-1.7
-
-3.1
-
-7
-
-400
-
-1.1
-
-30
-
-30
-
-2.3
-
-7.8
-
-2
-
-1.8
-
-3.2
-
-8
-
-350
-
-1.1
-
-30
-
-17
-
-1.5
-
-4.7
-
-3
-
-1.3
-
-2.3
-
-2.9
-
-1000
-
-1.2
-
-50
-
-30
-
-3.0
-
-9.3
-
-4
-
-1.7
-
-3.4
-
-9
-
-400
-
-1.4
-
-30
-
-20
-
-1.5
-
-6.3
-
-5
-
-1.7
-
-3.1
-
-7
-
-300
-
-0.8
-
-40
-
-10
-
-1.2
-
-4.0
-
-6
-
-5.0
-
-9.0
-
-170
-
-50
-
-3.5
-
-70
-
-10
-
-24
-
-78
-
-Total
-
-9
-
-(a)
-
-(b)
+| Region | *U* N (knots) | *U* S (knots) | power density (W/m<sup>2</sup>) | area (km<sup>2</sup>) | average power (kWh/d/p) | *d* (m) | *ω* (km) | raw power N (kWh/d/p) | raw power S (kWh/d/p) |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1.7 | 3.1 | 7 | 400 | 1.1 | 30 | 30 | 2.3 | 7.8 |
+| 2 | 1.8 | 3.2 | 8 | 350 | 1.1 | 30 | 17 | 1.5 | 4.7 |
+| 3 | 1.3 | 2.3 | 2.9 | 1000 | 1.2 | 50 | 30 | 3.0 | 9.3 |
+| 4 | 1.7 | 3.4 | 9 | 400 | 1.4 | 30 | 20 | 1.5 | 6.3 |
+| 5 | 1.7 | 3.1 | 7 | 300 | 0.8 | 40 | 10 | 1.2 | 4.0 |
+| 6 | 5.0 | 9.0 | 170 | 50 | 3.5 | 70 | 10 | 24 | 78 |
+| Total | 9 |  |  |  |  |  |  |  |  |
 
 <span class="figurenumber">Table G.8.</span> (a) Tidal power estimates assuming that stream farms are like wind farms. The power density is the average power per unit area of sea floor. The six regions are indicated in figure G.7. N = Neaps. S = Springs. (b) For comparison, this table shows the raw incoming power estimated using equation (G.1).
 
@@ -459,67 +284,14 @@ power density
 
 *R*<span class="smallfont1"><sub>1</sub></span> = 0.003
 
-(W/m<sup>2</sup>)
-
-0.5
-
-1
-
-1.25
-
-0.4
-
-1
-
-1
-
-2
-
-10
-
-3
-
-8
-
-2
-
-4
-
-80
-
-24
-
-60
-
-3
-
-6
-
-270
-
-80
-
-200
-
-4
-
-8
-
-640
-
-190
-
-500
-
-5
-
-10
-
-1250
-
-375
-
-1000
+| speed (m/s) | speed (knots) | *R*<sub>1</sub> = 0.01 | *R*<sub>1</sub> = 0.003 | tide farm (table G.6) |
+|---|---|---|---|---|
+| 0.5 | 1 | 1.25 | 0.4 | 1 |
+| 1 | 2 | 10 | 3 | 8 |
+| 2 | 4 | 80 | 24 | 60 |
+| 3 | 6 | 270 | 80 | 200 |
+| 4 | 8 | 640 | 190 | 500 |
+| 5 | 10 | 1250 | 375 | 1000 |
 
 <span class="figurenumber">Table G.9.</span> Friction power density *R*<sub>1</sub>*ρU*<sup>3</sup> (in watts per square metre of sea-floor) as a function of flow speed, assuming *R*<sub>1</sub> = 0.01 or 0.003. Flather (1976) uses *R*<sub>1</sub> = 0.0025–0.003; Taylor (1920) uses 0.002. (1 knot = 1 nautical mile per hour = 0.514 m/s.) The final column shows the tide farm power estimated in table G.6. For further reading see Kowalik (2004), Sleath (1984).
 

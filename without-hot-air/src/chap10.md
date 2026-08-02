@@ -88,71 +88,13 @@ Going on emotions alone, I would like to live in a country with virtually no car
 
 [^3]: *...deep offshore wind is at present not economically feasible.* Source: BritishWind Energy Association briefing document, September 2005, [<span class="websitetitle">www.bwea.com</span>](http://www.bwea.com/). Nevertheless, a deep offshore demonstration project in 2007 put two turbines adjacent to the Beatrice oil field, 22 km off the east coast of Scotland (figure 10.8). Each turbine has a "capacity" of 5 MW and sits in a water depth of 45 m. Hub height: 107 m; diameter 126 m. All the electricity generated will be used by the oil platforms. Isn’t that special\! The 10 MW project cost £30 million – this price-tag of £3 per watt (peak) can be compared with that of Kentish Flats, £1.2 per watt (£105 million for 90 MW). [<span class="websitetitle">www.beatricewind.co.uk</span>](http://www.beatricewind.co.uk/)
 
-Region
-
-depth 5 to 30 metres
-
-depth 5 to 30 metres
-
-area (km<sup>2</sup>)
-
-potential
-resource (kWh/d/p)
-
-area (km<sup>2</sup>)
-
-potential
-resource (kWh/d/p)
-
-North West
-
-3300
-
-6
-
-2000
-
-4
-
-Greater Wash
-
-7400
-
-14
-
-950
-
-2
-
-Thames Estuary
-
-2100
-
-4
-
-850
-
-2
-
-Other
-
-14000
-
-28
-
-45000
-
-87
-
-TOTAL
-
-27000
-
-52
-
-49000
-
-94
+| Region | depth 5 to 30 m: area (km<sup>2</sup>) | depth 5 to 30 m: potential resource (kWh/d/p) | deeper water: area (km<sup>2</sup>) | deeper water: potential resource (kWh/d/p) |
+|---|---|---|---|---|
+| North West | 3300 | 6 | 2000 | 4 |
+| Greater Wash | 7400 | 14 | 950 | 2 |
+| Thames Estuary | 2100 | 4 | 850 | 2 |
+| Other | 14000 | 28 | 45000 | 87 |
+| TOTAL | 27000 | 52 | 49000 | 94 |
 
 <span class="figurenumber">Table 10.7</span>. Potential offshore wind generation resource in proposed strategic regions, if these regions were *entirely filled* with wind turbines. From Dept. of Trade and Industry (2002b).
 

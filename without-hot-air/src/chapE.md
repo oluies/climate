@@ -38,86 +38,24 @@ There’s a worked example using this rule later.
 
 To work out the heat required to warm up incoming cold air, we need the heat capacity of air: 1.2 kJ/m<sup>3</sup>/K.
 
-U-values (W/m<sup>2</sup>/K)
-
-old
-buildings
-
-modern
-standards
-
-best
-methods
-
-Walls
-
-0.45-0.6
-
-0.12
-
- solid masonry wall
-
-2.4
-
- outer wall: 9 inch solid brick
-
-2.2
-
- 11 inch brick-block cavity wall, unfilled
-
-1.0
-
- 11 inch brick-block cavity wall, insulated
-
-0.6
-
-Floors
-
-0.45
-
-0.14
-
- suspended timber floor
-
-0.7
-
- solid concrete floor
-
-0.8
-
-Roofs
-
-0.25
-
-0.12
-
- flat roof with 25 mm insulation
-
-0.9
-
- pitched roof with 100 mm insulation
-
-0.3
-
-Windows
-
-1.5
-
- single-glazed
-
-5.0
-
- double-glazed
-
-2.9
-
- double-glazed, 20 mm gap
-
-1.7
-
- triple-glazed
-
-0.7-0.9
+| Element | old buildings | modern standards | best methods |
+|---|---|---|---|
+| **Walls** |  | 0.45-0.6 | 0.12 |
+| solid masonry wall | 2.4 |  |  |
+| outer wall: 9 inch solid brick | 2.2 |  |  |
+| 11 inch brick-block cavity wall, unfilled | 1.0 |  |  |
+| 11 inch brick-block cavity wall, insulated | 0.6 |  |  |
+| **Floors** |  | 0.45 | 0.14 |
+| suspended timber floor | 0.7 |  |  |
+| solid concrete floor | 0.8 |  |  |
+| **Roofs** |  | 0.25 | 0.12 |
+| flat roof with 25 mm insulation | 0.9 |  |  |
+| pitched roof with 100 mm insulation | 0.3 |  |  |
+| **Windows** |  | 1.5 |  |
+| single-glazed | 5.0 |  |  |
+| double-glazed | 2.9 |  |  |
+| double-glazed, 20 mm gap | 1.7 |  |  |
+| triple-glazed | 0.7-0.9 |  |  |
 
 <span class="figurenumber">Table E.2.</span> U-values of walls, floors, roofs, and windows.
 
@@ -731,35 +669,11 @@ dry
 
 *Peat soil*
 
-dry
-
-0.06
-
-0.58
-
-1.0
-
-0.7
-
-50% saturated
-
-0.29
-
-2.31
-
-1.1
-
-3.0
-
-100% saturated
-
-0.50
-
-4.02
-
-1.1
-
-5.3
+| Material | κ | *C*<sub>V</sub> | *z*<sub>0</sub> (m) | peak flux |
+|---|---|---|---|---|
+| dry | 0.06 | 0.58 | 1.0 | 0.7 |
+| 50% saturated | 0.29 | 2.31 | 1.1 | 3.0 |
+| 100% saturated | 0.50 | 4.02 | 1.1 | 5.3 |
 
 <span class="figurenumber"><span id="tableE.18">Table E.18</span></span>. Thermal conductivity and heat capacity of various materials and soil types, and the deduced length-scale *z*<sub>0</sub> = √(2κ/(*C*<sub>V</sub>*ω*)) and peak flux *A*√(*C*<sub>V</sub>*κω*) associated with annual temperature variations with amplitude *A* = 8.3 °C. The sandy and clay soils have porosity 0.4; the peat soil has porosity 0.8. [<span class="darkred">[1]</span>](#chEn01)
 

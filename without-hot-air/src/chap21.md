@@ -202,59 +202,21 @@ However, the ground is not a limitless source of heat. The heat has to come from
 
 In Britain, the main purpose of heat pumps would be to get heat into buildings in the winter. The ultimate source of this heat is the sun, which replenishes heat in the ground by direct radiation and by conduction through the air. The rate at which heat is sucked from the ground must satisfy two constraints: it must not cause the ground’s temperature to drop too low during the winter; and the heat sucked in the winter must be replenished somehow during the summer. If there’s any risk that the *natural* trickling of heat in the summer won’t make up for the heat removed in the winter, then the replenishment must be driven *actively* – for example by running the system in reverse in summer, putting heat down into the ground (and thus providing air-conditioning up top).
 
-area per person (m<sup>2</sup>)
-
-Bangalore
-
-37
-
-Manhattan
-
-39
-
-Paris
-
-40
-
-Chelsea
-
-66
-
-Tokyo
-
-72
-
-Moscow
-
-97
-
-Taipei
-
-104
-
-The Hague
-
-152
-
-San Francisco
-
-156
-
-Singapore
-
-156
-
-Cambridge MA
-
-164
-
-Sydney
-
-174
-
-Portsmouth
-
-213
+| Urban area | Area per person (m<sup>2</sup>) |
+|---|---|
+| Bangalore | 37 |
+| Manhattan | 39 |
+| Paris | 40 |
+| Chelsea | 66 |
+| Tokyo | 72 |
+| Moscow | 97 |
+| Taipei | 104 |
+| The Hague | 152 |
+| San Francisco | 156 |
+| Singapore | 156 |
+| Cambridge MA | 164 |
+| Sydney | 174 |
+| Portsmouth | 213 |
 
 <span class="figurenumber">Table 21.13</span>. Some urban areas per person.
 
