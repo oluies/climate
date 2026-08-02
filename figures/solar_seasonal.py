@@ -18,7 +18,7 @@ for p, d in df.groupby("place"):
 
 mean_all = df.wm2.mean()
 ax.axhline(100, color=RULE, lw=1.3, ls=(0, (5, 3)))
-ax.annotate("MacKay's 100 W/m² annual average for flat ground",
+ax.annotate("MacKay's 100 W/m² for flat ground",
             xy=(1.1, 100), xytext=(0, 6), textcoords="offset points",
             fontsize=9.5, color=RULE)
 

@@ -27,8 +27,7 @@ handles = [plt.Rectangle((0, 0), 1, 1, color=c) for c in COL.values()]
 ax.legend(handles, COL.keys(), frameon=False, fontsize=9, loc="lower right")
 ax.set_title("Sunshine falling on a horizontal surface, selected locations",
              loc="left", fontsize=12.5, fontweight="bold", pad=12)
-ax.annotate("The desert advantage is real but bounded: Ouarzazate has roughly twice\n"
-            "Edinburgh's sunlight, not ten times. Chapter 25 turns on that ratio.",
-            xy=(0.98, 0.055), xycoords="axes fraction", ha="right", va="bottom",
-            fontsize=9.5, color=MUTED)
+ax.annotate("The desert advantage is real but bounded: Ouarzazate has roughly twice Edinburgh's\n"
+            "sunlight, not ten times. Chapter 25 turns on that ratio.",
+            xy=(0, -0.115), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
 fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
