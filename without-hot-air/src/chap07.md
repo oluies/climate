@@ -191,9 +191,9 @@ We control the temperatures not only of the hot water and hot air with which we 
 
 In countries where the temperature gets above 30 °C, air-conditioning is viewed as a necessity, and the energy cost of delivering that temperature control can be large. However, this part of the book is about British energy consumption, and Britain’s temperatures provide little need for air- conditioning (figure 7.8).
 
-![](/img/without-hot-air/figure59.gif)
+![Cambridge daily temperature for 2006 and 2025, seven-day means with the daily range shaded, against the 15.5 degree heating threshold. The two years track closely; 2025 averages 11.6 against 11.1 in 2006.](/img/without-hot-air/fig-cambridge-temperature.svg)
 
-<span class="figurenumber">Figure 7.8</span>. Cambridge temperature in degrees Celsius, daily (red line), and half-hourly (blue line) during 2006.
+<span class="figurenumber">Figure 7.8</span>. Cambridge temperature: MacKay's 2006 against 2025. *Redrawn in the 2026 revision.* Heating degree days fell from **1890 to 1766**, about 7%, which is part of why British gas demand fell without anyone insulating anything — and a reminder that some of the apparent efficiency gain in the national statistics is weather. Summer still barely reaches the point where cooling would pay, so MacKay's judgement that Britain has little need of air-conditioning survives.[^camtemp]
 
 An economical way to get air-conditioning is an air-source heat pump. A window-mounted electric air-conditioning unit for a single room uses 0.6 kW of electricity and (by heat-exchanger) delivers 2.6 kW of cooling. To estimate how much energy someone might use in the UK, I assumed they might switch such an air-conditioning unit on for about 12 hours per day on 30 days of the year. On the days when it’s on, the air-conditioner uses 7.2 kWh. The average consumption over the whole year is <span class="red">0.6 kWh/d</span>.
 
@@ -239,9 +239,19 @@ The important change is not the number of kilowatt-hours of heat. It is that hea
 
 MacKay's 24 kWh/d of hot air is a fact about the building — its walls, its windows, the temperature difference across them. A gas boiler at about 90% efficiency needs roughly 27 kWh/d of gas to supply it. A heat pump does not make heat; it moves it, and at a seasonal performance factor of 3 it needs about **8 kWh/d of electricity** to deliver the same 24.
 
-Apply that across the chapter. The 36 kWh/d of hot water and hot air, delivered by heat pump rather than combustion, becomes about **12 kWh/d of electricity**; with the 1 kWh/d of cooling, the whole of this chapter falls from **37 kWh/d to roughly 13**.
+Apply that across the chapter. The 36 kWh/d of hot water and hot air, delivered by heat pump rather than combustion, becomes about **12 kWh/d of electricity**; with the 1 kWh/d of cooling, the whole of this chapter falls from **37 kWh/d to roughly 13**. At the 2.65 that British field trials actually measure rather than the 3.0 assumed here, it is nearer 15 — still a reduction by more than half.
 
 That is a bigger change to the British balance sheet than anything on the production side of this book, and it comes from replacing a machine rather than from building anything new. MacKay saw it — Chapter 21 makes the case for heat pumps directly, and this edition's Chapter M explains why the accounting works: a heat pump is charged only for the electricity it draws, while a boiler is charged for the whole of the fuel it burns.
+
+### The same machine, elsewhere in the house
+
+The heat pump has quietly taken over an appliance this chapter also costs: the tumble dryer.
+
+MacKay puts a tumble-dryer load at **3 kWh**, and advises using an airing cupboard instead at about 1.5 kWh. A heat-pump dryer recirculates its air and recovers the latent heat rather than venting it, and uses roughly **half the electricity per cycle** — about 265 kWh a year for an 8 kg machine against 561 kWh for a condenser. So the machine now does what MacKay's airing cupboard did, without the airing cupboard.
+
+The regulation went further than the market. **Since 1 July 2025 only heat-pump dryers may be placed on the EU market at all**, condenser and vented models having been designed out by the ecodesign efficiency floor, and the label was rebased from the old A+++ scale to a plain A–G.[^dryers]
+
+It is worth noticing what that implies for the argument above. The same technology that Britain is not installing in its boiler cupboards has already been installed, by regulation and without controversy, in its laundry rooms — because there the competing appliance also ran on electricity, so no price ratio stood in the way. The obstacle to heat pumps was never the heat pump.
 
 ### Europe has done it. Britain has not.
 
@@ -268,6 +278,18 @@ The chart sorts the argument out. **Sweden is at 1.3, the Netherlands 1.5, Franc
 The Nordic countries that lead on heat pumps mostly do not appear here at all, because they have little or no household gas distribution to compare against. That is the same point from the other side: their heat pumps are not competing with gas, and never were.
 
 This is chapter 28a's argument arriving in the boiler cupboard. The obstacle is not the technology and not the physics. It is that a country's tax and levy structure decides which kilowatt-hour is expensive, and Britain has chosen to load its levies onto the one that heat pumps run on.
+
+### How much worse, and for whom
+
+A review for the UK Collaborative Centre for Housing Evidence gathered every available British field trial and demonstrator project and reached the same conclusion by a different route, using the same measure — it calls it the electricity-to-gas price ratio, EtGPR — and it is worth quoting because it is more pessimistic than anything above.[^harrington]
+
+Its finding is that a heat pump saves money against an efficient gas boiler only if **the price ratio is no more than 3:1 and the unit achieves an SPF of at least 3.0**. Both conditions, not either. In Britain, where the ratio has historically sat above that, no field trial has yet demonstrated that heat pumps beat efficient gas boilers on running cost. In **typical existing housing a heat pump is about 36% more expensive to run**; even in the ideal case — a correctly sized unit reaching SPF 3.0 — it is about **9% more expensive**.
+
+Two details sharpen this. The first is that **SPF 3.0 is not what British installations achieve**. The Energy Saving Trust's monitoring of 700 heat pumps found a mean of **2.65 for air-source and 2.81 for ground-source**, and at the price ratio then prevailing the SPF needed merely to break even was **2.82**. The second is that reaching 3.0 presupposes a house at **EPC band C or better** — cavity and loft insulation, double glazing. Homes at band D and below are unlikely to get near it, and that is most of the British stock. The fabric comes first; the machine cannot rescue a leaky house.
+
+There are two ways out, and the report identifies both. One is the price ratio, which is policy. The other is that **adding solar panels and a battery flips the arithmetic even at British prices**, making the heat pump cheaper to run than the boiler. That is chapter 6's roof and chapter 28a's storage doing the same job from the household's side: the surplus that cannibalises the market price is worth most to whoever can consume it where it is made.
+
+The one genuinely encouraging trend in the report is the direction of travel. **Over twenty-five years heat pumps have steadily become more competitive** as the technology, the installation and the commissioning have improved — the air-source mean rose from 2.2 to 2.65 between the two Energy Saving Trust trials, and ground-source from 2.3–2.5 to 2.81. The machine is getting better at roughly the rate the argument needs. The price ratio is the part that is not moving.
 
 ### The standards moved faster than the stock
 
@@ -297,6 +319,12 @@ The caveat is the one MacKay would have insisted on. **Both of these govern new 
 
 [^ec5]: European Commission, "5 things you should know about heat pumps", 5 December 2025: <https://energy.ec.europa.eu/news/5-things-you-should-know-about-heat-pumps-2025-12-05_en>. Modern heat pumps three to five times more efficient than gas boilers; bill savings from 20% to over 60% depending on local prices, and up to 80% in the Netherlands replacing an old boiler; gas boilers remain competitive where electricity costs more than about three times gas; the electricity-to-gas price gap has narrowed across most EU countries since 2019; Finland has 524 heat pumps installed per 1000 households, which is a stock figure and not comparable with the sales-per-1000 figures above. On the grid, the Commission reckons 52 million heat pumps in Europe by 2030 would be about 5% of annual electricity demand and 9% at peak — the clearest available answer to the objection that the wires cannot take it. Price ratios in figure 7.12 are computed from Eurostat household electricity (band 2500–4999 kWh/yr) and gas (band 20–199 GJ/yr) prices for the second half of 2025, both including all taxes and levies; the UK is the Ofgem default-tariff cap for July–September 2026 at 26.11p and 7.33p per kWh, a ratio of 3.56, which was 4.30 on the April–June cap. A seasonal performance factor of 3 is used as the break-even; real installations vary with the building, the emitters and the installer, and a poorly commissioned system can fall well below it.
 
+[^harrington]: Nicholas Harrington, *The running cost of domestic heat pumps in the UK: a comprehensive evidence review and evaluation*, UK Collaborative Centre for Housing Evidence, University of Glasgow, March 2024: <https://housingevidence.ac.uk/wp-content/uploads/2024/03/The-running-cost-of-heat-pumps-v7.pdf>. Funded under the EPSRC FASHION project (EP/V042033/1) and peer reviewed. The 36% and 9% figures are running-cost comparisons against an efficient gas boiler, all else equal, and are sensitive to the price ratio assumed; they are not carbon comparisons, on which heat pumps win regardless. The Energy Saving Trust field-trial means quoted are from Lowe et al. (2017) analysing 700 heat pumps monitored between October 2013 and March 2015 under the Renewable Heat Premium Payment scheme, against the Trust's own earlier 2010 trial. Note that a running-cost disadvantage is not an argument against heat pumps on any other ground, and that the report's own conclusion is that the binding variable is the price ratio rather than the technology.
+
+[^dryers]: European Commission ecodesign and energy-labelling measures for household tumble dryers, applying from 1 July 2025: the efficiency floor admits only heat-pump machines to the EU market, and the label reverts to an A–G scale with consumption expressed per 100 drying cycles. Consumption figures — about 265 kWh a year for an 8 kg heat-pump dryer against 561 kWh for a comparable condenser — are manufacturer and label data on the standard test programme, which uses a cotton load at a defined moisture content; real households load, dry and sort differently, so the ratio travels better than the absolute numbers. See <https://energy.ec.europa.eu/news/new-measures-more-energy-efficient-household-tumble-dryers-1-july-2025-07-01_en>.
+
 [^epbd]: Directive (EU) 2024/1275, the recast Energy Performance of Buildings Directive, in force 28 May 2024: zero-emission new public buildings from 2028 and all new buildings from 2030, with no on-site fossil fuel use; an end to incentives for fossil-fuel boilers from January 2025 and a phase-out earmarked for 2040; transposition due by 29 May 2026. As a directive it binds member states to an outcome, not to a method, and national implementations differ.
 
 [^leed]: LEED v5, US Green Building Council, opened for registration 28 April 2025: roughly half of available points allocated to decarbonisation, with mandatory carbon, climate-resilience and human-impact assessments and a five-year update cycle. LEED is a voluntary certification scheme rather than a building code, and certification measures design intent and modelled performance, which is not the same as metered energy in use.
+
+[^camtemp]: Daily temperatures for 52.205 N, 0.119 E from the Open-Meteo archive, which serves the ERA5 reanalysis. Reanalysis is not a station record: it is a model reconstruction on a grid, so individual days will differ from what a Cambridge thermometer read. It is used here because it gives the same treatment to both years, which is what a comparison needs, where the Cambridge NIAB station record is monthly. Heating degree days are computed against a 15.5°C base, the convention in UK energy statistics, as the sum over the year of (15.5 − daily mean) where positive. Two years are two years and prove nothing about climate; the point of the figure is the shape of the demand, not a trend.
