@@ -20,8 +20,8 @@ for lab, pmax, area, c in MODS:
 
 for g, txt in [(1000, "bright sun"), (200, "bright but cloudy"), (100, "overcast")]:
     ax.axvline(g, color="#d8d8d4", lw=0.9, zorder=0)
-    ax.annotate(txt, xy=(g, 470), xytext=(-5, 0), textcoords="offset points",
-                rotation=90, ha="right", va="top", fontsize=8.5, color=MUTED)
+    ax.annotate(txt, xy=(g, 12), xytext=(-5, 0), textcoords="offset points",
+                rotation=90, ha="right", va="bottom", fontsize=8.5, color=MUTED)
 
 ax.set_xlabel("light intensity (W/m$^2$)", fontsize=10.5)
 ax.set_ylabel("module power output (W)", fontsize=10.5)
@@ -30,9 +30,8 @@ for s in ("top", "right"): ax.spines[s].set_visible(False)
 ax.legend(frameon=False, fontsize=9.5, loc="upper left")
 ax.set_title("Module power against light intensity, at 25 °C",
              loc="left", fontsize=12.5, fontweight="bold", pad=12)
-ax.annotate("Eighteen years and eight percentage points of efficiency later, the shape is\n"
-            "unchanged: output is proportional to sunlight. A better panel raises the line;\n"
-            "it does not bend it. At a tenth of full sun you get about a tenth of the power.",
-            xy=(0.985, 0.30), xycoords="axes fraction", ha="right", va="top",
-            fontsize=9.5, color=MUTED)
+ax.annotate("Eighteen years and eight percentage points of efficiency later the shape is unchanged: output is\n"
+            "proportional to sunlight. A better panel raises the line; it does not bend it. At a tenth of full\n"
+            "sun you get about a tenth of the power.",
+            xy=(0, -0.19), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
 fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])

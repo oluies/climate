@@ -14,21 +14,19 @@ for s, d in df.groupby("station"):
     ax.plot(d.year, d.fraction * 100, color=COL[s], lw=1.0, alpha=0.45)
     ax.plot(d.year, d.fraction.rolling(10, center=True).mean() * 100,
             color=COL[s], lw=2.4, label=f"{s} (10-year mean)")
-    last = d.iloc[-1]
-    ax.text(last.year + 1, last.fraction * 100, s, color=COL[s], fontsize=9.5, va="center")
 
 ax.set_ylabel("sunshine as a share of daylight hours", fontsize=10.5)
 ax.set_xlabel("")
 ax.set_ylim(20, 50)
 ax.yaxis.set_major_formatter(lambda v, _: f"{v:.0f}%")
-ax.set_xlim(int(df.year.min()), int(df.year.max()) + 11)
+ax.set_xlim(int(df.year.min()), int(df.year.max()) + 1)
 ax.grid(axis="x", visible=False)
 for s in ("top", "right"): ax.spines[s].set_visible(False)
 ax.legend(frameon=False, fontsize=9, loc="lower left")
 ax.set_title("Sunniness: hours of sunshine against hours of daylight",
              loc="left", fontsize=12.5, fontweight="bold", pad=12)
-ax.annotate("MacKay quoted 34% for Cambridge, and the Cambridge record agrees. That station\n"
-            "stopped reporting sunshine in 2010; Oxford's near-century series runs higher and\n"
-            "has been rising, reaching 43% in 2025.",
-            xy=(0.03, 0.955), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
+ax.annotate("MacKay quoted 34% for Cambridge, and the Cambridge record agrees, averaging 34.2%. That station\n"
+            "stopped reporting sunshine in 2010; Oxford's near-century series runs a little higher at 35.4% and\n"
+            "has risen lately, reaching 43% in 2025. Thin lines are single years, thick lines ten-year means.",
+            xy=(0, -0.155), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
 fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])

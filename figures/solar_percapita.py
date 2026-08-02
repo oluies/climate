@@ -43,7 +43,7 @@ ax.grid(axis="x", visible=False)
 for s in ("top", "right"): ax.spines[s].set_visible(False)
 ax.set_title(f"Solar electricity per person, {first}–{last}",
              loc="left", fontsize=12.5, fontweight="bold", pad=12)
-ax.annotate("Nobody has yet reached the output MacKay assigned to roofs alone,\n"
-            "and his 50 kWh/d solar farm is ten times above the top of this chart.",
-            xy=(0.03, 0.93), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
+ax.annotate("Nobody has yet reached the output MacKay assigned to roofs alone, and his 50 kWh/d\n"
+            "solar farm is ten times above the top of this chart.",
+            xy=(0, -0.135), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
 fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
