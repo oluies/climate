@@ -14,12 +14,13 @@ NAME = {"AT":"Austria","BE":"Belgium","BG":"Bulgaria","CZ":"Czechia","DK":"Denma
         "TR":"Türkiye","UA":"Ukraine","MD":"Moldova","MK":"North Macedonia",
         "BA":"Bosnia","ME":"Montenegro","GE":"Georgia","AL":"Albania","XK":"Kosovo",
         "IS":"Iceland","LI":"Liechtenstein","MT":"Malta","CY":"Cyprus"}
-SPF = 3.0                       # a typical modern installation
+SPF = 3.0        # the "ideal" case: a well-sized unit in an EPC-C-or-better home
+MEASURED = 2.65  # mean SPF actually measured for air-source units, EST RHPP field trial
 df = pd.read_csv(sys.argv[1])
 df = df[df.country.isin(NAME)].copy()
 df["name"] = df.country.map(NAME)
 df = df.sort_values("ratio")
-col = [WIN if r < SPF else LOSE for r in df.ratio]
+col = [WIN if r < MEASURED else LOSE for r in df.ratio]
 
 sns.set_theme(style="whitegrid", rc={"grid.color": "#ededea", "axes.edgecolor": "#c9c9c4"})
 fig, ax = plt.subplots(figsize=(8.6, 0.28 * len(df) + 2.2))
@@ -30,6 +31,10 @@ for b, v in zip(bars, df.ratio):
 
 ax.axvspan(3, 5, color=BAND, alpha=0.16, zorder=0)
 ax.axvline(SPF, color="#161d1b", lw=1.3, zorder=1)
+ax.axvline(MEASURED, color="#161d1b", lw=1.1, ls=(0, (4, 3)), zorder=1)
+ax.annotate("measured UK\naverage, 2.65", xy=(MEASURED, len(df) - 0.2),
+            xytext=(-6, 0), textcoords="offset points", ha="right", va="bottom",
+            fontsize=8.5, color=MUTED)
 # Top rows are the shortest bars, so the right-hand side is clear up there.
 ax.annotate("a heat pump at SPF 3\nbreaks even here", xy=(SPF, 3.0),
             xytext=(-6, 0), textcoords="offset points", ha="right",
@@ -44,14 +49,15 @@ for s in ("top", "right", "left"): ax.spines[s].set_visible(False)
 ax.tick_params(axis="y", length=0, labelsize=8.5)
 ax.invert_yaxis()
 h = [plt.Rectangle((0, 0), 1, 1, color=c) for c in (WIN, LOSE)]
-ax.legend(h, ["Heat pump cheaper to run than gas", "Gas cheaper"],
+ax.legend(h, ["Heat pump cheaper at the measured SPF of 2.65", "Gas cheaper"],
           frameon=False, fontsize=9, loc="upper right", bbox_to_anchor=(1, 0.93))
-n_win = int((df.ratio < SPF).sum())
+n_win = int((df.ratio < MEASURED).sum())
 ax.set_title("Where a heat pump is cheaper to run than a gas boiler",
              loc="left", fontsize=12.5, fontweight="bold", pad=12)
-ax.annotate(f"A heat pump wins when its seasonal performance factor beats the price ratio. At a typical SPF of 3 it\n"
-            f"is cheaper in {n_win} of {len(df)} countries. The question is not the machine's efficiency — that is settled —\n"
-            f"but what a country charges for a kilowatt-hour of electricity against one of gas.",
+ax.annotate(f"A heat pump wins when its seasonal performance factor beats the price ratio. At the 2.65 actually measured\n"
+            f"across UK field trials it is cheaper in {n_win} of {len(df)} countries; at the 3.0 of a well-sized unit in a well-insulated\n"
+            f"house, in {int((df.ratio < SPF).sum())}. The question is not the machine's efficiency but what a country charges for a\n"
+            f"kilowatt-hour of electricity against one of gas.",
             xy=(0, -0.055 - 2.4 / len(df)), xycoords="axes fraction", va="top",
             fontsize=9.5, color=MUTED)
 fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")

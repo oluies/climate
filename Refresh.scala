@@ -981,3 +981,38 @@ def chapter07(): Unit = {
   println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
   println("  python figures/heatpump_breakeven.py data-refresh/heatpump-breakeven.csv without-hot-air/Images/fig-heatpump-breakeven.svg")
 }
+
+// ---- Figure 7.8: Cambridge daily temperature, MacKay's 2006 against now ----
+// Open-Meteo's ERA5 reanalysis archive: free, no key, and consistent between
+// the two years, which matters more here than station-exact values.
+@main
+def chapter07Temp(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val st = conn.createStatement()
+  val out = new StringBuilder; out ++= "year,day,tmean,tmax,tmin\n"
+  for (y <- Seq(2006, 2025)) {
+    val f = dir / s"cambridge-temp-$y.json"
+    if (!os.exists(f)) os.write.over(f, requests.get(
+      "https://archive-api.open-meteo.com/v1/archive?latitude=52.205&longitude=0.119" +
+      s"&start_date=$y-01-01&end_date=$y-12-31" +
+      "&daily=temperature_2m_mean,temperature_2m_max,temperature_2m_min&timezone=Europe%2FLondon",
+      readTimeout = 90000).text())
+    val rs = st.executeQuery(
+      s"""SELECT generate_subscripts(daily.temperature_2m_mean, 1) AS d,
+                 unnest(daily.temperature_2m_mean) AS tmean,
+                 unnest(daily.temperature_2m_max)  AS tmax,
+                 unnest(daily.temperature_2m_min)  AS tmin
+          FROM read_json_auto('${f.toString.replace("'", "''")}')""")
+    var n = 0; var sum = 0.0
+    while (rs.next()) {
+      out ++= f"$y,${rs.getInt(1)},${rs.getDouble(2)}%.2f,${rs.getDouble(3)}%.2f,${rs.getDouble(4)}%.2f\n"
+      sum += rs.getDouble(2); n += 1
+    }
+    println(f"$y: $n days, annual mean ${sum / n}%.2f C")
+  }
+  conn.close()
+  os.write.over(dir / "cambridge-temperature.csv", out.toString)
+  println("wrote data-refresh/cambridge-temperature.csv")
+}
