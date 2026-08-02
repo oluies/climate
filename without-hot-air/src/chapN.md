@@ -59,6 +59,20 @@ The catastrophe did not arrive either. The gap he identified was real — mining
 
 This is the same lesson as chapter 23's, arrived at from the other direction. Predicting when a resource peaks means predicting the behaviour of the people who own it, and that is a harder problem than estimating what is in the ground. Both papers did competent arithmetic. The one that was right about the numbers was the one that modelled the market rather than the rock.
 
+## Exports fall faster than production
+
+There is a piece of arithmetic that changes the shape of every number above, and it is not in the reserves tables because it is not about geology.
+
+An exporting country consumes some of what it produces. When its production begins to decline, its domestic consumption usually does not — it is a country getting richer, buying cars. **Exports are the difference between two quantities moving in opposite directions, and a difference declines much faster than either term.**
+
+Jeffrey Brown set this out as the **Export Land Model**. Take a country at its production peak that consumes half of what it produces, then let production fall 5% a year while domestic consumption rises 2.5% a year. Its exports do not decline by 5% a year. They reach **zero in nine years**.
+
+Indonesia did it faster. From its 1997 peak, production fell 3.9% a year — gentler than the model — while domestic consumption grew 4.1%. Net exports reached zero in **seven years**, and a founding member of OPEC became an oil importer.
+
+The consequence for an importing country like Britain is that the reserves-to-production ratios in the first table are the wrong numbers to be reassured by. What reaches the market is not world production but world *net exports*, and that quantity can be falling while production is flat. Brown and Foucher argued that global net exports had already peaked in 2006, which is a much sharper claim than peak production and rather harder to dismiss.
+
+The same argument does not transfer cleanly to uranium, and it is worth saying why. Kazakhstan does not consume its own uranium in any quantity; there is no domestic-demand term to eat the exports. Uranium's version of the problem is political rather than arithmetical, and that is the subject of the next section.
+
 ## The constraint that actually binds
 
 Which brings us to the thing this chapter exists to say, and it is not about geology.
@@ -81,11 +95,39 @@ Set that beside chapter L's finding that China refines over 90% of the world's g
 
 Nuclear power is often argued for on energy-security grounds — a fuel you can stockpile for years, unlike gas. That argument is sound and it is worth noticing that it is an argument about *storage*, not about *sourcing*. On sourcing, a British or European nuclear programme is more exposed to Central Asian politics than a gas plant is to Norwegian.
 
+### 2026 supplied the demonstration
+
+While this edition was being written, the argument stopped being hypothetical twice in one year.
+
+In **January 2026** a United States military operation removed Nicolás Maduro from Venezuela — a country sitting on some of the largest proved oil reserves in the world. The market barely moved, for the instructive reason that Venezuela had already ceased to matter as a supplier: production under a million barrels a day, exports around half a million, against world consumption above a hundred million. A country can hold enormous reserves and be irrelevant to supply.
+
+In **February 2026** the more serious case arrived. United States and Israeli strikes on Iran were followed by the closure of the **Strait of Hormuz**, through which roughly a fifth of world oil trade passes. The International Energy Agency described what followed as the largest supply disruption in the history of the oil market. Brent rose about 10–13% within days, the war ran for nearly four months, and a memorandum of understanding on 17 June reopened the strait — after which the ceasefire lapsed again and prices went back above $100.[^y2026]
+
+Note what the numbers did and did not do. A fifth of world oil trade stopped moving and the price rose by a tenth, not by a multiple, because there was a supply glut to absorb it. Reserves in the ground did not change at all. Neither did the reserves-to-production ratio. The thing that changed was whether a ship could sail through a strait, and no resource table in this chapter has a column for that.
+
+### Who is preparing for it
+
+The two largest economies have drawn opposite conclusions, and their inventories say so plainly.
+
+The **United States** holds its Strategic Petroleum Reserve at about **316 million barrels** against an authorised capacity of 714 million — the lowest level since 1983, after some 352 million barrels were withdrawn over four years, including a 172-million-barrel release authorised in March 2026 during the Iran war.
+
+**China** now holds the largest emergency stocks in the world: total crude inventories estimated near **1.3 billion barrels**, of which perhaps 400–500 million is the strategic reserve proper, and it is still building — at least 169 million barrels of new capacity across eleven sites, with a stated intention to take state reserves past a billion barrels, framed explicitly as three months of net import cover.
+
+So one country has spent its buffer and the other has been accumulating one. Whatever else that is, it is a judgement about the next twenty years being made in physical barrels rather than in forecasts, and it is the clearest available evidence of what large states actually expect. MacKay's arithmetic can tell you how much energy a country needs. It cannot tell you that China has been quietly buying three months of insurance while America sold its own.
+
+[^y2026]: The Venezuela intervention of January 2026 and the Iran war of February to June 2026, including the closure of the Strait of Hormuz and the IEA's characterisation of it as the largest supply disruption in the history of the oil market. Strategic reserve figures: US Department of Energy and EIA for the SPR, including the 172-million-barrel release authorised in March 2026; Chinese inventory estimates are third-party and EIA-derived, since China does not publish strategic reserve volumes, and the split between strategic and commercial stocks is uncertain. These are recent and contested events and the figures should be expected to move.
+
 ## The shape of the answer
 
 Put the four resources together and the same conclusion emerges as in chapter 23. There is enough of all of them for the period anyone is planning over. Oil and gas have about half a century of proved reserves and have had about half a century for decades; coal has more than a century; uranium has roughly ninety years, or effectively unlimited if breeders ever work.
 
-None of them will be exhausted. Each will instead be abandoned, priced out, restricted, or — the possibility this chapter adds — become unavailable for reasons that have nothing to do with what is in the ground. Running out was the wrong thing to worry about. It was, however, a very good way of getting people to think about the numbers, which is what this book is for.
+None of them will be exhausted. Each will instead be abandoned, priced out, restricted, or — the possibility this chapter adds — become unavailable for reasons that have nothing to do with what is in the ground.
+
+That last is the one worth carrying away, because it is the one this book's method is least equipped to see. A resource table answers *how much is left*. The Export Land Model answers *how much of it reaches the market*, which is a smaller and faster-moving quantity. Hormuz answers *whether it can physically get here this month*. And the strategic reserves answer the question underneath all of them: whether you have the money, the ships and the storage to be the customer who gets served.
+
+The honest summary is the one in the question this chapter was asked to address. It is not only what is left. It is who has it, and whether they will sell it to us — and the answer to that is probably yes, at a price, until the week it is no.
+
+Running out was the wrong thing to worry about. It was, however, a very good way of getting people to think about the numbers, which is what this book is for.
 
 [^dittmar]: Michael Dittmar, "The end of cheap uranium", *Science of the Total Environment* 461–462 (2013) 792–798, <https://doi.org/10.1016/j.scitotenv.2013.04.035>. The IAEA projection is *Analysis of Uranium Supply to 2050*, IAEA, 2001. Production figures are the World Nuclear Association's compilation: 60 342 t (2015), 63 207 (2016), 60 462 (2017), 54 154 (2018), 54 742 (2019), 47 731 (2020), 47 805 (2021), 49 614 (2022), 54 433 (2023), 60 213 (2024). Mining covered 74% of reactor requirements in 2020 and 90% in 2024.
 
