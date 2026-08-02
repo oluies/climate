@@ -453,9 +453,11 @@ window.Quarto = {
    
   <ul>
   <li><a href="#the-measure" id="toc-the-measure" class="nav-link active" data-scroll-target="#the-measure">The measure</a></li>
-  <li><a href="#why-the-numbers-disagree-so-violently" id="toc-why-the-numbers-disagree-so-violently" class="nav-link" data-scroll-target="#why-the-numbers-disagree-so-violently">Why the numbers disagree so violently</a></li>
-  <li><a href="#the-direction-of-travel" id="toc-the-direction-of-travel" class="nav-link" data-scroll-target="#the-direction-of-travel">The direction of travel</a></li>
-  <li><a href="#the-threshold-argument-and-what-is-wrong-with-it" id="toc-the-threshold-argument-and-what-is-wrong-with-it" class="nav-link" data-scroll-target="#the-threshold-argument-and-what-is-wrong-with-it">The threshold argument, and what is wrong with it</a></li>
+  <li><a href="#the-first-boundary-where-the-fuel-gets-used" id="toc-the-first-boundary-where-the-fuel-gets-used" class="nav-link" data-scroll-target="#the-first-boundary-where-the-fuel-gets-used">The first boundary: where the fuel gets used</a></li>
+  <li><a href="#the-second-boundary-what-scale-you-measure-at" id="toc-the-second-boundary-what-scale-you-measure-at" class="nav-link" data-scroll-target="#the-second-boundary-what-scale-you-measure-at">The second boundary: what scale you measure at</a></li>
+  <li><a href="#harmonised-values" id="toc-harmonised-values" class="nav-link" data-scroll-target="#harmonised-values">Harmonised values</a></li>
+  <li><a href="#what-storage-does-to-the-answer" id="toc-what-storage-does-to-the-answer" class="nav-link" data-scroll-target="#what-storage-does-to-the-answer">What storage does to the answer</a></li>
+  <li><a href="#societal-eroi-and-the-threshold-argument" id="toc-societal-eroi-and-the-threshold-argument" class="nav-link" data-scroll-target="#societal-eroi-and-the-threshold-argument">Societal EROI, and the threshold argument</a></li>
   <li><a href="#back-to-the-car" id="toc-back-to-the-car" class="nav-link" data-scroll-target="#back-to-the-car">Back to the car</a></li>
   <li><a href="#notes-and-further-reading" id="toc-notes-and-further-reading" class="nav-link" data-scroll-target="#notes-and-further-reading">Notes and further reading</a></li>
   </ul>
@@ -488,55 +490,163 @@ window.Quarto = {
 <p><strong>What about the energy-cost of producing the car’s fuel?</strong></p>
 <p>Good point. When I estimate the energy consumed by a particular activity, I tend to choose a fairly tight “boundary” around the activity. […] It’s been estimated that making each unit of petrol requires an input of 1.4 units of oil and other primary fuels.</p>
 </blockquote>
-<p>That is the honest admission of a book built on tight boundaries, and it points at a whole literature. This chapter is that literature’s technical partner, in the same way that chapter A partners chapter 3 and chapter C partners chapter 5.</p>
+<p>That is the honest admission of a book built on tight boundaries, and it points at a whole literature. This chapter is that literature’s technical partner, in the same way that chapter A partners chapter 3 and chapter C partners chapter 5. It turns out that MacKay’s instinct — that the boundary is where the difficulty lives — is exactly right, and that the field spent two decades discovering it.</p>
 <section id="the-measure" class="level2">
 <h2 class="anchored" data-anchor-id="the-measure">The measure</h2>
 <p><strong>Energy return on investment</strong> is the ratio of energy delivered to energy spent getting it:</p>
 <p><span class="math display">\[
 \text{EROI} = \frac{\text{energy delivered}}{\text{energy required to deliver it}}
 \]</span></p>
-<p>Below 1 the thing is not an energy source at all; it is an energy sink that happens to move energy from one form to another. The concept was made quantitative by Charles Hall in the 1970s and reached a wide audience through a paper in <em>Science</em> in 1984.</p>
-<p>The attraction is obvious. A society does not run on the energy it extracts; it runs on what is left after extraction has taken its cut. If that cut grows, the same gross production supports less. MacKay’s stacks count gross energy at a tight boundary, and EROI is the correction that boundary omits.</p>
+<p>Below 1 the thing is not an energy source at all. The concept was made quantitative by Charles Hall in the 1970s and reached a wide audience through a paper in <em>Science</em> in 1984.</p>
+<p>The attraction is obvious. A society does not run on the energy it extracts; it runs on what is left after extraction has taken its cut. MacKay’s stacks count gross energy at a tight boundary, and EROI is the correction that boundary omits.</p>
+<p>The difficulty is that published EROI values for the same fuel differ by more than an order of magnitude, and the differences are mostly not measurement error. They are boundary choices, of two distinct kinds.</p>
 </section>
-<section id="why-the-numbers-disagree-so-violently" class="level2">
-<h2 class="anchored" data-anchor-id="why-the-numbers-disagree-so-violently">Why the numbers disagree so violently</h2>
-<p>Here is the difficulty, and this chapter would be dishonest to bury it. Published EROI values for the same fuel differ by more than an order of magnitude, and the differences are mostly not measurement error. They are boundary choices.</p>
-<p>Does the “investment” include the energy to build the drilling rig? The steel mill that made the rig? The roads to the refinery? Each answer is defensible and each gives a different number. Brockway and colleagues put the problem sharply in 2019 by pointing out the “apples and oranges” character of the commonest comparison of all: the EROI of oil measured at the wellhead against that of electricity from a wind turbine. One is a raw fuel needing refining and a heat engine; the other is already the finished product.</p>
-<p><strong>But the deeper trap is scale, and it is not widely understood.</strong> Murphy and Carbajales-Dale showed that two quantities routinely both called EROI are different measures.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The first is a <em>facility</em> ratio: total energy a plant delivers over its life, divided by the energy it took to build and run. The second is an <em>industry or regional</em> ratio: energy delivered by a whole sector this year, divided by energy invested in that sector this year. They propose calling the second one <strong>power return on investment</strong>, PROI, and the distinction matters enormously — because a growing industry is always building plants that have not yet delivered anything.</p>
-<p>Their worked example should be read twice. In 2018, onshore wind had a <strong>facility-scale EROI of over 70</strong>. The same technology, measured as a growing global industry, had a <strong>PROI of about 25</strong>. Nothing about the turbines differed. The ratio was depressed purely because the industry was expanding, so a large share of that year’s energy investment was going into machines not yet generating. The two figures converge only as growth approaches zero.</p>
-<p>This has a consequence the peak-oil literature never had to face. <strong>A rapidly growing energy industry is penalised by industry-scale net-energy accounting, and a stagnant one is flattered.</strong> Any comparison that puts a fast-growing renewable sector against a mature oil industry on this basis is measuring the growth, not the technology.</p>
-<p>So read the table below as a rough ordering of facility-scale values, not as measurements, and not as a like-for-like comparison.</p>
+<section id="the-first-boundary-where-the-fuel-gets-used" class="level2">
+<h2 class="anchored" data-anchor-id="the-first-boundary-where-the-fuel-gets-used">The first boundary: where the fuel gets used</h2>
+<p>Most quoted EROI figures are measured <strong>at the point of extraction</strong> — at the wellhead or the pithead. But nobody burns crude oil. Between the wellhead and the tank sit transmission, refining and distribution, each of which costs energy, and the fuel that finally does work is a fraction of what came out of the ground.</p>
+<p>Murphy, Raugei, Carbajales-Dale and Rubio Estrada argue that this makes almost every published comparison invalid, and they demonstrate why with three hypothetical resources:<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Resource</th>
+<th>EROI at point of extraction</th>
+<th>EROI at point of use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PES1</td>
+<td>100</td>
+<td><strong>10</strong></td>
+</tr>
+<tr class="even">
+<td>PES2</td>
+<td>50</td>
+<td><strong>9.1</strong></td>
+</tr>
+<tr class="odd">
+<td>PES3</td>
+<td>25</td>
+<td><strong>7.7</strong></td>
+</tr>
+</tbody>
+</table>
+<p>A resource that looks four times better than another at the wellhead is 30% better at the tank. Once the downstream stages dominate, the headline number stops carrying information. This is precisely MacKay’s query, stated as a general result: the energy cost of producing the fuel is not a small correction, it is most of the answer.</p>
 </section>
-<section id="the-direction-of-travel" class="level2">
-<h2 class="anchored" data-anchor-id="the-direction-of-travel">The direction of travel</h2>
-<p>Two things in that table matter more than the levels.</p>
-<p><strong>Fossil EROI is falling, and has been for a century.</strong> Early conventional oil is often quoted at something like 100:1 — the gushers of the 1920s returned enormous energy for very little. Estimates for recent conventional oil cluster far lower, and the unconventional resources that now supply the growth are lower again: oil sands near 5, oil shale barely above 1. One widely cited series has all liquid fuels falling from about 44 in 1950 towards single figures by mid-century, and natural gas from about 140 in 1950 to under 20. The resource is not running out in the sense chapter N examines; it is getting more expensive in the only currency that ultimately matters.</p>
-<p><strong>Renewable EROI has risen past much of it.</strong> This is the reversal that dates the peak-oil literature most sharply. When these arguments were formed, solar’s EROI was genuinely marginal; modern crystalline silicon in a sunny location repays its energy in one to four years against a thirty-year life. Wind was always respectable and is now comfortably above oil sands and arguably above current conventional oil.</p>
-<p>There is a real dispute underneath that cheerfulness, and it is about intermittency. A fair comparison should include the storage or overbuild that makes a variable source dispatchable. Palmer set out a framework for doing this, building on the metric <strong>energy stored on invested</strong> — the electricity a storage device handles over its life, divided by the energy embodied in building it — and computing a system-level ratio in which the denominator carries both the generators and their storage.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<p>His central finding is the one worth carrying away, because it is a shape rather than a number: <strong>storage and overbuild show marked diminishing returns as the share of variable generation rises.</strong> The first units of storage buy a great deal of usable energy; each subsequent unit buys less, because it is used less often. That is why “what is the EROI of wind?” has no single answer even in principle — it depends on how much wind is already there, and the honest form of the question is what the whole system returns at a given penetration.</p>
+<section id="the-second-boundary-what-scale-you-measure-at" class="level2">
+<h2 class="anchored" data-anchor-id="the-second-boundary-what-scale-you-measure-at">The second boundary: what scale you measure at</h2>
+<p>Michael Carbajales-Dale identified a different trap, and it is not widely understood.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Two quantities are routinely both called EROI. The first is a <em>facility</em> ratio: energy a plant delivers over its life, divided by the energy to build and run it. The second is an <em>industry</em> ratio: energy delivered by a sector this year, divided by energy invested in that sector this year. He proposes calling the second <strong>power return on investment</strong>, PROI.</p>
+<p>His example should be read twice. In 2018 onshore wind had a <strong>facility-scale EROI of over 70</strong>. The same technology as a growing global industry had a <strong>PROI of about 25</strong>. Nothing about the turbines differed. The ratio was depressed purely because the industry was expanding, so much of that year’s investment sat in machines not yet generating. The two converge only as growth approaches zero.</p>
+<p>The consequence is uncomfortable for anyone quoting these numbers in an argument. <strong>Industry-scale net-energy accounting penalises fast-growing sectors and flatters stagnant ones.</strong></p>
 </section>
-<section id="the-threshold-argument-and-what-is-wrong-with-it" class="level2">
-<h2 class="anchored" data-anchor-id="the-threshold-argument-and-what-is-wrong-with-it">The threshold argument, and what is wrong with it</h2>
-<p>The most consequential claim in this literature is that a society needs a minimum EROI to function: that below about 3:1 a fuel cannot even sustain its own supply chain, that around 5:1 is the floor for a functioning economy, and that something like 12–13:1 is needed to support the surplus that pays for education, medicine and the arts.</p>
-<p>It is a compelling argument and it should be treated carefully, for two reasons. The thresholds are derived rather than observed — no society has been run at a controlled EROI to see what breaks. And the calculation is exquisitely sensitive to the boundary problem above: a threshold of 12 computed on one boundary and a fuel EROI of 8 computed on another tell you nothing at all.</p>
-<p>What survives is the qualitative point, and it is worth having in this book. <strong>Gross energy production is the wrong number.</strong> A country whose oil comes from tar sands at an EROI of 5 must produce far more crude to deliver the same useful energy than one drawing from conventional fields at 30 — and that extra production appears in the statistics as economic activity, as employment, and as emissions.</p>
+<section id="harmonised-values" class="level2">
+<h2 class="anchored" data-anchor-id="harmonised-values">Harmonised values</h2>
+<p>With both corrections applied — everything measured at point of use, on a common method — the ordering is not the one the older literature reports.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Fuel or source</th>
+<th>EROI at point of use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Photovoltaics, wind, hydropower</td>
+<td><strong>at or above 10</strong></td>
+</tr>
+<tr class="even">
+<td>Hard coal</td>
+<td>8.8</td>
+</tr>
+<tr class="odd">
+<td>Natural gas</td>
+<td>~5.6 or below</td>
+</tr>
+<tr class="even">
+<td>Petroleum oil (median)</td>
+<td><strong>4.2</strong></td>
+</tr>
+<tr class="odd">
+<td>Biodiesel, bioethanol, oil-sands petrol</td>
+<td>below 5</td>
+</tr>
+<tr class="even">
+<td>Wood pellets</td>
+<td>1.6</td>
+</tr>
+</tbody>
+</table>
+<p>Two entries deserve a note. Locally-sourced woodchips come out at 32, but only because that particular supply chain is short and simple; wood pellets, which need drying and pressing, manage 1.6, and the authors warn against reading the first as representative of biomass generally. And maize bioethanol reaches at best 1.6 — a fuel that barely returns the energy put into it.</p>
+<p>The headline result is that <strong>oil is below ten and renewable electricity is above it.</strong> That reverses the comparison the peak-oil literature was built on, and it does so not by discovering anything new about turbines but by measuring oil where it is actually used rather than where it comes out of the ground.</p>
+<p>The authors note the associated rule of thumb, the <strong>net energy cliff</strong>: at an EROI of 10, 90% of the delivered energy is net. Below that the fraction falls away sharply, which is why the region between about 10 and 1 matters so much more than the difference between 50 and 100.</p>
+</section>
+<section id="what-storage-does-to-the-answer" class="level2">
+<h2 class="anchored" data-anchor-id="what-storage-does-to-the-answer">What storage does to the answer</h2>
+<p>Renewables are variable, so a fair comparison should include the storage or overbuild that makes them dispatchable. Graham Palmer set out a framework for this, building on <strong>energy stored on invested</strong> — the electricity a storage device handles over its life against the energy embodied in building it — and computing a system ratio whose denominator carries both generators and storage.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>His finding is a shape rather than a number, and it is the important one: <strong>storage and overbuild show marked diminishing returns as the share of variable generation rises.</strong> The first units of storage buy a great deal of usable energy; later units buy less, because they cycle less often. So “what is the EROI of wind?” has no single answer even in principle. It depends on how much wind is already there.</p>
+</section>
+<section id="societal-eroi-and-the-threshold-argument" class="level2">
+<h2 class="anchored" data-anchor-id="societal-eroi-and-the-threshold-argument">Societal EROI, and the threshold argument</h2>
+<p>The most consequential claim in this literature is that a society needs a minimum EROI to function. Hall and colleagues put the floor for a fuel at about 3:1 in 2009, and the figure has been repeated ever since.</p>
+<p>It can now be checked against an estimate of the thing itself. Dupont, Germain and Jeanmart modelled the world economy as two sectors — energy, and everything else — and obtained for 2018 a <strong>gross societal EROI of 9.4 and a net of 8.5</strong>; an earlier estimate put 2015 at 12.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Set those against the thresholds on offer:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Threshold proposed</th>
+<th>Value</th>
+<th>For what</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hall et al.&nbsp;(2009)</td>
+<td>~3</td>
+<td>bare minimum for a fuel</td>
+</tr>
+<tr class="even">
+<td>MEDEAS model</td>
+<td>~5</td>
+<td>below this the energy sector’s capital needs overwhelm the economy</td>
+</tr>
+<tr class="odd">
+<td>Court and Fizaine (2016)</td>
+<td>11</td>
+<td>to maintain economic growth</td>
+</tr>
+<tr class="even">
+<td>Observed in high-HDI countries</td>
+<td>above 20</td>
+<td>associated with high human development</td>
+</tr>
+</tbody>
+</table>
+<p>The world’s estimated societal EROI, 8.5 to 12, sits <strong>above the first two and below the last two</strong>. So “are we near the minimum?” has no answer until one says which minimum, and the candidates span the estimate. Court’s own reconstruction has the minimum <em>sustainable</em> societal EROI itself falling — from just over 20 in 1900 to around 6 since the 1970s — because an economy that has built its infrastructure needs less surplus to maintain it than one building it. A threshold that moves with the thing it measures is not much of a threshold.</p>
+<p>What survives is a number worth more than any of them. <strong>Only 39% of the final energy the world produces reaches consumption and growth at all.</strong> The other <strong>61% is consumed inside the economy that produces it</strong> — 11% by the energy sector, and fully <strong>50% by the rest of the economy</strong> as intermediate and capital consumption. The authors report this split is insensitive to their model’s assumptions.</p>
+<p>That is the real content of the net-energy argument, and it needs no threshold to be right. When this book adds up 125 kWh per day per person, the share reaching anything a person would recognise as a benefit is a good deal smaller than the total suggests.</p>
 </section>
 <section id="back-to-the-car" class="level2">
 <h2 class="anchored" data-anchor-id="back-to-the-car">Back to the car</h2>
-<p>MacKay’s own figure can now be placed. Treloar’s estimate that each unit of petrol requires 1.4 units of oil and other primary fuels is a well-to-tank ratio, not a wellhead EROI, and most of that 1.4 is the crude itself rather than energy spent processing it. Taken at face value it means the 40 kWh per day in chapter 3 understates the primary energy behind the driving by something like a third to a half.</p>
-<p>That correction applies to the petrol car and not to its electric replacement in the same way, because an electric car’s chain runs through generation rather than refining, and chapter 15 accounts for the battery separately. It is one more reason the factor-of-two advantage computed there is a floor rather than a ceiling.</p>
+<p>MacKay’s figure can now be placed. Treloar’s estimate that each unit of petrol requires 1.4 units of oil and other primary fuels is a well-to-tank ratio, and the harmonised work above puts petrol’s point-of-use EROI at about <strong>4.2</strong> — meaning roughly a quarter of the energy mobilised to deliver a litre of petrol is spent delivering it.</p>
+<p>So the 40 kWh per day in chapter 3 understates the primary energy behind the driving substantially. And the correction does not apply equally to the electric replacement, whose chain runs through generation rather than refining, and whose upstream sources — wind, PV, hydro — sit above 10 on the same harmonised basis where oil sits at 4.2.</p>
+<p>Chapter 15 found the electric car about twice as good as the petrol one once manufacturing was counted. On a point-of-use net-energy basis the gap is wider than that, and for a reason MacKay’s method could not see: not because the electric car is better engineered, but because the fuel it does not burn is expensive to make.</p>
 </section>
 <section id="notes-and-further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="notes-and-further-reading">Notes and further reading</h2>
-<p>The values table draws on standard summaries of the literature, and should be treated as indicative. The methodological argument above is better sourced than the numbers are, which is itself a fair description of the state of the field.</p>
 
 
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>The scale distinction, the term PROI, and the wind example are from “When is EROI Not EROI?”, <em>BioPhysical Economics and Resource Quality</em> 4:16 (2019), <a href="https://doi.org/10.1007/s41247-019-0065-8" class="uri">https://doi.org/10.1007/s41247-019-0065-8</a>, responding to Brockway et al.&nbsp;(2019) on the incomparability of wellhead-oil and renewable-electricity ratios. The paper shows that regional PROI approaches facility EROI only as the industry growth rate approaches zero.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Graham Palmer, “A Framework for Incorporating EROI into Electrical Storage”, <em>BioPhysical Economics and Resource Quality</em> 2:6 (2017), <a href="https://doi.org/10.1007/s41247-017-0022-3" class="uri">https://doi.org/10.1007/s41247-017-0022-3</a>, modelled on the Texas ERCOT system. The energy-stored-on-invested metric is from Barnhart and Benson (2013).<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>David J. Murphy, Marco Raugei, Michael Carbajales-Dale and Brenda Rubio Estrada, “Energy Return on Investment of Major Energy Carriers: Review and Harmonization”, <em>Sustainability</em> 14 (2022) 7098, <a href="https://doi.org/10.3390/su14127098" class="uri">https://doi.org/10.3390/su14127098</a>. Point-of-use harmonisation using Ecoinvent life-cycle inventories; petrol taken as the representative oil product. Median harmonised EROI for oil 4.2, hard coal 8.8, wood pellets 1.6 maximum, locally-sourced woodchips 32; PV, wind and hydropower at or above 10. The maximum point-of-use EROIs by supply-chain stage in their Table 2 give oil 8.7, gas 5.6 and coal 10 before extraction costs are counted, which is why the medians above are lower.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Michael Carbajales-Dale, “When is EROI Not EROI?”, <em>BioPhysical Economics and Resource Quality</em> 4:16 (2019), <a href="https://doi.org/10.1007/s41247-019-0065-8" class="uri">https://doi.org/10.1007/s41247-019-0065-8</a>, responding to Brockway et al.&nbsp;(2019) on the incomparability of wellhead-oil and renewable-electricity ratios. Regional PROI approaches facility EROI only as the industry growth rate approaches zero.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Graham Palmer, “A Framework for Incorporating EROI into Electrical Storage”, <em>BioPhysical Economics and Resource Quality</em> 2:6 (2017), <a href="https://doi.org/10.1007/s41247-017-0022-3" class="uri">https://doi.org/10.1007/s41247-017-0022-3</a>, modelled on the Texas ERCOT system. The energy-stored-on-invested metric is from Barnhart and Benson (2013).<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Elise Dupont, Marc Germain and Hervé Jeanmart, “Estimate of the Societal Energy Return on Investment (EROI)”, <em>Biophysical Economics and Sustainability</em> 6:2 (2021), <a href="https://doi.org/10.1007/s41247-021-00084-9" class="uri">https://doi.org/10.1007/s41247-021-00084-9</a>. Gross societal EROI 9.4 and net 8.5 for 2018 worldwide; 39% of final energy reaching consumption and growth, 11% consumed by the energy sector and 50% within the rest of the economy. The threshold figures are as surveyed there: Hall et al.&nbsp;(2009), the MEDEAS model of Capellán-Pérez et al., Court and Fizaine (2016), Court (2019) on the historical decline, and the association of societal EROI above 20 with an HDI above 0.75.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
