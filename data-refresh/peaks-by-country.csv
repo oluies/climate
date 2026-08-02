@@ -1,0 +1,79 @@
+fuel,country,peak_year,peak,current,pct_of_peak
+Oil,Canada,2025,6163.8,6163.8,100.0
+Oil,Mexico,2004,3830.2,1779.8,46.5
+Oil,US,2025,21065.4,21065.4,100.0
+Oil,Argentina,2025,1426.7,1426.7,100.0
+Oil,Brazil,2025,3881.0,3881.0,100.0
+Oil,Colombia,2013,1009.9,748.5,74.1
+Oil,Ecuador,2014,556.6,440.6,79.2
+Oil,Guyana,2025,715.8,715.8,100.0
+Oil,Venezuela,1970,3754.0,1104.3,29.4
+Oil,Norway,2001,3402.9,2045.4,60.1
+Oil,United Kingdom,1999,2949.5,669.4,22.7
+Oil,Azerbaijan,2010,1024.9,572.4,55.8
+Oil,Kazakhstan,2025,2088.1,2088.1,100.0
+Oil,Russian Federation,2019,11679.0,10736.8,91.9
+Oil,Iran,1974,6060.3,5184.0,85.5
+Oil,Iraq,2019,4779.5,4395.9,92.0
+Oil,Kuwait,1972,3339.0,2820.3,84.5
+Oil,Oman,2022,1064.2,1002.1,94.2
+Oil,Qatar,2013,1933.8,1837.6,95.0
+Oil,Saudi Arabia,2016,12406.0,11407.9,92.0
+Oil,United Arab Emirates,2025,4207.3,4207.3,100.0
+Oil,Algeria,2007,1992.3,1516.8,76.1
+Oil,Angola,2008,1876.3,1098.0,58.5
+Oil,Republic of Congo,2019,336.2,278.0,82.7
+Oil,Egypt,1993,940.7,544.1,57.8
+Oil,Gabon,1996,364.5,227.0,62.3
+Oil,Libya,1970,3357.0,1399.6,41.7
+Oil,Nigeria,2010,2530.7,1759.6,69.5
+Oil,Australia,2000,805.6,340.2,42.2
+Oil,China,2025,4339.5,4339.5,100.0
+Oil,India,2011,937.4,719.2,76.7
+Oil,Indonesia,1977,1685.0,614.1,36.4
+Oil,Malaysia,2004,777.0,539.7,69.5
+Oil,Thailand,2016,488.5,384.3,78.7
+Gas,Canada,2025,206.2,206.2,100.0
+Gas,Mexico,2009,52.6,34.8,66.2
+Gas,US,2025,1073.7,1073.7,100.0
+Gas,Argentina,2025,45.2,45.2,100.0
+Gas,Bolivia,2014,20.4,8.6,42.2
+Gas,Brazil,2017,27.2,26.6,97.7
+Gas,Colombia,2013,13.2,9.4,71.2
+Gas,Peru,2024,16.0,15.5,96.9
+Gas,Trinidad & Tobago,2010,40.3,23.8,59.1
+Gas,Venezuela,2017,38.6,31.0,80.4
+Gas,Netherlands,1977,86.1,7.8,9.0
+Gas,Norway,2024,124.3,120.6,97.0
+Gas,Romania,1982,34.5,8.9,25.9
+Gas,Ukraine,1985,40.6,16.1,39.6
+Gas,United Kingdom,2000,113.5,29.9,26.4
+Gas,Azerbaijan,2025,37.8,37.8,100.0
+Gas,Kazakhstan,2018,39.2,38.4,98.0
+Gas,Russian Federation,2021,702.1,609.4,86.8
+Gas,Turkmenistan,1989,85.1,72.4,85.1
+Gas,Uzbekistan,2008,61.0,40.0,65.6
+Gas,Bahrain,2021,16.6,16.0,96.3
+Gas,Iran,2025,264.8,264.8,100.0
+Gas,Iraq,2019,11.0,10.9,99.8
+Gas,Israel,2025,25.9,25.9,100.0
+Gas,Kuwait,2018,16.9,15.5,92.2
+Gas,Oman,2025,45.6,45.6,100.0
+Gas,Qatar,2025,183.5,183.5,100.0
+Gas,Saudi Arabia,2025,133.8,133.8,100.0
+Gas,United Arab Emirates,2016,59.5,58.6,98.5
+Gas,Algeria,2023,101.5,98.0,96.5
+Gas,Egypt,2021,67.8,40.8,60.1
+Gas,Libya,2019,25.5,11.7,46.0
+Gas,Nigeria,2021,52.4,50.8,96.8
+Gas,Australia,2022,154.2,148.6,96.3
+Gas,Bangladesh,2017,26.6,18.0,67.7
+Gas,Brunei,2015,13.3,10.5,79.0
+Gas,China,2025,264.1,264.1,100.0
+Gas,India,2010,47.4,31.2,65.7
+Gas,Indonesia,2012,94.2,71.8,76.2
+Gas,Malaysia,2022,83.0,80.2,96.7
+Gas,Myanmar,2015,19.2,13.9,72.4
+Gas,Pakistan,2012,36.6,24.9,68.2
+Gas,Thailand,2014,39.1,29.4,75.1
+Gas,Vietnam,2015,10.3,5.8,56.2

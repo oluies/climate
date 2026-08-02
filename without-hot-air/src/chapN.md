@@ -74,6 +74,38 @@ The reason is again the interesting part, and it is the same reason. The trough 
 
 Two qualifications are owed. The piece hedged explicitly, allowing that it might be wrong, and it is a blog essay rather than a study. But the failure mode is worth naming because it is directional: **both of the forecasts that missed were pessimistic about supply**, and neither anticipated that within five years the binding constraint would be who controls a strait rather than what is left in the rock. That is the subject of the rest of this chapter.
 
+## Most of the world has already peaked
+
+The argument so far has treated peak oil as a question about the future. For most of the world it is not. It is a matter of record, and the record is worth putting on the page, because it is both stronger evidence for the peak idea than anything its advocates usually cite and the reason the global forecast keeps failing.
+
+Take every country the Energy Institute tracks, find the year each produced most oil, and ask what it produces now as a share of that maximum. **Twenty-five of the thirty-four significant producers are past their own peak.**[^peaks]
+
+![Peak oil country by country: twenty-five of thirty-four significant producers are past their own maximum, from Venezuela at 29 percent of its 1970 peak and the United Kingdom at 23 percent of its 1999 peak, to eight countries still at their maximum in 2025.](/img/without-hot-air/fig-peak-oil-by-country.svg)
+
+<span class="figurenumber">Figure N.1.</span> Peak oil, country by country. Each bar is 2025 production as a share of that country's own record year, shown in brackets. Energy Institute *Statistical Review of World Energy* 2026.
+
+Some of these are not gentle declines. **Venezuela peaked in 1970 and produces 29% of what it did then. The United Kingdom peaked in 1999 and produces 23%** — a three-quarters decline inside a working lifetime, in a wealthy country with full access to capital and technology. Indonesia peaked in 1977 at 36%, Libya in 1970 at 42%, Mexico in 2004 at 46%, Norway in 2001 at 60%. Kuwait peaked in 1972, Iran in 1974.
+
+Gas tells the same story more quietly: **25 of 44 producers are past peak**, and the Netherlands, whose Groningen field defined European gas, is at **9% of its 1977 maximum**.
+
+This is the part of the peak-oil case that was simply correct, and it is worth being explicit that the popular statements of it got these right. A Swedish summary from 2012 named Indonesia, Mexico, Ecuador, Venezuela, Denmark, Norway, Nigeria, Algeria and Kuwait as already declining, and argued that a decade of rising prices had failed to reverse them.[^peak101] Fourteen years later every one of those is still below its peak. The claim was checkable, and it checked out.
+
+### So why does the world total keep setting records?
+
+Because peaks are not synchronised, and a handful of new provinces have more than covered the losses. Eight producers reached their maximum in **2025 itself**: the United States, Canada, China, the United Arab Emirates, Brazil, Kazakhstan, Argentina and Guyana. Guyana produced no oil at all a decade ago and now produces **716 000 barrels a day**.
+
+Argentina is the instructive one, because the 2012 summary named it as declining and it was. Vaca Muerta shale reversed it, and Argentina's 2025 output is its highest ever. A country can come back off its peak if the rock beneath it turns out to hold a second, different resource that a new technique can reach.
+
+That is the mechanism the depletion models keep missing, and it is the same one chapter 23's argument turns on. **The world is not one oil field.** It is a portfolio, and the portfolio has been rebalanced twice in twenty years — once by American shale, once by the Atlantic pre-salt and Guyana. Each time, the aggregate curve stayed flat or rose while three-quarters of its constituents fell.
+
+### The peak arrived as a price, not as a shortage
+
+If the good rock is being used up, the effect should show somewhere even when volumes hold. It shows in what a barrel costs to get out.
+
+The average breakeven for a new non-OPEC project is now about **$47 a barrel of Brent, up 5% in a single year**. American shale, the resource that broke the last two peak forecasts, breaks even near **$70 WTI today and is projected toward $95 by the mid-2030s** — not because anything is running out in the absolute sense, but because the Permian's best acreage is drilled first and the Eagle Ford and Bakken are already working through their core inventory. Onshore Middle East production remains far cheaper, which is precisely why the marginal barrel migrates back toward the countries that hold it.[^costs]
+
+That is the honest form of the peak-oil claim, and it is worth stating plainly because it is neither the catastrophe its advocates predicted nor the non-event its critics claimed. **Geology did not stop supply. It raised the price of the marginal barrel, and it moved the ownership of the cheap ones.** The first of those is a tax on everyone. The second is the subject of the rest of this chapter.
+
 ## Exports fall faster than production
 
 There is a piece of arithmetic that changes the shape of every number above, and it is not in the reserves tables because it is not about geology.
@@ -161,3 +193,9 @@ Running out was the wrong thing to worry about. It was, however, a very good way
 [^cornucopia]: Lars Wilderäng, "Inträffade peak oil 2018 eller 2019 och vad innebär det?", *Cornucopia?*, October 2021: <https://cornucopia.se/2021/10/intraffade-peak-oil-2018-eller-2019-och/>. As with the latitude argument cited in chapter L, this is a blog essay arguing a position rather than a study, and is examined here as a well-documented instance of the reasoning rather than as evidence for it. The monthly all-liquids highs quoted are the EIA's. Production and consumption figures in the table are from the Energy Institute's *Statistical Review of World Energy* 2026: world oil production 95 001, 95 127, 88 943, 90 315, 97 156 and 100 590 thousand barrels daily for 2018, 2019, 2020, 2021, 2024 and 2025, and total world liquids consumption 101 022, 101 388, 92 369, 97 814, 105 133 and 106 519 for the same years. The Review notes that differences between world consumption and world production statistics are accounted for by stock changes and by consumption of non-petroleum additives and substitute fuels. The April 2020 OPEC+ cut of 9.7 mb/d is from the OPEC secretariat's communiqué of 12 April 2020.
 
 [^bedford]: The Red Book categories and the reporting discontinuities are set out in Dylan Bedford, "Peak Uranium and the Sustainability of Nuclear Energy", Physics 241 coursework, Stanford University, 2018: <http://large.stanford.edu/courses/2017/ph241/bedford1/>. This is student coursework rather than peer-reviewed work and is cited here for its clear summary of the Red Book's structure and caveats, not as an authority on resource estimates. Production and resource figures above are from the World Nuclear Association's compilations of Red Book and company data; oil, gas and coal reserves and production are from the Energy Institute's *Statistical Review of World Energy* 2026, with reserves as assessed at end-2020 and R/P ratios recomputed here at 2025 production rates.
+
+[^peaks]: Computed from the Energy Institute's *Statistical Review of World Energy* 2026 by the `chapterN` step in this edition's data-refresh script: for each producer, the year of maximum output over the full record (oil from 1965, gas from 1970) and 2025 output as a share of it. Aggregates and regional groupings are excluded, as are producers below 200 thousand barrels a day of oil or 5 bcm of gas in 2025, which leaves 34 oil producers and 44 gas producers. Two caveats. A country counts as "past peak" here if its maximum fell in 2020 or earlier, so a producer whose record year was 2021–2023 is not counted either way; and a single year's output can be depressed by war, sanctions or quota rather than by geology — Venezuela, Libya and Iran are all cases where politics, not rock, explains much of the decline. The measure shows what has happened, not why.
+
+[^peak101]: Lars Wilderäng, "Peak oil 101", *Cornucopia?*, March 2012: <https://cornucopia.se/2012/03/peak-oil-101-for-moderated/>. As with the other citations to this blog in chapters L and N, it is an essay arguing a position rather than a study; it is used here because it made a checkable list of named countries, which is more than most statements of the argument do. Its wider prediction, that rising prices would fail to bring on new supply, was wrong in aggregate — American shale and the Guyana–Brazil offshore arrived within the decade — and the text above says so.
+
+[^costs]: Rystad Energy's upstream cost analysis puts the average breakeven of a new non-OPEC oil project at about $47 per barrel of Brent, a 5% rise in a year, with North American shale averaging around $45 and onshore Middle East well below both. Enverus Intelligence Research projects US shale breakevens rising from roughly $70 per barrel WTI in 2025 toward $95 by the mid-2030s as core Permian, Eagle Ford and Bakken acreage is consumed. These are commercial estimates on differing bases — breakeven is sensitive to whether it includes full-cycle or half-cycle costs, and to the assumed hurdle rate — so the direction is more reliable than any single figure.
