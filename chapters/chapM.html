@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>19 Every BIG helps – Sustainable Energy — Without the Hot Air</title>
+<title>M Energy return on investment – Sustainable Energy — Without the Hot Air</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/chap20.html" rel="next">
-<link href="../chapters/chap18.html" rel="prev">
+<link href="../chapters/chapN.html" rel="next">
+<link href="../chapters/chapL.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -76,6 +76,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -88,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chap19.html">Part II · Making a difference</a></li><li class="breadcrumb-item"><a href="../chapters/chap19.html"><span class="chapter-title">19 Every BIG helps</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapI.html">Part IV · Useful data</a></li><li class="breadcrumb-item"><a href="../chapters/chapM.html"><span class="chapter-title">M Energy return on investment</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -236,7 +265,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/chap19.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">19 Every BIG helps</span></a>
+  <a href="../chapters/chap19.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19 Every BIG helps</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -393,7 +422,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/chapM.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">M Energy return on investment</span></a>
+  <a href="../chapters/chapM.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">M Energy return on investment</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -423,17 +452,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#cartoon-britain" id="toc-cartoon-britain" class="nav-link active" data-scroll-target="#cartoon-britain">Cartoon Britain</a></li>
-  <li><a href="#for-the-impatient-reader" id="toc-for-the-impatient-reader" class="nav-link" data-scroll-target="#for-the-impatient-reader">For the impatient reader</a></li>
+  <li><a href="#the-measure" id="toc-the-measure" class="nav-link active" data-scroll-target="#the-measure">The measure</a></li>
+  <li><a href="#why-the-numbers-disagree-so-violently" id="toc-why-the-numbers-disagree-so-violently" class="nav-link" data-scroll-target="#why-the-numbers-disagree-so-violently">Why the numbers disagree so violently</a></li>
+  <li><a href="#the-direction-of-travel" id="toc-the-direction-of-travel" class="nav-link" data-scroll-target="#the-direction-of-travel">The direction of travel</a></li>
+  <li><a href="#the-threshold-argument-and-what-is-wrong-with-it" id="toc-the-threshold-argument-and-what-is-wrong-with-it" class="nav-link" data-scroll-target="#the-threshold-argument-and-what-is-wrong-with-it">The threshold argument, and what is wrong with it</a></li>
+  <li><a href="#back-to-the-car" id="toc-back-to-the-car" class="nav-link" data-scroll-target="#back-to-the-car">Back to the car</a></li>
+  <li><a href="#notes-and-further-reading" id="toc-notes-and-further-reading" class="nav-link" data-scroll-target="#notes-and-further-reading">Notes and further reading</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chap19.html">Part II · Making a difference</a></li><li class="breadcrumb-item"><a href="../chapters/chap19.html"><span class="chapter-title">19 Every BIG helps</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapI.html">Part IV · Useful data</a></li><li class="breadcrumb-item"><a href="../chapters/chapM.html"><span class="chapter-title">M Energy return on investment</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">19 Every BIG helps</span></h1>
+<h1 class="title"><span class="chapter-title">M Energy return on investment</span></h1>
 </div>
 
 
@@ -450,72 +483,86 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p><em>A chapter added in the 2026 revision.</em> Chapter 3 asks a question and then declines to answer it properly:</p>
 <blockquote class="blockquote">
-<p><em>(Figure omitted from this edition: third-party rights.)</em></p>
+<p><strong>What about the energy-cost of producing the car’s fuel?</strong></p>
+<p>Good point. When I estimate the energy consumed by a particular activity, I tend to choose a fairly tight “boundary” around the activity. […] It’s been estimated that making each unit of petrol requires an input of 1.4 units of oil and other primary fuels.</p>
 </blockquote>
-<p><span class="figurenumber">Figure 19.1</span>. Reproduced by kind permission of PRIVATE EYE / Robert Thompson <span class="websitetitle">www.private-eye.co.uk</span>.</p>
-<p>We’ve established that the UK’s present lifestyle can’t be sustained on the UK’s own renewables (except with the industrialization of country-sized areas of land and sea). So, what are our options, if we wish to get off fossil fuels and live sustainably? We can balance the energy budget either by reducing demand, or by increasing supply, or, of course, by doing both.</p>
-<p>Have no illusions. To achieve our goal of getting off fossil fuels, these reductions in demand and increases in supply must be <em>big</em>. Don’t be distracted by the myth that “every little helps.” <em>If everyone does a little, we’ll achieve only a little</em>. We must do a lot. What’s required are <em>big</em> changes in demand and in supply.</p>
-<p>“But surely, if 60 million people all do a little, it’ll add up to a lot?” No.&nbsp;This “if-everyone” multiplying machine is just a way of making something small <em>sound</em> big. The “if-everyone” multiplying machine churns out inspirational statements of the form “if <em>everyone</em> did X, then it would provide enough energy/water/gas to do Y,” where Y sounds impressive. Is it surprising that Y sounds big? Of course not. We got Y by multiplying X by the number of people involved – 60 million or so! Here’s an example from the Conservative Party’s otherwise straight-talking <em>Blueprint for a Green Economy</em>:</p>
-<blockquote class="blockquote">
-<p>“The mobile phone charger averages around … 1W consumption, but if every one of the country’s 25 million mobile phones chargers were left plugged in and switched on they would consume enough electricity (219GWh) to power 66 000 homes for one year.”</p>
-</blockquote>
-<p>66 000? Wow, what a lot of homes! Switch off the chargers! 66 000 sounds a lot, but the sensible thing to compare it with is the total number of homes that we’re imagining would participate in this feat of conservation, namely 25 <em>million</em> homes. 66 000 is just <em>one quarter of one percent</em> of 25 million. So while the statement quoted above is true, I think a calmer way to put it is:</p>
-<blockquote class="blockquote">
-<p>If you leave your mobile phone charger plugged in, it uses <span class="lightblue">one quarter of one percent</span> of your home’s electricity.</p>
-</blockquote>
-<p>And if everyone does it?</p>
-<blockquote class="blockquote">
-<p>If <em>everyone</em> leaves their mobile phone charger plugged in, those chargers will use <span class="lightblue">one quarter of one percent</span> of their homes’ electricity.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p><em>While the footprint of each individual cannot be reduced to zero, the absence of an individual does do so.</em></p>
-<p>Chris Rapley, former Director of the British Antarctic Survey</p>
-</blockquote>
-<blockquote class="blockquote">
-<p><em>We need fewer people, not greener ones.</em></p>
-<p>Daily Telegraph, 24 July 2007</p>
-</blockquote>
-<blockquote class="blockquote">
-<p><em>Democracy cannot survive overpopulation. Human dignity cannot survive overpopulation.</em></p>
-<p>Isaac Asimov</p>
-</blockquote>
-<p><img src="img/without-hot-air/figure432.gif" class="img-fluid"></p>
-<p><span class="figurenumber">Figure 19.2</span>. Population growth and emissions… Cartoon courtesy of Colin Wheeler.</p>
-<p>The “if-everyone” multiplying machine is a bad thing because it deflects people’s attention towards 25million minnows instead of 25million sharks. The mantra “<em>Little changes can make a big difference</em>” is bunkum, when applied to climate change and power. It may be true that “many people doing a little adds up to a lot,” if all those “littles” are somehow focused into a single “lot” – for example, if one million people donate £10 to <em>one</em> accident victim, then the victim receives £10 million. That’s a lot. But power is a very different thing. We all use power. So to achieve a “big difference” in total power consumption, you need almost everyone to make a “big” difference to their own power consumption.</p>
-<p>So, what’s required are <em>big</em> changes in demand and in supply. Demand for power could be reduced in three ways:</p>
-<ol type="1">
-<li>by reducing our population (figure 19.2);</li>
-<li>by changing our lifestyle;</li>
-<li>by keeping our lifestyle, but reducing its energy intensity through “efficiency” and “technology.”</li>
-</ol>
-<p>Supply could be increased in three ways:</p>
-<ol type="1">
-<li>We could get off fossil fuels by investing in “clean coal” technology. Oops! Coal is a fossil fuel. Well, never mind – let’s take a look at this idea. If we used coal “sustainably” (a notion we’ll define in a moment), how much power could it offer? If we don’t care about sustainability and just want “security of supply,” could coal offer that?</li>
-<li>We could invest in nuclear fission. Is current nuclear technology “sustainable”? Is it at least a stop-gap that might last for 100 years?</li>
-<li>We could buy, beg, or steal renewable energy from other countries – bearing in mind that most countries will be in the same boat as Britain and will have no renewable energy to spare; and also bearing in mind that sourcing renewable energy from another country doesn’t magically shrink the renewable power facilities required. If we import renewable energy from other countries in order to avoid building renewable facilities the size of Wales in <em>our</em> country, someone will have to build facilities roughly the size of Wales in those other countries.</li>
-</ol>
-<p>The next seven chapters discuss first how to reduce demand substantially, and second how to increase supply to meet that reduced, but still “huge,” demand. In these chapters, I won’t mention <em>all</em> the good ideas. I’ll discuss just the <em>big</em> ideas.</p>
-<section id="cartoon-britain" class="level2">
-<h2 class="anchored" data-anchor-id="cartoon-britain">Cartoon Britain</h2>
-<p>To simplify and streamline our discussion of demand reduction, I propose to work with a cartoon of British energy consumption, omitting lots of details in order to focus on the big picture. My cartoon-Britain consumes energy in just three forms: heating, transport, and electricity. The heating consumption of cartoon-Britain is 40 kWh per day per person (currently all supplied by fossil fuels); the transport consumption is also 40 kWh per day per person (currently all supplied by fossil fuels); and the electricity consumption is 18 kWh(e) per day per person; the electricity is currently almost all generated from fossil fuels; the conversion of fossil-fuel energy to electricity is 40% efficient, so supplying 18 kWh(e) of electricity in today’s cartoon-Britain requires a fossil-fuel input of 45 kWh per day per person. This simplification ignores some fairly sizeable details, such as agriculture and industry, and the embodied energy of imported goods! But I’d like to be able to have a <em>quick</em> conversation about the main things we need to do to get off fossil fuels. Heating, transport, and electricity account for more than half of our energy consumption, so if we can come up with a plan that delivers heating, transport, and electricity sustainably, then we have made a good step on the way to a more detailed plan that adds up.</p>
-<p><img src="img/without-hot-air/figure133.gif" class="img-fluid"></p>
-<p><span class="figurenumber">Figure 19.3</span>. Current consumption in “cartoon-Britain 2008.”</p>
-<p>Having adopted this cartoon of Britain, our discussions of demand reduction will have just three bits. First, how can we reduce transport’s energy-demand and eliminate all fossil fuel use for transport? This is the topic of Chapter 20. Second, how can we reduce heating’s energy-demand and eliminate all fossil fuel use for heating? This is the topic of Chapter 21. Third, what about electricity? Chapter 22 discusses efficiency in electricity consumption.</p>
-<p>Three supply options – clean coal, nuclear, and other people’s renewables – are then discussed in Chapters 23, 24, and 25. Finally, Chapter 26 discusses how to cope with fluctuations in demand and fluctuations in renewable power production.</p>
-<p>Having laid out the demand-reducing and supply-increasing options, Chapters 27 and 28 discuss various ways to put these options together to make plans that add up, in order to supply cartoon-Britain’s transport, heating, and electricity.</p>
-<p>I could spend many pages discussing “50 things you can do to make a difference,” but I think this cartoon approach, chasing the three biggest fish, should lead to more effective policies.</p>
-<p>But what about “stuff”? According to Part I, the embodied energy in imported stuff might be the biggest fish of all! Yes, perhaps that fish is the mammoth in the room. But let’s leave defossilizing that mammoth to one side, and focus on the animals over which we have direct control.</p>
-<p>So, here we go: let’s talk about transport, heating, and electricity.</p>
+<p>That is the honest admission of a book built on tight boundaries, and it points at a whole literature. This chapter is that literature’s technical partner, in the same way that chapter A partners chapter 3 and chapter C partners chapter 5.</p>
+<section id="the-measure" class="level2">
+<h2 class="anchored" data-anchor-id="the-measure">The measure</h2>
+<p><strong>Energy return on investment</strong> is the ratio of energy delivered to energy spent getting it:</p>
+<p><span class="math display">\[
+\text{EROI} = \frac{\text{energy delivered}}{\text{energy required to deliver it}}
+\]</span></p>
+<p>Below 1 the thing is not an energy source at all; it is an energy sink that happens to move energy from one form to another. The concept was made quantitative by Charles Hall in the 1970s and reached a wide audience through a paper in <em>Science</em> in 1984.</p>
+<p>The attraction is obvious. A society does not run on the energy it extracts; it runs on what is left after extraction has taken its cut. If that cut grows, the same gross production supports less. MacKay’s stacks count gross energy at a tight boundary, and EROI is the correction that boundary omits.</p>
 </section>
-<section id="for-the-impatient-reader" class="level2">
-<h2 class="anchored" data-anchor-id="for-the-impatient-reader">For the impatient reader</h2>
-<p>Are you eager to know the end of the story right away? Here is a quick summary, a sneak preview of Part II.</p>
-<p>First, we electrify transport. Electrification both gets transport off fossil fuels, and makes transport more energy-efficient. (Of course, electrification increases our demand for green electricity.)</p>
-<p>Second, to supplement solar-thermal heating, we electrify most heating of air and water in buildings using <em>heat pumps</em>, which are four times more efficient than ordinary electrical heaters. This electrification of heating further increases the amount of green electricity required.</p>
-<p>Third, we get all the green electricity from a mix of four sources: from our own renewables; perhaps from “clean coal;” perhaps from nuclear; and finally, and with great politeness, from other countries’ renewables.</p>
-<p>Among other countries’ renewables, solar power in deserts is the most plentiful option. As long as we can build peaceful international collaborations, solar power in other people’s deserts certainly has the technical potential to provide us, them, and everyone with 125 kWh per day per person.</p>
-<p>Questions? Read on.</p>
+<section id="why-the-numbers-disagree-so-violently" class="level2">
+<h2 class="anchored" data-anchor-id="why-the-numbers-disagree-so-violently">Why the numbers disagree so violently</h2>
+<p>Here is the difficulty, and this chapter would be dishonest to bury it. Published EROI values for the same fuel differ by more than an order of magnitude, and the differences are mostly not measurement error. They are boundary choices.</p>
+<p>Does the “investment” include the energy to build the drilling rig? The steel mill that made the rig? The roads to the refinery? The wages of the workers, converted to the energy their spending commands? Each answer is defensible and each gives a different number. Hall and Murphy proposed a standard protocol in 2010 precisely because the literature had become incomparable with itself.</p>
+<p>So read the table below as a rough ordering, not as measurements.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>EROI (published range)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hydroelectricity</td>
+<td>~110</td>
+</tr>
+<tr class="even">
+<td>Nuclear</td>
+<td>20–81</td>
+</tr>
+<tr class="odd">
+<td>Conventional oil</td>
+<td>18–43</td>
+</tr>
+<tr class="even">
+<td>Wind</td>
+<td>16–31</td>
+</tr>
+<tr class="odd">
+<td>Solar photovoltaic</td>
+<td>8.7–34.2</td>
+</tr>
+<tr class="even">
+<td>Oil sands</td>
+<td>~5</td>
+</tr>
+<tr class="odd">
+<td>Oil shale</td>
+<td>1.4–1.5</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-direction-of-travel" class="level2">
+<h2 class="anchored" data-anchor-id="the-direction-of-travel">The direction of travel</h2>
+<p>Two things in that table matter more than the levels.</p>
+<p><strong>Fossil EROI is falling, and has been for a century.</strong> Early conventional oil is often quoted at something like 100:1 — the gushers of the 1920s returned enormous energy for very little. Estimates for recent conventional oil cluster far lower, and the unconventional resources that now supply the growth are lower again: oil sands near 5, oil shale barely above 1. One widely cited series has all liquid fuels falling from about 44 in 1950 towards single figures by mid-century, and natural gas from about 140 in 1950 to under 20. The resource is not running out in the sense chapter N examines; it is getting more expensive in the only currency that ultimately matters.</p>
+<p><strong>Renewable EROI has risen past much of it.</strong> This is the reversal that dates the peak-oil literature most sharply. When these arguments were formed, solar’s EROI was genuinely marginal; modern crystalline silicon in a sunny location repays its energy in one to four years against a thirty-year life. Wind was always respectable and is now comfortably above oil sands and arguably above current conventional oil.</p>
+<p>There is a real dispute underneath that cheerfulness. Renewables are intermittent, so a fair comparison should include the storage or backup that makes them dispatchable — “buffered” EROI. Doing so lowers the figures, by how much depending on assumptions that are, again, mostly boundary choices. The dispute has not settled and this chapter will not settle it.</p>
+</section>
+<section id="the-threshold-argument-and-what-is-wrong-with-it" class="level2">
+<h2 class="anchored" data-anchor-id="the-threshold-argument-and-what-is-wrong-with-it">The threshold argument, and what is wrong with it</h2>
+<p>The most consequential claim in this literature is that a society needs a minimum EROI to function: that below about 3:1 a fuel cannot even sustain its own supply chain, that around 5:1 is the floor for a functioning economy, and that something like 12–13:1 is needed to support the surplus that pays for education, medicine and the arts.</p>
+<p>It is a compelling argument and it should be treated carefully, for two reasons. The thresholds are derived rather than observed — no society has been run at a controlled EROI to see what breaks. And the calculation is exquisitely sensitive to the boundary problem above: a threshold of 12 computed on one boundary and a fuel EROI of 8 computed on another tell you nothing at all.</p>
+<p>What survives is the qualitative point, and it is worth having in this book. <strong>Gross energy production is the wrong number.</strong> A country whose oil comes from tar sands at an EROI of 5 must produce far more crude to deliver the same useful energy than one drawing from conventional fields at 30 — and that extra production appears in the statistics as economic activity, as employment, and as emissions.</p>
+</section>
+<section id="back-to-the-car" class="level2">
+<h2 class="anchored" data-anchor-id="back-to-the-car">Back to the car</h2>
+<p>MacKay’s own figure can now be placed. Treloar’s estimate that each unit of petrol requires 1.4 units of oil and other primary fuels is a well-to-tank ratio, not a wellhead EROI, and most of that 1.4 is the crude itself rather than energy spent processing it. Taken at face value it means the 40 kWh per day in chapter 3 understates the primary energy behind the driving by something like a third to a half.</p>
+<p>That correction applies to the petrol car and not to its electric replacement in the same way, because an electric car’s chain runs through generation rather than refining, and chapter 15 accounts for the battery separately. It is one more reason the factor-of-two advantage computed there is a floor rather than a ceiling.</p>
+</section>
+<section id="notes-and-further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="notes-and-further-reading">Notes and further reading</h2>
+<p>The overview above draws on the standard summaries of the literature; the primary sources are Hall’s own papers and the journal <em>BioPhysical Economics and Sustainability</em>, which exists to publish this kind of analysis. The single most useful methodological reference is Murphy and Hall’s 2010 protocol, written because the field had stopped being able to compare its own results.</p>
 
 
 </section>
@@ -923,13 +970,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/chap18.html" class="pagination-link" aria-label="18 Can we live on renewables?">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">18 Can we live on renewables?</span></span>
+      <a href="../chapters/chapL.html" class="pagination-link" aria-label="L The world in 2025">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">L The world in 2025</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/chap20.html" class="pagination-link" aria-label="20 Better transport">
-        <span class="nav-page-text"><span class="chapter-title">20 Better transport</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/chapN.html" class="pagination-link" aria-label="N Peak oil, peak gas, peak uranium">
+        <span class="nav-page-text"><span class="chapter-title">N Peak oil, peak gas, peak uranium</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
