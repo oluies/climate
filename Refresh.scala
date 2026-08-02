@@ -763,3 +763,112 @@ def chapter06(): Unit = {
   println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
   println("  python figures/solar_capacity.py data-refresh/solar-capacity.csv without-hot-air/Images/fig-solar-capacity.svg")
 }
+
+// ---- Chapter 6: MacKay's own figures, redone ----
+// Irradiance comes from PVGIS (JRC), which is free and needs no key. PVGIS
+// returns JSON; it is written to disk and queried with DuckDB rather than
+// parsed in Scala, which keeps the data work in SQL as everywhere else here.
+val PVGIS = "https://re.jrc.ec.europa.eu/api/v5_2"
+
+def pvgisMonthly(cache: os.Path, lat: Double, lon: Double): Unit =
+  if (!os.exists(cache)) {
+    os.makeDir.all(cache / os.up)
+    os.write.over(cache, requests.get(
+      // ERA5 rather than the regional default: it is the only database that
+      // covers Europe, the Americas and Africa on one basis, which a
+      // cross-continent comparison figure needs.
+      f"$PVGIS/MRcalc?lat=$lat%.4f&lon=$lon%.4f&horirrad=1&startyear=2016&endyear=2020&raddatabase=PVGIS-ERA5&outputformat=json",
+      readTimeout = 90000, connectTimeout = 30000).text())
+  }
+
+// Daylight length from the standard sunrise equation, for the sunniness ratio.
+def daylightHours(latDeg: Double, dayOfYear: Int): Double = {
+  val lat = math.toRadians(latDeg)
+  val decl = math.toRadians(23.44) * math.sin(2 * math.Pi * (dayOfYear - 81) / 365.0)
+  val c = -math.tan(lat) * math.tan(decl)
+  if (c >= 1) 0.0 else if (c <= -1) 24.0 else 2 * math.toDegrees(math.acos(c)) / 15.0
+}
+
+@main
+def chapter06Figs(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val st = conn.createStatement()
+  val DAYS = Array(31, 28.25, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+
+  def monthlyWm2(name: String, lat: Double, lon: Double): Seq[(Int, Double)] = {
+    val f = dir / "pvgis" / s"${name.toLowerCase.replace(" ", "-")}.json"
+    pvgisMonthly(f, lat, lon)
+    val rs = st.executeQuery(
+      s"""SELECT month, avg("H(h)_m") FROM (
+            SELECT unnest(outputs.monthly, recursive := true)
+            FROM read_json_auto('${f.toString.replace("'", "''")}'))
+          GROUP BY month ORDER BY month""")
+    val v = collection.mutable.ArrayBuffer[(Int, Double)]()
+    while (rs.next()) {
+      val m = rs.getInt(1)
+      // kWh/m2 over the month -> mean W/m2
+      v += ((m, rs.getDouble(2) * 1000.0 / (DAYS(m - 1) * 24.0)))
+    }
+    v.toSeq
+  }
+
+  // --- Figure 6.2: the seasonal swing, London and Edinburgh ---
+  val seasonal = Seq(("London", 51.507, -0.128), ("Edinburgh", 55.953, -3.188))
+  val f62 = new StringBuilder; f62 ++= "place,month,wm2\n"
+  for ((n, la, lo) <- seasonal; (m, w) <- monthlyWm2(n, la, lo)) f62 ++= f"$n,$m,$w%.2f\n"
+  os.write.over(dir / "solar-seasonal.csv", f62.toString)
+
+  // --- Figure 6.16: annual mean, a spread of locations ---
+  val places = Seq(
+    ("Edinburgh", "Europe", 55.953, -3.188), ("Manchester", "Europe", 53.48, -2.24),
+    ("London", "Europe", 51.507, -0.128), ("Cambridge", "Europe", 52.205, 0.119),
+    ("Berlin", "Europe", 52.52, 13.405), ("Paris", "Europe", 48.857, 2.352),
+    ("Munich", "Europe", 48.135, 11.582), ("Madrid", "Europe", 40.417, -3.704),
+    ("Rome", "Europe", 41.903, 12.496), ("Athens", "Europe", 37.984, 23.728),
+    ("Vancouver", "N. America", 49.283, -123.121), ("Seattle", "N. America", 47.606, -122.33),
+    ("Chicago", "N. America", 41.878, -87.63), ("New York", "N. America", 40.713, -74.006),
+    ("Los Angeles", "N. America", 34.052, -118.244), ("Phoenix", "N. America", 33.448, -112.074),
+    ("Cairo", "Africa", 30.044, 31.236), ("Nairobi", "Africa", -1.286, 36.817),
+    ("Johannesburg", "Africa", -26.204, 28.047), ("Ouarzazate", "Africa", 30.92, -6.91))
+  val f616 = new StringBuilder; f616 ++= "place,region,wm2\n"
+  for ((n, r, la, lo) <- places) {
+    val ms = monthlyWm2(n, la, lo)
+    val annual = ms.map { case (m, w) => w * DAYS(m - 1) }.sum / DAYS.sum
+    f616 ++= f"$n,$r,$annual%.1f\n"
+  }
+  os.write.over(dir / "solar-locations.csv", f616.toString)
+
+  // --- Figure 6.13: sunniness, sunshine hours as a fraction of daylight ---
+  // MacKay used Cambridge. That station (Cambridge NIAB) stopped reporting
+  // sunshine in 2010, so Oxford — which has the longest continuous record still
+  // running — carries the series to the present alongside it.
+  val stations = Seq(("Cambridge", "cambridge", 52.245), ("Oxford", "oxford", 51.761))
+  val f613 = new StringBuilder; f613 ++= "station,year,sun_hours,daylight_hours,fraction\n"
+  val rowRe = raw"^\s*(\d{4})\s+(\d{1,2})\s+\S+\s+\S+\s+\S+\s+\S+\s+([\d.]+)\*?#?".r
+  for ((label, slug, lat) <- stations) {
+    val metf = dir / s"$slug-metoffice.txt"
+    if (!os.exists(metf))
+      os.write.over(metf, requests.get(
+        s"https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/${slug}data.txt",
+        readTimeout = 90000).text())
+    val dayl = (1 to 12).map { m =>
+      val start = (1 until m).map(i => DAYS(i - 1)).sum.toInt
+      (1 to DAYS(m - 1).toInt).map(d => daylightHours(lat, start + d)).sum
+    }
+    val sun = collection.mutable.Map[Int, (Double, Double)]().withDefaultValue((0.0, 0.0))
+    for (line <- os.read.lines(metf)) rowRe.findFirstMatchIn(line).foreach { m =>
+      val y = m.group(1).toInt; val mo = m.group(2).toInt; val h = m.group(3).toDouble
+      val (sh, dh) = sun(y); sun(y) = (sh + h, dh + dayl(mo - 1))
+    }
+    val complete = sun.filter { case (_, (_, dh)) => dh > dayl.sum - 1 }.toSeq.sortBy(_._1)
+    for ((y, (sh, dh)) <- complete) f613 ++= f"$label,$y,$sh%.1f,$dh%.1f,${sh / dh}%.4f\n"
+    val recent = complete.takeRight(10).map { case (_, (sh, dh)) => sh / dh }
+    println(f"$label%-10s ${complete.size} complete years ${complete.head._1}-${complete.last._1}, "
+          + f"last ten mean ${recent.sum / recent.size * 100}%.1f%%")
+  }
+  os.write.over(dir / "sunniness.csv", f613.toString)
+  conn.close()
+  println("wrote solar-seasonal.csv, solar-locations.csv, sunniness.csv")
+}
