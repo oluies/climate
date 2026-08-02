@@ -872,3 +872,50 @@ def chapter06Figs(): Unit = {
   conn.close()
   println("wrote solar-seasonal.csv, solar-locations.csv, sunniness.csv")
 }
+
+// ---- Chapter N: which countries have already peaked ----
+// The empirical core of the peak argument. For every producer, the year of
+// maximum output and what it produces now as a share of that maximum. Both
+// sheets put 1965 in column B; identifiers are quoted because the span
+// includes column AS, which collides with the SQL keyword.
+@main
+def chapterN(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val xlsx = (dir / "ei-stats-review-all-data.xlsx").toString.replace("'", "''")
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val st = conn.createStatement(); st.execute("LOAD excel")
+  val out = new StringBuilder; out ++= "fuel,country,peak_year,peak,current,pct_of_peak\n"
+
+  // Aggregates and groupings are excluded: the question is about countries.
+  val skip = Set("Total", "of which", "Other", "European Un", "OECD", "Non-OECD",
+                 "OPEC", "Non-OPEC", "USSR", "Middle East", "Central America")
+  // The two sheets start in different years: oil at 1965, gas at 1970.
+  for ((fuel, sheet, y0, floor) <- Seq(("Oil", "Oil Production - barrels", 1965, 200.0),
+                                       ("Gas", "Gas Production - Bcm", 1970, 5.0))) {
+    val cols = (y0 to 2025).map(y => "\"" + colName(1 + (y - y0)) + "\"").mkString(",")
+    val rs = st.executeQuery(
+      s"""SELECT A, $cols FROM read_xlsx('$xlsx', sheet='$sheet', header=false,
+          all_varchar=true, range='A4:${colName(1 + (2025 - y0))}130') WHERE A IS NOT NULL""")
+    var n = 0
+    while (rs.next()) {
+      val name = rs.getString(1).trim
+      if (!skip.exists(name.contains)) {
+        val vals = (y0 to 2025).flatMap { y =>
+          val s = rs.getString(y - y0 + 2)
+          if (s == null || s.isEmpty) None else Some((y, s.toDouble))
+        }
+        if (vals.size >= 30 && vals.last._2 >= floor) {
+          val (py, pv) = vals.maxBy(_._2); val cur = vals.last._2
+          out ++= f"$fuel,$name,$py,$pv%.1f,$cur%.1f,${cur / pv * 100}%.1f\n"; n += 1
+        }
+      }
+    }
+    println(s"$fuel: $n producers")
+  }
+  conn.close()
+  os.write.over(dir / "peaks-by-country.csv", out.toString)
+  println("wrote data-refresh/peaks-by-country.csv")
+  println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
+  println("  python figures/peaks_by_country.py data-refresh/peaks-by-country.csv without-hot-air/Images/fig-peaks-by-country.svg")
+}
