@@ -1,0 +1,25 @@
+scenario,month,kwh_per_day
+MacKay's 2006 array (4.0 kWp),1,5.45
+MacKay's 2006 array (4.0 kWp),2,8.41
+MacKay's 2006 array (4.0 kWp),3,12.58
+MacKay's 2006 array (4.0 kWp),4,16.2
+MacKay's 2006 array (4.0 kWp),5,16.76
+MacKay's 2006 array (4.0 kWp),6,16.32
+MacKay's 2006 array (4.0 kWp),7,15.75
+MacKay's 2006 array (4.0 kWp),8,14.21
+MacKay's 2006 array (4.0 kWp),9,12.43
+MacKay's 2006 array (4.0 kWp),10,8.94
+MacKay's 2006 array (4.0 kWp),11,6.31
+MacKay's 2006 array (4.0 kWp),12,4.8
+Same roof with 2026 panels (5.5 kWp),1,7.49
+Same roof with 2026 panels (5.5 kWp),2,11.56
+Same roof with 2026 panels (5.5 kWp),3,17.29
+Same roof with 2026 panels (5.5 kWp),4,22.28
+Same roof with 2026 panels (5.5 kWp),5,23.04
+Same roof with 2026 panels (5.5 kWp),6,22.45
+Same roof with 2026 panels (5.5 kWp),7,21.66
+Same roof with 2026 panels (5.5 kWp),8,19.54
+Same roof with 2026 panels (5.5 kWp),9,17.1
+Same roof with 2026 panels (5.5 kWp),10,12.3
+Same roof with 2026 panels (5.5 kWp),11,8.68
+Same roof with 2026 panels (5.5 kWp),12,6.6
