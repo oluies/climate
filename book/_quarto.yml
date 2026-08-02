@@ -71,6 +71,7 @@ book:
         - chapters/chapN.md
         - chapters/charts.md
         - chapters/bibliography.md
+    - chapters/author.md
 
 format:
   html:
