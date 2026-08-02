@@ -24,19 +24,15 @@ The attraction is obvious. A society does not run on the energy it extracts; it 
 
 Here is the difficulty, and this chapter would be dishonest to bury it. Published EROI values for the same fuel differ by more than an order of magnitude, and the differences are mostly not measurement error. They are boundary choices.
 
-Does the "investment" include the energy to build the drilling rig? The steel mill that made the rig? The roads to the refinery? The wages of the workers, converted to the energy their spending commands? Each answer is defensible and each gives a different number. Hall and Murphy proposed a standard protocol in 2010 precisely because the literature had become incomparable with itself.
+Does the "investment" include the energy to build the drilling rig? The steel mill that made the rig? The roads to the refinery? Each answer is defensible and each gives a different number. Brockway and colleagues put the problem sharply in 2019 by pointing out the "apples and oranges" character of the commonest comparison of all: the EROI of oil measured at the wellhead against that of electricity from a wind turbine. One is a raw fuel needing refining and a heat engine; the other is already the finished product.
 
-So read the table below as a rough ordering, not as measurements.
+**But the deeper trap is scale, and it is not widely understood.** Murphy and Carbajales-Dale showed that two quantities routinely both called EROI are different measures.[^proi] The first is a *facility* ratio: total energy a plant delivers over its life, divided by the energy it took to build and run. The second is an *industry or regional* ratio: energy delivered by a whole sector this year, divided by energy invested in that sector this year. They propose calling the second one **power return on investment**, PROI, and the distinction matters enormously — because a growing industry is always building plants that have not yet delivered anything.
 
-| Source | EROI (published range) |
-|---|---|
-| Hydroelectricity | ~110 |
-| Nuclear | 20–81 |
-| Conventional oil | 18–43 |
-| Wind | 16–31 |
-| Solar photovoltaic | 8.7–34.2 |
-| Oil sands | ~5 |
-| Oil shale | 1.4–1.5 |
+Their worked example should be read twice. In 2018, onshore wind had a **facility-scale EROI of over 70**. The same technology, measured as a growing global industry, had a **PROI of about 25**. Nothing about the turbines differed. The ratio was depressed purely because the industry was expanding, so a large share of that year's energy investment was going into machines not yet generating. The two figures converge only as growth approaches zero.
+
+This has a consequence the peak-oil literature never had to face. **A rapidly growing energy industry is penalised by industry-scale net-energy accounting, and a stagnant one is flattered.** Any comparison that puts a fast-growing renewable sector against a mature oil industry on this basis is measuring the growth, not the technology.
+
+So read the table below as a rough ordering of facility-scale values, not as measurements, and not as a like-for-like comparison.
 
 ## The direction of travel
 
@@ -46,7 +42,9 @@ Two things in that table matter more than the levels.
 
 **Renewable EROI has risen past much of it.** This is the reversal that dates the peak-oil literature most sharply. When these arguments were formed, solar's EROI was genuinely marginal; modern crystalline silicon in a sunny location repays its energy in one to four years against a thirty-year life. Wind was always respectable and is now comfortably above oil sands and arguably above current conventional oil.
 
-There is a real dispute underneath that cheerfulness. Renewables are intermittent, so a fair comparison should include the storage or backup that makes them dispatchable — "buffered" EROI. Doing so lowers the figures, by how much depending on assumptions that are, again, mostly boundary choices. The dispute has not settled and this chapter will not settle it.
+There is a real dispute underneath that cheerfulness, and it is about intermittency. A fair comparison should include the storage or overbuild that makes a variable source dispatchable. Palmer set out a framework for doing this, building on the metric **energy stored on invested** — the electricity a storage device handles over its life, divided by the energy embodied in building it — and computing a system-level ratio in which the denominator carries both the generators and their storage.[^storage]
+
+His central finding is the one worth carrying away, because it is a shape rather than a number: **storage and overbuild show marked diminishing returns as the share of variable generation rises.** The first units of storage buy a great deal of usable energy; each subsequent unit buys less, because it is used less often. That is why "what is the EROI of wind?" has no single answer even in principle — it depends on how much wind is already there, and the honest form of the question is what the whole system returns at a given penetration.
 
 ## The threshold argument, and what is wrong with it
 
@@ -64,4 +62,7 @@ That correction applies to the petrol car and not to its electric replacement in
 
 ## Notes and further reading
 
-The overview above draws on the standard summaries of the literature; the primary sources are Hall's own papers and the journal *BioPhysical Economics and Sustainability*, which exists to publish this kind of analysis. The single most useful methodological reference is Murphy and Hall's 2010 protocol, written because the field had stopped being able to compare its own results.
+The values table draws on standard summaries of the literature, and should be treated as indicative. The methodological argument above is better sourced than the numbers are, which is itself a fair description of the state of the field.
+
+[^proi]: The scale distinction, the term PROI, and the wind example are from "When is EROI Not EROI?", *BioPhysical Economics and Resource Quality* 4:16 (2019), <https://doi.org/10.1007/s41247-019-0065-8>, responding to Brockway et al. (2019) on the incomparability of wellhead-oil and renewable-electricity ratios. The paper shows that regional PROI approaches facility EROI only as the industry growth rate approaches zero.
+[^storage]: Graham Palmer, "A Framework for Incorporating EROI into Electrical Storage", *BioPhysical Economics and Resource Quality* 2:6 (2017), <https://doi.org/10.1007/s41247-017-0022-3>, modelled on the Texas ERCOT system. The energy-stored-on-invested metric is from Barnhart and Benson (2013).
