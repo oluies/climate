@@ -32,5 +32,5 @@ jobs:
       with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: site/out
-          # Preserve /book, which book.yml publishes into the same branch.
-          keep_files: true
+          # The book owns the root of gh-pages; the Next.js site lives under /site.
+          destination_dir: site

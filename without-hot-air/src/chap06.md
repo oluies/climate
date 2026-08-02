@@ -131,13 +131,9 @@ Here MacKay was not merely conservative but inverted. To deliver 50 kWh/d per pe
 
 At the end of 2025 the world had **2392 GW**: **267 times** the 2007 fleet, and **1.9 times** the number he called beyond the bounds of plausibility. **China alone has 1202 GW**, which is 96% of MacKay's fantasy figure, built by one country in eighteen years. The world added **512 GW during 2025** — two-fifths of the whole fantasy in a single year.[^deploy]
 
-<iframe src="https://ourworldindata.org/grapher/installed-solar-pv-capacity?tab=line" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+![World installed solar PV capacity, 2000 to 2025, in GW, with the world, China, Germany and the United Kingdom plotted against the 1250 GW MacKay called beyond the bounds of plausibility. The world passes that line around 2022 and reaches 2392 GW; China alone reaches 1202 GW.](/img/without-hot-air/fig-solar-capacity.svg)
 
-<span class="figurenumber">Figure 6.20.</span> Installed solar PV capacity, from Our World in Data. MacKay's "more than 100 times all the photovoltaics in the whole world" is the flat line at the left-hand edge.
-
-<iframe src="https://ourworldindata.org/grapher/solar-energy-consumption?tab=line" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
-
-<span class="figurenumber">Figure 6.21.</span> Solar energy consumption. Capacity is what gets built; this is what it delivers.
+<span class="figurenumber">Figure 6.20.</span> Installed solar PV capacity. MacKay's "more than 100 times all the photovoltaics in the whole world" is the dashed line; the world crossed it around 2022 and China has nearly reached it alone. Energy Institute *Statistical Review of World Energy* 2026.
 
 ### The cost reversal, which is the largest single change since the book
 
@@ -158,6 +154,10 @@ It **burns gas**. The plant needs fossil heat to start each morning and to ride 
 And it was **undercut**. In January 2025 its owners announced plans to shut it, eleven years into a plant built for far longer, not because anything wore out but because photovoltaics had become cheaper than running it. In December 2025 the California Public Utilities Commission rejected the closure agreement and required two of the three units to keep operating.[^ivanpah] It survives on a regulator's order rather than on its economics.
 
 Now put its power per unit area beside the others, using its best year:
+
+![Power per unit area of four solar installations: Bavaria Solarpark 5.0, Ivanpah 6.9, MacKay's fantasy farm 10.0, Cleve Hill 10.8 W per square metre.](/img/without-hot-air/fig-solar-power-density.svg)
+
+<span class="figurenumber">Figure 6.21.</span> Power per unit area. The two photovoltaic fields bracket the range; the concentrating plant in the desert falls between them, below a solar farm in Kent.
 
 | | W/m<sup>2</sup> average |
 |---|---|
@@ -197,9 +197,9 @@ Set against all that, here is what solar actually delivered in 2025, in this boo
 
 MacKay's roof estimate was 5 and his fantasy farm was 50. Britain, having built 22 GW, gets **less than one kWh per day per person** from it.[^percap6] The cost argument reversed; the quantity argument did not. Everything this chapter says about how much area a solar-powered Britain would need still stands, and is still the reason the answer is hard.
 
-<iframe src="https://ourworldindata.org/grapher/solar-electricity-per-capita?tab=line" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+![Solar electricity per person, 2000 to 2025, in kWh per day, for Germany, China, the world and the United Kingdom, against MacKay's roof estimate of 5 kWh per day per person. Germany reaches 3.00, China 2.28, the world 0.94 and the United Kingdom 0.79 — all below the roof line.](/img/without-hot-air/fig-solar-percapita.svg)
 
-<span class="figurenumber">Figure 6.22.</span> Solar electricity per person, from Our World in Data — the chart in the units this book uses. Divide by 365 to compare with MacKay's kWh/d per person.
+<span class="figurenumber">Figure 6.22.</span> Solar electricity per person, in this book's units. Nobody has yet reached what MacKay assigned to roofs alone, and his 50 kWh/d solar farm is ten times above the top of the chart. Generation from the Energy Institute's *Statistical Review* 2026, divided by population.
 
 ## <span id="biomass">Solar biomass</span>
 
