@@ -1,7 +1,7 @@
 name: Link check (warning only)
 on:
   push:
-    branches: ["revision/value-of-renewables"]
+    branches: ["main"]
     paths:
       - "without-hot-air/src/chap-value-of-renewables.md"
       - "book/index.qmd"
@@ -12,8 +12,8 @@ on:
 permissions:
   contents: read
 jobs:
-  # Separate from the build; never blocks the deploy. Currently scoped to the
-  # revised content; widen the args to without-hot-air/src/*.md for a full audit.
+  # Separate from the build; never blocks the deploy. Scoped to the revised
+  # content and the front matter, both of which carry live external citations.
   linkcheck:
     runs-on: ubuntu-latest
     steps:
@@ -24,4 +24,6 @@ jobs:
           args: >-
             --no-progress --max-retries 2 --accept 200,429
             book/index.qmd without-hot-air/src/chap-value-of-renewables.md
+            without-hot-air/src/author.md without-hot-air/src/acknowledgments.md
+            without-hot-air/src/chap06.md without-hot-air/src/chapM.md without-hot-air/src/chapN.md
           fail: false
