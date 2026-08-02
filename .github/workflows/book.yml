@@ -33,6 +33,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./book/_book
           publish_branch: gh-pages
-          # The Next.js site in main.yml publishes to the root of gh-pages;
-          # the book lives under /book so the two do not clobber each other.
-          destination_dir: book
+          # The book owns the root. keep_files stops this publish from deleting
+          # /site, which main.yml maintains in the same branch.
+          keep_files: true

@@ -702,3 +702,64 @@ def renderCaptureSvg(year: Int, order: List[String], cap: Map[String, Double], a
   b ++= "</svg>\n"
   b.toString
 }
+
+// ---- Chapter 6 solar figures ----
+// Three charts from the EI Statistical Review workbook, replacing the OWID
+// iframes with figures in the book's own units. Note the sheet layouts differ:
+// "Solar Installed Capacity" starts its year header at column B = 2000, while
+// "Solar Generation - TWh" starts at B = 1965. Both are read positionally.
+@main
+def chapter06(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val xlsx = (dir / "ei-stats-review-all-data.xlsx").toString.replace("'", "''")
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val st = conn.createStatement()
+  st.execute("LOAD excel")
+
+  def series(sheet: String, region: String, firstYear: Int, lastYear: Int, scale: Double) = {
+    // Quote every identifier: column AS collides with the SQL keyword.
+    val cols = (firstYear to lastYear).map(y => "\"" + colName(1 + (y - firstYear)) + "\"").mkString(",")
+    val rs = st.executeQuery(
+      s"""SELECT $cols FROM read_xlsx('$xlsx', sheet='$sheet', header=false,
+          all_varchar=true, range='A4:${colName(1 + (lastYear - firstYear))}200')
+          WHERE A='$region'""")
+    val v = collection.mutable.ArrayBuffer[(Int, Double)]()
+    if (rs.next()) for (i <- firstYear to lastYear) {
+      val s = rs.getString(i - firstYear + 1)
+      if (s != null && s.nonEmpty) v += ((i, s.toDouble / scale))
+    }
+    v.toSeq
+  }
+
+  // 1. World installed capacity in GW, against MacKay's 1250 GW fantasy.
+  val capRegions = Seq("Total World", "China", "Germany", "United Kingdom")
+  val cap = new StringBuilder; cap ++= "region,year,gw\n"
+  for (r <- capRegions; (y, v) <- series("Solar Installed Capacity", r, 2000, 2025, 1000.0))
+    cap ++= f"$r,$y,$v%.2f\n"
+  os.write.over(dir / "solar-capacity.csv", cap.toString)
+
+  // 2. Generation per person in kWh/d, the book's units.
+  val pop = Map("Total World" -> 8.23e9, "China" -> 1.408e9,
+                "Germany" -> 83.6e6, "United Kingdom" -> 69.3e6)
+  val pc = new StringBuilder; pc ++= "region,year,kwh_per_day\n"
+  for (r <- capRegions; (y, twh) <- series("Solar Generation - TWh", r, 1965, 2025, 1.0)
+       if y >= 2000)
+    pc ++= f"$r,$y,${twh * 1e9 / pop(r) / 365}%.4f\n"
+  os.write.over(dir / "solar-percapita.csv", pc.toString)
+
+  // 3. Power per unit area. Hand-entered from the sources in chapter 6's notes:
+  // these are four specific installations, not a series, and there is no
+  // workbook to read them from.
+  os.write.over(dir / "solar-power-density.csv",
+    """label,wm2,kind
+      |Bavaria Solarpark 2008,5.0,PV
+      |Ivanpah (Mojave desert),6.9,Solar thermal
+      |MacKay's fantasy farm,10.0,Assumption
+      |Cleve Hill (Kent) 2025,10.8,PV
+      |""".stripMargin)
+  conn.close()
+  println("wrote data-refresh/solar-capacity.csv, solar-percapita.csv, solar-power-density.csv")
+  println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
+  println("  python figures/solar_capacity.py data-refresh/solar-capacity.csv without-hot-air/Images/fig-solar-capacity.svg")
+}
