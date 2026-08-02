@@ -30,7 +30,9 @@ Let’s look at real data and try to figure out a balanced viewpoint. Figure 26.
 
 Let’s quantify the fluctuations in country-wide wind power. The two issues are short-term changes, and long-term lulls. Let’s find the fastest short-term change in a month of Irish wind data. On 11th February 2007, the Irish wind power fell steadily from 415 MW at midnight to 79 MW at 4am. That’s a slew rate of 84 MW per hour for a country-wide fleet of capacity 745 MW. (By slew rate I mean the rate at which the delivered power fell or rose – the slope of the graph on 11th February.) OK: if we scale British wind power up to a capacity of 33 GW (so that it delivers 10 GW on average), we can expect to have occasional slew rates of
 
-[\text{84\ MW/h~} \times \ \frac{\text{33\ 000\ MW}}{\text{745\ MW}}\  = \text{~3700\ MW/h,}]
+$$
+\text{84\ MW/h~} \times \ \frac{\text{33\ 000\ MW}}{\text{745\ MW}}\  = \text{~3700\ MW/h,}
+$$
 
 assuming Britain is like Ireland. So we need to be able to either power *up* replacements for wind at a rate of 3.7 GW per hour – that’s 4 nuclear power stations going from no power to full power every hour, say – *or* we need to be able to suddenly turn *down* our *demand* at a rate of 3.7 GW per hour.
 
@@ -134,54 +136,14 @@ If all four pumped storage stations are switched on simultaneously, they can pro
 
 We are interested in making much bigger storage systems, storing a total of 1200 GWh (about 130 times what Dinorwig stores). And we’d like the capacity to be about 20 GW – about ten times bigger than Dinorwig’s. So here is the pumped storage solution: we have to imagine creating roughly 12 new sites, each storing 100 GWh – roughly ten times the energy stored in Dinorwig. The pumping and generating hardware at each site would be the same as Dinorwig’s.
 
-Ways to store 100 GWh
-
-drop from
-upper lake
-
-working volume
-required
-(million m<sup>3</sup>)
-
-example size
-of lake
-area  ×  depth
-
-500 m
-
-80
-
-2 km<sup>2</sup> × 40 m
-
-500 m
-
-80
-
-4 km<sup>2</sup> × 20 m
-
-200 m
-
-200
-
-5 km<sup>2</sup> × 40 m
-
-200 m
-
-200
-
-10 km<sup>2</sup> × 20 m
-
-100 m
-
-400
-
-10 km<sup>2</sup> × 40 m
-
-100 m
-
-400
-
-20 km<sup>2</sup> × 20 m
+| Drop from upper lake | Working volume required (million m<sup>3</sup>) | Example size of lake (area × depth) |
+|---|---|---|
+| 500 m | 80 | 2 km<sup>2</sup> × 40 m |
+| 500 m | 80 | 4 km<sup>2</sup> × 20 m |
+| 200 m | 200 | 5 km<sup>2</sup> × 40 m |
+| 200 m | 200 | 10 km<sup>2</sup> × 20 m |
+| 100 m | 400 | 10 km<sup>2</sup> × 40 m |
+| 100 m | 400 | 20 km<sup>2</sup> × 20 m |
 
 <span class="figurenumber">Table 26.7</span>. Pumped storage. Ways to store 100 GWh. For comparison with column 2, the working volume of Dinorwig is 7 million m<sup>3</sup>, and the volume of Lake Windermere is 300 million m<sup>3</sup>. For comparison with column 3, Rutland water has an area of 12.6 km<sup>2</sup>; Grafham water 7.4 km<sup>2</sup>. Carron valley reservoir is 3.9 km<sup>2</sup>. The largest lake in Great Britain is Loch Lomond, with an area of 71 km<sup>2</sup>. [^6]
 
@@ -302,125 +264,33 @@ There are lots of ways to store energy, and lots of criteria by which storage so
 
 <span class="figurenumber">Figure 26.13</span>. Some properties of storage systems and fuels. (a) Energy density (on a logarithmic scale) versus lifetime (number of cycles). (b) Energy density versus efficiency. The energy densities don’t include the masses of the energy systems’ containers, except in the case of "air" (compressed air storage). Taking into account the weight of a cryogenic tank for holding hydrogen, the energy density of hydrogen is reduced from 39 000Wh/kg to roughly 2400 Wh/kg. [^13]
 
-fuel
+**(a) Calorific values of fuels**
 
-calorific value
+| fuel | calorific value (kWh/kg) | (MJ/l) |
+|---|---|---|
+| propane | 13.8 | 25.4 |
+| petrol | 13.0 | 34.7 |
+| diesel oil (DERV) | 12.7 | 37.9 |
+| kerosene | 12.8 | 37.0 |
+| heating oil | 12.8 | 37.3 |
+| ethanol | 8.2 | 23.4 |
+| methanol | 5.5 | 18.0 |
+| bioethanol |  | 21.6 |
+| coal | 8.0 |  |
+| firewood | 4.4 |  |
+| hydrogen | 39.0 |  |
+| natural gas | 14.85 | 0.04 |
 
-(kWh/kg)
+**(b) Batteries**
 
-(MJ/l)
-
-propane
-
-13.8
-
-25.4
-
-petrol
-
-13.0
-
-34.7
-
-diesel oil (DERV)
-
-12.7
-
-37.9
-
-kerosene
-
-12.8
-
-37.0
-
-heating oil
-
-12.8
-
-37.3
-
-ethanol
-
-8.2
-
-23.4
-
-methanol
-
-5.5
-
-18.0
-
-bioethanol
-
-21.6
-
-coal
-
-8.0
-
-firewood
-
-4.4
-
-hydrogen
-
-39.0
-
-natural gas
-
-14.85
-
-0.04
-
-(a)
-
-battery type
-
-energy density
-(Wh/kg)
-
-lifetime
-(cycles)
-
-nickel-cadmium
-
-45–80
-
-1500
-
-NiMH
-
-60–120
-
-300–500
-
-lead-acid
-
-30–50
-
-200–300
-
-lithium-ion
-
-110–160
-
-300–500
-
-lithium-ion-polymer
-
-100–130
-
-300–500
-
-reusable alkaline
-
-80
-
-50
-
-(b)
+| battery type | energy density (Wh/kg) | lifetime (cycles) |
+|---|---|---|
+| nickel-cadmium | 45–80 | 1500 |
+| NiMH | 60–120 | 300–500 |
+| lead-acid | 30–50 | 200–300 |
+| lithium-ion | 110–160 | 300–500 |
+| lithium-ion-polymer | 100–130 | 300–500 |
+| reusable alkaline | 80 | 50 |
 
 <span class="figurenumber"><span id="table26.14">Table</span> 26.14</span>. (a) Calorific values (energy densities, per kg and per litre) of some fuels (in kWh per kg and MJ per litre). (b) Energy density of some batteries (in Wh per kg). 1 kWh = 1000Wh. [^14]
 

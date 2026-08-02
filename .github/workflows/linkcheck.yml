@@ -1,0 +1,27 @@
+name: Link check (warning only)
+on:
+  push:
+    branches: ["revision/value-of-renewables"]
+    paths:
+      - "without-hot-air/src/chap-value-of-renewables.md"
+      - "book/index.qmd"
+      - ".github/workflows/linkcheck.yml"
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1"
+permissions:
+  contents: read
+jobs:
+  # Separate from the build; never blocks the deploy. Currently scoped to the
+  # revised content; widen the args to without-hot-air/src/*.md for a full audit.
+  linkcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check links (non-blocking)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress --max-retries 2 --accept 200,429
+            book/index.qmd without-hot-air/src/chap-value-of-renewables.md
+          fail: false

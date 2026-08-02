@@ -10,36 +10,15 @@ One of the main sinks of energy in the "developed" world is the creation of stuf
 
 Let’s say we want to understand the full energy-cost of a stuff, perhaps with a view to designing better stuff. This is called life-cycle analysis. It’s conventional to chop the energy-cost of anything from a hair-dryer to a cruise-ship into four chunks:
 
-embodied energy (kWh per kg)
-
-fossil fuel
-
-10
-
-wood
-
-5
-
-paper
-
-10
-
-glass
-
-7
-
-PET plastic
-
-30
-
-aluminium
-
-40
-
-steel
-
-6
-
+| Material | Embodied energy (kWh per kg) |
+|---|---|
+| fossil fuel | 10 |
+| wood | 5 |
+| paper | 10 |
+| glass | 7 |
+| PET plastic | 30 |
+| aluminium | 40 |
+| steel | 6 |
 <span class="figurenumber">Table 15.2</span>. Embodied energy of materials.
 
   - **Phase R:** Making **raw materials**.
@@ -54,6 +33,16 @@ steel
 ![](/img/without-hot-air/figure413.gif) ![](/img/without-hot-air/figure106.gif)
 
 <span class="figurenumber">Figure 15.3</span>. Five aluminium cans per day is 3 kWh/d. The embodied energy in other packaging chucked away by the average Brit is 4 kWh/d.
+
+*A note added in the 2026 revision.* That 3 kWh/d assumes the can is thrown away, and table 15.2 shows why the assumption matters so much: at 40 kWh per kg, aluminium is the most energy-dense material in the table, four times paper or glass and nearly seven times steel. It is also the one where recycling saves most, because remelting scrap aluminium takes roughly a twentieth of the energy of winning the metal from bauxite.
+
+Two countries have made that saving nearly complete, and the mechanism is a deposit rather than an appeal to virtue. Norway's Infinitum scheme returns **over 90% of all cans and bottles sold** — 92.5% of cans in 2023, and 1.6 of the 1.7 billion containers sold in 2024. Sweden's Returpack passed **3 billion containers deposited in 2025** for the first time, at an overall rate of 88.4% and **91% for cans specifically**, which is past the national target.[^pant]
+
+Put that through this chapter's arithmetic. If 91% of cans come back and a recycled can costs about a twentieth of a new one to make, five cans a day costs roughly **0.4 kWh/d instead of 3** — a sevenfold reduction in one of the items on the consumption stack, achieved without anyone drinking less. It is the same lesson as the standby regulation in chapter 22: the saving came from changing the system the object moves through, not from persuading the person holding it.
+
+Two honest qualifications. The 40 kWh/kg in table 15.2 is the figure for *primary* aluminium, so a can already made from recycled metal embodies far less to begin with and the saving is not additional to that. And the deposit covers cans and bottles, not the other 4 kWh/d of packaging in this figure, which has no deposit on it and comes back at nothing like 91%.
+
+[^pant]: Norway: Infinitum's deposit-return scheme, return rates above 90% sustained, 92.5% for cans in 2023 and 1.6 billion of 1.7 billion containers collected in 2024. Sweden: Returpack/Pantamera reported over 3 billion cans and bottles deposited in 2025, an overall rate of 88.4% against a national target of 90%, and 91% for cans alone. The ratio of recycled to primary aluminium energy is conventionally put at about 1:20.
 
 ![](/img/without-hot-air/figure107.gif)
 
@@ -100,6 +89,62 @@ The largest stuff most people buy is a house.
 In Chapter H, I estimate the energy cost of making a new house. Assuming we replace each house every 100 years, the estimated energy cost is 2.3 kWh/d. This is the energy cost of creating the *shell* of the house only – the foundation, bricks, tiles, and roof beams. If the average house occupancy is 2.3, the average energy expenditure on house building is thus estimated to be <span class="red">1 kWh per day per person</span>.
 
 What about a <span id="car">car</span>, and a road? Some of us own the former, but we usually share the latter. A new car’s embodied energy is 76 000 kWh [^8] – so if you get one every 15 years, that’s an average energy cost of <span class="red">14 kWh per day</span>. A life-cycle analysis by Treloar, Love, and Crawford estimates that building an Australian road costs 7600 kWh per metre (a continuously reinforced concrete road), and that, including maintenance costs, the total cost over 40 years was 35 000 kWh per metre. Let’s turn this into a ballpark figure for the energy cost of British roads. There are 28 000 miles of trunk roads and class-1 roads in Britain (excluding motorways). Assuming 35 000 kWh per metre per 40 years, those roads cost us <span class="red">2 kWh/d per person</span>.
+
+### The car, recalculated for an electric one
+
+*A section added in the 2026 revision.* The 76 000 kWh above is the embodied energy of a car of MacKay's era: a steel body, an engine, and no battery worth speaking of. An electric car is a different object to build, and since chapter 3 now shows a third of new cars in Britain and half in China being electric, the sum is worth redoing.
+
+Almost all of the difference is the battery. Making cells is energy-intensive, and about half of a battery's manufacturing emissions are simply the electricity consumed in the factory — which means the answer depends on where the plant is and what powers it, and has been falling as those plants move onto cleaner grids. Tesla's own Impact Report puts the production emissions of a Model 3 at about **49% above a comparable combustion baseline**.[^ev15]
+
+Carry that premium across to MacKay's units and the arithmetic goes like this. If a combustion car embodies 76 000 kWh, an electric one of similar size embodies roughly **113 000 kWh**, which over a 15-year life is about **21 kWh per day** rather than 14. Making the car got substantially worse.
+
+Now put that beside chapter 3, which is where the point lands:
+
+| | making it | driving it | total |
+|---|---|---|---|
+| Petrol car, 33 mpg | 14 kWh/d | 40 kWh/d | **54 kWh/d** |
+| Electric car, 15 kWh/100 km | 21 kWh/d | 7.5 kWh/d | **28 kWh/d** |
+
+The electric car is worse to build by about 7 kWh a day and better to drive by about 32, so it wins on the total by roughly a factor of two. That margin is not delicate: it survives a considerably larger manufacturing penalty than the one assumed here, and it improves every year that battery factories run on cleaner electricity, because half the battery's burden is the grid behind the plant.
+
+Two warnings about this table. The first is a unit problem, and it is real: the 49% is a *carbon dioxide* premium, and I have applied it to an *energy* figure, which is only legitimate if the energy mixes behind the two are similar — they are not exactly, so treat 21 kWh/d as an order-of-magnitude figure rather than a measurement. The second is that the whole comparison is per-year, so it depends on how long cars last. If an electric car lasts twenty years instead of fifteen, its manufacturing column falls to 16 kWh/d; if the battery forces early retirement at ten, it rises to 31 and the advantage narrows sharply. Longevity does more work in this table than any of the engineering.
+
+The wider point is the one this chapter exists to make. Chapter 3 counts only the fuel, and on fuel alone the electric car looks five times better. Counting the stuff as well as the driving, it is about twice as good. Both numbers are true; the second is the honest one, and it is smaller.
+
+### Who makes the battery
+
+There is a second question hiding in that table, and it is the one this chapter raises about gizmos generally: not how much energy the battery embodies, but *where* it is embodied. MacKay notes below that Britain's imported goods do not appear in its energy accounts, and that a country which used to make its own things now buys them. The battery is that argument's largest single instance.
+
+The costs are not close. BloombergNEF's 2025 survey puts the global average lithium-ion pack price at **$108/kWh**, but the average conceals the thing that matters: **China at $84/kWh, Europe 56% higher, North America 44% higher**.[^packprice] And the gap is widening rather than closing. In the same year, Chinese pack prices fell 13%, European prices 8%, and North American prices 4%. A cost difference that grows while everyone is trying to close it is a structural difference, not a temporary one.
+
+Manufacturing is concentrated to match. Six Chinese firms supplied about **69% of all electric-vehicle batteries installed worldwide** in the first ten months of 2025, CATL alone accounting for roughly a third of global cell sales. Estimates of China's share of total cell *capacity* run from 75% to 85% depending on what is counted.
+
+The European response has been tariffs. Definitive countervailing duties on Chinese battery-electric cars took effect on 30 October 2024 at rates from 17.0% to 35.3%, on top of the standard 10% car duty — 17.4% for BYD, 19.9% for Geely, 35.3% for SAIC and for anyone who did not cooperate with the investigation, and 9.0% for Tesla exporting from Shanghai.[^evtariff] Set the arithmetic side by side: the duty is of the same order as the cost gap it is answering. It offsets the advantage without reversing it, and it is a fixed number set against a gap that moved 5 percentage points in China's favour in a single year.
+
+None of that is an energy calculation, and this book is careful to distinguish what physics settles from what politics does. The physics is settled and unglamorous: a battery embodies roughly what the table above says, wherever it is made. What is not settled is whether the country doing the driving is also the country doing the making — and on present numbers, for most of the world, it is not.
+
+### Rocks are not the bottleneck
+
+It is natural to answer all this by looking for the raw materials, and Europe has been doing so. Two cautions are needed before that answer works, and the first is a matter of definition.
+
+**Rare earths are not battery materials.** The seventeen rare-earth elements go into permanent magnets — the motors that turn the wheels, and the generators inside wind turbines — not into lithium-ion cells. A battery needs lithium, cobalt, nickel, manganese and graphite, which is a different list with a different geography. So when LKAB announced that its Per Geijer deposit at Kiruna is Europe's largest known rare-earth find, and in 2023 revised it upward by 25% to **over 1.3 million tonnes of rare-earth oxides**, alongside 734 million tonnes of iron ore and a phosphorus grade of 2.3%, the thing being solved was the magnet, not the cell.[^pergeijer] That is worth having. It is not the battery problem.
+
+The second caution is the more important one, and it applies to both lists. **The chokepoint is refining, not mining.** On the IEA's 2025 assessment China holds **over 90% of world refining capacity for graphite and for rare earths**, and about **60% for lithium and for cobalt**. For 19 of the 20 strategic minerals surveyed, China is the leading refiner, with an average share of 70%. Concentration is rising rather than falling: the combined share of the top three refining countries went from about 82% in 2020 to **86% in 2024**, with almost all the growth in Chinese capacity.[^iea25]
+
+That is why a deposit does not settle the question. André Månberger of Lund makes the point precisely: Swedish ore would be exported unprocessed, while China's position rests on keeping the value chain and exporting the finished magnet, generator or battery. "Rare" describes concentration rather than scarcity, so extraction is marginal by nature and depends on prices that Chinese refining capacity substantially sets. The Swedish state, he notes, would collect very little either way — the returns accrue to the mining company, with modest mineral and corporate taxes behind them. His group also finds that LKAB's existing **mining waste** alone could hold rare earths equivalent to about **30% of the EU's current import needs**, which suggests the tailings may matter as much as the new mine.[^manberger]
+
+Then there is the timescale, which is the sort of thing this book exists to point out. LKAB applied for its extraction concession in June 2023 and says that Swedish permitting takes **10 to 15 years**, against an EU expectation of two-year approvals. A mine opening in the late 2030s is a contribution to the 2040s. It does not change what a European battery costs in 2030, and it is not a reply to a pack-price gap that widened by five percentage points last year.
+
+So the honest summary is a stack of three separate problems that are often discussed as one. Europe has some of the rock. It has very little of the refining. And it has less of the cell manufacturing than either. Fixing the first does not touch the other two, and the other two are where the cost difference in the previous section actually comes from.
+
+[^pergeijer]: LKAB, "Europas största fyndighet av sällsynta jordartsmetaller nu 25 procent större", on the Per Geijer deposit at Kiruna: mineral resources of over 1.3 million tonnes of total rare-earth oxides after a 25% upward revision, 734 million tonnes of iron ore (307 Mt indicated, 421 Mt inferred), and an average phosphorus grade of 2.3%. The extraction concession was applied for on 12 June 2023; LKAB's own estimate of the Swedish permitting timeline is 10 to 15 years.
+[^iea25]: IEA, *Global Critical Minerals Outlook 2025*. Chinese refining shares of over 90% for graphite and rare earths and about 60% for lithium and cobalt; leading refiner for 19 of 20 strategic minerals at an average 70% share; top-three refiner concentration rising from about 82% in 2020 to 86% in 2024.
+[^manberger]: André Månberger, environment and energy systems, LTH, Lund University, quoted in "Sällsynta metaller blir ingen kassako för Sverige — men viktiga för EU": <https://www.lu.se/artikel/sallsynta-metaller-blir-ingen-kassako-sverige-men-viktiga-eu>. The 30% figure refers to rare earths recoverable from existing LKAB mining waste, not to the Per Geijer deposit.
+
+[^packprice]: BloombergNEF's annual battery price survey, December 2025: global volume-weighted average pack price of $108/kWh, down 8% on 2024; China lowest at $84/kWh, with European packs 56% and North American packs 44% above that; annual declines of 13%, 8% and 4% respectively. Note that these are volume-weighted averages dominated by passenger vehicles. Packs for commercial vehicles, made in far smaller numbers, are dearer than these averages in Europe, and the European premium quoted for a truck pack can be nearer a factor of two than the 1.56 implied here.
+[^evtariff]: Definitive EU countervailing duties on Chinese battery-electric vehicles, in force 30 October 2024, additional to the standard 10% duty. The widely quoted "up to 38%" figure was the provisional rate announced in July 2024; the definitive top rate is 35.3%.
+
+[^ev15]: Tesla's Impact Report gives Model 3 production emissions about 49% above a comparable internal-combustion baseline, and notes that around half of a battery's lifecycle emissions come from the electricity used to manufacture and assemble it. Independent estimates of cell manufacturing have improved over time, with one widely cited 2019 revision putting battery production near 85 kg CO<sub>2</sub> per kWh of capacity, roughly half earlier estimates. The conversion of a carbon premium into an energy premium in the table above is mine and is approximate; see the warning in the text.
 
 ### Transporting the stuff
 

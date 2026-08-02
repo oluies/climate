@@ -34,39 +34,14 @@ Another difference between the red stack we slapped together and the national to
 
 When building our red stack, we tried to imagine how much energy a typical affluent person uses. Has this approach biased our perception of the importance of different activities? Let’s look at some official numbers. Figure 18.2 shows the breakdown of energy consumption by end use. The top two categories are transport and heating (hot air and hot water). Those two categories also dominated the red stack in Part I. Good.
 
-Road transport
-
-Petroleum
-
-22.5
-
-Railways
-
-Petroleum
-
-0.4
-
-Water transport
-
-Petroleum
-
-1.0
-
-Aviation
-
-Petroleum
-
-7.4
-
-All modes
-
-Electricity
-
-0.4
-
-All energy used by transport
-
-31.6
+| Mode | Fuel | kWh/d per person |
+|---|---|---|
+| Road transport | Petroleum | 22.5 |
+| Railways | Petroleum | 0.4 |
+| Water transport | Petroleum | 1.0 |
+| Aviation | Petroleum | 7.4 |
+| All modes | Electricity | 0.4 |
+| All energy used by transport |  | 31.6 |
 
 <span class="figurenumber">Table 18.3</span>. 2006 breakdown of energy consumption by transport mode, in kWh/d per person. Source: Dept. for Transport (2007).
 
@@ -193,43 +168,17 @@ The two conclusions we can draw from Part I are:
 
 In Part II I’ll ask, "assuming that we can’t get production from renewables to add up to our current consumption, what are the other options?"
 
-Power per unit land or water area
-
-Wind
-
-2 W/m<sup>2</sup>
-
-Offshore wind
-
-3 W/m<sup>2</sup>
-
-Tidal pools
-
-3 W/m<sup>2</sup>
-
-Tidal stream
-
-6 W/m<sup>2</sup>
-
-Solar PV panels
-
-5-20 W/m<sup>2</sup>
-
-Plants
-
-0.5 W/m<sup>2</sup>
-
-Rain-water (highlands)
-
-0.24 W/m<sup>2</sup>
-
-Hydroelectric facility
-
-11 W/m<sup>2</sup>
-
-Geothermal
-
-0.017 W/m<sup>2</sup>
+| Source | Power per unit land or water area |
+|---|---|
+| Wind | 2 W/m<sup>2</sup> |
+| Offshore wind | 3 W/m<sup>2</sup> |
+| Tidal pools | 3 W/m<sup>2</sup> |
+| Tidal stream | 6 W/m<sup>2</sup> |
+| Solar PV panels | 5-20 W/m<sup>2</sup> |
+| Plants | 0.5 W/m<sup>2</sup> |
+| Rain-water (highlands) | 0.24 W/m<sup>2</sup> |
+| Hydroelectric facility | 11 W/m<sup>2</sup> |
+| Geothermal | 0.017 W/m<sup>2</sup> |
 
 <span class="figurenumber">Table 18.10</span>. Renewable facilities have to be country-sized because all renewables are so diffuse.
 

@@ -58,193 +58,38 @@ The biggest guzzlers are the computer, its screen, and the television, whose con
 
 According to Jonathan Koomey (2007), the computer-servers in US datacentres and their associated plumbing (air conditioners, backup power systems, and so forth) consumed <span class="red">0.4 kWh per day per person</span> – just over 1% of US electricity consumption. That’s the consumption figure for 2005, which, by the way, is twice as big as the consumption in 2000, because the number of servers grew from 5.6 million to 10 million.
 
-Gadget
-
-Power consumption (W)
-
-on and active
-
-on but inactive
-
-standby
-
-off
-
-Computer and peripherals:
-
-  computer box
-
-80
-
-55
-
-2
-
-  cathode-ray display
-
-110
-
-3
-
-0
-
-  LCD display
-
-34
-
-2
-
-1
-
-  projector
-
-150
-
-5
-
-  laser printer
-
-500
-
-17
-
-  wireless & cable-modem
-
-9
-
-Laptop computer
-
-16
-
-9
-
-0.5
-
-Portable CD player
-
-2
-
-Bedside clock-radio
-
-1.1
-
-1
-
-Bedside clock-radio
-
-1.9
-
-1.4
-
-Digital radio
-
-9.1
-
-3
-
-Radio cassette-player
-
-3
-
-1.2
-
-1.2
-
-Stereo amplifier
-
-6
-
-6
-
-Stereo amplifier II
-
-13
-
-0
-
-Home cinema sound
-
-7
-
-7
-
-4
-
-DVD player
-
-7
-
-6
-
-DVD player II
-
-12
-
-10
-
-5
-
-TV
-
-100
-
-10
-
-Video recorder
-
-13
-
-1
-
-Digital TV set top box
-
-6
-
-5
-
-Clock on microwave oven
-
-2
-
-Xbox
-
-160
-
-2.4
-
-Sony Playstation 3
-
-190
-
-2
-
-Nintendo Wii
-
-18
-
-2
-
-Answering machine
-
-2
-
-Answering machine II
-
-3
-
-Cordless telephone
-
-1.7
-
-Mobile phone charger
-
-5
-
-0.5
-
-Vacuum cleaner
-
-1600
+| Gadget | on and active | on but inactive | standby | off |
+|---|---|---|---|---|
+| **Computer and peripherals:** |  |  |  |  |
+| computer box | 80 | 55 |  | 2 |
+| cathode-ray display | 110 |  | 3 | 0 |
+| LCD display | 34 |  | 2 | 1 |
+| projector | 150 |  | 5 |  |
+| laser printer | 500 | 17 |  |  |
+| wireless & cable-modem | 9 |  |  |  |
+| Laptop computer | 16 | 9 |  | 0.5 |
+| Portable CD player | 2 |  |  |  |
+| Bedside clock-radio | 1.1 | 1 |  |  |
+| Bedside clock-radio | 1.9 | 1.4 |  |  |
+| Digital radio | 9.1 |  | 3 |  |
+| Radio cassette-player | 3 | 1.2 |  | 1.2 |
+| Stereo amplifier | 6 |  |  | 6 |
+| Stereo amplifier II | 13 |  |  | 0 |
+| Home cinema sound | 7 | 7 | 4 |  |
+| DVD player | 7 | 6 |  |  |
+| DVD player II | 12 | 10 | 5 |  |
+| TV | 100 |  | 10 |  |
+| Video recorder | 13 |  | 1 |  |
+| Digital TV set top box | 6 |  | 5 |  |
+| Clock on microwave oven | 2 |  |  |  |
+| Xbox | 160 |  | 2.4 |  |
+| Sony Playstation 3 | 190 |  | 2 |  |
+| Nintendo Wii | 18 |  | 2 |  |
+| Answering machine |  | 2 |  |  |
+| Answering machine II |  | 3 |  |  |
+| Cordless telephone |  | 1.7 |  |  |
+| Mobile phone charger | 5 | 0.5 |  |  |
+| Vacuum cleaner | 1600 |  |  |  |
 
 <span class="figurenumber">Table 11.4</span>. Power consumptions of various gadgets, in watts. 40 W is 1 kWh/d.
 

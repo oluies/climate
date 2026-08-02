@@ -42,211 +42,41 @@ I suspect that 41 kWh/d per person may be an underestimate because the energy in
 
 Tables H.4 and H.5 show estimates of the *Process Energy Requirement* of building materials and building constructions. This includes the energy used in transporting the raw materials to the factory but not energy used to transport the final product to the building site.
 
-Material
-
-Embodied energy
-
-(MJ/kg)
-
-(kWh/kg)
-
-kiln-dried sawn softwood
-
-3.4
-
-0.94
-
-kiln-dried sawn hardwood
-
-2.0
-
-0.56
-
-air dried sawn hardwood
-
-0.5
-
-0.14
-
-hardboard
-
-24.2
-
-6.7
-
-particleboard
-
-8.0
-
-2.2
-
-MDF
-
-11.3
-
-3.1
-
-plywood
-
-10.4
-
-2.9
-
-glue-laminated timber
-
-11
-
-3.0
-
-laminated veneer lumber
-
-11
-
-3.0
-
-straw
-
-0.24
-
-0.07
-
-stabilised earth
-
-0.7
-
-0.19
-
-imported dimension granite
-
-13.9
-
-3.9
-
-local dimension granite
-
-5.9
-
-1.6
-
-gypsum plaster
-
-2.9
-
-0.8
-
-plasterboard
-
-4.4
-
-1.2
-
-fibre cement
-
-4.8
-
-1.3
-
-cement
-
-5.6
-
-1.6
-
-in situ concrete
-
-1.9
-
-0.53
-
-precast steam-cured concrete
-
-2.0
-
-0.56
-
-precast tilt-up concrete
-
-1.9
-
-0.53
-
-clay bricks
-
-2.5
-
-0.69
-
-concrete blocks
-
-1.5
-
-0.42
-
-autoclaved aerated concrete
-
-3.6
-
-1.0
-
-plastics – general
-
-90
-
-25
-
-PVC
-
-80
-
-22
-
-synthetic rubber
-
-110
-
-30
-
-acrylic paint
-
-61.5
-
-17
-
-glass
-
-12.7
-
-3.5
-
-fibreglass (glasswool)
-
-28
-
-7.8
-
-aluminium
-
-170
-
-47
-
-copper
-
-100
-
-28
-
-galvanised steel
-
-38
-
-10.6
-
-stainless steel
-
-51.5
-
-14.3
+| Material | Embodied energy (MJ/kg) | (kWh/kg) |
+|---|---|---|
+| kiln-dried sawn softwood | 3.4 | 0.94 |
+| kiln-dried sawn hardwood | 2.0 | 0.56 |
+| air dried sawn hardwood | 0.5 | 0.14 |
+| hardboard | 24.2 | 6.7 |
+| particleboard | 8.0 | 2.2 |
+| MDF | 11.3 | 3.1 |
+| plywood | 10.4 | 2.9 |
+| glue-laminated timber | 11 | 3.0 |
+| laminated veneer lumber | 11 | 3.0 |
+| straw | 0.24 | 0.07 |
+| stabilised earth | 0.7 | 0.19 |
+| imported dimension granite | 13.9 | 3.9 |
+| local dimension granite | 5.9 | 1.6 |
+| gypsum plaster | 2.9 | 0.8 |
+| plasterboard | 4.4 | 1.2 |
+| fibre cement | 4.8 | 1.3 |
+| cement | 5.6 | 1.6 |
+| in situ concrete | 1.9 | 0.53 |
+| precast steam-cured concrete | 2.0 | 0.56 |
+| precast tilt-up concrete | 1.9 | 0.53 |
+| clay bricks | 2.5 | 0.69 |
+| concrete blocks | 1.5 | 0.42 |
+| autoclaved aerated concrete | 3.6 | 1.0 |
+| plastics – general | 90 | 25 |
+| PVC | 80 | 22 |
+| synthetic rubber | 110 | 30 |
+| acrylic paint | 61.5 | 17 |
+| glass | 12.7 | 3.5 |
+| fibreglass (glasswool) | 28 | 7.8 |
+| aluminium | 170 | 47 |
+| copper | 100 | 28 |
+| galvanised steel | 38 | 10.6 |
+| stainless steel | 51.5 | 14.3 |
 
 <span class="figurenumber">Table H.4.</span> Embodied energy of building materials (assuming virgin rather than recycled product is used). (Dimension stone is natural stone or rock that has been selected and trimmed to specific sizes or shapes.) Sources: [[<span class="websitetitle">3kmcks</span>](http://tinyurl.com/3kmcks)], Lawson (1996).
 

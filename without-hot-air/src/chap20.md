@@ -74,28 +74,13 @@ In 2006–7, the total energy cost of all London’s underground trains, includi
 
 The total energy consumption of the Croydon Tramlink system (figure 20.7) in 2006–7 (including the tram depot and facilities at tram-stops) was <span class="mauve">9 kWh per 100 p-km</span>, with an average speed of 25 km/h. [^7]
 
-Energy consumption
-(kWh per 100 p-km)
-
-Car
-
-68
-
-Bus
-
-19
-
-Rail
-
-6
-
-Air
-
-51
-
-Sea
-
-57
+| Mode | Energy consumption (kWh per 100 p-km) |
+|---|---|
+| Car | 68 |
+| Bus | 19 |
+| Rail | 6 |
+| Air | 51 |
+| Sea | 57 |
 
 <span class="figurenumber">Table 20.8.</span> Overall transport efficiencies of transport modes in Japan (1999).
 

@@ -50,6 +50,27 @@ Let’s repeat his calculation for the world as a whole. In 2006, the coal consu
 
 If Jevons were here today, I am sure he would firmly predict that unless we steer ourselves on a course different from business as usual, there will, by 2050 or 2060, be an end to our happy progressive condition.
 
+## Jevons, redone with 2025 numbers
+
+*A section added in the 2026 revision.* Both halves of this chapter can now be checked against eighteen years of outcome, and both were wrong in instructive ways.
+
+Take the arithmetic first. MacKay used a world coal consumption of 6.3 Gt a year in 2006 against reserves of 1600 Gt. The 2026 Statistical Review puts production at **8.06 Gt in 2025** and proved reserves at **1074 Gt**, giving a reserves-to-production ratio of **139 years** rather than the 250 that was quoted in his day.[^coal26] Note which number moved. Consumption rose by 28% over nineteen years, an average of 1.3% a year — considerably slower than the doubling-every-twenty-years that worried Jevons, and slower than MacKay's own business-as-usual case. Reserves, meanwhile, were revised *down* by a third. The static ratio fell from 250 years to 139 mostly because the geologists changed their minds, not because we burned through it.
+
+Repeating Jevons' calculation properly, with consumption growing at the 1.3% a year actually observed, cumulative production passes 1074 Gt in about **78 years**, which is the 2100s rather than MacKay's 2050 or 2060. So the specific prediction in this chapter is too early by roughly half a century.
+
+But the reason it is wrong is not that we found more coal. It is that **exhaustion turned out not to be the binding constraint at all.** Coal-fired electricity generation is now falling — down 0.3% worldwide in 2025, and down 3.4% in Europe — even as coal *consumption* set a record, because industry still wants it for steel and cement. What limits coal now is the price of the alternatives and the policy attached to the carbon, not the depth of the seam. Jevons framed the question as "how long until we run out?" and MacKay followed him. On present evidence the answer is that we will stop long before we run out, and the interesting question is what stops us.
+
+## What happened to clean coal
+
+The other half of the chapter has aged less kindly. This chapter surveys the technologies that were expected to let fossil fuels continue with their carbon captured and stored, and the tone of the survey is reasonably hopeful.
+
+Here is where that has got to. Total **carbon capture capacity worldwide reached 206 million tonnes a year in 2024**, up from 180 million in 2020 — growth of about 15% in four years. Set that against energy-related carbon dioxide emissions of **35 806 million tonnes** in 2025 and it is **0.6% of the problem**, and that is installed *capacity*, which flatters the position, since capture facilities routinely run below nameplate.[^ccus] After three decades of expectation, carbon capture removes about one part in 170 of the carbon dioxide the energy system emits.
+
+That does not make it useless. It makes it a specialised tool rather than a general licence, and it changes what the chapter's question means. "Can we have sustainable fossil fuels?" was posed as a technical question about whether the carbon could be caught. It can be, and at Sleipner in Norway it has been since 1996. The eighteen years since this book was written have established something narrower and more useful: capture works, and it has not been built, and it has not been built for reasons of cost and incentive rather than physics. That is exactly the shape of the argument in chapter 28a — a technology whose returns depend on a price that policy has not set will not be financed, however well it works.
+
+[^coal26]: Coal production, reserves and generation from the Energy Institute's *Statistical Review of World Energy* 2026 edition. Reserves are as at end-2020, the most recent assessment, and the Review notes that its methodology for updating reserves is under review. The 78-year figure is a Jevons-style calculation: cumulative production at 1.3% annual growth from a 2025 base of 8.06 Gt, reaching 1074 Gt.
+[^ccus]: Capture capacity from the Statistical Review's "CCUS Capture Capacity" sheet: 180.1 Mt/year in 2020 and 206.5 Mt/year in 2024. Compared with 35 806 Mt of energy-related CO<sub>2</sub> in 2025 from the same source, that is 0.58%.
+
 ![](/img/without-hot-air/figure433.gif)
 
 ## Notes and further reading

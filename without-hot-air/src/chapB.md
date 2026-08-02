@@ -135,15 +135,19 @@ The mass of this piece of air is the product of its density *ρ*, its area *A*, 
 
 The kinetic energy of this piece of air is
 
-[\begin{matrix}
+$$
+\begin{matrix}
 {\frac{1}{2}mv^{2} = \frac{1}{2}\rho Avt\ v^{2} = \frac{1}{2}\rho Atv^{3}} \\
-\end{matrix}]
+\end{matrix}
+$$
 
 So the power of the wind, for an area *A* – that is, the kinetic energy passing across that area per unit time – is
 
-[\begin{matrix}
+$$
+\begin{matrix}
 {\frac{\frac{1}{2}mv^{2}}{t} = \frac{1}{2}\rho Av^{3}} \\
-\end{matrix}]
+\end{matrix}
+$$
 
 This formula may look familiar – we derived an identical expression when we were discussing the power requirement of a moving car.
 
@@ -159,20 +163,24 @@ What’s a typical wind speed? On a windy day, a cyclist really notices the wind
 
 The density of air is about 1.3 kg per m<sup>3</sup>. (I usually round this to 1 kg per m<sup>3</sup>, which is easier to remember, although I haven’t done so here.) Then the typical power of the wind per square metre of hoop is
 
-[\begin{matrix}
+$$
+\begin{matrix}
 {\frac{1}{2}\rho v^{3} = \frac{1}{2} \times \text{1.3\ kg/}\text{m}^{\text{3}} \times \left( \text{6\ m/s} \right)^{\text{3}} = \text{140\ W/}\text{m}^{\text{2}}} \\
-\end{matrix}]
+\end{matrix}
+$$
 
 Not all of this energy can be extracted by a windmill. The windmill slows the air down quite a lot, but it has to leave the air with *some* kinetic energy, otherwise that slowed-down air would get in the way. Figure B.2 is a cartoon of the actual flow past a windmill. The maximum fraction of the incoming energy that can be extracted by a disc-like windmill was worked out by a German physicist called Albert Betz [<span class="darkred">[1]</span>](#chBn01) in 1919. If the departing wind speed is one third of the arriving wind speed, the power extracted is 16/27 of the total power in the wind. 16/27 is 0.59. In practice let’s guess that a windmill might be 50% efficient. In fact, real windmills are designed with particular wind speeds in mind; if the wind speed is significantly greater than the turbine’s ideal speed, it has to be switched off.
 
 As an example, let’s assume a diameter of *d* = 25m, and a hub height of 32 m, which is roughly the size of the lone windmill above the city of Wellington, New Zealand (figure B.3). The power of a single windmill is
 
-[\begin{matrix}
+$$
+\begin{matrix}
  \\
 {= \text{50\%} \times \frac{1}{2}\rho v^{3} \times \frac{1}{4}\pi d^{2}} \\
 {= \text{50\%} \times \text{140\ W/m}^{\text{2}} \times \frac{1}{4}\pi\left( \text{25\ m} \right)^{2}} \\
 {= \text{34\ kW}} \\
-\end{matrix}]
+\end{matrix}
+$$
 
 Indeed, when I visited this windmill on a very breezy day, its meter showed it was generating 60 kW.
 
@@ -180,19 +188,30 @@ To estimate how much power we can get from wind, we need to decide how big our w
 
 How densely could such windmills be packed? Too close and the upwind ones will cast wind-shadows on the downwind ones. Experts say that windmills can’t be spaced closer than 5 times their diameter without losing significant power. At this spacing, the <span id="power">power</span> that windmills can generate per unit land area is
 
-[\begin{matrix}
+$$
+\begin{matrix}
  \\
 {= \frac{\frac{1}{2}\rho v^{3}\frac{\pi}{8}d^{2}}{\left( 5d \right)^{2}}} \\
 {= \frac{\pi}{200}\frac{1}{2}\rho v^{3}} \\
 {= 0.016 \times 140\text{W/m}^{\text{2}}} \\
 {= 2.2\text{W/m}^{\text{2}}} \\
-\end{matrix}]
+\end{matrix}
+$$
 
 ![](/img/without-hot-air/figure265.gif)
 
 <span class="figurenumber">Figure B.4.</span> Wind farm layout.
 
 This number is worth remembering: a wind farm with a wind speed of 6 m/s produces a power of 2 W per m<sup>2</sup> of land area. Notice that our answer does not depend on the diameter of the windmill. The *ds* cancelled because bigger windmills have to be spaced further apart. Bigger windmills might be a good idea in order to catch bigger windspeeds that exist higher up (the taller a windmill is, the bigger the wind speed it encounters), or because of economies of scale, but those are the only reasons for preferring big windmills.
+
+*A note added in the 2026 revision.* That last observation — that the answer does not depend on turbine diameter, because spacing scales with diameter — is the most testable prediction in this chapter, and eighteen years have provided a very large test of it.
+
+MacKay's reference machine below is a 54-metre rotor at 80 metres, rated 1 MW. The turbines going into Dogger Bank are GE Haliade-X units of **13 to 14.7 MW**, with a **220-metre rotor** and a tip height of 260 metres: thirteen times the capacity and about four times the diameter. If the scaling argument is right, that should have left the power per unit area alone.
+
+It did. What changed instead was the other input, and the chapter should be honest that it is the weaker one. The spacing here is assumed to be **5 diameters**. Dogger Bank A puts 95 turbines in 515 km<sup>2</sup>, which is 5.4 km<sup>2</sup> each, or a spacing of about 2.3 km — **10.6 diameters**. Dogger Bank B is wider still at 11.4. Modern offshore farms are spaced at roughly twice the separation assumed here, to cut the wake losses that matter more when the machines are this large and the sea this valuable.
+
+Power per unit area goes as the inverse square of the spacing, so doubling it cuts the density to about a quarter. That is why the arithmetic below, which gives 2 W/m<sup>2</sup> at 6 m/s, should not simply be rescaled to offshore wind speeds and believed: at Dogger Bank's wind the formula with 5*d* spacing would suggest something like 7 W/m<sup>2</sup>, and the farm actually delivers nearer **1.3**. The physics in this chapter is sound and the diameter-independence holds. It is the spacing constant that has moved, and it moved in the unhelpful direction.
+
 
 Power per unit area
 
@@ -209,6 +228,18 @@ This calculation depended sensitively on our estimate of the windspeed. Is 6 m/s
 <span class="figurenumber">Figure B.6.</span> Average summer windspeed (dark bar) and average winter windspeed (light bar) in eight locations around Britain. Speeds were measured at the standard weatherman’s height of 10 metres. Averages are over the period 1971–2000.
 
 On the other hand, to estimate the typical power, we shouldn’t take the mean wind speed and cube it; rather, we should find the mean cube of the windspeed. The average of the cube is bigger than the cube of the average. But if we start getting into these details, things get even more complicated, because real wind turbines don’t actually deliver a power proportional to wind-speed cubed. Rather, they typically have just a range of wind-speeds within which they deliver the ideal power; at higher or lower speeds real wind turbines deliver less than the ideal power.
+
+*A note added in the 2026 revision.* That caution has turned out to have sharper teeth than it appears, and not only for estimating a level.
+
+There is a well-documented worry in the wind literature called **global stilling**: measured surface wind speeds appear to have been falling since the late twentieth century — a review across 140 studies put the average at about &#8722;0.014 m/s per year — which would slowly erode every estimate in this chapter. Vest and Tych asked whether the effect is partly an artefact of how the wind is sampled, using the meteorological station and wind turbine at Hazelrigg, Lancaster, and comparing daily figures against 10-minute resolution.[^stilling]
+
+Their answer is that resolution changes the picture. The 10-minute record shows only **minimal stilling** at that site — a decrease of under a per cent over the decade — while the daily run-of-wind record shows a distinct and consistent decline. Carried through into power, the two disagree in direction over particular periods: the daily estimate rises from 2011 to 2016 while the 10-minute observed generation falls from 2016 to 2018 and then rises. The reason is the one stated above. Power goes as the cube of the wind speed, so averaging first and cubing afterwards does not merely give a slightly wrong answer; a run of gusty days and a run of steady days can share a daily mean and deliver quite different energy, and if that mix shifts over decades the daily record reports a trend the turbines never experienced.
+
+The amplification is the part that matters for this chapter's arithmetic. They cite a study using 6-hourly data that found a **5.5% decrease per decade in wind speed accompanied by a 24.5% decrease per decade in wind power** — a small error in the wind becomes a large one in the energy. Sampling height matters for the same reason: another study they cite found wind speeds falling at 2 metres while *rising* at 10 metres over the same period, which should give pause to anyone applying near-surface stilling trends to a hub 100 metres up.
+
+Two cautions before this is over-read, and the authors state both. Their own measured turbine output does fall across three and a half decades, from about 800 kW to 450 kW, but the confidence intervals on the rate of change almost always include zero, so that decline is **not statistically significant**. And this is one station: they describe the Lancaster trends as "parochial" and say the contribution of the work is the methodological point rather than the local result. Taken that way it is a caution rather than a finding: the 6 m/s used here is a long-term mean and the objection above still applies to it in full, and anyone minded to revise these numbers downward for stilling should first ask at what resolution, and at what height, the decline was measured.
+
+[^stilling]: Kathryn Vest and Wlodek Tych, "Is the apparent global stilling effect on wind power generation an artefact of sampling rate? Evidence from high-frequency observations in the UK", *Renewable Energy* 260 (2026) 125097, <https://doi.org/10.1016/j.renene.2025.125097>. Single-site study using the Lancaster University meteorological station and wind turbine at Hazelrigg. The 140-study review average of about &#8722;0.014 m/s per year is McVicar et al., cited therein; the 5.5%/24.5% per decade comparison and the 2 m versus 10 m divergence are also studies they cite rather than their own results. The authors describe the Lancaster trends as parochial and identify multi-site extension as the natural next step.
 
 ### Variation of wind speed with height
 

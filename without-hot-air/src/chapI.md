@@ -46,90 +46,15 @@ one kelvin
 
 1 K
 
-prefix
+| prefix | kilo | mega | giga | tera | peta | exa |
+|---|---|---|---|---|---|---|
+| symbol | k | M | G | T | P | E |
+| factor | 10<sup>3</sup> | 10<sup>6</sup> | 10<sup>9</sup> | 10<sup>12</sup> | 10<sup>15</sup> | 10<sup>18</sup> |
 
-kilo
-
-mega
-
-giga
-
-tera
-
-peta
-
-exa
-
-symbol
-
-k
-
-M
-
-G
-
-T
-
-P
-
-E
-
-factor
-
-10<sup>3</sup>
-
-10<sup>6</sup>
-
-10<sup>9</sup>
-
-10<sup>12</sup>
-
-10<sup>15</sup>
-
-10<sup>18</sup>
-
-prefix
-
-centi
-
-milli
-
-micro
-
-nano
-
-pico
-
-femto
-
-symbol
-
-c
-
-m
-
-*μ*
-
-n
-
-p
-
-f
-
-factor
-
-10<sup>-2</sup>
-
-10<sup>-3</sup>
-
-10<sup>-6</sup>
-
-10<sup>-9</sup>
-
-10<sup>-12</sup>
-
-10<sup>-15</sup>
-
+| prefix | centi | milli | micro | nano | pico | femto |
+|---|---|---|---|---|---|---|
+| symbol | c | m | *μ* | n | p | f |
+| factor | 10<sup>-2</sup> | 10<sup>-3</sup> | 10<sup>-6</sup> | 10<sup>-9</sup> | 10<sup>-12</sup> | 10<sup>-15</sup> |
 <span class="figurenumber">Table 1.1.</span> SI units and prefixes
 
 ## My preferred units for energy, power, and transport efficiencies
@@ -409,43 +334,17 @@ At room temperature, 1 *kT* = <sup>1</sup>⁄<sub>40</sub>eV
 
 At room temperature, 1 *kT* per molecule = 2.5 kJ/mol.
 
-kWh/t-km
-
-inland water
-
-0.083
-
-rail
-
-0.083
-
-truck
-
-0.75
-
-air
-
-2.8
-
-oil pipeline
-
-0.056
-
-gas pipeline
-
-0.47
-
-int’l water container
-
-0.056
-
-int’l water bulk
-
-0.056
-
-int’l water tanker
-
-0.028
+| Mode | kWh/t-km |
+|---|---|
+| inland water | 0.083 |
+| rail | 0.083 |
+| truck | 0.75 |
+| air | 2.8 |
+| oil pipeline | 0.056 |
+| gas pipeline | 0.47 |
+| int’l water container | 0.056 |
+| int’l water bulk | 0.056 |
+| int’l water tanker | 0.028 |
 
 <span class="figurenumber">Table I.8.</span> Energy intensity of transport modes in the USA. Source: Weber and Matthews (2008).
 

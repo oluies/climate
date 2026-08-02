@@ -6,47 +6,18 @@
 
 We’ve found that it’s hard to get off fossil fuels by living on our own renewables. Nuclear has its problems too. So what else can we do? Well, how about living on someone else’s renewables? (Not that we have any entitlement to someone else’s renewables, of course, but perhaps they might be interested in selling them to us.)
 
-Power per unit land or water area
-
-Wind
-
-2 W/m<sup>2</sup>
-
-Offshore wind
-
-3 W/m<sup>2</sup>
-
-Tidal pools
-
-3 W/m<sup>2</sup>
-
-Tidal stream
-
-6 W/m<sup>2</sup>
-
-Solar PV panels
-
-5–20 W/m<sup>2</sup>
-
-Plants
-
-0.5 W/m<sup>2</sup>
-
-Rain-water (highlands)
-
-0.24 W/m<sup>2</sup>
-
-Hydroelectric facility
-
-11 W/m<sup>2</sup>
-
-Solar chimney
-
-0.1 W/m<sup>2</sup>
-
-**Concentrating solar power (desert)**
-
-15 W/m<sup>2</sup>
+| Technology | Power per unit land or water area |
+| --- | --- |
+| Wind | 2 W/m<sup>2</sup> |
+| Offshore wind | 3 W/m<sup>2</sup> |
+| Tidal pools | 3 W/m<sup>2</sup> |
+| Tidal stream | 6 W/m<sup>2</sup> |
+| Solar PV panels | 5–20 W/m<sup>2</sup> |
+| Plants | 0.5 W/m<sup>2</sup> |
+| Rain-water (highlands) | 0.24 W/m<sup>2</sup> |
+| Hydroelectric facility | 11 W/m<sup>2</sup> |
+| Solar chimney | 0.1 W/m<sup>2</sup> |
+| **Concentrating solar power (desert)** | **15 W/m<sup>2</sup>** |
 
 <span class="figurenumber">Table 25.1</span>. Renewable facilities have to be country-sized because all renewables are so diffuse.
 
@@ -343,6 +314,29 @@ A solar chimney or solar updraft tower uses solar power in a very simple way. [^
 <span class="figurenumber">Figure 25.11</span>. More geothermal power in Iceland. Photo by Rosie Ward.
 
 Indeed, Iceland already effectively exports energy by powering industries that make energy-intensive products. Iceland produces nearly one ton of aluminium per citizen per year, for example\! So from Iceland’s point of view, there are great profits to be made. But can Iceland save Europe? I would be surprised if Iceland’s power production could be scaled up enough to make sizeable electricity exports even to Britain alone. As a benchmark, let’s compare with the England–France Interconnector, which can deliver up to 2 GW across the English Channel. That maximum power is equivalent to 0.8 kWh per day per person in the UK, roughly 5% of British average electricity consumption. Iceland’s average geothermal electricity generation is just 0.3 GW, which is less than 1% of Britain’s average electricity consumption. Iceland’s average electricity production is 1.1 GW. [^6] So to create a link sending power equal to the capacity of the French interconnector, Iceland would have to *triple* its electricity production. To provide us with 4 kWh per day per person (roughly what Britain gets from its own nuclear power stations), Iceland’s electricity production would have to increase *ten-fold*. It is probably a good idea to build interconnectors to Iceland, but don’t expect them to deliver more than a small contribution.
+
+## The reverse case, and the politics of it
+
+*A note added in the 2026 revision.* MacKay frames this chapter as Britain buying other countries' renewables. The 2020s produced a live example running the other way. Germany closed its last three nuclear reactors in April 2023 and, for the first time in many years, became a net electricity importer, drawing on hydro- and wind-rich Scandinavia.[^de1] Because the Nordic and continental markets are coupled by interconnectors, German demand now reaches Swedish bills, and southern Sweden, wired directly to Germany, saw its prices rise. Swedish ministers publicly blamed Germany's nuclear exit for higher prices at home.[^de2] The counter-argument is that the feared German price spike never arrived: a year on, Germany had record renewable output and falling wholesale prices.[^de3] So the dispute is less about a supply crisis than about who bears the cost of a coupled market, which is the question MacKay's cheerful "living on someone else's renewables" leaves open. The same coupling sits under the cannibalization model on the companion site.[^model]
+
+The trade figures show the turn plainly, and also show that it did not begin in 2023. Germany ran an export surplus for two decades, peaking at 52 TWh in 2017 — roughly a sixth of everything Britain generates in a year, sold across the border. That surplus then shrank year by year as coal and lignite plants closed, and 2023 was simply the year it crossed zero. Net imports came to 26 TWh in 2024 and 20 TWh in 2025, about 6% of German supply: small in itself, but it is the sign of the number, not its size, that the politics fastened on.[^de4]
+
+![Germany's net electricity trade, 1990 to 2025, in TWh per year. Germany is a net exporter through the 2000s and 2010s, with a peak surplus of 52 TWh in 2017; the surplus shrinks after that and turns to net imports of 9 TWh in 2023, the year the last reactors closed, then 26 TWh in 2024 and 20 TWh in 2025.](/img/without-hot-air/fig-de-net-trade.svg)
+
+There is a sharper case than the wholesale market, and it is a cable that was never built. The Hansa PowerBridge would have been a second link between Sweden and Germany: 700 MW, about 300 km, some 600 million euros, shared between the two grid operators and due around 2035. Sweden rejected it in June 2024, because it would have connected Germany to SE4, the southern Swedish bidding zone where prices are already the highest in the country. In 2024 the SE4 average was 50 EUR/MWh against 25 in the north, and 78 in Germany — and a cable pulls the low price up towards the high one.
+
+An open-access study in *Energy Policy* modelled exactly this and found the Swedish objection to be well founded, not merely political.[^de5] Building the link raises total welfare in both countries, by about 69 million euros a year in Sweden and 77 million in Germany in 2035. But inside Sweden the gain is unevenly placed: Swedish producers gain roughly 176 million while Swedish consumers lose about 106 million, and German consumers gain 455 million. The country is better off and the people paying the bills are worse off. That is the whole difficulty of MacKay's chapter stated in one line: the arithmetic of "living on someone else's renewables" can add up nationally and still fail the household, and no amount of insisting on the total will settle it.
+
+The same study is more useful for what it does next, which is to ask what would fix it. Splitting the interconnector's costs and revenues unevenly in Sweden's favour is not enough on its own. Handing Swedish consumers the extra profits that the state-owned utility Vattenfall would earn is not enough on its own either. Doing both makes the project Pareto-improving, meaning nobody ends up worse off. So does something else entirely: splitting Germany's single bidding zone in two, which shrinks the north-German-to-southern-Swedish price gap and with it the Swedish price rise, and then no transfers are needed at all. The obstacle to living on a neighbour's renewables, in other words, is not the physics or the cost of the cable. It is that the winnings land on one side of the meter and the losses on the other, and Europe has not built the plumbing to move them back.
+
+[^de5]: Polina Emelianova, Pia Hoffmann-Willers and Oliver Ruhnau, "Redistribution through cross-border electricity trade: How to achieve Pareto improvement for consumers?", *Energy Policy* 218 (2026) 115522, <https://doi.org/10.1016/j.enpol.2026.115522> , open access under CC BY. The welfare and surplus figures are their 2035 baseline case; the 2024 zonal prices in the paragraph above are theirs too, from ENTSO-E. The paper notes that the Swedish government signalled in early 2026 that it might reopen the project, conditional on Germany improving its price signals and adding baseload, so its fate is unsettled. Two other projects were stopped the same way: NorthConnect between Norway and the UK, cancelled in March 2023, and Eleclink 2 between Britain and France, paused by both regulators.
+
+[^de4]: Net electricity imports (imports minus exports), Ember via Our World in Data, <https://ourworldindata.org/grapher/net-electricity-imports> . The share of supply uses German generation of 431.7 TWh in 2024, from the Bundesnetzagentur's 2024 electricity market data. UK generation for the 2017 comparison is about 290 TWh a year, from the same Our World in Data electricity dataset used elsewhere in this edition. Accounting bases differ: the Bundesnetzagentur's commercial trade figures for 2023 are 54.1 TWh imported against 42.4 TWh exported, a net 11.7 TWh, where the Ember series plotted here gives 9.2 TWh. The sign and the shape of the turn are the same either way.
+
+[^de1]: The electricity-import shift after the April 2023 nuclear exit: Clean Energy Wire, "Q&A – Germany's nuclear exit: one year after"; on wider import dependence, Clean Energy Wire, "Germany and the EU remain heavily dependent on imported fossil fuels".
+[^de2]: Sweden's criticism of German energy policy as prices rose: France 24, "Sweden sees red over Germany's energy policy", December 2024.
+[^de3]: Fraunhofer ISE, "One year since Germany's nuclear exit", 2024; see also the German economy ministry's earlier "get away from gas", energiewende.bundeswirtschaftsministerium.de.
+[^model]: The cannibalization model and its references: <https://oluies.github.io/elmix/modell/referenser.html> .
 
 ## Notes and further reading
 

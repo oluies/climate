@@ -8,14 +8,18 @@ Imagine that you make one intercontinental trip per year by plane. How much ener
 
 A Boeing 747-400 [^1] with 240 000 litres of fuel carries 416 passengers about 8 800 miles (14 200 km). And fuel’s calorific value is 10 kWh per litre. (We learned that in Chapter 3.) So the energy cost of one full-distance roundtrip on such a plane, if divided equally among the passengers, is
 
-[\begin{matrix}
+$$
+\begin{matrix}
 {\frac{\text{2\ ×\ 240\ 000\ litre}}{\text{416\ passengers}} \times \text{10\ kWh/litre}} \\
 {\simeq \text{12\ 000\ kWh\ per\ passenger}} \\
-\end{matrix}]
+\end{matrix}
+$$
 
 If you make one such trip per year, then your average energy consumption per day is
 
-[\frac{\text{12\ 000\ kWh}}{\text{365\ days}} \simeq \text{33\ kWh/day}]
+$$
+\frac{\text{12\ 000\ kWh}}{\text{365\ days}} \simeq \text{33\ kWh/day}
+$$
 
 14 200 km is a little further than London to Cape Town (10 000 km) and London to Los Angeles (9000km), so I think we’ve slightly overestimated the distance of a typical long-range intercontinental trip; but we’ve also overestimated the fullness of the plane, and the energy cost per person is more if the plane’s not full. Scaling down by 10 000 km/14 200 km to get an estimate for Cape Town, then up again by 100/80 to allow for the plane’s being 80% full, we arrive at 29 kWh per day. For ease of memorization, I’ll round this up to <span class="red">30 kWh per day</span>.
 
@@ -33,37 +37,31 @@ Just as Chapter 3, in which we estimated consumption by cars, was accompanied by
 
 ## Queries
 
-Energy per distance (kWh per 100 p-km)
-
-Car (4 occupants)
-
-20
-
-Ryanair’s planes, year 2007
-
-37
-
-Bombardier Q400, full
-
-38
-
-747, full
-
-42
-
-747, 80% full
-
-53
-
-Ryanair's planes, year 2000
-
-73
-
-Car (1 occupant)
-
-80
-
+| Mode | Energy per distance (kWh per 100 p-km) |
+|---|---|
+| Car (4 occupants) | 20 |
+| Ryanair’s planes, year 2007 | 37 |
+| Bombardier Q400, full | 38 |
+| 747, full | 42 |
+| 747, 80% full | 53 |
+| Ryanair's planes, year 2000 | 73 |
+| Car (1 occupant) | 80 |
 <span class="figurenumber">Table 5.3.</span> Passenger transport efficiencies, expressed as energy required per 100 passenger-km.
+
+## What has changed since 2008
+
+*A section added in the 2026 revision.* Of all the consumption chapters, this is the one whose numbers have moved least, and the reason is the one MacKay gives: a plane is close to a physical limit that no amount of engineering removes. Something must hold an aeroplane up, and holding it up costs energy.
+
+**The aircraft did improve, by roughly a fifth.** The 747-400 in the calculation above has been replaced on most long routes by the Boeing 787 and Airbus A350, and short-haul by the A320neo and 737 MAX families, each burning around 20–25% less fuel per seat than the aircraft it replaced. Applied to the table above, that moves a full modern long-haul aircraft from about 42 kWh per 100 passenger-km to something nearer 32. It is a genuine improvement, achieved over roughly twenty years, and it does not change the shape of the answer: a full aeroplane is still in the same band as a car with a single occupant is bad, and a car with four is better than either.
+
+**The fuel has not changed at all, and this is the difficulty.** Aviation is the one large energy use with no electrical route: batteries are roughly forty times worse per kilogram than kerosene, and that ratio is set by chemistry. The industry's answer is sustainable aviation fuel — chemically near-identical kerosene made from waste oils, and eventually from captured carbon — and both Britain and the EU now mandate it. The **UK SAF Mandate** came into force on 1 January 2025 requiring 2% of jet fuel to be SAF, rising to **10% by 2030 and 22% by 2040**; the EU's **ReFuelEU Aviation** requires 2% in 2025, 6% by 2030, 34% by 2040 and **70% by 2050**.[^safmandate]
+
+**What it costs is the part worth putting in this book's terms.** In 2025, sustainable aviation fuel of the established kind traded at about **$2,180 per tonne in northwest Europe, of which $1,431 was the premium over ordinary jet fuel** — which puts conventional kerosene near $750 and makes SAF roughly **three times the price**.[^safprice] More telling is that the premium is not falling. The cost of producing it has moved between about $1,900 and $2,700 a tonne since 2021 with no downward trend at all. Solar modules and batteries fell by an order of magnitude over comparable periods; SAF has not begun to.
+
+So the arithmetic of this chapter stands, and the conclusion behind it stands more firmly than when it was written. A single intercontinental trip still costs about **30 kWh per day** spread over a year — comparable to driving 50 km a day — and the improvement since 2008 is a fifth, not a factor. Flying remains the hardest item on the consumption stack to decarbonise, and unlike cars, where chapter 3's forty kilowatt-hours can be cut fivefold by changing what the vehicle burns, there is no equivalent move available here. The honest options remain efficiency at the margin, expensive substitute fuel, and flying less.
+
+[^safmandate]: The UK SAF Mandate was made law in November 2024 and took effect on 1 January 2025: 2% of jet fuel supplied, rising to 10% by 2030 and 22% by 2040. ReFuelEU Aviation sets 2% in 2025, 6% in 2030, 20% in 2035, 34% in 2040, 42% in 2045 and 70% in 2050.
+[^safprice]: Sustainable aviation fuel prices from the Energy Institute's *Statistical Review of World Energy* 2026, sourced to S&P Global: SAF (HEFA-SPK) CIF northwest Europe at $2,315.75/tonne in 2024 and $2,180.50 in 2025, with a premium to jet fuel of $1,510 and $1,431 respectively. Cost of production ex-works northwest Europe: $2,159 (2021), $2,673 (2022), $1,914 (2023), $2,081 (2024), $2,019 (2025). The efficiency gains quoted for the 787, A350, A320neo and 737 MAX are manufacturers' figures against the previous generation and should be treated as such.
 
 #### Aren’t <span id="turboprop">turboprop aircraft</span> far more energy-efficient?
 

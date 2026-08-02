@@ -10,16 +10,20 @@ For our first chapter on consumption, let’s study that icon of modern civiliza
 
 How much power does a regular car-user consume? Once we know the conversion rates, it’s simple arithmetic:
 
-[\begin{matrix}
+$$
+\begin{matrix}
 {\text{energy\ used\ per\ day} = \frac{\text{distance\ travelled\ per\ day}}{\text{distance\ per\ unit\ of\ fuel}}} \\
 {\times \text{energy\ per\ unit\ of\ fuel}} \\
-\end{matrix}]
+\end{matrix}
+$$
 
 For the **distance travelled per day**, let’s use 50 km (30 miles). [^1]
 
 For the **distance per unit of fuel**, also known as the **economy** of the car, let’s use 33 miles per UK gallon [^2] (taken from an advertisement for a family car):
 
-[\text{33\ miles\ per\ imperial\ gallon} \simeq \text{12\ km\ per\ litre.}]
+$$
+\text{33\ miles\ per\ imperial\ gallon} \simeq \text{12\ km\ per\ litre.}
+$$
 
 (The symbol ≃ means "is approximately equal to.")
 
@@ -29,16 +33,20 @@ For the **distance per unit of fuel**, also known as the **economy** of the car,
 
 What about the **energy per unit of fuel** (also called the **calorific value** or **energy density**)? Instead of looking it up, it’s fun to estimate this sort of quantity by a bit of lateral thinking. Automobile fuels (whether diesel or petrol) are all hydrocarbons; and hydrocarbons can also be found on our breakfast table, with the calorific value conveniently written on the side: roughly 8 kWh per kg (figure 3.2). Since we’ve estimated the economy of the car in miles per unit *volume* of fuel, we need to express the calorific value as an energy per unit *volume*. To turn our fuel’s "8 kWh per kg" (an energy per unit *mass*) into an energy per unit volume, we need to know the density of the fuel. What’s the density of butter? Well, butter just floats on water, as do fuel-spills, so its density must be a little less than water’s, which is 1 kg per litre. If we guess a density of 0.8 kg per litre [^3], we obtain a calorific value of:
 
-[\text{8\ kWh\ per\ kg\ ×\ 0.8\ kg\ per\ litre} \simeq \text{7\ kWh\ per\ litre.}]
+$$
+\text{8\ kWh\ per\ kg\ ×\ 0.8\ kg\ per\ litre} \simeq \text{7\ kWh\ per\ litre.}
+$$
 
 Rather than willfully perpetuate an inaccurate estimate, let’s switch to the actual value, for petrol, of 10 kWh per litre. [^4]
 
-[\begin{matrix}
+$$
+\begin{matrix}
  \\
 {= \frac{\text{distance\ travelled\ per\ day}}{\text{distance\ per\ unit\ of\ fuel}} \times \text{energy\ per\ unit\ of\ fuel}} \\
 \left. = \frac{\left. \text{50\ km}/\text{day} \right.}{\left. \text{12\ km}/\text{day} \right.} \times \text{10\ kWh}/\text{litre}\phantom{\text{AAA,,}} \right. \\
 {\simeq \left. \text{40\ kWh}/\text{day}\phantom{\text{AAAAAAAAAAAA}} \right.} \\
-\end{matrix}]
+\end{matrix}
+$$
 
 Congratulations\! We’ve made our first estimate of consumption. I’ve displayed this estimate in the left-hand stack in figure 3.3. The red box’s height represents 40 kWh per day per person.
 
@@ -47,6 +55,21 @@ This is the estimate for a typical car-driver driving a typical car today. Later
 ![](/img/without-hot-air/figure21.gif)
 
 <span class="figurenumber">Figure 3.3.</span> Chapter 3’s conclusion: a typical car-driver uses about 40 kWh per day.
+
+*A note added in the 2026 revision.* MacKay's 40 kWh per day is the figure for a petrol car doing 33 miles per gallon, and as an account of the petrol car it has not dated: the physics of pushing a tonne of metal through air at 100 km/h is unchanged, and the average new car has not got dramatically more frugal. What has changed is that a large and rapidly growing share of new cars no longer burns petrol at all.
+
+In chapter 20 MacKay works out that electric vehicles deliver transport at roughly **15 kWh per 100 km**, five times better than the 33-mpg baseline used here. That estimate has held up remarkably well. The efficient electric saloons on sale today sit either side of it: the Hyundai Ioniq 6 at about 13.9 kWh/100 km in real-world testing, the Tesla Model 3 at about 14.4, and Volkswagen's own WLTP figure for the ID.7 at 14.1 to 16.3. Heavier electric cars — the tall crossovers most buyers actually choose — run nearer 18 to 22.[^ev1] So MacKay's 15 remains a fair number for a well-chosen electric car and an optimistic one for the average.
+
+Applied to this chapter's arithmetic, the same 50 km a day at 15 kWh/100 km costs **7.5 kWh per day** rather than 40. The red box in figure 3.3 does not shrink because anybody drove less; it shrinks because the energy chain changed. That is the single largest reduction available in the consumption stack, and it is the reason Part II returns to it.
+
+![Share of new cars sold that are electric, 2015 to 2025, for Norway, Sweden, China, the United Kingdom, the world and the United States. Norway reaches 97%, Sweden 61%, China 53%, the United Kingdom 35%, the world 25% and the United States 10%.](/img/without-hot-air/fig-ev-share.svg)
+
+<span class="figurenumber">Figure 3.5.</span> *Added in this edition.* How far this has actually got. Battery-electric and plug-in hybrid together, as a share of new cars sold.[^ev2]
+
+The spread is the interesting part. **Norway is at 97%** of new cars and has effectively finished the transition; **Sweden 61%**; **China 53%**, which on China's volumes means it is buying more electric cars than the rest of the world combined; the **United Kingdom 35%**; the **world as a whole 25%**; and the **United States 10%**, which is roughly where Norway was in 2013. A single technology, available to all of them at similar prices, has been adopted at rates differing by a factor of ten. Whatever explains that, it is not physics, and this book's method — which is to establish what is physically possible before arguing about what is likely — cannot settle it. It can only say that the 40 kWh box is optional, and that some countries have already exercised the option.
+
+[^ev1]: Real-world consumption figures for the Ioniq 6 and Model 3 are from independent testing compiled by the EV press; the ID.7 range of 14.1&#8211;16.3 kWh/100 km combined is Volkswagen's own WLTP figure. Manufacturer WLTP numbers and real-world tests do not always agree, and consumption varies by 30% or more with speed, temperature and terrain, so these are indicative rather than precise. The point that matters here is that they bracket MacKay's 15.
+[^ev2]: Share of new cars sold that are electric, IEA via Our World in Data: <https://ourworldindata.org/grapher/electric-car-sales-share>. The series counts battery-electric and plug-in hybrid vehicles together, so it overstates the fully-electric share, most of all in the countries where plug-in hybrids are popular.
 
 Why does the car deliver 33 miles per gallon? Where’s that energy going? Could we manufacture cars that do 3300 miles per gallon? If we are interested in trying to reduce cars’ consumption, we need to understand the physics behind cars’ consumption. These questions are answered in the accompanying technical chapter A, which provides a cartoon theory of cars’ consumption. I encourage you to read the technical chapters if formulae like \(\frac{1}{2}mv^{2}\) don’t give you medical problems.
 
@@ -65,6 +88,34 @@ Yes, that cost fell outside the boundary of this calculation too. We’ll talk a
 ![](/img/without-hot-air/figure22.gif)
 
 <span class="figurenumber">Figure 3.4.</span> How British people travel to work, according to the 2001 census.
+
+*Updated in the 2026 revision.* The census has been taken twice more since MacKay drew this, and the second time it caught the country in a state that has not recurred.
+
+Of workers in England and Wales, **57.5% drove to work in 2011** and a further 5.1% travelled as passengers. By the **2021 census those had fallen to 45.1% and 3.9%**, while people working mainly from home went from 10.3% to **31.2%**.[^ttw] That looks like a transformation, and it is largely an artefact: Census 2021 was taken in March 2021, under lockdown and furlough. It is a photograph of an emergency, not of a new normal, and it cannot be compared with MacKay's 2001 figure as though the two measured the same thing.
+
+There is no later British census to settle it with, because the census is decennial and the next is due in 2031. But two places do publish the figure every year, and both show that 2021 was a peak rather than a plateau.
+
+| working from home | before | 2021 | latest |
+|---|---|---|---|
+| United States, ACS | 5.7% (2019) | **17.9%** | 13.3% (2024) |
+| EU, Eurostat, "usually" | 5.5% (2019) | **13.5%** | 8.9% (2024) |
+| England &amp; Wales, census | 10.3% (2011) | **31.2%** | *no census until 2031* |
+
+The American series has now fallen for three consecutive years from its 2021 high, and the European one likewise. Neither has gone back: the United States sits at more than twice its 2019 rate, the EU at about 1.6 times. American commuting shows the same shape from the other side — driving alone fell from 75.9% of workers in 2019 to 68.7% in 2022 and has since settled at 69.2%, about seven points below where it started, while public transport is recovering slowly at 3.7% against 5.0% before the pandemic.[^wfh]
+
+ONS has also tried to put a number on the distortion itself. Its Data Science Campus builds annual travel-to-work matrices for England and Wales with a gravity model, calibrated on the 2011 census and driven by the Department for Transport's trip-end and travel-survey data, precisely to bridge the ten-year gaps. Its estimate for 2021 is that **76% of working adults would have travelled to a fixed workplace on pre-pandemic assumptions, against the 54% the census actually measured**.[^ttwmatrix] That is a 22-percentage-point hole, and it is ONS's own arithmetic rather than mine. It does not tell us where things settled, because the series stops at 2021 too — but it does say how far the photograph was from the trend it interrupted.
+
+The three rows are not directly comparable in level, because each country asks a different question — the ACS asks for the principal means of getting to work, Eurostat asks whether someone *usually* works from home, and the census asks whether they mainly work at or from home. What they agree on is the shape, which is what matters here: a spike in 2021, a partial retreat, and a floor well above 2019. The British census caught the top of that spike and will not measure it again for five years.
+
+The settled position is more modest and more interesting. On ONS's 2025 figures, **28% of workers in Great Britain are hybrid** — the highest since the series began, and still rising — against roughly **55% who travel to a single workplace** as before. The average British worker is remote about **1.8 days a week**, which is the second-highest rate in the world after Canada. Hybrid working is also sharply stratified: graduates are about ten times more likely to have it than those with no qualifications, and its incidence climbs with income.
+
+What that does to this chapter's 40 kWh/d is less than it first appears, and the arithmetic is worth doing because the intuition runs ahead of it. If 28% of workers commute on 3.2 days instead of 5, total commuting journeys fall by roughly a tenth. But the 50 km per day this chapter assumes is *all* car travel, not just commuting, and commuting is only about a third of car mileage. A tenth off a third is about 3% — call it **1 kWh/d off 40**. Home working is a real reduction and a genuinely new feature of the system, but on its own it is a rounding error next to the factor of five available from changing what the car burns.
+
+[^ttwmatrix]: ONS Data Science Campus, "Estimation of travel to work matrices": <https://datasciencecampus.ons.gov.uk/estimation-of-travel-to-work-matrices/>. A gravity model producing annual commuting-flow estimates for middle-layer super output areas in England and Wales, covering 2012 to 2021. These are experimental estimates and ONS states they should not be used for decision-making; they are quoted here only for the size of the gap between the modelled counterfactual and the measured census figure.
+
+[^wfh]: United States: American Community Survey, share of workers who worked from home — 5.7% (2019), 17.9% (2021), 15.2% (2022), 13.8% (2023), 13.3% (2024); drove alone 75.9% (2019), 68.7% (2022), 69.2% (2023 and 2024); public transport 5.0% (2019), 2.5% (2021), 3.7% (2024). European Union: Eurostat, employed persons usually working from home — about 5.5% (2019), 12.3% (2020), 13.5% (2021), 8.9% (2024); in 2023, 9% usually plus 13% occasionally. The definitions differ between the three sources and the levels should not be compared directly.
+
+[^ttw]: Method of travel to work, Census 2011 and Census 2021, England and Wales, ONS. The ONS itself warns that Census 2021 was conducted during the pandemic and that the home-working figures are additionally affected by a definitional change. Hybrid and remote working shares are from ONS, "Who has access to hybrid working in Great Britain?", covering 8 January to 30 March 2025; the 1.8 days a week figure is from the 2025 Global Survey of Working Arrangements. The 3% estimate in the text is my own arithmetic on those figures and assumes commuting is about a third of car mileage.
 
 ## Notes and further reading
 

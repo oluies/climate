@@ -1,0 +1,78 @@
+project:
+  type: book
+  output-dir: _book
+  resources:
+    - assets/tes-percapita.parquet
+
+book:
+  title: "Sustainable Energy — Without the Hot Air"
+  subtitle: "2026 revised edition · work in progress"
+  author: "David J. C. MacKay — with revisions by Örjan Lundberg"
+  search: true
+  sidebar:
+    style: docked
+  chapters:
+    - index.qmd
+    - chapters/preface.md
+    - part: "Part I · Numbers, not adjectives"
+      chapters:
+        - chapters/chap01.md
+        - chapters/chap02.md
+        - chapters/chap03.md
+        - chapters/chap04.md
+        - chapters/chap05.md
+        - chapters/chap06.md
+        - chapters/chap07.md
+        - chapters/chap08.md
+        - chapters/chap09.md
+        - chapters/chap10.md
+        - chapters/chap11.md
+        - chapters/chap12.md
+        - chapters/chap13.md
+        - chapters/chap14.md
+        - chapters/chap15.md
+        - chapters/chap16.md
+        - chapters/chap17.md
+        - chapters/chap18.md
+    - part: "Part II · Making a difference"
+      chapters:
+        - chapters/chap19.md
+        - chapters/chap20.md
+        - chapters/chap21.md
+        - chapters/chap22.md
+        - chapters/chap23.md
+        - chapters/chap24.md
+        - chapters/chap25.md
+        - chapters/chap26.md
+        - chapters/chap27.md
+        - chapters/chap28.md
+        - chapters/chap-value-of-renewables.md
+        - chapters/chap29.md
+        - chapters/chap30.md
+        - chapters/chap31.md
+        - chapters/chap32.md
+    - part: "Part III · Technical chapters"
+      chapters:
+        - chapters/chapA.md
+        - chapters/chapB.md
+        - chapters/chapC.md
+        - chapters/chapD.md
+        - chapters/chapE.md
+        - chapters/chapF.md
+        - chapters/chapG.md
+        - chapters/chapH.md
+    - part: "Part IV · Useful data"
+      chapters:
+        - chapters/chapI.md
+        - chapters/chapJ.md
+        - chapters/chapK.md
+        - chapters/chapL.md
+        - chapters/charts.md
+        - chapters/bibliography.md
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: false
+    fig-cap-location: bottom
