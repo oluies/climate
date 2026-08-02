@@ -37,7 +37,7 @@ Three considerations pull it in different directions.
 
 So the honest position on uranium is that the resource is adequate for the current fleet for about as long as anyone is planning, that it is inadequate for a very large expansion of conventional reactors on present resource estimates, and that both of those statements are dwarfed by the question of whether breeding ever works at scale.
 
-## Two forecasts, and what happened to them
+## Forecasts, and what happened to them
 
 Uranium is unusually good ground for testing the peak method, because two quantitative forecasts were made with dates and error bars and both can now be checked.
 
@@ -58,6 +58,21 @@ He got the timing of the peak right: 2016, near enough to "around 2015". He got 
 The catastrophe did not arrive either. The gap he identified was real — mining covered only 74% of requirements in 2020 — but it was bridged by exactly the secondary supplies the IAEA had been tracking, rather than by blackouts.
 
 This is the same lesson as chapter 23's, arrived at from the other direction. Predicting when a resource peaks means predicting the behaviour of the people who own it, and that is a harder problem than estimating what is in the ground. Both papers did competent arithmetic. The one that was right about the numbers was the one that modelled the market rather than the rock.
+
+**The same mistake was available on oil, and was made.** In October 2021 the Swedish blog *Cornucopia?* asked whether peak oil had already happened in 2018 or 2019. The evidence was a monthly all-liquids series from the American EIA: a high of **102.4 mb/d in October 2018**, an almost identical 102.0 in November 2019, and no recovery to either level in the two years since. A French report was cited as also placing the peak in 2019. The conclusion drawn was a permanent energy and economic crisis — growth stalls without rising energy use, prices turn volatile, poor countries suffer first, and Sweden must choose between a large nuclear build and a managed decline.[^cornucopia]
+
+Here is what production and consumption actually did:
+
+| Million barrels per day | 2018 | 2019 | 2020 | 2021 | 2024 | 2025 |
+|---|---|---|---|---|---|---|
+| Oil production | 95.0 | 95.1 | 88.9 | 90.3 | 97.2 | **100.6** |
+| Total liquids consumption | 101.0 | 101.4 | 92.4 | 97.8 | 105.1 | **106.5** |
+
+The two rows are on different bases, and the difference matters for the test. The EIA all-liquids series the blog used includes biofuels and refinery processing gain, which the Energy Institute's "oil production" line excludes; total liquids consumption is the comparable measure. On that measure, the **2025 annual average of 106.5 exceeds the blog's monthly high-water mark by four million barrels a day**, and 2024 had already passed it. On the narrower production basis, 2025 stands 5.5 mb/d above 2019.
+
+The reason is again the interesting part, and it is the same reason. The trough the argument rested on was the pandemic together with the OPEC+ agreement of April 2020 to withdraw **9.7 mb/d** — the largest production cut ever agreed. The piece was written in October 2021 while those cuts were still being unwound on a published schedule. A cartel restoring barrels it had voluntarily withheld looks, in the monthly data, exactly like a resource failing to recover. Dittmar mistook Kazatomprom and Cameco for geology; this mistook OPEC+ for geology.
+
+Two qualifications are owed. The piece hedged explicitly, allowing that it might be wrong, and it is a blog essay rather than a study. But the failure mode is worth naming because it is directional: **both of the forecasts that missed were pessimistic about supply**, and neither anticipated that within five years the binding constraint would be who controls a strait rather than what is left in the rock. That is the subject of the rest of this chapter.
 
 ## Exports fall faster than production
 
@@ -142,5 +157,7 @@ The honest summary is the one in the question this chapter was asked to address.
 Running out was the wrong thing to worry about. It was, however, a very good way of getting people to think about the numbers, which is what this book is for.
 
 [^dittmar]: Michael Dittmar, "The end of cheap uranium", *Science of the Total Environment* 461–462 (2013) 792–798, <https://doi.org/10.1016/j.scitotenv.2013.04.035>. The IAEA projection is *Analysis of Uranium Supply to 2050*, IAEA, 2001. Production figures are the World Nuclear Association's compilation: 60 342 t (2015), 63 207 (2016), 60 462 (2017), 54 154 (2018), 54 742 (2019), 47 731 (2020), 47 805 (2021), 49 614 (2022), 54 433 (2023), 60 213 (2024). Mining covered 74% of reactor requirements in 2020 and 90% in 2024.
+
+[^cornucopia]: Lars Wilderäng, "Inträffade peak oil 2018 eller 2019 och vad innebär det?", *Cornucopia?*, October 2021: <https://cornucopia.se/2021/10/intraffade-peak-oil-2018-eller-2019-och/>. As with the latitude argument cited in chapter L, this is a blog essay arguing a position rather than a study, and is examined here as a well-documented instance of the reasoning rather than as evidence for it. The monthly all-liquids highs quoted are the EIA's. Production and consumption figures in the table are from the Energy Institute's *Statistical Review of World Energy* 2026: world oil production 95 001, 95 127, 88 943, 90 315, 97 156 and 100 590 thousand barrels daily for 2018, 2019, 2020, 2021, 2024 and 2025, and total world liquids consumption 101 022, 101 388, 92 369, 97 814, 105 133 and 106 519 for the same years. The Review notes that differences between world consumption and world production statistics are accounted for by stock changes and by consumption of non-petroleum additives and substitute fuels. The April 2020 OPEC+ cut of 9.7 mb/d is from the OPEC secretariat's communiqué of 12 April 2020.
 
 [^bedford]: The Red Book categories and the reporting discontinuities are set out in Dylan Bedford, "Peak Uranium and the Sustainability of Nuclear Energy", Physics 241 coursework, Stanford University, 2018: <http://large.stanford.edu/courses/2017/ph241/bedford1/>. This is student coursework rather than peer-reviewed work and is cited here for its clear summary of the Red Book's structure and caveats, not as an authority on resource estimates. Production and resource figures above are from the World Nuclear Association's compilations of Red Book and company data; oil, gas and coal reserves and production are from the Energy Institute's *Statistical Review of World Energy* 2026, with reserves as assessed at end-2020 and R/P ratios recomputed here at 2025 production rates.
