@@ -37,7 +37,7 @@ Three considerations pull it in different directions.
 
 So the honest position on uranium is that the resource is adequate for the current fleet for about as long as anyone is planning, that it is inadequate for a very large expansion of conventional reactors on present resource estimates, and that both of those statements are dwarfed by the question of whether breeding ever works at scale.
 
-## Two forecasts, and what happened to them
+## Forecasts, and what happened to them
 
 Uranium is unusually good ground for testing the peak method, because two quantitative forecasts were made with dates and error bars and both can now be checked.
 
@@ -58,6 +58,35 @@ He got the timing of the peak right: 2016, near enough to "around 2015". He got 
 The catastrophe did not arrive either. The gap he identified was real — mining covered only 74% of requirements in 2020 — but it was bridged by exactly the secondary supplies the IAEA had been tracking, rather than by blackouts.
 
 This is the same lesson as chapter 23's, arrived at from the other direction. Predicting when a resource peaks means predicting the behaviour of the people who own it, and that is a harder problem than estimating what is in the ground. Both papers did competent arithmetic. The one that was right about the numbers was the one that modelled the market rather than the rock.
+
+**The same mistake was available on oil, and was made.** In October 2021 the Swedish blog *Cornucopia?* asked whether peak oil had already happened in 2018 or 2019. The evidence was a monthly all-liquids series from the American EIA: a high of **102.4 mb/d in October 2018**, an almost identical 102.0 in November 2019, and no recovery to either level in the two years since. A French report was cited as also placing the peak in 2019. The conclusion drawn was a permanent energy and economic crisis — growth stalls without rising energy use, prices turn volatile, poor countries suffer first, and Sweden must choose between a large nuclear build and a managed decline.[^cornucopia]
+
+Here is what production and consumption actually did:
+
+| Million barrels per day | 2018 | 2019 | 2020 | 2021 | 2024 | 2025 |
+|---|---|---|---|---|---|---|
+| Oil production | 95.0 | 95.1 | 88.9 | 90.3 | 97.2 | **100.6** |
+| Total liquids consumption | 101.0 | 101.4 | 92.4 | 97.8 | 105.1 | **106.5** |
+
+The two rows are on different bases, and the difference matters for the test. The EIA all-liquids series the blog used includes biofuels and refinery processing gain, which the Energy Institute's "oil production" line excludes; total liquids consumption is the comparable measure. On that measure, the **2025 annual average of 106.5 exceeds the blog's monthly high-water mark by four million barrels a day**, and 2024 had already passed it. On the narrower production basis, 2025 stands 5.5 mb/d above 2019.
+
+The reason is again the interesting part, and it is the same reason. The trough the argument rested on was the pandemic together with the OPEC+ agreement of April 2020 to withdraw **9.7 mb/d** — the largest production cut ever agreed. The piece was written in October 2021 while those cuts were still being unwound on a published schedule. A cartel restoring barrels it had voluntarily withheld looks, in the monthly data, exactly like a resource failing to recover. Dittmar mistook Kazatomprom and Cameco for geology; this mistook OPEC+ for geology.
+
+Two qualifications are owed. The piece hedged explicitly, allowing that it might be wrong, and it is a blog essay rather than a study. But the failure mode is worth naming because it is directional: **both of the forecasts that missed were pessimistic about supply**, and neither anticipated that within five years the binding constraint would be who controls a strait rather than what is left in the rock. That is the subject of the rest of this chapter.
+
+## Exports fall faster than production
+
+There is a piece of arithmetic that changes the shape of every number above, and it is not in the reserves tables because it is not about geology.
+
+An exporting country consumes some of what it produces. When its production begins to decline, its domestic consumption usually does not — it is a country getting richer, buying cars. **Exports are the difference between two quantities moving in opposite directions, and a difference declines much faster than either term.**
+
+Jeffrey Brown set this out as the **Export Land Model**. Take a country at its production peak that consumes half of what it produces, then let production fall 5% a year while domestic consumption rises 2.5% a year. Its exports do not decline by 5% a year. They reach **zero in nine years**.
+
+Indonesia did it faster. From its 1997 peak, production fell 3.9% a year — gentler than the model — while domestic consumption grew 4.1%. Net exports reached zero in **seven years**, and a founding member of OPEC became an oil importer.
+
+The consequence for an importing country like Britain is that the reserves-to-production ratios in the first table are the wrong numbers to be reassured by. What reaches the market is not world production but world *net exports*, and that quantity can be falling while production is flat. Brown and Foucher argued that global net exports had already peaked in 2006, which is a much sharper claim than peak production and rather harder to dismiss.
+
+The same argument does not transfer cleanly to uranium, and it is worth saying why. Kazakhstan does not consume its own uranium in any quantity; there is no domestic-demand term to eat the exports. Uranium's version of the problem is political rather than arithmetical, and that is the subject of the next section.
 
 ## The constraint that actually binds
 
@@ -81,12 +110,54 @@ Set that beside chapter L's finding that China refines over 90% of the world's g
 
 Nuclear power is often argued for on energy-security grounds — a fuel you can stockpile for years, unlike gas. That argument is sound and it is worth noticing that it is an argument about *storage*, not about *sourcing*. On sourcing, a British or European nuclear programme is more exposed to Central Asian politics than a gas plant is to Norwegian.
 
+### 2026 supplied the demonstration
+
+While this edition was being written, the argument stopped being hypothetical twice in one year.
+
+In **January 2026** a United States military operation removed Nicolás Maduro from Venezuela — a country sitting on some of the largest proved oil reserves in the world. The market barely moved, for the instructive reason that Venezuela had already ceased to matter as a supplier: production under a million barrels a day, exports around half a million, against world consumption above a hundred million. A country can hold enormous reserves and be irrelevant to supply.
+
+In **February 2026** the more serious case arrived, and it has not ended. United States and Israeli strikes on Iran on 28 February were followed on 2 March by the closure of the **Strait of Hormuz**, through which roughly a fifth of world oil trade passes. The International Energy Agency described it as the largest supply disruption in the history of the oil market.
+
+**It is still closed as this chapter is written**, more than five months on. Iran declared the strait open on 17 April and the Revolutionary Guard reversed the announcement the following day. A memorandum of understanding on 17 June lifted the American naval blockade of Iranian *ports* — which is a different thing, and let Iran itself export some 40 million barrels — but the waterway has not returned to normal use. Roughly **ten ships transited on 23 July, against about eighty-eight a day before the war**, some of them running with their transponders off. An LNG carrier with Qatari cargo was struck by a cruise missile crossing the strait on 1 August.[^y2026]
+
+Note what the numbers did and did not do. A fifth of world oil trade stopped moving and the oil price rose by roughly a tenth at first, not by a multiple, because there was a glut to absorb it; it went above $100 later, once the ceasefire lapsed. Reserves in the ground did not change at all, and neither did any reserves-to-production ratio. What changed was whether a ship could sail through a strait.
+
+### The cargoes nobody counts
+
+Oil dominates the reporting, and it is not where the sharpest losses fell. Two other things go through Hormuz in concentrations that make the oil share look comfortable.
+
+**Helium.** Qatar supplies about a third of the world's helium, as a by-product of its gas processing at Ras Laffan — facilities damaged in the strikes. The distributor Airgas declared force majeure and restricted customers to half their contracted volumes. South Korea, which took nearly two-thirds of its helium from Qatar, has no domestic alternative. Helium is not an energy carrier and gets no chapter in this book, but semiconductor fabrication, MRI scanners and cryogenics do not have a substitute for it at any price.
+
+**Fertiliser.** Up to **30% of internationally traded fertiliser** — around 16 million tonnes a year of nitrogen, phosphate and sulphur products — moves through the strait. The Gulf supplies 30–35% of world urea exports and 20–30% of ammonia; Qatar's QAFCO complex alone is about 14% of global urea trade.
+
+That second one belongs in this book more than the oil does, and chapter 13 explains why. Nitrogen fertiliser is essentially natural gas turned into food by the Haber–Bosch process: it is an energy carrier wearing a different label, and the world's ability to feed itself runs through it. A disruption that takes a tenth off the oil price and a third off the traded fertiliser supply has done far more damage through the second channel, and it will show up as a harvest rather than as a pump price.
+
+### Who is preparing for it
+
+The two largest economies have drawn opposite conclusions, and their inventories say so plainly.
+
+The **United States** holds its Strategic Petroleum Reserve at about **316 million barrels** against an authorised capacity of 714 million — the lowest level since 1983, after some 352 million barrels were withdrawn over four years, including a 172-million-barrel release authorised in March 2026 during the Iran war.
+
+**China** now holds the largest emergency stocks in the world: total crude inventories estimated near **1.3 billion barrels**, of which perhaps 400–500 million is the strategic reserve proper, and it is still building — at least 169 million barrels of new capacity across eleven sites, with a stated intention to take state reserves past a billion barrels, framed explicitly as three months of net import cover.
+
+So one country has spent its buffer and the other has been accumulating one. Whatever else that is, it is a judgement about the next twenty years being made in physical barrels rather than in forecasts, and it is the clearest available evidence of what large states actually expect. MacKay's arithmetic can tell you how much energy a country needs. It cannot tell you that China has been quietly buying three months of insurance while America sold its own.
+
+[^y2026]: The Venezuela intervention of January 2026; the strikes on Iran of 28 February 2026 and the closure of the Strait of Hormuz from 2 March, with the IEA's characterisation of it as the largest supply disruption in the history of the oil market. The strait remained closed to normal commercial traffic at the beginning of August 2026: about ten transits on 23 July against a pre-war norm near eighty-eight a day, and an LNG carrier struck by a cruise missile on 1 August. The memorandum of understanding of 17 June ended the American naval blockade of Iranian ports, which is distinct from the strait reopening. Helium: Qatar about a third of world supply, damage at Ras Laffan, Airgas force majeure at 50% of contracted volumes, South Korea sourcing 64.7% of its helium from Qatar in 2025. Fertiliser: Rystad Energy and WTO trade analyses put up to 30% of traded fertiliser products, some 16 Mt/year, through the strait, with the Gulf at 30–35% of urea exports and QAFCO alone about 14% of global urea trade. Strategic reserve figures: US Department of Energy and EIA for the SPR, including the 172-million-barrel release authorised in March 2026; Chinese inventory estimates are third-party and EIA-derived, since China does not publish strategic reserve volumes, and the split between strategic and commercial stocks is uncertain. These are recent and contested events and the figures should be expected to move.
+
 ## The shape of the answer
 
 Put the four resources together and the same conclusion emerges as in chapter 23. There is enough of all of them for the period anyone is planning over. Oil and gas have about half a century of proved reserves and have had about half a century for decades; coal has more than a century; uranium has roughly ninety years, or effectively unlimited if breeders ever work.
 
-None of them will be exhausted. Each will instead be abandoned, priced out, restricted, or — the possibility this chapter adds — become unavailable for reasons that have nothing to do with what is in the ground. Running out was the wrong thing to worry about. It was, however, a very good way of getting people to think about the numbers, which is what this book is for.
+None of them will be exhausted. Each will instead be abandoned, priced out, restricted, or — the possibility this chapter adds — become unavailable for reasons that have nothing to do with what is in the ground.
+
+That last is the one worth carrying away, because it is the one this book's method is least equipped to see. A resource table answers *how much is left*. The Export Land Model answers *how much of it reaches the market*, which is a smaller and faster-moving quantity. Hormuz answers *whether it can physically get here this month*. And the strategic reserves answer the question underneath all of them: whether you have the money, the ships and the storage to be the customer who gets served.
+
+The honest summary is the one in the question this chapter was asked to address. It is not only what is left. It is who has it, and whether they will sell it to us — and the answer to that is probably yes, at a price, until the week it is no.
+
+Running out was the wrong thing to worry about. It was, however, a very good way of getting people to think about the numbers, which is what this book is for.
 
 [^dittmar]: Michael Dittmar, "The end of cheap uranium", *Science of the Total Environment* 461–462 (2013) 792–798, <https://doi.org/10.1016/j.scitotenv.2013.04.035>. The IAEA projection is *Analysis of Uranium Supply to 2050*, IAEA, 2001. Production figures are the World Nuclear Association's compilation: 60 342 t (2015), 63 207 (2016), 60 462 (2017), 54 154 (2018), 54 742 (2019), 47 731 (2020), 47 805 (2021), 49 614 (2022), 54 433 (2023), 60 213 (2024). Mining covered 74% of reactor requirements in 2020 and 90% in 2024.
+
+[^cornucopia]: Lars Wilderäng, "Inträffade peak oil 2018 eller 2019 och vad innebär det?", *Cornucopia?*, October 2021: <https://cornucopia.se/2021/10/intraffade-peak-oil-2018-eller-2019-och/>. As with the latitude argument cited in chapter L, this is a blog essay arguing a position rather than a study, and is examined here as a well-documented instance of the reasoning rather than as evidence for it. The monthly all-liquids highs quoted are the EIA's. Production and consumption figures in the table are from the Energy Institute's *Statistical Review of World Energy* 2026: world oil production 95 001, 95 127, 88 943, 90 315, 97 156 and 100 590 thousand barrels daily for 2018, 2019, 2020, 2021, 2024 and 2025, and total world liquids consumption 101 022, 101 388, 92 369, 97 814, 105 133 and 106 519 for the same years. The Review notes that differences between world consumption and world production statistics are accounted for by stock changes and by consumption of non-petroleum additives and substitute fuels. The April 2020 OPEC+ cut of 9.7 mb/d is from the OPEC secretariat's communiqué of 12 April 2020.
 
 [^bedford]: The Red Book categories and the reporting discontinuities are set out in Dylan Bedford, "Peak Uranium and the Sustainability of Nuclear Energy", Physics 241 coursework, Stanford University, 2018: <http://large.stanford.edu/courses/2017/ph241/bedford1/>. This is student coursework rather than peer-reviewed work and is cited here for its clear summary of the Red Book's structure and caveats, not as an authority on resource estimates. Production and resource figures above are from the World Nuclear Association's compilations of Red Book and company data; oil, gas and coal reserves and production are from the Energy Institute's *Statistical Review of World Energy* 2026, with reserves as assessed at end-2020 and R/P ratios recomputed here at 2025 production rates.
