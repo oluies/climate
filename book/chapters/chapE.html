@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>E Heating II – Sustainable Energy — Without the Hot Air</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/chapF.html" rel="next">
+<link href="../chapters/chapD.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-1b15cd7dfe5d645daabccee077c4b062.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapA.html">Part III · Technical chapters</a></li><li class="breadcrumb-item"><a href="../chapters/chapE.html"><span class="chapter-title">E Heating II</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Sustainable Energy — Without the Hot Air</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About this edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/preface.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I · Numbers, not adjectives</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1 Motivations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap02.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2 The balance sheet</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap03.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3 Cars</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap04.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4 Wind</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap05.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5 Planes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap06.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6 Solar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap07.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7 Heating and cooling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap08.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8 Hydroelectricity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap09.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9 Light</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap10.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10 Offshore wind</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap11.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11 Gadgets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap12.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12 Wave</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap13.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13 Food and farming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap14.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14 Tide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap15.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15 Stuff</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap16.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16 Geothermal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap17.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17 Public services</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap18.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18 Can we live on renewables?</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II · Making a difference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap19.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19 Every BIG helps</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap20.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20 Better transport</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap21.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">21 Smarter heating</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap22.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">22 Efficient electricity use</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap23.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">23 Sustainable fossil fuels?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap24.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">24 Nuclear?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap25.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">25 Living on other countries’ renewables?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap26.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">26 Fluctuations and storage</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap27.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">27 Five energy plans for Britain</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap28.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">28 Putting costs in perspective</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap-value-of-renewables.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">28a The value of renewable energy as it scales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap29.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">29 What to do now</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap30.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">30 Energy plans for Europe, America, and the World</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap31.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">31 The last thing we should talk about</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chap32.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">32 Saying yes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III · Technical chapters</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapA.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A Cars II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapB.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B Wind II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapC.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">C Planes II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapD.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D Solar II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapE.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">E Heating II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapF.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">F Waves II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapG.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">G Tide II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapH.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">H Stuff II</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV · Useful data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapI.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">I Quick reference</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapJ.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">J Populations and areas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapK.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">K UK energy history</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapL.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">L The world in 2025</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapM.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">M Energy return on investment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapN.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">N Peak oil, peak gas, peak uranium</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/charts.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Charts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/bibliography.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bibliography</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/author.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">The author</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/acknowledgments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Acknowledgments</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#conduction-loss" id="toc-conduction-loss" class="nav-link active" data-scroll-target="#conduction-loss">Conduction loss</a></li>
+  <li><a href="#ventilation-loss" id="toc-ventilation-loss" class="nav-link" data-scroll-target="#ventilation-loss">Ventilation loss</a></li>
+  <li><a href="#energy-loss-and-temperature-demand-degree-days" id="toc-energy-loss-and-temperature-demand-degree-days" class="nav-link" data-scroll-target="#energy-loss-and-temperature-demand-degree-days">Energy loss and temperature demand (degree-days)</a></li>
+  <li><a href="#temperature-demand" id="toc-temperature-demand" class="nav-link" data-scroll-target="#temperature-demand">Temperature demand</a></li>
+  <li><a href="#leakiness-example-my-house" id="toc-leakiness-example-my-house" class="nav-link" data-scroll-target="#leakiness-example-my-house">Leakiness – example: my house</a></li>
+  <li><a href="#air-exchange" id="toc-air-exchange" class="nav-link" data-scroll-target="#air-exchange">Air-exchange</a></li>
+  <li><a href="#an-energy-efficient-house" id="toc-an-energy-efficient-house" class="nav-link" data-scroll-target="#an-energy-efficient-house">An energy-efficient house</a></li>
+  <li><a href="#benchmarks-for-houses-and-offices" id="toc-benchmarks-for-houses-and-offices" class="nav-link" data-scroll-target="#benchmarks-for-houses-and-offices">Benchmarks for houses and offices</a>
+  <ul class="collapse">
+  <li><a href="#an-energy-efficient-office" id="toc-an-energy-efficient-office" class="nav-link" data-scroll-target="#an-energy-efficient-office">An energy-efficient office</a></li>
+  <li><a href="#contemporary-offices" id="toc-contemporary-offices" class="nav-link" data-scroll-target="#contemporary-offices">Contemporary offices</a></li>
+  </ul></li>
+  <li><a href="#improving-the-coefficient-of-performance" id="toc-improving-the-coefficient-of-performance" class="nav-link" data-scroll-target="#improving-the-coefficient-of-performance">Improving the coefficient of performance</a>
+  <ul class="collapse">
+  <li><a href="#theory-of-heat-pumps" id="toc-theory-of-heat-pumps" class="nav-link" data-scroll-target="#theory-of-heat-pumps">Theory of heat pumps</a></li>
+  </ul></li>
+  <li><a href="#heating-and-the-ground" id="toc-heating-and-the-ground" class="nav-link" data-scroll-target="#heating-and-the-ground">Heating and the ground</a>
+  <ul class="collapse">
+  <li><a href="#ground-storage-without-walls" id="toc-ground-storage-without-walls" class="nav-link" data-scroll-target="#ground-storage-without-walls">Ground storage without walls</a></li>
+  <li><a href="#limits-of-ground-source-heat-pumps" id="toc-limits-of-ground-source-heat-pumps" class="nav-link" data-scroll-target="#limits-of-ground-source-heat-pumps">Limits of ground-source heat pumps</a></li>
+  <li><a href="#response-to-external-temperature-variations" id="toc-response-to-external-temperature-variations" class="nav-link" data-scroll-target="#response-to-external-temperature-variations">Response to external temperature variations</a></li>
+  </ul></li>
+  <li><a href="#thermal-mass" id="toc-thermal-mass" class="nav-link" data-scroll-target="#thermal-mass">Thermal mass</a></li>
+  <li><a href="#notes-and-further-reading" id="toc-notes-and-further-reading" class="nav-link" data-scroll-target="#notes-and-further-reading">Notes and further reading</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapA.html">Part III · Technical chapters</a></li><li class="breadcrumb-item"><a href="../chapters/chapE.html"><span class="chapter-title">E Heating II</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">E Heating II</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><img src="img/without-hot-air/figure349.gif" class="img-fluid"></p>
+<p>A perfectly sealed and insulated building would hold heat for ever and thus would need no heating. The two dominant reasons why buildings lose heat are:</p>
+<ol type="1">
+<li><strong>Conduction</strong> – heat flowing directly through walls, windows and doors;</li>
+<li><strong>Ventilation</strong> – hot air trickling out through cracks, gaps, or deliberate ventilation ducts.</li>
+</ol>
+<p>In the standard model for heat loss, both these heat flows are proportional to the temperature difference between the air inside and outside. For a typical British house, conduction is the bigger of the two losses, as we’ll see.</p>
+<section id="conduction-loss" class="level3">
+<h3 class="anchored" data-anchor-id="conduction-loss">Conduction loss</h3>
+<p>The rate of conduction of heat through a wall, ceiling, floor, or window is the product of three things: the area of the wall, a measure of conductivity of the wall known in the trade as the “U-value” or thermal transmittance, and the temperature difference –</p>
+<p>power loss = area × <em>U</em> × temperature difference.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>kitchen</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>bathroom</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>lounge</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>bedroom</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
+<p><span class="figurenumber">Table E.1.</span> Air changes per hour: typical values of <em>N</em> for draught-proofed rooms. The worst draughty rooms might have <em>N</em> = 3 air changes per hour. The recommended minimum rate of air exchange is between 0.5 and 1.0 air changes per hour, providing adequate fresh air for human health, for safe combustion of fuels and to prevent damage to the building fabric from excess moisture in the air (EST 2003).</p>
+<p>The U-value is usually measured in W/m<sup>2</sup>/K. (One kelvin (1 K) is the same as one degree Celsius (1 °C).) Bigger U-values mean bigger losses of power. The thicker a wall is, the smaller its U-value. Double-glazing is about as good as a solid brick wall. (See table E.2.)</p>
+<p>The U-values of objects that are “in series,” such as a wall and its inner lining, can be combined in the same way that electrical conductances combine:</p>
+<p>[u_{} = . 1/( { + } ) .]</p>
+<p>There’s a worked example using this rule later.</p>
+</section>
+<section id="ventilation-loss" class="level3">
+<h3 class="anchored" data-anchor-id="ventilation-loss">Ventilation loss</h3>
+<p>To work out the heat required to warm up incoming cold air, we need the heat capacity of air: 1.2 kJ/m<sup>3</sup>/K.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Element</th>
+<th>old buildings</th>
+<th>modern standards</th>
+<th>best methods</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Walls</strong></td>
+<td></td>
+<td>0.45-0.6</td>
+<td>0.12</td>
+</tr>
+<tr class="even">
+<td>solid masonry wall</td>
+<td>2.4</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>outer wall: 9 inch solid brick</td>
+<td>2.2</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>11 inch brick-block cavity wall, unfilled</td>
+<td>1.0</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>11 inch brick-block cavity wall, insulated</td>
+<td>0.6</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Floors</strong></td>
+<td></td>
+<td>0.45</td>
+<td>0.14</td>
+</tr>
+<tr class="odd">
+<td>suspended timber floor</td>
+<td>0.7</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>solid concrete floor</td>
+<td>0.8</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Roofs</strong></td>
+<td></td>
+<td>0.25</td>
+<td>0.12</td>
+</tr>
+<tr class="even">
+<td>flat roof with 25 mm insulation</td>
+<td>0.9</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>pitched roof with 100 mm insulation</td>
+<td>0.3</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Windows</strong></td>
+<td></td>
+<td>1.5</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>single-glazed</td>
+<td>5.0</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>double-glazed</td>
+<td>2.9</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>double-glazed, 20 mm gap</td>
+<td>1.7</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>triple-glazed</td>
+<td>0.7-0.9</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><span class="figurenumber">Table E.2.</span> U-values of walls, floors, roofs, and windows.</p>
+<p>In the building trade, it’s conventional to describe the power-losses caused by ventilation of a space as the product of the number of changes <em>N</em> of the air per hour, the volume <em>V</em> of the space in cubic metres, the heat capacity <em>C</em>, and the temperature difference ΔT between the inside and outside of the building</p>
+<p><span class="math display">\[
+\begin{matrix}
+\\
+{= C\frac{N}{\text{1\ h}}V\text{(}\text{m}^{3}\text{)}\Delta T\text{(}\text{K}\text{)}} \\
+{= \left( {1.2\text{~kJ/}\text{m}^{3}\text{/K}} \right)\frac{N}{\text{3000\ s}}V\text{(}\text{m}^{3}\text{)}\Delta T\text{(}\text{K}\text{)}} \\
+{= \frac{1}{3}NV\Delta T} \\
+\end{matrix}
+\]</span></p>
+</section>
+<section id="energy-loss-and-temperature-demand-degree-days" class="level3">
+<h3 class="anchored" data-anchor-id="energy-loss-and-temperature-demand-degree-days">Energy loss and temperature demand (degree-days)</h3>
+<p>Since energy is power × time, you can write the energy lost by <em>conduction</em> through an area in a short duration as</p>
+<p>energy loss = <span class="darkblue">area × <em>U</em></span> × (Δ<em>T</em> × duration),</p>
+<p>and the energy lost by <em>ventilation</em> as</p>
+<p><span class="darkblue"><sup>1</sup>⁄<sub>3</sub><em>NV</em></span> × (Δ<em>T</em> × duration).</p>
+<p>Both these energy losses have the form</p>
+<p><span class="darkblue">Something</span> × (Δ<em>T</em> × duration),</p>
+<p><img src="img/without-hot-air/figure286.gif" class="img-fluid"></p>
+<p><span class="figurenumber">Figure E.3.</span> U-values required by British and Swedish building regulations.</p>
+<p>where the “<span class="darkblue">Something</span>” is measured in watts per °C. As day turns to night, and seasons pass, the temperature difference Δ<em>T</em> changes; we can think of a long period as being chopped into lots of small durations, during each of which the temperature difference is roughly constant. From duration to duration, the temperature difference changes, but the Somethings don’t change. When predicting a space’s total energy loss due to conduction and ventilation over a long period we thus need to multiply two things:</p>
+<ol type="1">
+<li>the sum of all the <span class="darkblue">Somethings</span> (adding <span class="darkblue">area × <em>U</em></span> for all walls, roofs, floors, doors, and windows, and <span class="darkblue"><sup>1</sup>⁄<sub>3</sub><em>NV</em></span> for the volume); and</li>
+<li>the sum of all the Temperature difference × duration factors (for all the durations).</li>
+</ol>
+<p><img src="img/without-hot-air/figure287.gif" class="img-fluid"></p>
+<p><span class="figurenumber">Figure E.4.</span> The temperature demand in Cambridge, 2006, visualized as an area on a graph of daily average temperatures. (a) Thermostat set to 20 °C, including cooling in summer; (b) winter thermostat set to 17 °C.</p>
+<p>The first factor is a property of the building measured in watts per °C. I’ll call this the <em>leakiness</em> of the building. (This leakiness is sometimes called the building’s <em>heat-loss coefficient</em>.) The second factor is a property of the weather; it’s often expressed as a number of “degree-days,” since temperature difference is measured in degrees, and days are a convenient unit for thinking about durations. For example, if your house interior is at 18 °C, and the outside temperature is 8 °C for a week, then we say that that week contributed 10 × 7 = 70 degree-days to the (Δ<em>T</em> ×duration) sum. I’ll call the sum of all the (Δ<em>T</em> × duration) factors the <em>temperature demand</em> of a period.</p>
+<p>energy lost = leakiness × temperature demand.</p>
+<p>We can reduce our energy loss by reducing the leakiness of the building, or by reducing our temperature demand, or both. The next two sections look more closely at these two factors, using a house in Cambridge as a case-study.</p>
+<p><img src="img/without-hot-air/figure288.gif" class="img-fluid"></p>
+<p><span class="figurenumber">Figure E.5.</span> Temperature demand in Cambridge, in degree-days per year, as a function of thermostat setting (°C). Reducing the winter thermostat from 20 °C to 17 °C reduces the temperature demand of heating by 30%, from 3188 to 2265 degree-days. Raising the summer thermostat from 20 °C to 23 °C reduces the temperature demand of cooling by 82%, from 91 to 16 degree-days.</p>
+<p><img src="img/without-hot-air/figure289.gif" class="img-fluid"></p>
+<p><span class="figurenumber">Figure E.6.</span> The temperature demand in Cambridge, 2006, replotted in units of degree-days per day, also known as degrees. In these units, the temperature demand is just the average of the temperature difference between inside and outside.</p>
+<p>There is a third factor we must also discuss. The lost energy is replenished by the building’s heating system, and by other sources of energy such as the occupants, their gadgets, their cookers, and the sun. Focussing on the heating system, the energy <em>delivered</em> by the heating is not the same as the energy <em>consumed</em> by the heating. They are related by the <em>coefficient of performance</em> of the heating system.</p>
+<p>energy consumed = energy delivered/coefficient of performance.</p>
+<p>For a condensing boiler burning natural gas, for example, the coefficient of performance is 90%, because 10% of the energy is lost up the chimney.</p>
+<p>To summarise, we can reduce the energy consumption of a building in three ways:</p>
+<ol type="1">
+<li>by reducing temperature demand;</li>
+<li>by reducing leakiness; or</li>
+<li>by increasing the coefficient of performance.</li>
+</ol>
+<p>We now quantify the potential of these options. (A fourth option – increasing the building’s incidental heat gains, especially from the sun – may also be useful, but I won’t address it here.)</p>
+</section>
+<section id="temperature-demand" class="level3">
+<h3 class="anchored" data-anchor-id="temperature-demand">Temperature demand</h3>
+<p>We can visualize the temperature demand nicely on a graph of external temperature versus time (figure E.4). For a building held at a temperature of 20 °C, the total temperature demand is the <em>area</em> between the horizontal line at 20 °C and the external temperature. In figure E.4a, we see that, for one year in Cambridge, holding the temperature at 20 °C year-round had a temperature demand of 3188 degree-days of heating and 91 degree-days of cooling. These pictures allow us easily to assess the effect of turning down the thermostat and living without air-conditioning. Turning the winter thermostat down to 17 °C, the temperature demand for heating drops from 3188 degree-days to 2265 degree-days (figure E.4b), which corresponds to a 30% reduction in heating demand. Turning the thermostat down to 15 °C reduces the temperature demand from 3188 to 1748 degree days, a 45% reduction.</p>
+<p>These calculations give us a ballpark indication of the benefit of turning down thermostats, but will give an exact prediction only if we take into account two details: first, buildings naturally absorb energy from the sun, boosting the inside above the outside temperature, even without any heating; and second, the occupants and their gadget companions emit heat, so further cutting down the artificial heating requirements. The temperature demand of a location, as conventionally expressed in degree-days, is a bit of an unwieldy thing. I find it hard to remember numbers like “3500 degree-days.” And academics may find the degree-day a distressing unit, since they already have another meaning for degree days (one involving dressing up in gowns and mortar boards). We can make this quantity more meaningful and perhaps easier to work with by dividing it by 365, the number of days in the year, obtaining the temperature demand in “degree-days per day,” or, if you prefer, in plain “degrees.” Figure E.6 shows this replotted temperature demand. Expressed this way, the temperature demand is simply the <em>average</em> temperature difference between inside and outside. The highlighted temperature demands are: 8.7 °C, for a thermostat setting of 20 °C; 6.2 °C, for a setting of 17 °C; and 4.8 °C, for a setting of 15 °C.</p>
+<p><img src="img/without-hot-air/figure290.gif" class="img-fluid"></p>
+<p><span class="figurenumber">Figure E.7.</span> My house.</p>
+</section>
+<section id="leakiness-example-my-house" class="level3">
+<h3 class="anchored" data-anchor-id="leakiness-example-my-house">Leakiness – example: my house</h3>
+<p>My house is a three-bedroom semi-detached house built about 1940 (figure E.7). By 2006, its kitchen had been slightly extended, and most of the windows were double-glazed. The front door and back door were both still single-glazed.</p>
+<p>My estimate of the leakiness in 2006 is built up as shown in table E.8. The total leakiness of the house was 322 W/°C (or 7.7 kWh/d/.C), with conductive leakiness accounting for 72% and ventilation leakiness for 28% of the total. The conductive leakiness is roughly equally divided into three parts: windows; walls; and floor and ceiling.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>
+Conductive leakiness
+</th>
+<th>
+area<br> (m<sup>2</sup>)
+</th>
+<th>
+U-value<br> (W/m<sup>2</sup>/°C)
+</th>
+<th>
+leakiness<br> (W/°C)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>
+Horizontal surfaces
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr class="even">
+<td>
+ Pitched roof
+</td>
+<td>
+48
+</td>
+<td>
+<span class="red">0.6</span>
+</td>
+<td>
+28.8
+</td>
+</tr>
+<tr class="odd">
+<td>
+ Flat roof
+</td>
+<td>
+1.6
+</td>
+<td>
+3
+</td>
+<td>
+4.8
+</td>
+</tr>
+<tr class="even">
+<td>
+ Floor
+</td>
+<td>
+50
+</td>
+<td>
+0.8
+</td>
+<td>
+40
+</td>
+</tr>
+<tr class="odd">
+<td>
+Vertical surfaces
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr class="even">
+<td>
+ Extension walls
+</td>
+<td>
+24.1
+</td>
+<td>
+0.6
+</td>
+<td>
+14.5
+</td>
+</tr>
+<tr class="odd">
+<td>
+ Main walls
+</td>
+<td>
+50
+</td>
+<td>
+<span class="red">1</span>
+</td>
+<td>
+50
+</td>
+</tr>
+<tr class="even">
+<td>
+ Thin wall (5in)
+</td>
+<td>
+2
+</td>
+<td>
+3
+</td>
+<td>
+6
+</td>
+</tr>
+<tr class="odd">
+<td>
+ Single-glazed doors<br>  and windows
+</td>
+<td>
+7.35
+</td>
+<td>
+<span class="red">5</span>
+</td>
+<td>
+36.7
+</td>
+</tr>
+<tr class="even">
+<td>
+ Double-glazed windows
+</td>
+<td>
+17.8
+</td>
+<td>
+2.9
+</td>
+<td>
+51.6
+</td>
+</tr>
+<tr class="odd">
+<td>
+Total conductive leakiness
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+232.4
+</td>
+</tr>
+<tr class="even">
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="header">
+<th>
+Ventilation leakiness
+</th>
+<th>
+volume<br> (m<sup>3</sup>)
+</th>
+<th>
+N<br> (air-changes per hour)
+</th>
+<th>
+leakiness<br> (W/°C)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>
+Bedrooms
+</td>
+<td>
+80
+</td>
+<td>
+0.5
+</td>
+<td>
+13.3
+</td>
+</tr>
+<tr class="even">
+<td>
+Kitchen
+</td>
+<td>
+36
+</td>
+<td>
+2
+</td>
+<td>
+24
+</td>
+</tr>
+<tr class="odd">
+<td>
+Hall
+</td>
+<td>
+27
+</td>
+<td>
+<span class="red">3</span>
+</td>
+<td>
+27
+</td>
+</tr>
+<tr class="even">
+<td>
+Other rooms
+</td>
+<td>
+77
+</td>
+<td>
+1
+</td>
+<td>
+25.7
+</td>
+</tr>
+<tr class="odd">
+<td>
+Total ventilation leakiness
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+90
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="figurenumber">Table E.8.</span> Breakdown of my house’s conductive leakiness, and its ventilation leakiness, pre-2006. I’ve treated the central wall of the semi-detached house as a perfect insulating wall, but this may be wrong if the gap between the adjacent houses is actually well-ventilated. I’ve highlighted the parameters that I altered after 2006, in modifications to be described shortly.</p>
+<p>To compare the leakinesses of two buildings that have different floor areas, we can divide the leakiness by the floor area; this gives the <em>heat-loss parameter</em> of the building, which is measured in W/°C/m<sup>2</sup>. The heat-loss parameter of this house (total floor area 88 m<sup>2</sup>) is</p>
+<p>3.7 W/°C/m<sup>2</sup>.</p>
+<p>Let’s use these figures to estimate the house’s daily energy consumption on a cold winter’s day, and year-round.</p>
+<p>On a cold day, assuming an external temperature of -1 °C and an internal temperature of 19 °C, the temperature difference is Δ<em>T</em> = 20 °C. If this difference is maintained for 6 hours per day then the energy lost per day is</p>
+<p>322 W/°C × 120 degree-hours ≅ 39 kWh.</p>
+<p>If the temperature is maintained at 19 °C for 24 hours per day, the energy lost per day is</p>
+<p>155 kWh/d.</p>
+<p>To get a year-round heat-loss figure, we can take the temperature demand of Cambridge from figure E.5. With the thermostat at 19 °C, the temperature demand in 2006 was 2866 degree-days. The average rate of heat loss, if the house is always held at 19 °C, is therefore:</p>
+<p>7.7 kWh/d/°C × 2866 degree-days/y/(365 days/y) = 61 kWh/d.</p>
+<p>Turning the thermostat down to 17 °C, the average rate of heat loss drops to 48 kWh/d.&nbsp;Turning it up to a tropical 21 °C, the average rate of heat loss is 75 kWh/d.</p>
+<section id="effects-of-extra-insulation" class="level5">
+<h5 class="anchored" data-anchor-id="effects-of-extra-insulation">Effects of extra insulation</h5>
+<p>During 2007, I made the following modifications to the house:</p>
+<ol type="1">
+<li>Added cavity-wall insulation (which was missing in the main walls of the house) – figure 21.5.</li>
+<li>Increased the insulation in the roof.</li>
+<li>Added a new front door outside the old – figure 21.6.</li>
+<li>Replaced the back door with a double-glazed one.</li>
+<li>Double-glazed the one window that was still single-glazed.</li>
+</ol>
+<p>What’s the predicted change in heat loss?</p>
+<p>The total leakiness before the changes was 322 W/°C.</p>
+<p>Adding cavity-wall insulation (new U-value 0.6) to the main walls reduces the house’s leakiness by 20 W/°C. The improved loft insulation (new U-value 0.3) should reduce the leakiness by 14 W/°C. The glazing modifications (new U-value 1.6–1.8) should reduce the conductive leakiness by 23 W/°C, and the ventilation leakiness by something like 24 W/°C. That’s a total reduction in leakiness of 25%, from roughly 320 to 240 W/°C (7.7 to 6 kWh/d/°C). Table E.9 shows the predicted savings from each of the modifications.</p>
+<p>The heat-loss parameter of this house (total floor area 88 m<sup>2</sup>) is thus hopefully reduced by about 25%, from 3.7 to 2.7 W/°C/m<sup>2</sup>. (This is a long way from the 1.1 W/°C/m<sup>2</sup> required of a “sustainable” house in the new building codes.)</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td>
+– Cavity-wall insulation (applicable to<br> two-thirds of the wall area)
+</td>
+<td>
+4.8 kWh/d
+</td>
+</tr>
+<tr class="even">
+<td>
+– Improved roof insulation
+</td>
+<td>
+3.5 kWh/d
+</td>
+</tr>
+<tr class="odd">
+<td>
+– Reduction in conduction from double-glazing<br> two doors and one window
+</td>
+<td>
+1.9 kWh/d
+</td>
+</tr>
+<tr class="even">
+<td>
+– Ventilation reductions in hall and kitchen from<br> improvements to doors and windows
+</td>
+<td>
+2.9 kWh/d
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="figurenumber">Table E.9.</span> Break-down of the predicted reductions in heat loss from my house, on a cold winter day.</p>
+<p>It’s frustratingly hard to make a really big dent in the leakiness of an already-built house! As we saw a moment ago, a much easier way of achieving a big dent in heat loss is to turn the thermostat down. Turning down from 20 to 17 °C gave a reduction in heat loss of 30%.</p>
+<p>Combining these two actions – the physical modifications and the turning-down of the thermostat – this model predicts that heat loss should be reduced by nearly 50%. Since some heat is generated in a house by sunshine, gadgets, and humans, the reduction in gas consumption should be more than 50%.</p>
+<p>I made all these changes to my house and monitored my meters every week. I can confirm that my heating bill indeed went down by more than 50%. As figure 21.4 showed, my gas consumption has gone down from 40 kWh/d to 13 kWh/d – a reduction of 67%.</p>
+</section>
+<section id="leakiness-reduction-by-internal-wall-coverings" class="level5">
+<h5 class="anchored" data-anchor-id="leakiness-reduction-by-internal-wall-coverings">Leakiness reduction by internal wall-coverings</h5>
+<p>Can you reduce your walls’ leakiness by covering the <em>inside</em> of the wall with insulation? The answer is yes, but there may be two complications. First, the thickness of internal covering is bigger than you might expect. To transform an existing nine-inch solid brick wall (U-value 2.2 W/m<sup>2</sup>/K) into a decent 0.30 W/m<sup>2</sup>/K wall, roughly 6 cm of insulated lining board is required. [<a href="http://tinyurl.com/65h3cb"><span class="websitetitle">65h3cb</span></a>] Second, condensation may form on the hidden surface of such internal insulation layers, leading to damp problems.</p>
+<p>If you’re not looking for such a big reduction in wall leakiness, you can get by with a thinner internal covering. For example, you can buy 1.8-cmthick insulated wallboards with a U-value of 1.7 W/m<sup>2</sup>/K. With these over the existing wall, the U-value would be reduced from 2.2 W/m<sup>2</sup>/K to:</p>
+<p><span class="math display">\[
+\left. 1/{\left( {\frac{1}{2.2} + \frac{1}{1.7}} \right) \approx 1\text{~W/}\text{m}^{\text{2}}\text{/K.}} \right.
+\]</span></p>
+<p>Definitely a worthwhile reduction.</p>
+</section>
+</section>
+<section id="air-exchange" class="level2">
+<h2 class="anchored" data-anchor-id="air-exchange">Air-exchange</h2>
+<p>Once a building is really well insulated, the principal loss of heat will be through ventilation (air changes) rather than through conduction. The heat loss through ventilation can be reduced by transferring the heat from the outgoing air to the incoming air. Remarkably, a great deal of this heat can indeed be transferred without any additional energy being required. The trick is to use a nose, as discovered by natural selection. A nose warms incoming air by cooling down outgoing air. There’s a temperature gradient along the nose; the walls of a nose are coldest near the nostrils. The longer your nose, the better it works as a counter-current heat exchanger. In nature’s noses, the direction of the air-flow usually alternates. Another way to organize a nose is to have two air-passages, one for in-flow and one for out-flow, separate from the point of view of air, but tightly coupled with each other so that heat can easily flow between the two passages. This is how the noses work in buildings. It’s conventional to call these noses heat-exchangers.</p>
+</section>
+<section id="an-energy-efficient-house" class="level2">
+<h2 class="anchored" data-anchor-id="an-energy-efficient-house">An energy-efficient house</h2>
+<p><img src="img/without-hot-air/figure292.gif" class="img-fluid"></p>
+<p><span class="figurenumber">Figure E.10.</span> The Heatkeeper Serrekunda.</p>
+<p>In 1984, an energy consultant, Alan Foster, built an energy-efficient house near Cambridge; he kindly gave me his thorough measurements. The house is a timber-framed bungalow based on a Scandinavian “Heatkeeper Serrekunda” design (figure E.10), with a floor area of 140 m<sup>2</sup>, composed of three bedrooms, a study, two bathrooms, a living room, a kitchen, and a lobby. The wooden outside walls were supplied in kit form by a Scottish company, and the main parts of the house took only a few days to build.</p>
+<p>The walls are 30 cm thick and have a U-value of 0.28 W/m<sup>2</sup>/°C. From the inside out, they consist of 13 mm of plasterboard, 27 mm airspace, a vapour barrier, 8 mm of plywood, 90 mm of rockwool, 12 mm of bitumen-impregnated fibreboard, 50 mm cavity, and 103 mm of brick. The ceiling construction is similar with 100–200 mm of rockwool insulation. The ceiling has a U-value of 0.27 W/m<sup>2</sup>/°C, and the floor, 0.22 W/m<sup>2</sup>/°C. The windows are double-glazed (U-value 2 W/m<sup>2</sup>/°C), with the inner panes’ outer surfaces specially coated to reduce radiation. The windows are arranged to give substantial solar gain, contributing about 30% of the house’s space-heating.</p>
+<p><img src="img/without-hot-air/figure293.gif" class="img-fluid"></p>
+<p><span class="figurenumber">Figure E.11.</span> The Heatkeeper’s heat-exchanger.</p>
+<p>The house is well sealed, every door and window lined with neoprene gaskets. The house is heated by warm air pumped through floor grilles; in winter, pumps remove used air from several rooms, exhausting it to the outside, and they take in air from the loft space. The incoming air and outgoing air pass through a heat exchanger (figure E.11), which saves 60% of the heat in the extracted air. The heat exchanger is a passive device, using no energy: it’s like a big metal nose, warming the incoming air with the outgoing air. On a cold winter’s day, the outside air temperature was -8 °C, the temperature in the loft’s air intake was 0 °C, and the air coming out of the heat exchanger was at +8 °C.</p>
+<p>For the first decade, the heat was supplied entirely by electric heaters, heating a 150-gallon heat store during the overnight economy period. More recently a gas supply was brought to the house, and the space heating is now obtained from a condensing boiler.</p>
+<p>The heat loss through conduction and ventilation is 4.2 kWh/d/°C. The <em>heat loss parameter</em> (the leakiness per square metre of floor area) is 1.25 W/m<sup>2</sup>/°C (cf.&nbsp;my house’s 2.7 W/°C/m<sup>2</sup>).</p>
+<p>With the house occupied by two people, the <span id="page298">average</span> space-heating consumption, with the thermostat set at 19 or 20 °C during the day, was 8100 kWh per year, or 22 kWh/d; the total energy consumption for all purposes was about 15 000 kWh per year, or 40 kWh/d.&nbsp;Expressed as an average power per unit area, that’s <span class="red">6.6 W/m<sup>2</sup></span>.</p>
+<p><span class="red">Erratum</span>: This is incorrect. 6.6 W/m<sup>2</sup> is the heating power only. The total power per unit area is 12.2 W/m<sup>2</sup>. This error is repeated in figure E.12.</p>
+<p>Figure E.12 compares the power consumption per unit area of this Heatkeeper house with my house (before and after my efficiency push) and with the European average. My house’s post-efficiency-push consumption is close to that of the Heatkeeper, thanks to the adoption of lower thermostat settings.</p>
+</section>
+<section id="benchmarks-for-houses-and-offices" class="level2">
+<h2 class="anchored" data-anchor-id="benchmarks-for-houses-and-offices">Benchmarks for houses and offices</h2>
+<p>The German Passivhaus standard aims for power consumption for heating and cooling of 15 kWh/m<sup>2</sup>/y, which is <span class="red">1.7 W/m<sup>2</sup></span>; and total power consumption of 120 kWh/m<sup>2</sup>/y, which is <span class="red">13.7 W/m<sup>2</sup></span>.</p>
+<p>The average energy consumption of the UK service sector, per unit floor area, is 30 W/m<sup>2</sup>.</p>
+<section id="an-energy-efficient-office" class="level3">
+<h3 class="anchored" data-anchor-id="an-energy-efficient-office">An energy-efficient office</h3>
+<p>The National Energy Foundation built themselves a low-cost low-energy building. It has solar panels for hot water, solar photovoltaic (PV) panels generating up to 6.5 kW of electricity, and is heated by a 14-kW groundsource heat pump and occasionally by a wood stove. The floor area is 400m<sup>2</sup> and the number of occupants is about 30. It is a single-storey building. The walls contain 300mm of rockwool insulation. The heat pump’s coefficient of performance in winter was 2.5. The energy used is 65 kWh per year per square metre of floor area (<span class="red">7.4 W/m<sup>2</sup></span>). The PV system delivers almost 20% of this energy.</p>
+</section>
+<section id="contemporary-offices" class="level3">
+<h3 class="anchored" data-anchor-id="contemporary-offices">Contemporary offices</h3>
+<p>New office buildings are often hyped up as being amazingly environmentfriendly. Let’s look at some numbers.</p>
+<p>The William Gates building at Cambridge University holds computer science researchers, administrators, and a small café. Its area is 11 110 m<sup>2</sup>, and its energy consumption is 2392 MWh/y. That’s a power per unit area of 215 kWh/m<sup>2</sup>/y, or <span class="red">25 W/m<sup>2</sup></span>. This building won a RIBA award in 2001 for its predicted energy consumption. “The architects have incorporated many environmentally friendly features into the building.” [<a href="http://tinyurl.com/5dhups"><span class="websitetitle">5dhups</span></a>]</p>
+<p>But are these buildings impressive? Next door, the Rutherford building, built in the 1970s without any fancy eco-claims – indeed without even double glazing – has a floor area of 4998 m<sup>2</sup> and consumes 1557 MWh per year; that’s 0.85 kWh/d/m<sup>2</sup>, or 36 W/m<sup>2</sup>. So the award-winning building is just 30% better, in terms of power per unit area, than its simple 1970s cousin. Figure E.12 compares these buildings and another new building, the Law Faculty, with the Old Schools, which are ancient offices built pre-1890. For all the fanfare, the difference between the new and the old is really quite disappointing!</p>
+<p><img src="img/without-hot-air/figure291.gif" class="img-fluid"></p>
+<p><span class="figurenumber">Figure E.12.</span> Building benchmarks. Power used per unit area in various homes and offices. <span class="red">Erratum</span>: Another problem with figure E.12 is that the PassivHaus standards use a different convention for defining power: power is measured in terms of “primary energy consumption”, which requires knowledge of the sources of electricity and fuel and of conversion efficiencies. This means that the PassivHaus standards are actually more stringent than the figure shows; though exactly how much more stringent depends on the fuel mix.</p>
+<p>Notice that the building power consumptions, per unit floor area, are in just the same units (W/m<sup>2</sup>) as the renewable powers per unit area that we discussed in chapters 6 and 25. Comparing these consumption and production numbers helps us realize how difficult it is to power modern buildings entirely from on-site renewables. The power per unit area of biofuels (<a href="../Text/chap06.xhtml#ret16">figure 6.11</a>) is 0.5 W/m<sup>2</sup>; of wind farms, 2 W/m<sup>2</sup>; of solar photovoltaics, 20 W/m<sup>2</sup> (<a href="../Text/chap06.xhtml#fig6.18">figure 6.18</a>); only solar hot-water panels come in at the right sort of power per unit area, 53 W/m<sup>2</sup> (<a href="../Text/chap06.xhtml#fig6.3">figure 6.3</a>).</p>
+</section>
+</section>
+<section id="improving-the-coefficient-of-performance" class="level2">
+<h2 class="anchored" data-anchor-id="improving-the-coefficient-of-performance">Improving the coefficient of performance</h2>
+<p>You might think that the coefficient of performance of a condensing boiler, 90%, sounds pretty hard to beat. But it can be significantly improved upon, by heat pumps. Whereas the condensing boiler takes chemical energy and turns 90% of it into useful heat, the heat pump takes some electrical energy and uses it to <em>move</em> heat from one place to another (for example, from outside a building to inside). Usually the amount of useful heat delivered is much bigger than the amount of electricity used. A coefficient of performance of 3 or 4 is normal.</p>
+<section id="theory-of-heat-pumps" class="level3">
+<h3 class="anchored" data-anchor-id="theory-of-heat-pumps">Theory of heat pumps</h3>
+<p>Here are the formulae for the ideal efficiency of a heat pump, that is, the electrical energy required per unit of heat pumped. If we are pumping heat from an outside place at temperature <em>T</em><span class="smallfont1"><sub>1</sub></span> into a place at higher temperature <em>T</em><span class="smallfont1"><sub>2</sub></span>, both temperatures being expressed relative to absolute zero (that is, <em>T</em><span class="smallfont1"><sub>2</sub></span>, in kelvin, is given in terms of the Celsius temperature <em>T</em><span class="smallfont1"><sub>in</sub></span>, by 273.15 + <em>T</em><span class="smallfont1"><sub>in</sub></span>), the ideal efficiency is:</p>
+<p><span class="math display">\[
+\text{efficiency} = \frac{T_{2}}{T_{2} - T_{1}}\text{.}
+\]</span></p>
+<p>If we are pumping heat out from a place at temperature <em>T</em><span class="smallfont1"><sub>2</sub></span> to a warmer exterior at temperature <em>T</em><span class="smallfont1"><sub>1</sub></span>, the ideal efficiency is:</p>
+<p><span class="math display">\[
+\text{efficiency} = \frac{T_{2}}{T_{1} - T_{2}}\text{.}
+\]</span></p>
+<p><img src="img/without-hot-air/figure294.gif" class="img-fluid"></p>
+<p><span class="figurenumber">Figure E.13.</span> Ideal heat pump efficiencies. Top left: ideal electrical energy required, according to the limits of thermodynamics, to pump heat <em>out</em> of a place at temperature <em>T</em><span class="smallfont2"><sub>in</sub></span> when the heat is being pumped to a place at temperature <em>T</em><span class="smallfont2"><sub>out</sub></span> = 35 °C. Right: ideal electrical energy required to pump heat <em>into</em> a place at temperature <em>T</em><span class="smallfont2"><sub>in</sub></span> when the heat is being pumped from a place at temperature <em>T</em><span class="smallfont2"><sub>out</sub></span> = 0 °C. Bottom row: the efficiency is conventionally expressed as a “coefficient of performance,” which is the heat pumped per unit electrical energy. In practice, I understand that well-installed ground-source heat pumps and the best air-source heat pumps usually have a coefficient of performance of 3 or 4; however, government regulations in Japan have driven the coefficient of performance as high as 6.6.</p>
+<p>These theoretical limits could only be achieved by systems that pump heat infinitely slowly. Notice that the ideal efficiency is bigger, the closer the inside temperature <em>T</em><span class="smallfont1"><sub>2</sub></span> is to the outside temperature <em>T</em><span class="smallfont1"><sub>1</sub></span>.</p>
+<p><img src="img/without-hot-air/figure294.gif" class="img-fluid"></p>
+<p><span class="figurenumber">Figure E.13.</span> Ideal heat pump efficiencies. Top left: ideal electrical energy required, according to the limits of thermodynamics, to pump heat <em>out</em> of a place at temperature <em>T</em><span class="smallfont2"><sub>in</sub></span> when the heat is being pumped to a place at temperature <em>T</em><span class="smallfont2"><sub>out</sub></span> = 35 °C. Right: ideal electrical energy required to pump heat <em>into</em> a place at temperature <em>T</em><span class="smallfont2"><sub>in</sub></span> when the heat is being pumped from a place at temperature <em>T</em><span class="smallfont2"><sub>out</sub></span> = 0 °C. Bottom row: the efficiency is conventionally expressed as a “coefficient of performance,” which is the heat pumped per unit electrical energy. In practice, I understand that well-installed ground-source heat pumps and the best air-source heat pumps usually have a coefficient of performance of 3 or 4; however, government regulations in Japan have driven the coefficient of performance as high as 6.6.</p>
+<p>While in theory ground-source heat pumps might have better performance than air-source, because the ground temperature is usually closer than the air temperature to the indoor temperature, in practice an air-source heat pump might be the best and simplest choice. In cities, there may be uncertainty about the future effectiveness of ground-source heat pumps, because the more people use them in winter, the colder the ground gets; this thermal fly-tipping problem may also show up in the summer in cities where too many buildings use ground-source (or should I say “ground-sink”?) heat pumps for air-conditioning.</p>
+<p>Heat capacity:</p>
+<p><em>C</em> = 820 J/kg/K</p>
+<p>Conductivity:</p>
+<p><em>κ</em> = 2.1 W/m/K</p>
+<p>Density:</p>
+<p><em>ρ</em> = 2750 kg/m<sup>3</sup></p>
+<p>Heat capacity per unit volume:</p>
+<p><em>C</em><span class="smallfont1"><sub>V</sub></span> = 2.3 MJ/m<sup>3</sup>/K</p>
+<p><span class="figurenumber">Table E.14.</span> Vital statistics for granite. (I use granite as an example of a typical rock.)</p>
+</section>
+</section>
+<section id="heating-and-the-ground" class="level2">
+<h2 class="anchored" data-anchor-id="heating-and-the-ground">Heating and the ground</h2>
+<p>Here’s an interesting calculation to do. Imagine having solar heating panels on your roof, and, whenever the water in the panels gets above 50 °C, pumping the water through a large rock under your house. When a dreary grey cold month comes along, you could then use the heat in the rock to warm your house. Roughly how big a 50 °C rock would you need to hold enough energy to heat a house for a whole month? Let’s assume we’re after 24 kWh per day for 30 days and that the house is at 16 °C. The heat capacity of granite is 0.195 × 4200 J/kg/K = 820 J/kg/K. The mass of granite required is:</p>
+<p><span class="math display">\[
+\begin{matrix}
+{= \frac{\text{energy}}{\text{heat\ capacity} \times \text{temperature\ difference}}} \\
+{= \frac{24 \times 30 \times 3.6\text{~MJ}}{\left( {820\text{~J/kg/°C}} \right)\left( {50\ {^\circ}\text{C} - 16\ {^\circ}\text{C}} \right)}} \\
+{= 100\ 000\text{~kg.}} \\
+\end{matrix}
+\]</span></p>
+<p>100 tonnes, which corresponds to a cuboid of rock of size 6 m × 6 m × 1 m.</p>
+<section id="ground-storage-without-walls" class="level3">
+<h3 class="anchored" data-anchor-id="ground-storage-without-walls">Ground storage without walls</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>(W/m/K)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>water</td>
+<td>0.6</td>
+</tr>
+<tr class="even">
+<td>quartz</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>granite</td>
+<td>2.1</td>
+</tr>
+<tr class="even">
+<td>earth’s crust</td>
+<td>1.7</td>
+</tr>
+<tr class="odd">
+<td>dry soil</td>
+<td>0.14</td>
+</tr>
+</tbody>
+</table>
+<p><span class="figurenumber">Table E.15.</span> Thermal conductivities. For more data see <a href="#tableE.18">table E.18</a>.</p>
+<p>OK, we’ve established the size of a useful ground store. But is it difficult to keep the heat in? Would you need to surround your rock cuboid with lots of insulation? It turns out that the ground itself is a pretty good insulator. A spike of heat put down a hole in the ground will spread as</p>
+<p><span class="math display">\[
+\frac{1}{\sqrt{4\pi\kappa t}}\text{exp}\left( {- \frac{x^{2}}{4\left( {\kappa/\left( {C\rho} \right)} \right)t}} \right)
+\]</span></p>
+<p>where <em>κ</em> is the conductivity of the ground, <em>C</em> is its heat capacity, and <em>ρ</em> is its density. This describes a bell-shaped curve with width</p>
+<p><span class="math display">\[
+\sqrt{2\frac{\kappa}{C\rho}t}\text{~;}
+\]</span></p>
+<p>for example, after six months (<em>t</em> = 1.6 × 10<sup>7</sup> s), using the figures for granite (<em>C</em> = 0.82 kJ/kg/K, <em>ρ</em> = 2500 kg/m<sup>3</sup>, <em>κ</em> = 2.1 W/m/K), the width is 6 m.</p>
+<p>Using the figures for water (<em>C</em> = 4.2 kJ/kg/K, <em>ρ</em> = 1000 kg/m<sup>3</sup>, <em>κ</em> = 0.6 W/m/K), the width is 2 m.</p>
+<p>So if the storage region is bigger than 20 m × 20 m × 20 m then most of the heat stored will still be there in six months time (because 20 m is significantly bigger than 6 m and 2 m).</p>
+</section>
+<section id="limits-of-ground-source-heat-pumps" class="level3">
+<h3 class="anchored" data-anchor-id="limits-of-ground-source-heat-pumps">Limits of ground-source heat pumps</h3>
+<p>The low thermal conductivity of the ground is a double-edged sword. Thanks to low conductivity, the ground holds heat well for a long time. But on the other hand, low conductivity means that it’s not easy to shove heat in and out of the ground rapidly. We now explore how the conductivity of the ground limits the use of ground-source heat pumps.</p>
+<p>Consider a neighbourhood with quite a high population density. Can <em>everyone</em> use ground-source heat pumps, without using active summer replenishment (as discussed in chapter 21)? The concern is that if we all sucked heat from the ground at the same time, we might freeze the ground solid. I’m going to address this question by two calculations. First, I’ll work out the natural flux of energy in and out of the ground in summer and winter. If the flux we want to suck out of the ground in winter is much bigger than these natural fluxes then we know that our sucking is going to significantly alter ground temperatures, and may thus not be feasible. For this calculation, I’ll assume the ground just below the surface is held, by the combined influence of sun, air, cloud, and night sky, at a temperature that varies slowly up and down during the year (figure E.16).</p>
+<p><img src="img/without-hot-air/figure295.gif" class="img-fluid"></p>
+<p><span class="figurenumber">Figure E.16.</span> The temperature in Cambridge, 2006, and a cartoon, which says the temperature is the sum of an annual sinusoidal variation between 3 °C and 20 °C, and a daily sinusoidal variation with range up to 10.3 °C. The average temperature is 11.5 °C.</p>
+<p><img src="img/without-hot-air/figure296.gif" class="img-fluid"></p>
+<p><span class="figurenumber">Figure E.17.</span> Temperature (in °C) versus depth and time. The depths are given in units of the characteristic depth <em>z</em><span class="smallfont2"><sub>0</sub></span>, which for granite and annual variations is 3 m. At “depth 2” (6 m), the temperature is always about 11 or 12 °C. At “depth 1” (3 m), it wobbles between 8 and 15 °C.</p>
+</section>
+<section id="response-to-external-temperature-variations" class="level3">
+<h3 class="anchored" data-anchor-id="response-to-external-temperature-variations">Response to external temperature variations</h3>
+<p>Working out how the temperature inside the ground responds, and what the flux in or out is, requires some advanced mathematics, which I’ve cordoned off in <a href="#boxE.19">box E.19</a>.</p>
+<p>The payoff from this calculation is a rather beautiful diagram (figure E.17) that shows how the temperature varies in time at each depth. This diagram shows the answer for any material in terms of the <em>characteristic length-scale</em> <em>z</em><span class="smallfont1"><sub>0</sub></span> (equation (E.7)), which depends on the conductivity <em>κ</em> and heat capacity <em>C</em><span class="smallfont1"><sub>V</sub></span> of the material, and on the frequency <em>ω</em> of the external temperature variations. (We can choose to look at either daily and yearly variations using the same theory.) At a depth of 2<em>z</em><span class="smallfont1"><sub>0</sub></span>, the variations in temperature are one seventh of those at the surface, and lag them by about one third of a cycle (figure E.17). At a depth of 3<em>z</em><span class="smallfont1"><sub>0</sub></span>, the variations in temperature are one twentieth of those at the surface, and lag them by half a cycle.</p>
+<p>For the case of daily variations and solid granite, the characteristic length-scale is <em>z</em><span class="smallfont1"><sub>0</sub></span> = 0.16 m. (So 32 cm of rock is the thickness you need to ride out external daily temperature oscillations.) For yearly variations and solid granite, the characteristic length-scale is <em>z</em><span class="smallfont1"><sub>0</sub></span> = 3 m.</p>
+<p>Let’s focus on annual variations and discuss a few other materials. Characteristic length-scales for various materials are in the third column of table E.18. For damp sandy soils or concrete, the characteristic length-scale <em>z</em><span class="smallfont1"><sub>0</sub></span> is similar to that of granite – about 2.6 m. In dry or peaty soils, the length-scale <em>z</em><span class="smallfont1"><sub>0</sub></span> is shorter – about 1.3 m. That’s perhaps good news because it means you don’t have to dig so deep to find ground with a stable temperature. But it’s also coupled with some bad news: the natural fluxes are smaller in dry soils.</p>
+<p>The natural flux varies during the year and has a peak value (equation (E.9)) that is smaller, the smaller the conductivity.</p>
+<p>For the case of solid granite, the peak flux is 8 W/m<sup>2</sup>. For dry soils, the peak flux ranges from 0.7 W/m<sup>2</sup> to 2.3 W/m<sup>2</sup>. For damp soils, the peak flux ranges from 3 W/m<sup>2</sup> to 8 W/m<sup>2</sup>.</p>
+<p>What does this mean? I suggest we take a flux in the middle of these numbers, 5 W/m<sup>2</sup>, as a useful benchmark, giving guidance about what sort of power we could expect to extract, per unit area, with a ground-source heat pump. If we suck a flux significantly smaller than 5 W/m<sup>2</sup>, the perturbation we introduce to the natural flows will be small. If on the other hand we try to suck a flux bigger than 5 W/m<sup>2</sup>, we should expect that we’ll be shifting the temperature of the ground significantly away from its natural value, and such fluxes may be impossible to demand.</p>
+<p>The population density of a typical English suburb corresponds to 160 m<sup>2</sup> per person (rows of semi-detached houses with about 400 m<sup>2</sup> per house, including pavements and streets). At this density of residential area, we can deduce that a ballpark limit for heat pump power delivery is</p>
+<p>5 W/m<sup>2</sup> × 160 m<sup>2</sup> = 800 W = 19 kWh/d per person.</p>
+<p>This is uncomfortably close to the sort of power we would like to deliver in winter-time: it’s plausible that our peak winter-time demand for hot air and hot water, in an old house like mine, might be 40 kWh/d per person.</p>
+<p>This calculation suggests that in a typical suburban area, <em>not everyone can use ground-source heat pumps</em>, unless they are careful to actively dump heat back into the ground during the summer.</p>
+<p>thermal conductivity</p>
+<p>heat capacity</p>
+<p>length-scale</p>
+<p>flux</p>
+<p><em>κ </em>(W/m/K)</p>
+<p><em>C</em><sub>V</sub> (MJ/m<sup>3</sup>/K)</p>
+<p><em>z</em><sub>0</sub> (m)</p>
+<p><em>A</em>√(<em>C</em><sub>V</sub><em>κω</em>) (W/m<sup>2</sup>)</p>
+<p>Air</p>
+<p>0.02</p>
+<p>0.0012</p>
+<p>Water</p>
+<p>0.57</p>
+<p>4.18</p>
+<p>1.2</p>
+<p>5.7</p>
+<p>Solid granite</p>
+<p>2.1</p>
+<p>2.3</p>
+<p>3.0</p>
+<p>8.1</p>
+<p>Concrete</p>
+<p>1.28</p>
+<p>1.94</p>
+<p>2.6</p>
+<p>5.8</p>
+<p><em>Sandy soil</em></p>
+<p>dry</p>
+<p>0.30</p>
+<p>1.28</p>
+<p>1.5</p>
+<p>2.3</p>
+<p>50% saturated</p>
+<p>1.80</p>
+<p>2.12</p>
+<p>2.9</p>
+<p>7.2</p>
+<p>100% saturated</p>
+<p>2.20</p>
+<p>2.96</p>
+<p>2.7</p>
+<p>9.5</p>
+<p><em>Clay soil</em></p>
+<p>dry</p>
+<p>0.25</p>
+<p>1.42</p>
+<p>1.3</p>
+<p>2.2</p>
+<p>50% saturated</p>
+<p>1.18</p>
+<p>2.25</p>
+<p>2.3</p>
+<p>6.0</p>
+<p>100% saturated</p>
+<p>1.58</p>
+<p>3.10</p>
+<p>2.3</p>
+<p>8.2</p>
+<p><em>Peat soil</em></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Material</th>
+<th>κ</th>
+<th><em>C</em><sub>V</sub></th>
+<th><em>z</em><sub>0</sub> (m)</th>
+<th>peak flux</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dry</td>
+<td>0.06</td>
+<td>0.58</td>
+<td>1.0</td>
+<td>0.7</td>
+</tr>
+<tr class="even">
+<td>50% saturated</td>
+<td>0.29</td>
+<td>2.31</td>
+<td>1.1</td>
+<td>3.0</td>
+</tr>
+<tr class="odd">
+<td>100% saturated</td>
+<td>0.50</td>
+<td>4.02</td>
+<td>1.1</td>
+<td>5.3</td>
+</tr>
+</tbody>
+</table>
+<p><span class="figurenumber"><span id="tableE.18">Table E.18</span></span>. Thermal conductivity and heat capacity of various materials and soil types, and the deduced length-scale <em>z</em><sub>0</sub> = √(2κ/(<em>C</em><sub>V</sub><em>ω</em>)) and peak flux <em>A</em>√(<em>C</em><sub>V</sub><em>κω</em>) associated with annual temperature variations with amplitude <em>A</em> = 8.3 °C. The sandy and clay soils have porosity 0.4; the peat soil has porosity 0.8. <a href="#chEn01"><span class="darkred">[1]</span></a></p>
+<p>Let’s do a second calculation, working out how much power we could steadily suck from a ground loop at a depth of <em>h</em> = 2 m. Let’s assume that we’ll allow ourselves to suck the temperature at the ground loop down to Δ<em>T</em> = 5 °C below the average ground temperature at the surface, and let’s assume that the surface temperature is constant. We can then deduce the heat flux from the surface. Assuming a conductivity of 1.2 W/m/K (typical of damp clay soil),</p>
+<p><span class="math display">\[
+\text{Flux} = \kappa \times \frac{\Delta T}{h} = 3\text{~W/}\text{m}^{2}\text{.}
+\]</span></p>
+<p>If, as above, we assume a population density corresponding to 160 m<sup>2</sup> per person, then the maximum power per person deliverable by ground-source heat pumps, if everyone in a neighbourhood has them, is 480 W, which is 12 kWh/d per person.</p>
+<p>So again we come to the conclusion that in a typical suburban area composed of poorly insulated houses like mine, <em>not everyone can use groundsource heat pumps</em>, unless they are careful to actively dump heat back into the ground during the summer. And in cities with higher population density, ground-source heat pumps are unlikely to be viable.</p>
+<p>I therefore suggest air-source heat pumps are the best heating choice for most people.</p>
+</section>
+</section>
+<section id="thermal-mass" class="level2">
+<h2 class="anchored" data-anchor-id="thermal-mass">Thermal mass</h2>
+<p>Does increasing the thermal mass of a building help reduce its heating and cooling bills? It depends. The outdoor temperature can vary during the day by about 10 °C. A building with large thermal mass – thick stone walls, for example – will naturally ride out those variations in temperature, and, without heating or cooling, will have a temperature close to the average outdoor temperature. Such buildings, in the UK, need neither heating nor cooling for many months of the year. In contrast, a poorly-insulated building with low thermal mass might be judged too hot during the day and too cool at night, leading to greater expenditure on cooling and heating.</p>
+<p>However, large thermal mass is not always a boon. If a room is occupied in winter for just a couple of hours a day (think of a lecture room for example), the energy cost of warming the room up to a comfortable temperature will be greater, the greater the room’s thermal mass. This extra invested heat will linger for longer in a thermally massive room, but if nobody is there to enjoy it, it’s wasted heat. So in the case of infrequently-used rooms it makes sense to aim for a structure with low thermal mass, and to warm that small mass rapidly when required.</p>
+</section>
+<section id="notes-and-further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="notes-and-further-reading">Notes and further reading</h2>
+<p><span id="boxE.19"></span></p>
+<p>If we assume the ground is made of solid homogenous material with conductivity <em>κ</em> and heat capacity <em>C</em><sub>V</sub>, then the temperature at depth <em>z</em> below the ground and time <em>t</em> responds to the imposed temperature at the surface in accordance with the diffusion equation</p>
+<p><span class="math display">\[
+\begin{matrix}
+{\frac{\partial T\left( z,t \right)}{\partial t} = \frac{\kappa}{C_{\text{V}}}\frac{\partial^{2}T\left( z,t \right)}{\partial z^{2}}\text{.}} \\
+\end{matrix}
+\]</span></p>
+<p>For a sinusoidal imposed temperature with frequency <em>ω</em> and amplitude <em>A</em> at depth <em>z</em> = 0,</p>
+<p><span class="math display">\[
+\begin{matrix}
+{T\left( 0,t \right) = T_{\text{surface}}\left( t \right) = T_{\text{average}} + A\text{cos}\left( \omega t \right)\text{,}} \\
+\end{matrix}
+\]</span></p>
+<p>the resulting temperature at depth <em>z</em> and time <em>t</em> is a decaying and oscillating function</p>
+<p><span class="math display">\[
+\begin{matrix}
+{T\left( z,t \right) = T_{\text{average}}\left( t \right) + A\text{e}^{- {z/z_{0}}}\text{cos}\left( {\omega t - {z/z_{0}}} \right)\text{,}} \\
+\end{matrix}
+\]</span></p>
+<p>where <em>z</em><span class="smallfont1"><sub>0</sub></span> is the characteristic length-scale of both the decay and the oscillation,</p>
+<p><span class="math display">\[
+\begin{matrix}
+\text{(E.7)\quad} &amp; {z_{0} = \sqrt{\frac{2\kappa}{C_{\text{V}}\omega}\text{,}}} \\
+\end{matrix}
+\]</span></p>
+<p>The flux of heat (the power per unit area) at depth <em>z</em> is</p>
+<p><span class="math display">\[
+\begin{matrix}
+{\kappa\frac{\partial T}{\partial z} = \kappa\frac{A}{z_{0}}\sqrt{2}\text{e}^{- {z/z_{0}}}\text{sin}\left( {\omega t - z/z_{0} - \pi/4} \right)} \\
+\end{matrix}\text{.}
+\]</span></p>
+<p>For example, at the surface, the peak flux is</p>
+<p><span class="math display">\[
+\begin{matrix}
+{\kappa\frac{A}{z_{0}}\sqrt{2} = A\sqrt{C_{\text{V}}\kappa\omega}} \\
+\end{matrix}\text{.}
+\]</span></p>
+<p><span class="figurenumber">Box E.19.</span> Working out the natural flux caused by sinusoidal temperature variations.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/chapD.html" class="pagination-link" aria-label="D Solar II">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">D Solar II</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/chapF.html" class="pagination-link" aria-label="F Waves II">
+        <span class="nav-page-text"><span class="chapter-title">F Waves II</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
