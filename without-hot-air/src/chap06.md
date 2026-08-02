@@ -107,6 +107,96 @@ I am sure that photovoltaic panels will become ever *cheaper*; I’m also sure t
 
 <span class="figurenumber">Figure 6.9.</span> Solar photovoltaics: a 10 m<sup>2</sup> array of building-mounted south-facing panels with 20% efficiency can deliver about 5 kWh per day of electrical energy. If 5% of the country were coated with 10%-efficient solar panels (200 m<sup>2</sup> of panels per person) they would deliver 50 kWh/day/person.
 
+## The fantasy got built
+
+*A section added in the 2026 revision.* This chapter opens by saying "We'll neglect their economic costs". That sentence is where it aged. The physics in the pages above has survived almost untouched; the economics reversed completely, and reversed in the direction that made the physics matter more, not less.
+
+### The efficiency bet, which MacKay won for the wrong reason
+
+He assumed roof panels at 20%, called 10% typical, and wrote that "a mass-produced device with efficiency greater than 30% would be quite remarkable". Mainstream modules in 2026 are **TOPCon at 22–24%**, about 70% of world production, with premium heterojunction at 23–25% and the best commercial module around 25.6%.[^pv2026] His 5 kWh/d per person from a 10 m<sup>2</sup> roof becomes something like 5.5 to 6. He predicted exactly this: "I'll be surprised if this chapter's estimate for roof-based photovoltaics ever needs a significant upward revision." It did not.
+
+The claim underneath it was wrong, though. "Photovoltaic panels with 20% efficiency are already close to the theoretical limit" holds only for the single-junction cells he had in mind, and his own endnote gives the escape route — multiple junctions, limit 45% without concentration. In July 2026 LONGi announced a crystalline-silicon–perovskite tandem cell at **35.5%**, certified by the European Solar Test Installation, with tandem *modules* certified at **31.4%**.[^pv2026] That is past his "quite remarkable" line, though not yet mass-produced. The lesson is not that he was careless — he flagged the route himself — but that the ceiling he treated as near was a ceiling of one particular technology.
+
+### Power per unit area: the wind lesson, again
+
+Cleve Hill in Kent, commissioned on 1 July 2025, is Britain's largest solar farm and more than four times the next: **373 MW on a 360-hectare site**. British solar ran at a capacity factor of about **10.4%** in 2025, so its average output is roughly **11 W/m<sup>2</sup>** of site.[^clevehill]
+
+MacKay's fantasy farm assumed 10%-efficient panels and arrived at **10 W/m<sup>2</sup>**. Panels are now more than twice as efficient, and the answer is the same. The gain went into spacing: rows must be set apart so they do not shade each other, so doubling panel efficiency roughly halves the fraction of ground covered. This is precisely the finding of chapter 4's section on larger turbines — the technology improved, and the power per unit area did not, because the limiting quantity was never the device.
+
+### The deployment reversal
+
+Here MacKay was not merely conservative but inverted. To deliver 50 kWh/d per person in the UK needs about 1250 GW of capacity, which he noted was "more than 100 times all the photovoltaics in the whole world" — the world had **8.96 GW** at the end of 2007.
+
+At the end of 2025 the world had **2392 GW**: **267 times** the 2007 fleet, and **1.9 times** the number he called beyond the bounds of plausibility. **China alone has 1202 GW**, which is 96% of MacKay's fantasy figure, built by one country in seventeen years. The world added **512 GW during 2025** — two-fifths of the whole fantasy in a single year.[^deploy]
+
+<iframe src="https://ourworldindata.org/grapher/installed-solar-pv-capacity?tab=line" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+
+<span class="figurenumber">Figure 6.20.</span> Installed solar PV capacity, from Our World in Data. MacKay's "more than 100 times all the photovoltaics in the whole world" is the flat line at the left-hand edge.
+
+<iframe src="https://ourworldindata.org/grapher/solar-energy-consumption?tab=line" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+
+<span class="figurenumber">Figure 6.21.</span> Solar energy consumption. Capacity is what gets built; this is what it delivers.
+
+### The cost reversal, which is the largest single error in the book
+
+MacKay wrote that "electricity from solar farms would be four times as expensive as the market rate", and costed his fantasy at **€0.25 per kWh**. The global weighted-average levelised cost of utility-scale solar was **$0.043 per kWh in 2024**, down about **90%** from $0.460 in 2010, with total installed cost at **$691 per kW**, down 87% over the same period.[^cost] Solar is now the cheapest source of new bulk electricity across most of the world.
+
+He cannot fairly be faulted for this, because he told the reader he was setting cost aside and asking only what physics permits. But it is worth being blunt that the one variable he bracketed out is the one that moved by a factor of ten, and it moved far enough to turn his deliberately absurd thought experiment into an ordinary procurement decision.
+
+### What the cost collapse killed
+
+The Ivanpah Solar Electric Generating System in the Mojave desert is the clearest casualty, and it is worth a paragraph because it tests the very suggestion this chapter ends on — that we should put the collectors in a sunnier country and ship the power home.
+
+Ivanpah is not photovoltaic. It is concentrating solar thermal: 173 000 heliostats aiming sunlight at three 140-metre towers, receivers at 550°C, **392 MW across 3500 acres**, opened February 2014 at a cost of **$2.2 billion** with a $1.6 billion federal loan guarantee. Three things went wrong with it.
+
+It **underperformed**. Against an advertised 940 000 MWh a year it produced 419 085 MWh in 2014, 44.6% of projection, reaching 91.1% only by 2020.
+
+It **burns gas**. The plant needs fossil heat to start each morning and to ride through cloud, and consumed 525 million cubic feet in 2014 — more than four times what was planned.
+
+And it was **undercut**. In January 2025 its owners announced plans to shut it, thirteen years into a plant built for far longer, not because anything wore out but because photovoltaics had become cheaper than running it. In December 2025 the California Public Utilities Commission unanimously rejected the closure agreement and required two of the three units to keep operating.[^ivanpah] It survives on a regulator's order rather than on its economics.
+
+Now put its power per unit area beside the others, using its best year:
+
+| | W/m<sup>2</sup> average |
+|---|---|
+| Bavaria Solarpark, PV, 2008 (figure 6.7) | 5 |
+| Ivanpah, solar thermal, Mojave desert | **6.9** |
+| MacKay's fantasy farm | 10 |
+| Cleve Hill, PV, Kent, 2025 | **10.8** |
+
+A photovoltaic field in cloudy Kent beats a concentrating solar plant in the Mojave, on the same measure, by half again. The desert has roughly twice the sunlight; the technology gave it all back and more. That does not overturn chapter 25's argument for siting collectors where the sun is — the resource really is better — but it does show that the siting advantage can be smaller than the technology choice, and that a plant chosen for a desert can be obsolete before it is old.
+
+### How long the hardware lasts
+
+The chapter's energy yield ratio of 4 assumes a 20-year life. Modern modules carry **25- to 30-year warranties**, degrade at **0.3–0.5% a year** (0.25–0.3% for premium product) after about 3% lost in the first year, and are typically warranted to retain **87–92%** of output at 25 years; many keep working at reduced output for 35 to 40. **Inverters last 10–15 years**, so a system will normally need one or two inverter replacements inside the life of its panels — the panel is not the whole plant, and lifetime arithmetic that counts only the glass will flatter the result.[^life]
+
+Longer life and less energy-intensive manufacture both push the energy return upward. Chapter M puts photovoltaics at or above **10** once outputs are harmonised to point of use, against the 4 quoted here — and, more to the point, above the coal, gas and oil that this book was written to displace.
+
+### What actually binds now
+
+Not area, which was MacKay's constraint. Not cost, which was his stated non-constraint and has since collapsed. What binds is value.
+
+Every panel in a country generates in the same hours, so each one added lowers the price in exactly the hours when all the others are selling. In Great Britain in 2025, against a time-weighted average market price of **£79.9/MWh**, solar captured **£65.9** — a value factor of **0.82**, the lowest of any technology on the system, against wind's 0.90 and gas's 1.19.[^capture6] The resource this chapter measures in W/m<sup>2</sup> is worth progressively less per unit as it grows, and that limit bites long before the land runs out.
+
+This is a constraint MacKay could not have seen, because it only becomes visible once the build-out he called implausible has actually happened. Chapter 28a, "The value of renewable energy as it scales", is about it, and the full model — the balancing and reinforcing loops, with the Swedish and European data behind each figure — is at [oluies.github.io/elmix](https://oluies.github.io/elmix/modell/system.html).[^model6]
+
+### And yet
+
+Set against all that, here is what solar actually delivered in 2025, in this book's units:
+
+| | kWh/d per person |
+|---|---|
+| United Kingdom | **0.79** |
+| World | 0.94 |
+| China | 2.28 |
+| Germany | 3.00 |
+
+MacKay's roof estimate was 5 and his fantasy farm was 50. Britain, having built 22 GW, gets **less than one kWh per day per person** from it.[^percap6] The cost argument reversed; the quantity argument did not. Everything this chapter says about how much area a solar-powered Britain would need still stands, and is still the reason the answer is hard.
+
+<iframe src="https://ourworldindata.org/grapher/solar-electricity-per-capita?tab=line" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+
+<span class="figurenumber">Figure 6.22.</span> Solar electricity per person, from Our World in Data — the chart in the units this book uses. Divide by 365 to compare with MacKay's kWh/d per person.
+
 ## <span id="biomass">Solar biomass</span>
 
 > *All of a sudden, you know, we may be in the energy business by being able to grow grass on the ranch\! And have it harvested and converted into energy. That’s what’s close to happening.*
@@ -223,3 +313,21 @@ According to Archer and Barber (2004), the instantaneous efficiency of a healthy
 [^16]: *Figure 6.11*. The numbers in this figure are drawn from Rogner (2000) (net energy yields of wood, rape, sugarcane, and tropical plantations); Bayer Crop Science (2003) (rape to biodiesel); Francis et al. (2005) and Asselbergs et al. (2006) (jatropha); Mabee et al. (2006) (sugarcane, Brazil); Schmer et al. (2008) (switchgrass, marginal cropland in USA); Shapouri et al. (1995) (corn to ethanol); Royal Commission on Environmental Pollution (2004); Royal Society working group on biofuels (2008); Energy for Sustainable Development Ltd (2003); Archer and Barber (2004); Boyer (1982); Monteith (1977).
 
 [^17]: *Even just setting fire to dried wood in a good wood boiler loses 20% of the heat up the chimney*. Sources: Royal Society working group on biofuels (2008); Royal Commission on Environmental Pollution (2004).
+
+[^pv2026]: Module efficiencies are for 2026 product: TOPCon, about 70% of world cell production, at 22–24% module efficiency; heterojunction at 23–25%; the best commercially available module about 25.6%. The tandem record is LONGi's crystalline-silicon–perovskite cell at 35.5%, certified by the European Solar Test Installation and announced at the Solar and Energy Storage Innovation Conference in July 2026, with tandem modules certified at 31.4% and 29.4%: <https://www.longi.com/en/news/crystalline-silicon-perovskite-tandem-solar-cell-new-world-efficiency-2026/>. LONGi's progression was 33.9% in November 2023, 34.6% in June 2024, then 34.85%, 35.2% and 35.5%. The theoretical limit for a two-junction tandem is about 43%, against the Shockley–Queisser limit of 33.7% for a single junction — which is the escape route MacKay's own endnote 7 describes. A record cell is not a product: these are laboratory devices, and the gap between champion cell and mass-produced module has historically run to several years and several percentage points.
+
+[^clevehill]: Cleve Hill Solar Park, Graveney Marshes, Kent: 373 MW on a 360-hectare site, of which about 320 hectares carry panels and 56 hectares are managed bird habitat; more than 550 000 modules; fully operational 1 July 2025; a 150 MW battery is being added. The next largest operational British solar farm, Llanwern in Wales, is 49.9 MW. The capacity factor is derived here rather than quoted: 20.0 TWh generated in 2025 from 22 GW installed is 10.4%, and 373 MW × 0.104 spread over 3.6 km<sup>2</sup> gives 10.8 W/m<sup>2</sup>. Using the panel area alone rather than the whole site raises this to about 12 W/m<sup>2</sup>. Generation and capacity from the Energy Institute's *Statistical Review of World Energy* 2026.
+
+[^deploy]: World installed solar capacity from the Energy Institute's *Statistical Review of World Energy* 2026, which covers photovoltaics and concentrated solar together: 8 956 MW at end-2007, 1 422 GW at end-2023, 1 880 GW at end-2024 and 2 392 GW at end-2025. China 1 202 GW, Germany 106 GW, the United Kingdom 22 GW at end-2025. MacKay's 1250 GW is his own figure: 50 kWh/d per person in the UK is 125 GW average, which at a 10% capacity factor needs 1250 GW of capacity. Note that his comparison was to *peak* world capacity of 10 GW at end-2007 with a build rate of 2 GW a year; the build rate in 2025 was about 512 GW.
+
+[^cost]: IRENA, *Renewable Power Generation Costs in 2024* (July 2025): global weighted-average LCOE for utility-scale solar PV of USD 0.043/kWh in 2024, against USD 0.460/kWh in 2010, a fall of about 90%; global weighted-average total installed cost USD 691/kW in 2024, down 11% year-on-year and 87% since 2010, with module and inverter cost reductions accounting for about 60% of the fall and installation, development and EPC costs a further 30%. MacKay's €0.25/kWh is his own calculation from the price tag of the Bavarian solar farm, assuming a 20-year life with no further expenditure — an assumption the note on inverter replacement below bears on.
+
+[^ivanpah]: Ivanpah Solar Electric Generating System, San Bernardino County, California: 392 MW gross (440 MW originally planned) on 3500 acres of public land, opened 13 February 2014, cost $2.2 billion (about $2.86 billion in 2024 money) with a $1.6 billion Department of Energy loan guarantee. Generation against an advertised 940 000 MWh/year: 419 085 MWh in 2014 (44.6%), 653 122 in 2015 (69.5%), 856 301 in 2020 (91.1%). Gas consumption reached 525 million cubic feet in 2014. Bird mortality is estimated at 3500–6000 a year from collision and from solar flux reaching 1000°F, a cost that no power-per-unit-area figure captures. Closure was announced in January 2025, citing cheaper photovoltaics; the California Public Utilities Commission unanimously rejected the closure agreement in December 2025 and required two of the three units to remain operational. The power density here is computed from the best year: 856 301 MWh over 8760 hours is 97.8 MW average, and 3500 acres is 14.16 km<sup>2</sup>, giving 6.9 W/m<sup>2</sup>. Comparing a best year against Cleve Hill's first full year is generous to Ivanpah.
+
+[^life]: Typical modern module degradation is 0.3–0.5% a year, with premium monocrystalline product at 0.25–0.3%, after about 3% lost in the first year; warranties commonly guarantee 90% of rated output at 10 years and 80–92% at 25–30 years, and many tier-one modules continue to work at reduced output for 35–40 years. String inverters are generally rated for 10–15 years, some exceeding 20, so one or two replacements fall inside the panels' warranted life. These are manufacturer and industry figures rather than independent field measurements, and real-world degradation depends heavily on climate, mounting and maintenance.
+
+[^capture6]: Capture price is the sum of production times spot price, divided by total production — the average price a generator actually realises, weighted by its own output. Great Britain 2025: time-weighted average £79.9/MWh, solar £65.9 (value factor 0.82), wind £72.0 (0.90), gas £94.8 (1.19). Sources at <https://oluies.github.io/elmix/modell/referenser.html>.
+
+[^model6]: The elmix cannibalization model, <https://oluies.github.io/elmix/modell/system.html>.
+
+[^percap6]: Solar generation in 2025 from the Energy Institute's *Statistical Review of World Energy* 2026 — United Kingdom 20.0 TWh, world 2 811.1 TWh, China 1 173.2 TWh, Germany 91.6 TWh — divided by populations of 69.3 million, 8.23 billion, 1.408 billion and 83.6 million respectively, then by 365. These are per head of total population, not per household or per connected customer.
