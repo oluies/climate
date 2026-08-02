@@ -919,3 +919,65 @@ def chapterN(): Unit = {
   println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
   println("  python figures/peaks_by_country.py data-refresh/peaks-by-country.csv without-hot-air/Images/fig-peaks-by-country.svg")
 }
+
+// ---- Chapter 7: the heat-pump break-even ----
+// A heat pump beats a gas boiler when its seasonal performance factor exceeds
+// the ratio of the electricity price to the gas price. Household prices come
+// from Eurostat, band DC for electricity (2500-4999 kWh/yr) and D2 for gas
+// (20-199 GJ/yr), including all taxes and levies, which is what a household
+// actually pays. Written to JSON and read with DuckDB, as elsewhere here.
+@main
+def chapter07(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val base = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data"
+  def grab(ds: String, cons: String, cache: os.Path): Unit =
+    if (!os.exists(cache)) os.write.over(cache, requests.get(
+      s"$base/$ds?format=JSON&lang=EN&lastTimePeriod=1&currency=EUR&unit=KWH&tax=I_TAX&nrg_cons=$cons",
+      readTimeout = 90000).text())
+  grab("nrg_pc_204", "KWH2500-4999", dir / "eurostat-elec-price.json")
+  grab("nrg_pc_202", "GJ20-199", dir / "eurostat-gas-price.json")
+
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val st = conn.createStatement()
+  // JSON-stat keys its values by position, and DuckDB reads the index as a
+  // struct rather than a map, so both branches are read as JSON and the
+  // position is looked up per country.
+  def read(f: os.Path): Map[String, Double] = {
+    val path = f.toString.replace("'", "''")
+    val rs = st.executeQuery(
+      s"""WITH j AS (SELECT dimension, value FROM
+                       read_json('$path', columns={dimension:'JSON', value:'JSON'})),
+              g AS (SELECT unnest(json_keys(dimension->'geo'->'category'->'index')) AS geo,
+                           dimension, value FROM j)
+          SELECT geo, CAST(value->>('$$."' || (dimension->'geo'->'category'->'index'->>geo) || '"')
+                       AS DOUBLE) AS price
+          FROM g""")
+    val m = collection.mutable.Map[String, Double]()
+    while (rs.next()) {
+      val v = rs.getDouble(2)
+      if (!rs.wasNull && v > 0) m(rs.getString(1)) = v
+    }
+    m.toMap
+  }
+  val elec = read(dir / "eurostat-elec-price.json")
+  val gas = read(dir / "eurostat-gas-price.json")
+  val out = new StringBuilder; out ++= "country,elec_eur_kwh,gas_eur_kwh,ratio\n"
+  val keep = elec.keySet intersect gas.keySet
+  for (c <- keep.toSeq.sorted if gas(c) > 0 && !c.startsWith("EA")) {
+    val r = elec(c) / gas(c)
+    out ++= f"$c,${elec(c)}%.4f,${gas(c)}%.4f,$r%.2f\n"
+  }
+  // Eurostat has no post-Brexit UK gas price, so the UK row is the Ofgem
+  // default-tariff cap for July-September 2026: 26.11p electricity and 7.33p
+  // gas per kWh including 5% VAT, a ratio of 3.56. On the April-June cap
+  // (24.67p and 5.74p) the ratio is 4.30, so the UK sits above break-even on
+  // either. Countries with little or no gas distribution - Finland, Norway,
+  // Poland among them - have no Eurostat gas price and cannot appear at all.
+  out ++= "UK,0.3013,0.0846,3.56\n"
+  conn.close()
+  os.write.over(dir / "heatpump-breakeven.csv", out.toString)
+  println(s"wrote data-refresh/heatpump-breakeven.csv (${keep.size} countries)")
+  println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
+  println("  python figures/heatpump_breakeven.py data-refresh/heatpump-breakeven.csv without-hot-air/Images/fig-heatpump-breakeven.svg")
+}
