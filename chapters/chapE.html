@@ -531,45 +531,114 @@ window.Quarto = {
 <section id="ventilation-loss" class="level3">
 <h3 class="anchored" data-anchor-id="ventilation-loss">Ventilation loss</h3>
 <p>To work out the heat required to warm up incoming cold air, we need the heat capacity of air: 1.2 kJ/m<sup>3</sup>/K.</p>
-<p>U-values (W/m<sup>2</sup>/K)</p>
-<p>old buildings</p>
-<p>modern standards</p>
-<p>best methods</p>
-<p>Walls</p>
-<p>0.45-0.6</p>
-<p>0.12</p>
-<p> solid masonry wall</p>
-<p>2.4</p>
-<p> outer wall: 9 inch solid brick</p>
-<p>2.2</p>
-<p> 11 inch brick-block cavity wall, unfilled</p>
-<p>1.0</p>
-<p> 11 inch brick-block cavity wall, insulated</p>
-<p>0.6</p>
-<p>Floors</p>
-<p>0.45</p>
-<p>0.14</p>
-<p> suspended timber floor</p>
-<p>0.7</p>
-<p> solid concrete floor</p>
-<p>0.8</p>
-<p>Roofs</p>
-<p>0.25</p>
-<p>0.12</p>
-<p> flat roof with 25 mm insulation</p>
-<p>0.9</p>
-<p> pitched roof with 100 mm insulation</p>
-<p>0.3</p>
-<p>Windows</p>
-<p>1.5</p>
-<p> single-glazed</p>
-<p>5.0</p>
-<p> double-glazed</p>
-<p>2.9</p>
-<p> double-glazed, 20 mm gap</p>
-<p>1.7</p>
-<p> triple-glazed</p>
-<p>0.7-0.9</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Element</th>
+<th>old buildings</th>
+<th>modern standards</th>
+<th>best methods</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Walls</strong></td>
+<td></td>
+<td>0.45-0.6</td>
+<td>0.12</td>
+</tr>
+<tr class="even">
+<td>solid masonry wall</td>
+<td>2.4</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>outer wall: 9 inch solid brick</td>
+<td>2.2</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>11 inch brick-block cavity wall, unfilled</td>
+<td>1.0</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>11 inch brick-block cavity wall, insulated</td>
+<td>0.6</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Floors</strong></td>
+<td></td>
+<td>0.45</td>
+<td>0.14</td>
+</tr>
+<tr class="odd">
+<td>suspended timber floor</td>
+<td>0.7</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>solid concrete floor</td>
+<td>0.8</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Roofs</strong></td>
+<td></td>
+<td>0.25</td>
+<td>0.12</td>
+</tr>
+<tr class="even">
+<td>flat roof with 25 mm insulation</td>
+<td>0.9</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>pitched roof with 100 mm insulation</td>
+<td>0.3</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Windows</strong></td>
+<td></td>
+<td>1.5</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>single-glazed</td>
+<td>5.0</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>double-glazed</td>
+<td>2.9</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>double-glazed, 20 mm gap</td>
+<td>1.7</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>triple-glazed</td>
+<td>0.7-0.9</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p><span class="figurenumber">Table E.2.</span> U-values of walls, floors, roofs, and windows.</p>
 <p>In the building trade, it’s conventional to describe the power-losses caused by ventilation of a space as the product of the number of changes <em>N</em> of the air per hour, the volume <em>V</em> of the space in cubic metres, the heat capacity <em>C</em>, and the temperature difference ΔT between the inside and outside of the building</p>
 <p><span class="math display">\[
@@ -1171,21 +1240,40 @@ Total ventilation leakiness
 <p>2.3</p>
 <p>8.2</p>
 <p><em>Peat soil</em></p>
-<p>dry</p>
-<p>0.06</p>
-<p>0.58</p>
-<p>1.0</p>
-<p>0.7</p>
-<p>50% saturated</p>
-<p>0.29</p>
-<p>2.31</p>
-<p>1.1</p>
-<p>3.0</p>
-<p>100% saturated</p>
-<p>0.50</p>
-<p>4.02</p>
-<p>1.1</p>
-<p>5.3</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Material</th>
+<th>κ</th>
+<th><em>C</em><sub>V</sub></th>
+<th><em>z</em><sub>0</sub> (m)</th>
+<th>peak flux</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dry</td>
+<td>0.06</td>
+<td>0.58</td>
+<td>1.0</td>
+<td>0.7</td>
+</tr>
+<tr class="even">
+<td>50% saturated</td>
+<td>0.29</td>
+<td>2.31</td>
+<td>1.1</td>
+<td>3.0</td>
+</tr>
+<tr class="odd">
+<td>100% saturated</td>
+<td>0.50</td>
+<td>4.02</td>
+<td>1.1</td>
+<td>5.3</td>
+</tr>
+</tbody>
+</table>
 <p><span class="figurenumber"><span id="tableE.18">Table E.18</span></span>. Thermal conductivity and heat capacity of various materials and soil types, and the deduced length-scale <em>z</em><sub>0</sub> = √(2κ/(<em>C</em><sub>V</sub><em>ω</em>)) and peak flux <em>A</em>√(<em>C</em><sub>V</sub><em>κω</em>) associated with annual temperature variations with amplitude <em>A</em> = 8.3 °C. The sandy and clay soils have porosity 0.4; the peat soil has porosity 0.8. <a href="#chEn01"><span class="darkred">[1]</span></a></p>
 <p>Let’s do a second calculation, working out how much power we could steadily suck from a ground loop at a depth of <em>h</em> = 2 m. Let’s assume that we’ll allow ourselves to suck the temperature at the ground loop down to Δ<em>T</em> = 5 °C below the average ground temperature at the surface, and let’s assume that the surface temperature is constant. We can then deduce the heat flux from the surface. Assuming a conductivity of 1.2 W/m/K (typical of damp clay soil),</p>
 <p><span class="math display">\[
