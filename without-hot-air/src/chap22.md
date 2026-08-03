@@ -26,6 +26,8 @@ Figure 22.2 shows an experiment I did at home. First, for two days, I measured t
 
 Since I started paying attention to my meter readings, my total electricity consumption has halved (figure 22.3). I’ve cemented this saving in place by making a habit of reading my meters every week, so as to check that the electricity-sucking vampires have been banished. If this magic trick could be repeated in all homes and all workplaces, we could obviously make substantial savings. So a bunch of us in Cambridge are putting together a website devoted to making regular meter-reading fun and informative. The website, [<span class="websitetitle">www.readyourmeter.org</span>](http://www.readyourmeter.org), aims to help people carry out similar experiments to mine, make sense of the resulting numbers, and get a warm fuzzy feeling from using less.
 
+I do hope that this sort of smart-metering activity will make a difference. In the future cartoon-Britain of 2050, however, I’ve assumed that all such electricity savings are cancelled out by the miracle of growth. Growth is one of the tenets of our society: people are going to be wealthier, and thus able to play with more gadgets. The demand for ever-more-superlative computer games forces computers’ power consumption to increase. Last decade’s computers used to be thought pretty neat, but now they are found useless, and must be replaced by faster, hotter machines.
+
 ## What happened to the vampires
 
 *A section added in the 2026 revision.* This chapter has dated better than almost any other, because its recommendation was adopted almost immediately and then enforced by law.
@@ -40,10 +42,8 @@ One thing has not gone his way, and one has gone better than he expected. Lighti
 
 And his closing assumption deserves testing, because he stated it plainly: "in the future cartoon-Britain of 2050, I've assumed that all such electricity savings are cancelled out by the miracle of growth." That has not happened in Britain. As chapter L sets out, British energy use per person has fallen by 44% since he wrote — from about 123 kWh per day to 69 — while the economy grew. Growth did not cancel efficiency. It is fair to add that some of that fall is production moving abroad rather than disappearing, which chapter L also quantifies, but even on a consumption basis the decline is real. On this point the book was too pessimistic, and it is a pleasure to record it.
 
-[^standby]: Commission Regulation (EC) No 1275/2008 on ecodesign requirements for standby and off mode, as amended by Regulation (EU) No 801/2013 for networked standby, and replaced by Regulation (EU) 2023/826 with effect from 9 May 2025. The savings estimates of 35 TWh/year for standby and 36 TWh/year for networked standby are from the Commission's preparatory studies, the latter from the 2011 Lot 26 study.
-
-I do hope that this sort of smart-metering activity will make a difference. In the future cartoon-Britain of 2050, however, I’ve assumed that all such electricity savings are cancelled out by the miracle of growth. Growth is one of the tenets of our society: people are going to be wealthier, and thus able to play with more gadgets. The demand for ever-more-superlative computer games forces computers’ power consumption to increase. Last decade’s computers used to be thought pretty neat, but now they are found useless, and must be replaced by faster, hotter machines.
-
 ## Notes and further reading
 
 [^1]: *Standby power consumption accounts for roughly 8% of residential electricity*. Source: International Energy Agency (2001). For further reading on standby-power policies, see: [<span class="websitetitle">www.iea.org/textbase/subjectqueries/standby.asp</span>](http://www.iea.org/textbase/subjectqueries/standby.asp).
+
+[^standby]: Commission Regulation (EC) No 1275/2008 on ecodesign requirements for standby and off mode, as amended by Regulation (EU) No 801/2013 for networked standby, and replaced by Regulation (EU) 2023/826 with effect from 9 May 2025. The savings estimates of 35 TWh/year for standby and 36 TWh/year for networked standby are from the Commission's preparatory studies, the latter from the 2011 Lot 26 study.
