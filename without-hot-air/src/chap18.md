@@ -210,6 +210,10 @@ The obvious objection is that Britain simply got poorer. It did not, and the rel
 
 So the fall is real decoupling, not impoverishment. **But chapter 15 supplies the half of the explanation that these charts cannot show.** A territorial energy statistic falls when a smelter closes and its output is imported, and it falls exactly as convincingly as when a house is insulated. Britain's steel production is the lowest since the 1930s, two of six refineries have closed since 2019, and the imported share of the national carbon footprint has risen from 34% to about 61%. Some of the leftward movement in these charts is efficiency, some is cleaner supply, and some is that the making of things left the country. **The three are indistinguishable on this axis**, which is why chapter 15 goes to the trouble of separating them.
 
+There is one instrument built for exactly this separation, and chapter L describes it: **ODEX**, the energy-efficiency index of the ODYSSEE-MURE project. It is climate-corrected and, more importantly, it measures *technical* efficiency at sector level rather than energy per unit of output, so a country that closes a smelter does not thereby appear to have become efficient. Across the EU it improved **1.4% a year between 2010 and 2023, 16% in total**, with households, industry and services all near 1.6% a year and accelerating past 2.2% after 2019, while transport lagged at 0.9%.
+
+Those are real efficiency gains, and they are considerably smaller than the fall in consumption. **A 16% efficiency improvement does not produce a 39% fall in energy use.** The remainder is structure — what a country makes, buys and imports — which is the subject of chapter 15 and not of this book's method.
+
 ### The red stack, revised
 
 Where this edition has changed a consumption figure, it is because the underlying assumption was wrong or the technology moved:
