@@ -412,7 +412,25 @@ But that requires a plant that can run **intermittently without being ruined by 
 
 Those are not the same product, and the Navy's $1.48-a-gallon lower bound assumes the continuous case. **The technology transfers; the economics do not.**
 
-This is the demand side of chapter 28a's argument arriving in a new place. That chapter's conclusion is that the value of renewable electricity falls as it grows unless something turns up to consume the surplus in the hours it appears. Chapter 7 offers heat and storage; chapter 11a notes that data centres could in principle but are built not to. **A modular electrofuel plant is the candidate with the largest appetite and the least impatience** — and whether it can be built cheap enough to run part-time is, at present, the open question.
+This is the demand side of chapter 28a's argument arriving in a new place. That chapter's conclusion is that the value of renewable electricity falls as it grows unless something turns up to consume the surplus in the hours it appears. Chapter 7 offers heat and storage; chapter 11a notes that data centres could in principle but are built not to. **A modular electrofuel plant is the candidate with the largest appetite and the least impatience.**
+
+### Fabricated, not constructed
+
+There is a reason to think the capital cost problem is soluble, and this book has already established it twice without naming it.
+
+Chapter 6 records that solar electricity fell to roughly a tenth of what MacKay assumed. Chapter 10 records that offshore wind rose to three to five times what he assumed. The physics was not the difference. **Solar modules are fabricated on a production line and offshore wind farms are constructed at sea**, and manufactured things descend a learning curve while constructed things do not.
+
+A military fuel module is designed to be built in a factory, shipped and installed — because that is what a deployable system means. That places it, structurally, on the solar side of the divide rather than the offshore-wind side. Serial production is the one mechanism that has reliably made energy hardware cheap, and it is the mechanism a bespoke chemical plant is denied.
+
+### And the natural home is a nuclear site
+
+The other half of the answer changes the argument again, and it is worth following because it cuts against what I said above.
+
+Pair the modules with a nuclear station and four problems solve at once. The **capacity factor** goes back up, which is what the capital cost needed. The **grid connection already exists**, which chapter 11a shows is now the scarcest thing in the system — a data centre in west London waits years for what a licensed nuclear site already holds. The **land, security, cooling water and operators** are in place. And the output serves **both customers**: aviation fuel for airlines, and the same specification of fuel for a navy that would rather not defend a convoy.
+
+The catch is that this is no longer the surplus-absorbing machine of the previous section. A plant running on firm nuclear output is consuming electricity that the grid would otherwise have; it does not fill chapter 28a's zero-price hours, and it does not raise anybody's capture price. **It is a good business and a poor flexibility service, and the version that would help the cannibalisation problem is the one whose economics are hardest.**
+
+So the honest position is that electrofuel has two plausible futures with different virtues. Paired with nuclear it is buildable now, dual-use, and queue-free, and it makes aviation fuel without making the grid any easier. Built cheap enough to chase surplus, it would do both — and nobody has yet demonstrated the second.
 
 ## What about freight?
 
