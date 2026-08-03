@@ -78,6 +78,32 @@ On the other hand, where animals are reared in cages and fed grain that humans c
 
 The embodied energy in Europe’s fertilizers is about <span class="red">2 kWh per day per person</span>. [^5] According to a report to DEFRA by the University of Warwick, farming in the UK in 2005 used an energy of <span class="red">0.9 kWh per day per person</span> [^6] for farm vehicles, machinery, heating (especially greenhouses), lighting, ventilation, and refrigeration.
 
+## The meat assumption, and the gas inside the fertilizer
+
+*A section added in the 2026 revision.* Two numbers in this chapter deserve revisiting: one that was wrong when it was written, and one that turned out to mean far more than it appeared to.
+
+### He assumed more than twice the meat anyone eats
+
+The chapter's largest single food item is meat, at 8 kWh/d, and it rests on one sentence: "let's assume you eat half a pound (227 g) per day of meat".
+
+In the same year the book was published, the National Diet and Nutrition Survey measured what British people actually ate. The average was **103.7 g per day** — **less than half** MacKay's assumed consumer. By 2018–19 it had fallen to **86.3 g per day**, a drop of 17.4 g or about 17%, made up of red meat down 13.7 g and processed meat down 7.0 g, against white meat up 3.2 g.[^ukmeat]
+
+Rescaling his own arithmetic to the measured figure gives about **3 kWh/d** for meat rather than 8, and brings this chapter's food total from **12 kWh/d down to roughly 7**.
+
+Two things are worth saying about that. The first is that it is a correction to an input, not to the method — the calculation is sound and the assumption was simply generous, which is the direction MacKay deliberately errs in throughout the book.
+
+The second is that the *composition* of the fall matters more than its size, and his own numbers show why. He notes that 227 g a day of equal parts chicken, pork and beef requires the perpetual sustenance of 8 pounds of chicken, 70 pounds of pork and **170 pounds of cow** — beef needs about twenty times the standing animal mass that chicken does. So a shift of a few grams a day from red meat to white saves considerably more energy than the change in weight suggests. Britain has been making exactly that substitution, and the energy saving is larger than the 17% headline.
+
+### The 2 kWh/d of fertilizer turned out to be gas
+
+The chapter records, in a single line, that "the embodied energy in Europe's fertilizers is about 2 kWh per day per person". It does not say what that energy is made of. It is natural gas: nitrogen fertilizer is made by the Haber–Bosch process, and in the summer of 2022 gas accounted for **up to 90% of the variable cost of producing ammonia in the EU**.
+
+That stopped being an accounting abstraction when the gas price rose after the invasion of Ukraine. By August 2022, **about 70% of European ammonia capacity had been shut down** because production had become unprofitable; the consultancy CRU put roughly half of European ammonia plant and a third of nitrogen fertilizer plant as closed. Yara cut to **35% of normal capacity**. CF Fertilisers halted ammonia production at Billingham in the United Kingdom, with marginal costs above **£2000 a tonne** against a world ammonia price around half that.[^ammonia]
+
+So the 2 kWh/d in this chapter is not a separate energy account alongside heating and electricity. It is the same gas, bidding against them, and in 2022 it lost. A country that cannot afford to heat its houses also cannot afford to make its nitrogen, and it discovers the second fact about eighteen months after the first, when the harvest comes in.
+
+This is where chapter N's closing argument attaches. That chapter records that up to **30% of internationally traded fertilizer** passes through the Strait of Hormuz, and gives the fertilizer more weight than the oil. The reason is in this chapter: **food's energy cost is largely gas, and the gas is largely somewhere else.** MacKay could express fertilizer as a tidy 2 kWh per day per person because in 2008 it could be assumed. The years since have shown what the number looks like when it has to be bought.
+
 ### The energy cost of Tiddles, Fido, and Shadowfax
 
 Animal companions\! Are you the servant of a dog, a cat, or a horse?
@@ -121,3 +147,7 @@ If I’d used this number instead of my rough guess, the energy contribution of 
 [^9]: *Walking uses 3.6 kWh per 100 km*. A walking human uses a total of 6.6 kWh per 100 km [[<span class="websitetitle">3s576h</span>](http://tinyurl.com/3s576h)]; we subtract off the resting energy to get the energy footprint of walking (Coley, 2001).
 
 Further reading: Weber and Matthews (2008).
+
+[^ukmeat]: Cristina Stewart and colleagues, "Trends in UK meat consumption: analysis of data from years 1–11 (2008–09 to 2018–19) of the National Diet and Nutrition Survey rolling programme", *The Lancet Planetary Health*, 2021: mean consumption falling from 103.7 g per capita per day in 2008–09 to 86.3 g in 2018–19, with red meat down 13.7 g, processed meat down 7.0 g and white meat up 3.2 g. Two cautions on comparing this with MacKay's figure. The survey measures meat as eaten, from four-day diaries, while carcass-weight and supply-side statistics run considerably higher because they include bone, waste and what is never eaten — so part of the gap between 227 g and 103.7 g is definitional rather than an error. And self-reported dietary diaries are known to under-record. The rescaling in the text applies the ratio to MacKay's own calculation and inherits all of its assumptions, including the "animals are like humans" energy shortcut he flags himself. The National Food Strategy target of a 30% cut in meat intake is not met by the observed 17%.
+
+[^ammonia]: Figures for the 2022 European ammonia curtailment: gas accounting for up to 90% of the variable cost of EU ammonia production; roughly 70% of European ammonia capacity halted by August 2022; CRU Group's estimate that about half of European ammonia plant and a third of nitrogen fertilizer plant had closed; Yara International reducing to about 35% of normal ammonia capacity; and CF Fertilisers UK suspending ammonia production at Billingham with marginal costs above £2000 per tonne against world prices near half that. These are producer announcements and consultancy estimates made during a fast-moving crisis, and capacity "halted" was in many cases restarted within months, so they describe the depth of the shock rather than a permanent loss. The relationship they demonstrate — that nitrogen fertilizer is gas in another form — is the durable point.
