@@ -1,0 +1,34 @@
+stack,column,item,kwh_per_day
+Consumption,MacKay 2008,Stuff,48.000
+Consumption,MacKay 2008,Cars,40.000
+Consumption,MacKay 2008,Planes,30.000
+Consumption,MacKay 2008,Heating and cooling,37.000
+Consumption,MacKay 2008,Transporting stuff,12.000
+Consumption,MacKay 2008,Food and farming,12.000
+Consumption,MacKay 2008,Gadgets,5.000
+Consumption,MacKay 2008,Light,4.000
+Consumption,MacKay 2008,Defence,4.000
+Consumption,MacKay 2008,Universities,0.240
+Consumption,2026 revision,Stuff,48.000
+Consumption,2026 revision,Cars,40.000
+Consumption,2026 revision,Planes,30.000
+Consumption,2026 revision,Heating and cooling,13.000
+Consumption,2026 revision,Transporting stuff,12.000
+Consumption,2026 revision,Food and farming,7.000
+Consumption,2026 revision,Gadgets,5.000
+Consumption,2026 revision,Light,0.800
+Consumption,2026 revision,Defence,4.000
+Consumption,2026 revision,Universities,0.240
+Consumption,2026 revision,Data centres,0.500
+Consumption,2026 revision,NHS estate,0.440
+Production,MacKay's ceiling,Solar,50.000
+Production,MacKay's ceiling,Offshore wind,48.000
+Production,MacKay's ceiling,Onshore wind,20.000
+Production,MacKay's ceiling,Tide,11.000
+Production,MacKay's ceiling,Wave,4.000
+Production,MacKay's ceiling,Geothermal,2.000
+Production,MacKay's ceiling,Hydro,1.500
+Production,Britain 2025,Onshore wind,3.489
+Production,Britain 2025,Solar,0.801
+Production,Britain 2025,Hydro,0.204
+Production,Britain 2025,Tide,0.004
