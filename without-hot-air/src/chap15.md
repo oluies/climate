@@ -231,6 +231,32 @@ To summarize all these forms of stuff and stuff-transport, I will put on the con
 >
 > Traditional saying
 
+## The imported half, revisited
+
+*A section added in the 2026 revision.* This chapter's largest claim is that "the biggest item in the average British person's energy footprint is the energy cost of making imported stuff", resting on Dieter Helm's estimate that Britain's true footprint was about **21 tonnes** of CO<sub>2</sub>e per person against an official territorial figure of 11.
+
+Both halves of that can now be checked, and they moved in opposite directions.
+
+### The footprint halved
+
+Britain's consumption-based emissions — the official carbon footprint, which counts imports — were **10 tonnes of CO<sub>2</sub>e per person in 2023**, down 5% on the previous year and **down 37% from a peak of 16 tonnes in 2004**. Against the roughly 21 tonnes Helm estimated when this chapter was written, that is a fall of more than half.[^footprint]
+
+### But the imported share rose
+
+At the same time the *composition* moved the other way. The imported share of Britain's consumption-based account rose from **34% in 1990 to about 61% by 2022** — some measures put it nearer 53% for 2023, the difference depending on gas coverage and whether household or total consumption is counted — while imported emissions in absolute terms rose from 138 Mt in 1996 to 182 Mt in 2021.
+
+So MacKay's qualitative claim did not merely survive. **It became more true while the number it rested on got much better.** Britain's footprint is smaller and a larger fraction of it is made somewhere else.
+
+### The distinction that matters here
+
+There is a trap in that improvement, and this book is unusually well placed to name it.
+
+**A carbon footprint is not an energy footprint.** A large part of the fall is that the electricity making the stuff got cleaner rather than that less stuff got made. Britain removed coal from its grid entirely, as chapter 28a records; China added more solar capacity than the world had in total when this book was written, as chapter 6 does. Decarbonising the electricity that builds a fridge reduces the carbon dioxide attached to the fridge **without reducing the kilowatt-hours**.
+
+This chapter's 48 kWh/d per person is denominated in energy. The statistic that halved is denominated in carbon. They are not the same improvement, and there is no reason to assume the energy figure has fallen by anything like 37%.
+
+That is the same lesson as chapter M's, arriving in a different chapter: **what you measure decides what you conclude, and two accounts of the same activity can move in opposite directions without either being wrong.** MacKay chose energy deliberately, because it is the harder quantity to move and the one the laws of physics constrain. Eighteen years later that choice looks better, not worse — the carbon number has improved considerably faster than the underlying activity, and only one of the two is a measure of how much stuff we make.
+
 ## Notes and further reading
 
 [^1]: *One aluminium drinks can costs 0.6 kWh*. The mass of one can is 15 g. Estimates of the total energy cost of aluminium manufacture vary from 60 MJ/kg to 300 MJ/kg. [[<span class="websitetitle">yx7zm4</span>](http://tinyurl.com/yx7zm4)], [[<span class="websitetitle">r22oz</span>](http://tinyurl.com/r22oz)], [[<span class="websitetitle">yhrest</span>](http://tinyurl.com/yhrest)]. The figure I used is from The Aluminum Association [[<span class="websitetitle">y5as53</span>](http://tinyurl.com/y5as53)]: 150 MJ per kg of aluminium (40 kWh/kg).
@@ -272,3 +298,4 @@ To summarize all these forms of stuff and stuff-transport, I will put on the con
 
 ![](/img/without-hot-air/figure342.gif)
 
+[^footprint]: Consumption-based emissions from the Department for Environment, Food and Rural Affairs, *Carbon footprint for the UK and England to 2023*: 10 tonnes CO<sub>2</sub>e per person in 2023, down 5% on 2022 and 37% below the 2004 peak of 16 tonnes. Import share figures are from the Office for National Statistics' greenhouse gas emissions and trade accounts and associated analysis: the imported portion of the UK consumption-based account rising from 34% in 1990 to about 61% in 2022, with imported emissions rising from 138 Mt CO<sub>2</sub>e in 1996 to 182 Mt in 2021. A separate published figure of about 53% "made abroad" for 2023 reflects a different boundary; the two are not in conflict but are not interchangeable either, and the text quotes the range. Two cautions. Consumption-based accounts require modelling trade flows through multi-region input–output tables and carry materially wider uncertainty than territorial inventories, which is why they are published later and revised more. And Helm's roughly 21-tonne estimate was an independent academic figure on a different vintage of method from today's official series, so the halving quoted here compares two things that are close but not identical.
