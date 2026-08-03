@@ -80,6 +80,51 @@ Going on emotions alone, I would like to live in a country with virtually no car
 
 <span class="figurenumber">Figure 10.6</span>. Birds lost in action. Annual bird deaths in Denmark caused by wind turbines and cars, and annual bird deaths in Britain caused by cats. Numbers from Lomborg (2001). Collisions with windows kill a similar number to cats.
 
+## Eighteen years of offshore wind
+
+*A section added in the 2026 revision.* This chapter contains a dated prediction, which makes it easy to mark.
+
+### The plan, and what was built
+
+MacKay records the government's announcement of 10 December 2007 that it would permit **33 GW of offshore wind capacity**, delivering about **4.4 kWh/d per person** — a plan the wind industry itself branded "pie in the sky".
+
+At the end of 2025 the United Kingdom had **17.0 GW** of offshore wind: roughly half the plan, eighteen years later. It generated **52 TWh in 2025, 17.9% of British electricity**, against 48.8 TWh the year before. Per person that is **2.1 kWh/d**.[^ukoffshore]
+
+So the derided plan was neither achieved nor absurd. It is about half built and still building. But set it against this chapter's own ceilings and the scale becomes clear: **2.1 kWh/d against a shallow-water potential of 16 and a total offshore potential of 48.** Britain has built something like an eighth of the shallow resource MacKay sized, and one twenty-third of the whole.
+
+### He was right about the area and wrong about the price
+
+His costing was £33 billion for 33 GW, which is about **£1000 per kilowatt**. Fixed-bottom offshore wind now costs roughly **$3500 to $6500 per kilowatt** — call it £2800 to £5200 — so the real figure is **three to five times** his estimate.[^offshorecost]
+
+That is worth putting beside chapter 6. There MacKay was wrong about cost in the other direction, and by a larger factor: solar electricity is roughly a tenth of what he assumed, while offshore wind is three to five times more. The book brackets cost out deliberately and says so; the interesting thing is that when cost did move, it moved unpredictably in both directions and by more than an order of magnitude between the two technologies. Nothing in the physics told you which.
+
+### The proviso about deep water was right
+
+He put deep offshore on the production stack "with the proviso, as I said before, that wind experts reckon deep offshore wind is prohibitively expensive". Floating wind has since stopped being hypothetical: Scotland hosts **Hywind Scotland** and **Kincardine**, the latter the world's largest floating farm with five 9.5 MW turbines and one of 2 MW, fully operational since 2021.
+
+But floating capex runs **$6000 to $10 000 per kilowatt**, roughly double fixed-bottom. So deep offshore is no longer impossible and is not yet cheap, and his 32 kWh/d entry on the stack remains, eighteen years on, almost entirely unbuilt. The proviso has aged better than the estimate.
+
+### Britain invented it; China owns it
+
+The other change is one MacKay could not have anticipated, because in 2008 offshore wind was essentially a British and Danish undertaking.
+
+| End of 2025 | Offshore wind, GW |
+|---|---|
+| China | **47.4** |
+| United Kingdom | **17.0** |
+| Germany | 9.7 |
+| Netherlands | 4.8 |
+| Taiwan | 3.6 |
+| **World** | **91.4** |
+
+Britain still has the largest offshore fleet outside China and the largest in Europe. China has **nearly three times** as much, and more than half the world's total. The industry that this chapter describes as a British frontier is now mostly somewhere else.
+
+### One thing that improved more than he expected
+
+MacKay's turbines have "a capacity of 3 MW but on average they deliver 1 MW" — a load factor of 33%. British offshore projects are now planned around **43%**, and the newest sites do considerably better, as chapter 4 records for Dogger Bank. The machines also stopped falling apart: this chapter's account of Horns Reef, where all eighty turbines were dismantled after eighteen months, and of Kentish Flats replacing a third of its gearboxes in the same period, describes an industry in its infancy that no longer exists.
+
+None of that changes the area. Chapter 4's section on larger turbines explains why: power per unit area is set by spacing, not by the machine. What the higher load factor buys is more energy from the same 17 GW, not more energy from the same sea.
+
 ## Notes and further reading
 
 [^1]: *The Kentish Flats wind farm in the Thames Estuary...* See [<span class="websitetitle">www.kentishflats.co.uk</span>](http://www.kentishflats.co.uk/). Its 30 Vestas V90 wind turbines have a total peak output of 90 MW, and the predicted average output was 32 MW (assuming a load factor of 36%). The mean wind speed at the hub height is 8.7 m/s. The turbines stand in 5 m-deep water, are spaced 700 m apart, and occupy an area of 10 km<sup>2</sup>. The power density of this offshore wind farm was thus predicted to be 3.2 W/m<sup>2</sup>. In fact, the average output was 26 MW, so the average load factor in 2006 was 29% [[<span class="websitetitle">wbd8o</span>](http://tinyurl.com/wbd8o)]. This works out to a power density of 2.6 W/m<sup>2</sup>. The North Hoyle wind farm off Prestatyn, North Wales, had a higher load factor of 36% in 2006. Its thirty 2 MW turbines occupy 8.4 km<sup>2</sup>. They thus had an average power density of 2.6 W/m<sup>2</sup>.
@@ -131,3 +176,7 @@ When it is in working order, Horns Reef’s load factor is 0.43 and its average 
 [^13]: *Jack-up barges cost £60 million each*. Source: [<span class="websitetitle">news.bbc.co.uk/1/hi/magazine/7206780.stm</span>](http://news.bbc.co.uk/1/hi/magazine/7206780.stm). I estimated that we would need roughly 50 of them by assuming that there would be 60 workfriendly days each year, and that erecting a turbine would take 3 days.
 
 Further reading: UK wind energy database [[<span class="websitetitle">www.bwea.com/ukwed/</span>](http://www.bwea.com/ukwed/)].
+
+[^ukoffshore]: Offshore wind capacity at end-2025 from the Energy Institute's *Statistical Review of World Energy* 2026: United Kingdom 16 960 MW, China 47 390 MW, Germany 9673 MW, Netherlands 4750 MW, Taiwan 3590 MW, world total 91 380 MW. Generation of 52 TWh in 2025 and 48.8 TWh in 2024, being 17.9% and 17.0% of British electricity, is from the Department for Energy Security and Net Zero's *Energy Trends*. The per-person figure uses a population of 68.4 million. Note that capacity is measured at year end while generation accrues through the year, so dividing one by the other understates the achieved load factor.
+
+[^offshorecost]: MacKay's £33 billion for 33 GW is his own figure, scaled from the £105 million cost of the 90 MW Kentish Flats farm, and works out at about £1000/kW. Current capital cost ranges are commercial estimates: roughly $3500–6500/kW for fixed-bottom projects, with European sites on mature ground at the lower end, and $6000–10 000/kW for floating at early-commercial scale. These are not inflation-adjusted against his 2008 figure, and about half the nominal increase is general price inflation over eighteen years; the real increase is smaller but still large, and runs opposite to the direction almost everyone expected in 2008. Chapter 4's section on what wind now earns gives the revenue side of the same squeeze.
