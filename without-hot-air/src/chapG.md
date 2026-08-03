@@ -14,7 +14,7 @@ $$
 \frac{2\rho hgh}{\text{6\ hours}}\text{,}
 $$
 
-assuming perfectly efficient generators. Plugging in *h* = 2 m (i.e., range 4 m), we find the power per unit area of tide-pool is 3.6 W/m*2*. Allowing for an efficiency of 90% for conversion of this power to electricity, [<span class="darkred">[1]</span>](#chGn01) we get
+assuming perfectly efficient generators. Plugging in *h* = 2 m (i.e., range 4 m), we find the power per unit area of tide-pool is 3.6 W/m*2*. Allowing for an efficiency of 90% for conversion of this power to electricity, [^1] we get
 
 power per unit area of tide-pool  ≅  <span class="green">3 W/m*2*</span>.
 
@@ -425,7 +425,7 @@ The pumping trick can nevertheless be used for free on any day when the range of
 
 ### Getting "always-on" tidal power by using two basins
 
-Here’s a neat idea: have two basins, one of which is the "full" basin and one the "empty" basin; every high tide, the full basin is topped up; every low tide, the empty basin is emptied. [<span class="darkred">[2]</span>](#chGn02) These toppings-up and emptyings could be done either passively through sluices, or actively by pumps (using the trick mentioned above). Whenever power is required, water is allowed to flow from the full basin to the empty basin, or (better in power terms) between one of the basins and the sea. The capital cost of a two-basin scheme may be bigger because of the need for extra walls; the big win is that power is available all the time, so the facility can follow demand.
+Here’s a neat idea: have two basins, one of which is the "full" basin and one the "empty" basin; every high tide, the full basin is topped up; every low tide, the empty basin is emptied. [^2] These toppings-up and emptyings could be done either passively through sluices, or actively by pumps (using the trick mentioned above). Whenever power is required, water is allowed to flow from the full basin to the empty basin, or (better in power terms) between one of the basins and the sea. The capital cost of a two-basin scheme may be bigger because of the need for extra walls; the big win is that power is available all the time, so the facility can follow demand.
 
 ![](/img/without-hot-air/figure304.gif)
 

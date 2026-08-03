@@ -675,7 +675,7 @@ dry
 | 50% saturated | 0.29 | 2.31 | 1.1 | 3.0 |
 | 100% saturated | 0.50 | 4.02 | 1.1 | 5.3 |
 
-<span class="figurenumber"><span id="tableE.18">Table E.18</span></span>. Thermal conductivity and heat capacity of various materials and soil types, and the deduced length-scale *z*<sub>0</sub> = √(2κ/(*C*<sub>V</sub>*ω*)) and peak flux *A*√(*C*<sub>V</sub>*κω*) associated with annual temperature variations with amplitude *A* = 8.3 °C. The sandy and clay soils have porosity 0.4; the peat soil has porosity 0.8. [<span class="darkred">[1]</span>](#chEn01)
+<span class="figurenumber"><span id="tableE.18">Table E.18</span></span>. Thermal conductivity and heat capacity of various materials and soil types, and the deduced length-scale *z*<sub>0</sub> = √(2κ/(*C*<sub>V</sub>*ω*)) and peak flux *A*√(*C*<sub>V</sub>*κω*) associated with annual temperature variations with amplitude *A* = 8.3 °C. The sandy and clay soils have porosity 0.4; the peat soil has porosity 0.8. [^1]
 
 Let’s do a second calculation, working out how much power we could steadily suck from a ground loop at a depth of *h* = 2 m. Let’s assume that we’ll allow ourselves to suck the temperature at the ground loop down to Δ*T* = 5 °C below the average ground temperature at the surface, and let’s assume that the surface temperature is constant. We can then deduce the heat flux from the surface. Assuming a conductivity of 1.2 W/m/K (typical of damp clay soil),
 

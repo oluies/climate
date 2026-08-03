@@ -6,7 +6,7 @@
 
 <span class="figurenumber">Figure H.1.</span> Continuous casting of steel strands at Korea Iron and Steel Company.
 
-Dieter Helm and his colleagues estimated the footprint of each pound’s worth of imports from country X using the average carbon intensity of country X’s economy (that is, the ratio of their carbon emissions to their gross domestic product). They concluded that the embodied carbon in imports to Britain (which should arguably be added to Britain’s official carbon footprint of 11 tons CO<sub>2</sub>e per year per person) is roughly 16 tons CO<sub>2</sub>e per year per person. A subsequent, more detailed study commissioned by DEFRA estimated that the embodied carbon in imports is smaller, but still very significant: about 6.2 tons CO<sub>2</sub>e per year per person. [<span class="darkred">[1]</span>](#chHn01) In energy terms, 6 tons CO<sub>2</sub>e per year is something like 60 kWh/d.
+Dieter Helm and his colleagues estimated the footprint of each pound’s worth of imports from country X using the average carbon intensity of country X’s economy (that is, the ratio of their carbon emissions to their gross domestic product). They concluded that the embodied carbon in imports to Britain (which should arguably be added to Britain’s official carbon footprint of 11 tons CO<sub>2</sub>e per year per person) is roughly 16 tons CO<sub>2</sub>e per year per person. A subsequent, more detailed study commissioned by DEFRA estimated that the embodied carbon in imports is smaller, but still very significant: about 6.2 tons CO<sub>2</sub>e per year per person. [^1] In energy terms, 6 tons CO<sub>2</sub>e per year is something like 60 kWh/d.
 
 Here, let’s see if we can reproduce these conclusions in a different way, using the weights of the imports.
 
