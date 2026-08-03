@@ -35,10 +35,10 @@ ax.axvline(MEASURED, color="#161d1b", lw=1.4, zorder=1)
 ax.axvline(SPF, color="#161d1b", lw=1.0, ls=(0, (4, 3)), zorder=1)
 # Top rows are the shortest bars, so the right-hand side is clear up there.
 # Right of the line, high up where the bars are short and nothing else sits.
-ax.annotate("break-even at the measured SPF of 2.65", xy=(MEASURED, 2.1),
+ax.annotate("break-even at the measured SPF of 2.65", xy=(MEASURED, 5.2),
             xytext=(6, 0), textcoords="offset points", ha="left",
             fontsize=8.5, color="#161d1b")
-ax.annotate("at SPF 3.0", xy=(SPF, 3.3), xytext=(6, 0), textcoords="offset points",
+ax.annotate("at SPF 3.0", xy=(SPF, 6.4), xytext=(6, 0), textcoords="offset points",
             fontsize=8.5, color=MUTED)
 ax.annotate("range of modern\nheat pumps (3–5×)", xy=(4.3, 0.4), ha="center",
             fontsize=8.5, color="#8a6d00")
@@ -50,8 +50,10 @@ for s in ("top", "right", "left"): ax.spines[s].set_visible(False)
 ax.tick_params(axis="y", length=0, labelsize=8.5)
 ax.invert_yaxis()
 h = [plt.Rectangle((0, 0), 1, 1, color=c) for c in (WIN, LOSE)]
+# Below the axis: the plot area is fully occupied by bars and reference labels.
 ax.legend(h, ["Heat pump cheaper at the measured SPF of 2.65", "Gas cheaper"],
-          frameon=False, fontsize=9, loc="upper right", bbox_to_anchor=(1, 0.93))
+          frameon=False, fontsize=9, loc="upper right",
+          bbox_to_anchor=(1, -0.045 - 1.0 / len(df)))
 n_win = int((df.ratio < MEASURED).sum())
 ax.set_title("Where a heat pump is cheaper to run than a gas boiler",
              loc="left", fontsize=12.5, fontweight="bold", pad=12)
