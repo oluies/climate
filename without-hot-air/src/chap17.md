@@ -51,6 +51,44 @@ So higher education and research seem to have a much lower energy cost than defe
 
 There may be other energy-consuming public services we could talk about, but at this point I’d like to wrap up our race between the red and green stacks.
 
+## The services MacKay left out
+
+*A section added in the 2026 revision.* This chapter closes by saying "There may be other energy-consuming public services we could talk about, but at this point I'd like to wrap up our race between the red and green stacks." Three of them are large. One can now be counted, two cannot, and trying to count them exposes a problem with the method this chapter uses.
+
+### Healthcare
+
+The NHS estate in England consumed **11.1 billion kWh from all energy sources in 2023–24**, which across the United Kingdom's population is **0.44 kWh/d per person** — nearly twice the universities' 0.24, and the largest single public energy user in the country.[^nhs]
+
+Two things about that number matter more than its size.
+
+**Heating dominates it.** Hot water and space heating account for about **80% of the NHS's direct emissions**. Chapter 7's argument therefore applies to the health service more forcefully than to almost any other institution: the NHS is, energetically, a very large estate of buildings that must be kept warm, and its decarbonisation is a heat pump problem rather than a medical one.
+
+**And it is going the way chapter 15 describes.** Estate emissions have fallen about **10% since 2019–20** and those from grid electricity by **21%** — genuine progress. But scope 3, the supply chain, is roughly **three quarters of the total footprint** and has risen, so the NHS's overall emissions have not fallen across five years. The pattern is the one chapter 15 identifies for the country as a whole: the part that is measured directly improves while the part that is bought in does not.
+
+### Police and local government: the numbers do not exist
+
+There is **no centralised national figure for the energy consumption of the police service** in England and Wales. A decarbonisation programme was launched jointly by the Association of Police and Crime Commissioners, the National Police Chiefs' Council and BlueLight Commercial, and individual forces publish fragments: the Metropolitan Police has 25 solar installations totalling 715 kWp, which generated about **487 MWh in 2021–22**. Set against the NHS estate's 11 100 000 MWh, that is a rounding error on a rounding error, and it is very nearly all that is publicly available.
+
+**Local government is the same.** The government publishes total final energy consumption by local authority *area*, which counts everybody who lives and works there. What a council itself consumes — its offices, depots, leisure centres, vehicle fleets and the schools it maintains — is not collected centrally.
+
+That is the third time this revision has run into a missing statistic, after the appliance-level breakdown withdrawn from the national energy accounts in chapter 9 and the absence of any figure for conventional hydro reservoir storage in chapter 8. A book of this kind depends on public statistics, and in places they are being withdrawn faster than they are being added.
+
+### The method does not survive the transfer
+
+This is the part worth dwelling on, because it is a caution about the chapter rather than an addition to it.
+
+MacKay's defence figure comes from a rule of thumb: **6% of expenditure goes on energy, at 2.7p per kWh.** Point that rule at the health service. NHS England's budget is about £190 billion; 6% of it is £11.4 billion; at 2.7p per kWh that is **422 TWh** — more than the entire United Kingdom's annual electricity consumption, by half again.
+
+The metered figure is 11.1 TWh. **The heuristic overshoots by a factor of about forty.**
+
+Two separate things went wrong, and both are instructive.
+
+**The price is stale.** 2.7p/kWh was an economy-wide average in 2008. At a blended public-sector rate nearer 15p, the same money buys a fifth as much energy — which takes the estimate to 76 TWh and still leaves it **seven times too high**.
+
+**And the 6% does not transfer.** It is an economy-wide ratio, and it fits an activity that buys energy-intensive manufactured things — which defence does. Healthcare is labour-intensive: most of £190 billion is wages. At 11.1 TWh and roughly 15p, the NHS spends on the order of **£1.7 billion on energy, under 1% of its budget**, not 6%.
+
+None of this makes the defence estimate wrong. It makes it what MacKay says it is — a crude bound, appropriate to an industry that manufactures. But it does mean the rule cannot simply be pointed at the rest of the public sector, and that the honest way to extend this chapter is to meter each service rather than to scale its budget. **For one of the three services here that has been done. For the other two it has not.**
+
 ## Notes and further reading
 
 ![](/img/without-hot-air/figure124.gif)
@@ -64,3 +102,5 @@ There may be other energy-consuming public services we could talk about, but at 
 [^3]: *Energy cost of plutonium production*. [[<span class="websitetitle">slbae</span>](http://tinyurl.com/slbae)].
 
 [^4]: *The USA’s production of 994 tons of HEU...* Material enriched to between 4% and 5% <sup>235</sup>U is called low-enriched uranium (LEU). 90%-enriched uranium is called high-enriched uranium (HEU). It takes three times as much work to enrich uranium from its natural state to 5% LEU as it does to enrich LEU to 90% HEU. The nuclear power industry measures these energy requirements in a unit called the separative work unit (SWU). To produce a kilogram of <sup>235</sup>U as HEU takes 232 SWU. To make 1 kg of <sup>235</sup>U as LEU (in 22.7 kg of LEU) takes about 151 SWU. In both cases one starts from natural uranium (0.71% 235U) and discards depleted uranium containing 0.25% <sup>235</sup>U. The commercial nuclear fuel market values an SWU at about $100. It takes about 100 000 SWU of enriched uranium to fuel a typical 1000 MW commercial nuclear reactor for a year. Two uranium enrichment methods are currently in commercial use: gaseous diffusion and gas centrifuge. The gaseous diffusion process consumes about 2500 kWh per SWU, while modern gas centrifuge plants require only about 50 kWh per SWU. [[<span class="websitetitle">yh45h8</span>](http://tinyurl.com/yh45h8)], [[<span class="websitetitle">t2948</span>](http://tinyurl.com/t2948)], [[<span class="websitetitle">2ywzee</span>](http://tinyurl.com/2ywzee)]. A modern centrifuge produces about 3 SWU per year. The USA’s production of 994 tons of highly-enriched uranium (the USA’s total, 1945–1996) cost 230 million SWU, which works out to 0.1 kWh/d per person (assuming 250 million Americans, and using 2500 kWh/SWU as the cost of diffusion enrichment).
+
+[^nhs]: Total energy consumption of the NHS estate in England, 11.1 billion kWh from all sources in 2023–24, is from the Estates Returns Information Collection (ERIC) published by NHS England Digital, which also puts the total cost of running the estate at £13.6 billion. Note the boundary: ERIC covers the estate of NHS trusts in **England**, while the per-person figure here divides by the population of the whole United Kingdom, so it understates the English rate and is not a UK total; a proper UK figure would need the devolved health services added. Emissions figures — healthcare at roughly 4–5% of UK greenhouse gas emissions and about 40% of public-sector emissions in England, heating and hot water at about 80% of direct emissions, estates emissions down about 10% and grid-electricity emissions down 21% since 2019–20, and scope 3 at roughly three quarters of the total and rising — are from the Greener NHS five-year assessment and associated literature. Metropolitan Police solar figures, 25 installations of 715 kWp generating about 487 MWh in 2021–22, are from a London Assembly answer. The comparison with MacKay's heuristic uses an NHS England budget of about £190 billion and a blended public-sector energy price near 15p/kWh; both are round figures chosen to make an order-of-magnitude point, and neither is a published statistic.
