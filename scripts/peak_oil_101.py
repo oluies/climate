@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.9"
+# dependencies = ["pandas", "matplotlib", "openpyxl"]
+# ///
 """
 Peak oil 101, uppdaterad — regenerates the production charts from
 Lars Wilderäng's "Peak oil 101" (Cornucopia?, mars 2012) against the
@@ -11,13 +15,19 @@ redraws the same sixteen countries from the Statistical Review, which
 publishes a consistent 1965-onwards record every June, so the article
 can be refreshed in one command each year.
 
-Standalone by design: one file, three dependencies, no repository.
+Standalone by design: one file, no install, no repository.
+
+Med uv (rekommenderas - hamtar beroendena sjalv, installerar ingenting globalt):
+
+    uv run peak_oil_101.py                       # svenska, alla diagram
+    uv run peak_oil_101.py --lang en             # English labels
+    uv run peak_oil_101.py --xlsx path/to.xlsx   # workbook already downloaded
+    uv run peak_oil_101.py --countries Norge Danmark
+
+Eller klassiskt:
 
     pip install pandas matplotlib openpyxl
-    python peak_oil_101.py                       # svenska, alla diagram
-    python peak_oil_101.py --lang en             # English labels
-    python peak_oil_101.py --xlsx path/to.xlsx   # workbook already downloaded
-    python peak_oil_101.py --countries Norge Danmark
+    python peak_oil_101.py
 
 Download the workbook ("all data" xlsx) from
     https://www.energyinst.org/statistical-review
