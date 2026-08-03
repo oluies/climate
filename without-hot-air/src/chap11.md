@@ -58,6 +58,8 @@ The biggest guzzlers are the computer, its screen, and the television, whose con
 
 According to Jonathan Koomey (2007), the computer-servers in US datacentres and their associated plumbing (air conditioners, backup power systems, and so forth) consumed <span class="red">0.4 kWh per day per person</span> – just over 1% of US electricity consumption. That’s the consumption figure for 2005, which, by the way, is twice as big as the consumption in 2000, because the number of servers grew from 5.6 million to 10 million.
 
+*Added in the 2026 revision:* it has gone on doubling. American data centres reached **4.4% of national electricity in 2023** and Irish ones **22%**, and the tendrils are no longer hidden. Chapter 11a takes up what became of them.[^dcref]
+
 | Gadget | on and active | on but inactive | standby | off |
 |---|---|---|---|---|
 | **Computer and peripherals:** |  |  |  |  |
@@ -126,3 +128,5 @@ For the rest, whose homes are heated by fossil fuels or biofuels, it’s a good 
 [^2]: *Modern phone chargers, when left plugged in with no phone attached, use about half a watt*. The Maplin power meter in figure 11.2 is not accurate enough to measure this sort of power. I am grateful to Sven Weier and Richard McMahon of Cambridge University Engineering Department who measured a standard Nokia charger in an accurate calorimeter; they found that, when not connected to the mobile, it wastes 0.472 W. They made additional interesting measurements: the charger, when connected to a fully-charged mobile phone, wastes 0.845 W; and when the charger is doing what it’s meant to do, charging a partly-charged Nokia mobile, it wastes 4.146 W as heat. Pedants sometimes ask "what about the *reactive power* of the charger?" This is a technical niggle, not really worth our time. For the record, I measured the reactive power (with a crummy meter) and found it to be about 2 VA per charger. Given that the power loss in the national grid is 8% of the delivered power, I reckon that the power loss associated with the reactive power is at most 0.16 W. When actually making a phone-call, the mobile uses 1 W.
 
 Further reading: Kuehr (2003).
+
+[^dcref]: Chapter 11a, "The machines behind the screen", gives the current figures and their sources.
