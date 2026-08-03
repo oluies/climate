@@ -1198,7 +1198,7 @@ def transportEnergy(): Unit = {
   add("2008", "land", "Underground", 33, 15.0, "typical")
   add("2008", "land", "Electric car (Roadster)", 50, 15.0, "best")
   add("2008", "land", "G-Wiz (real use)", 30, 21.0, "typical")
-  add("2008", "land", "London bus", 13, 32.0, "typical")
+  add("2008", "land", "London bus", 18, 32.0, "typical")
   add("2008", "land", "Car (1 occupant)", 50, 80.0, "typical")
   add("2008", "land", "Honda FCX (hydrogen)", 50, 69.0, "best")
   add("2008", "land", "BMW Hydrogen 7", 50, 254.0, "best")
@@ -1213,7 +1213,9 @@ def transportEnergy(): Unit = {
   add("2026", "water", "Candela P-12 (30 seats)", 46.3, p12Seat, "best")
   add("2026", "water", "Candela C-8 (6 aboard)", 40.7, c8 / 6 * 100, "best")
   add("2026", "water", "Candela C-8 (2 aboard)", 40.7, c8 / 2 * 100, "typical")
-  add("2026", "water", "Diesel ferry it replaced", 30.0,
+  // The diesel vessels' speed is not published. It is derived from the same
+  // route taking 55 minutes against the P-12's 30: 46.3 * 30 / 55 = 25 km/h.
+  add("2026", "water", "Diesel ferry it replaced", 46.3 * 30 / 55,
       math.sqrt(dieselLo * dieselHi), "typical", dieselLo, dieselHi)
 
   os.write.over(dir / "transport-energy.csv", out.toString)
