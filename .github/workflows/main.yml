@@ -3,6 +3,14 @@ name: Continuous Deployment
 on:
   push:
     branches: [main]
+    paths:
+      - "site/**"
+      - "content/**"
+      - ".github/workflows/main.yml"
+
+concurrency:
+  # Shared with book.yml: see the note there.
+  group: gh-pages-deploy
 
 jobs:
   build:
@@ -22,6 +30,7 @@ jobs:
     - name: Install and Build
       run: |
         cd site
+        export SITE_BASE_PATH=/site
         yarn install
         yarn build
         yarn export

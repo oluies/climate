@@ -10,7 +10,9 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: book-deploy
+  # Shared with main.yml: both publish to gh-pages and a concurrent
+  # push would fail non-fast-forward and lose a deploy silently.
+  group: gh-pages-deploy
   cancel-in-progress: true
 jobs:
   build-deploy:

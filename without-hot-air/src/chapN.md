@@ -88,13 +88,13 @@ Some of these are not gentle declines. **Venezuela peaked in 1970 and produces 2
 
 Gas tells the same story more quietly: **25 of 44 producers are past peak**, and the Netherlands, whose Groningen field defined European gas, is at **9% of its 1977 maximum**.
 
-This is the part of the peak-oil case that was simply correct, and it is worth being explicit that the popular statements of it got these right. A Swedish summary from 2012 named Indonesia, Mexico, Ecuador, Venezuela, Denmark, Norway, Nigeria, Algeria and Kuwait as already declining, and argued that a decade of rising prices had failed to reverse them.[^peak101] Fourteen years later every one of those is still below its peak. The claim was checkable, and it checked out.
+This is the part of the peak-oil case that was simply correct, and it is worth being explicit that the popular statements of it got these right. A Swedish summary from 2012 named Indonesia, Mexico, Argentina, Ecuador, Venezuela, Denmark, Norway, Nigeria, Algeria and Kuwait as already declining, and argued that a decade of rising prices had failed to reverse them.[^peak101] Fourteen years later, nine of those ten are still below their peak. The claim was checkable, and it very nearly checked out — the exception is the interesting one, and it comes next.
 
 ### So why does the world total keep setting records?
 
 Because peaks are not synchronised, and a handful of new provinces have more than covered the losses. Eight producers reached their maximum in **2025 itself**: the United States, Canada, China, the United Arab Emirates, Brazil, Kazakhstan, Argentina and Guyana. Guyana produced no oil at all a decade ago and now produces **716 000 barrels a day**.
 
-Argentina is the instructive one, because the 2012 summary named it as declining and it was. Vaca Muerta shale reversed it, and Argentina's 2025 output is its highest ever. A country can come back off its peak if the rock beneath it turns out to hold a second, different resource that a new technique can reach.
+Argentina is the instructive one, and the single miss in that 2012 list. It was declining when the list was written. Vaca Muerta shale reversed it, and Argentina's 2025 output is its highest ever. A country can come back off its peak if the rock beneath it turns out to hold a second, different resource that a new technique can reach.
 
 That is the mechanism the depletion models keep missing, and it is the same one chapter 23's argument turns on. **The world is not one oil field.** It is a portfolio, and the portfolio has been rebalanced twice in twenty years — once by American shale, once by the Atlantic pre-salt and Guyana. Each time, the aggregate curve stayed flat or rose while three-quarters of its constituents fell.
 

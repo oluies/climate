@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Figure 6.5 recalculated: MacKay's 25 m2 Cambridgeshire array, then and now.
-Input: data-refresh/pv-array-cambridge.csv (PVGIS, `mill Refresh.scala chapter06Figs`)."""
+Input: data-refresh/pv-array-cambridge.csv from `mill Refresh.scala chapter06Figs`."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt, numpy as np
 
 OLD, NEW, MUTED = "#8a8a85", "#eda100", "#8a8a85"
@@ -27,7 +27,7 @@ ax.set_title("MacKay's 25 m² Cambridgeshire array, then and now",
              loc="left", fontsize=12.5, fontweight="bold", pad=30)
 # Note sits below the axis: over the bars it collided with both the legend and the peak months.
 ax.annotate("Modelled from PVGIS. The 2006 array averaged 12 kWh/d measured and 11.5 modelled; the same roof\n"
-            "with 2026 modules gives 15.9 — 26 W/m² of panel against 20. December still delivers about a\n"
-            "seventh of June, whatever the panel.",
+            "with 2026 modules gives 15.9 — 26 W/m² of panel against 20. December still delivers under a\n"
+            "third of June, whatever the panel.",
             xy=(0, -0.20), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
 fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])

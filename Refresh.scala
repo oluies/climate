@@ -739,13 +739,35 @@ def chapter06(): Unit = {
     cap ++= f"$r,$y,$v%.2f\n"
   os.write.over(dir / "solar-capacity.csv", cap.toString)
 
-  // 2. Generation per person in kWh/d, the book's units.
-  val pop = Map("Total World" -> 8.23e9, "China" -> 1.408e9,
-                "Germany" -> 83.6e6, "United Kingdom" -> 69.3e6)
+  // 2. Generation per person in kWh/d, the book's units. Population is taken
+  // year by year from the OWID series already in this directory: using one
+  // present-day figure across a 25-year series understates the early years
+  // badly (world population was 6.15bn in 2000, not 8.23bn).
+  val owid = (dir / "owid-population.csv").toString.replace("'", "''")
+  val entity = Map("Total World" -> "World", "China" -> "China",
+                   "Germany" -> "Germany", "United Kingdom" -> "United Kingdom")
+  def population(region: String): Map[Int, Double] = {
+    val rs = st.executeQuery(
+      s"""SELECT "Year", "Population"
+          FROM read_csv_auto('$owid') WHERE "Entity" = '${entity(region)}'
+            AND "Year" BETWEEN 2000 AND 2025 ORDER BY "Year"""")
+    val m = collection.mutable.Map[Int, Double]()
+    while (rs.next()) m(rs.getInt(1)) = rs.getDouble(2)
+    // The OWID series ends in 2023. Extend to 2025 at the mean growth rate of
+    // the last three years so the final two points are not simply dropped;
+    // the extrapolation moves the per-person figures by well under 1%.
+    val last = m.keys.max
+    val g = math.pow(m(last) / m(last - 3), 1.0 / 3.0)
+    for (y <- (last + 1) to 2025) m(y) = m(y - 1) * g
+    m.toMap
+  }
   val pc = new StringBuilder; pc ++= "region,year,kwh_per_day\n"
-  for (r <- capRegions; (y, twh) <- series("Solar Generation - TWh", r, 1965, 2025, 1.0)
-       if y >= 2000)
-    pc ++= f"$r,$y,${twh * 1e9 / pop(r) / 365}%.4f\n"
+  for (r <- capRegions) {
+    val pop = population(r)
+    for ((y, twh) <- series("Solar Generation - TWh", r, 1965, 2025, 1.0)
+         if y >= 2000 && pop.contains(y))
+      pc ++= f"$r,$y,${twh * 1e9 / pop(y) / 365}%.4f\n"
+  }
   os.write.over(dir / "solar-percapita.csv", pc.toString)
 
   // 3. Power per unit area. Hand-entered from the sources in chapter 6's notes:
@@ -916,8 +938,9 @@ def chapterN(): Unit = {
   conn.close()
   os.write.over(dir / "peaks-by-country.csv", out.toString)
   println("wrote data-refresh/peaks-by-country.csv")
-  println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
-  println("  python figures/peaks_by_country.py data-refresh/peaks-by-country.csv without-hot-air/Images/fig-peaks-by-country.svg")
+  println("render (once per fuel): uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
+  println("  python figures/peaks_by_country.py data-refresh/peaks-by-country.csv without-hot-air/Images/fig-peak-oil-by-country.svg Oil")
+  println("  python figures/peaks_by_country.py data-refresh/peaks-by-country.csv without-hot-air/Images/fig-peak-gas-by-country.svg Gas")
 }
 
 // ---- Chapter 7: the heat-pump break-even ----
@@ -943,6 +966,13 @@ def chapter07(): Unit = {
   // JSON-stat keys its values by position, and DuckDB reads the index as a
   // struct rather than a map, so both branches are read as JSON and the
   // position is looked up per country.
+  def period(f: os.Path): String = {
+    val rs = st.executeQuery(
+      s"""SELECT unnest(json_keys(dimension->'time'->'category'->'index'))
+          FROM read_json('${f.toString.replace("'", "''")}', columns={dimension:'JSON'})""")
+    if (rs.next()) rs.getString(1) else "?"
+  }
+
   def read(f: os.Path): Map[String, Double] = {
     val path = f.toString.replace("'", "''")
     val rs = st.executeQuery(
@@ -960,11 +990,20 @@ def chapter07(): Unit = {
     }
     m.toMap
   }
+  // Eurostat publishes the two datasets on different schedules, and each is
+  // fetched with lastTimePeriod=1, so they can drift apart. Dividing a price
+  // from one half-year by a price from another would be silently wrong.
+  val (pe, pg) = (period(dir / "eurostat-elec-price.json"), period(dir / "eurostat-gas-price.json"))
+  require(pe == pg, s"Eurostat periods differ: electricity $pe, gas $pg - refetch both")
+  println(s"Eurostat household prices, period $pe")
   val elec = read(dir / "eurostat-elec-price.json")
   val gas = read(dir / "eurostat-gas-price.json")
   val out = new StringBuilder; out ++= "country,elec_eur_kwh,gas_eur_kwh,ratio\n"
-  val keep = elec.keySet intersect gas.keySet
-  for (c <- keep.toSeq.sorted if gas(c) > 0 && !c.startsWith("EA")) {
+  // EA and EU27 are aggregates of members plotted individually; excluding them
+  // keeps the count in the figure a count of countries.
+  val aggregates = Set("EA", "EU27_2020", "EU28", "EU27")
+  val keep = (elec.keySet intersect gas.keySet) -- aggregates
+  for (c <- keep.toSeq.sorted if gas(c) > 0) {
     val r = elec(c) / gas(c)
     out ++= f"$c,${elec(c)}%.4f,${gas(c)}%.4f,$r%.2f\n"
   }
@@ -977,7 +1016,7 @@ def chapter07(): Unit = {
   out ++= "UK,0.3013,0.0846,3.56\n"
   conn.close()
   os.write.over(dir / "heatpump-breakeven.csv", out.toString)
-  println(s"wrote data-refresh/heatpump-breakeven.csv (${keep.size} countries)")
+  println(s"wrote data-refresh/heatpump-breakeven.csv (${keep.size + 1} countries incl. UK)")
   println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
   println("  python figures/heatpump_breakeven.py data-refresh/heatpump-breakeven.csv without-hot-air/Images/fig-heatpump-breakeven.svg")
 }
