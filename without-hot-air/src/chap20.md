@@ -359,6 +359,61 @@ For a time, I thought that the way to solve the long-distance-transport problem 
 
 So, sadly, I don’t think boats are going to beat planes in energy consumption. If eventually we want a way of travelling large distances without fossil fuels, perhaps nuclear-powered ships are an interesting option (figures 20.31 & 20.32).
 
+## Electrofuels: the aeroplane's only route
+
+*A section added in the 2026 revision.* Chapter 5 establishes that battery-electric flight does not work for anything but short hops, and nothing since has changed that. So if aviation is to leave fossil fuel it needs a liquid hydrocarbon made some other way, and the honest question is what that costs in electricity.
+
+There is now a good answer, from an unexpected quarter.
+
+### The Navy's number
+
+The United States Naval Research Laboratory has spent fifteen years developing a process to make jet fuel from **seawater**: extract dissolved carbon dioxide and hydrogen electrochemically, run the reverse water-gas shift over an alkali-promoted molybdenum carbide catalyst, and finish with Fischer–Tropsch synthesis to give JP-5 meeting military specification. A scale model aircraft flew on it in 2014. The work is now being commercialised as **Sea Dragon**, with about **$28.7 million** of Office of Naval Research contracts — $19.2 million in 2024 for a pilot unit, $9.5 million in August 2025 for a phase-two demonstration — and a deployable demonstration system targeted for **2027**.[^seadragon]
+
+The Navy's motive is not climate. It is that a carrier group's fuel arrives by tanker, and tankers can be sunk. Chapter 17's section on the energy cost of war is about the same vulnerability from the other end.
+
+But the paper that costs the idea states the physics plainly, and it is the sentence that matters here:
+
+> *for every kilowatt hour of electricity consumed to make the final liquid hydrocarbon fuel, only 0.60 kW h of power is stored in the liquid hydrocarbon fuel*
+
+**Sixty per cent.** That is the conversion from electricity to liquid fuel, and the Navy's own scale claim checks against it: a 200 MW reactor running for a day supplies 4.8 GWh, and 82 000 US gallons of jet fuel contains about 3.0 GWh — **63%**. The two numbers agree, which is more than can be said for most claims in this field.
+
+### What that means for flying
+
+Now apply it in this book's units, which is the whole point of the exercise.
+
+| | Fuel needed | Electricity to make it | Against Britain's whole grid |
+|---|---|---|---|
+| UK aviation today (7.4 kWh/d per person) | 7.4 | **12.3** | **1.1×** |
+| MacKay's frequent flyer (30 kWh/d) | 30 | **50** | **4.5×** |
+
+Britain currently generates **11.2 kWh/d per person of electricity, from everything** — every wind turbine, every solar panel, both nuclear stations, all the gas. Flying the amount Britain already flies, on synthetic fuel, would need **more electricity than the entire British grid produces**.
+
+That is not an argument against electrofuels. It is the reason chapter 5's conclusion stands: **flying is not expensive because aeroplanes are inefficient. It is expensive because flying is a lot of energy**, and moving it from a well to a wire does not make it less.
+
+### Where this leaves aviation
+
+Three things follow, and they are worth separating.
+
+**Electrofuel is the right answer for aviation and the wrong one for almost everything else.** On Liebreich's ladder, above, the top rungs are the uses with no alternative. Aviation is one: batteries cannot do it, and hydrogen in an airframe is chapter 20's blimp problem. That is a much stronger case than the hydrogen car ever had.
+
+**But at 60% it is a multiplier on the green electricity problem, not a solution to it.** Every kilowatt-hour of jet fuel demands 1.7 of electricity, and chapter 18 records that Britain is at 3% of its renewable ceiling. Synthetic aviation fuel makes the production chapters harder, not easier.
+
+**And it does not reduce the demand for flying.** MacKay's chapter 5 makes that point once and it survives: the only reliable way to reduce the energy cost of a flight is not to take it. Everything else is a change of supply chain.
+
+### The military and civilian cases want opposite machines
+
+There is a further point, and it explains why the Navy's economics cannot simply be lifted into civilian use.
+
+**For the military, the 40% loss is worth paying, and efficiency is not the product.** What the Navy is buying is the removal of a supply chain. Fuel delivered at sea cost $6 to $7 a gallon fully burdened against a standard price of $3.70, because the difference is tankers, escorts, storage and the people who operate them — and in a contested sea that tail is not merely expensive but vulnerable. A process that turns a reactor already in the hull into fuel alongside makes the tanker unnecessary. Losing 40% of the energy is a small price for not having to defend a convoy. **Liquid fuel also stores indefinitely and needs no new handling equipment**, which a battery does not and does.
+
+**For civilian use the requirement inverts, and it is not efficiency either — it is modularity.** The electricity that ought to make synthetic fuel is the surplus: the hours chapter 28a describes, when wind and solar produce more than the system wants and the price falls to zero or below. An electrofuel plant is one of the few loads large enough to absorb that surplus and indifferent enough to when it arrives, since the product is a liquid in a tank rather than a service delivered on demand.
+
+But that requires a plant that can run **intermittently without being ruined by it**, and the economics are brutal about what that means. Capital cost per gallon scales roughly as the inverse of the capacity factor: a plant designed to run flat out and then operated a fifth of the time makes fuel at about five times the capital cost per unit. So the civilian machine must be **cheap, small and many** — modular units that can start, stop and follow the price — where the Navy's is **large, dear and continuous**, sized around a dedicated reactor.
+
+Those are not the same product, and the Navy's $1.48-a-gallon lower bound assumes the continuous case. **The technology transfers; the economics do not.**
+
+This is the demand side of chapter 28a's argument arriving in a new place. That chapter's conclusion is that the value of renewable electricity falls as it grows unless something turns up to consume the surplus in the hours it appears. Chapter 7 offers heat and storage; chapter 11a notes that data centres could in principle but are built not to. **A modular electrofuel plant is the candidate with the largest appetite and the least impatience** — and whether it can be built cheap enough to run part-time is, at present, the open question.
+
 ## What about freight?
 
 International shipping is a surprisingly efficient user of fossil fuels; so getting road transport off fossil fuels is a higher priority than getting ships off fossil fuels. But fossil fuels are a finite resource, and eventually ships must be powered by something else. Biofuels *may* work out. Another option will be nuclear power. The first nuclear-powered ship for carrying cargo and passengers was the NS Savannah, launched in 1962 as part of President Dwight D. Eisenhower’s *Atoms for Peace* initiative (figure 20.31). Powered by one 74-MW nuclear reactor driving a 15-MW motor, the Savannah had a service speed of 21 knots (39 km/h) and could carry 60 passengers and 14000 t of cargo. That’s a cargo transport cost of 0.14 kWh per ton-km. She could travel 500 000 km without refuelling. There are already many nuclear-powered ships, both military and civilian. Russia has ten nuclear-powered ice-breakers, for example, of which seven are still active. Figure 20.32 shows the nuclear ice-breaker Yamal, which has two 171-MW reactors, and motors that can deliver 55 MW.
@@ -556,3 +611,5 @@ Merrick Godhaven
 [^ladder20]: Michael Liebreich, "Clean Hydrogen Ladder Version 5.0", 2023: <https://liebreich.com/hydrogen-ladder-version-5-0/>. The ladder ranks candidate uses from A, where hydrogen is unavoidable, to G, where it is uncompetitive; fertilizer, hydrogenation, methanol and steel sit near the top, passenger cars and domestic heating at the bottom. It is one analyst's framework rather than a consensus document, and its rankings are contested at the margins — particularly for shipping, aviation and long-haul trucking, which sit in the disputed middle. Chapter 28a cites the same source from the electricity side.
 
 [^swerail]: "Järnväg kan aldrig mer fungera i glesbebodda Sverige", *Cornucopia?*, July 2024: <https://cornucopia.se/2024/07/jarnvag-kan-aldrig-mer-fungera-i-glesbebodda-sverige/>. As with the other citations to this blog in chapters L, N and here, it is an essay arguing a position rather than a study, and its conclusion — that long-distance passenger rail outside Sweden's three largest metropolitan areas should be abandoned — goes well beyond what this section takes from it. What is used here is the geographic and cost reasoning, which is sound and quantitative, and the observation about station access. The occupancy table is computed from MacKay's own figure of 3 kWh per 100 seat-km for a full electric high-speed train and his statement that this is 27 times better than the car, implying about 81 kWh per 100 passenger-km for single-occupancy driving.
+
+[^seadragon]: The seawater-to-fuel process and its economics are set out in Heather D. Willauer, Dennis R. Hardy, Seth A. Moyer, Felice DiMascio, Frederick W. Williams and David M. Drab, "An economic basis for littoral land-based production of low carbon fuel from nuclear electricity and seawater for naval or commercial use", *Energy Policy*, 2015, <https://doi.org/10.1016/j.enpol.2015.02.006>, which is the source of the 0.60 kWh-of-fuel-per-kWh-of-electricity figure and of a cost range of $1.48–8.67 per gallon for 82 000 gallons a day, against a fully burdened delivered-at-sea price then estimated at $6–7 per gallon. The underlying chemistry is covered by a series of US Navy patents naming Willauer and colleagues, including electrochemical acidification of seawater to recover carbon dioxide with simultaneous hydrogen production (US 9,719,178; US 11,421,331) and alkali-doped molybdenum carbide catalysts for the reverse water-gas shift (US 11,266,980; US 11,890,598). Commercialisation figures — Sea Dragon Energy Inc., about $19.2 million in 2024 for a pilot unit and $9.5 million in August 2025 for a phase-two demonstration, with a deployable demonstration targeted for 2027, and partners at the universities of Rochester and Pittsburgh and Emerging Fuels Technology — are from trade reporting. Two cautions. The 60% figure is the thermodynamic conversion claimed for the process and does not include the energy of building the plant, the reactor or the seawater handling; a full-system figure would be lower. And the cost range spans nearly a factor of six because it depends almost entirely on the assumed capital cost of nuclear electricity, which chapter 24 shows is the least settled number in the subject.
