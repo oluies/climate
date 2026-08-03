@@ -182,6 +182,73 @@ In Part II I’ll ask, "assuming that we can’t get production from renewables 
 
 <span class="figurenumber">Table 18.10</span>. Renewable facilities have to be country-sized because all renewables are so diffuse.
 
+## The balance sheet, eighteen years on
+
+*A section added in the 2026 revision.* This chapter is where the two stacks are set against each other, so it is where the revisions made throughout this edition should be totalled.
+
+### What actually happened to British consumption
+
+MacKay puts the official United Kingdom average at **125 kWh/d per person** of primary energy, against the 195 kWh/d he builds for a typical affluent individual.
+
+The Energy Institute's series gives British total energy supply as **9.19 EJ in 2008 and 6.29 EJ in 2025**. Across the populations of those years that is a fall from about **114 to 70 kWh per day per person** — roughly **39%**, on a slightly different boundary from the figure MacKay quotes but the same quantity.[^tes]
+
+Nothing in this book predicted that. It is the largest single change in the eighteen years, and it happened without anyone living in a cave.
+
+The obvious objection is that Britain simply got poorer. It did not, and the relationship is worth looking at directly.
+
+<iframe src="https://ourworldindata.org/grapher/energy-use-per-person-vs-gdp-per-capita?tab=chart" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+
+<span class="figurenumber">Figure 18.11.</span> Energy use per person against GDP per person, from Our World in Data. The strong relationship across countries is the one chapter L is about — nobody is rich on little energy. What matters here is the *path* each rich country has traced over time: Britain's moves left while continuing to move up.
+
+<iframe src="https://ourworldindata.org/grapher/per-capita-fossil-energy-vs-gdp?tab=chart" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+
+<span class="figurenumber">Figure 18.12.</span> Fossil energy per person against GDP per person. The same picture with the fossil component separated, which falls faster than total energy because the electricity supplying it has been decarbonised.
+
+So the fall is real decoupling, not impoverishment. **But chapter 15 supplies the half of the explanation that these charts cannot show.** A territorial energy statistic falls when a smelter closes and its output is imported, and it falls exactly as convincingly as when a house is insulated. Britain's steel production is the lowest since the 1930s, two of six refineries have closed since 2019, and the imported share of the national carbon footprint has risen from 34% to about 61%. Some of the leftward movement in these charts is efficiency, some is cleaner supply, and some is that the making of things left the country. **The three are indistinguishable on this axis**, which is why chapter 15 goes to the trouble of separating them.
+
+### The red stack, revised
+
+Where this edition has changed a consumption figure, it is because the underlying assumption was wrong or the technology moved:
+
+| Chapter | MacKay | This edition | Why |
+|---|---|---|---|
+| 7 Heating and cooling | 37 | **13** | heat pump instead of combustion |
+| 9 Light | 4 | **under 1** | LED, at twenty times the efficacy |
+| 13 Food and farming | 12 | **7** | his meat assumption was 2.2 times the measured average |
+| 11a Data centres | — | **0.5** | a load that did not exist |
+| 17 Public services | 4.2 | **4.7** | the NHS estate, now metered |
+
+Cars at 40, planes at 30, gadgets at 5 and stuff at 48 plus 12 for transport are unchanged. The total falls from about **192 to about 161 kWh/d** — a reduction of roughly a sixth, achieved almost entirely by two machines: the heat pump and the light-emitting diode.
+
+Note what that does **not** include. The single largest item, 48 kWh/d for making stuff, is untouched, because chapter 15 finds no evidence it has fallen — only that its carbon has, and that much of its energy is now spent abroad.
+
+### The green stack, against what was built
+
+The production chapters are different in kind, because MacKay's figures there are deliberate upper bounds rather than estimates. Setting them beside what Britain actually generated in 2025 is therefore not a scorecard but a measure of the distance:
+
+| Chapter | MacKay's ceiling | Britain, 2025 |
+|---|---|---|
+| 4 Wind, onshore | 20 | *(combined below)* |
+| 10 Offshore wind | 48 | wind, all: **3.49** |
+| 6 Solar | 50 | **0.80** |
+| 8 Hydro | 1.5 | **0.20** |
+| 12 Wave | 4 | **~0** |
+| 14 Tide | 11 | **0.004** |
+| 16 Geothermal | 2 | 0.13, in Southampton only |
+| **Total** | **136** | **4.5** |
+
+Britain generates about **3% of the renewable resource this book sizes**. Adding nuclear's 1.44 kWh/d brings all low-carbon electricity to **5.9 kWh/d per person**.
+
+### What the two columns mean together
+
+Put beside each other the tables say something MacKay's own conclusion anticipated and this edition can now quantify.
+
+**Consumption fell by more than production rose.** British energy use per person is down about 39%; renewable generation, from a base of almost nothing, has reached about 4.5 kWh/d. The red stack moved further than the green one, and it moved for reasons — efficiency, prices, deindustrialisation — that were not the subject of this book.
+
+**And the ceilings were never the binding constraint.** Britain has built 3% of the resource that physics permits. The section above sets out what has actually been binding: a price ratio, a queue, a permit, a procurement cycle, a contract expiry. Not one chapter of this revision found a case where Britain had reached a physical limit MacKay identified. Chapter 12's wave machines came closest, and they failed on engineering rather than on resource.
+
+MacKay's answer to this chapter's question was that Britain cannot live on its own renewables *the way we currently live*. Eighteen years later the second half of that sentence has done more work than the first: **the way we live changed by a sixth to a third depending on what you count, while the renewables reached a thirtieth of their ceiling.** The arithmetic held. It was the assumption that the arithmetic would be the difficult part that did not.
+
 ## The constraint moved
 
 *A section added in the 2026 revision.* MacKay closes this chapter with "green ambitions meet social reality" and a list of objections: wind farms are ugly, solar spoils the street, tidal barrages harm birds. He is identifying something real, and he names one instance of it — planning opposition. Eighteen years later the pattern is broader and more specific than a chorus of no, and it has appeared in almost every chapter this edition has revisited.
@@ -221,3 +288,5 @@ That is not a criticism of the method. It is a consequence of its success. Once 
 [^4]: *In the Middle Ages, the average person’s lifestyle consumed a power of 20 kWh per day*. Source: Malanima (2006).
 
 [^5]: *"I’m more worried about the ugly powerlines coming ashore than I was about a Nazi invasion."* Source: [[<span class="websitetitle">6frj55</span>](http://tinyurl.com/6frj55)].
+
+[^tes]: United Kingdom total energy supply of 9.19 EJ in 2008 and 6.29 EJ in 2025 is from the Energy Institute's *Statistical Review of World Energy* 2026, converted at 1 EJ = 2.778 × 10^11 kWh and divided by populations of 61.4 and 68.4 million. That gives 114 and 70 kWh/d per person, against the 125 kWh/d MacKay quotes for 2008 — the difference is boundary and source, and the fall of about 39% is the robust part rather than either endpoint. Generation figures in the green table are 2025 from the same source: wind 87.1 TWh, solar 20.0, hydro 5.1, nuclear 35.9, divided by 68.4 million. Wave and tidal are below the resolution of the series. Two cautions on the comparison. The red-stack entries are delivered energy for an individual, while total energy supply is primary energy for the nation, so the two columns of the first table and the national figure are not the same accounting and should not be summed together. And the green ceilings are maximum-conceivable bounds that MacKay states explicitly are not forecasts, so the 3% is a measure of how far Britain is from a physical limit, not a report card on policy.
