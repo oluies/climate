@@ -7,7 +7,7 @@ INK, MUTED = "#161d1b", "#8a8a85"
 CAT = {"land": "#1baf7a", "water": "#2a78d6", "air": "#eb6834"}
 # Ordering and the era split stay in SQL; fetchnumpy keeps this out of pandas.
 d = duckdb.sql(f"""
-    SELECT era, category, mode, speed_kmh, kwh, kwh_lo, kwh_hi, fill
+    SELECT era::INT AS era, category, mode, speed_kmh, kwh, kwh_lo, kwh_hi, fill
     FROM read_csv_auto('{sys.argv[1]}') ORDER BY era, kwh
 """).fetchnumpy()
 
@@ -15,12 +15,10 @@ d = duckdb.sql(f"""
 OFF = {
     "Bicycle": (0, 10, "center"), "Full 8-car train": (0, 10, "center"),
     "Coach (full)": (0, -13, "center"), "Croydon tram": (-8, 0, "right"),
-    "Underground": (-8, 0, "right"), "Electric car (Roadster)": (-10, 4, "right"),
     "G-Wiz (real use)": (-8, 0, "right"), "London bus": (0, 10, "center"),
     "Car (1 occupant)": (10, 9), "Honda FCX (hydrogen)": (10, -9),
     "BMW Hydrogen 7": (0, 10, "center"), "747 (full)": (-9, 0, "right"),
     "Liner (Rijndam)": (-8, 0, "right"), "E-bike": (0, -13, "center"),
-    "Efficient EV (Model 3)": (11, -3), "EV (real-world average)": (10, 0),
     "787/A350 (full)": (9, 0), "Candela C-8 (2 aboard)": (10, 0),
     "Diesel ferry it replaced": (-14, 0, "right"),
 }
@@ -32,6 +30,8 @@ CALLOUT = {
     "Efficient EV (Model 3)": (250, 12.0), "Electric car (Roadster)": (250, 8.5),
     "Underground": (250, 6.0), "Candela C-8 (6 aboard)": (250, 4.2),
 }
+# CALLOUT wins over OFF in the loop below, so an entry in both would be a silent no-op.
+assert not (OFF.keys() & CALLOUT.keys())
 
 fig, ax = plt.subplots(figsize=(9.6, 6.4))
 ax.set_xscale("log"); ax.set_yscale("log")
