@@ -1178,6 +1178,7 @@ def transportEnergy(): Unit = {
   val p12 = 336.0 / (40 * NM)          // 336 kWh usable, up to 40 nm at 25 kn
   val c8 = 69.0 / (57 * NM)            // 69 kWh, 57 nm at 22 kn
   val p12Seat = p12 / 30 * 100
+  val p12Kmh = 25 * NM // 25-knot service speed, used for the P-12 and for the ferry it replaced
   // The diesel vessels on the same Stockholm route, backed out of Candela's own
   // savings claim. The claim itself is quoted at 66%, 80% and 84% by different
   // sources, so this is a band rather than a number.
@@ -1210,12 +1211,13 @@ def transportEnergy(): Unit = {
   add("2026", "land", "Efficient EV (Model 3)", 50, 14.7, "best")
   add("2026", "land", "EV (real-world average)", 50, 21.0, "typical")
   add("2026", "air", "787/A350 (full)", 900, 32.0, "best")
-  add("2026", "water", "Candela P-12 (30 seats)", 46.3, p12Seat, "best")
+  add("2026", "water", "Candela P-12 (30 seats)", p12Kmh, p12Seat, "best")
   add("2026", "water", "Candela C-8 (6 aboard)", 40.7, c8 / 6 * 100, "best")
   add("2026", "water", "Candela C-8 (2 aboard)", 40.7, c8 / 2 * 100, "typical")
   // The diesel vessels' speed is not published. It is derived from the same
-  // route taking 55 minutes against the P-12's 30: 46.3 * 30 / 55 = 25 km/h.
-  add("2026", "water", "Diesel ferry it replaced", 46.3 * 30 / 55,
+  // route taking 55 minutes against the P-12's 30, and rounded to whole km/h
+  // because "about 30 minutes" does not support a decimal.
+  add("2026", "water", "Diesel ferry it replaced", math.round(p12Kmh * 30 / 55).toDouble,
       math.sqrt(dieselLo * dieselHi), "typical", dieselLo, dieselHi)
 
   os.write.over(dir / "transport-energy.csv", out.toString)

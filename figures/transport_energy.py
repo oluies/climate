@@ -30,8 +30,10 @@ CALLOUT = {
     "Efficient EV (Model 3)": (250, 12.0), "Electric car (Roadster)": (250, 8.5),
     "Underground": (250, 6.0), "Candela C-8 (6 aboard)": (250, 4.2),
 }
-# CALLOUT wins over OFF in the loop below, so an entry in both would be a silent no-op.
-assert not (OFF.keys() & CALLOUT.keys())
+# CALLOUT wins over OFF in the loop below, so an entry in both would be a silent no-op,
+# and a key matching no mode (a rename in Refresh.scala) would silently fall back to the default.
+assert not (OFF.keys() & CALLOUT.keys()), "a mode is in both OFF and CALLOUT"
+assert (OFF.keys() | CALLOUT.keys()) <= set(d["mode"]), "label placement for a mode not in the data"
 
 fig, ax = plt.subplots(figsize=(9.6, 6.4))
 ax.set_xscale("log"); ax.set_yscale("log")

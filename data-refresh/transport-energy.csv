@@ -19,4 +19,4 @@ era,category,mode,speed_kmh,kwh,kwh_lo,kwh_hi,fill
 2026,water,Candela P-12 (30 seats),46.3,15.12,0.00,0.00,best
 2026,water,Candela C-8 (6 aboard),40.7,10.89,0.00,0.00,best
 2026,water,Candela C-8 (2 aboard),40.7,32.68,0.00,0.00,typical
-2026,water,Diesel ferry it replaced,25.3,64.82,44.47,94.49,typical
+2026,water,Diesel ferry it replaced,25.0,64.82,44.47,94.49,typical
