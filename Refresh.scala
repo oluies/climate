@@ -1130,3 +1130,33 @@ def stacks(): Unit = {
     println(f"  $c%-18s $tot%6.1f kWh/d")
   }
 }
+
+// ---- Cartoon Britain, 2008 and 2026 ----
+// MacKay's chapter 19 simplification: heating, transport, electricity. The 2026
+// column is derived from the Statistical Review — gas and oil consumption less
+// the gas burned in power stations, and electricity generation as delivered.
+@main
+def cartoonBritain(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"
+  val pop = 68.4e6; val EJ = 1e18 / 3.6e6
+  def perDay(kwh: Double) = kwh / pop / 365.0
+  val gasAll = perDay(2.20 * EJ)      // all UK gas
+  val oilAll = perDay(2.71 * EJ)      // all UK oil
+  val elecTWh = 91.0 + 36 + 86 + 19 + 6 + 41
+  val elec = perDay(elecTWh * 1e9)
+  val gasToPower = perDay(91.0 / 0.50 * 1e9)   // CCGT at ~50%
+  val out = new StringBuilder; out ++= "year,category,kwh_per_day,note\n"
+  out ++= "2008,Heating,40,delivered\n2008,Transport,40,delivered\n"
+  out ++= "2008,Electricity,18,delivered\n2008,Electricity fossil input,45,input\n"
+  out ++= f"2026,Heating,${gasAll - gasToPower}%.1f,delivered\n"
+  out ++= f"2026,Transport,$oilAll%.1f,delivered\n"
+  out ++= f"2026,Electricity,$elec%.1f,delivered\n"
+  out ++= f"2026,Electricity fossil input,$gasToPower%.1f,input\n"
+  os.write.over(dir / "cartoon-britain.csv", out.toString)
+  println("wrote data-refresh/cartoon-britain.csv")
+  println(f"  heating (gas less power stations)  ${gasAll - gasToPower}%.1f kWh/d")
+  println(f"  transport (all oil)                  $oilAll%.1f kWh/d")
+  println(f"  electricity delivered                $elec%.1f kWh(e)/d")
+  println(f"  fossil input to electricity          $gasToPower%.1f kWh/d  (MacKay: 45)")
+}
