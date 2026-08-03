@@ -117,7 +117,7 @@ environment."</td>
 <td>Offshore wind?</td>
 <td>"No, I’m more worried about the ugly<br />
 powerlines coming ashore than I was<br />
-about a Nazi invasion." <a href="#ch18n05" id="ret05"><span class="darkred">[5]</span></a></td>
+about a Nazi invasion." [^5]</td>
 </tr>
 <tr class="odd">
 <td>Wave or geothermal power?</td>
@@ -181,6 +181,34 @@ In Part II I’ll ask, "assuming that we can’t get production from renewables 
 | Geothermal | 0.017 W/m<sup>2</sup> |
 
 <span class="figurenumber">Table 18.10</span>. Renewable facilities have to be country-sized because all renewables are so diffuse.
+
+## The constraint moved
+
+*A section added in the 2026 revision.* MacKay closes this chapter with "green ambitions meet social reality" and a list of objections: wind farms are ugly, solar spoils the street, tidal barrages harm birds. He is identifying something real, and he names one instance of it — planning opposition. Eighteen years later the pattern is broader and more specific than a chorus of no, and it has appeared in almost every chapter this edition has revisited.
+
+In each case the technology worked, the physics held, and something else stopped it.
+
+**A price ratio.** Chapter 7: a heat pump moves three to five times more heat than a boiler makes, and still costs more to run in Britain, because a British household pays about **3.6 times as much for a kilowatt-hour of electricity as for one of gas**. Sweden's ratio is 1.3, and Sweden's heat pumps are everywhere. The physics is identical in both countries.
+
+**A queue.** Chapter 11a: houses in west London could not be connected because data centres had taken the capacity, and a data centre turning a kilowatt-hour into **eighty kronor** of revenue outbids a house that turns it into nothing. No price signal produced that outcome. A connection queue did.
+
+**A permit.** Chapter 13: spraying from drones cuts herbicide by up to a third, and applying pesticide from a drone is prohibited in Britain under a rule written for crop-dusting aircraft, decades before the machine existed.
+
+**A procurement cycle.** Chapter 9: LED street lighting was technically ready around 2012 and is roughly half done, because it is not a four-pound bulb but twenty-nine separate council capital programmes, each with its own budget and borrowing constraint.
+
+**A contract's expiry.** Chapter 28a: Germany is dismantling the subsidy that built its renewables not because anyone concluded it was wrong, but because an EU state-aid approval expires on 31 December 2026.
+
+And the counter-example proves the rule. Chapter 9's light bulb met none of these and completed almost totally inside a decade: a few pounds, screws into the fitting already there, no installer, no survey, no wet system, no cylinder, no permit, no favourable ratio between two fuel prices. **The transitions that finish are the ones that fit the socket already in the wall.**
+
+### What this does to the method
+
+None of this invalidates the arithmetic, and it is important to say so plainly. MacKay's ceilings are real and several have held exactly. The wind resource is what it is; 40 kW per metre of Atlantic coastline is a fact of physics; plants will not exceed about 0.5 W/m<sup>2</sup> in Britain whatever anyone legislates. Chapter 12's wave machines failed for reasons of engineering and survival at sea, not permits. Chapter 8's hydro is bounded by rainfall and altitude, and Britain's figure has not moved in eighteen years.
+
+But this chapter asks "can we live on renewables?", and for Britain the binding question has largely stopped being *can we*. Chapter 6's solar was built at a scale MacKay called beyond the bounds of plausibility. Chapter 10's offshore wind reached half the plan he quotes as derided. Chapter 9's lighting is solved. Chapter 7's heat pumps work, and work best in the countries that price electricity sensibly against gas.
+
+**The question that now binds is whether the system will let us, and it is denominated in queues, tariffs, permits and budget cycles rather than in kilowatt-hours.**
+
+That is not a criticism of the method. It is a consequence of its success. Once the arithmetic has established what the physics permits — which was this book's purpose, and which it achieved — everything that remains is the everything else. MacKay saw the beginning of it and called it social reality. The years since suggest it has grown large enough to deserve a balance sheet of its own, kept in the same spirit: numbers, not adjectives.
 
 ## Notes and further reading
 

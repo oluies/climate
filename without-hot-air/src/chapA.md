@@ -108,7 +108,7 @@ and the drag coefficient is \(c_{\text{d}} = \frac{1}{3}\) and the mass is \(m_{
 So "city-driving" is dominated by kinetic energy and braking if the distance between stops is less than 750 m. Under these conditions, it’s a good idea, if you want to save energy:
 
 1.  to reduce the mass of your car;
-2.  to get a car with regenerative brakes (which roughly halve the energy lost in braking – see Chapter 20); [<span class="darkred">[1]</span>](#chAn01) and
+2.  to get a car with regenerative brakes (which roughly halve the energy lost in braking – see Chapter 20); [^1] and
 3.  to drive more slowly.
 
 When the stops are significantly more than 750 m apart, energy dissipation is drag-dominated. Under these conditions, it doesn’t much matter what your car weighs. Energy dissipation will be much the same whether the car contains one person or six. Energy dissipation can be reduced:
@@ -125,7 +125,7 @@ When the stops are significantly more than 750 m apart, energy dissipation is dr
 
 <span class="figurenumber">Table A.6.</span> Facts worth remembering: car energy consumption.
 
-The actual energy consumption of the car will be the energy dissipation in equation (A.2), cranked up by a factor related to the inefficiency of the engine and the transmission. Typical petrol engines are about 25% efficient, [<span class="darkred">[2]</span>](#chAn02) so of the chemical energy that a car guzzles, three quarters is wasted in making the car’s engine and radiator hot, and just one quarter goes into "useful" energy:
+The actual energy consumption of the car will be the energy dissipation in equation (A.2), cranked up by a factor related to the inefficiency of the engine and the transmission. Typical petrol engines are about 25% efficient, [^2] so of the chemical energy that a car guzzles, three quarters is wasted in making the car’s engine and radiator hot, and just one quarter goes into "useful" energy:
 
 $$
 \text{total\ power\ of\ car} \simeq 4\left\lbrack {\frac{\text{1}}{\text{2}}m_{\text{c}}v^{3}/d + \frac{\text{1}}{\text{2}}\rho Av^{3}} \right\rbrack
@@ -227,7 +227,7 @@ If you drive the car at this speed for one hour every day, then you travel 110 k
 
 Could we make a new car that consumes 100 times less energy and still goes at 70mph? **No**. Not if the car has the same shape. On the motorway at 70mph, the energy is going mainly into making air swirl. Changing the materials the car is made from makes no difference to that. A miraculous improvement to the fossil-fuel engine could perhaps boost its efficiency from 25% to 50%, bringing the energy consumption of a fossil-fuelled car down to roughly 40 kWh per 100 km.
 
-Electric vehicles have some wins: while the weight of the energy store, per useful kWh stored, is about 25 times bigger than that of petrol, the weight of an electric engine can be about 8 times smaller. [<span class="darkred">[3]</span>](#chAn03) And the energy-chain in an electric car is much more efficient: electric motors can be 90% efficient.
+Electric vehicles have some wins: while the weight of the energy store, per useful kWh stored, is about 25 times bigger than that of petrol, the weight of an electric engine can be about 8 times smaller. [^3] And the energy-chain in an electric car is much more efficient: electric motors can be 90% efficient.
 
 We’ll come back to electric cars in more detail towards the end of this chapter.
 
@@ -311,7 +311,7 @@ which, allowing for an engine efficiency of 25%, requires 12 kW of power to go i
 
 ![](/img/without-hot-air/figure322.gif)
 
-<span class="figurenumber">Figure A.10.</span> Simple theory of bike fuel consumption (energy per distance). Vertical axis is energy consumption in kWh per 100 km. Assumptions: the bike’s engine (that’s you\!) uses energy with an efficiency of 0.25; [<span class="darkred">[4]</span>](#chAn04) the drag-area of the cyclist is 0.75 m<sup>2</sup>; the cyclist+bike’s mass is 90 kg; and *C*<sub>rr</sub> = 0.005.
+<span class="figurenumber">Figure A.10.</span> Simple theory of bike fuel consumption (energy per distance). Vertical axis is energy consumption in kWh per 100 km. Assumptions: the bike’s engine (that’s you\!) uses energy with an efficiency of 0.25; [^4] the drag-area of the cyclist is 0.75 m<sup>2</sup>; the cyclist+bike’s mass is 90 kg; and *C*<sub>rr</sub> = 0.005.
 
 <span class="figurenumber">Figure A.11.</span>Simple theory of train energy consumption, per passenger, for an eight-carriage train carrying 584 passengers. Vertical axis is energy consumption in kWh per 100 p-km. Assumptions: the train’s engine uses energy with an efficiency of 0.90; *c*<sub>d</sub>*A*<sub>train</sub> = 11 m<sup>2</sup>; *m*<span class="smallfont1"><sub>train</sub></span> = 400 000 kg; and *C*<sub>rr</sub> = 0.002.
 
@@ -333,7 +333,7 @@ that is,
 
 ![](/img/without-hot-air/figure256.gif)
 
-<span class="figurenumber">Figure A.12.</span> Current cars’ fuel consumptions do not vary as speed squared. Prius data from B.Z. Wilson; BMW data from Phil C. Stuart. The smooth curve shows what a speed-squared curve would look like, assuming a drag-area of 0.6 m<sup>2</sup>. [<span class="darkred">[5]</span>](#chAn05)
+<span class="figurenumber">Figure A.12.</span> Current cars’ fuel consumptions do not vary as speed squared. Prius data from B.Z. Wilson; BMW data from Phil C. Stuart. The smooth curve shows what a speed-squared curve would look like, assuming a drag-area of 0.6 m<sup>2</sup>. [^5]
 
 ##### *Bicycles*
 

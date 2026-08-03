@@ -132,9 +132,9 @@ if the plane turned its fuel’s power into drag power and lift power perfectly 
 
 ![](/img/without-hot-air/figure275-2-0.gif)
 
-<span class="figurenumber">Figure C.5.</span> The force required to keep a plane moving, as a function of its speed *v*, is the sum of an ordinary drag force <sup>1</sup>⁄<sub>2</sub>*c*<sub>d</sub>*ρA*<sub>p</sub>*v*<sup>2</sup> – which increases with speed – and the lift-related force (also known as the induced drag) <sup>1</sup>/<sub>2</sub>(*mg*)<sup>2</sup>/(*ρv*<sup>2</sup>*A*<sub>s</sub>) – which decreases with speed. There is an ideal speed, *v*<span class="smallfont2"><sub>optimal</sub></span>, at which the force required is minimized. The force is an energy per distance, so minimizing the force also minimizes the fuel per distance. To optimize the fuel efficiency, fly at *v*<span class="smallfont2"><sub>optimal</sub></span>. This graph shows our cartoon’s estimate of the thrust required, in kilonewtons, for a Boeing 747 [<span class="darkred">[1]</span>](#chCn01) of mass 319 t, wingspan 64.4 m, drag coefficient 0.03, and frontal area 180 m<sup>2</sup>, travelling in air of density *ρ* = 0.41 kg/m<sup>3</sup> (the density at a height of 10 km), as a function of its speed *v* in m/s. Our model has an optimal speed *v*<span class="smallfont2"><sub>optimal</sub></span> = 220 m/s (540 mph). For a cartoon based on sausages, this is a good match to real life\!
+<span class="figurenumber">Figure C.5.</span> The force required to keep a plane moving, as a function of its speed *v*, is the sum of an ordinary drag force <sup>1</sup>⁄<sub>2</sub>*c*<sub>d</sub>*ρA*<sub>p</sub>*v*<sup>2</sup> – which increases with speed – and the lift-related force (also known as the induced drag) <sup>1</sup>/<sub>2</sub>(*mg*)<sup>2</sup>/(*ρv*<sup>2</sup>*A*<sub>s</sub>) – which decreases with speed. There is an ideal speed, *v*<span class="smallfont2"><sub>optimal</sub></span>, at which the force required is minimized. The force is an energy per distance, so minimizing the force also minimizes the fuel per distance. To optimize the fuel efficiency, fly at *v*<span class="smallfont2"><sub>optimal</sub></span>. This graph shows our cartoon’s estimate of the thrust required, in kilonewtons, for a Boeing 747 [^1] of mass 319 t, wingspan 64.4 m, drag coefficient 0.03, and frontal area 180 m<sup>2</sup>, travelling in air of density *ρ* = 0.41 kg/m<sup>3</sup> (the density at a height of 10 km), as a function of its speed *v* in m/s. Our model has an optimal speed *v*<span class="smallfont2"><sub>optimal</sub></span> = 220 m/s (540 mph). For a cartoon based on sausages, this is a good match to real life\!
 
-Real jet engines have an efficiency of about *ε* = 1/3, [<span class="darkred">[2]</span>](#chCn02) so the energy-per-distance of a plane travelling at speed *v* is
+Real jet engines have an efficiency of about *ε* = 1/3, [^2] so the energy-per-distance of a plane travelling at speed *v* is
 
 $$
 \begin{matrix}
@@ -387,7 +387,7 @@ The range of the bird is the intrinsic range of the fuel, 4000 km, times a facto
 
 This figure is again close to the true answer: the nonstop flight record for a 747 (set on March 23–24, 1989) was a distance of 16 560 km.
 
-And the claim that the range is independent of bird size is supported by the observation that birds of all sizes, from great geese down to dainty swallows and arctic tern migrate intercontinental distances. The longest recorded non-stop flight by a bird was a distance of 11 000 km, by a bartailed godwit. [<span class="darkred">[3]</span>](#chCn03)
+And the claim that the range is independent of bird size is supported by the observation that birds of all sizes, from great geese down to dainty swallows and arctic tern migrate intercontinental distances. The longest recorded non-stop flight by a bird was a distance of 11 000 km, by a bartailed godwit. [^3]
 
 How far did Steve Fossett go in the specially-designed Scaled Composites Model 311 Virgin Atlantic GlobalFlyer? 41 467 km. [[<span class="websitetitle">33ptcg</span>](http://tinyurl.com/33ptcg)] An unusual plane: 83% of its take-off weight was fuel; the flight made careful use of the jet-stream to boost its distance. Fragile, the plane had several failures along the way.
 
@@ -401,7 +401,7 @@ We’ve already argued that the efficiency of flight, in terms of energy per ton
 
 Formation flying in the style of geese could give a 10% improvement in fuel efficiency (because the lift-to-drag ratio of the formation is higher than that of a single aircraft), but this trick relies, of course, on the geese wanting to migrate to the same destination at the same time.
 
-Optimizing the hop lengths: [<span class="darkred">[4]</span>](#chCn04) long-range planes (designed for a range of say 15 000 km) are not quite as fuel-efficient as shorter-range planes, because they have to carry extra fuel, which makes less space for cargo and passengers. It would be more energy-efficient to fly shorter hops in shorter-range planes. The sweet spot is when the hops are about 5000 km long, so typical long-distance journeys would have one or two refuelling stops (Green, 2006). Multi-stage long-distance flying might be about 15% more fuel-efficient; but of course it would introduce other costs.
+Optimizing the hop lengths: [^4] long-range planes (designed for a range of say 15 000 km) are not quite as fuel-efficient as shorter-range planes, because they have to carry extra fuel, which makes less space for cargo and passengers. It would be more energy-efficient to fly shorter hops in shorter-range planes. The sweet spot is when the hops are about 5000 km long, so typical long-distance journeys would have one or two refuelling stops (Green, 2006). Multi-stage long-distance flying might be about 15% more fuel-efficient; but of course it would introduce other costs.
 
 ### Eco-friendly aeroplanes
 
@@ -449,7 +449,7 @@ Perhaps *c*<sub>d</sub> and *f*<sub>A</sub> are not quite the same as those of a
 
 For vessels that skim the water surface, such as high-speed catamarans and water-skiers, an accurate cartoon should also include the energy going into making waves, but I’m tempted to guess that this hydrofoil theory is still roughly right.
 
-I’ve not yet found data on the transport-cost of a hydrofoil, but some data for a passenger-carrying catamaran travelling at 41 km/h seem to agree pretty well: it consumes roughly 1 kWh per ton-km. [<span class="darkred">[5]</span>](#chCn05)
+I’ve not yet found data on the transport-cost of a hydrofoil, but some data for a passenger-carrying catamaran travelling at 41 km/h seem to agree pretty well: it consumes roughly 1 kWh per ton-km. [^5]
 
 It’s quite a surprise to me to learn that an island hopper who goes from island to island by plane not only gets there faster than someone who hops by boat – he quite probably uses less energy too.
 
@@ -504,7 +504,7 @@ If useful cargo made up half of the vessel’s mass, the net transport cost of t
 
 <span class="figurenumber">Figure C.16.</span> The Lun ekranoplan – slightly longer and heavier than a Boeing 747. Photographs: A. Belyaev.
 
-The ekranoplan, [<span class="darkred">[6]</span>](#chCn06) or water-skimming wingship, is a ground-effect aircraft: an aircraft that flies very close to the surface of the water, obtaining its lift not from hurling air down like a plane, nor from hurling water down like a hydrofoil or speed boat, but by sitting on a cushion of compressed air sandwiched between its wings and the nearby surface. You can demonstrate the ground effect by flicking a piece of card across a flat table. Maintaining this air-cushion requires very little energy, so the ground-effect aircraft, in energy terms, is a lot like a surface vehicle with no rolling resistance. Its main energy expenditure is associated with air resistance. Remember that for a plane at its optimal speed, half of its energy expenditure is associated with air resistance, and half with throwing air down.
+The ekranoplan, [^6] or water-skimming wingship, is a ground-effect aircraft: an aircraft that flies very close to the surface of the water, obtaining its lift not from hurling air down like a plane, nor from hurling water down like a hydrofoil or speed boat, but by sitting on a cushion of compressed air sandwiched between its wings and the nearby surface. You can demonstrate the ground effect by flicking a piece of card across a flat table. Maintaining this air-cushion requires very little energy, so the ground-effect aircraft, in energy terms, is a lot like a surface vehicle with no rolling resistance. Its main energy expenditure is associated with air resistance. Remember that for a plane at its optimal speed, half of its energy expenditure is associated with air resistance, and half with throwing air down.
 
 The Soviet Union developed the ekranoplan as a military transport vehicle and missile launcher in the Khrushchev era. The Lun ekranoplan could travel at 500 km/h, and the total thrust of its eight engines was 1000 kN, though this total was not required once the vessel had risen clear of the water. Assuming the cruising thrust was one quarter of the maximum; that the engines were 30% efficient; and that of its 400-ton weight, 100 tons were cargo, this vehicle had a net freight-transport cost of <span class="mauve">2 kWh per ton-km</span>. I imagine that, if perfected for non-military freight transport, the ekranoplan might have a freight-transport cost about half that of an ordinary aeroplane.
 
