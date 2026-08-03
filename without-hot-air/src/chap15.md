@@ -257,6 +257,24 @@ This chapter's 48 kWh/d per person is denominated in energy. The statistic that 
 
 That is the same lesson as chapter M's, arriving in a different chapter: **what you measure decides what you conclude, and two accounts of the same activity can move in opposite directions without either being wrong.** MacKay chose energy deliberately, because it is the harder quantity to move and the one the laws of physics constrain. Eighteen years later that choice looks better, not worse — the carbon number has improved considerably faster than the underlying activity, and only one of the two is a measure of how much stuff we make.
 
+### The third mechanism: the making left
+
+There is a way of reducing a country's territorial emissions that involves neither efficiency nor restraint, and Britain has been doing it.
+
+**Steel.** British steel production is now the smallest it has been since the **1930s**, following the closure of the blast furnaces at Port Talbot in 2024. Primary steelmaking in Britain has largely ended.
+
+**Chemicals.** The industry body records **25 site closures in five years**, and its own survey of members reports weak demand, falling employment and the likelihood of more.
+
+**Refining.** Two of Britain's six refineries — **Grangemouth and Lindsey** — have closed since 2019, with about 820 direct jobs; Grangemouth's closure took the neighbouring Mossmorran ethylene plant with it and another 180.[^deindust]
+
+None of that reduces demand for steel, chemicals or fuel. It relocates the making of them, and with it the energy and the emissions, which then return as imports and appear in the account described above rather than in the territorial one.
+
+**This is the third mechanism behind the halving.** The first is genuine efficiency. The second is cleaner electricity making the same goods. The third is not making the goods. Only the first two are improvements, and the accounts as usually published cannot tell them apart.
+
+Chapter 28a supplies the reason, and it is the same number that chapter runs on: of 28 IEA countries reporting industrial electricity prices for 2024, **the United Kingdom's were the highest**, at about 25.3p per kWh against an EU-14 median of 11.3p. A smelter, a refinery or a chemical works is a machine for turning electricity and gas into product, and Britain is the most expensive place in the developed world to run one. Germany's experience, recorded in the same chapter — energy-intensive output settling at about 82% of its 2021 level after its gas price rose — is the same mechanism at a slower speed.
+
+So the answer to whether heavy industry left Britain for cheaper countries is yes, and this chapter's arithmetic is where it shows up: **as a falling territorial number, a rising imported share, and an energy total that did not move nearly as much as either.**
+
 ## Notes and further reading
 
 [^1]: *One aluminium drinks can costs 0.6 kWh*. The mass of one can is 15 g. Estimates of the total energy cost of aluminium manufacture vary from 60 MJ/kg to 300 MJ/kg. [[<span class="websitetitle">yx7zm4</span>](http://tinyurl.com/yx7zm4)], [[<span class="websitetitle">r22oz</span>](http://tinyurl.com/r22oz)], [[<span class="websitetitle">yhrest</span>](http://tinyurl.com/yhrest)]. The figure I used is from The Aluminum Association [[<span class="websitetitle">y5as53</span>](http://tinyurl.com/y5as53)]: 150 MJ per kg of aluminium (40 kWh/kg).
@@ -299,3 +317,5 @@ That is the same lesson as chapter M's, arriving in a different chapter: **what 
 ![](/img/without-hot-air/figure342.gif)
 
 [^footprint]: Consumption-based emissions from the Department for Environment, Food and Rural Affairs, *Carbon footprint for the UK and England to 2023*: 10 tonnes CO<sub>2</sub>e per person in 2023, down 5% on 2022 and 37% below the 2004 peak of 16 tonnes. Import share figures are from the Office for National Statistics' greenhouse gas emissions and trade accounts and associated analysis: the imported portion of the UK consumption-based account rising from 34% in 1990 to about 61% in 2022, with imported emissions rising from 138 Mt CO<sub>2</sub>e in 1996 to 182 Mt in 2021. A separate published figure of about 53% "made abroad" for 2023 reflects a different boundary; the two are not in conflict but are not interchangeable either, and the text quotes the range. Two cautions. Consumption-based accounts require modelling trade flows through multi-region input–output tables and carry materially wider uncertainty than territorial inventories, which is why they are published later and revised more. And Helm's roughly 21-tonne estimate was an independent academic figure on a different vintage of method from today's official series, so the halving quoted here compares two things that are close but not identical.
+
+[^deindust]: British steel output at its lowest since the 1930s following the 2024 closure of the Port Talbot blast furnaces; 25 chemical site closures over five years and the sector's own survey reporting further expected closures, from the Chemical Industries Association; and the closure since 2019 of two of the United Kingdom's six refineries, Grangemouth and Lindsey, with about 820 direct jobs, followed by the Mossmorran ethylene plant with a further 180. Attribution needs care here. Energy prices are one cause among several — global overcapacity in steel, the age of the plant, carbon pricing, corporate strategy and the general shift of heavy manufacturing to Asia all contribute, and the industry bodies quoted have an interest in emphasising energy costs. What is not in dispute is the direction: the capacity closed, the demand did not, and the difference is imported. Some of the closures are also substitutions rather than losses — Port Talbot is being replaced with an electric arc furnace, which makes steel from scrap at far lower energy intensity but cannot make primary steel at all.
