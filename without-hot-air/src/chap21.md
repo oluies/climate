@@ -230,6 +230,48 @@ Nay-sayers object that the coefficient of performance of air-source heat pumps i
 
 Another objection to heat pumps is "oh, we can’t approve of people fitting efficient air-source heaters, because they might use them for air-conditioning in the summer." Come on – I hate gratuitous air-conditioning as much as anyone, but these heat pumps are four times more efficient than any other winter heating method\! Show me a better choice. Wood pellets? Sure, a few wood-scavengers can burn wood. But there is not enough wood for everyone to do so. For forest-dwellers, there’s wood. For everyone else, there’s heat pumps.
 
+## The retrofit that one physicist managed
+
+*A section added in the 2026 revision.* This chapter contains the most useful experiment in the book, because MacKay ran it on himself and reported the failures.
+
+### What he achieved, and what the country did
+
+His gas consumption went from **50 kWh/d** to **32** with a condensing boiler, radiator thermostats, a programmable controller and the removal of the hot water tank; then to **13 kWh/d** with cavity wall insulation, better loft insulation, two double-glazed doors, and — his emphasis — paying attention to the thermostat.
+
+That is a **74% reduction**, achieved by one attentive person in a 1940s semi.
+
+Britain as a whole has reduced domestic gas consumption per household by about **43% since 2008**, as chapter 7 records. So the country, over eighteen years and with the benefit of new boilers, better appliances, higher prices and warmer winters, has managed a little over half of what MacKay did to one leaky house by himself.
+
+### The sentence that turned out to matter most
+
+Buried in the case study is this:
+
+> *It's frustratingly difficult to reduce the leakiness of an already-built house!*
+
+The numbers behind it are the important part. All that insulation work reduced his leakiness by **25%, from 7.7 to 5.8 kWh/d/°C**. The modern houses in the Carbon Trust study he cites were built to **2.7**. After cavity walls, loft and new doors, his house still lost heat **more than twice as fast** as one built to 2007 standards.
+
+Which means most of his 74% did not come from the fabric at all. It came from the boiler, the controls, and the thermostat — from the machine and the occupant, not the building.
+
+### Why that sentence now decides whether heat pumps work
+
+In 2008 this was a footnote about the difficulty of retrofit. It has since become the gate on the whole heating transition.
+
+Chapter 7 reports the British evidence review's finding that a heat pump reaches a seasonal performance factor of 3.0 — the level at which the sums in this chapter work — only in a house at **EPC band C or better**. Below that it does not, and the running-cost case collapses with it.
+
+The English housing stock in 2024: **52% of homes at band C**, up from 45% in 2022, with **56% at bands A to C** and a median score of 69, which is just inside band C. **85% of new dwellings** are rated A or B. About half of privately rented homes are still below C.[^epc]
+
+So roughly **two homes in five are below the standard at which a heat pump performs as this chapter assumes** — and post-war housing with cavity walls filled and loft insulated is described in the official statistics as sitting *at the C boundary*, which is precisely where MacKay's house ended up after all his work.
+
+**The man who wrote the book advocating heat pumps had, after his own best retrofit, a house that would only just support one.** That is the retrofit problem stated as exactly as it can be stated.
+
+### And "strangely rare in Britain"
+
+He writes that heat pumps are "already widely used in continental Europe, but strangely rare in Britain". The strangeness has since been resolved, and it is worth recording that the answer is not mysterious.
+
+It is a **price ratio of about 3.6 in Britain against 1.3 in Sweden**, so that the efficient machine is the expensive one to run; and a **fabric standard that two homes in five fail**, so that the machine underperforms where it is installed. Chapter 7 covers the first and this chapter covers the second.
+
+Neither is strange. Both are specific, both are measurable, and neither is physics — which is chapter 18's finding arriving in the one chapter of Part II that is about what to actually do.
+
 ## Notes and further reading
 
 ![](/img/without-hot-air/figure186.gif)
@@ -252,3 +294,5 @@ Further reading on heat pumps: European Heat Pump Network
 [www.kensaengineering.com](http://www.kensaengineering.com/),
 [www.heatking.co.uk](http://www.heatking.co.uk/),
 [www.iceenergy.co.uk](http://www.iceenergy.co.uk/). </span>
+
+[^epc]: English Housing Survey and Energy Performance Certificate statistics: 52% of English homes at EPC band C in 2024 against 45% in 2022, band D falling to 35%, bands A–C covering 56% of the stock, and a median EPC score of 69 in England (band C) against 68 in Wales (band D) over the ten years to March 2025; 85% of new dwellings rated A or B in the third quarter of 2025; roughly half of privately rented homes still below band C. Two cautions. EPC ratings are modelled from a survey of the property rather than metered, are known to correlate imperfectly with measured consumption, and the methodology has changed over the period, so the improvement from 45% to 52% is partly real and partly reassessment. And band C is a threshold chosen here because the heat-pump evidence review in chapter 7 uses it, not because anything physical happens at that line; a house just below it is not meaningfully different from one just above.
