@@ -1,0 +1,7 @@
+technology,lcoe_low,lcoe_central,lcoe_high,capture,capture_source,margin
+Large-scale solar,36,44,50,65.9,Solar,21.9
+Onshore wind,33,41,55,72.0,Wind,31.0
+Offshore wind (fixed),50,59,72,72.0,Wind,13.0
+Offshore wind (floating),65,91,121,72.0,Wind,-19.0
+Gas CCGT,38,45,53,94.8,Gas,49.8
+Gas with CCUS,85,101,117,94.8,Gas,-6.2
