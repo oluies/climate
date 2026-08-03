@@ -74,6 +74,41 @@ But what about "stuff"? According to Part I, the embodied energy in imported stu
 
 So, here we go: let’s talk about transport, heating, and electricity.
 
+## Cartoon Britain, eighteen years on
+
+*A section added in the 2026 revision.* MacKay's cartoon has three legs — heating at 40 kWh/d per person, transport at 40, and electricity at 18 kWh(e)/d requiring 45 kWh/d of fossil fuel to make it. All three can be recomputed.
+
+![Cartoon Britain in 2008 and 2026: heating 40 to 17, transport 40 to 30, electricity 18 to 11 kWh per day per person, with the fossil fuel burnt to make that electricity falling from 45 to 7.](/img/without-hot-air/fig-cartoon-britain.svg)
+
+<span class="figurenumber">Figure 19.4.</span> Cartoon Britain, 2008 and 2026. *Added in the 2026 revision.* Heating is British gas consumption less the gas burnt in power stations; transport is all British oil; electricity is generation as delivered, with the dashed outline showing the fossil fuel burnt to produce it.[^cartoon]
+
+| kWh/d per person | 2008 cartoon | 2026 |
+|---|---|---|
+| Heating | 40 | **17** |
+| Transport | 40 | **30** |
+| Electricity delivered | 18 | **11** |
+| *Fossil fuel burnt for that electricity* | *45* | ***7*** |
+
+### Britain did the third thing first
+
+The "sneak preview" at the end of this chapter sets out Part II's plan in order. **First**, electrify transport. **Second**, electrify heating with heat pumps. **Third**, get the resulting green electricity from renewables, clean coal, nuclear and other countries' deserts.
+
+Britain has done the third and not the first two.
+
+The electricity leg has very nearly decarbonised. Coal has gone entirely, wind supplies 86 TWh, and making Britain's electricity now takes about **7 kWh/d per person of fossil fuel against the cartoon's 45** — a sixfold reduction, and by far the largest structural change in the eighteen years. That is Part II's third step, delivered.
+
+Transport is still burning **30 kWh/d per person of oil**, down from 40 mostly because vehicles got more efficient rather than because they got electric. Heating is still burning **17 kWh/d of gas**, and chapter 7 explains why the heat pump has not displaced it: not the physics, which is settled, but a price ratio that makes the efficient machine the expensive one.
+
+**So the plan was executed backwards, and the reason is instructive.** The step Britain completed is the one that could be done by a few hundred large decisions — closing power stations, awarding offshore wind contracts, connecting them. The two it has not started in earnest require **twenty-eight million households and forty million vehicles** each to make a decision, against prices that in one case point the wrong way.
+
+That is chapter 18's finding arriving in the planning chapter: what got done was what could be done centrally.
+
+### And the charger argument won
+
+One small vindication deserves recording. This chapter's demolition of "every little helps" — the mobile phone charger that uses a quarter of one per cent of a home's electricity — was correct, and the years since made it more so. Ecodesign rules cut standby power to a fraction of a watt, so the charger that MacKay estimated at 1 W now draws perhaps a twentieth of that, and the argument about it has disappeared.
+
+Meanwhile the things that actually moved the number were exactly the big ones he pointed at: the fuel burnt in power stations, the efficiency of the lamp, the machine in the boiler cupboard. **Nobody's charger saved anything, and nobody needed it to.**
+
 ## For the impatient reader
 
 Are you eager to know the end of the story right away? Here is a quick summary, a sneak preview of Part II.
@@ -87,3 +122,5 @@ Third, we get all the green electricity from a mix of four sources: from our own
 Among other countries’ renewables, solar power in deserts is the most plentiful option. As long as we can build peaceful international collaborations, solar power in other people’s deserts certainly has the technical potential to provide us, them, and everyone with 125 kWh per day per person.
 
 Questions? Read on.
+
+[^cartoon]: The 2026 column is computed by the `cartoonBritain` step in this edition's data-refresh script from the Energy Institute's *Statistical Review of World Energy* 2026 and the UK generation mix, divided by 68.4 million. Heating is total British gas consumption (2.20 EJ, 24.5 kWh/d) less the gas burnt in power stations (91 TWh of electricity at an assumed 50% CCGT efficiency, 7.3 kWh/d), giving 17.2. Transport is all British oil consumption (2.71 EJ, 30.2 kWh/d). Electricity is total generation of 279 TWh, 11.2 kWh(e)/d. Like MacKay's original, this is a cartoon and the boundaries are rough: some gas is used by industry rather than for heating, some oil is used as feedstock rather than for transport, and the fossil input to electricity ignores biomass entirely. The comparison is intended to show the change in shape, not to serve as an energy balance.
