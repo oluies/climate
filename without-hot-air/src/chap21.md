@@ -242,6 +242,8 @@ That is a **74% reduction**, achieved by one attentive person in a 1940s semi.
 
 Britain as a whole has reduced domestic gas consumption per household by about **43% since 2008**, as chapter 7 records. So the country, over eighteen years and with the benefit of new boilers, better appliances, higher prices and warmer winters, has managed a little over half of what MacKay did to one leaky house by himself.
 
+And even that overstates the technical achievement. The European efficiency index described in chapter L, which is climate-corrected and measures efficiency rather than consumption, has households improving at about **1.6% a year across the EU from 2010 to 2023 — accelerating to 2.4% after 2019, but still only some 19% in total**. That is the honest measure of what better buildings and better boilers have delivered. The rest of the fall in what households burn is warmer weather, higher prices and smaller rooms heated less.
+
 ### The sentence that turned out to matter most
 
 Buried in the case study is this:
