@@ -1089,3 +1089,44 @@ def lcoeVsCapture(): Unit = {
   println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
   println("  python figures/lcoe_vs_capture.py data-refresh/lcoe-vs-capture.csv without-hot-air/Images/fig-lcoe-vs-capture.svg")
 }
+
+// ---- The stacks: MacKay's 2008 balance sheet against the 2026 revision ----
+// Consumption items are the per-person figures each chapter arrives at.
+// Production shows MacKay's maximum-conceivable ceilings against what Britain
+// actually generated in 2025 (Energy Institute, divided by 68.4 million).
+@main
+def stacks(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val out = new StringBuilder; out ++= "stack,column,item,kwh_per_day\n"
+  def add(stack: String, col: String, rows: Seq[(String, Double)]) =
+    for ((item, v) <- rows if v > 0) out ++= f"$stack,$col,$item,$v%.3f\n"
+
+  val red2008 = Seq("Stuff" -> 48.0, "Cars" -> 40.0, "Planes" -> 30.0,
+    "Heating and cooling" -> 37.0, "Transporting stuff" -> 12.0, "Food and farming" -> 12.0,
+    "Gadgets" -> 5.0, "Light" -> 4.0, "Defence" -> 4.0, "Universities" -> 0.24)
+  val red2026 = Seq("Stuff" -> 48.0, "Cars" -> 40.0, "Planes" -> 30.0,
+    "Heating and cooling" -> 13.0, "Transporting stuff" -> 12.0, "Food and farming" -> 7.0,
+    "Gadgets" -> 5.0, "Light" -> 0.8, "Defence" -> 4.0, "Universities" -> 0.24,
+    "Data centres" -> 0.5, "NHS estate" -> 0.44)
+  add("Consumption", "MacKay 2008", red2008)
+  add("Consumption", "2026 revision", red2026)
+
+  val greenMax = Seq("Solar" -> 50.0, "Offshore wind" -> 48.0, "Onshore wind" -> 20.0,
+    "Tide" -> 11.0, "Wave" -> 4.0, "Geothermal" -> 2.0, "Hydro" -> 1.5)
+  // 2025 generation: wind 87.1 TWh, solar 20.0, hydro 5.1, over 68.4 million people.
+  val pop = 68.4e6
+  def perDay(twh: Double) = twh * 1e9 / pop / 365.0
+  val greenNow = Seq("Onshore wind" -> perDay(87.1), "Solar" -> perDay(20.0),
+    "Hydro" -> perDay(5.1), "Tide" -> 0.004, "Wave" -> 0.0, "Geothermal" -> 0.0)
+  add("Production", "MacKay's ceiling", greenMax)
+  add("Production", "Britain 2025", greenNow)
+
+  os.write.over(dir / "stacks.csv", out.toString)
+  println("wrote data-refresh/stacks.csv")
+  for (c <- Seq("MacKay 2008", "2026 revision", "MacKay's ceiling", "Britain 2025")) {
+    val tot = out.toString.linesIterator.drop(1).filter(_.split(",")(1) == c)
+      .map(_.split(",")(3).toDouble).sum
+    println(f"  $c%-18s $tot%6.1f kWh/d")
+  }
+}
