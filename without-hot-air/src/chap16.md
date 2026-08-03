@@ -62,6 +62,34 @@ Yes, Southampton Geothermal District Heating Scheme [^5] was, in 2004 at least, 
 
 <span class="figurenumber">Figure 16.6</span>. Geothermal.
 
+## Is a "geothermal" heat pump geothermal?
+
+*A section added in the 2026 revision.* No — and the confusion is worth clearing up, because this chapter's conclusion is discouraging and the shared name transfers that discouragement to a technology it never assessed.
+
+### Two different things with one name
+
+**This chapter is about deep geothermal**: the heat flowing out of the Earth, about 40 mW/m<sup>2</sup> from radioactive decay in the crust and about 10 mW/m<sup>2</sup> arriving from the core through the mantle, for **50 mW/m<sup>2</sup>** at the surface. That is a genuine flux from a genuinely hot source, and MacKay's finding is that it is small: at most **2 kWh/d per person** for Britain on a sustainable-forever basis.
+
+**A ground-source heat pump does something else entirely.** It uses the ground a few metres down as a reservoir at roughly 10°C and does work to lift heat from there to the 45°C a radiator wants. It belongs in chapter 7, with the other heat pumps. American usage calls it a "geothermal heat pump", which is where most of the trouble comes from.
+
+### The arithmetic that settles it
+
+Take MacKay's own number: **0.05 W/m<sup>2</sup>** of geothermal flux at the surface.
+
+A borehole in typical British ground yields about 50 W per metre of depth. A 10 kW heat pump draws roughly 7 kW from the ground and needs perhaps 140 m of borehole. Boreholes are spaced around 8 m apart so that they do not steal from one another, so each occupies about 64 m<sup>2</sup> of ground. That is **over 100 W/m<sup>2</sup> while it is running**, and something like **20 to 30 W/m<sup>2</sup> averaged over the year**.
+
+Set that against 0.05 W/m<sup>2</sup>. A ground loop extracts **four to seven hundred times** more heat than the Earth delivers to that patch of ground, and about two thousand times as much at peak.[^gshp]
+
+It cannot be running on the Earth's heat. **It is running on stored sunshine.** The sun warms the ground through the summer, the heat pump takes it back out through the winter, and the cycle balances annually. The clearest evidence is the spacing rule itself: boreholes must be kept apart because they compete for a recharge that arrives from **above**, not from below. Undersized loops in cold climates are known to freeze their ground and lose performance year on year, which is precisely what happens when extraction outruns the solar recharge — and would be impossible if the heat were coming from the mantle.
+
+### Why the distinction matters
+
+This chapter's answer is deflating, and rightly so. Britain's sustainable geothermal resource is around 2 kWh/d per person; the Southampton scheme, the country's only geothermal district heating in 2004, delivers **0.13 kWh/d per person** to the people of Southampton. Chapter 18's table of power densities puts geothermal at **0.017 W/m<sup>2</sup>**, the lowest entry in the book.
+
+**None of that applies to ground-source heat pumps.** They achieved a seasonal performance factor of **2.81** in British field trials, the best of any heat-pump type measured there, as chapter 7 records. Their limits are capital cost, the ground works and the electricity-to-gas price ratio — not the Earth's heat flow, which they were never using.
+
+A reader who takes this chapter's verdict and applies it to the heat pump in a neighbour's garden has been misled by a word. The European term, **ground-source heat pump**, is the accurate one. The American "geothermal heat pump" describes a solar collector that happens to be buried.
+
 ## Notes and further reading
 
 [^1]: *The heat flow at the surface is 50 mW/m<sup>2</sup>*. Massachusetts Institute of Technology (2006) says 59 mW/m<sup>2</sup> average, with a range, in the USA, from 25 mW to 150 mW. Shepherd (2003) gives 63 mW/m<sup>2</sup>.
@@ -73,3 +101,5 @@ Yes, Southampton Geothermal District Heating Scheme [^5] was, in 2004 at least, 
 [^4]: *Other places in the world have more promising hot dry rocks*. There’s a good study (Massachusetts Institute of Technology, 2006) describing the USA’s hot dry rock resource. Another more speculative approach, researched by Sandia National Laboratories in the 1970s, is to drill all the way down to magma at temperatures of 600–1300 °C, perhaps 15 km deep, and get power there. The website [<span class="websitetitle">www.magma-power.com</span>](http://www.magma-power.com) reckons that the heat in pools of magma under the US would cover US energy consumption for 500 or 5000 years, and that it could be extracted economically.
 
 [^5]: *Southampton Geothermal District Heating Scheme*. [<span class="websitetitle">www.southampton.gov.uk</span>](http://www.southampton.gov.uk/).
+
+[^gshp]: The comparison is an order-of-magnitude calculation on standard design rules, not a measurement: about 50 W per metre of borehole in typical British ground, roughly 140 m of borehole for a 10 kW heat pump drawing about 7 kW from the ground, and borehole separation of the order of 8 m to limit thermal interference, giving roughly 100 W/m<sup>2</sup> of occupied ground while running and 20–30 W/m<sup>2</sup> as an annual mean at a 20–30% seasonal duty. All three inputs vary widely with ground conditions, loop type and climate — horizontal slinky loops occupy far more area at lower intensity, and yields in wet ground with moving groundwater are considerably higher because the water carries heat in laterally. The conclusion does not depend on the precision: any figure within two orders of magnitude of these still exceeds the 0.05 W/m<sup>2</sup> geothermal flux by hundreds of times. Note also that in genuinely geothermal locations — Iceland, parts of Italy and Turkey, the western United States — the flux is far above the continental average and shallow ground heat can be partly geothermal in origin; the argument here is about typical British ground.
