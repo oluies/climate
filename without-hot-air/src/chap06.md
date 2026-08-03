@@ -4,7 +4,7 @@
 
 <span class="figurenumber">Figure 6.1.</span> Sunlight hitting the earth at midday on a spring or autumn day. The density of sunlight per unit land area in Cambridge (latitude 52.) is about 60% of that at the equator.
 
-![Mean solar intensity on a horizontal surface through the year for London and Edinburgh, in W/m2, against MacKay's 100 W/m2 annual average. Both peak near 230 in June and fall below 25 in December.](/img/without-hot-air/fig-solar-seasonal.svg)
+![Mean solar intensity on a horizontal surface through the year for London and Edinburgh, in W/m2, against MacKay's 100 W/m2 annual average. Both peak in May — London at 224, Edinburgh at 207 — and fall to 26 and 16 respectively in December.](/img/without-hot-air/fig-solar-seasonal.svg)
 
 <span class="figurenumber">Figure 6.2.</span> Average solar intensity in London and Edinburgh through the year. *Redrawn in the 2026 revision from PVGIS (Joint Research Centre), 2016–2020 means.* MacKay's 100 W/m<sup>2</sup> for flat ground sits between the two: Edinburgh averages 106 and London 124.
 
@@ -196,12 +196,12 @@ Set against all that, here is what solar actually delivered in 2025, in this boo
 |---|---|
 | United Kingdom | **0.79** |
 | World | 0.94 |
-| China | 2.28 |
-| Germany | 3.00 |
+| China | 2.26 |
+| Germany | 2.95 |
 
 MacKay's roof estimate was 5 and his fantasy farm was 50. Britain, having built 22 GW, gets **less than one kWh per day per person** from it.[^percap6] The cost argument reversed; the quantity argument did not. Everything this chapter says about how much area a solar-powered Britain would need still stands, and is still the reason the answer is hard.
 
-![Solar electricity per person, 2000 to 2025, in kWh per day, for Germany, China, the world and the United Kingdom, against MacKay's roof estimate of 5 kWh per day per person. Germany reaches 3.00, China 2.28, the world 0.94 and the United Kingdom 0.79 — all below the roof line.](/img/without-hot-air/fig-solar-percapita.svg)
+![Solar electricity per person, 2000 to 2025, in kWh per day, for Germany, China, the world and the United Kingdom, against MacKay's roof estimate of 5 kWh per day per person. Germany reaches 2.95, China 2.26, the world 0.94 and the United Kingdom 0.79 — all below the roof line.](/img/without-hot-air/fig-solar-percapita.svg)
 
 <span class="figurenumber">Figure 6.22.</span> Solar electricity per person, in this book's units. Nobody has yet reached what MacKay assigned to roofs alone, and his 50 kWh/d solar farm is ten times above the top of the chart. Generation from the Energy Institute's *Statistical Review* 2026, divided by population.
 
@@ -264,7 +264,7 @@ I think one conclusion is clear: *biofuels can’t add up* – at least, not in 
 
 ![Module power against light intensity for MacKay's 2008 Sanyo HIP-210 and a 2026 Maxeon 7. Both lines are essentially straight through the origin; the modern module has a steeper slope but the same proportionality.](/img/without-hot-air/fig-module-response.svg)
 
-<span class="figurenumber">Figure 6.15.</span> Power produced as a function of light intensity, at 25°C. *Redrawn in the 2026 revision* with a current flagship module, the Maxeon 7 (445 W, 24.1%, −0.27%/°C), beside MacKay's Sanyo HIP-210NKHE1. Eight percentage points of efficiency later the shape is unchanged: **a better panel raises the line, it does not bend it**.[^modresp]
+<span class="figurenumber">Figure 6.15.</span> Power produced as a function of light intensity, at 25°C. *Redrawn in the 2026 revision* with a current flagship module, the Maxeon 7 (445 W, 24.1%, −0.27%/°C), beside MacKay's Sanyo HIP-210NKHE1. Six percentage points of efficiency later the shape is unchanged: **a better panel raises the line, it does not bend it**.[^modresp]
 
 [^4]: *... that would be about 10 m<sup>2</sup> of panels per person.* I estimated the area of south-facing roof per person by taking the area of land covered by buildings per person (48 m<sup>2</sup> in England – table I.6), multiplying by ¼ to get the southfacing fraction, and bumping the area up by 40% to allow for roof tilt. This gives 16 m<sup>2</sup> per person. Panels usually come in inconvenient rectangles so some fraction of roof will be left showing; hence 10 m<sup>2</sup> of panels.
 
@@ -336,9 +336,9 @@ According to Archer and Barber (2004), the instantaneous efficiency of a healthy
 
 [^model6]: The elmix cannibalization model, <https://oluies.github.io/elmix/modell/system.html>.
 
-[^percap6]: Solar generation in 2025 from the Energy Institute's *Statistical Review of World Energy* 2026 — United Kingdom 20.0 TWh, world 2 811.1 TWh, China 1 173.2 TWh, Germany 91.6 TWh — divided by populations of 69.3 million, 8.23 billion, 1.408 billion and 83.6 million respectively, then by 365. These are per head of total population, not per household or per connected customer.
+[^percap6]: Solar generation in 2025 from the Energy Institute's *Statistical Review of World Energy* 2026 — United Kingdom 20.0 TWh, world 2 811.1 TWh, China 1 173.2 TWh, Germany 91.6 TWh — divided by population for the matching year and then by 365. Population is Our World in Data's series year by year rather than a single present-day figure, which matters for the early part of figure 6.22: world population in 2000 was 6.15 billion, not today's 8.2. That series ends in 2023, so 2024 and 2025 are extended at each region's mean growth over the preceding three years, which moves the per-person figures by well under 1%. These are per head of total population, not per household or per connected customer.
 
-[^pvarray]: Figure 6.5 recalculated with PVGIS (European Commission Joint Research Centre), ERA5 radiation database, 35° tilt facing south, 14% system losses, at Cambridge (52.205 N, 0.119 E). A 4.0 kWp system models at 4209 kWh/year, or 11.5 kWh/d, against the 12 kWh/d MacKay measured in 2006 — agreement close enough to use the same model for the modern case. Filling the same 25 m<sup>2</sup> with 22%-efficient modules gives 5.5 kWp and 5787 kWh/year, 15.9 kWh/d, which is 26.4 W per m<sup>2</sup> of panel against MacKay's 20. This is a modelled comparison on a common basis, not a second measurement; the seasonal shape matters more than the annual total, and December remains about a seventh of June in both cases.
+[^pvarray]: Figure 6.5 recalculated with PVGIS (European Commission Joint Research Centre), ERA5 radiation database, 35° tilt facing south, 14% system losses, at Cambridge (52.205 N, 0.119 E). A 4.0 kWp system models at 4209 kWh/year, or 11.5 kWh/d, against the 12 kWh/d MacKay measured in 2006 — agreement close enough to use the same model for the modern case. Filling the same 25 m<sup>2</sup> with 22%-efficient modules gives 5.5 kWp and 5787 kWh/year, 15.9 kWh/d, which is 26.4 W per m<sup>2</sup> of panel against MacKay's 20. This is a modelled comparison on a common basis, not a second measurement; the seasonal shape matters more than the annual total, and December remains under a third of June in both cases.
 
 [^biomassfig]: Figure 6.11 is rebuilt from the figures MacKay cites in endnotes 14 to 16 rather than digitised from the 2008 artwork, so it carries fewer crops than the original: the Royal Commission on Environmental Pollution's 0.2 W/m<sup>2</sup> for British energy crops, Rogner's 0.23 W(e)/m<sup>2</sup> for plantation-to-electricity, Energy for Sustainable Development's 0.57 W/m<sup>2</sup> for short-rotation coppice, Heaton and colleagues' 0.75 W/m<sup>2</sup> for *Miscanthus* in Britain, the Royal Society's 0.8 W/m<sup>2</sup> for *Miscanthus*, the 0.095–0.254 W/m<sup>2</sup> range for net wood yield, and MacKay's own 0.5 W/m<sup>2</sup> summary. Corn to ethanol is shown at the erratum value of 0.048 W/m<sup>2</sup>. The tropical entries in the original figure are not reproduced here.
 

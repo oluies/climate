@@ -10,7 +10,7 @@ NAME = {"AT":"Austria","BE":"Belgium","BG":"Bulgaria","CZ":"Czechia","DK":"Denma
         "FR":"France","HR":"Croatia","IT":"Italy","LV":"Latvia","LT":"Lithuania",
         "LU":"Luxembourg","HU":"Hungary","NL":"Netherlands","PL":"Poland","PT":"Portugal",
         "RO":"Romania","SI":"Slovenia","SK":"Slovakia","FI":"Finland","SE":"Sweden",
-        "UK":"United Kingdom","NO":"Norway","EU27_2020":"EU average","RS":"Serbia",
+        "UK":"United Kingdom","NO":"Norway","RS":"Serbia",
         "TR":"Türkiye","UA":"Ukraine","MD":"Moldova","MK":"North Macedonia",
         "BA":"Bosnia","ME":"Montenegro","GE":"Georgia","AL":"Albania","XK":"Kosovo",
         "IS":"Iceland","LI":"Liechtenstein","MT":"Malta","CY":"Cyprus"}
@@ -30,16 +30,17 @@ for b, v in zip(bars, df.ratio):
             va="center", fontsize=8.5, color="#161d1b")
 
 ax.axvspan(3, 5, color=BAND, alpha=0.16, zorder=0)
-ax.axvline(SPF, color="#161d1b", lw=1.3, zorder=1)
-ax.axvline(MEASURED, color="#161d1b", lw=1.1, ls=(0, (4, 3)), zorder=1)
-ax.annotate("measured UK\naverage, 2.65", xy=(MEASURED, len(df) - 0.2),
-            xytext=(-6, 0), textcoords="offset points", ha="right", va="bottom",
-            fontsize=8.5, color=MUTED)
+# Solid line = the threshold the colouring uses; dashed = the ideal case.
+ax.axvline(MEASURED, color="#161d1b", lw=1.4, zorder=1)
+ax.axvline(SPF, color="#161d1b", lw=1.0, ls=(0, (4, 3)), zorder=1)
 # Top rows are the shortest bars, so the right-hand side is clear up there.
-ax.annotate("a heat pump at SPF 3\nbreaks even here", xy=(SPF, 3.0),
-            xytext=(-6, 0), textcoords="offset points", ha="right",
+# Right of the line, high up where the bars are short and nothing else sits.
+ax.annotate("break-even at the measured SPF of 2.65", xy=(MEASURED, 2.1),
+            xytext=(6, 0), textcoords="offset points", ha="left",
             fontsize=8.5, color="#161d1b")
-ax.annotate("range of modern\nheat pumps (3–5×)", xy=(4, 0.4), ha="center",
+ax.annotate("at SPF 3.0", xy=(SPF, 3.3), xytext=(6, 0), textcoords="offset points",
+            fontsize=8.5, color=MUTED)
+ax.annotate("range of modern\nheat pumps (3–5×)", xy=(4.3, 0.4), ha="center",
             fontsize=8.5, color="#8a6d00")
 
 ax.set_xlabel("household electricity price ÷ household gas price (per kWh, taxes included)", fontsize=10.5)

@@ -7,7 +7,10 @@ OIL, PAST, ATPEAK, MUTED = "#7a5c3e", "#7a5c3e", "#1baf7a", "#8a8a85"
 df = pd.read_csv(sys.argv[1])
 fuel = sys.argv[3] if len(sys.argv) > 3 else "Oil"
 d = df[df.fuel == fuel].sort_values("peak_year")
-col = [ATPEAK if y >= 2024 else PAST for y in d.peak_year]
+# One threshold throughout: a producer counts as past peak if its record year
+# was 2020 or earlier, which is what footnote [^peaks] states.
+PAST_BY = 2020
+col = [PAST if y <= PAST_BY else ATPEAK for y in d.peak_year]
 
 sns.set_theme(style="whitegrid", rc={"grid.color": "#ededea", "axes.edgecolor": "#c9c9c4"})
 fig, ax = plt.subplots(figsize=(8.8, 0.30 * len(d) + 1.9))
@@ -27,9 +30,9 @@ ax.tick_params(axis="y", length=0, labelsize=8.5)
 ax.invert_yaxis()
 h = [plt.Rectangle((0, 0), 1, 1, color=c) for c in (PAST, ATPEAK)]
 # Upper right: the top rows are the deepest declines, so that corner is empty.
-ax.legend(h, ["Past its peak", "At its peak in 2025"], frameon=False,
+ax.legend(h, [f"Peaked in {PAST_BY} or earlier", f"Peaked after {PAST_BY}"], frameon=False,
           fontsize=9, loc="upper right")
-n_past = int((d.peak_year <= 2020).sum())
+n_past = int((d.peak_year <= PAST_BY).sum())
 ax.set_title(f"Peak {fuel.lower()}, country by country (peak year in brackets)",
              loc="left", fontsize=12.5, fontweight="bold", pad=12)
 note_y = -0.055 - 2.2 / len(d)

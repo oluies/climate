@@ -3,7 +3,7 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "without-hot-air/src/chap-value-of-renewables.md"
+      - "without-hot-air/src/**"
       - "book/index.qmd"
       - ".github/workflows/linkcheck.yml"
   workflow_dispatch:
