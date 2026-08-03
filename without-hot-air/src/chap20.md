@@ -293,6 +293,48 @@ World lithium reserves are estimated to be 9.5 million tons in ore deposits ([ch
 
 <span class="figurenumber">Figure 20.29</span>. Airbus A380.
 
+## What became of the hydrogen car
+
+*A section added in the 2026 revision.* This chapter calls hydrogen "a hyped-up bandwagon" and says "I'll be delighted to be proved wrong, but I don't see how hydrogen is going to help us with our energy problems." He was not proved wrong.
+
+**The record.** Honda ended production of the Clarity Fuel Cell in 2021, citing low demand. Shell abandoned its American hydrogen filling stations in 2024, so there are now **fewer places to refuel than five years ago** — about **56 consumer stations in the whole of North America**, almost all on the Californian coast. Toyota sold **147 Mirais in the United States through the third quarter of 2025**, down 54% on the year. Three hydrogen cars remain on sale in America, all of them in one state.[^h2car]
+
+MacKay's arithmetic explains why, and it has not changed: the BMW Hydrogen 7 he cites needed **254 kWh per 100 km**, 220% more than an average European car, and the CUTE fuel-cell buses needed 80 to 200% more energy than the diesel they replaced. A carrier that loses most of the energy put into it does not win a race against one that loses little, and eighteen years of engineering has not closed a gap of that size.
+
+### The ladder, and where hydrogen did go
+
+The useful framework since is Michael Liebreich's **Clean Hydrogen Ladder**, which ranks uses by how likely hydrogen is to beat the alternatives. Fertilizer, hydrogen for refining, methanol and steel sit at the top, because there is no other way to do those things. **Passenger cars sit on the bottom rung**, alongside domestic heating, because a battery does the same job at a fraction of the energy.[^ladder20]
+
+The instructive part is that this book already contains both ends of that ladder. Chapter 13's **2 kWh/d per person of fertilizer energy** is hydrogen — made from natural gas by the Haber–Bosch process, and the single largest existing use of hydrogen in the world. Chapter 28a discusses the same ladder from the electricity side.
+
+So hydrogen did not fail. **It went where the physics sent it**, which is into the chemical industry, and stayed out of the place the hype put it, which was the car. MacKay guessed that in 2008 with a sentence and a fuel-consumption figure.
+
+## Trains that are not full
+
+Figure 20.6 in this chapter shows an almost empty carriage — "three men and a cello" — under a caption noting that some trains aren't full. It is a small joke carrying a large point, and a Swedish argument makes it explicit.
+
+Writing in 2024, the blog *Cornucopia?* argued that nineteenth-century railway technology cannot work economically in a country as sparsely populated as Sweden. Its points are worth setting out because they are quantitative. A railway must be maintained along its **entire route** — some 500 km between Gothenburg and Stockholm — while an aeroplane needs only a few kilometres of asphalt at each end, and maintenance wages scale roughly linearly with track length. On the same distance as Gothenburg to Stockholm, it notes, continental Europe fits **Paris, Reims, Brussels, Rotterdam and Amsterdam**. And **99% of Swedes are not within walking distance of a station at both ends** of a journey, which is what makes door-to-door road transport competitive.[^swerail]
+
+### But this is not an energy argument
+
+It is worth being precise about what that case does and does not establish, because this chapter is about joules.
+
+MacKay's transport figures are explicitly for vehicles **"on best behaviour"** — his high-speed electric train at 3 kWh per 100 seat-km assumes every seat sold. Relax that:
+
+| Occupancy | kWh/100 p-km | Against a single-occupant car |
+|---|---|---|
+| 100% | 3.0 | 27× better |
+| 50% | 6.0 | 13× better |
+| 30% | 10.0 | 8× better |
+| 20% | 15.0 | 5× better |
+| 10% | 30.0 | 3× better |
+
+**A train has to be nearly empty before it stops beating a car**, and a rural Swedish service running at a fifth of capacity is still five times better per passenger-kilometre than driving alone. The energy case for rail survives poor occupancy with a wide margin.
+
+What does not survive is the *cost* case, and that is what the Swedish argument is really about: staff, track and signalling for 500 km, paid for by whoever is on board. **The objection is economic and geographic, not thermodynamic.**
+
+There is one genuine energy point buried in it, though, and this chapter does not count it. MacKay's transport figures are the energy of *motion*. They exclude the energy embodied in building and maintaining the infrastructure — the 500 km of track against the aeroplane's few kilometres of asphalt. For a busy corridor that overhead disappears into the passenger numbers. For a line carrying a few trains a day it may not, and nothing in this chapter's arithmetic would reveal it. That is the same boundary problem chapter M is about: **what you include decides what you conclude**, and a comparison of vehicles is not a comparison of transport systems.
+
 ## The future of <span id="flying">flying</span>?
 
 The superjumbo A380 is said by Airbus to be "a highly fuel-efficient aircraft." In fact, it burns just 12% less fuel per passenger than a 747.
@@ -508,3 +550,9 @@ Merrick Godhaven
 [^23]: *Two Dutch-built liners known as "The Economy Twins*." [<span class="websitetitle">www.ssmaritime.com/rijndam-maasdam.htm</span>](http://www.ssmaritime.com/rijndam-maasdam.htm). *QE2*: [<span class="websitetitle">www.qe2.org.uk</span>](http://www.qe2.org.uk/).
 
 [^24]: *Transrapid magnetic levitation train*. [<span class="websitetitle">www.transrapid.de</span>](http://www.transrapid.de).
+
+[^h2car]: Honda ended Clarity Fuel Cell production in 2021 citing low demand; Shell withdrew from American hydrogen retail in 2024; roughly 56 consumer hydrogen filling stations remain in North America, concentrated on the Californian coast with a few in British Columbia, Hawaii and eastern Canada; Toyota sold 147 Mirais in the United States through the third quarter of 2025, a fall of 54%. Three fuel-cell passenger cars remain on sale in the United States — Toyota Mirai, Hyundai Nexo and Honda CR-V e:FCEV — all only in California. Note that this is a statement about *passenger cars in developed markets*, not about hydrogen generally: fuel-cell buses and trucks continue in service, China and South Korea maintain much larger fuel-cell vehicle programmes than Europe or the United States, and the picture there is different.
+
+[^ladder20]: Michael Liebreich, "Clean Hydrogen Ladder Version 5.0", 2023: <https://liebreich.com/hydrogen-ladder-version-5-0/>. The ladder ranks candidate uses from A, where hydrogen is unavoidable, to G, where it is uncompetitive; fertilizer, hydrogenation, methanol and steel sit near the top, passenger cars and domestic heating at the bottom. It is one analyst's framework rather than a consensus document, and its rankings are contested at the margins — particularly for shipping, aviation and long-haul trucking, which sit in the disputed middle. Chapter 28a cites the same source from the electricity side.
+
+[^swerail]: "Järnväg kan aldrig mer fungera i glesbebodda Sverige", *Cornucopia?*, July 2024: <https://cornucopia.se/2024/07/jarnvag-kan-aldrig-mer-fungera-i-glesbebodda-sverige/>. As with the other citations to this blog in chapters L, N and here, it is an essay arguing a position rather than a study, and its conclusion — that long-distance passenger rail outside Sweden's three largest metropolitan areas should be abandoned — goes well beyond what this section takes from it. What is used here is the geographic and cost reasoning, which is sound and quantitative, and the observation about station access. The occupancy table is computed from MacKay's own figure of 3 kWh per 100 seat-km for a full electric high-speed train and his statement that this is 27 times better than the car, implying about 81 kWh per 100 passenger-km for single-occupancy driving.
