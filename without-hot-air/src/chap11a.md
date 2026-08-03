@@ -40,13 +40,36 @@ Three costs sit outside the electricity meter, and all three are the sort MacKay
 
 **The rebound that did not happen.** Chapter 9 concludes that Britain kept its lighting efficiency gain because demand for light saturated. Computation has not saturated and shows no sign of it. Every efficiency improvement in computing since 1950 has been met by doing more computing, which is Jevons in its purest available form, and the AI build-out is the largest instance yet.
 
+## Why the data centre wins the electron
+
+The section above says a data centre "can pay more per kilowatt-hour than a smelter". The elmix model puts a number on that, and the number is the whole explanation.
+
+**An electron does not know what it is for, but the buyers do.** A power-intensive industry — an aluminium smelter, an ammonia plant, a silicon works — turns a kilowatt-hour into a few kronor of product. Electricity is a large share of its cost, which is why chapter 28a's industrial price is existential for it. A hyperscale data centre running AI workloads turns the same kilowatt-hour into something on the order of **80 to 100 kronor** of revenue. One reported arrangement, Anthropic renting about 300 MW of xAI compute for roughly $1.25 billion a month, works out near **53 SEK/kWh**.[^demandfork]
+
+That is roughly **an order of magnitude** above what heavy industry earns from the same electricity. In any auction for the same connection, at any plausible price, the data centre wins — not because it is favoured but because electricity is a rounding error in its cost structure and the dominant term in the smelter's.
+
+The consequence is visible where the market prices capacity explicitly rather than only energy. In the American PJM market, data-centre demand drove capacity auction prices up roughly **tenfold**, and accounted for **63% of the 2025/26 increase**.
+
+### The fork
+
+The elmix model calls the result a **demand fork**, and the two arms are very different lengths.
+
+- **Data centres** in the EU: about **70 TWh in 2024 rising to 115 TWh by 2030**, growing near 15% a year — more than four times faster than all other sectors combined, though still under a tenth of global demand growth.
+- **Electrified industrial heat**: a technical potential of about **600 TWh** in the EU — nearly nine times larger, and the thing this book has been arguing for since chapter 7.
+
+Both arms want the same scarce grid capacity and the same clean generation. One of them can pay eighty kronor a kilowatt-hour and be built in eighteen months. The other cannot and takes a decade.
+
+**That is the awkward finding, and it is not a technical one.** Every chapter of this book that argues for electrification — heat pumps in chapter 7, industrial heat in chapter 28a, transport in chapter 3 — is arguing for loads that lose a bidding war against computation. Nothing in the physics decides this. The connection queue does.
+
+Sweden shows it at national scale: connection applications in 2025 totalled about **9000 MW, roughly half of it data centres**, concentrated in Mälardalen, Stockholm, Uppsala and Gävleborg — and Microsoft's Sandviken project was paused in the resulting crunch. A country that spent a decade arguing about whether it had enough electricity for its industry now finds the question settled by a different bidder.[^dcsweden]
+
 ## What it means for the balance sheet
 
 MacKay's summary figure for chapter 11 is 5 kWh/d for a houseful of gadgets. Data centres are not in that number in any meaningful way — his 0.4 kWh/d for America was a footnote.
 
 On today's American figures they would add about **1.4 kWh/d per person**, and on the 2028 projection something between 2 and 4. That is not enormous beside heating's 37 or driving's 40. **But it is new demand, arriving fast, in the one form the system finds hardest to accommodate: electricity, constant, and inflexible.**
 
-And it changes an argument the book makes elsewhere. Chapters 6, 10 and 28a are about a system where the difficulty is that supply fluctuates and demand does not follow. A data centre is demand that could follow — computation can in principle be moved in time and space more easily than heat or transport can — but is currently built to run flat out because the capital cost of the hardware dwarfs the electricity. If that ever changes, the largest new load on the grid becomes the largest new source of flexibility. Nothing in the physics forbids it. The economics, so far, point the other way.
+And it changes an argument the book makes elsewhere, in the way the previous section describes. Chapters 6, 10 and 28a are about a system where the difficulty is that supply fluctuates and demand does not follow. A data centre is demand that could follow — computation can in principle be moved in time and space more easily than heat or transport can — but is currently built to run flat out because the capital cost of the hardware dwarfs the electricity. If that ever changes, the largest new load on the grid becomes the largest new source of flexibility. Nothing in the physics forbids it. The economics, so far, point the other way.
 
 ## Notes and further reading
 
@@ -55,3 +78,7 @@ And it changes an argument the book makes elsewhere. Chapters 6, 10 and 28a are 
 [^dcgrowth]: Growth rates and the 2028 range are from the Berkeley Lab report: about 7% a year 2014–2018, about 18% a year 2018–2023, and 13–27% a year projected 2023–2028, giving 325–580 TWh or 6.7–12% of US electricity. The global 2030 projection of about 950 TWh, roughly 3% of world electricity, and the AI shares — 24% of server electricity and 15% of data-centre energy in 2024, rising to 35–50% of data-centre power by 2030 — are the IEA's. All of these are projections made during a capital-investment boom, and projections made during booms have a poor record; the 2028 range spanning nearly a factor of two is the honest reflection of that. The claim that efficiency absorbed growth until about 2018 is the standard reading of the Berkeley Lab series and of Masanet et al. (2020), which found global data-centre energy roughly flat from 2010 to 2018 despite a sixfold rise in compute.
 
 [^dcwater]: Water usage effectiveness figures: an industry average near 1.8 litres per kWh, against Amazon Web Services' reported global fleet average of 0.19 L/kWh. Virginia consumption of over 2.1 billion US gallons in 2023, with Loudoun County near 900 million, is from state and county reporting compiled by the Center for Secure Water at the University of Illinois and others. Two cautions. WUE varies by more than an order of magnitude with cooling design and climate, so a single global multiplication is indicative only — the 750 million cubic metre figure in the text should be read as an order of magnitude, not an estimate. And water *withdrawn* is not water *consumed*: evaporative cooling consumes most of what it takes, while some designs return most of it, and public reporting rarely distinguishes the two.
+
+[^demandfork]: The price channel and the demand fork are set out with sources in the elmix cannibalization model, section 2 of <https://oluies.github.io/elmix/modell/referenser.html>. The argument that data centres outbid industry because electricity is a small share of their cost is Pär Holmberg's; the revenue-per-kilowatt-hour comparison, roughly 80–100 SEK/kWh for hyperscale AI against a few SEK/kWh for power-intensive industry, is Jonas Kristiansen Nøland's. The Anthropic–xAI figure of about 53 SEK/kWh is derived from a reported commercial arrangement — roughly 300 MW for about $1.25 billion a month — and should be treated as an order-of-magnitude indication from a single reported deal rather than an industry rate. PJM capacity auction figures, a roughly tenfold rise with data centres accounting for 63% of the 2025/26 increase, are from the same section. The EU demand figures — data centres about 70 TWh in 2024 rising to about 115 TWh by 2030 at roughly 15% a year, against a technical potential near 600 TWh for electrified industrial heat — are likewise sourced there.
+
+[^dcsweden]: Swedish connection-application figures are from *Dagens Infrastruktur*, 17 June 2026, as compiled in section 8 of the elmix references: about 9000 MW applied for in 2025, roughly half of it data centres, concentrated in Mälardalen, Stockholm, Uppsala and Gävleborg, with Microsoft's Sandviken project paused. Applications are not commitments — a large share of any connection queue never gets built, and queues are known to contain speculative and duplicate requests — so the figure indicates pressure on the queue rather than load that will certainly arrive.
