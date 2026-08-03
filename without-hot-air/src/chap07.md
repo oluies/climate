@@ -307,6 +307,28 @@ The limits are real and worth stating. An air-to-air unit makes **no hot water**
 
 There is a by-product that MacKay could reasonably dismiss and his successors cannot. The same unit cools in summer. This chapter concludes that Britain has "little need for air-conditioning", and figure 7.8 says that is still nearly true — but an air-to-air installation delivers cooling whether or not it is wanted, at no extra capital cost, which quietly changes the calculation for the warm weeks the chapter treats as negligible.
 
+### Ground, water, and the season
+
+The chapter so far has dealt with heat pumps that draw from the air. Two other sources matter, and one of them answers a problem this book raises elsewhere.
+
+**Ground source.** A borehole or buried loop gives the pump a source at a steady 10°C or so rather than an outdoor air temperature that collapses exactly when heat is most wanted, which is why ground-source units achieved the best measured seasonal performance in British trials — **2.81 against air-source's 2.65**. The price is the ground works, which is most of the capital cost and the reason they remain a minority. Chapter 16 explains why the common name for these, "geothermal heat pumps", is a misnomer: the heat is stored sunshine, not the Earth's, by a factor of several hundred.
+
+**Water source.** Where a lake, river or sea is available it is better still, because water carries heat laterally to the collector instead of waiting to be conducted through soil.
+
+**What it replaces decides the economics, not what it draws from.** A Swedish study of the Saltsjöbaden Grand Hotel, which heats with two lake-source heat pumps and two oil boilers, costed replacing one of the oil boilers with a third heat pump: a saving of about **200 MWh a year** for an investment near 500 000 kronor, paying back in **about two and a half years**. It was the largest single measure in the study, ahead of relighting, ventilation rebalancing and window replacement, and the whole package came to roughly 500 MWh a year, a 30% cut.[^saltsjo]
+
+Two and a half years against a British heat pump that costs **36% more to run than the gas boiler it replaces**. The machine is the same. The difference is entirely in what sits on the other side of the comparison — oil at Saltsjöbaden, direct electric resistance in the Nordic air-to-air market, and cheap gas in Britain. **A heat pump is not economic or uneconomic in itself; it is economic against some fuels and not others.**
+
+### Arlanda, where the season itself is stored
+
+The deeper problem with heating is not efficiency but timing: the demand arrives in January and the surplus in July, and chapter 26 is about the difficulty of moving energy between the two.
+
+Stockholm Arlanda Airport does exactly that, using an aquifer. Since the summer of **2009** it has run what it describes as the world's largest aquifer thermal store, in the Brunkebergsåsen ridge, divided into warm and cold sections. In summer, cold groundwater is drawn from the cold store to supply the airport's cooling; the water comes back at around **20°C** and is returned to the warm store. In winter that stored warmth is used for melting snow on the aprons and preheating ventilation air, and the cooled water goes back to the cold side, ready for the following summer. No groundwater is consumed — the same volume is returned.
+
+The system saves about **19 GWh a year**, which Swedavia puts at the consumption of 2000 single-family homes, at an airport whose total energy use is comparable to a town of 25 000 people.[^arlanda]
+
+What makes it worth a section in this chapter is not the size. It is that Arlanda is storing *the seasons themselves*, at a scale and cost that work, in ordinary ground. Chapter 26 treats seasonal storage as the hardest unsolved problem in a renewable system, and chapter 28a shows that the value of any storage lies in the spread it can arbitrage. An aquifer store arbitrages the largest spread available anywhere in northern Europe: summer against winter. It cannot be sited everywhere, since it needs the right geology and a matched demand for both heat and cooling. But where those coincide, the answer to "what do you do with July's surplus heat in January" turns out to be: leave it in the ground and come back for it.
+
 ### The standards moved faster than the stock
 
 Two changes in the rules are worth recording, and one caveat matters more than either.
@@ -346,3 +368,7 @@ The caveat is the one MacKay would have insisted on. **Both of these govern new 
 [^leed]: LEED v5, US Green Building Council, opened for registration 28 April 2025: roughly half of available points allocated to decarbonisation, with mandatory carbon, climate-resilience and human-impact assessments and a five-year update cycle. LEED is a voluntary certification scheme rather than a building code, and certification measures design intent and modelled performance, which is not the same as metered energy in use.
 
 [^camtemp]: Daily temperatures for 52.205 N, 0.119 E from the Open-Meteo archive, which serves the ERA5 reanalysis. Reanalysis is not a station record: it is a model reconstruction on a grid, so individual days will differ from what a Cambridge thermometer read. It is used here because it gives the same treatment to both years, which is what a comparison needs, where the Cambridge NIAB station record is monthly. Heating degree days are computed against a 15.5°C base, the convention in UK energy statistics, as the sum over the year of (15.5 − daily mean) where positive. Two years are two years and prove nothing about climate; the point of the figure is the shape of the demand, not a trend.
+
+[^saltsjo]: Tobias Alm, *Energieffektivisering av Saltsjöbaden Grand Hotell*, examensarbete 30 hp, Uppsala universitet, 2017: <https://www.diva-portal.org/smash/get/diva2:1140546/FULLTEXT01.pdf>. The hotel is heated by two lake-source heat pumps and two oil boilers; replacing one boiler with a third heat pump is costed at about 200 MWh/year saved for roughly 500 000 SEK, a payback near 2.5 years at an assumed electricity price of 1 SEK/kWh, with the full package of measures reaching about 500 MWh/year or a 30% reduction. This is a master's thesis and a single building, not a controlled study, and the payback depends on the assumed electricity price and on oil being the incumbent; it is quoted as a worked example of the point being made rather than as a general result.
+
+[^arlanda]: Swedavia's description of the Arlanda aquifer thermal energy store: operating since summer 2009 in the Brunkebergsåsen ridge, described as the world's largest of its kind, divided into warm and cold sections, saving about 19 GWh a year — which Swedavia equates to the consumption of 2000 single-family homes — at an airport using energy comparable to a town of 25 000. Return water is around 20°C and is used for snow melting and ventilation preheating; the groundwater volume is returned rather than consumed. Figures are the operator's own and the 19 GWh is a saving against a counterfactual system rather than a metered output, so it is not directly comparable with a generation figure. Aquifer stores require permitting for groundwater use and suitable hydrogeology, and are not a technology that can be sited at will.
