@@ -34,6 +34,44 @@ What should we estimate is the plausible practical limit? Let’s guess 20% of t
 
 The actual power from hydroelectricity in the UK today is 0.2 kWh/d per person, [^3] so this 1.5 kWh/d per person would require a seven-fold increase in hydroelectric power.
 
+## What hydro actually delivers
+
+*A section added in the 2026 revision.* This is one of the few chapters whose headline number has not moved at all.
+
+### Britain's figure is where MacKay left it
+
+He put British hydroelectricity at **0.2 kWh/d per person** and said reaching his 1.5 kWh/d ceiling would need a sevenfold increase. In 2025 the United Kingdom generated **5.1 TWh** of hydroelectricity, which across 68.4 million people is **0.20 kWh/d per person**.[^ukhydro]
+
+Generation itself rose about a third — his 2006 figures come to 3.7 TWh — but the population grew with it, and Glendoe, which he describes as forthcoming, was built and is running. Eighteen years, one new large scheme, and the number per person is unchanged. The sevenfold increase is exactly as far away as it was.
+
+### What the resource looks like where it exists
+
+MacKay's method makes the geography visible in a way that national percentages do not. In 2025:
+
+| | Hydroelectricity, kWh/d per person |
+|---|---|
+| United Kingdom | **0.20** |
+| Sweden | **17.7** |
+| Norway | **72.0** |
+
+Norway gets **360 times** as much hydroelectricity per person as Britain. That is not policy, effort or virtue. It is rain falling on mountains, which is the quantity this chapter measures, and no amount of ambition will move Britain's number more than the sevenfold MacKay allows for.
+
+### Sweden: the gains come from efficiency now, because the dams are finished
+
+Sweden runs about **1700 hydro plants** totalling **16.5 GW**, producing roughly **67 TWh** a year — 68.3 TWh in 2025. It builds no new large-scale hydro at all. Four rivers are legally protected from development, and the practical position is that the resource is fully taken.
+
+So the only route left is the existing fleet, and a good deal of it is old: many plants are more than forty years old and were permitted long before modern environmental law. A study for the industry by Sweco reckons that refurbishing turbines and generators across the fleet could raise **capacity by about 24%, which it likens to three or four nuclear reactors**.[^swehydro]
+
+**That comparison needs care, and the care is this chapter's whole method.** Twenty-four per cent more *capacity* is not twenty-four per cent more *energy*. The rain is unchanged and so is the annual total; what the upgrade buys is the ability to deliver the same water faster when it is wanted. In a system running on wind and solar that is worth a great deal — it is precisely the flexibility chapter 26 and chapter 28a identify as the binding constraint — but it is a different good from the kilowatt-hours this chapter counts, and quoting it in reactor-equivalents invites the confusion MacKay wrote the book to prevent.
+
+### And it is being given back at the other end
+
+Running in the opposite direction is a national relicensing programme. In June 2020 the Swedish government decided that every one of those 1700 plants would be reassessed for modern environmental conditions, a process due to finish around 2040. The plan set **1.5 TWh, about 2.3% of national hydro production**, as the figure for acceptable lost output — intended in the original decision as a ceiling, and since treated as a reference value rather than a limit, which the industry disputes. Eight of the operators fund a joint environmental fund covering the studies, the permit costs, the compensation for lost production and the cost of removing dams outright.[^swehydro]
+
+The two movements are not the same size, and the difference is instructive. The upgrades add capacity and roughly no energy; the relicensing removes energy and roughly no capacity. Sweden is, deliberately, trading a small amount of annual electricity for river ecology while buying flexibility it will need for the wind.
+
+That is a limit MacKay's arithmetic cannot see. This chapter derives a ceiling from rainfall and altitude, which is real and binding. Sweden has reached it, and discovered a second one underneath: what a society will actually permit its rivers to be used for. A country can hit the physical limit and then watch it move down.
+
 ## Notes and further reading
 
 [^1]: *Rainfall* statistics are from the BBC weather centre.
@@ -41,3 +79,7 @@ The actual power from hydroelectricity in the UK today is 0.2 kWh/d per person, 
 [^2]: *The raw power per unit area [of Highland rain] is roughly 0.24 W/m<sup>2</sup>*. We can check this estimate against the actual power density of the Loch Sloy hydro-electric scheme, completed in 1950 (Ross, 2008). The catchment area of Loch Sloy is about 83 km<sup>2</sup>; the rainfall there is about 2900 mm per year (a bit higher than the 2278 mm/y of Kinlochewe); and the electricity output in 2006 was 142 GWh per year, which corresponds to a power density of 0.2W per m<sup>2</sup> of catchment area. Loch Sloy’s surface area is about 1.5 km<sup>2</sup>, so the hydroelectric facility itself has a power per unit lake area of 11 W/m<sup>2</sup>. So the hillsides, aqueducts, and tunnels bringing water to Loch Sloy act like a 55-fold power concentrator.
 
 [^3]: *The actual power from hydroelectricity in the UK today is 0.2 kWh per day per person*. Source: MacLeay et al. (2007). In 2006, large-scale hydro produced 3515 GWh (from plant with a capacity of 1.37 GW); small-scale hydro, 212 GWh (0.01 kWh/d/p) (from a capacity of 153 MW). In 1943, when the growth of hydroelectricity was in full swing, the North of Scotland Hydroelectricity Board’s engineers estimated that the Highlands of Scotland could produce 6.3 TWh per year in 102 facilities – that would correspond to 0.3 kWh/d per person in the UK (Ross, 2008). Glendoe, the first new large-scale hydroelectric project in the UK since 1957, will add capacity of 100 MW and is expected to deliver 180 GWh per year. Glendoe’s catchment area is 75 km<sup>2</sup>, so its power density works out to 0.27 W per m<sup>2</sup> of catchment area. Glendoe has been billed as "big enough to power Glasgow." But if we share its 180 GWh per year across the population of Glasgow (616 000 people), we get only 0.8 kWh/d per person. That is just 5% of the average electricity consumption of 17 kWh/d per person. The 20fold exaggeration is achieved by focusing on Glendoe’s peak output rather than its average, which is 5 times smaller; and by discussing "homes" rather than the total electrical power of Glasgow (see p329).
+
+[^ukhydro]: Generation from the Energy Institute's *Statistical Review of World Energy* 2026: United Kingdom 5.1 TWh, Sweden 68.3 TWh, Norway 145.1 TWh in 2025. Per-person figures use 2023 populations from Our World in Data — 68.4 million, 10.6 million and 5.5 million — so they are marginally high for 2025 in each case, by well under the precision quoted. MacKay's own 2006 figures, 3515 GWh large-scale plus 212 GWh small-scale, come to 3.7 TWh, which over the 60 million population he uses is 0.17 kWh/d; he quotes 0.2. Note that the Statistical Review's hydro series excludes pumped storage where it can be separated, since that is a store rather than a source.
+
+[^swehydro]: Swedish figures from the Energy Agency (Energimyndigheten) and Svenska kraftnät: about 1700 hydro plants, roughly 16.5 GW installed and about 67 TWh a year, with no new large-scale development and the emphasis on environmental adaptation, efficiency and expansion of existing sites. The 24% capacity-uprating potential is from a study by the consultancy Sweco commissioned within the industry, and is a capacity figure, not an energy one; the "three to four nuclear reactors" comparison is likewise capacity, and reactors and hydro turbines have very different capacity factors, so the equivalence holds only for peak output. The national plan for modern environmental conditions was decided on 25 June 2020, with reassessment of the whole fleet due to complete around 2040 and a national figure of 1.5 TWh — about 2.3% of production — for acceptable production loss; whether that is a ceiling or a reference value is contested between the government's 2020 decision and later practice, and the process was restarted under new rules in 2025. The environmental fund is financed by eight operators including Vattenfall and Uniper.
