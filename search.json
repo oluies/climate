@@ -1294,11 +1294,33 @@
     ]
   },
   {
+    "objectID": "chapters/chap19.html#cartoon-britain-eighteen-years-on",
+    "href": "chapters/chap19.html#cartoon-britain-eighteen-years-on",
+    "title": "19 Every BIG helps",
+    "section": "Cartoon Britain, eighteen years on",
+    "text": "Cartoon Britain, eighteen years on\nA section added in the 2026 revision. MacKay’s cartoon has three legs — heating at 40 kWh/d per person, transport at 40, and electricity at 18 kWh(e)/d requiring 45 kWh/d of fossil fuel to make it. All three can be recomputed.\n\n\n\nCartoon Britain in 2008 and 2026: heating 40 to 17, transport 40 to 30, electricity 18 to 11 kWh per day per person, with the fossil fuel burnt to make that electricity falling from 45 to 7.\n\n\nFigure 19.4. Cartoon Britain, 2008 and 2026. Added in the 2026 revision. Heating is British gas consumption less the gas burnt in power stations; transport is all British oil; electricity is generation as delivered, with the dashed outline showing the fossil fuel burnt to produce it.1\n\n\n\nkWh/d per person\n2008 cartoon\n2026\n\n\n\n\nHeating\n40\n17\n\n\nTransport\n40\n30\n\n\nElectricity delivered\n18\n11\n\n\nFossil fuel burnt for that electricity\n45\n7\n\n\n\n\nBritain did the third thing first\nThe “sneak preview” at the end of this chapter sets out Part II’s plan in order. First, electrify transport. Second, electrify heating with heat pumps. Third, get the resulting green electricity from renewables, clean coal, nuclear and other countries’ deserts.\nBritain has done the third and not the first two.\nThe electricity leg has very nearly decarbonised. Coal has gone entirely, wind supplies 86 TWh, and making Britain’s electricity now takes about 7 kWh/d per person of fossil fuel against the cartoon’s 45 — a sixfold reduction, and by far the largest structural change in the eighteen years. That is Part II’s third step, delivered.\nTransport is still burning 30 kWh/d per person of oil, down from 40 mostly because vehicles got more efficient rather than because they got electric. Heating is still burning 17 kWh/d of gas, and chapter 7 explains why the heat pump has not displaced it: not the physics, which is settled, but a price ratio that makes the efficient machine the expensive one.\nSo the plan was executed backwards, and the reason is instructive. The step Britain completed is the one that could be done by a few hundred large decisions — closing power stations, awarding offshore wind contracts, connecting them. The two it has not started in earnest require twenty-eight million households and forty million vehicles each to make a decision, against prices that in one case point the wrong way.\nThat is chapter 18’s finding arriving in the planning chapter: what got done was what could be done centrally.\n\n\nAnd the charger argument won\nOne small vindication deserves recording. This chapter’s demolition of “every little helps” — the mobile phone charger that uses a quarter of one per cent of a home’s electricity — was correct, and the years since made it more so. Ecodesign rules cut standby power to a fraction of a watt, so the charger that MacKay estimated at 1 W now draws perhaps a twentieth of that, and the argument about it has disappeared.\nMeanwhile the things that actually moved the number were exactly the big ones he pointed at: the fuel burnt in power stations, the efficiency of the lamp, the machine in the boiler cupboard. Nobody’s charger saved anything, and nobody needed it to.",
+    "crumbs": [
+      "Part II · Making a difference",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>19 Every BIG helps</span>"
+    ]
+  },
+  {
     "objectID": "chapters/chap19.html#for-the-impatient-reader",
     "href": "chapters/chap19.html#for-the-impatient-reader",
     "title": "19 Every BIG helps",
     "section": "For the impatient reader",
     "text": "For the impatient reader\nAre you eager to know the end of the story right away? Here is a quick summary, a sneak preview of Part II.\nFirst, we electrify transport. Electrification both gets transport off fossil fuels, and makes transport more energy-efficient. (Of course, electrification increases our demand for green electricity.)\nSecond, to supplement solar-thermal heating, we electrify most heating of air and water in buildings using heat pumps, which are four times more efficient than ordinary electrical heaters. This electrification of heating further increases the amount of green electricity required.\nThird, we get all the green electricity from a mix of four sources: from our own renewables; perhaps from “clean coal;” perhaps from nuclear; and finally, and with great politeness, from other countries’ renewables.\nAmong other countries’ renewables, solar power in deserts is the most plentiful option. As long as we can build peaceful international collaborations, solar power in other people’s deserts certainly has the technical potential to provide us, them, and everyone with 125 kWh per day per person.\nQuestions? Read on.",
+    "crumbs": [
+      "Part II · Making a difference",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>19 Every BIG helps</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chap19.html#footnotes",
+    "href": "chapters/chap19.html#footnotes",
+    "title": "19 Every BIG helps",
+    "section": "",
+    "text": "The 2026 column is computed by the cartoonBritain step in this edition’s data-refresh script from the Energy Institute’s Statistical Review of World Energy 2026 and the UK generation mix, divided by 68.4 million. Heating is total British gas consumption (2.20 EJ, 24.5 kWh/d) less the gas burnt in power stations (91 TWh of electricity at an assumed 50% CCGT efficiency, 7.3 kWh/d), giving 17.2. Transport is all British oil consumption (2.71 EJ, 30.2 kWh/d). Electricity is total generation of 279 TWh, 11.2 kWh(e)/d. Like MacKay’s original, this is a cartoon and the boundaries are rough: some gas is used by industry rather than for heating, some oil is used as feedstock rather than for transport, and the fossil input to electricity ignores biomass entirely. The comparison is intended to show the change in shape, not to serve as an energy balance.↩︎",
     "crumbs": [
       "Part II · Making a difference",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>19 Every BIG helps</span>"
