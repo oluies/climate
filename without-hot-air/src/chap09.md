@@ -66,6 +66,51 @@ This myth is addressed in Chapter 11.
 
 <span class="figurenumber">Table 9.5</span>. Lighting efficiencies of commercially-available bulbs. In the future, white LEDs are expected to deliver 150 lumens per watt.
 
+## The prediction that came true
+
+*A section added in the 2026 revision.* This chapter ends with a forecast, and it is one of the few in the book that can now simply be marked correct:
+
+> *I expect that within another couple of years, the best advice, from the point of view of both energy efficiency and avoiding mercury pollution, will be to use LED bulbs.*
+
+It happened, faster and more completely than the chapter's cautious tone suggests. MacKay's own LED sample managed **35 lumens per watt** and he judged that "the LED industry still has a little catching up to do". Table 9.5 records the expectation that white LEDs would eventually reach 150 lm/W.
+
+### What happened to table 9.5
+
+| Bulb type | MacKay, 2008 | 2026 |
+|---|---|---|
+| incandescent | 10 lm/W | withdrawn from sale |
+| halogen | 16–24 lm/W | withdrawn from sale |
+| white LED | **35 lm/W** | **180–210 lm/W** in the best commercial lamps |
+| compact fluorescent | 55 lm/W | withdrawn from sale |
+| large fluorescent | 94 lm/W | being withdrawn |
+| sodium street light | 150 lm/W | superseded by LED |
+
+Every technology in his table except the LED has now been legislated off the market, and the one he thought was behind overtook all of them. LED efficacy has improved by roughly **6 to 8 lumens per watt every year since 2010**; the best commercial lamps now test above **200 lm/W**, converting more than half their input power into light rather than heat.[^led]
+
+That is six times MacKay's LED sample, nearly four times his compact fluorescent, and **twenty times the incandescent bulb** the chapter is written against. His 150 lm/W projection was not optimistic; it was passed.
+
+### What it did to this chapter's number
+
+MacKay estimated 4 kWh/d per person for lighting: 2.7 at home and 1.3 at work, from a household using **5.5 kWh/d** on lighting alone.
+
+Put that beside the household of today. Average British domestic electricity consumption has fallen from **4630 kWh a year in 2008 to 3264 in 2023** — about 29% — which is **8.9 kWh/d per household for everything**: lighting, cooking, refrigeration, washing, televisions, computers and chargers together.[^ecuk9]
+
+**MacKay's lighting estimate alone, 5.5 kWh/d, is nearly two-thirds of what a British household now uses in total.** The change per fitting is a reduction of 80 to 90%, so on unchanged habits this chapter's 4 kWh/d per person would now be something under 1.
+
+### Two cautions
+
+**The number can no longer be checked properly.** The government's *Energy Consumption in the UK* series **discontinued its Electrical Products tables in the 2025 edition**, following concerns about the models underlying the appliance-level estimates. There is no longer an official British breakdown of household electricity by end use, so the figure that replaces MacKay's 4 kWh/d has to be inferred rather than looked up. This edition has run into the same wall in chapter 8 over reservoir storage: the arithmetic in this book depends on statistics that are, in places, being withdrawn.
+
+**And cheap light invites more light.** Every previous improvement in lighting efficiency across four centuries was met by people buying more illumination, not banking the saving. Some of the 80 to 90% per fitting has certainly gone back into more fittings, longer hours, and lighting of things that were previously left dark. The saving is real but it is not the full factor of twenty.
+
+### Why this one worked
+
+It is worth asking why lighting was solved so completely when heating, in chapter 7, was not. The answer is not that the physics was easier — a heat pump beats a boiler by a wider margin than an LED beats an incandescent in primary-energy terms.
+
+It is that a light bulb is a **drop-in replacement**. It costs a few pounds, screws into the fitting that is already there, needs no installer, no survey, no wet system, no cylinder, no planning, and no favourable ratio between two fuel prices. Nothing about the building has to change. Chapter 7's machine has to overcome all of those at once.
+
+The lesson is not about lamps. It is that the energy transitions that actually complete are the ones that fit into the socket that is already in the wall.
+
 ## Notes and further reading
 
 page no.
@@ -77,3 +122,7 @@ page no.
 [^3]: *There are fewer signs and illuminated bollards than street-lights*. [[<span class="websitetitle">www.highwayelectrical.org.uk</span>](http://www.highwayelectrical.org.uk/)]. There are 7.7 million lighting units (street lighting, illuminated signs and bollards) in the UK. Of these, roughly 7 million are street-lights and 1 million are illuminated road signs. There are 210 000 traffic signals. According to DUKES 2005, the total power for public lighting is 2095 GWh/y, which is 0.1 kWh/d per person.
 
 [^4]: *55%-efficient generator* – source: [<span class="websitetitle">en.wikipedia.org/wiki/Alternator</span>](http://en.wikipedia.org/wiki/Alternator). Generators in power stations are much more efficient at converting mechanical work to electricity.
+
+[^led]: Best commercial LED lamps tested above 200 lumens per watt, with 2025-model lamps commonly at 180 lm/W and the best measured at 210; the long-run improvement is about 6–8 lm/W per year since 2010, with fleet-average efficacy around 107 lm/W in 2020. Figures are for the lamp, not the luminaire, and manufacturers quote under laboratory conditions at rated drive current and 25°C; a lamp in a warm enclosed fitting will do worse. Note also that efficacy is traded against colour rendering, so the highest-efficacy products are not always the ones people want in a living room. The withdrawal dates differ by jurisdiction and product class — incandescent, then mains-voltage halogen, then compact fluorescent and now linear fluorescent tubes have been progressively removed from the EU and UK markets under ecodesign and hazardous-substances rules — and specific dates are not given here because they vary by lamp type and by country.
+
+[^ecuk9]: Household electricity consumption from the Department for Energy Security and Net Zero: an average of 4630 kWh per household in 2008 against 3264 kWh in 2023, a fall of about 29%, attributed to more efficient appliances, better lighting and tighter product standards. The per-fitting reduction of 80–90% from replacing incandescent and halogen lamps with LEDs is an industry figure rather than a metered one. The *Energy Consumption in the UK* Electrical Products tables, which previously gave the appliance-level split including lighting, were discontinued in the 2025 edition over concerns about the underlying models; the lighting figure quoted here for today is therefore an inference from the per-fitting saving and not an official statistic.
