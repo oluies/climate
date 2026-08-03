@@ -1,0 +1,22 @@
+era,category,mode,speed_kmh,kwh,kwh_lo,kwh_hi,fill
+2008,land,Bicycle,20.0,1.60,0.00,0.00,best
+2008,land,Full 8-car train,161.0,1.60,0.00,0.00,best
+2008,land,Coach (full),105.0,6.00,0.00,0.00,best
+2008,land,Croydon tram,25.0,9.00,0.00,0.00,typical
+2008,land,Underground,33.0,15.00,0.00,0.00,typical
+2008,land,Electric car (Roadster),50.0,15.00,0.00,0.00,best
+2008,land,G-Wiz (real use),30.0,21.00,0.00,0.00,typical
+2008,land,London bus,13.0,32.00,0.00,0.00,typical
+2008,land,Car (1 occupant),50.0,80.00,0.00,0.00,typical
+2008,land,Honda FCX (hydrogen),50.0,69.00,0.00,0.00,best
+2008,land,BMW Hydrogen 7,50.0,254.00,0.00,0.00,best
+2008,air,747 (full),900.0,42.00,0.00,0.00,best
+2008,water,Liner (Rijndam),30.5,121.00,0.00,0.00,typical
+2026,land,E-bike,25.0,0.60,0.00,0.00,best
+2026,land,Efficient EV (Model 3),50.0,14.70,0.00,0.00,best
+2026,land,EV (real-world average),50.0,21.00,0.00,0.00,typical
+2026,air,787/A350 (full),900.0,32.00,0.00,0.00,best
+2026,water,Candela P-12 (30 seats),46.3,15.12,0.00,0.00,best
+2026,water,Candela C-8 (6 aboard),40.7,10.89,0.00,0.00,best
+2026,water,Candela C-8 (2 aboard),40.7,32.68,0.00,0.00,typical
+2026,water,Diesel ferry it replaced,30.0,64.82,44.47,94.49,typical

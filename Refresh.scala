@@ -1160,3 +1160,65 @@ def cartoonBritain(): Unit = {
   println(f"  electricity delivered                $elec%.1f kWh(e)/d")
   println(f"  fossil input to electricity          $gasToPower%.1f kWh/d  (MacKay: 45)")
 }
+
+// ---- Figure 20.23 remade: passenger transport energy against speed ----
+// MacKay's summary diagram, with the 2008 points taken from his own text and
+// the 2026 points added. Water is the corner that moved: hydrofoiling puts a
+// 25-knot passenger vessel in the same band as the London Underground, which
+// in 2008 was somewhere only trains and coaches reached.
+@main
+def transportEnergy(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val NM = 1.852 // km per nautical mile
+
+  // Candela's own published battery and range figures, divided out. Using the
+  // quoted range as if it were achievable makes these consumption figures
+  // conservative: the real range is at most that, so the real kWh/km is at least this.
+  val p12 = 336.0 / (40 * NM)          // 336 kWh usable, up to 40 nm at 25 kn
+  val c8 = 69.0 / (57 * NM)            // 69 kWh, 57 nm at 22 kn
+  val p12Seat = p12 / 30 * 100
+  // The diesel vessels on the same Stockholm route, backed out of Candela's own
+  // savings claim. The claim itself is quoted at 66%, 80% and 84% by different
+  // sources, so this is a band rather than a number.
+  val (dieselLo, dieselHi) = (p12Seat / (1 - 0.66), p12Seat / (1 - 0.84))
+
+  // No commas in mode labels: this is a bare CSV and DuckDB sniffs the delimiter.
+  val out = new StringBuilder
+  out ++= "era,category,mode,speed_kmh,kwh,kwh_lo,kwh_hi,fill\n"
+  def add(era: String, cat: String, mode: String, kmh: Double, kwh: Double,
+          fill: String, lo: Double = 0, hi: Double = 0) =
+    out ++= f"$era,$cat,$mode,$kmh%.1f,$kwh%.2f,$lo%.2f,$hi%.2f,$fill\n"
+
+  // 2008: every value is stated in chapter 20 or chapter 5 of the original book.
+  add("2008", "land", "Bicycle", 20, 1.6, "best")
+  add("2008", "land", "Full 8-car train", 161, 1.6, "best")
+  add("2008", "land", "Coach (full)", 105, 6.0, "best")
+  add("2008", "land", "Croydon tram", 25, 9.0, "typical")
+  add("2008", "land", "Underground", 33, 15.0, "typical")
+  add("2008", "land", "Electric car (Roadster)", 50, 15.0, "best")
+  add("2008", "land", "G-Wiz (real use)", 30, 21.0, "typical")
+  add("2008", "land", "London bus", 13, 32.0, "typical")
+  add("2008", "land", "Car (1 occupant)", 50, 80.0, "typical")
+  add("2008", "land", "Honda FCX (hydrogen)", 50, 69.0, "best")
+  add("2008", "land", "BMW Hydrogen 7", 50, 254.0, "best")
+  add("2008", "air", "747 (full)", 900, 42.0, "best")
+  add("2008", "water", "Liner (Rijndam)", 30.5, 121.0, "typical")
+
+  // 2026.
+  add("2026", "land", "E-bike", 25, 0.6, "best")
+  add("2026", "land", "Efficient EV (Model 3)", 50, 14.7, "best")
+  add("2026", "land", "EV (real-world average)", 50, 21.0, "typical")
+  add("2026", "air", "787/A350 (full)", 900, 32.0, "best")
+  add("2026", "water", "Candela P-12 (30 seats)", 46.3, p12Seat, "best")
+  add("2026", "water", "Candela C-8 (6 aboard)", 40.7, c8 / 6 * 100, "best")
+  add("2026", "water", "Candela C-8 (2 aboard)", 40.7, c8 / 2 * 100, "typical")
+  add("2026", "water", "Diesel ferry it replaced", 30.0,
+      math.sqrt(dieselLo * dieselHi), "typical", dieselLo, dieselHi)
+
+  os.write.over(dir / "transport-energy.csv", out.toString)
+  println("wrote data-refresh/transport-energy.csv")
+  println(f"  Candela P-12   $p12%.2f kWh/km  ->  $p12Seat%.1f kWh/100 p-km at 30 seats")
+  println(f"  Candela C-8    $c8%.3f kWh/km  ->  ${c8 / 6 * 100}%.1f (6 aboard), ${c8 / 2 * 100}%.1f (2 aboard)")
+  println(f"  diesel ferry backed out of the savings claim: $dieselLo%.0f-$dieselHi%.0f kWh/100 p-km")
+}
