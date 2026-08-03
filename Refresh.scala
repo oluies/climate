@@ -1055,3 +1055,37 @@ def chapter07Temp(): Unit = {
   os.write.over(dir / "cambridge-temperature.csv", out.toString)
   println("wrote data-refresh/cambridge-temperature.csv")
 }
+
+// ---- LCOE against realised capture price, Great Britain ----
+// The cost of building against what the output actually earned. LCOE is DESNZ
+// Electricity Generation Costs 2025, central capex, 2024 prices, projects
+// commissioning 2035 (hand-entered: the report publishes these as charts, and
+// only the capex-sensitivity tables carry the numbers). Capture prices come
+// from the gbCapture step over Elexon settlement data for 2025.
+@main
+def lcoeVsCapture(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"
+  val cap = os.read.lines(dir / "gb-capture.csv").drop(1).map(_.split(",")).
+    map(a => a(0) -> a(1).toDouble).toMap
+  // (label, DESNZ technology, low, central, high, which capture series applies)
+  val rows = Seq(
+    ("Large-scale solar", 36.0, 44.0, 50.0, "Solar"),
+    ("Onshore wind",      33.0, 41.0, 55.0, "Wind"),
+    ("Offshore wind (fixed)", 50.0, 59.0, 72.0, "Wind"),
+    ("Offshore wind (floating)", 65.0, 91.0, 121.0, "Wind"),
+    ("Gas CCGT",          38.0, 45.0, 53.0, "Gas"),
+    ("Gas with CCUS",     85.0, 101.0, 117.0, "Gas"))
+  val out = new StringBuilder
+  out ++= "technology,lcoe_low,lcoe_central,lcoe_high,capture,capture_source,margin\n"
+  for ((label, lo, mid, hi, src) <- rows) {
+    val c = cap(src)
+    out ++= f"$label,$lo%.0f,$mid%.0f,$hi%.0f,$c%.1f,$src,${c - mid}%.1f\n"
+  }
+  os.write.over(dir / "lcoe-vs-capture.csv", out.toString)
+  println("wrote data-refresh/lcoe-vs-capture.csv")
+  for ((label, _, mid, _, src) <- rows)
+    println(f"  $label%-24s LCOE $mid%3.0f  capture ${cap(src)}%5.1f  ${if (cap(src) > mid) "clears" else "SHORT"}")
+  println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
+  println("  python figures/lcoe_vs_capture.py data-refresh/lcoe-vs-capture.csv without-hot-air/Images/fig-lcoe-vs-capture.svg")
+}
