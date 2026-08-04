@@ -435,6 +435,16 @@ We can use power generated from the empty basin to pump extra water into the ful
 
 A two-basin system could also function as a pumped-storage facility.
 
+## The resource is still there and almost none of it is used
+
+*A section added in the 2026 revision.* The tidal physics in this chapter is astronomy, and astronomy does not revise. A tide pool with a 4-metre range still yields about **3 W/m²**; La Rance still produces what it produced; the bottom-friction estimate of the resource around Britain still stands.
+
+What has not happened is any of it. Chapter 14 records the position: British tidal generation remains too small to register beside wind or solar, the Severn barrage this chapter costs at 8 GW has been proposed and shelved repeatedly without ever being built, and tidal stream — the technology this chapter is most cautious about — is the only part with genuine recent momentum, at a scale of tens of megawatts rather than the 18 GW plan D asks for.
+
+**Tide is the clearest case in the book of a resource that is real, predictable, and unbuilt.** Everything usually offered against renewables — that the resource is speculative, that the output is unpredictable, that the physics is uncertain — is false here. The tide is known decades ahead to the minute. What it lacks is a machine that survives the sea cheaply enough, and a market that pays for predictability rather than for energy.
+
+Which is chapter 28a's point arriving from an unexpected direction. **A tidal generator's output is worth more than a wind generator's per kilowatt-hour, because it is knowable** — and no British market instrument pays for that. The barrage was never blocked by physics or even, in the end, by the birds. It was blocked by a cost of capital applied to a thirty-year construction with a hundred-year life, which is exactly the problem chapter 24 finds in nuclear and chapter M finds in the arithmetic of levelised cost.
+
 ## Notes
 
 [^1]: *Efficiency of 90%...* Turbines are about 90% efficient for heads of 3.7 m or more. Baker et al. (2006).

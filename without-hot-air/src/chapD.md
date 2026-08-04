@@ -122,6 +122,16 @@ Scaling this idea up, if every borough had one of these, and if everyone sent 1 
 
 This is similar to the figure estimated above for methane capture at landfill sites. And remember, we can’t have both. More waste incineration means less methane gas leaking out of landfill sites. See [figure 27.2](../Text/chap27.xhtml#fig27.2) and [figure 27.3](../Text/chap27.xhtml#fig27.3), for further data on waste incineration.
 
+## Photosynthesis did not improve; the panel did
+
+*A section added in the 2026 revision.* Every power density in this chapter is a statement about photosynthesis — willow at 0.5 W/m², oilseed rape at 0.13, sugar beet a little better. **None has moved, and none will.** Plants convert sunlight into stored chemical energy at well under one per cent averaged over a growing year, and that figure is set by biochemistry which has been stable for a very long time.
+
+So the comparison this chapter invites has widened from one side only. A photovoltaic panel in Britain delivered about **20 W/m²** on chapter 6's figures for a 20%-efficient module. Mainstream modules are now **22 to 23% efficient**, the best commercial products a little above 24, so the same square metre yields something nearer 22 W/m².
+
+The panel improved by about a tenth. The willow improved by nothing. **The ratio was about forty to one when this book was written and is about forty-five to one now** — and the useful observation is that it was never close enough for the improvement to matter either way. Chapter 6 records the change that did matter, which was not efficiency but price: the module became roughly ten times cheaper while becoming a tenth better.
+
+That distinction is worth holding on to, because it recurs throughout this edition. **Energy technologies do not usually win by becoming more efficient. They win by becoming cheaper to make**, and those are different levers. Photosynthesis has neither available: a willow is already as cheap as a plant, and its efficiency is fixed.
+
 ## Notes and further reading
 
 [^1]: *The power per unit area of using willow, miscanthus, or poplar, for electricity is 0.2 W/m<sup>2</sup>*. Source: Select Committee on Science and Technology Minutes of Evidence – Memorandum from the Biotechnology & Biological Sciences Research Council [[<span class="websitetitle">www.publications.parliament.uk/pa/ld200304/ldselect/ldsctech/126/4032413.htm</span>](http://www.publications.parliament.uk/pa/ld200304/ldselect/ldsctech/126/4032413.htm)]. "Typically a sustainable crop of 10 dry t/ha/y of woody biomass can be produced in Northern Europe... . Thus an area of 1 km<sup>2</sup> will produce 1000 dry t/y – enough for a power output 150 kWe at low conversion efficiencies or 300 kWe at high conversion efficiencies." This means 0.15–0.3 W(e)/m<sup>2</sup>. See also Layzell et al. (2006), [[<span class="websitetitle">3ap7lc</span>](http://tinyurl.com/3ap7lc)].
