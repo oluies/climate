@@ -365,6 +365,20 @@ Let’s assume that the mass of the car and occupants is 740 kg, *without* any b
 
 It thus seems to me that the range problem has been solved by the advent of modern <span id="batteries">batteries</span>. It would be nice to have even better batteries, but an energy density of 120 Wh per kg is already good enough, as long as we’re happy for the batteries in a car to weigh up to 500 kg. In practice I imagine most people would be content to have a range of 300 km, which can be delivered by 250 kg of batteries. If these batteries were divided into ten 25 kg chunks, separately unpluggable, then a car user could keep just four of the ten chunks on board when he’s doing regular commuting (100 kg gives a range of 140 km); and collect an extra six chunks from a battery-recharging station when he wants to make longer-range trips. During long-range trips, he would exchange his batteries for a fresh set at a battery-exchange station every 300 km or so.
 
+## The model survived; the cars got heavier
+
+*A section added in the 2026 revision.* This chapter's model has two terms — the energy to shove air out of the way, which scales with frontal area and the square of speed, and the energy to accelerate a mass repeatedly, which scales with weight. Neither has been revised and neither will be. What is worth recording is what the model predicted about the eighteen years since, because it predicted them rather well.
+
+**The electric car did what the model says it should.** MacKay's petrol car throws away three-quarters of its fuel as heat before any of it reaches the road. Remove that and the same vehicle, on the same journey against the same air, should need roughly a quarter to a fifth as much energy. Chapter 20 records the measurement: **21 kWh per 100 km** as a real-world European average across 342 electric cars, against this chapter's **80 kWh per 100 km** petrol baseline. A factor of **3.8** — squarely inside the range the model predicts, and arrived at by measurement rather than by hope.
+
+**And the model equally predicts why the gain has been partly eaten.** Both terms punish size: air resistance is proportional to frontal area, and the stop-start term to mass. Over the same period vehicles got taller and heavier — **sport-utility vehicles passed half of world car sales**, and the average new car in Europe gained something like two hundred kilograms. A model with area and mass in it says efficiency gains will be spent on size unless something stops them, and that is what happened.[^carsize]
+
+**One term this chapter does not have.** An electric car carries three to five hundred kilograms of battery, which the model taxes through the mass term while the thermal saving is not in the model at all. On balance the trade is overwhelmingly favourable — that is what 21 against 80 says — but it is why a heavy electric car is not four times better than a light petrol one.
+
+The chapter's real lesson is unchanged, and worth restating in an edition full of revised numbers: **the two terms are physics and the rest is choice.** A vehicle that is smaller, lower and lighter uses less energy whatever is under the bonnet, and no drivetrain rescues a badly shaped one.
+
+[^carsize]: The share of sport-utility vehicles in world car sales passed 50% in the mid-2020s on the International Energy Agency's classification, up from roughly a fifth in 2010; that classification is broad and includes crossovers not much larger than the saloons they replaced, so it overstates the change in frontal area. European new-car kerb mass has risen roughly 10–15% since 2008 on manufacturer-reported figures, part of it safety and emissions equipment rather than size, and part of the recent rise battery mass in electrified models. Both are indicative, and the point turns on neither, since the model's dependence on area and mass is not in dispute.
+
 ## Notes and further reading
 
 ![](/img/without-hot-air/figure259.gif)

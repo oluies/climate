@@ -80,6 +80,15 @@ The losses from viscosity are minimal: a wave of 9 seconds period would have to 
 
 ## Real wave power systems
 
+## What became of the machines
+
+*A section added in the 2026 revision.* Everything above is oceanography and remains correct: the Atlantic really does deliver about 40 kW per metre of wave front, and the losses to the sea bed as depth falls really do take most of it. MacKay's resource arithmetic has never been seriously challenged.
+
+What has happened is that the machines named in this chapter no longer exist. Chapter 12 records it: **Pelamis Wave Power went into administration in 2014 and Aquamarine Power in 2015**, and no wave device has since reached commercial operation at any scale. The Salter duck, which this chapter treats as its well-characterised reference case, was never built at sea.
+
+The reason is not in this chapter's equations, and that is the point worth making here. **A wave machine has to survive the largest wave it will ever meet while being economic against the average one**, and the ratio between those two is the design problem. The physics that makes the resource attractive — an enormous energy flux concentrated at a surface — is the same physics that destroys the hardware. Nothing in a power-per-metre calculation reveals that, and this chapter, honestly, does not try to.
+
+
 ### Deep-water devices
 
 How effective are real systems at extracting power from waves? Stephen Salter’s "duck" has been well characterized: a row of 16-m diameter ducks, feeding off Atlantic waves with an average power of 45 kW/m, would deliver 19 kW/m, including transmission to central Scotland (Mollison, 1986).
