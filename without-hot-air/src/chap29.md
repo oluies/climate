@@ -153,7 +153,66 @@ Finally, table 29.5 shows a few runners-up: some simple actions with small savin
 
 <span class="figurenumber">Table 29.5.</span> A few more simple actions with small savings.
 
+## The carbon price arrived. The bans did the work.
+
+*A section added in the 2026 revision.* This chapter makes one recommendation and then spends three sections explaining why it will not be enough. Eighteen years later the verdict is unusually clean: **the recommendation was adopted, all three objections proved correct, and the things that actually delivered were the interventions MacKay mentions almost in passing.**
+
+### The price arrived, and it is real
+
+MacKay's complaint is that carbon is not priced and that there is no confidence it will be. Both halves have moved.
+
+Direct carbon pricing now covers **29% of world greenhouse gas emissions**, up from 12% a decade ago, and raised **$107 billion** in 2025 against under $30 billion in 2016. The EU allowance price went from **€9.68 in 2018 to €100 in early 2023**, settling near €80. Britain's own scheme trades lower, around €53, though the Carbon Price Support levy takes the effective British rate near €76. And the EU's **Carbon Border Adjustment Mechanism** entered its definitive phase on 1 January 2026 — an instrument that did not exist anywhere when this book was written, and that attacks the leakage problem chapter 15 identifies.[^carbonprice]
+
+So the first half of this chapter has substantially happened. Not everywhere, and not at the level MacKay wanted, but the instrument exists, it prices, and it raises real money.
+
+### And all three objections proved right
+
+**The admission barrier.** MacKay imagines a low-carbon product that would win at scale but cannot reach scale. That is exactly what happened, and what fixed it was not the carbon price. Solar's tenfold fall, in chapter 6, came from Chinese manufacturing scale and German feed-in tariffs — the "tax-incentives favouring the new product" he raises as a parenthetical possibility.
+
+**Small cost differences.** Also right, and chapter 20 supplies the demonstration: flights are cheaper than trains on 54% of European cross-border routes, on a continent where aviation carries a carbon price and rail does not get one.
+
+**Larry and Tina.** This is the one that has been *solved*, and solved precisely as MacKay proposes — "government could... require all flats to meet high standards." Since April 2020 no property in England or Wales may be let below EPC band E. On **21 January 2026 the government confirmed that all private tenancies must reach band C by 1 October 2030**, with landlords required to spend up to **£10 000** per property. **52% of the private rented stock currently sits below C**, which is chapter 7's two-in-five problem in its rental form.[^mees]
+
+Larry and Tina did not respond to a price. They responded to a statute.
+
+### The scoreboard
+
+Set what actually moved British energy against the mechanism that moved it:
+
+| What changed | What did it |
+|---|---|
+| Coal to zero (chapter 23) | carbon price floor, gas, wind — **the price did work here** |
+| Lighting, 4 → 0.8 kWh/d (chapter 9) | LED cost collapse, and a ban on incandescents |
+| Standby, near-eliminated (chapter 22) | **ecodesign regulation** |
+| Solar an order of magnitude cheaper (chapter 6) | manufacturing scale, feed-in tariffs |
+| Rented housing (this chapter) | **legislation** |
+| Carbon capture (chapter 23) | 0.14% of emissions — **the price signal's clearest failure** |
+
+The last row deserves weight. Carbon capture is the ideal case for a carbon price: an abatement technology with no other product, whose entire value is the carbon it does not emit. If a price were going to call anything into existence, it would be this. The allowance price reached €100 and chapter 23 records the result — **0.6% of emissions as installed capacity and about 0.14% actually operating.**
+
+### Which inverts the chapter's own emphasis
+
+MacKay leads with the carbon tax and presents bans, standards and mandates as regrettable patches for where markets fail. **The evidence suggests the ordering should be the other way round.**
+
+The carbon price did useful work at the margin, most visibly in killing coal — where a large price difference met an easy substitute already built. The transformations were delivered by **regulation applied at the point of manufacture** and by **industrial policy applied to production cost**: both act on what is available to buy, rather than on what it costs to buy once it exists.
+
+Chapter 22 puts it most sharply. MacKay hunted vampires with a meter and a notebook and recovered 45 watts. A regulation recovered a comparable amount in every household in Europe, and required nothing of anybody at all.
+
+**None of this makes the carbon price a mistake**, and this edition does not argue for abandoning it. It means that the three counter-examples MacKay wrote himself turned out to matter more than the recommendation he led with — and that he gave them second billing.
+
+### And the personal list, marked
+
+Table 29.3 has held up better than most eighteen-year-old advice, but two entries have moved.
+
+**"Change lights to fluorescent or LED — 4 kWh/d"** has largely been done *for* the reader. Chapter 9 records British lighting falling from about 4 kWh/d to 0.8, and almost none of that was individuals choosing bulbs; it was manufacturers no longer being permitted to sell the alternative.
+
+**"Stop flying — 35 kWh/d"** remains the largest single item on the list and the one least touched by anything. Chapter 5's arithmetic is unchanged, chapter 20 finds the fuel three times the price of kerosene with no downward trend, and no regulation anywhere restricts the number of flights a person may take. **The item that regulation removed from the list was the small one. The big one is still entirely a matter of personal choice**, which is either an argument for individual action or an indictment of everything above, depending on the reader's temperament.
+
 ## Notes and further reading
+
+[^carbonprice]: World Bank, *State and Trends of Carbon Pricing*: direct carbon pricing instruments covered 29% of global greenhouse gas emissions as of 1 April 2026, against about 12% a decade earlier, raising $107 billion in 2025 against under $30 billion in 2016. EU allowance prices: about €9.68 in 2018, a record near €100 in February 2023, about €60 in early 2024 and near €80 in mid-2026 — a range wide enough that any single quoted price misleads, which is itself the point MacKay makes about confidence in future pricing. UK ETS prices have traded below EU levels since divergence, with the Carbon Price Support levy adding to the effective British rate; an agreement to link the two schemes has been announced but was not in force at the time of writing. The Carbon Border Adjustment Mechanism's definitive regime began on 1 January 2026 after a transitional reporting phase from October 2023, and covers iron and steel, cement, aluminium, fertilisers, electricity and hydrogen. Coverage percentages count emissions subject to a price, not emissions priced at any particular level; a large share of the 29% is priced in low single-figure dollars, so the headline overstates the stringency considerably.
+
+[^mees]: The Energy Efficiency (Private Rented Property) Regulations have applied a minimum of EPC band E to all existing tenancies in England and Wales since 1 April 2020, having applied to new tenancies from 2018. On 21 January 2026 the government confirmed a requirement for band C, or its equivalent under the reformed multi-metric certificate introduced in October 2026, for all private tenancies by 1 October 2030, with a cost cap reported at £10 000 per property and an exemptions regime. Around 52% of the private rented stock is below band C. Scotland and Northern Ireland legislate separately. Whether the 2030 date survives is not something this edition can know: the equivalent standard has been announced, deferred and reinstated more than once since 2020, which is a fair illustration of MacKay's point that the difficulty is confidence in future policy rather than the policy itself.
 
 [^1]: *"a bit impractical actually"* The full transcript of the interview with Tony Blair (9 January 2007) is here [[<span class="websitetitle">2ykfgw</span>](http://tinyurl.com/2ykfgw)]. Here are some more quotes from it: **Interviewer**: Have you thought of perhaps not flying to Barbados for a holiday and not using all those air miles? **Tony Blair**: I would, frankly, be reluctant to give up my holidays abroad. **Interviewer**: It would send out a clear message though wouldn’t it, if we didn’t see that great big air journey off to the sunshine? ... – a holiday closer to home? **Tony Blair**: Yeah – but I personally think these things are a bit impractical actually to expect people to do that. I think that what we need to do is to look at how you make air travel more energy efficient, how you develop the new fuels that will allow us to burn less energy and emit less. How – for example – in the new frames for the aircraft, they are far more energy efficient. I know everyone always – people probably think the Prime Minister shouldn’t go on holiday at all, but I think if what we do in this area is set people unrealistic targets, you know if we say to people we’re going to cancel all the cheap air travel . . . You know, I’m still waiting for the first politician who’s actually running for office who’s going to come out and say it – and they’re not. The other quote: "Unless we act now, not some time distant but now, these consequences, disastrous as they are, will be irreversible. So there is nothing more serious, more urgent or more demanding of leadership." is Tony Blair speaking at the launch of the Stern review, 30 October 2006 [[<span class="websitetitle">2nsvx2</span>](http://tinyurl.com/2nsvx2)]. See also [[<span class="websitetitle">yxq5xk</span>](http://tinyurl.com/yxq5xk)] for further comment.
 
