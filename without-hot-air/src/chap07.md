@@ -335,6 +335,36 @@ The system saves about **19 GWh a year**, which Swedavia puts at the consumption
 
 What makes it worth a section in this chapter is not the size. It is that Arlanda is storing *the seasons themselves*, at a scale and cost that work, in ordinary ground. Chapter 26 treats seasonal storage as the hardest unsolved problem in a renewable system, and chapter 28a shows that the value of any storage lies in the spread it can arbitrage. An aquifer store arbitrages the largest spread available anywhere in northern Europe: summer against winter. It cannot be sited everywhere, since it needs the right geology and a matched demand for both heat and cooling. But where those coincide, the answer to "what do you do with July's surplus heat in January" turns out to be: leave it in the ground and come back for it.
 
+### Gas heat pumps, and the case for a hybrid
+
+Two different machines get called a gas heat pump, and only one of them is interesting now.
+
+**A gas absorption heat pump** burns gas to drive an absorption cycle instead of a compressor. It is a real product, sold commercially, with a coefficient of performance around **1.3 to 1.5** — so roughly 40% more heat out of a unit of gas than a condensing boiler manages. And when this book was written, **it was the better machine.** Chapter 20 costs British electricity at **500 grams of CO₂ per kilowatt-hour**, which was right for 2008. Work it through:
+
+| Grams of CO₂ per kWh of heat delivered | On MacKay's 2008 grid | On Britain's 2025 grid |
+|---|---|---|
+| Condensing gas boiler, 90% | 203 | 203 |
+| Gas absorption heat pump, COP 1.4 | **131** | 131 |
+| Electric heat pump, SPF 2.8 | 179 | **43** |
+
+In 2008 the gas heat pump beat the electric one. In 2025 it loses by a factor of three. **Nothing about either machine changed. The grid did** — British electricity fell from about 500 grams a kilowatt-hour to about 120 — and a technology that made perfect sense became pointless without ever failing at anything.[^gashp]
+
+That is the clearest instance in this book of a conclusion **expiring rather than being refuted**, and it is a warning about every other comparison here that has a carbon intensity of electricity buried in it. Chapter 20's own 500-gram figure is used in several places and each of them needs the same correction.
+
+**The hybrid is a completely different argument, and it survives.**
+
+A hybrid is an ordinary electric heat pump working alongside the gas boiler that is already there, with a controller choosing between them hour by hour. The heat pump runs in mild weather, which is where most of the year's heat goes; the boiler covers the coldest days and the hot-water peak.
+
+The case for it is not carbon per kilowatt-hour, where it is plainly worse than a full heat pump. **It is peak.** Electrifying British heat completely takes peak electricity demand from about **50 GW to somewhere near 115 to 120 GW**, with electric cars adding more on top. That is less a generation problem than a wires problem: every substation and every street cable in the country.
+
+The **Freedom Project** put hybrids into 75 homes in Bridgend and measured them. The heat pump supplied **40 to 58% of annual heat**, cutting carbon by **30 to 48%** — over a tonne per home a year — while the coldest hours stayed on gas. The project's estimate of avoided distribution network reinforcement, for South Wales alone, was **£1.3 billion by 2050**.[^hybrid]
+
+And a hybrid works in the houses that full electrification cannot reach. It needs no radiator replacement, no electrical supply upgrade and no particular fabric standard, because the boiler covers whatever the heat pump cannot. That is precisely the **two-in-five** problem this chapter has just described.
+
+**The objection is real, and it is about permanence.** A hybrid keeps the gas connection, which keeps the gas network, which keeps the network's fixed costs spread across a shrinking number of customers — a problem that gets worse as it succeeds. And a hybrid house is not a decarbonised house; it is a half-decarbonised house, potentially for ever, because no moment ever arrives at which somebody rips out a working boiler.
+
+British policy has taken a side. **Hybrids are excluded from the Boiler Upgrade Scheme**, which pays £7,500 towards a heat pump only if the fossil boiler goes entirely. Whether that is right depends on what one believes the binding constraint to be. If it is carbon per house, hybrids are a trap. If it is the number of houses converted before 2050, and the cost of the wires to do it, they may be the only route to the two in five that this chapter's own arithmetic says a heat pump alone cannot serve.
+
 ### The standards moved faster than the stock
 
 Two changes in the rules are worth recording, and one caveat matters more than either.
@@ -344,6 +374,10 @@ The recast **Energy Performance of Buildings Directive**, in force since 28 May 
 **LEED v5**, opened for registration in April 2025, restructured the best-known voluntary standard around carbon: **half of all available points now relate to decarbonisation**, and every project must complete a carbon assessment, a climate-resilience assessment and a human-impact assessment.[^leed]
 
 The caveat is the one MacKay would have insisted on. **Both of these govern new buildings, and this chapter is about the stock.** Britain builds roughly 200 000 homes a year against a stock of 28 million, so a standard applying only to new construction touches under 1% of the problem annually. The 37 kWh/d in this chapter is being spent, overwhelmingly, in buildings that already exist and that no building standard will ever reach. What reaches them is insulation and a different machine in the cupboard.
+
+[^gashp]: Gas absorption heat pumps achieve a gas utilisation efficiency of roughly 1.3–1.5 on manufacturers' figures for air-source domestic and light-commercial units, against about 0.9 for a condensing boiler at realistic return temperatures; both figures are on higher heating value. The carbon comparison uses 183 g CO₂ per kWh of gas at the meter, MacKay's own 500 g per kWh of electricity for 2008, and about 120 g per kWh for Britain in 2025 — the latter derived from the generation mix in the Energy Institute's *Statistical Review of World Energy* 2026, treating biomass as zero at the stack, which flatters it. The electric heat pump uses the 2.81 seasonal performance factor measured in the Electrification of Heat trial rather than a manufacturer figure. All of these are annual averages: the gas heat pump's advantage is largest in the coldest weather, when the electric machine's performance falls and the grid is dirtiest, so the comparison is less lopsided at the moment of peak demand than the annual table suggests. The wider point stands regardless of the exact numbers — the ordering reversed because of the grid, not the machines.
+
+[^hybrid]: The FREEDOM project, led by Wales & West Utilities with PassivSystems and Delta-EE, installed hybrid heat pump and boiler systems in 75 homes in Bridgend, south Wales, and reported in October 2018. Heat pump share of annual heat was 40–58% with carbon reductions of 30–48%, and the estimate of avoided electricity distribution reinforcement for South Wales was about £1.3 billion by 2050. That last figure is a modelled counterfactual produced by a gas network operator, which has an evident interest in a technology that keeps houses connected to the gas grid, and should be read with that in mind; the measured heat-pump shares are the more reliable part of the study. Peak electricity demand estimates for full heat electrification vary considerably with assumptions about fabric, control and diversity — published figures for a fully electrified GB peak range from about 100 to 125 GW against roughly 50 GW today, and actively managed heat pumps with thermal storage reduce it materially. The Electrification of Heat trial's average seasonal performance factor of 2.81 across 428 heat pumps is DESNZ's, and includes hybrids in the wider trial.
 
 ## Notes and further reading
 
