@@ -325,6 +325,72 @@ There’s another source for lithium: seawater, where lithium has a concentratio
 
 If we imagine that scientists and engineers crack the problem of getting the DD reaction going, we have some very good news. There’s 33 g of deuterium in every ton of water, and the energy that would be released from fusing just one gram of deuterium is a mind-boggling 100 000 kWh. Bearing in mind that the mass of the oceans is 230 million tons per person, we can deduce that there’s enough deuterium to supply every person in a ten-fold increased world population with a power of 30 000 kWh per day (that’s more than 100 times the average American consumption) for 1 million years (figure 24.17).
 
+## What eighteen years actually did to nuclear power
+
+*A section added in the 2026 revision.* This chapter asks a resource question — could humanity live for generations on fission? — and answers it carefully with geology and arithmetic. **That answer has not changed**, because it depends on how much uranium there is and how much energy a kilogram of it contains, and neither is subject to revision by events. Everything else in the subject has changed, and none of it is about resources.
+
+### Nuclear did not shrink. It was outgrown
+
+In 2025 the world's reactors produced **2812 TWh, an all-time record**, up 1.3% on the year. In the same year nuclear's share of world electricity fell to **8.9%, its lowest since the early 1980s**.[^nuc26]
+
+Both statements are true and the second is the one that matters. Nuclear output has been roughly flat-to-rising for two decades while electricity demand has grown much faster, so a constant absolute contribution becomes a shrinking share. This is the same arithmetic that chapter 18 applies to Britain's renewables from the other direction, and it is worth stating plainly: **a technology can be doing fine and losing at the same time.**
+
+### The Western build record is the story
+
+| | Original estimate | Outturn or latest | Build time |
+|---|---|---|---|
+| Olkiluoto 3, Finland | €3.2bn | **€11bn** | 4 years → **18** |
+| Flamanville 3, France | €3.3bn | **€23.7bn** | 5 years → **17** |
+| Hinkley Point C, UK | £18bn | **£46–49bn+** | to 2017 → **2030–31** |
+
+These are the same reactor. All three are EPRs, designed by the same company, and the per-megawatt costs run **£5.97m in Finland, £7.24m in France and £10.03m in Britain** — so the third build of a design costs **68% more than the first**.[^epr]
+
+That is not a learning curve. It is a learning curve running backwards, and it is the exact inverse of the solar story in chapter 6, where each doubling of cumulative production took about 20% off the price. The section "Fabricated, not constructed" in chapter 20 explains why, and nuclear is its clearest case: **an EPR is constructed on site, one at a time, by a supply chain assembled for that project and dispersed afterwards.** Nothing about the physics prevents serial production. The industry simply has not done it in the West for forty years, and the skill of building these machines is not retained between attempts.
+
+Meanwhile, elsewhere, it plainly is. As of early 2026 China operates **58 reactors, about 56 GW**, with **33 more under construction**; of roughly 70 reactors being built worldwide in 15 countries, almost all are in Asia. Chinese units come in around five to six years at a fraction of Western capital cost, against an American overnight cost the EIA puts near **$7800–8100 per kilowatt**. The difference is not a different physics or a materially different reactor. It is a standing workforce, repeated builds of the same design, and a regulator that does not reopen the design each time.
+
+### Small modular reactors are that argument, and they are untested
+
+The entire case for SMRs is chapter 20's fabricated-versus-constructed argument applied to nuclear: move the work from the site into a factory, build the same thing many times, and let serial production do what it did for photovoltaics.
+
+The argument is sound. It is also, as of 2026, **unproven, because no SMR has been produced serially anywhere**. The one Western project that got as far as firm customers cancelled: NuScale's scheme with a Utah municipal consortium was abandoned in 2023 when the estimated cost rose and subscribers withdrew — the first SMR to be killed by its own price rather than by politics. Britain ran a two-year competition and selected **Rolls-Royce SMR** in 2025, with up to three units at Wylfa and a £2.5 billion commitment; its design assessment completes in 2026, first concrete is hoped for 2027 and first power around 2031.
+
+So the honest position is that the most promising idea in nuclear economics has not yet been tested by the only test that matters, which is building the tenth one.
+
+### Fusion: the schedule slipped again, and the money arrived
+
+This chapter's fusion section is sceptical and its scepticism has held. **ITER's 2024 rebaseline** moved the start of research to **2034** and operation on deuterium–tritium fuel to **2039** — four years later than the previous plan and about a decade later than the schedule current when this book was written.[^fusion26]
+
+Two things did happen. In December 2022 the **National Ignition Facility achieved ignition**: for the first time a fusion target released more energy than the laser light delivered to it. That is a genuine scientific first and it is not an energy source — the laser system draws vastly more from the wall than the target gives back, and the facility fires a few times a day rather than ten times a second. And private money arrived: **more than $7 billion across some 45 companies**. Whether capital changes a schedule that has resisted it for seventy years is the open question, and this edition does not pretend to know.
+
+### Safety, and the accident that happened after this book
+
+MacKay wrote before **Fukushima Daiichi**, in March 2011, and the numbers deserve stating precisely because almost nobody states them precisely. The earthquake and tsunami killed about **18 000 people**. Radiation released by the reactor accident has been linked to **one confirmed death**, a worker whose lung cancer was officially recognised in 2018. The **evacuation itself is estimated to have caused over 2000 deaths**, mostly among elderly people moved from hospitals and care homes.[^fukushima]
+
+That distribution — a catastrophic natural disaster, a reactor accident that killed almost nobody by radiation, and a response that killed thousands — is the whole difficulty of this subject in one event. Germany completed its nuclear exit in April 2023 largely in consequence of it, and chapter 25 records what that did to German emissions. On deaths per unit of energy delivered, nuclear sits with wind and solar and orders of magnitude below coal, and it has sat there throughout.
+
+### The problem this chapter's framework cannot see
+
+MacKay's question is whether the uranium lasts. The question that now decides whether reactors get built is different, and chapter 28a is about it.
+
+**Nuclear's cost is almost entirely capital**, which means its levelised cost is almost entirely a statement about the discount rate. Swedish figures make this vivid: the same reactor costs about **€150–200 per MWh at commercial financing and about €72 at a 4% state rate**. The €60-to-€200 range quoted for nuclear across the literature is not a range of reactor technologies. It is a range of financing conditions.
+
+And on the revenue side, nuclear has the opposite problem to wind and solar. It runs flat, so it cannot avoid the hours when prices are low — as variable renewables grow and the average price falls, nuclear's capture price falls with it, while wind and solar at least share the specific hours they cannibalise. In the Swedish price area SE3, nuclear captures around **€80/MWh** against a commercial levelised cost twice that. No merchant investor builds on those numbers.[^nucecon]
+
+Which is why every Western nuclear project now arrives with a financing instrument attached — Hinkley's contract for difference, the regulated asset base model for Sizewell C, Swedish state loans and two-way contracts for difference. Chapter M's point applies with unusual force here: **a levelised cost computed at a common discount rate over a horizon set by the shortest-lived asset in the comparison is not a neutral measurement of a technology that lasts sixty to eighty years.** American reactors are now being licensed to 80 years. An LCOE that stops at 25 or 40 charges the full capital against a fraction of the output.
+
+So the answer to this chapter's title has become two answers. **Can we? Yes — the arithmetic above still holds, and it was never the obstacle.** Will we? That depends on whether anyone learns to build the same reactor twice, and on who carries the cost of capital for a machine that pays back over eighty years. Neither is a question about uranium.
+
+[^nuc26]: World nuclear generation of 2812 TWh in 2025, up 1.3%, and a share of 8.9% of world electricity — the lowest since the early 1980s — are from Ember's *Global Electricity Review* and the World Nuclear Association's performance reporting, which agree on the direction if not to the last terawatt-hour. The share figure and the record-output figure are not in tension: absolute output rose while demand rose faster.
+
+[^epr]: Olkiluoto 3 rose from about €3.2bn to about €11bn and from a four-year to an eighteen-year build; Flamanville 3 from about €3.3bn to a widely reported €23.7bn including financing costs, over seventeen years; Hinkley Point C from an original £18bn to £46bn or more in 2015 prices, with EDF's own statements putting it near £49bn if the first unit runs in 2030 and higher if it slips to 2031. The per-megawatt comparison — £5.97m in Finland, £7.24m in France, £10.03m in Britain — is drawn from published capacity and cost figures and is sensitive to whether financing costs and exchange rates are included, so it should be read as an ordering rather than a precise ratio. Cost figures for these projects are contested by the operators and the higher numbers often originate with critics of the projects; what is not contested is that all three ran several times over budget and roughly three times over schedule.
+
+[^fusion26]: The ITER Council accepted a revised baseline in 2024 moving the start of research operations to 2034 and deuterium–tritium operation to 2039, a four-year slip attributed to the pandemic, component quality problems and optimistic first-of-a-kind planning. The National Ignition Facility first achieved target gain greater than one in December 2022 and has repeated it since; target gain is not facility gain, and the facility's wall-plug energy per shot exceeds the yield by a large factor. Private fusion investment of more than $7bn across roughly 45 companies is the Fusion Industry Association's own tally and counts announced raises, not deployed capital.
+
+[^fukushima]: The Great East Japan Earthquake and tsunami of 11 March 2011 killed approximately 18 000 people. The United Nations Scientific Committee on the Effects of Atomic Radiation has consistently reported no discernible increase in radiation-related health effects in the general population; one worker death from lung cancer was officially recognised as radiation-linked by the Japanese government in 2018. Estimates of deaths caused by the evacuation itself, chiefly among elderly evacuees from hospitals and care facilities, exceed 2000 and are compiled by Japanese prefectural authorities as "disaster-related deaths". The thyroid cancers detected by mass screening of children in Fukushima prefecture are generally attributed to the screening itself rather than to radiation, though this remains disputed. Comparative deaths-per-terawatt-hour figures depend heavily on how indirect deaths and air pollution are attributed; every published set places coal one to three orders of magnitude above nuclear.
+
+[^nucecon]: The Swedish figures — nuclear levelised cost near €150–200/MWh at commercial financing against about €72 at a 4% state lending rate, and a realised capture price near €80/MWh in price area SE3 — are from the investment analysis at <https://oluies.github.io/elmix/investering.html>, which sets levelised costs against realised capture prices technology by technology. The caution chapter M attaches to that comparison applies here too: a levelised cost is an asset-boundary quantity and a capture price is a system-boundary one. For nuclear the asymmetry runs the other way from wind and solar, since a flat-running plant imposes fewer balancing costs on the system and receives no credit for that in either number. United States licence renewals to 80 years have been granted to several plants, with others under review.
+
 ## Notes and further reading
 
 [^1]: *Figure 24.1*. Source: World Nuclear Association [[<span class="websitetitle">5qntkb</span>](http://tinyurl.com/5qntkb)]. The total capacity of operable nuclear reactors is 372 GW(e), using 65 000 tons of uranium per year. The USA has 99 GW, France 63.5 GW, Japan 47.6 GW, Russia 22 GW, Germany 20 GW, South Korea 17.5 GW, Ukraine 13 GW, Canada 12.6 GW, and UK 11 GW. In 2007 all the world’s reactors generated 2608 TWh of electricity, which is an average of 300 GW, or <span class="green">1.2 kWh per day per person</span>.
