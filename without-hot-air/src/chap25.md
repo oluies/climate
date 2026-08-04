@@ -300,9 +300,9 @@ Another way to get a feel for required hardware is to personalize. One of the "2
 | | around 2008 | 2025 |
 |---|---|---|
 | Concentrating solar, installed worldwide | under 1 GW | about **7 GW** |
-| Photovoltaics, installed worldwide | about 15 GW | over **1500 GW** |
+| Photovoltaics, installed worldwide | about 15 GW | around **2000 GW** |
 
-Concentrating solar grew by a factor of ten or so. Photovoltaics grew by a factor of a hundred, and now cost around **$0.035 per kWh against $0.10 to $0.12** for concentrating solar. **The technology this chapter is built on lost, and it lost to the technology in chapter 6.** Photovoltaic panels with lithium batteries now do what molten-salt storage was for, at a third of the price, with no working fluid, no turbine, no water and no moving mirrors to keep clean in a desert.
+Concentrating solar grew by a factor of ten or so. Photovoltaics grew by more than a hundredfold, and now cost somewhere near **$0.04 per kWh against $0.10 to $0.12** for concentrating solar — the photovoltaic figure being the one chapter 6 gives, $0.043 in 2024, rather than the lower numbers quoted in market surveys. **The technology this chapter is built on lost, and it lost to the technology in chapter 6.** Photovoltaic panels with lithium batteries now do what molten-salt storage was for, at a third of the price, with no working fluid, no turbine, no water and no moving mirrors to keep clean in a desert.
 
 That is worth dwelling on, because it is a failure mode this book has now exhibited several times. MacKay chose concentrating solar over photovoltaics for a good reason, correctly reasoned, which was then reversed by a price collapse he did not expect. **Being right about the physics and wrong about the cost is the characteristic error of energy forecasting**, and it is the error chapter 6 documents from the other side.
 
@@ -328,7 +328,7 @@ The consequence in Norway was not the one the projects were sold on. Southern No
 
 The politics followed. A majority in the Storting now opposes any further interconnectors; several parties want the British and German agreements renegotiated; and Labour campaigned in the 2025 election on turning off the older cables to Denmark when they come up for renewal in 2026.[^norway]
 
-Set that beside the Hansa PowerBridge, above: **Sweden refused to build a cable to Germany, and Norway is discussing switching one off.** Both are countries with cheap, clean, dispatchable electricity, and both have concluded that connecting to a more expensive market is a transfer from their own consumers to their own producers.
+Set that beside the Hansa PowerBridge described in the section below: **Sweden refused to build a cable to Germany, and Norway is discussing switching one off.** Both are countries with cheap, clean, dispatchable electricity, and both have concluded that connecting to a more expensive market is a transfer from their own consumers to their own producers.
 
 That is not a puzzle, it is what an interconnector does. **A cable equalises prices, and equalisation is a transfer.** The high-price side gains, the low-price side loses, the sum is positive — which is why the economics is favourable and the politics is not. It is the same structure as the industrial-price problem in chapter 28a and the same structure as the Xlinks refusal above: **the resource flows fine; it is the distribution of the gains that stops the project.**
 
@@ -387,7 +387,7 @@ The same study is more useful for what it does next, which is to ask what would 
 
 *A section added in the 2026 revision.* This chapter's move is to put the collectors where the sun is better and transmit the electricity to where the people are. Desert to Europe is one step. The limit case is orbit, and it is worth working through, because it fails for a reason this book keeps arriving at.
 
-**The physical case is genuinely strong.** A panel in geostationary orbit sees the sun for about 99% of the year, with no night worth speaking of, no cloud, no atmosphere and no seasonal angle. It receives the full **1360 W/m²** of the solar constant. Chapter 6 works with something nearer **110 W/m²** for a British array once night, weather, latitude and packing are counted. Advocates put the ratio at around seven to one, and that is roughly right. Microwave transmission at the frequencies proposed passes through cloud, and the receiving antenna can be a mesh that farmland sits under. So the resource argument, which is what defeats most of this book's candidates, is the one argument space-based solar wins outright.
+**The physical case is genuinely strong.** A panel in geostationary orbit sees the sun for about 99% of the year, with no night worth speaking of, no cloud, no atmosphere and no seasonal angle. It receives the full **1360 W/m²** of the solar constant. Chapter 6 works with something nearer **110 W/m²** for the average raw sunshine falling on a square metre in Britain once night, weather and latitude are counted — not the output of a panel, which is a fifth of that again. On raw insolation the orbital advantage is therefore about **twelve to one**, not the seven that advocates usually quote; their figure is a different comparison, of delivered energy against a terrestrial array, and is smaller because both sides then lose the same conversion efficiency. Microwave transmission at the frequencies proposed passes through cloud, and the receiving antenna can be a mesh that farmland sits under. So the resource argument, which is what defeats most of this book's candidates, is the one argument space-based solar wins outright.
 
 **Then NASA costed it.** In January 2024 the agency's Office of Technology, Policy, and Strategy published a full lifecycle assessment of two reference designs, and the numbers are not close:[^sbsp]
 

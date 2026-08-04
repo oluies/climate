@@ -4,10 +4,10 @@ Input: data-refresh/nuclear-costs.csv from `mill Refresh.scala nuclearCosts`."""
 import sys, duckdb, matplotlib.pyplot as plt, numpy as np
 
 INK, MUTED = "#161d1b", "#8a8a85"
-REN, NUC, CAP = "#1baf7a", "#4a3aa7", "#eb6834"
+REN, NUC = "#1baf7a", "#4a3aa7"
 # Ordering in SQL; fetchnumpy keeps this out of pandas.
 d = duckdb.sql(f"""
-    SELECT "group" AS grp, label, lo, mid, hi, capture
+    SELECT "group" AS grp, label, lo, mid, hi
     FROM read_csv_auto('{sys.argv[1]}') ORDER BY grp DESC, mid
 """).fetchnumpy()
 n = len(d["label"])
@@ -25,10 +25,6 @@ for i, yy in enumerate(y):
     ax.plot([mid, mid], [yy - 0.23, yy + 0.23], color=col, lw=3.0, zorder=4)
     # Value to the left: the capture diamonds sit to the right of the cheap rows.
     ax.text(lo - 5, yy, f"{mid:.0f}", va="center", ha="right", fontsize=8.8, color=INK)
-    cap = float(d["capture"][i])
-    if cap > 0:
-        ax.plot(cap, yy, marker="D", ms=6.5, color=CAP, zorder=5,
-                mec="white", mew=0.9)
 
 # The span of the nuclear rows, which is the figure's argument.
 nuc = [i for i in range(n) if d["grp"][i] == "Nuclear"]
@@ -50,18 +46,16 @@ ax.spines["bottom"].set_color("#c9c9c4")
 ax.tick_params(axis="y", length=0)
 
 h = [plt.Rectangle((0, 0), 1, 1, color=REN, alpha=0.45),
-     plt.Rectangle((0, 0), 1, 1, color=NUC, alpha=0.45),
-     plt.Line2D([0], [0], marker="D", ls="none", ms=6.5, color=CAP)]
+     plt.Rectangle((0, 0), 1, 1, color=NUC, alpha=0.45)]
 # Below the axis: the plot area is full of bars and value labels.
-ax.legend(h, ["Renewable, low–central–high", "Nuclear, low–central–high",
-              "Price actually captured"],
-          frameon=False, fontsize=9, ncol=3, loc="upper center",
+ax.legend(h, ["Renewable, low–central–high", "Nuclear, low–central–high"],
+          frameon=False, fontsize=9, ncol=2, loc="upper center",
           bbox_to_anchor=(0.5, -0.11))
 ax.set_title("What it costs to build, as a range rather than a number",
              loc="left", fontsize=12.5, fontweight="bold", pad=14)
 ax.annotate("Every published levelised cost is a range, and quoting the midpoint hides what the range is made of. For the\n"
             "renewables it is mostly resource and site. For nuclear it is mostly the discount rate: the five nuclear rows are\n"
-            "not five technologies but one, financed and built five ways. Diamonds are the price that technology's output\n"
-            "actually realised on the market — where it sits left of the bar, no merchant investor builds.",
+            "not five technologies but one, financed and built five ways. For what each technology's output actually\n"
+            "earned on a market, against what it cost to build, see figure 28a.4 — which does that on one market in one currency.",
             xy=(0, -0.185), xycoords="axes fraction", va="top", fontsize=9.3, color=MUTED)
 fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])

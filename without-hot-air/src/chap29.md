@@ -204,9 +204,9 @@ Chapter 22 puts it most sharply. MacKay hunted vampires with a meter and a noteb
 
 Table 29.3 has held up better than most eighteen-year-old advice, but two entries have moved.
 
-**"Change lights to fluorescent or LED — 4 kWh/d"** has largely been done *for* the reader. Chapter 9 records British lighting falling from about 4 kWh/d to 0.8, and almost none of that was individuals choosing bulbs; it was manufacturers no longer being permitted to sell the alternative.
+**"Change lights to fluorescent or LED — 4 kWh/d"** has largely been done *for* the reader. Chapter 9 records that the 4 kWh/d MacKay allows for lighting would now be a small fraction of that, and almost none of that was individuals choosing bulbs; it was manufacturers no longer being permitted to sell the alternative.
 
-**"Stop flying — 35 kWh/d"** remains the largest single item on the list and the one least touched by anything. Chapter 5's arithmetic is unchanged, chapter 20 finds the fuel three times the price of kerosene with no downward trend, and no regulation anywhere restricts the number of flights a person may take. **The item that regulation removed from the list was the small one. The big one is still entirely a matter of personal choice**, which is either an argument for individual action or an indictment of everything above, depending on the reader's temperament.
+**"Stop flying — 35 kWh/d"** remains the largest single item on the list and the one least touched by anything. Chapter 5's arithmetic is unchanged, and chapter 5 also records synthetic aviation fuel at about three times the price of kerosene with no downward trend, and no regulation anywhere restricts the number of flights a person may take. **The item that regulation removed from the list was the small one. The big one is still entirely a matter of personal choice**, which is either an argument for individual action or an indictment of everything above, depending on the reader's temperament.
 
 ## Notes and further reading
 

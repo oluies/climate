@@ -1,11 +1,11 @@
-group,label,lo,mid,hi,capture
-Renewable,Hydropower,40.0,50.0,65.0,0.0
-Renewable,Onshore wind,44.0,51.0,62.0,72.0
-Renewable,Solar PV,48.0,56.0,70.0,66.0
-Renewable,Offshore wind (fixed),105.0,126.0,150.0,72.0
-Renewable,Offshore wind (floating),160.0,190.0,230.0,72.0
-Nuclear,Nuclear (China),55.0,60.0,70.0,0.0
-Nuclear,Nuclear (Sweden at 4%),66.0,72.0,80.0,80.0
-Nuclear,SMR (Rolls-Royce target),70.0,75.0,95.0,0.0
-Nuclear,SMR (Korean estimate),78.0,85.0,105.0,0.0
-Nuclear,Nuclear (commercial WACC),150.0,175.0,200.0,80.0
+group,label,lo,mid,hi
+Renewable,Hydropower,40.0,50.0,65.0
+Renewable,Onshore wind,44.0,51.0,62.0
+Renewable,Solar PV,48.0,56.0,70.0
+Renewable,Offshore wind (fixed),105.0,126.0,150.0
+Renewable,Offshore wind (floating),160.0,190.0,230.0
+Nuclear,Nuclear (China),55.0,60.0,70.0
+Nuclear,Nuclear (Sweden at 4%),66.0,72.0,80.0
+Nuclear,SMR (Rolls-Royce target),70.0,75.0,95.0
+Nuclear,SMR (Korean estimate),78.0,85.0,105.0
+Nuclear,Nuclear (commercial WACC),150.0,175.0,200.0
