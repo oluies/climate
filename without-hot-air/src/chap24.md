@@ -24,57 +24,56 @@ So the material streams flowing into and out of nuclear reactors are small, rela
 
 Figure 24.1 shows how much electricity was generated globally by nuclear power in 2007, broken down by country.
 
-million tons uranium
+| Million tonnes of uranium | MacKay, 2008 | 2026 edition |
+|---|---|---|
+| Australia | 1.14 | **1.67** |
+| Kazakhstan | 0.82 | 0.81 |
+| Canada | 0.44 | 0.58 |
+| Namibia | 0.28 | 0.50 |
+| Russian Federation | 0.17 | 0.48 |
+| Niger | — | 0.34 |
+| South Africa | 0.34 | 0.32 |
+| China | — | 0.27 |
+| Brazil | 0.28 | 0.17 |
+| Mongolia | — | 0.14 |
+| Ukraine | — | 0.11 |
+| USA | 0.34 | **0.07** |
+| Uzbekistan | 0.12 | — |
+| **World total, in the ground** | **4.7** | **5.93** |
+| Phosphate deposits | 22 | 22 |
+| Seawater | 4500 | 4500 |
 
-Australia
+<span class="figurenumber">Table 24.2</span>. Known recoverable resources of uranium, as MacKay gave them and as they stand in the 2026 revision. Both columns are "identified resources" — reasonably assured plus inferred — recoverable at under $130 per kilogram of uranium; MacKay's are as of 1 January 2005, the current column as of 1 January 2023. Countries shown with a dash were not listed separately in that column's source. Phosphate and seawater figures are geological estimates of a different kind and have not been restated.[^redbook]
 
-1.14
+*Added in the 2026 revision.* Two things in that comparison are worth stating, because they run opposite ways.
 
-Kazakhstan
+**The world total went up, not down.** Identified resources rose from 4.7 to 5.93 million tonnes, about 26%, over eighteen years in which the world also *consumed* something over a million tonnes. Exploration more than replaced what was burned. This is the same pattern chapter 23 finds for coal in reverse: there, the resource estimate was revised *down* by a third while consumption rose slowly. Resource estimates are not measurements of what is in the ground. They are measurements of how hard anyone has recently looked, at a stated price.
 
-0.82
+**The American entry fell by four-fifths**, from 0.34 to 0.07 million tonnes, and almost none of that is uranium being mined. It is reporting: the United States has largely stopped submitting the resource categories the Red Book asks for, and what remains understates what is there. It is a useful warning about this kind of table. **A national figure that collapses is more often a change in the reporting than a change in the rock**, and the same caution applies to the coal reserves in chapter 23 and to every resource estimate in this book.
 
-Canada
+Neither correction touches MacKay's argument. His question is whether fission could support humanity for generations, and he answers it with the world total, the seawater figure and the difference between once-through and breeder reactors. Those are unchanged. **The resource was never the binding constraint, and eighteen years of data have made that more obvious rather than less.**
 
-0.44
+### Uranium from seawater, and why the price barely matters
 
-USA
+MacKay's seawater figure — 4.5 billion tonnes, a thousand times everything in the ground — carries the weight of his sustainability argument, and the obvious objection is that nobody has ever extracted uranium from seawater at scale. That objection is correct and it matters less than it sounds, for a reason this chapter has already established.
 
-0.34
+**Nuclear's fuel is a rounding error in its cost.** A one-gigawatt light-water reactor consumes about 180 tonnes of uranium a year and, at 90% availability, generates about 7.9 TWh. Multiply out and the raw uranium is worth roughly **$0.023 per MWh for every dollar per kilogram** it costs. So:
 
-South Africa
+| Uranium price | Raw uranium in the electricity |
+|---|---|
+| $225/kgU — spot, August 2026 | **$5/MWh** |
+| $300/kgU | $7/MWh |
+| $500/kgU | $11/MWh |
+| $800/kgU | $18/MWh |
+| $1200/kgU | $27/MWh |
 
-0.34
+Published estimates of what seawater extraction would cost span the middle and upper parts of that range, depending almost entirely on how many times the adsorbent can be reused. So moving the entire world fleet from mined uranium to seawater uranium would add something like **$10 to $20 per MWh**.
 
-Namibia
+Now set that beside figure 24.18. The same reactor moves from about €72/MWh to about €175/MWh depending on who lends the money — a swing of **more than €100**. **The whole distance from today's uranium price to the most pessimistic seawater estimate is worth about a fifth of what the discount rate is worth.** Fuel is not where nuclear's cost lives, and this is the strongest single defence of MacKay's sustainability argument: even if his backstop resource turns out five times more expensive than anyone hopes, the electricity is still recognisably the same price.[^seawater]
 
-0.28
+**What that does not settle is whether it can be built.** Dungan and colleagues review the engineering honestly, and the obstacles are physical rather than economic. The leading system is a braided polyethylene adsorbent carrying amidoxime groups, and a cost analysis attributes **88% of the total to just two items — mooring and collection, and manufacturing the adsorbent**. The adsorbent degrades with each cycle, fouls biologically, and has to be recovered from open water. Uranium is present at 3.3 parts per billion, so the volumes are enormous: the Japan Atomic Energy Agency's proposal for an *initial* deployment covers **1031 square kilometres of seabed and over 100 000 tonnes of adsorbent**. A farm that size is a legal object as well as an engineering one, since the Law of the Sea governs exploitation of marine resources and its marine-protection provisions were not written with this in mind.[^dungan]
 
-Brazil
-
-0.28
-
-Russian Federation
-
-0.17
-
-Uzbekistan
-
-0.12
-
-World total (conventional reserves in the ground)
-
-4.7
-
-Phosphate deposits
-
-22
-
-Seawater
-
-4500
-
-<span class="figurenumber">Table 24.2</span>. Known recoverable resources of uranium. The top part of the table shows the "reasonable assured resources" and "inferred resources," at cost less than $130 per kg of uranium, as of 1 Jan 2005. These are the estimated resources in areas where exploration has taken place. There’s also 1.3 million tons of depleted uranium sitting around in stockpiles, a by-product of previous uranium activities.
+So the honest summary is the one that keeps recurring in this chapter. **Seawater uranium works as a price ceiling rather than as a supply.** Its function is to bound how expensive uranium can ever get, because if the price rose far enough this becomes worth doing — and the arithmetic above shows that a bounded uranium price bounds almost nothing about the cost of nuclear electricity anyway. The resource question was answered before it was asked. The construction and financing questions were not.
 
 ![](/img/without-hot-air/figure194.gif)
 
@@ -398,6 +397,12 @@ So the answer to this chapter's title has become two answers. **Can we? Yes — 
 [^fusion26]: The ITER Council accepted a revised baseline in 2024 moving the start of research operations to 2034 and deuterium–tritium operation to 2039, a four-year slip attributed to the pandemic, component quality problems and optimistic first-of-a-kind planning. The National Ignition Facility first achieved target gain greater than one in December 2022 and has repeated it since; target gain is not facility gain, and the facility's wall-plug energy per shot exceeds the yield by a large factor. Private fusion investment of more than $7bn across roughly 45 companies is the Fusion Industry Association's own tally and counts announced raises, not deployed capital.
 
 [^fukushima]: The Great East Japan Earthquake and tsunami of 11 March 2011 killed approximately 18 000 people. The United Nations Scientific Committee on the Effects of Atomic Radiation has consistently reported no discernible increase in radiation-related health effects in the general population; one worker death from lung cancer was officially recognised as radiation-linked by the Japanese government in 2018. Estimates of deaths caused by the evacuation itself, chiefly among elderly evacuees from hospitals and care facilities, exceed 2000 and are compiled by Japanese prefectural authorities as "disaster-related deaths". The thyroid cancers detected by mass screening of children in Fukushima prefecture are generally attributed to the screening itself rather than to radiation, though this remains disputed. Comparative deaths-per-terawatt-hour figures depend heavily on how indirect deaths and air pollution are attributed; every published set places coal one to three orders of magnitude above nuclear.
+
+[^seawater]: The sensitivity is computed as follows. A 1 GWe light-water reactor consumes about 180 tonnes of uranium a year (Dungan et al.; MacKay's own figure in this chapter is 162 t per GW-year, which would make these numbers about 10% lower). At 90% availability it generates 1e6 kW x 8760 h x 0.90 = 7.884e9 kWh, or 7.884 million MWh, so 180 000 kg at $P per kg works out at 180 000P/7.884e6 = 0.0228P dollars per MWh. The spot price of about $225/kgU is derived from $86.63 per pound of U3O8 on 3 August 2026: a pound is 0.4536 kg, and U3O8 is 84.8% uranium by mass. These are raw uranium costs only — conversion, enrichment and fabrication roughly double to triple the delivered fuel cost, and waste management and decommissioning are additional — but those stages do not scale with the uranium price, so the *incremental* effect of moving to a dearer source is as shown. The comparison with the discount rate uses figure 24.18's own range and treats dollars and euros as roughly interchangeable at 2026 rates, which is adequate for a claim about a factor of five.
+
+[^dungan]: K. Dungan, G. Butler, F.R. Livens and L.M. Warren, "Uranium from seawater — Infinite resource or improbable aspiration?", *Progress in Nuclear Energy* 99 (2017) 81–85, <https://doi.org/10.1016/j.pnucene.2017.04.016>. Source of the 180 t per GW-year consumption figure, the amidoxime braid description, the finding by Schneider and Sachde that mooring and collection plus adsorbent production account for 88% of cost, the Japan Atomic Energy Agency deployment proposal of 1031 square kilometres and over 100 million kg of adsorber (Tamada et al.), and the discussion of the United Nations Convention on the Law of the Sea. It is a review rather than an experimental result, and its own conclusion is cautious: a commercial seawater supply is "becoming a more realistic target" but the technology "still needs extensive development". Published extraction cost estimates have fallen substantially since the early work — figures above $1000/kgU were common a decade ago, and later estimates from the Oak Ridge and Pacific Northwest national laboratories are several hundred — but no estimate rests on operation at anything like the required scale, so the range quoted above should be read as the span of the literature rather than as a cost.
+
+[^redbook]: The 2026 column is from the OECD Nuclear Energy Agency and IAEA's *Uranium 2024: Resources, Production and Demand* — the thirtieth edition of the "Red Book" — reporting identified recoverable resources at under $130/kgU as of 1 January 2023, with a world total of 5 925 700 tonnes; country figures via the World Nuclear Association's tabulation of the same source. That total was itself down about 3% on the 2021 edition, so the rise since 2008 is not monotonic. Total identified resources across the whole cost range up to $260/kgU are 7 934 500 tonnes. MacKay's column is his Table 24.2, on the same $130/kg basis as of 1 January 2005. Two cautions about comparing the columns. Costs are in nominal dollars in both cases, so a constant $130 threshold is a falling real threshold and the later column is, if anything, conservative. And the American collapse from 0.34 to 0.07 million tonnes reflects reporting practice rather than depletion — the United States has not submitted full resource estimates to recent editions — so the world total is understated by an unknown amount for that reason too. The Red Book itself concludes that identified resources are sufficient for both low- and high-growth nuclear scenarios through 2050 and beyond, while warning that development investment is needed to convert resources into production; the World Nuclear Association puts 5.9 million tonnes at roughly 90 years of supply at present consumption in conventional reactors, which is the once-through case MacKay computes separately.
 
 [^nuchist]: Figure 24.17b is generated by the `nuclearHistory` step of this edition's data-refresh script and `figures/nuclear_history.py`, from the Energy Institute's *Statistical Review of World Energy* 2026, sheet "Nuclear Generation - TWh". Peaks read from that series: Germany 171.3 TWh in 2001, France 451.5 TWh in 2005, the United States 852.0 TWh in 2019, China 485.2 TWh in 2025, world 2845.4 TWh in 2025. The crossover year is computed from the two series rather than read off the chart. Germany's last three reactors closed on 15 April 2023; the small residual in the series after that is generation earlier in that year. Note that Germany's decision was taken in 2011 and executed over twelve years, so the decline visible from 2011 is policy rather than plant failure.
 
