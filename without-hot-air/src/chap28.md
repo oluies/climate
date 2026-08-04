@@ -220,6 +220,47 @@ Wood/Miscanthus: <span class="darkblue">31 000 km<sup>2</sup></span>
 
 thus have a cost in the ballpark of £300 billion. The rough costs in table 28.3 add up to £870 bn, with the solar power facilities dominating the total – the photovoltaics cost £190 bn and the concentrating solar stations cost £340 bn. Both these costs might well come down dramatically as we learn by doing. A government report leaked by the Guardian in August 2007 [^2] estimates that achieving "20% by 2020" (that is, 20% of all energy from renewables, which would require an increase in renewable power of 80 GW) could cost "up to £22 billion" (which would average out to £1.7 billion per year). Even though this estimate is smaller than the £80 billion that the rule of thumb I just mentioned would have suggested, the authors of the leaked report seem to view £22 billion as an "unreasonable" cost, preferring a target of just 9% renewables. (Another reason they give for disliking the "20% by 2020" target is that the resulting greenhouse gas savings "risk making the EU emissions trading scheme redundant." Terrifying thought\!)
 
+## What a watt costs now
+
+*A section added in the 2026 revision.* This chapter opens with a rule of thumb that carried the whole of it: **"installing one watt of capacity costs one pound."** Table 28.3 shows MacKay did not quite apply it uniformly — his own implied prices run from £0.29 a watt for heat pumps to £8.50 for desert solar — but £1 a watt is the anchor, and it is what makes his £870 billion total feel like a number a country could contemplate.
+
+**The rule has not drifted. It has fractured.** Work his own table backwards into pounds per watt, adjust for eighteen years of inflation, and set the result against what Britain now pays:
+
+| | MacKay's implied cost | the same in 2025 money | Britain, 2025 |
+|---|---|---|---|
+| Solar photovoltaic farms | £3.96/W | £6.50/W | **about £0.70/W** |
+| Onshore wind | £0.77/W | £1.30/W | about £1.30/W |
+| Offshore wind | £1.24/W | £2.05/W | about £3.00/W |
+| Nuclear | £1.33/W | £2.20/W | **about £14/W** |
+
+**Onshore wind is the only line that held.** In real terms it costs today almost exactly what MacKay assumed, which after eighteen years of a maturing industry is itself a mild disappointment.
+
+Everything else moved, and two items moved enormously in opposite directions.[^watt26]
+
+### Solar took £380 billion off the bill
+
+The two solar entries dominate MacKay's costing: **photovoltaic farms at £190 billion and concentrating solar in deserts at £340 billion**. Together that is **£530 billion of an £870 billion plan — 61% of the whole thing.**
+
+Both numbers are now wrong, and in the same direction. Photovoltaics cost about a ninth of what this chapter assumes in real terms. And the desert concentrating solar, as chapter 25 records, is not merely dearer than expected but a technology that lost outright to photovoltaics and was never built at scale. Replace both with photovoltaic panels at 2025 prices and the same delivered energy costs something in the region of **£150 billion rather than £530**, before storage.
+
+**One technology's price collapse removed more from this plan than the entire cost of MacKay's nuclear, wind, wave, tidal and coal programmes combined.**
+
+### And nuclear put most of it back
+
+MacKay costs 45 GW of nuclear at **£60 billion**, based on Olkiluoto — £1.33 a watt, and chapter 24 records what Olkiluoto actually cost in the end. Hinkley Point C is running at roughly **£14 a watt**. At that price, this chapter's nuclear line alone would come to about **£630 billion**.
+
+Which is more than MacKay's entire plan. Every wind farm, every wave machine, every tidal lagoon, the Severn barrage, the heat pumps, the incinerators, the interconnectors and both solar programmes together came to £870 billion in his money. **Forty-five gigawatts of nuclear, at the price Britain is actually paying, would come to nearly three-quarters of that on its own.**
+
+### The bill is the same size and it is a different bill
+
+Put the two together and something quite strange emerges. Solar took roughly £380 billion out; nuclear, at real prices, puts roughly £530 billion back in. The changes are of comparable magnitude and opposite sign, and they very nearly cancel.
+
+**So MacKay's headline number survives, and everything underneath it has inverted.** In 2008 the plan was expensive because of solar and cheap because of nuclear. In 2026 it is cheap because of solar and expensive because of nuclear. The total is about right; the reasoning that produced it is not.
+
+That is worth stating plainly, because a reader who checks only the total would conclude the chapter had aged well. **It aged well by accident.** Two large errors in opposite directions is not the same as being right, and the next eighteen years will not be so obliging.
+
+**And the chapter's real argument is untouched.** MacKay's point is not the precise total but that £870 billion is comparable to things Britain does anyway — the bank bailout, the Iraq war, a few years of military spending. That comparison holds exactly as well now, and rather better: an £870 billion programme spread over forty years is roughly £22 billion a year, which is about a third of what Britain spends on defence. **The obstacle to this plan was never that the country could not afford it**, which is the same conclusion chapters 24, 25, 26 and 27 reach from their own directions.
+
 ## Other things that cost a billion
 
 Billions are big numbers and hard to get a feel for. To try to help put the cost of kicking fossil fuels into perspective, let’s now list some other things that also come in billions of pounds, or in billions per year. I’ll also express many of these expenditures "per person," dividing the total by an appropriate population.
@@ -321,6 +362,10 @@ According to the Stern review, the global cost of averting dangerous climate cha
 ### Expenditure that does **not** run into billions
 
 £0.012 billion per year: the smallest item displayed in figure 28.5 is the UK government’s annual investment in renewable-energy research and development. [^5] (£0.20 per person in the UK, per year.)
+
+[^watt26]: MacKay's implied costs are computed from his own table 28.3: onshore wind £27bn for 35 GW, offshore wind £36bn for 29 GW, photovoltaic farms £190bn for 48 GW, and nuclear £60bn for 45 GW. Inflation adjustment uses a factor of about 1.65 for UK consumer prices between 2008 and 2025; capital goods have not tracked consumer prices exactly, and construction cost inflation over the period ran higher, so this understates the real-terms fall in solar and overstates the rise in nothing. The 2025 figures are indicative capital costs rather than precise British averages: utility-scale solar around $690–700 per kW globally on IRENA figures, onshore wind near $1000–1300, UK offshore wind commonly quoted at £2500–3500 per kW, and Hinkley Point C at about £46bn for 3.26 GW, which is £14 100 per kW. Each is a range and each is sensitive to what is included — grid connection, financing during construction, and site works differ between sources. The comparison is offered as an ordering, per chapter M's warning, and the argument does not turn on any single value: solar has fallen by roughly an order of magnitude and nuclear has risen by roughly an order of magnitude, and no plausible choice within these ranges changes that.
+
+    The re-costing of the two solar lines assumes the 40 GW *average* of desert concentrating solar is replaced by photovoltaic capacity delivering the same annual energy, which at a desert capacity factor near 28% is roughly 145 GW of panels, and prices both that and MacKay's 48 GW of British photovoltaic farms at about £0.70 per watt. It excludes storage entirely, which concentrating solar provided thermally and photovoltaics do not — chapter 26 gives the cell cost of adding it, and adding it would narrow but not close the gap. It also excludes the transmission MacKay costs separately at £2bn, which would rise.
 
 ## Notes and further reading
 
