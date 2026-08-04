@@ -199,7 +199,7 @@ He asks how six billion people are to obtain 80 kWh per day each. Multiply it ou
 
 But it is divided among **8.23 billion people**, so the average is **55.5 kWh per day**, not 80.[^world26]
 
-Two things follow and they cut against each other. The world came far closer to the *quantity* in his question than anyone in 2008 would have predicted. And it got there by adding 2.2 billion people rather than by raising anyone to a European standard of living.
+Two things follow and they cut against each other. The world came far closer to the *quantity* in his question than anyone in 2008 would have predicted. And it got there while carrying 8.23 billion people rather than the 6 billion of his question — about 1.5 billion more than the world held when he wrote — so the per-person figure went nowhere near a European standard.
 
 Which reframes the question rather than answering it. MacKay asks whether the world could supply 80 kWh/d per person sustainably. The world has not attempted that: it has supplied 55 unsustainably, to more people. **The gap that matters is not between his target and what is achievable. It is between his target and what is actual.**
 

@@ -340,7 +340,7 @@ How to ride through these very-long-timescale fluctuations? Electric vehicles an
 
 ## Storage since 2008: the power was built, the energy was not
 
-*A section added in the 2026 revision.* This chapter sets a target and then spends most of its length explaining why the target is hard. The target is **1200 GWh** — 10 GW for five days, or 20 kWh per person — and MacKay's answer in 2008 is that Britain's four pumped-storage schemes hold **30 GWh** between them, so we would need forty more Dinorwigs. Eighteen years later the arithmetic can be redone, and the result is not the one either optimists or pessimists expect.
+*A section added in the 2026 revision.* This chapter sets a target and then spends most of its length explaining why the target is hard. The target is **1200 GWh** — 10 GW for five days, or 20 kWh per person — and MacKay's answer in 2008 is that Britain's four pumped-storage schemes hold **30 GWh** between them — forty times the whole existing fleet, or, as he puts it, about 130 times what Dinorwig alone stores. Eighteen years later the arithmetic can be redone, and the result is not the one either optimists or pessimists expect.
 
 **Batteries did what solar did.** A lithium-ion pack cost about **$1474 per kWh in 2010** in today's money. In 2025 it was **$108**, and packs for stationary storage — which do not have to be light — reached **$70**. That is a fall of **93%**, on the same shape of curve as chapter 6's photovoltaic modules and for the same reason: a manufactured article produced in enormous numbers.[^batprice]
 
@@ -348,9 +348,9 @@ How to ride through these very-long-timescale fluctuations? Electric vehicles an
 
 | | MacKay's 2008 target | Britain, end of 2025 |
 |---|---|---|
-| Power | 10 GW | **~10 GW** (7 GW batteries + 2.8 GW pumped) |
+| Power | 10 GW (his lull case) | **~10 GW** (7 GW batteries + 2.8 GW pumped) |
 | Energy | 1200 GWh | **~43 GWh** (13 batteries + 30 pumped) |
-| Duration | 120 hours | **about 1.6 hours** for the battery fleet |
+| Duration | 120 hours | **1.6 to 1.9 hours** for the battery fleet |
 
 **Britain has built almost exactly the power MacKay asked for and about a thirtieth of the energy.** That is the whole story of storage since this book was written, and it is not a story about technology failing. It is a story about which of the two numbers anybody is paid for.
 

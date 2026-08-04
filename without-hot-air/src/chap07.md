@@ -339,7 +339,7 @@ What makes it worth a section in this chapter is not the size. It is that Arland
 
 Two different machines get called a gas heat pump, and only one of them is interesting now.
 
-**A gas absorption heat pump** burns gas to drive an absorption cycle instead of a compressor. It is a real product, sold commercially, with a coefficient of performance around **1.3 to 1.5** — so roughly 40% more heat out of a unit of gas than a condensing boiler manages. And when this book was written, **it was the better machine.** Chapter 20 costs British electricity at **500 grams of CO₂ per kilowatt-hour**, which was right for 2008. Work it through:
+**A gas absorption heat pump** burns gas to drive an absorption cycle instead of a compressor. It is a real product, sold commercially, with a coefficient of performance around **1.3 to 1.5** — so between about 45% and 65% more heat out of a unit of gas than a condensing boiler at 0.9 manages. And when this book was written, **it was the better machine.** Chapter 20 costs British electricity at **500 grams of CO₂ per kilowatt-hour**, which was right for 2008. Work it through:
 
 | Grams of CO₂ per kWh of heat delivered | On MacKay's 2008 grid | On Britain's 2025 grid |
 |---|---|---|
@@ -359,11 +359,11 @@ The case for it is not carbon per kilowatt-hour, where it is plainly worse than 
 
 The **Freedom Project** put hybrids into 75 homes in Bridgend and measured them. The heat pump supplied **40 to 58% of annual heat**, cutting carbon by **30 to 48%** — over a tonne per home a year — while the coldest hours stayed on gas. The project's estimate of avoided distribution network reinforcement, for South Wales alone, was **£1.3 billion by 2050**.[^hybrid]
 
-And a hybrid works in the houses that full electrification cannot reach. It needs no radiator replacement, no electrical supply upgrade and no particular fabric standard, because the boiler covers whatever the heat pump cannot. That is precisely the **two-in-five** problem this chapter has just described.
+And a hybrid works in the houses that full electrification cannot reach. It needs no radiator replacement, no electrical supply upgrade and no particular fabric standard, because the boiler covers whatever the heat pump cannot. That is precisely the problem chapter 21 quantifies: **52% of English homes reach EPC band C and 56% reach A to C**, so about two in five sit below the level this chapter's arithmetic wants.
 
 **The objection is real, and it is about permanence.** A hybrid keeps the gas connection, which keeps the gas network, which keeps the network's fixed costs spread across a shrinking number of customers — a problem that gets worse as it succeeds. And a hybrid house is not a decarbonised house; it is a half-decarbonised house, potentially for ever, because no moment ever arrives at which somebody rips out a working boiler.
 
-British policy has taken a side. **Hybrids are excluded from the Boiler Upgrade Scheme**, which pays £7,500 towards a heat pump only if the fossil boiler goes entirely. Whether that is right depends on what one believes the binding constraint to be. If it is carbon per house, hybrids are a trap. If it is the number of houses converted before 2050, and the cost of the wires to do it, they may be the only route to the two in five that this chapter's own arithmetic says a heat pump alone cannot serve.
+British policy has taken a side. **Hybrids are excluded from the Boiler Upgrade Scheme**, which pays £7,500 towards a heat pump only if the fossil boiler goes entirely. Whether that is right depends on what one believes the binding constraint to be. If it is carbon per house, hybrids are a trap. If it is the number of houses converted before 2050, and the cost of the wires to do it, they may be the only route to the two homes in five that chapter 21's figures place below the band a heat pump alone wants.
 
 ### The standards moved faster than the stock
 

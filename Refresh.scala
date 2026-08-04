@@ -1235,9 +1235,12 @@ def transportEnergy(): Unit = {
 def nuclearCosts(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
   val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
-  val out = new StringBuilder; out ++= "group,label,lo,mid,hi,capture\n"
+  // No capture prices here: the only series available is Elexon's GB figures in
+  // pounds, and these cost rows are European and global in euros. Figure 28a.4
+  // does that comparison properly, on one market and one currency.
+  val out = new StringBuilder; out ++= "group,label,lo,mid,hi\n"
   def add(g: String, l: String, lo: Double, mid: Double, hi: Double, cap: Double = 0) =
-    out ++= f"$g,$l,$lo%.1f,$mid%.1f,$hi%.1f,$cap%.1f\n"
+    out ++= f"$g,$l,$lo%.1f,$mid%.1f,$hi%.1f\n"
 
   // Renewables and hydro: IRENA 2024 weighted averages and Danish Energy Agency data.
   add("Renewable", "Hydropower", 40, 50, 65, 0)
