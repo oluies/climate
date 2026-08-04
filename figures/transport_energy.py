@@ -33,7 +33,8 @@ CALLOUT = {
 # CALLOUT wins over OFF in the loop below, so an entry in both would be a silent no-op,
 # and a key matching no mode (a rename in Refresh.scala) would silently fall back to the default.
 assert not (OFF.keys() & CALLOUT.keys()), "a mode is in both OFF and CALLOUT"
-assert (OFF.keys() | CALLOUT.keys()) <= set(d["mode"]), "label placement for a mode not in the data"
+stale = (OFF.keys() | CALLOUT.keys()) - set(d["mode"])
+assert not stale, f"label placement for modes not in the data: {sorted(stale)}"
 
 fig, ax = plt.subplots(figsize=(9.6, 6.4))
 ax.set_xscale("log"); ax.set_yscale("log")
