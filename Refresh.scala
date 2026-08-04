@@ -1258,3 +1258,41 @@ def nuclearCosts(): Unit = {
     .map(l => (l.split(",")(2).toDouble, l.split(",")(4).toDouble)).toList
   println(f"  nuclear spans ${n.map(_._1).min}%.0f-${n.map(_._2).max}%.0f EUR/MWh, a factor of ${n.map(_._2).max / n.map(_._1).min}%.1f")
 }
+
+// ---- Chapter 24: nuclear generation, China against Germany ----
+// The clearest single picture of what happened to nuclear since MacKay wrote:
+// one country's fleet went to zero while another's went past everyone.
+@main
+def nuclearHistory(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"
+  val xlsx = (dir / "ei-stats-review-all-data.xlsx").toString
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val st = conn.createStatement(); st.execute("INSTALL excel; LOAD excel;")
+  val y0 = 1965
+  val cols = (y0 to 2025).map(y => "\"" + colName(1 + (y - y0)) + "\"").mkString(",")
+  val want = Seq("China", "Germany", "US", "France", "Total World")
+  val rs = st.executeQuery(
+    s"""SELECT A, $cols FROM read_xlsx('$xlsx', sheet='Nuclear Generation - TWh',
+        header=false, all_varchar=true, range='A3:${colName(1 + (2025 - y0))}120')
+        WHERE A IS NOT NULL""")
+  val out = new StringBuilder; out ++= "country,year,twh\n"
+  val peak = scala.collection.mutable.Map[String, (Int, Double)]()
+  while (rs.next()) {
+    val name = rs.getString(1).trim
+    if (want.contains(name)) {
+      for (y <- y0 to 2025) {
+        val s = rs.getString(y - y0 + 2)
+        if (s != null && s.nonEmpty && s.toDoubleOption.isDefined) {
+          val v = s.toDouble
+          out ++= f"$name,$y,$v%.2f\n"
+          if (v > peak.getOrElse(name, (0, 0.0))._2) peak(name) = (y, v)
+        }
+      }
+    }
+  }
+  conn.close()
+  os.write.over(dir / "nuclear-history.csv", out.toString)
+  println("wrote data-refresh/nuclear-history.csv")
+  for (c <- want; (y, v) <- peak.get(c)) println(f"  $c%-12s peak $v%7.1f TWh in $y")
+}
