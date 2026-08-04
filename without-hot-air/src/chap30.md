@@ -189,7 +189,62 @@ My guess is that in many regions, the best solar technology for electricity prod
 
 The non-solar numbers add up as follows. Wind: 24 kWh/d/p; hydro: 3.6 kWh/d/p; tide: 0.3 kWh/d/p; wave: 0.5 kWh/d/p; geothermal: 8 kWh/d/p – a total of 36 kWh/d/p. Our target was a post-European consumption of 80 kWh/d per person. We have a clear conclusion: the non-solar renewables may be "huge," but they are not huge enough. To complete a plan that adds up, we must rely on one or more forms of solar power. Or use nuclear power. Or both.
 
+## Redone again, for 2026
+
+*A section added in the 2026 revision.* This chapter asks the same question three times, of Europe, of North America and of the world, and gives three versions of the same answer. All three can now be checked.
+
+### The world hit MacKay's total and missed his target
+
+He asks how six billion people are to obtain 80 kWh per day each. Multiply it out and that is **631 exajoules a year**. World energy supply in 2025 was **600 EJ** — within 5% of his figure, and reached about twenty-five years ahead of any schedule he implies.
+
+But it is divided among **8.23 billion people**, so the average is **55.5 kWh per day**, not 80.[^world26]
+
+Two things follow and they cut against each other. The world came far closer to the *quantity* in his question than anyone in 2008 would have predicted. And it got there by adding 2.2 billion people rather than by raising anyone to a European standard of living.
+
+Which reframes the question rather than answering it. MacKay asks whether the world could supply 80 kWh/d per person sustainably. The world has not attempted that: it has supplied 55 unsustainably, to more people. **The gap that matters is not between his target and what is achievable. It is between his target and what is actual.**
+
+### The renewables he counted are barely deployed
+
+His world estimates are of the *resource* — what the wind and the tides could yield if we built everything buildable. Set them against what was actually delivered in 2025:
+
+| kWh/d per person, world | MacKay's resource estimate | delivered, 2025 |
+|---|---|---|
+| Wind | 24 | **0.90** |
+| Solar | very large | **0.94** |
+| Tide | 0.3 | about zero |
+| Wave | 0.5 | zero |
+
+Wind is at **under 4% of the resource this chapter computes** — after eighteen years containing the largest wind build-out in history. Solar is comparable, on a resource many times larger.
+
+That is the finding that ought to change how the chapter is read. **MacKay's conclusion is that the non-solar renewables are not enough. The experience since is that we have not come close to testing it**, because nothing has been built to the scale at which a resource limit could bind. What binds is the rate of construction, the cost of capital, land consent and grid connection — chapter 18's list, not this chapter's.
+
+### Europe's two options both closed
+
+He is specific about Europe: it "needs nuclear power, or solar power in other people's deserts, or both." Eighteen years later, **both of those went badly, and Europe did neither.**
+
+Chapter 25 records the desert option. DESERTEC dissolved within five years of its founding, and in June 2025 Britain declined the one fully engineered version of the idea ever put to a European government. Chapter 24 records the nuclear option: Germany went to zero, Olkiluoto took eighteen years, Flamanville seventeen, and Hinkley Point C is running near £14 a watt.
+
+What Europe did instead was build domestic wind and solar, which now deliver roughly **5 kWh per day per person** against a total consumption near 90, and burn gas for most of the rest — with the consequences of 2022.
+
+**That is not a refutation of MacKay. It is the reverse.** He said Europe could not do this on its own renewables; Europe tried anyway; and the numbers are where he said they would be. What he did not anticipate is that the two escape routes he identified would be closed by economics and politics rather than by physics — which is this edition's recurring finding, not his.
+
+### America came down without trying
+
+MacKay puts the average American at 250 kWh per day and asks whether shocking efficiency measures could bring them to a European 125. Americans now use about **209 kWh per day** — a fall of about a sixth, achieved with no shocking measures at all, through the same gas-for-coal substitution and incremental efficiency that chapter 15 describes for Britain. Wind and solar deliver about **7 kWh/d** of the total.
+
+His conclusion — that North America needs solar in its own deserts, or nuclear, or both — stands untouched, and the solar half of it is now being acted on at scale.
+
+### And the thing he got right matters more than the things he got wrong
+
+Underneath all three regional answers is one conclusion: **solar is the only renewable whose resource is large enough to matter at world scale.** In 2008 that was a contested claim, and it was made harder by solar being the most expensive line in his own cost table — £3.96 a watt in chapter 28, against £0.77 for onshore wind.
+
+It is not contested now. Solar became the cheapest source of new electricity across most of the world in the early 2020s, and is being installed faster than any generating technology in history.
+
+**He identified the answer and mispriced it by nearly an order of magnitude in the wrong direction.** Chapter 25 finds the same error in his choice of concentrating solar over photovoltaics; chapter 28 finds it in his costings. On this book's record, being right about the destination and wrong about the cost of arriving is the characteristic way to be usefully wrong — and it is a far better failure than being wrong about the destination.
+
 ## Notes and further reading
+
+[^world26]: World and regional figures are from the Energy Institute's *Statistical Review of World Energy* 2026. Total energy supply: world 600.3 EJ, Europe 72.1 EJ, United States 93.8 EJ in 2025. Generation: world solar 2811 TWh and wind 2714 TWh; Europe solar 456 TWh and wind 625 TWh; United States solar 393 TWh and wind 469 TWh. Per-person figures use populations of 8.23 billion for the world, about 600 million for the Statistical Review's "Total Europe" aggregate, and 342 million for the United States, and are given to the precision the denominators support — the European figure in particular depends on which countries the aggregate contains, and readers checking it against an EU-27 population will get a different answer. MacKay's implied world total of 631 EJ is 80 kWh/d × 365 days × 6 billion people converted at 3.6 MJ per kWh. Note that "total energy supply" counts primary energy, so electricity from wind and solar is counted at its output rather than grossed up for a notional thermal input; on the substitution convention MacKay generally uses, their share would appear larger. That convention difference does not affect the comparison of delivered kWh per person, which is what the table gives.
 
 [^1]: *North American offshore wind resources.* [<span class="websitetitle">www.ocean.udel.edu/windpower/ResourceMap/index-wn-dp.html</span>](http://www.ocean.udel.edu/windpower/ResourceMap/index-wn-dp.html)
 
