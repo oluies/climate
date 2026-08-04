@@ -338,7 +338,46 @@ The same study is more useful for what it does next, which is to ask what would 
 [^de3]: Fraunhofer ISE, "One year since Germany's nuclear exit", 2024; see also the German economy ministry's earlier "get away from gas", energiewende.bundeswirtschaftsministerium.de.
 [^model]: The cannibalization model and its references: <https://oluies.github.io/elmix/modell/referenser.html> .
 
+## Taking it to the limit: solar power from orbit
+
+*A section added in the 2026 revision.* This chapter's move is to put the collectors where the sun is better and transmit the electricity to where the people are. Desert to Europe is one step. The limit case is orbit, and it is worth working through, because it fails for a reason this book keeps arriving at.
+
+**The physical case is genuinely strong.** A panel in geostationary orbit sees the sun for about 99% of the year, with no night worth speaking of, no cloud, no atmosphere and no seasonal angle. It receives the full **1360 W/m²** of the solar constant. Chapter 6 works with something nearer **110 W/m²** for a British array once night, weather, latitude and packing are counted. Advocates put the ratio at around seven to one, and that is roughly right. Microwave transmission at the frequencies proposed passes through cloud, and the receiving antenna can be a mesh that farmland sits under. So the resource argument, which is what defeats most of this book's candidates, is the one argument space-based solar wins outright.
+
+**Then NASA costed it.** In January 2024 the agency's Office of Technology, Policy, and Strategy published a full lifecycle assessment of two reference designs, and the numbers are not close:[^sbsp]
+
+| | Lifecycle cost | Against terrestrial at $0.02–0.05/kWh |
+|---|---|---|
+| Reference design 1 | **$0.61/kWh** | 12–31× |
+| Reference design 2 | **$1.59/kWh** | 32–80× |
+
+**Launch is 71 to 77% of the cost**, and the reason is a detail that decides the whole question. Reference design 1 needs **2321 launches to deliver 5.9 million kilograms** of hardware — and **twelve of every thirteen of those launches exist only to refuel the payloads waiting in low orbit so they can climb to geostationary.** The satellites are not the problem. Getting them up the last part of the gravity well is.
+
+The emissions answer is just as telling, and it is the one advocates rarely quote. At **26 and 40 grams of CO₂ per kilowatt-hour**, the two designs are inside the range for terrestrial renewables, which is 13 to 43. Against the American grid's 385 they are excellent; against the alternative they are ordinary. **Space-based solar is not a low-carbon breakthrough. It is a low-carbon technology at thirty times the price.**
+
+It is not impossible, and the report is careful to say so. Combine launch at **$500 per kilogram**, electric propulsion for the orbital transfer, fifteen-year hardware life and aggressive manufacturing learning, and the cost falls to **$0.03 and $0.08 per kilowatt-hour** — competitive. Every one of those has to happen at once.
+
+So the verdict is this chapter's verdict, one step further out. The sunshine was never the problem. **The cost of getting the collector to the sunshine is the entire answer**, exactly as chapter M finds that the cost of delivering a fuel is most of its energy accounting. Free energy at the top of a gravity well is not free energy.
+
+### The version that survives is not about Earth at all
+
+There is a variant of the idea that the NASA arithmetic does not touch, and it is the more interesting one.
+
+Everything above is the cost of sending power *down*. If the power is used *in space*, that entire problem disappears — no rectenna, no atmospheric path, and above all no fleet of launches whose only purpose is to lift a transmitter aimed at Earth. And there are processes that would rather be off Earth for reasons that have nothing to do with electricity: continuous unshadowed sunlight, hard vacuum available in unlimited quantity without pumping, and sustained microgravity. The candidates usually named are optical fibre of a kind that crystallises badly under gravity, certain pharmaceuticals and tissue growth, silicon wafers, and exotic metallurgy.[^spaceind]
+
+**And there is an argument that deserves to be stated because it is not the usual one: some processes are poisonous.** Smelting, electrowinning and the separation of rare earths produce waste streams whose containment is a large part of their cost and most of their political difficulty. Somewhere with no biosphere changes what containment means.
+
+Two things have to be said against that, and they are the same two this book says elsewhere. First, it is structurally the argument for relocating a dirty industry anywhere, and chapter 15 is about what happened when Britain solved its industrial emissions that way — the harm moved and the accounting stopped following it. An orbital smelter does not use less energy; it moves the harm somewhere the ledger does not reach, and adds a launch. Second, the economics only work if the output **stays in space**. Anything brought down pays the gravity well again in the expensive direction, and the whole case rests on materials being worth more at the top of the well than at the bottom.
+
+Which is why beamed power's honest niche is probably **platform to platform** rather than orbit to ground: no atmosphere, short distances, and a customer who cannot easily get energy any other way.
+
+None of this belongs in this book's kilowatt-hours per day per person, and it is not offered as British energy supply. If it ever matters, it will matter as somewhere to put industry rather than somewhere to get electricity from — and the number that decides it is dollars per kilogram to orbit, which is the number that decides everything else in the field too.
+
 ## Notes and further reading
+
+[^sbsp]: Erica Rodgers, Ellen Gertsen, Jordan Sotudeh, Carie Mullins, Amanda Hernandez, Hanh Nguyen Le, Phil Smith and Nikolai Joseph, *Space-Based Solar Power*, NASA Office of Technology, Policy, and Strategy, report ID 20230018600, 11 January 2024: <https://www.nasa.gov/wp-content/uploads/2024/01/otps-sbsp-report-final-tagged-approved-1-8-24-tagged-v2.pdf>. Baseline lifecycle costs of $0.61/kWh for reference design 1 and $1.59/kWh for reference design 2 in FY22 dollars, against 2050 projections of $0.02–0.05/kWh for terrestrial renewables. Launch accounts for 71% and 77% of cost respectively; RD1 requires 2321 launches for 5.9 million kg of mass and RD2 3960 launches for 10 million kg, with twelve of every thirteen launches serving only to refuel payloads in low Earth orbit for transfer to geostationary; 1.5 and 2 million spacecraft modules are manufactured. Lifecycle emissions of 26 and 40 gCO₂eq/kWh compare with 13–43 for terrestrial renewables and 385 for the 2021 US grid. The favourable combination — $500/kg launch, electric orbital transfer, fifteen-year hardware life, cheaper servicers, learning curves of 85% or better — gives $0.03 and $0.08/kWh and 3.78 and 4.33 gCO₂eq/kWh. Two notes on reading it. The study models Starship because it was the largest heavy-lift vehicle with published data, which NASA states is not an endorsement; and its favourable $500/kg is still well above SpaceX's own stated ambition, so the report is not assuming the industry fails to improve — it is assuming it improves substantially and finding that this is not sufficient on its own.
+
+[^spaceind]: The list of processes said to favour orbit — ZBLAN optical fibre, pharmaceuticals and tissue growth, silicon wafers, exotic metallurgy — and the argument that asteroid material is worth most if it never comes down are from the author's Q&A accompanying Daniel Suarez's novel *Delta-v*: <https://daniel-suarez.com/deltav_QandA.html>. It is a novelist's companion piece written to defend the plausibility of a story, not a technical assessment, and its figures should be treated accordingly — its claim of "700% more energy" for orbital solar is in the right region for the resource ratio but is not a delivered-energy comparison, and its 85% microwave transmission efficiency is an end-to-end figure that other sources put lower. It is cited here for the shape of the argument about which processes want to be off Earth, which is well made, rather than for its numbers. Note that the only one of these products currently manufactured in orbit at commercial scale is optical fibre, in small quantities.
 
 ![](/img/without-hot-air/figure212.gif)
 
