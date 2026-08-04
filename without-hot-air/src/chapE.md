@@ -695,6 +695,27 @@ Does increasing the thermal mass of a building help reduce its heating and cooli
 
 However, large thermal mass is not always a boon. If a room is occupied in winter for just a couple of hours a day (think of a lecture room for example), the energy cost of warming the room up to a comfortable temperature will be greater, the greater the room’s thermal mass. This extra invested heat will linger for longer in a thermally massive room, but if nobody is there to enjoy it, it’s wasted heat. So in the case of infrequently-used rooms it makes sense to aim for a structure with low thermal mass, and to warm that small mass rapidly when required.
 
+## What the theory says about British radiators
+
+*A section added in the 2026 revision.* This chapter derives the ideal coefficient of performance of a heat pump — the temperature it pumps *to*, divided by the difference between that and the temperature it pumps *from*, both in kelvin. It is one of the more useful formulae in the book, and it answers a question the policy debate has been having without it.
+
+**Real machines reach about 40% of the ideal.** Britain's Electrification of Heat trial measured a seasonal performance factor of **2.81** across 428 installed heat pumps — the only large field measurement of its kind. Put that beside what this chapter's formula gives, and the gap is informative rather than embarrassing:
+
+| Flow temperature | Ideal COP from 0 °C | At 40% of ideal |
+|---|---|---|
+| 35 °C — underfloor, or oversized radiators | **8.8** | **3.5** |
+| 45 °C | 7.1 | 2.8 |
+| 55 °C — typical existing radiators | 6.0 | 2.4 |
+| 65 °C — radiators sized for a boiler | 5.2 | 2.1 |
+
+The measured 2.81 sits where the table says a British house with unmodified radiators should sit. **The machines are not underperforming. They are being asked to deliver 55 °C water into a house that needs it.**
+
+**Which settles, from the theory, an argument chapter 7 has to make from survey data.** Chapter 7 records that a heat pump wants roughly EPC band C to reach a seasonal performance factor of 3.0, and that about two English homes in five fall below it. This chapter says *why*: a colder house needs hotter water to heat it, hotter water lowers the coefficient of performance, and the relationship is in the denominator, so it bites hard. Dropping the flow temperature from 55 °C to 35 °C raises the ideal from 6.0 to 8.8 — **a 45% improvement in efficiency bought entirely by insulation and bigger radiators**, with no change to the machine at all.
+
+That is the quantitative form of the advice everybody gives and few justify. **Insulate first is not a preference or a sequencing convention. It is this formula.** The fabric determines the flow temperature, the flow temperature determines the coefficient of performance, and the coefficient of performance determines whether the electricity bill is smaller than the gas bill was.
+
+**One thing the formula does not capture**, and chapter 7 records it: a hybrid system lets the boiler take the coldest days, so the heat pump never has to run at the flow temperature where its performance collapses. The formula explains why that works. It does not tell you whether keeping a gas connection for ever is a good idea.
+
 ## Notes and further reading
 
 [^1]: *Table E.18.* Sources: Bonan (2002), [<span class="websitetitle">www.hukseflux.com/thermalScience/thermalConductivity.html</span>](http://www.hukseflux.com/thermalScience/thermalConductivity.html)
