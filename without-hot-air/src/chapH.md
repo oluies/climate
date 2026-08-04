@@ -211,6 +211,18 @@ If we share 42 000 kWh over 100 years, and double it to estimate the gross energ
 
 <span class="figurenumber">Figure H.7.</span> Millau Viaduct in France, the highest bridge in the world. Steel and concrete, 2.5 km long and 353 m high.
 
+## The imports got counted
+
+*A section added in the 2026 revision.* This chapter does something unusual for its date: it estimates the energy embodied in Britain's imports — arriving at about **41 kWh per day per person** — and observes that none of it appears in the national accounts. MacKay is careful to call the estimate hand-waving.
+
+**The hand-waving is no longer necessary, and the result held up.** Consumption-based accounting is now official statistics: Britain publishes a carbon footprint that reallocates emissions to where goods are consumed rather than where they are made, and the gap between the two measures is exactly the quantity this chapter was groping for. Chapter 15 uses it to separate the three mechanisms behind Britain's falling energy use — genuine efficiency, cleaner electricity, and production moving abroad — and finds that the third is real and substantial though not dominant.
+
+**Which vindicates the chapter's method and complicates its conclusion.** MacKay's instinct, that a tight boundary around Britain flatters Britain, was right. But the correction is smaller than the raw import figure suggests, because a consumption-based account also credits Britain with the emissions embodied in what it *exports*, and because the carbon intensity of the countries Britain imports from has itself been falling. Chapter 21's ODEX material makes the same point from the efficiency side: **a 16% efficiency improvement does not produce a 39% fall in energy use**, and the residual is not all offshoring either.
+
+**And there is a new item this chapter could not have.** The embodied energy of a battery is now a live question, because chapter 20's electric car carries several hundred kilograms of it. Chapter 15's revision records the current position — a battery-electric car repays its manufacturing deficit within a couple of years of typical driving on a European grid, and sooner on a cleaner one. That is the same calculation this chapter performs for a conventional vehicle, done for a new component, and it comes out favourably. It is nonetheless the calculation that most deserves to be redone as the numbers move, because it is the one most often asserted without arithmetic in either direction.
+
+The chapter's real contribution survives all of this intact. **A national energy account that stops at the border is measuring the country, not the consumption**, and MacKay noticed that a decade before the statistics did.
+
 ## Notes and further reading
 
 [^1]: *A subsequent more-detailed study commissioned by DEFRA estimated that the embodied carbon in imports is about 6.2 tons CO<sub>2</sub>e per person.* Wiedmann et al. (2008).
