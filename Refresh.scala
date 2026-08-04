@@ -1296,3 +1296,28 @@ def nuclearHistory(): Unit = {
   println("wrote data-refresh/nuclear-history.csv")
   for (c <- want; (y, v) <- peak.get(c)) println(f"  $c%-12s peak $v%7.1f TWh in $y")
 }
+
+// ---- Chapter 24: death rates by generation technology ----
+// Replaces MacKay's figure 24.11, which used ExternE and Paul Scherrer figures
+// from before 2008. Deaths per TWh; MacKay's own unit is deaths per GW-year,
+// which is 8.76 times larger.
+@main
+def deathRates(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val out = new StringBuilder; out ++= "source,deaths_twh,deaths_gwy,basis\n"
+  // Fossil and biomass include air pollution as well as accidents; the low-carbon
+  // rows are accident deaths only, which is the comparison's main weakness.
+  val rows = Seq(("Coal", 24.6, "accidents and air pollution"),
+                 ("Oil", 18.4, "accidents and air pollution"),
+                 ("Biomass", 4.6, "accidents and air pollution"),
+                 ("Natural gas", 2.8, "accidents and air pollution"),
+                 ("Hydropower", 1.3, "accidents"),
+                 ("Wind", 0.04, "accidents"),
+                 ("Nuclear", 0.03, "accidents"),
+                 ("Solar", 0.02, "accidents"))
+  for ((s, d, b) <- rows) out ++= f"$s,$d%.2f,${d * 8.76}%.3f,$b\n"
+  os.write.over(dir / "death-rates.csv", out.toString)
+  println("wrote data-refresh/death-rates.csv")
+  println(f"  coal is ${24.6 / 0.03}%.0f times nuclear; coal ${24.6 * 8.76}%.0f deaths/GWy, nuclear ${0.03 * 8.76}%.2f")
+}

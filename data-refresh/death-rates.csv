@@ -1,0 +1,9 @@
+source,deaths_twh,deaths_gwy,basis
+Coal,24.60,215.496,accidents and air pollution
+Oil,18.40,161.184,accidents and air pollution
+Biomass,4.60,40.296,accidents and air pollution
+Natural gas,2.80,24.528,accidents and air pollution
+Hydropower,1.30,11.388,accidents
+Wind,0.04,0.350,accidents
+Nuclear,0.03,0.263,accidents
+Solar,0.02,0.175,accidents
