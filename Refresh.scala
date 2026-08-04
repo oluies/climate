@@ -1226,3 +1226,35 @@ def transportEnergy(): Unit = {
   println(f"  Candela C-8    $c8%.3f kWh/km  ->  ${c8 / 6 * 100}%.1f (6 aboard), ${c8 / 2 * 100}%.1f (2 aboard)")
   println(f"  diesel ferry backed out of the savings claim: $dieselLo%.0f-$dieselHi%.0f kWh/100 p-km")
 }
+
+// ---- Nuclear and renewable cost ranges, chapter 24 ----
+// Published levelised costs are ranges, not points, and for nuclear the range is
+// mostly the discount rate rather than the reactor. Assembled from the sources
+// listed in chapter 24's [^nucecon]; no commas in labels (bare CSV, sniffed delimiter).
+@main
+def nuclearCosts(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val out = new StringBuilder; out ++= "group,label,lo,mid,hi,capture\n"
+  def add(g: String, l: String, lo: Double, mid: Double, hi: Double, cap: Double = 0) =
+    out ++= f"$g,$l,$lo%.1f,$mid%.1f,$hi%.1f,$cap%.1f\n"
+
+  // Renewables and hydro: IRENA 2024 weighted averages and Danish Energy Agency data.
+  add("Renewable", "Hydropower", 40, 50, 65, 0)
+  add("Renewable", "Onshore wind", 44, 51, 62, 72)
+  add("Renewable", "Solar PV", 48, 56, 70, 66)
+  add("Renewable", "Offshore wind (fixed)", 105, 126, 150, 72)
+  add("Renewable", "Offshore wind (floating)", 160, 190, 230, 72)
+  // The same machine, financed and built four ways. This is the chapter's point.
+  add("Nuclear", "Nuclear (China)", 55, 60, 70, 0)
+  add("Nuclear", "Nuclear (Sweden at 4%)", 66, 72, 80, 80)
+  add("Nuclear", "SMR (Rolls-Royce target)", 70, 75, 95, 0)
+  add("Nuclear", "SMR (Korean estimate)", 78, 85, 105, 0)
+  add("Nuclear", "Nuclear (commercial WACC)", 150, 175, 200, 80)
+
+  os.write.over(dir / "nuclear-costs.csv", out.toString)
+  println("wrote data-refresh/nuclear-costs.csv")
+  val n = out.toString.linesIterator.drop(1).filter(_.startsWith("Nuclear"))
+    .map(l => (l.split(",")(2).toDouble, l.split(",")(4).toDouble)).toList
+  println(f"  nuclear spans ${n.map(_._1).min}%.0f-${n.map(_._2).max}%.0f EUR/MWh, a factor of ${n.map(_._2).max / n.map(_._1).min}%.1f")
+}
