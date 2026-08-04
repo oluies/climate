@@ -153,7 +153,61 @@ While it’s an untested idea, and currently illegal, I do find ocean nourishmen
 >
 > David King, UK Chief Scientist, 2007
 
+## The last thing, eighteen years on
+
+*A section added in the 2026 revision.* MacKay's title carries a double meaning — last in order of priority, and last as in a final resort — and he says so. Both readings have got stronger, and none of the eighteen years since has been kind to the technology.
+
+### The energy cost turned out worse than he assumed, not better
+
+He works with a figure of 0.55 kWh per kilogram of carbon dioxide, roughly three times the thermodynamic floor of 0.2 that he derives, and concludes that the result is close to absurd. Real machines have now been built and measured:
+
+| kWh per kg of CO<sub>2</sub> | |
+|---|---|
+| Thermodynamic minimum, as MacKay derives it | 0.2 |
+| MacKay's working assumption | 0.55 |
+| Machines actually operating, 2025 | **1.5 to 2.5** |
+
+So the real thing is **three to five times worse than the assumption he already called absurd**, and eight to twelve times the physical limit. The fans alone, before any chemistry, account for 300 to 900 kWh a tonne.[^dacenergy]
+
+Redo his sentence with a real number. Neutralising a European's 30 kg a day at 2 kWh per kilogram takes **60 kWh per day per person**. MacKay's own version reads: *"16.5 kWh per day per person. This is exactly the same as British electricity consumption."* Britain now generates **11.2 kWh(e) per day per person**. **Sucking one European's emissions out of the air would take more than five times Britain's entire electricity supply per head** — where in 2008 the two numbers were equal.
+
+The gap widened from both ends: the machines are dearer in energy than he assumed, and the electricity supply he compared them against has shrunk.
+
+### It has been built at a scale of about nine seconds
+
+Twenty-seven direct air capture plants have been commissioned worldwide, with a combined capacity a little over **10 000 tonnes a year**. World energy-related emissions are about 35 800 million tonnes a year, which is **1135 tonnes every second**.
+
+**The entire installed direct air capture capacity of the world, running perfectly for a full year, offsets about nine seconds of world emissions.**
+
+The flagship is worse than that headline suggests. Climeworks' **Mammoth**, in Iceland, is the largest such plant ever built, with a nameplate of **36 000 tonnes a year**. In 2024 it captured **105 tonnes** — about **three-tenths of one per cent** of design capacity. The company's own co-chief executive put operating cost "closer to the $1000 per ton mark than the $100 per ton mark", and the firm cut staff in 2025.[^climeworks]
+
+The next machine is larger. **STRATOS**, in Texas, is designed for 500 000 tonnes a year, which would multiply world capacity fiftyfold. At full output it would offset about **seven minutes** of world emissions annually.
+
+### The subsidy does not close the gap either
+
+Chapter 23 records the American 45Q credit paying **$180 a tonne** for direct air capture — the most generous instrument for this anywhere in the world. Against an operating cost near $1000, it covers under a fifth. There is no jurisdiction in which building one of these machines is a commercial proposition, and none in prospect.
+
+### And the cheap alternative he treats gently turned out to be largely fictitious
+
+Section B of this chapter is trees, and MacKay is even-handed about them. What has happened since is that the voluntary offset market — the mechanism through which almost all tree-based carbon removal was actually financed — lost its credibility. A 2023 investigation concluded that more than 90% of the rainforest credits certified by the largest standards body were likely to be "phantom credits" representing no real reduction. The certifier disputed the methodology, and the dispute is not settled; the market repriced regardless, and several large buyers withdrew.[^offsets]
+
+So the position is worse than in 2008 in both directions: the machine is dearer than assumed, and the natural alternative it was supposed to compete with turned out to have been partly imaginary.
+
+### Which makes the title more right than he meant it
+
+MacKay's reasons for putting this last were the energy cost, and the worry that "raising the possibility of fixing climate change by this sort of geoengineering might promote inaction now." Both have been vindicated in the only way that counts: the energy cost is larger than he assumed, and the possibility has been used exactly as he feared.
+
+**But there is a sharper version of the argument that he does not make, and this edition would add it.** Carbon dioxide is about **0.04% of the atmosphere** and roughly **10% of a power station's flue gas** — a concentration ratio of some two hundred and fifty to one, and that ratio is the whole difficulty. Chapter 23 records what happened to capture at the easy end: **0.14% of world emissions actually operating**, after thirty years of expectation and with a subsidy that now exceeds the cost at the best sites.
+
+**If capture from a flue at 10% concentration is built at one part in seven hundred, capture from open air at a two-hundred-and-fiftieth of that concentration is not a policy option. It is a research programme.** The useful question is not how to make direct air capture cheap. It is why the far easier version was not built when it could have been — and chapters 23 and 29 answer that, and the answer is not physics.
+
 ## Notes
+
+[^dacenergy]: Operating direct air capture plants consume roughly 1500–2500 kWh per tonne of carbon dioxide captured, combining electrical energy for fans, pumps and compression with thermal energy for sorbent regeneration; the split and the total vary substantially between the solid-sorbent and liquid-solvent approaches, and figures are often reported for only one of the two energy streams, which is a frequent source of confusion in the literature. Fan energy alone has been estimated at 300–900 kWh per tonne, and around 370 kWh per tonne for the Climeworks Orca plant specifically. Two cautions. Comparing these totals against MacKay's 0.55 kWh/kg is not quite like for like, since low-grade heat is not the same commodity as electricity and Iceland's geothermal supply makes it unusually cheap there; on a pure exergy basis the gap would be narrower than three to five times. And these are first-of-a-kind machines, so improvement should be expected — the point is the starting position, not a claim that it cannot fall.
+
+[^climeworks]: Climeworks' Mammoth plant near Hellisheiði, Iceland, began operating in May 2024 with a nameplate capacity of up to 36 000 tonnes of CO<sub>2</sub> a year; reporting in 2025 put its 2024 capture at about 105 tonnes, and its predecessor Orca at a comparably small fraction of a 4000-tonne nameplate. Commissioning years are not representative of steady-state performance and the company has disputed characterisations of the plant as failing; what is not disputed is the operating cost, which its co-chief executive described as nearer $1000 than $100 a tonne, or the staff reductions announced in 2025. World direct air capture capacity of a little over 10 000 tonnes a year across 27 commissioned plants is the International Energy Agency's, most of those plants being demonstration units rather than commercial operations. The seconds-and-minutes comparisons use energy-related CO<sub>2</sub> of 35 800 Mt a year from the Energy Institute's *Statistical Review of World Energy* 2026, which is 1135 tonnes a second.
+
+[^offsets]: A joint investigation by *The Guardian*, *Die Zeit* and SourceMaterial published in January 2023, drawing on peer-reviewed analyses of Verra-certified rainforest projects, concluded that more than 90% of the credits examined were likely to be "phantom credits" not representing genuine emissions reductions. Verra rejected the analysis and criticised the counterfactual baselines used; subsequent academic work has supported the direction of the finding while disagreeing about magnitude, and Verra has since revised its methodologies. This edition records that the credibility of the market collapsed and that buyers withdrew, which is not in dispute, rather than adjudicating the percentage. Note that the finding concerns avoided-deforestation credits specifically, not tree planting or forest restoration, which raise different questions about permanence and additionality.
 
 [^1]: *climate change... was a controversial question.* Indeed there still is a "yawning gap between mainstream opinion on climate change among the educated elites of Europe and America" [[<span class="websitetitle">voxbz</span>](http://tinyurl.com/voxbz)].
 
