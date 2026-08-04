@@ -72,7 +72,7 @@ That does not make it useless. It makes it a specialised tool rather than a gene
 
 *Added in the 2026 revision.* The paragraph above asserts that capture works and has not been built, and that the reason is money. That deserves the numbers, because the project record is where the argument actually lives.
 
-**Gorgon**, on Barrow Island off Western Australia, is the largest carbon capture project in the world. Chevron committed to capturing 80% of the reservoir carbon dioxide from its liquefied-gas plant as a condition of approval. In 2023–24 it managed **30%**, its worst year on record, and the cost has risen to about **$222 per tonne** captured. **Petra Nova**, in Texas, was the flagship retrofit of a coal plant: about **$1 billion** to build, roughly 70% capture when running well, shut down in 2020 when the oil price collapsed — because the carbon it captured was being sold for enhanced oil recovery, so its revenue depended on the price of the product it was meant to displace. NRG later sold its half of it for **$3.6 million**, under half a percent of construction cost. **Kemper County**, in Mississippi, was to gasify lignite and capture the carbon before combustion; it was estimated at **$3 billion**, reached **$7.5 billion**, and was abandoned as a coal project in 2017.[^ccsprojects]
+**Gorgon**, on Barrow Island off Western Australia, is the largest carbon capture project in the world. Chevron committed to capturing 80% of the reservoir carbon dioxide from its liquefied-gas plant as a condition of approval. In 2023–24 it managed **30%**, its worst year on record, and the cost has risen to about **$222 per tonne** captured. **Petra Nova**, in Texas, was the flagship retrofit of a coal plant: about **$1 billion** to build, roughly 70% capture when running well, shut down in 2020 when the oil price collapsed — because the carbon it captured was being sold for enhanced oil recovery, so its revenue depended on the price of the product it was meant to displace. NRG later sold its 50% interest for **$3.6 million** — against a half share of a roughly $1 billion build, so under a hundredth of what that stake originally represented. **Kemper County**, in Mississippi, was to gasify lignite and capture the carbon before combustion; it was estimated at **$3 billion**, reached **$7.5 billion**, and was abandoned as a coal project in 2017.[^ccsprojects]
 
 Two numbers frame that record. The United States Department of Energy's own assessment was that capture cost would have to **halve, to about $30 a tonne**, to be commercially viable without support. And there is now support: the American **45Q** credit pays **$85 per tonne** for point-source capture with geological storage and **$180 for direct air capture**, indexed from 2027. For the first time the subsidy exceeds the cost of capture at some well-suited sources — concentrated streams from ethanol, ammonia and gas processing, where the carbon dioxide is nearly pure and separation is cheap. It does not exceed the cost at a coal or gas power station, where the flue gas is dilute and the parasitic load is large.
 
@@ -88,9 +88,9 @@ The arithmetic is right. What he could not do was measure the leak. In 2008 leak
 
 Now apply MacKay's own factor to the measured rates:
 
-| | Measured leakage | Extra warming, on MacKay's 8.4× |
+| | Measured leakage | Extra warming on MacKay's 8.4× |
 |---|---|---|
-| Permian, New Mexico side | **1.2%** | +10% on the combustion CO₂ |
+| Permian, New Mexico side | **1.2%** | +10% on the combustion CO<sub>2</sub> |
 | Permian, Texas side | **3.1%** | **+26%** |
 | MacKay's illustrative case | 5% | +42% |
 
