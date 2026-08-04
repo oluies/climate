@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """China's nuclear build against Germany's phase-out, 1965-2025.
 Input: data-refresh/nuclear-history.csv from `mill Refresh.scala nuclearHistory`."""
-import sys, duckdb, matplotlib.pyplot as plt, numpy as np
+import sys, duckdb, matplotlib.pyplot as plt
 
 INK, MUTED = "#161d1b", "#8a8a85"
 CN, DE, FR = "#e34948", "#2a78d6", "#8a8a85"
@@ -31,7 +31,8 @@ ax.annotate(f"France's all-time peak, {fpk:.0f} TWh in {int(fy[fv.argmax()])}",
 
 # The crossover, computed rather than eyeballed.
 both = {int(y): v for y, v in zip(dy, dv)}
-cross = next(int(y) for y, v in zip(cy, cv) if int(y) in both and v > both[int(y)])
+cross = next((int(y) for y, v in zip(cy, cv) if int(y) in both and v > both[int(y)]), None)
+assert cross, "no crossover found in the data"
 ax.annotate(f"China passes Germany, {cross}", xy=(cross, both[cross]),
             xytext=(-10, 62), textcoords="offset points", ha="right", fontsize=9.2,
             color=INK, arrowprops=dict(arrowstyle="-", color="#c9c9c4", lw=0.9))

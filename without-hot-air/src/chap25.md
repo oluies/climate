@@ -306,7 +306,7 @@ Concentrating solar grew by a factor of ten or so. Photovoltaics grew by more th
 
 That is worth dwelling on, because it is a failure mode this book has now exhibited several times. MacKay chose concentrating solar over photovoltaics for a good reason, correctly reasoned, which was then reversed by a price collapse he did not expect. **Being right about the physics and wrong about the cost is the characteristic error of energy forecasting**, and it is the error chapter 6 documents from the other side.
 
-**Something did get built.** Morocco's Noor Ouarzazate complex — concentrating solar with molten-salt storage, alongside photovoltaics, around 580 MW, commissioned between 2016 and 2018 — was the largest concentrated solar facility in the world when it opened. It works. It is also roughly a thousandth of what DESERTEC proposed.
+**Something did get built.** Morocco's Noor Ouarzazate complex — concentrating solar with molten-salt storage, alongside photovoltaics, around 580 MW, commissioned between 2016 and 2018 — was the largest concentrated solar facility in the world when it opened. It works. Against the tens of gigawatts DESERTEC envisaged across North Africa, it is a demonstration rather than a programme.
 
 ### And then Britain was offered exactly this chapter, and refused it
 

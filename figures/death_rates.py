@@ -16,14 +16,18 @@ y = np.arange(n)
 ax.set_xscale("log")
 for i in range(n):
     v = float(d["deaths_twh"][i])
-    col = FOSSIL if "air pollution" in d["basis"][i] else LOWC
+    # "basis" is one of two fixed strings written by the Refresh step; compare exactly
+    # so a reworded value fails loudly rather than silently recolouring the chart.
+    b = d["basis"][i]
+    assert b in ("accidents and air pollution", "accidents"), f"unexpected basis: {b}"
+    col = FOSSIL if b == "accidents and air pollution" else LOWC
     ax.barh(y[i], v, height=0.62, color=col, alpha=0.85, zorder=3)
     # Both units: the book's own unit is deaths per GW-year, 8.76 times larger.
     ax.text(v * 1.15, y[i], f"{v:g}   ({float(d['deaths_gwy'][i]):.2f} per GW-year)",
             va="center", fontsize=8.8, color=INK)
 
 ax.set_yticks(y); ax.set_yticklabels(d["source"], fontsize=10)
-ax.set_xlim(0.01, 900)
+ax.set_xlim(min(0.01, float(d["deaths_twh"].min()) / 2), 900)
 ax.set_xticks([0.01, 0.1, 1, 10, 100])
 ax.set_xticklabels(["0.01", "0.1", "1", "10", "100"])
 ax.set_xlabel("deaths per TWh of electricity (logarithmic)", fontsize=10.5)

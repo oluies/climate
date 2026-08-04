@@ -195,7 +195,7 @@ The non-solar numbers add up as follows. Wind: 24 kWh/d/p; hydro: 3.6 kWh/d/p; t
 
 ### The world hit MacKay's total and missed his target
 
-He asks how six billion people are to obtain 80 kWh per day each. Multiply it out and that is **631 exajoules a year**. World energy supply in 2025 was **600 EJ** — within 5% of his figure, and reached about twenty-five years ahead of any schedule he implies.
+He asks how six billion people are to obtain 80 kWh per day each. Multiply it out and that is **631 exajoules a year**. World energy supply in 2025 was **600 EJ** — within 5% of his figure.
 
 But it is divided among **8.23 billion people**, so the average is **55.5 kWh per day**, not 80.[^world26]
 
@@ -216,21 +216,21 @@ His world estimates are of the *resource* — what the wind and the tides could 
 
 Wind is at **under 4% of the resource this chapter computes** — after eighteen years containing the largest wind build-out in history. Solar is comparable, on a resource many times larger.
 
-That is the finding that ought to change how the chapter is read. **MacKay's conclusion is that the non-solar renewables are not enough. The experience since is that we have not come close to testing it**, because nothing has been built to the scale at which a resource limit could bind. What binds is the rate of construction, the cost of capital, land consent and grid connection — chapter 18's list, not this chapter's.
+That is the finding that ought to change how the chapter is read. **MacKay's conclusion is that the non-solar renewables are not enough. The experience since is that we have not come close to testing it**, because nothing has been built to the scale at which a resource limit could bind. What binds is the rate of construction, the cost of capital, land consent and grid connection — which is chapter 18's argument that the constraint moved, not this chapter's resource arithmetic.
 
 ### Europe's two options both closed
 
 He is specific about Europe: it "needs nuclear power, or solar power in other people's deserts, or both." Eighteen years later, **both of those went badly, and Europe did neither.**
 
-Chapter 25 records the desert option. DESERTEC dissolved within five years of its founding, and in June 2025 Britain declined the one fully engineered version of the idea ever put to a European government. Chapter 24 records the nuclear option: Germany went to zero, Olkiluoto took eighteen years, Flamanville seventeen, and Hinkley Point C is running near £14 a watt.
+Chapter 25 records the desert option. DESERTEC dissolved within five years of its founding, and in June 2025 Britain declined the one fully engineered version of the idea ever put to a European government. Chapter 24 records the nuclear option: Germany went to zero, Olkiluoto took eighteen years and Flamanville seventeen, and chapter 28 puts Hinkley Point C near £14 a watt.
 
-What Europe did instead was build domestic wind and solar, which now deliver roughly **5 kWh per day per person** against a total consumption near 90, and burn gas for most of the rest — with the consequences of 2022.
+What Europe did instead was build domestic wind and solar, which now deliver roughly **5 kWh per day per person** against a total consumption near 90, and burn gas for most of the rest — with the consequences of 2022.[^world26]
 
 **That is not a refutation of MacKay. It is the reverse.** He said Europe could not do this on its own renewables; Europe tried anyway; and the numbers are where he said they would be. What he did not anticipate is that the two escape routes he identified would be closed by economics and politics rather than by physics — which is this edition's recurring finding, not his.
 
 ### America came down without trying
 
-MacKay puts the average American at 250 kWh per day and asks whether shocking efficiency measures could bring them to a European 125. Americans now use about **209 kWh per day** — a fall of about a sixth, achieved with no shocking measures at all, through the same gas-for-coal substitution and incremental efficiency that chapter 15 describes for Britain. Wind and solar deliver about **7 kWh/d** of the total.
+MacKay puts the average American at 250 kWh per day and asks whether shocking efficiency measures could bring them to a European 125. Americans now use about **209 kWh per day** — a fall of about a sixth, achieved with no shocking measures at all, largely through shale gas displacing coal and through incremental efficiency — a different mechanism from the offshoring that chapter 15 finds in the British numbers. Wind and solar deliver about **7 kWh/d** of the total.
 
 His conclusion — that North America needs solar in its own deserts, or nuclear, or both — stands untouched, and the solar half of it is now being acted on at scale.
 
