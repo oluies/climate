@@ -1324,3 +1324,26 @@ def deathRates(): Unit = {
   println("wrote data-refresh/death-rates.csv")
   println(f"  coal is ${24.6 / 0.03}%.0f times nuclear; coal ${24.6 * 8.76}%.0f deaths/GWy, nuclear ${0.03 * 8.76}%.2f")
 }
+
+// ---- Figure 20.21 remade: energy at the socket against distance ----
+// MacKay measured 19 recharges of a G-Wiz and got 21 kWh/100 km. Same axes,
+// with what is on sale now. Slope is the consumption; the lines are what a
+// driver actually pays for at the wall.
+@main
+def socketEnergy(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val out = new StringBuilder; out ++= "label,kwh_per_100km,era,note\n"
+  def add(l: String, v: Double, era: String, n: String) =
+    out ++= f"$l,$v%.2f,$era,$n\n"
+  // No commas in any field: bare CSV, DuckDB sniffs the delimiter.
+  add("E-bike (light assist)", 0.62, "2026", "500 Wh over 80 km")
+  add("Citroen Ami", 7.33, "2026", "5.5 kWh over 75 km")
+  add("Best in class (Kona Electric)", 13.4, "2026", "WLTP")
+  add("Electric fleet average", 21.0, "2026", "real-world across 342 European cars")
+  add("MacKay's G-Wiz", 21.0, "2008", "measured over 19 recharges")
+  add("Large electric pickup", 30.0, "2026", "indicative")
+  os.write.over(dir / "socket-energy.csv", out.toString)
+  println("wrote data-refresh/socket-energy.csv")
+  println(f"  petrol car at 80 kWh/100km reaches 45 kWh after ${45.0 / 80 * 100}%.0f km")
+}
