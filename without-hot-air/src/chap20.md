@@ -403,7 +403,22 @@ MacKay's transport figures are explicitly for vehicles **"on best behaviour"** �
 
 What does not survive is the *cost* case, and that is what the Swedish argument is really about: staff, track and signalling for 500 km, paid for by whoever is on board. **The objection is economic and geographic, not thermodynamic.**
 
-There is one genuine energy point buried in it, though, and this chapter does not count it. MacKay's transport figures are the energy of *motion*. They exclude the energy embodied in building and maintaining the infrastructure — the 500 km of track against the aeroplane's few kilometres of asphalt. For a busy corridor that overhead disappears into the passenger numbers. For a line carrying a few trains a day it may not, and nothing in this chapter's arithmetic would reveal it. That is the same boundary problem chapter M is about: **what you include decides what you conclude**, and a comparison of vehicles is not a comparison of transport systems.
+There is one genuine energy point buried in it, though, and this chapter does not count it. **MacKay's transport figures are the energy of *motion*.** They exclude the energy embodied in building the vehicles, building and maintaining the track, and producing the fuel — the 500 km of railway against the aeroplane's few kilometres of asphalt.
+
+That gap can now be filled in, and it is larger than one might guess. Chester and Horvath's life-cycle inventory of American passenger transport found that counting vehicles, infrastructure and fuel supply chains adds **63% for road, 155% for rail and 31% for air** over the energy burned in the vehicle. Rail is penalised most, for the obvious reason: it needs a continuous structure along its whole route, and everything else in this chapter mostly needs somewhere to stop. Apply those multipliers to this chapter's own figures:
+
+| kWh per 100 p-km | Energy of motion | Full life cycle |
+|---|---|---|
+| Full 8-carriage train | 1.6 | **4.1** |
+| Full high-speed electric train | 3.0 | **7.6** |
+| Full 747 | 42 | **55** |
+| Car, one occupant | 80 | **130** |
+
+**The ordering does not change and the gaps narrow substantially.** Rail's advantage over a single-occupant car falls from about fifty to one to about thirty to one. Its advantage over a full jumbo falls from twenty-six to one to about **thirteen** to one. Both remain decisive; neither is what the vehicle-only comparison implies.[^lifecycle]
+
+And this is precisely where the Swedish argument has its real content. **Those multipliers are averages over systems carrying real traffic.** Infrastructure energy is fixed and gets divided by whatever passes over it, so a busy corridor amortises it into invisibility while a line carrying a few trains a day may not amortise it at all. Nothing in a per-passenger-kilometre figure reveals which case you are in.
+
+That is the same boundary problem chapter M is about: **what you include decides what you conclude**, and a comparison of vehicles is not a comparison of transport systems.
 
 ### Time is a cost too
 
@@ -842,6 +857,8 @@ Merrick Godhaven
 [^h2car]: Honda ended Clarity Fuel Cell production in 2021 citing low demand; Shell withdrew from American hydrogen retail in 2024; roughly 56 consumer hydrogen filling stations remain in North America, concentrated on the Californian coast with a few in British Columbia, Hawaii and eastern Canada; Toyota sold 147 Mirais in the United States through the third quarter of 2025, a fall of 54%. Three fuel-cell passenger cars remain on sale in the United States — Toyota Mirai, Hyundai Nexo and Honda CR-V e:FCEV — all only in California. Note that this is a statement about *passenger cars in developed markets*, not about hydrogen generally: fuel-cell buses and trucks continue in service, China and South Korea maintain much larger fuel-cell vehicle programmes than Europe or the United States, and the picture there is different.
 
 [^ladder20]: Michael Liebreich, "Clean Hydrogen Ladder Version 5.0", 2023: <https://liebreich.com/hydrogen-ladder-version-5-0/>. The ladder ranks candidate uses from A, where hydrogen is unavoidable, to G, where it is uncompetitive; fertilizer, hydrogenation, methanol and steel sit near the top, passenger cars and domestic heating at the bottom. It is one analyst's framework rather than a consensus document, and its rankings are contested at the margins — particularly for shipping, aviation and long-haul trucking, which sit in the disputed middle. Chapter 28a cites the same source from the electricity side.
+
+[^lifecycle]: Mikhail Chester and Arpad Horvath, "Environmental assessment of passenger transportation should include infrastructure and supply chains", *Environmental Research Letters* 4 (2009) 024008. Life-cycle energy additions over vehicle operation of 63% for on-road, 155% for rail and 31% for air are their headline results, covering vehicle manufacture and maintenance, infrastructure construction and operation, and fuel production. Three cautions on the table above. The multipliers are American system averages from the 2000s and are applied here to MacKay's British and generic figures, which is a stretch — the point is the size and direction of the correction rather than the resulting numbers. The rail figure varies enormously with utilisation and with how much of the route is tunnel or viaduct; Chester and Horvath's own later work on Californian high-speed rail shows the range. And the multipliers are applied to MacKay's *full-occupancy* figures, so the life-cycle column inherits that assumption; at realistic occupancies every row rises again, rail most of all, which is the occupancy table above.
 
 [^swerail]: "Järnväg kan aldrig mer fungera i glesbebodda Sverige", *Cornucopia?*, July 2024: <https://cornucopia.se/2024/07/jarnvag-kan-aldrig-mer-fungera-i-glesbebodda-sverige/>. As with the other citations to this blog in chapters L, N and here, it is an essay arguing a position rather than a study, and its conclusion — that long-distance passenger rail outside Sweden's three largest metropolitan areas should be abandoned — goes well beyond what this section takes from it. What is used here is the geographic and cost reasoning, which is sound and quantitative, and the observation about station access. The occupancy table is computed from MacKay's own figure of 3 kWh per 100 seat-km for a full electric high-speed train and his statement that this is 27 times better than the car, implying about 81 kWh per 100 passenger-km for single-occupancy driving.
 
