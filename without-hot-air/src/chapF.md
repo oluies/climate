@@ -80,15 +80,6 @@ The losses from viscosity are minimal: a wave of 9 seconds period would have to 
 
 ## Real wave power systems
 
-## What became of the machines
-
-*A section added in the 2026 revision.* Everything above is oceanography and remains correct: the Atlantic really does deliver about 40 kW per metre of wave front, and the losses to the sea bed as depth falls really do take most of it. MacKay's resource arithmetic has never been seriously challenged.
-
-What has happened is that the machines named in this chapter no longer exist. Chapter 12 records it: **Pelamis Wave Power went into administration in 2014 and Aquamarine Power in 2015**, and no wave device has since reached commercial operation at any scale. The Salter duck, which this chapter treats as its well-characterised reference case, was never built at sea.
-
-The reason is not in this chapter's equations, and that is the point worth making here. **A wave machine has to survive the largest wave it will ever meet while being economic against the average one**, and the ratio between those two is the design problem. The physics that makes the resource attractive — an enormous energy flux concentrated at a surface — is the same physics that destroys the hardware. Nothing in a power-per-metre calculation reveals that, and this chapter, honestly, does not try to.
-
-
 ### Deep-water devices
 
 How effective are real systems at extracting power from waves? Stephen Salter’s "duck" has been well characterized: a row of 16-m diameter ducks, feeding off Atlantic waves with an average power of 45 kW/m, would deliver 19 kW/m, including transmission to central Scotland (Mollison, 1986).
@@ -100,3 +91,11 @@ The Pelamis device, created by Ocean Power Delivery, has taken over the Salter d
 Typically 70% of energy in ocean waves is lost through bottom-friction as the depth decreases from 100 m to 15 m. So the average wave-power per unit length of coastline in shallow waters is reduced to about 12 kW/m. The Oyster, developed by Queen’s University Belfast and Aquamarine Power Ltd [[<span class="websitetitle">www.aquamarinepower.com</span>](http://www.aquamarinepower.com/)], is a bottom-mounted flap, about 12 m high, that is intended to be deployed in waters about 12 m deep, in areas where the average incident wave power is greater than 15 kW/m. Its peak power is 600 kW. A single device would produce about 270 kW in wave heights greater than 3.5 m. It’s predicted that an Oyster would have a bigger power per unit mass of hardware than a Pelamis.
 
 Oysters could also be used to directly drive reverse-osmosis desalination facilities. "The peak freshwater output of an Oyster desalinator is between 2000 and 6000 m<sup>3</sup>/day." That production has a value, going by the Jersey facility (which uses 8 kWh per m<sup>3</sup>), equivalent to 600–2000 kW of electricity.
+
+## What became of the machines
+
+*A section added in the 2026 revision.* Everything above is oceanography and remains correct: the Atlantic really does deliver about 40 kW per metre of wave front, and the losses to the sea bed as depth falls really do take most of it. MacKay's resource arithmetic has never been seriously challenged.
+
+What has happened is that the machines named in this chapter no longer exist. Chapter 12 records it: **Pelamis Wave Power went into administration in 2014 and Aquamarine Power in 2015**, and no wave device has since reached commercial operation at any scale. The Salter duck, which this chapter treats as its well-characterised reference case, was never built at sea.
+
+The reason is not in this chapter's equations, and that is the point worth making here. **A wave machine has to survive the largest wave it will ever meet while being economic against the average one**, and the ratio between those two is the design problem. The physics that makes the resource attractive — an enormous energy flux concentrated at a surface — is the same physics that destroys the hardware. Nothing in a power-per-metre calculation reveals that, and this chapter, honestly, does not try to.
