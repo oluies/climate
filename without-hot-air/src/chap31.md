@@ -159,7 +159,7 @@ While it’s an untested idea, and currently illegal, I do find ocean nourishmen
 
 ### The energy cost turned out worse than he assumed, not better
 
-He works with a figure of 0.55 kWh per kilogram of carbon dioxide, roughly three times the thermodynamic floor of 0.2 that he derives, and concludes that the result is close to absurd. Real machines have now been built and measured:
+He works with a figure of 0.55 kWh per kilogram of carbon dioxide, roughly three times the thermodynamic floor of 0.2 that he derives, and observes that it "seems almost absurd" to talk about doing this at all. Real machines have now been built and measured:
 
 | kWh per kg of CO<sub>2</sub> | |
 |---|---|
@@ -167,15 +167,15 @@ He works with a figure of 0.55 kWh per kilogram of carbon dioxide, roughly three
 | MacKay's working assumption | 0.55 |
 | Machines actually operating, 2025 | **1.5 to 2.5** |
 
-So the real thing is **three to five times worse than the assumption he already called absurd**, and eight to twelve times the physical limit. The fans alone, before any chemistry, account for 300 to 900 kWh a tonne.[^dacenergy]
+So the real thing is **three to five times worse than the assumption he already thought close to absurd**, and eight to twelve times the physical limit. The fans alone, before any chemistry, account for 300 to 900 kWh a tonne.[^dacenergy]
 
-Redo his sentence with a real number. Neutralising a European's 30 kg a day at 2 kWh per kilogram takes **60 kWh per day per person**. MacKay's own version reads: *"16.5 kWh per day per person. This is exactly the same as British electricity consumption."* Britain now generates **11.2 kWh(e) per day per person**. **Sucking one European's emissions out of the air would take more than five times Britain's entire electricity supply per head** — where in 2008 the two numbers were equal.
+Redo his sentence with a real number. Neutralising a European's 30 kg a day at 2 kWh per kilogram takes **60 kWh per day per person**. MacKay's own version reads: *"16.5 kWh per day per person. This is exactly the same as British electricity consumption."* Britain now generates **11.2 kWh(e) per day per person**, and consumes a little more once imports across the interconnectors are counted. **Sucking one European's emissions out of the air would take more than five times Britain's entire electricity supply per head** — where in 2008 the two numbers were equal.
 
 The gap widened from both ends: the machines are dearer in energy than he assumed, and the electricity supply he compared them against has shrunk.
 
 ### It has been built at a scale of about nine seconds
 
-Twenty-seven direct air capture plants have been commissioned worldwide, with a combined capacity a little over **10 000 tonnes a year**. World energy-related emissions are about 35 800 million tonnes a year, which is **1135 tonnes every second**.
+Twenty-seven direct air capture plants had been commissioned worldwide by the International Energy Agency's last full count, with a combined operating capacity a little over **10 000 tonnes a year** — a figure that predates Mammoth, whose nameplate alone is larger and whose output, as below, was not. World energy-related emissions are about 35 800 million tonnes a year, which is **1135 tonnes every second**.
 
 **The entire installed direct air capture capacity of the world, running perfectly for a full year, offsets about nine seconds of world emissions.**
 

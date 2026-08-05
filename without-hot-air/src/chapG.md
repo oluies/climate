@@ -439,7 +439,7 @@ A two-basin system could also function as a pumped-storage facility.
 
 *A section added in the 2026 revision.* The tidal physics in this chapter is astronomy, and astronomy does not revise. A tide pool with a 4-metre range still yields about **3 W/m²**; La Rance still produces what it produced; the bottom-friction estimate of the resource around Britain still stands.
 
-What has not happened is any of it. Chapter 14 records the position: British tidal generation remains too small to register beside wind or solar, the Severn barrage this chapter costs at 8 GW has been proposed and shelved repeatedly without ever being built, and tidal stream — the technology this chapter is most cautious about — is the only part with genuine recent momentum, at a scale of tens of megawatts rather than the 18 GW plan D asks for.
+What has not happened is any of it. Chapter 14 records the position: British tidal generation remains too small to register beside wind or solar, the Severn barrage has been proposed and shelved repeatedly without ever being built, and tidal stream — the technology this chapter is most cautious about — is the only part with genuine recent momentum, at a scale of tens of megawatts rather than the 18 GW plan D asks for.
 
 **Tide is the clearest case in the book of a resource that is real, predictable, and unbuilt.** Everything usually offered against renewables — that the resource is speculative, that the output is unpredictable, that the physics is uncertain — is false here. The tide is known decades ahead to the minute. What it lacks is a machine that survives the sea cheaply enough, and a market that pays for predictability rather than for energy.
 

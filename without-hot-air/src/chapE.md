@@ -699,7 +699,7 @@ However, large thermal mass is not always a boon. If a room is occupied in winte
 
 *A section added in the 2026 revision.* This chapter derives the ideal coefficient of performance of a heat pump — the temperature it pumps *to*, divided by the difference between that and the temperature it pumps *from*, both in kelvin. It is one of the more useful formulae in the book, and it answers a question the policy debate has been having without it.
 
-**Real machines reach about 40% of the ideal.** Britain's Electrification of Heat trial measured a seasonal performance factor of **2.81** across 428 installed heat pumps — the only large field measurement of its kind. Put that beside what this chapter's formula gives, and the gap is informative rather than embarrassing:
+**Real machines reach roughly 40 to 50% of the ideal.** Britain's Electrification of Heat trial measured a seasonal performance factor of **2.81** across 428 installed heat pumps — the only large field measurement of its kind. Put that beside what this chapter's formula gives, and the gap is informative rather than embarrassing:
 
 | Flow temperature | Ideal COP from 0 °C | At 40% of ideal |
 |---|---|---|
@@ -708,7 +708,7 @@ However, large thermal mass is not always a boon. If a room is occupied in winte
 | 55 °C — typical existing radiators | 6.0 | 2.4 |
 | 65 °C — radiators sized for a boiler | 5.2 | 2.1 |
 
-The measured 2.81 sits where the table says a British house with unmodified radiators should sit. **The machines are not underperforming. They are being asked to deliver 55 °C water into a house that needs it.**
+The measured 2.81 sits a little above the 55 °C row — about 47% of ideal at that flow temperature — which is where a British house with unmodified radiators and a competently installed machine should sit. **The machines are not underperforming. They are being asked to deliver 55 °C water into a house that needs it.**
 
 **Which settles, from the theory, an argument chapter 7 has to make from survey data.** Chapter 7 records that a heat pump wants roughly EPC band C to reach a seasonal performance factor of 3.0, and that about two English homes in five fall below it. This chapter says *why*: a colder house needs hotter water to heat it, hotter water lowers the coefficient of performance, and the relationship is in the denominator, so it bites hard. Dropping the flow temperature from 55 °C to 35 °C raises the ideal from 6.0 to 8.8 — **a 45% improvement in efficiency bought entirely by insulation and bigger radiators**, with no change to the machine at all.
 

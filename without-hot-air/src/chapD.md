@@ -126,7 +126,7 @@ This is similar to the figure estimated above for methane capture at landfill si
 
 *A section added in the 2026 revision.* Every power density in this chapter is a statement about photosynthesis — willow at 0.5 W/m², oilseed rape at 0.13, sugar beet a little better. **None has moved, and none will.** Plants convert sunlight into stored chemical energy at well under one per cent averaged over a growing year, and that figure is set by biochemistry which has been stable for a very long time.
 
-So the comparison this chapter invites has widened from one side only. A photovoltaic panel in Britain delivered about **20 W/m²** on chapter 6's figures for a 20%-efficient module. Mainstream modules are now **22 to 23% efficient**, the best commercial products a little above 24, so the same square metre yields something nearer 22 W/m².
+So the comparison this chapter invites has widened from one side only. A photovoltaic panel in Britain delivered about **20 W/m²** on chapter 6's figures for a 20%-efficient module. Mainstream modules are now **22 to 24% efficient**, with the best commercial products higher again — chapter 6 gives the current product range — so the same square metre yields something nearer 22 W/m².
 
 The panel improved by about a tenth. The willow improved by nothing. **The ratio was about forty to one when this book was written and is about forty-five to one now** — and the useful observation is that it was never close enough for the improvement to matter either way. Chapter 6 records the change that did matter, which was not efficiency but price: the module became roughly ten times cheaper while becoming a tenth better.
 

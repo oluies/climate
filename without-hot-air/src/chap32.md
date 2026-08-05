@@ -12,7 +12,7 @@ If you would like an honest, realistic energy policy that adds up, please tell a
 
 ## What Britain said yes to
 
-*A section added in the 2026 revision.* This is the shortest chapter in the book and it makes three specific demands. Eighteen years is long enough to mark them.
+*A section added in the 2026 revision.* This is the shortest chapter in the book and it makes four specific demands. Eighteen years is long enough to mark them.
 
 **"Britain currently gets 90% of its energy from fossil fuels."** In 2008 it was **92%**. In 2025 it is **79%**.[^yes26]
 
@@ -20,9 +20,9 @@ That is real progress and it is slower than it sounds. Thirteen points in eighte
 
 **"A 10- or 20-fold increase in green power."** British renewables went from **0.164 to 0.920 exajoules** — a factor of **5.6**. Counted as electricity rather than primary energy the multiple is larger, because wind and solar displace thermal plant at better than one for one. Either way Britain is somewhere between a third and two-thirds of the way to the bottom of the range he asked for, in a bit under half the time available. **This is the demand he has come closest to meeting**, and it is the one everybody said was impossible.
 
-**"A total change in the transport fleet."** Chapter 20 records where that has got to: electric cars work, cost about the same to run, and are arriving — but transport is still 2.71 EJ of oil, essentially unchanged in share.
+**"A total change in the transport fleet."** Chapter 3 records that electric cars work and are arriving; chapter 20 records how little else has moved. Transport is still 2.71 EJ of oil, essentially unchanged in share.
 
-**"A complete change of most building heating systems."** Chapter 7 records the position, and it is the weakest of the four. Britain has the lowest heat pump uptake in Europe, and about two homes in five are below the fabric standard that would let one work well.
+**"A complete change of most building heating systems."** Chapter 7 records the position, and it is the weakest of the four. Britain sits near the bottom of the European table for heat pump installations per household, and about two homes in five are below the fabric standard that would let one work well.
 
 So: one demand substantially met, one partly, two barely begun. For a book that was widely read as pessimistic, that is a better record than its author would have predicted, and a worse one than the country needed.
 
@@ -32,8 +32,8 @@ MacKay's diagnosis is public opposition — "the general tendency of the public 
 
 This edition has found the same shape in chapter after chapter, and almost none of it is the public in the sense he means:
 
-- **Chapter 24.** Nuclear's cost is capital, so its price is a statement about the discount rate. Britain pays £14 a watt where China pays about two, and the difference is a standing workforce, a repeated design and a regulator that does not reopen it each time.
-- **Chapter 25.** Britain was offered 3.6 GW of Moroccan sun, engineered and consented, and declined it in June 2025 because it preferred the electricity to be domestic. Sweden refused a cable to Germany; Norway is discussing switching two off.
+- **Chapter 24.** Nuclear's cost is capital, so its price is a statement about the discount rate. On overnight construction cost — the same basis for both — Chinese units cluster near **$2 a watt** while Western ones scattered up to **$6–15**, and the difference is a standing workforce, a repeated design and a regulator that does not reopen it each time.
+- **Chapter 25.** Britain was offered 3.6 GW of Moroccan sun, engineered and through planning, and declined it in June 2025 because it preferred the electricity to be domestic. Sweden refused a cable to Germany; Norway is discussing switching two off.
 - **Chapter 26.** Five days of storage would cost about one nuclear power station and is not being built, because no arrangement exists under which anybody would be paid to own it.
 - **Chapter 20.** Nuclear merchant shipping is blocked by a liability convention that was written in 1962 and never entered into force. Insurers cannot price a risk when they cannot tell which regime applies.
 - **Chapter 29.** The carbon price arrived and worked at the margin; the transformations came from regulation applied at the point of manufacture.
@@ -45,7 +45,7 @@ This edition has found the same shape in chapter after chapter, and almost none 
 
 Which brings this edition back to the thing the book is actually for, and the reason it has survived being wrong about so many numbers.
 
-MacKay's claim was never that his figures were right. It was that a plan has to add up, and that anyone who will not do the arithmetic is not making a plan. Eighteen years have moved almost every number in this book — solar by a factor of ten downwards, nuclear by a factor of ten upwards, British consumption by nearly half, and the whole storage question from a cost problem into a market-design one. **Not one of those changes touched the method.** They were all discovered by doing exactly what he did: writing the quantity down, in a unit a person can hold, and checking whether the columns balance.
+MacKay's claim was never that his figures were right. It was that a plan has to add up, and that anyone who will not do the arithmetic is not making a plan. Eighteen years have moved almost every number in this book — solar by a factor of ten downwards, nuclear by a factor of ten upwards, British consumption per person by 44%, and the whole storage question from a cost problem into a market-design one. **Not one of those changes touched the method.** They were all discovered by doing exactly what he did: writing the quantity down, in a unit a person can hold, and checking whether the columns balance.
 
 That is why the corrections in this edition are offered in his own units and against his own tables rather than as a replacement for them. **The numbers were the perishable part. The insistence on having numbers at all is what has lasted**, and on the evidence of the last eighteen years it is needed more now than when he wrote — because the arguments that stop things being built are now mostly arguments in which no quantity is stated at all.
 
