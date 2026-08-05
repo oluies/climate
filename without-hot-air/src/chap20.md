@@ -643,7 +643,15 @@ Incidentally, people who have seen the Transrapid train in Shanghai tell me that
 
 [^15]: *Only 8.3% of commuters travel over 30 km to their workplace*. Source: Eddington (2006). The dependence of the range of an electric car on the size of its battery is discussed in [Chapter A](../Text/chapA.xhtml#batteries).
 
-[^16]: *Lots of electric vehicles*. They are all listed below, in no particular order. Performance figures are mainly from the manufacturers. As we saw [above](#manufacturers), real-life performance doesn’t always match manufacturers’ claims.
+[^16]: *Lots of electric vehicles*. **A note added in the 2026 revision: the catalogue that follows is a historical document.** Of the eighteen or so vehicles named in it, essentially one manufacturer survived and prospered — Tesla, whose 2008 Roadster MacKay treats as an exotic prototype. Think Global, which made the Th!nk Ox, went bankrupt in 2011. The Loremo was never produced and its company failed in 2010. Aptera went bankrupt in 2011, was revived in 2019, and has still not delivered a production vehicle. Vectrix, which made the scooter, went bankrupt in 2009. Smith Electric Vehicles, which made the minibus, stopped trading. ZAP, which made the Xebra, folded. The G-Wiz was discontinued. The i MiEV, the most conventional car on the list, was built until 2021 and then dropped.
+
+    **The vehicles were nearly all wrong and the number was very nearly right**, which is the useful lesson. MacKay's summary — that electric vehicles deliver transport at roughly **15 kWh per 100 km** — describes today's efficient models well: a Tesla Model 3 is rated at about 14.7 and a Hyundai Kona Electric at 13.4 on the European test cycle. What he could not anticipate is that the *fleet* would not sit at the efficient end. A study of 342 electric cars sold in Europe found a real-world average of **21 ± 4 kWh per 100 km**, against a certified average of 19, and the largest electric pickups and sport-utility vehicles are near 30. Chapter A explains the gap in one line: the model has frontal area and mass in it, and both went up.
+
+    There is a coincidence in that worth pausing on. MacKay measured a real G-Wiz in London over nineteen recharges and got **21 kWh per 100 km**. The real-world European fleet average today is **21 kWh per 100 km**. The energy per kilometre has not improved at all in eighteen years — what improved is everything else. Today's 21 buys a car that is four times faster, several times safer, carries a family, and goes 400 km rather than 60. **The efficiency gain was taken as capability, not as energy**, which is the same trade chapter 9 finds in lighting and chapter 22 finds in gadgets, and it is the normal way efficiency is spent.
+
+    The original list follows unchanged, because it is a good record of what a serious observer could see in 2008, and because the reader who wants to know how hard it is to pick winners should see how many there were.
+
+    They are all listed below, in no particular order. Performance figures are mainly from the manufacturers. As we saw [above](#manufacturers), real-life performance doesn’t always match manufacturers’ claims.
 
 ![](/img/without-hot-air/figure166.gif)
 
