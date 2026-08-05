@@ -1347,3 +1347,23 @@ def socketEnergy(): Unit = {
   println("wrote data-refresh/socket-energy.csv")
   println(f"  petrol car at 80 kWh/100km reaches 45 kWh after ${45.0 / 80 * 100}%.0f km")
 }
+
+// ---- Figure 20.22 remade: European Car of the Year, when it was electric ----
+// MacKay's figure 20.22 is a Tesla Roadster at 15 kWh/100 km. The award's
+// electric winners took seven years to get back to that number.
+@main
+def cotyEfficiency(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  // No commas in any field: bare CSV, DuckDB sniffs the delimiter.
+  val out = new StringBuilder; out ++= "year,model,lo,hi\n"
+  def add(y: Int, m: String, lo: Double, hi: Double) = out ++= f"$y,$m,$lo%.1f,$hi%.1f\n"
+  add(2019, "Jaguar I-Pace", 22.0, 25.2)
+  add(2022, "Kia EV6", 15.9, 20.9)
+  add(2024, "Renault Scenic E-Tech", 13.3, 17.8)
+  add(2025, "Renault 5 E-Tech", 14.9, 14.9)
+  add(2026, "Mercedes-Benz CLA", 12.2, 14.1)
+  os.write.over(dir / "coty-efficiency.csv", out.toString)
+  println("wrote data-refresh/coty-efficiency.csv")
+  println("  MacKay's Tesla Roadster reference: 15.0 kWh/100 km")
+}
