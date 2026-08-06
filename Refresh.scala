@@ -1143,9 +1143,12 @@ def cartoonBritain(): Unit = {
   def perDay(kwh: Double) = kwh / pop / 365.0
   val gasAll = perDay(2.20 * EJ)      // all UK gas
   val oilAll = perDay(2.71 * EJ)      // all UK oil
-  // Components on the same Statistical Review basis the rest of the edition uses:
-  // gas 91.0, nuclear 35.9, wind 87.1, solar 20.0, hydro 5.1, biomass and other 40.5.
-  val elecTWh = 91.0 + 35.9 + 87.1 + 20.0 + 5.1 + 40.5
+  // Mirrors data-refresh/uk-electricity-mix.csv term for term (OWID/Ember basis):
+  // gas 91, nuclear 36, wind 86, solar 19, hydro 6, bioenergy 41. That table also
+  // backs fig-uk-electricity-mix and the prose in chapters 19 and 28a, so this step
+  // must not be moved onto the Statistical Review figures used by `stacks` without
+  // moving those artefacts too.
+  val elecTWh = 91.0 + 36 + 86 + 19 + 6 + 41
   val elec = perDay(elecTWh * 1e9)
   val gasToPower = perDay(91.0 / 0.50 * 1e9)   // CCGT at ~50%
   val out = new StringBuilder; out ++= "year,category,kwh_per_day,note\n"

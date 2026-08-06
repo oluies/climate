@@ -13,7 +13,10 @@ concurrency:
   # Shared with main.yml: both publish to gh-pages and a concurrent
   # push would fail non-fast-forward and lose a deploy silently.
   group: gh-pages-deploy
-  cancel-in-progress: true
+  # Queue, do not cancel: these two workflows deploy different content to the
+  # same branch (book to root, site to site/), so cancelling one to run the
+  # other silently drops a deploy - which is what happened to #101.
+  cancel-in-progress: false
 jobs:
   build-deploy:
     runs-on: ubuntu-latest

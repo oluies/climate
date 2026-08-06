@@ -45,8 +45,8 @@ ax.set_title("European Car of the Year, when the winner was electric",
              loc="left", fontsize=12.5, fontweight="bold", pad=14)
 ax.annotate("Bars show the range across variants; a single line means one figure is published. The award's first electric winner,\n"
             "in 2019, used half as much again as the sports car MacKay put in figure 20.22 eleven years earlier. Winners reached\n"
-            "under the Roadster's number in 2024 and have stayed below it since — by which point the car was a mainstream saloon\n"
-            "rather than a £90 000 two-seater. Every bar is a test-cycle figure and every one is optimistic: WLTP barely loads\n"
-            "the cabin heater, which alone draws 0.5 to 1 kW on the move.",
+            "under the Roadster's number with their best variants from 2024, and wholly below it by 2026 — by which point the car\n"
+            "was a mainstream saloon rather than a £90 000 two-seater. Every bar is a test-cycle figure and every one is\n"
+            "optimistic: WLTP barely loads the cabin heater, which alone draws 0.5 to 1 kW on the move.",
             xy=(0, -0.20), xycoords="axes fraction", va="top", fontsize=9.3, color=MUTED)
 fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
