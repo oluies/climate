@@ -1349,8 +1349,8 @@ def socketEnergy(): Unit = {
 }
 
 // ---- Figure 20.22 remade: European Car of the Year, when it was electric ----
-// MacKay's figure 20.22 is a Tesla Roadster at 15 kWh/100 km. A winning
-// variant first came under it in 2024; a whole winning range only in 2026.
+// MacKay's figure 20.22 is a Tesla Roadster at 15 kWh/100 km. The award's
+// electric winners crossed below that figure around 2024-25.
 @main
 def cotyEfficiency(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
