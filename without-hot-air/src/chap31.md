@@ -171,7 +171,7 @@ So the real thing is **three to five times worse than the assumption he already 
 
 Redo his sentence with a real number. Neutralising a European's 30 kg a day at 2 kWh per kilogram takes **60 kWh per day per person**. MacKay's own version reads: *"16.5 kWh per day per person. This is exactly the same as British electricity consumption."* Britain now generates **11.2 kWh(e) per day per person**. **Sucking one European's emissions out of the air would take more than five times Britain's entire electricity generation per head** — where in 2008 the two numbers were equal.
 
-The gap widened from both ends: the machines are dearer in energy than he assumed, and the electricity supply he compared them against has shrunk.
+The gap widened from both ends: the machines are dearer in energy than he assumed, and the generation he compared them against has shrunk.
 
 ### It has been built at a scale of about nine seconds
 
@@ -181,7 +181,7 @@ Twenty-seven direct air capture plants had been commissioned worldwide by the In
 
 The flagship is worse than that headline suggests. Climeworks' **Mammoth**, in Iceland, is the largest such plant ever built, with a nameplate of **36 000 tonnes a year**. In 2024 it captured **105 tonnes** — about **three-tenths of one per cent** of design capacity. The company's own co-chief executive put operating cost "closer to the $1000 per ton mark than the $100 per ton mark", and the firm cut staff in 2025.[^climeworks]
 
-The next machine is larger. **STRATOS**, in Texas, is designed for 500 000 tonnes a year, which would multiply world capacity fiftyfold. At full output it would offset about **seven minutes** of world emissions annually, and would multiply that operating count roughly fiftyfold.
+The next machine is larger. **STRATOS**, in Texas, is designed for 500 000 tonnes a year, which would multiply that operating count roughly fiftyfold. At full output it would offset about **seven minutes** of world emissions annually.
 
 ### The subsidy does not close the gap either
 

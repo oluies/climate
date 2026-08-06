@@ -9,8 +9,9 @@ on:
       - ".github/workflows/main.yml"
 
 concurrency:
-  # Shared with book.yml: see the note there.
+  # Shared with book.yml: see the note there, including why this must not cancel.
   group: gh-pages-deploy
+  cancel-in-progress: false
 
 jobs:
   build:
