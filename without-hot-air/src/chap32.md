@@ -22,9 +22,9 @@ That is real progress and it is slower than it sounds. Thirteen points in eighte
 
 **"A total change in the transport fleet."** Chapter 3 records that electric cars work and are arriving; chapter 20 records how little else has moved. Transport is still 2.71 EJ of oil, essentially unchanged in share.
 
-**"A complete change of most building heating systems."** Chapter 7 records the position, and it is the weakest of the four. Britain sits near the bottom of the European table for heat pump installations per household, and about two homes in five are below the fabric standard that would let one work well.
+**"A complete change of most building heating systems."** Chapter 7 records the position, and it is the weakest of the three. Britain sits near the bottom of the European table for heat pump installations per household, and about two homes in five are below the fabric standard that would let one work well.
 
-So: one demand substantially met, one partly, two barely begun. For a book that was widely read as pessimistic, that is a better record than its author would have predicted, and a worse one than the country needed.
+So: one demand substantially met, two barely begun, and the premise moving slowly. For a book that was widely read as pessimistic, that is a better record than its author would have predicted, and a worse one than the country needed.
 
 ### And the "no" turned out to be bigger than he thought
 

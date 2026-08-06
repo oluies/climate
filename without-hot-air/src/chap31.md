@@ -169,7 +169,7 @@ He works with a figure of 0.55 kWh per kilogram of carbon dioxide, roughly three
 
 So the real thing is **three to five times worse than the assumption he already thought close to absurd**, and eight to twelve times the physical limit. The fans alone, before any chemistry, account for 300 to 900 kWh a tonne.[^dacenergy]
 
-Redo his sentence with a real number. Neutralising a European's 30 kg a day at 2 kWh per kilogram takes **60 kWh per day per person**. MacKay's own version reads: *"16.5 kWh per day per person. This is exactly the same as British electricity consumption."* Britain now generates **11.2 kWh(e) per day per person**. **Sucking one European's emissions out of the air would take more than five times Britain's entire electricity supply per head** — where in 2008 the two numbers were equal.
+Redo his sentence with a real number. Neutralising a European's 30 kg a day at 2 kWh per kilogram takes **60 kWh per day per person**. MacKay's own version reads: *"16.5 kWh per day per person. This is exactly the same as British electricity consumption."* Britain now generates **11.2 kWh(e) per day per person**. **Sucking one European's emissions out of the air would take more than five times Britain's entire electricity generation per head** — where in 2008 the two numbers were equal.
 
 The gap widened from both ends: the machines are dearer in energy than he assumed, and the electricity supply he compared them against has shrunk.
 
@@ -177,11 +177,11 @@ The gap widened from both ends: the machines are dearer in energy than he assume
 
 Twenty-seven direct air capture plants had been commissioned worldwide by the International Energy Agency's last full count, with a combined operating capacity a little over **10 000 tonnes a year**. Mammoth's 36 000-tonne nameplate is not in that total and would dominate it if the plant performed; the paragraph below records what it actually captured. World energy-related emissions are about 35 800 million tonnes a year, which is **1135 tonnes every second**.
 
-**The entire installed direct air capture capacity of the world, running perfectly for a full year, offsets about nine seconds of world emissions.**
+**The entire operating capacity in that count, running perfectly for a full year, offsets about nine seconds of world emissions.**
 
 The flagship is worse than that headline suggests. Climeworks' **Mammoth**, in Iceland, is the largest such plant ever built, with a nameplate of **36 000 tonnes a year**. In 2024 it captured **105 tonnes** — about **three-tenths of one per cent** of design capacity. The company's own co-chief executive put operating cost "closer to the $1000 per ton mark than the $100 per ton mark", and the firm cut staff in 2025.[^climeworks]
 
-The next machine is larger. **STRATOS**, in Texas, is designed for 500 000 tonnes a year, which would multiply world capacity fiftyfold. At full output it would offset about **seven minutes** of world emissions annually.
+The next machine is larger. **STRATOS**, in Texas, is designed for 500 000 tonnes a year, which would multiply world capacity fiftyfold. At full output it would offset about **seven minutes** of world emissions annually, and would multiply that operating count roughly fiftyfold.
 
 ### The subsidy does not close the gap either
 
