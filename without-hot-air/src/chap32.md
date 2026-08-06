@@ -12,7 +12,7 @@ If you would like an honest, realistic energy policy that adds up, please tell a
 
 ## What Britain said yes to
 
-*A section added in the 2026 revision.* This is the shortest chapter in the book and it makes four specific demands. Eighteen years is long enough to mark them.
+*A section added in the 2026 revision.* This is the shortest chapter in the book and it makes three specific demands, on a premise worth checking too. Eighteen years is long enough to mark them.
 
 **"Britain currently gets 90% of its energy from fossil fuels."** In 2008 it was **92%**. In 2025 it is **79%**.[^yes26]
 

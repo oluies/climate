@@ -414,9 +414,9 @@ There is a variant of the orbital idea that avoids the transmission problem enti
 
 This chapter's method applies directly, and the numbers are unusually easy to check.
 
-**Start with the spot size, because it is not a design choice.** The Sun is not a point: it subtends about half a degree, or 9.3 milliradians. Any flat mirror reflects an image of the Sun, so the patch of ground it lights cannot be smaller than that angle times the range. At 600 km that is **5.6 km across** — which is exactly the figure the company quotes. **They are already at the physical limit, and no engineering makes the spot smaller.** It follows that the only way to raise the intensity is to add mirrors.
+**Start with the spot size, because it is not a design choice.** The Sun is not a point: it subtends about half a degree, or 9.3 milliradians. Any flat mirror reflects an image of the Sun, so the patch of ground it lights cannot be smaller than that angle times the range. At 600 km that is **5.6 km across**. The company quotes about 5 km, which is slightly *below* the flat-mirror limit — implying either a curved mirror or the lower end of its stated altitude range, both of which help a little and neither of which escapes the constraint. **They are within a few per cent of the physical limit, and no engineering makes the spot much smaller.** It follows that the only way to raise the intensity is to add mirrors.
 
-**Now the intensity from one mirror.** 324 m² intercepting 1361 W/m² of sunlight, at 90% reflectivity, is about **400 kW** of light. Spread over a 5 km spot — nearly 20 million square metres — that is:
+**Now the intensity from one mirror.** 324 m² intercepting 1361 W/m² of sunlight, at 90% reflectivity, is about **400 kW** of light. Spread over the company's own 5 km spot — nearly 20 million square metres, and the figure most favourable to it — that is:
 
 **0.02 watts per square metre.**
 
@@ -432,7 +432,7 @@ For comparison, a full moon delivers roughly 0.003 W/m². **One satellite is abo
 
 **And there is a second lesson here, about how the case is made.** The company's engineering pages carry real numbers, which is how the arithmetic above was possible: 18 metres, 600 kilometres, a 5 km spot, 200 W/m². Its argument for why the world needs the thing carries none. That piece observes that billions lack reliable energy, that the world must produce "vastly more energy than ever before, at global scale, quickly enough to make a difference — all while keeping it clean", and proposes reflecting sunlight from orbit. It contains **no quantity of any kind**: no demand figure, no intensity, no constellation size, no cost, and no comparison with a battery or a transmission line.
 
-That is not dishonesty, and it is entirely normal corporate writing. It is also precisely the genre this book was written against. **The prose is unfalsifiable and the engineering page is not** — and the engineering page, checked, says the concept needs ten thousand mirrors per solar farm.
+That is not dishonesty, and it is entirely normal corporate writing. It is also precisely the genre this book was written against. **The prose is unfalsifiable and the engineering page is not** — and the engineering page supplies exactly the four numbers needed to work out that the concept requires about ten thousand mirrors per solar farm, which is a conclusion the company does not draw and this edition does.
 
 Which is the whole method in one example, and the reason chapter 32 ends where it does. When somebody says a thing cannot be done, ask for the number. **When somebody says it can, ask for the same number** — and notice which document it appears in.
 
