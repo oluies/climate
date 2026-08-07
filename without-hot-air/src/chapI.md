@@ -322,6 +322,20 @@ UK electricity consumption is 17 kWh per day per person, or 42.5 GW per UK.
 
 World power consumption is 15 TW. World electricity consumption is 2 TW.
 
+### Money
+
+*Added in the 2026 revision.* This book is about Britain, so figures taken from foreign sources are given with a sterling equivalent alongside — the original first where it is the source's own unit, the conversion in brackets. Mixed units are kept deliberately: a reader checking a figure against its source should find the number the source printed.
+
+Conversions throughout this edition use approximate mid-2026 rates, rounded to two significant figures:
+
+| | to £1 |
+|---|---|
+| US dollar | 1.27 |
+| Euro | 1.16 |
+| Swedish krona | 12.2 |
+
+These are working figures, not valuations. Currencies move by more than 10% in a year, and several of the numbers converted here are themselves ranges or single reported deals, so a conversion carrying more precision than the original would be false. Where a figure is a *price* — a cost per kilowatt, per tonne, per kilowatt-hour — the conversion is what matters to a British reader and is given. Where it is a citation, a company valuation or a historical American budget line, the original stands alone.
+
 ### Useful conversion factors
 
 To change TWh per year to GW, divide by 9.

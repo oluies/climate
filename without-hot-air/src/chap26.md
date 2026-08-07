@@ -342,7 +342,7 @@ How to ride through these very-long-timescale fluctuations? Electric vehicles an
 
 *A section added in the 2026 revision.* This chapter sets a target and then spends most of its length explaining why the target is hard. The target is **1200 GWh** — 10 GW for five days, or 20 kWh per person — and MacKay's answer in 2008 is that Britain's four pumped-storage schemes hold **30 GWh** between them, so the target is forty times the entire existing fleet — or, as he puts it, about 130 times what Dinorwig alone stores. Eighteen years later the arithmetic can be redone, and the result is not the one either optimists or pessimists expect.
 
-**Batteries did what solar did.** A lithium-ion pack cost about **$1474 per kWh in 2010** in today's money. In 2025 it was **$108**, and packs for stationary storage — which do not have to be light — reached **$70**. That is a fall of **93%**, on the same shape of curve as chapter 6's photovoltaic modules and for the same reason: a manufactured article produced in enormous numbers.[^batprice]
+**Batteries did what solar did.** A lithium-ion pack cost about **$1474 per kWh (£1160) in 2010** in today's money. In 2025 it was **$108 (£85)**, and packs for stationary storage — which do not have to be light — reached **$70 (£55)**. That is a fall of **93%**, on the same shape of curve as chapter 6's photovoltaic modules and for the same reason: a manufactured article produced in enormous numbers.[^batprice]
 
 **And Britain built them.** Grid-scale batteries in Great Britain reached roughly **7 GW and 11 to 13 GWh** by the end of 2025, from almost nothing in 2015, with about 6.5 GW more under construction and over 60 GW holding planning consent. Now put that beside MacKay's target:
 
@@ -356,7 +356,7 @@ How to ride through these very-long-timescale fluctuations? Electric vehicles an
 
 A battery earns its money on frequency response, on the balancing mechanism, and on the spread between the cheapest and dearest hours of the day. Every one of those is captured within an hour or two of discharge. Adding a third hour to a two-hour battery costs half as much again in cells and earns almost nothing extra, because the price spread that pays for it is already exhausted. So the market builds **power** and does not build **energy**, and it would do so however cheap the cells became.
 
-**Which is demonstrated by the most striking number in this section.** At $70 per kWh, MacKay's 1200 GWh of storage would cost about **$84 billion** in cells. That is roughly what Hinkley Point C is costing. It is a large number and it is not an impossible one — and at 2010 prices the same store would have cost $1.8 trillion, which was impossible. **The thing this chapter says Britain cannot afford has become affordable, and is still not being built.** No market pays anyone to hold five days of electricity against a lull that arrives a few times a decade.
+**Which is demonstrated by the most striking number in this section.** At $70 per kWh, MacKay's 1200 GWh of storage would cost about **$84 billion — £66 billion** in cells. That is roughly what Hinkley Point C is costing. It is a large number and it is not an impossible one — and at 2010 prices the same store would have cost $1.8 trillion, some £1.4 trillion, which was impossible. **The thing this chapter says Britain cannot afford has become affordable, and is still not being built.** No market pays anyone to hold five days of electricity against a lull that arrives a few times a decade.
 
 ### Which is what a Dunkelflaute is
 
@@ -372,7 +372,7 @@ If the argument above is right — that long-duration storage fails on revenue r
 
 **Ambri** was founded on Donald Sadoway's liquid-metal battery work at MIT: molten calcium and antimony electrodes with a molten salt between them, a cell with no membrane, no separator and nothing to degrade, designed to last decades and to sit still for long periods without loss. It is, on paper, close to the ideal machine for MacKay's 1200 GWh. It was backed by Bill Gates and by Khosla Ventures, and it raised money for fourteen years.
 
-In **May 2024 it filed for Chapter 11**, after a $300 million funding round failed to close. Its assets were sold in July 2024 to a consortium of its own lenders — including Gates Frontier — and the company was recapitalised under a co-founder. It continues to develop the technology and has commissioned pilots. As of 2026 it remains, as it was in 2014, pre-revenue at commercial scale.[^ambri]
+In **May 2024 it filed for Chapter 11**, after a $300 million (£240 million) funding round failed to close. Its assets were sold in July 2024 to a consortium of its own lenders — including Gates Frontier — and the company was recapitalised under a co-founder. It continues to develop the technology and has commissioned pilots. As of 2026 it remains, as it was in 2014, pre-revenue at commercial scale.[^ambri]
 
 Read that carefully, because it is not a story about a chemistry that did not work. The cells work. What did not work was fourteen years of trying to sell duration into a market that pays for power. **The technology built specifically to solve the problem this chapter poses failed for the reason this chapter's problem is unsolved**, which is a tidier demonstration than any argument.
 

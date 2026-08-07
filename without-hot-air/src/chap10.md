@@ -102,7 +102,7 @@ That is worth putting beside chapter 6. There MacKay was wrong about cost in the
 
 He put deep offshore on the production stack "with the proviso, as I said before, that wind experts reckon deep offshore wind is prohibitively expensive". Floating wind has since stopped being hypothetical: Scotland hosts **Hywind Scotland** and **Kincardine**, the latter the world's largest floating farm with five 9.5 MW turbines and one of 2 MW, fully operational since 2021.
 
-But floating capex runs **$6000 to $10 000 per kilowatt**, roughly double fixed-bottom. So deep offshore is no longer impossible and is not yet cheap, and his 32 kWh/d entry on the stack remains, eighteen years on, almost entirely unbuilt. The proviso has aged better than the estimate.
+But floating capex runs **$6000 to $10 000 per kilowatt, roughly £4700 to £7900**, roughly double fixed-bottom. So deep offshore is no longer impossible and is not yet cheap, and his 32 kWh/d entry on the stack remains, eighteen years on, almost entirely unbuilt. The proviso has aged better than the estimate.
 
 ### Britain invented it; China owns it
 
