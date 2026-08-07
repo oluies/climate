@@ -179,13 +179,13 @@ Twenty-seven direct air capture plants had been commissioned worldwide by the In
 
 **The entire operating capacity in that count, running perfectly for a full year, offsets about nine seconds of world emissions.**
 
-The flagship is worse than that headline suggests. Climeworks' **Mammoth**, in Iceland, is the largest such plant ever built, with a nameplate of **36 000 tonnes a year**. In 2024 it captured **105 tonnes** — about **three-tenths of one per cent** of design capacity. The company's own co-chief executive put operating cost "closer to the $1000 per ton mark than the $100 per ton mark", and the firm cut staff in 2025.[^climeworks]
+The flagship is worse than that headline suggests. Climeworks' **Mammoth**, in Iceland, is the largest such plant ever built, with a nameplate of **36 000 tonnes a year**. In 2024 it captured **105 tonnes** — about **three-tenths of one per cent** of design capacity. The company's own co-chief executive put operating cost "closer to the $1000 per ton mark than the $100 per ton mark" — nearer £790 a tonne than £79, and the firm cut staff in 2025.[^climeworks]
 
 The next machine is larger. **STRATOS**, in Texas, is designed for 500 000 tonnes a year, which would multiply that operating count roughly fiftyfold. At full output it would offset about **seven minutes** of world emissions annually.
 
 ### The subsidy does not close the gap either
 
-Chapter 23 records the American 45Q credit paying **$180 a tonne** for direct air capture — the most generous instrument for this anywhere in the world. Against an operating cost near $1000, it covers under a fifth. There is no jurisdiction in which building one of these machines is a commercial proposition, and none in prospect.
+Chapter 23 records the American 45Q credit paying **$180 (£142) a tonne** for direct air capture — the most generous instrument for this anywhere in the world. Against an operating cost near $1000, it covers under a fifth. There is no jurisdiction in which building one of these machines is a commercial proposition, and none in prospect.
 
 ### And the cheap alternative he treats gently turned out to be largely fictitious
 
