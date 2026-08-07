@@ -1372,3 +1372,31 @@ def cotyEfficiency(): Unit = {
   println("wrote data-refresh/coty-efficiency.csv")
   println("  MacKay's Tesla Roadster reference: 15.0 kWh/100 km")
 }
+
+// ---- Figure 18.9 remade: British renewables and nuclear, 2006 and 2025 ----
+// MacKay's figure shows 2006, with the renewable breakdown scaled 100-fold
+// vertically because it was too small to see. It no longer needs scaling.
+@main
+def ukLowCarbon(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  // Generation in TWh from the Statistical Review, over the population of each year.
+  val pop2006 = 60.8e6; val pop2025 = 68.4e6
+  def perDay(twh: Double, pop: Double) = twh * 1e9 / pop / 365.0
+  // 2006 values are MacKay's era, from the same series; 2025 as used throughout.
+  val rows = Seq(
+    ("Wind",    4.2,  87.1),
+    ("Solar",   0.0,  20.0),
+    ("Hydro",   4.6,   5.1),
+    ("Biomass", 8.5,  40.5),
+    ("Nuclear", 75.5, 35.9))
+  val out = new StringBuilder; out ++= "source,y2006,y2025\n"
+  for ((n, a, b) <- rows)
+    out ++= f"$n,${perDay(a, pop2006)}%.4f,${perDay(b, pop2025)}%.4f\n"
+  os.write.over(dir / "uk-low-carbon.csv", out.toString)
+  println("wrote data-refresh/uk-low-carbon.csv")
+  val t06 = rows.map(r => perDay(r._2, pop2006)).sum
+  val t25 = rows.map(r => perDay(r._3, pop2025)).sum
+  println(f"  total low-carbon $t06%.2f -> $t25%.2f kWh/d per person")
+  println(f"  renewables only  ${t06 - perDay(75.5, pop2006)}%.2f -> ${t25 - perDay(35.9, pop2025)}%.2f")
+}
