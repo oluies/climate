@@ -1400,3 +1400,49 @@ def ukLowCarbon(): Unit = {
   println(f"  total low-carbon $t06%.2f -> $t25%.2f kWh/d per person")
   println(f"  renewables only  ${t06 - perDay(75.5, pop2006)}%.2f -> ${t25 - perDay(35.9, pop2025)}%.2f")
 }
+
+// ---- Figures 18.11 and 18.12 made native: energy against GDP, as trajectories ----
+// The OWID iframes these replace show a scatter of all countries in one year. The
+// chapter's argument is about the *path* each rich country has traced, so this
+// extracts the time series for a handful of them and plots the path itself.
+@main
+def energyVsGdp(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  def fetch(slug: String, file: String): os.Path = {
+    val p = dir / file
+    if (!os.exists(p)) os.write.over(p,
+      requests.get(s"https://ourworldindata.org/grapher/$slug.csv?csvType=full", readTimeout = 60000).text())
+    p
+  }
+  val total = fetch("energy-use-per-person-vs-gdp-per-capita", "owid-energy-vs-gdp.csv")
+  val fossil = fetch("per-capita-fossil-energy-vs-gdp", "owid-fossil-vs-gdp.csv")
+
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val st = conn.createStatement()
+  // No commas in any field: bare CSV, DuckDB sniffs the delimiter downstream.
+  val want = Seq("United Kingdom", "Germany", "France", "United States", "Japan", "China")
+  val inList = want.map(c => s"'$c'").mkString(",")
+  // The two graphers do not share a unit: the total-energy one serves kWh per
+  // person per year, the fossil one MWh - despite both declaring "kilowatt-hours
+  // per person" in their metadata, so trust the values rather than the label.
+  // The check is the fossil share: 110 of 120 kWh/d for the UK in 1990, 54 of 69
+  // in 2025. Hence the differing scale factors - both end as kWh per person/day.
+  for ((src, col, scale, out) <- Seq(
+        (total, "Per capita energy consumption", 1.0 / 365.0, "energy-vs-gdp.csv"),
+        (fossil, "Per capita fossil energy consumption", 1000.0 / 365.0, "fossil-vs-gdp.csv"))) {
+    val rs = st.executeQuery(
+      s"""SELECT Entity, Year, "$col" * $scale AS kwh_d, "GDP per capita" AS gdp
+          FROM read_csv_auto('${src.toString}')
+          WHERE Entity IN ($inList) AND "$col" IS NOT NULL AND "GDP per capita" IS NOT NULL
+            AND Year >= 1990 ORDER BY Entity, Year""")
+    val sb = new StringBuilder; sb ++= "country,year,kwh_d,gdp\n"
+    var n = 0
+    while (rs.next()) {
+      sb ++= f"${rs.getString(1)},${rs.getInt(2)},${rs.getDouble(3)}%.2f,${rs.getDouble(4)}%.0f\n"; n += 1
+    }
+    os.write.over(dir / out, sb.toString)
+    println(s"wrote data-refresh/$out ($n rows)")
+  }
+  conn.close()
+}
