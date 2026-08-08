@@ -1509,3 +1509,39 @@ def ghgScatter(): Unit = {
   println(s"wrote data-refresh/ghg-scatter.csv ($n rows, year $YEAR)")
   conn.close()
 }
+
+/** Chapter L's import-dependence table: net energy imports as a share of energy
+  * use, for the Asian economies plus a Western and exporter comparison set.
+  * Negative means net exporter, which is the whole point of the table. */
+@main
+def energyImports(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val src = dir / "owid-energy-imports.csv"
+  if (!os.exists(src)) os.write.over(src, requests.get(
+    "https://ourworldindata.org/grapher/energy-imports-and-exports-energy-use.csv?csvType=full",
+    readTimeout = 60000).text())
+
+  // No commas in any field: DuckDB sniffs the delimiter when the table is read back.
+  val want = Seq("Singapore", "Japan", "South Korea", "Sri Lanka", "Cambodia", "Thailand",
+    "Philippines", "Bangladesh", "Pakistan", "India", "Vietnam", "Nepal", "China",
+    "Malaysia", "Myanmar", "Laos", "Indonesia", "Brunei", "Mongolia",
+    "Germany", "France", "United Kingdom", "United States", "Australia", "Russia", "Kazakhstan")
+  val inList = want.map(c => s"'$c'").mkString(",")
+  val col = "\"Energy imports, net (% of energy use)\""
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val st = conn.createStatement()
+  // Countries stop reporting in different years, so take each one's own latest.
+  val rs = st.executeQuery(
+    s"""WITH d AS (SELECT Entity, Year, $col AS pct FROM read_csv_auto('${src.toString}')
+                   WHERE Entity IN ($inList) AND $col IS NOT NULL AND Code IS NOT NULL)
+        SELECT Entity, Year, pct FROM d
+        WHERE (Entity, Year) IN (SELECT Entity, max(Year) FROM d GROUP BY Entity)
+        ORDER BY pct DESC""")
+  val sb = new StringBuilder; sb ++= "country,year,pct\n"
+  var n = 0
+  while (rs.next()) { sb ++= f"${rs.getString(1)},${rs.getInt(2)},${rs.getDouble(3)}%.0f\n"; n += 1 }
+  os.write.over(dir / "energy-imports.csv", sb.toString)
+  println(s"wrote data-refresh/energy-imports.csv ($n rows)")
+  conn.close()
+}
