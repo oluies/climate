@@ -4,48 +4,32 @@ import { useRouter } from 'next/router'
 
 import '../styles/globals.css'
 import siteConfig from '../config/siteConfig.js'
-import * as gtag from '../lib/gtag'
+import * as goatcounter from '../lib/goatcounter'
 
 
 function MyApp({ Component, pageProps }) {
-  // Google Analytics
-  if (siteConfig.analytics) {
-    const router = useRouter()
-    useEffect(() => {
-      const handleRouteChange = (url) => {
-        gtag.pageview(url)
-      }
-      router.events.on('routeChangeComplete', handleRouteChange)
-      return () => {
-        router.events.off('routeChangeComplete', handleRouteChange)
-      }
-    }, [router.events])
-  }
-  // end Google Analytics
+  // Count client-side navigations; the script below counts the first load.
+  // The hook is called unconditionally because React requires a stable hook
+  // order - the config check happens inside it instead.
+  const router = useRouter()
+  useEffect(() => {
+    if (!siteConfig.goatcounter) return
+    const handleRouteChange = (url) => {
+      goatcounter.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
 
   return (
     <>
-      {/* Global Site Tag (gtag.js) - Google Analytics */}
-      {siteConfig.analytics &&
+      {siteConfig.goatcounter &&
         <Script
           strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analytics}`}
-        />
-        }
-      {siteConfig.analytics &&
-        <Script
-          id="gtag-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${siteConfig.analytics}', {
-                page_path: window.location.pathname,
-              });
-            `,
-          }}
+          src="//gc.zgo.at/count.js"
+          data-goatcounter={siteConfig.goatcounter}
         />
         }
       <Script
