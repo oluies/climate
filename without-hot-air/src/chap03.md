@@ -87,7 +87,7 @@ MacKay's chapter is about cars, and cars are where the attention goes, but the r
 
 [^ev2]: Share of new cars sold that are electric, IEA via Our World in Data: <https://ourworldindata.org/grapher/electric-car-sales-share>. The series counts battery-electric and plug-in hybrid vehicles together, so it overstates the fully-electric share, most of all in the countries where plug-in hybrids are popular.
 
-Why does the car deliver 33 miles per gallon? Where’s that energy going? Could we manufacture cars that do 3300 miles per gallon? If we are interested in trying to reduce cars’ consumption, we need to understand the physics behind cars’ consumption. These questions are answered in the accompanying technical chapter A, which provides a cartoon theory of cars’ consumption. I encourage you to read the technical chapters if formulae like \(\frac{1}{2}mv^{2}\) don’t give you medical problems.
+Why does the car deliver 33 miles per gallon? Where’s that energy going? Could we manufacture cars that do 3300 miles per gallon? If we are interested in trying to reduce cars’ consumption, we need to understand the physics behind cars’ consumption. These questions are answered in the accompanying technical chapter A, which provides a cartoon theory of cars’ consumption. I encourage you to read the technical chapters if formulae like $\frac{1}{2}mv^{2}$ don’t give you medical problems.
 
 Chapter 3’s conclusion: a typical car-driver uses about 40 kWh per day. Next we need to get the sustainable-production stack going, so we have something to compare this estimate with.
 
