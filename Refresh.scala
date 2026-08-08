@@ -1446,3 +1446,56 @@ def energyVsGdp(): Unit = {
   }
   conn.close()
 }
+
+/** Figures I.11 and I.12: greenhouse-gas emissions per person against income
+  * and against energy use, for every country that carries all four variables.
+  * MacKay drew both from the UNDP Human Development Report 2007; this rebuilds
+  * them from Our World in Data, keeping his squares-and-circles convention by
+  * carrying the HDI through so the figure script can split on it. */
+@main
+def ghgScatter(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  def fetch(slug: String, file: String): os.Path = {
+    val p = dir / file
+    if (!os.exists(p)) os.write.over(p,
+      requests.get(s"https://ourworldindata.org/grapher/$slug.csv?csvType=full", readTimeout = 60000).text())
+    p
+  }
+  val ghg = fetch("per-capita-ghg-emissions", "owid-per-capita-ghg-emissions.csv")
+  val hdi = fetch("human-development-index", "owid-human-development-index.csv")
+  // Income and energy come from the grapher figure 18.11 already uses, so the
+  // two chapters quote the same GDP series rather than two that nearly agree.
+  val eng = fetch("energy-use-per-person-vs-gdp-per-capita", "owid-energy-vs-gdp.csv")
+
+  // 2023 is the latest year all four variables exist: HDI stops there, and the
+  // energy and GDP series run further but cannot be joined past it.
+  val YEAR = 2023
+  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  val st = conn.createStatement()
+  val rs = st.executeQuery(
+    s"""SELECT g.Entity,
+               g."Per capita greenhouse gas emissions including land use" AS ghg_t,
+               e."GDP per capita" AS gdp,
+               e."Per capita energy consumption" / 365.0 AS kwh_d,
+               h."Human Development Index" AS hdi
+        FROM read_csv_auto('${ghg.toString}') g
+        JOIN read_csv_auto('${eng.toString}') e ON e.Entity = g.Entity AND e.Year = g.Year
+        JOIN read_csv_auto('${hdi.toString}') h ON h.Entity = g.Entity AND h.Year = g.Year
+        WHERE g.Year = $YEAR AND g.Code IS NOT NULL AND g.Code <> 'OWID_WRL'
+          AND g."Per capita greenhouse gas emissions including land use" IS NOT NULL
+          AND e."GDP per capita" IS NOT NULL AND e."Per capita energy consumption" IS NOT NULL
+          AND h."Human Development Index" IS NOT NULL
+        ORDER BY g.Entity""")
+  // No commas in any field: DuckDB sniffs the delimiter when the figure reads it.
+  val sb = new StringBuilder; sb ++= "country,ghg_t,gdp,kwh_d,hdi\n"
+  var n = 0
+  while (rs.next()) {
+    val c = rs.getString(1).replace(",", "")
+    sb ++= f"$c,${rs.getDouble(2)}%.2f,${rs.getDouble(3)}%.0f,${rs.getDouble(4)}%.2f,${rs.getDouble(5)}%.3f\n"
+    n += 1
+  }
+  os.write.over(dir / "ghg-scatter.csv", sb.toString)
+  println(s"wrote data-refresh/ghg-scatter.csv ($n rows, year $YEAR)")
+  conn.close()
+}
