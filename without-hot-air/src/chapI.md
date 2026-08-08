@@ -8,43 +8,14 @@
 
 > SI stands for Système International. SI units are the ones that all engineers should use, to avoid losing spacecraft.
 
-SI units
-
-energy
-
-one joule
-
-1 J
-
-power
-
-one watt
-
-1 W
-
-force
-
-one newton
-
-1 N
-
-length
-
-one metre
-
-1 m
-
-time
-
-one second
-
-1 s
-
-temperature
-
-one kelvin
-
-1 K
+| Thing measured | unit name | symbol |
+|---|---|---|
+| energy | one joule | 1 J |
+| power | one watt | 1 W |
+| force | one newton | 1 N |
+| length | one metre | 1 m |
+| time | one second | 1 s |
+| temperature | one kelvin | 1 K |
 
 | prefix | kilo | mega | giga | tera | peta | exa |
 |---|---|---|---|---|---|---|
@@ -55,63 +26,24 @@ one kelvin
 |---|---|---|---|---|---|---|
 | symbol | c | m | *μ* | n | p | f |
 | factor | 10<sup>-2</sup> | 10<sup>-3</sup> | 10<sup>-6</sup> | 10<sup>-9</sup> | 10<sup>-12</sup> | 10<sup>-15</sup> |
-<span class="figurenumber">Table 1.1.</span> SI units and prefixes
+
+<span class="figurenumber">Table I.1.</span> SI units and prefixes.
 
 ## My preferred units for energy, power, and transport efficiencies
 
-My preferred units, expressed in SI
+My preferred units, expressed in SI:
 
-energy
+| Thing measured | unit name | symbol | value in SI |
+|---|---|---|---|
+| energy | one kilowatt-hour | 1 kWh | 3 600 000 J |
+| power | one kilowatt-hour per day | 1 kWh/d | (1000/24) W ≅ 40 W |
+| force | one kilowatt-hour per 100 km | 1 kWh/100 km | 36 N |
+| time | one hour | 1 h | 3600 s |
+| | one day | 1 d | 24 × 3600 s ≅ 10<sup>5</sup> s |
+| | one year | 1 y | 365.25 × 24 × 3600 s ≅ *π* × 10<sup>7</sup> s |
+| force per mass | kilowatt-hour per ton-kilometre | 1 kWh/t-km | 3.6 m/s<sup>2</sup> (≅ 0.37 *g*) |
 
-one kilowatt-hour
-
-1 kWh
-
-3 600 000 J
-
-power
-
-one kilowatt-hour per day
-
-1 kWh/d
-
-(1000/24) W ≅ 40 W
-
-force
-
-one kilowatt-hour per 100 km
-
-1 kWh/100 km
-
-36 N
-
-time
-
-one hour
-
-1 h
-
-3600 s
-
-one day
-
-1 d
-
-24 × 3600 s ≅ 10<sup>5</sup> s
-
-one year
-
-1 y
-
-365.25 × 24 × 3600 s ≅ *π* × 10<sup>7</sup> s
-
-force per mass
-
-kilowatt-hour per ton-kilometre
-
-1 kWh/t-km
-
-3.6 m/s<sup>2</sup> (≅  0.37 *g*)
+And the units I use that are not SI:
 
 | Thing measured | unit name     | symbol      | value            |
 | -------------- | ----------------------- | --------------------- | -------------------------------------- |
@@ -126,6 +58,8 @@ kilowatt-hour per ton-kilometre
 |      | Wales       |         | 1 Wales = 21 000 km<sup>2</sup>    |
 |      | London (Greater London) |         | 1 London = 1580 km<sup>2</sup>   |
 | energy   | Dinorwig      |         | 1 Dinorwig = 9 GWh       |
+
+<span class="figurenumber">Table I.2.</span> The units this book prefers. The upper panel gives those that are SI quantities under another name; the lower panel those that are not SI at all, kept because they are the units a reader already has a feel for.
 
 ## Billions, millions, and other people’s prefixes
 
