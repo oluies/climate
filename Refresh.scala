@@ -1540,8 +1540,19 @@ def energyImports(): Unit = {
         ORDER BY pct DESC""")
   val sb = new StringBuilder; sb ++= "country,year,pct\n"
   var n = 0
-  while (rs.next()) { sb ++= f"${rs.getString(1)},${rs.getInt(2)},${rs.getDouble(3)}%.0f\n"; n += 1 }
+  val got = scala.collection.mutable.Set.empty[String]
+  while (rs.next()) {
+    sb ++= f"${rs.getString(1)},${rs.getInt(2)},${rs.getDouble(3)}%.0f\n"; n += 1
+    got += rs.getString(1)
+  }
   os.write.over(dir / "energy-imports.csv", sb.toString)
+  // Entities are matched by OWID display name, and those get renamed. Without
+  // this check a rename drops a country silently and the step still reports
+  // success with a smaller n - which the hand-transcribed table would not catch.
+  val missing = want.toSet -- got
+  if (missing.nonEmpty)
+    sys.error(s"energyImports: no rows for ${missing.toSeq.sorted.mkString(", ")} - " +
+      "check the entity names against the OWID series before using the output")
   println(s"wrote data-refresh/energy-imports.csv ($n rows)")
   conn.close()
 }
