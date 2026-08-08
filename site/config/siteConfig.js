@@ -7,8 +7,10 @@ const siteConfig = {
   authorLogo: 'https://playbook.datopian.com/img/datopian-dark-logotype.svg',
   // url to author
   authorUrl: 'https://datopian.com/',
-  // Google analytics key e.g. G-XXXX
-  analytics: 'G-PV1VZND295',
+  // GoatCounter endpoint - no cookies, no cross-site identifier, so no consent
+  // banner. Same account as the elmix site and the Quarto book, so all three
+  // report to one dashboard. Empty string disables counting.
+  goatcounter: 'https://oluies.goatcounter.com/count',
   // optional additional nextSeo content set on each page
   // see https://github.com/garmeeh/next-seo
 //  nextSeo: {
