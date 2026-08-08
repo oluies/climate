@@ -1482,9 +1482,19 @@ def ghgScatter(): Unit = {
         FROM read_csv_auto('${ghg.toString}') g
         JOIN read_csv_auto('${eng.toString}') e ON e.Entity = g.Entity AND e.Year = g.Year
         JOIN read_csv_auto('${hdi.toString}') h ON h.Entity = g.Entity AND h.Year = g.Year
-        WHERE g.Year = $YEAR AND g.Code IS NOT NULL AND g.Code <> 'OWID_WRL'
+        WHERE g.Year = $YEAR AND g.Code IS NOT NULL
+          -- OWID's aggregates carry codes too - OWID_WRL for the world, OWID_EU27,
+          -- OWID_HIC and the income groups - and every one of them survives the
+          -- joins and plots as though it were a country, double-counting its own
+          -- members. Excluding the whole family is safe: no OWID_ entity in these
+          -- files is a real country.
+          AND g.Code NOT LIKE 'OWID\\_%' ESCAPE '\\'
           AND g."Per capita greenhouse gas emissions including land use" IS NOT NULL
-          AND e."GDP per capita" IS NOT NULL AND e."Per capita energy consumption" IS NOT NULL
+          AND e."GDP per capita" IS NOT NULL
+          -- The energy series encodes at least one missing value as a literal 0
+          -- (Tuvalu, 2023), which would otherwise plot on the y-axis of I.12 as a
+          -- country emitting two tonnes on no energy at all.
+          AND e."Per capita energy consumption" > 0
           AND h."Human Development Index" IS NOT NULL
         ORDER BY g.Entity""")
   // No commas in any field: DuckDB sniffs the delimiter when the figure reads it.

@@ -68,9 +68,9 @@ noun = "income" if KIND == "gdp" else "energy use"
 ax.set_title(f"Greenhouse-gas emissions per person against {noun}, 2023",
              loc="left", fontsize=12.5, fontweight="bold", pad=14)
 tail = ("Each marker is a country. The cloud rises with income, but at any one income it spreads enormously: among the\n"
-        "thirty-five countries earning $40–70k a head, emissions run from 3.7 to 40 tonnes, a factor of eleven. How much\n"
+        "thirty-three countries earning $40–70k a head, emissions run from 3.7 to 40 tonnes, a factor of eleven. How much\n"
         "a country emits is not settled by how rich it is. Britain, at 5.6 t, is the eighth lowest of that group; China, on\n"
-        "a third of Britain's income, emits nearly twice as much."
+        "two fifths of Britain's income, emits nearly twice as much."
         if KIND == "gdp" else
         f"The dashed lines are what a person's emissions would be if every kWh they used came from one fuel, at the\n"
         f"{COAL_G:.0f} and {GAS_G:.0f} g CO$_2$/kWh of figure I.10. Countries below the lower line are running on something\n"
