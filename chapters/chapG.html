@@ -642,7 +642,7 @@ window.Quarto = {
 {\text{power} = \frac{1}{2}\left( \rho gh^{2}\lambda \right) \times \omega/T = \frac{1}{2}\rho gh^{2}v \times \omega} \\
 \end{matrix}\text{,}
 \]</span></p>
-<p>where <em>ω</em> is the width of the wavefront. Substituting (v = )</p>
+<p>where <em>ω</em> is the width of the wavefront. Substituting <span class="math inline">\(v = \sqrt{gd}\text{,}\)</span></p>
 <p><span class="math display">\[
 \begin{matrix}
 {\text{power} = \rho gh^{2}\sqrt{gd} \times \omega/2 = \rho g^{3/2}\sqrt{d}h^{2} \times \omega/2} \\
@@ -667,7 +667,7 @@ window.Quarto = {
 </section>
 <section id="effect-of-shelving-of-sea-bed-and-coriolis-force" class="level3">
 <h3 class="anchored" data-anchor-id="effect-of-shelving-of-sea-bed-and-coriolis-force">Effect of shelving of sea bed, and Coriolis force</h3>
-<p>If the depth <em>d</em> decreases gradually and the width remains constant such that there is minimal reflection or absorption of the incoming power, then the power of the wave will remain constant. This means (h^{2}) is a constant, so we deduce that the height of the tide scales with depth as (h {1/d^{1/4}})</p>
+<p>If the depth <em>d</em> decreases gradually and the width remains constant such that there is minimal reflection or absorption of the incoming power, then the power of the wave will remain constant. This means <span class="math inline">\(\sqrt{d}h^{2}\)</span> is a constant, so we deduce that the height of the tide scales with depth as <span class="math inline">\(h \sim {1/d^{1/4}}\text{.}\)</span></p>
 <p><img src="img/without-hot-air/figure302A.gif" class="img-fluid"></p>
 <p><span class="figurenumber">Figure G.5.</span> (a) Tidal current over a 21-day period at a location where the maximum current at spring tide is 2.9 knots (1.5 m/s) and the maximum current at neap tide is 1.8 knots (0.9 m/s). (b) The power per unit sea-floor area over a nine-day period extending from spring tides to neap tides. The power peaks four times per day, and has a maximum of about 27 W/m<sup>2</sup>. The average power of the tide farm is 6.4 W/m<sup>2</sup>.</p>
 <p>This is a crude model. One neglected detail is the Coriolis effect. The Coriolis force causes tidal crests and troughs to tend to drive on the right – for example, going up the English Channel, the high tides are higher and the low tides are lower on the French side of the channel. By neglecting this effect I may have introduced some error into the estimates.</p>
@@ -942,20 +942,24 @@ window.Quarto = {
 <section id="estimating-the-tidal-resource-via-bottom-friction" class="level2">
 <h2 class="anchored" data-anchor-id="estimating-the-tidal-resource-via-bottom-friction">Estimating the tidal resource via bottom friction</h2>
 <p>Another way to estimate the power available from tide is to compute how much power is already dissipated by friction on the sea floor. A coating of turbines placed just above the sea floor could act as a substitute bottom, exerting roughly the same drag on the passing water as the sea floor used to exert, and extracting roughly the same amount of power as friction used to dissipate, without significantly altering the tidal flows.</p>
-<p>So, what’s the power dissipated by “bottom friction”? Unfortunately, there isn’t a straightforward model of bottom friction. It depends on the roughness of the sea bed and the material that the bed is made from – and even given this information, the correct formula to use is not settled. One widely used model says that the magnitude of the stress (force per unit area) is (R_{1}U^{2}) where <em>U</em> is the average flow velocity and (R_{1}) is a dimensionless quantity called the shear friction coefficient. We can estimate the power dissipated per unit area by multiplying the stress by the velocity. Table G.9 shows the power dissipated in friction, (R_{1}U^{3}) assuming (R_{1} = 0.01) or (R_{1} = 0.003) For values of the shear friction coefficient in this range, the friction power is very similar to the estimated power that a tide farm would deliver. This is good news, because it suggests that planting a forest of underwater windmills on the sea-bottom, spaced five diameters apart, won’t radically alter the flow. The natural friction already has an effect that is in the same ballpark.</p>
+<p>So, what’s the power dissipated by “bottom friction”? Unfortunately, there isn’t a straightforward model of bottom friction. It depends on the roughness of the sea bed and the material that the bed is made from – and even given this information, the correct formula to use is not settled. One widely used model says that the magnitude of the stress (force per unit area) is <span class="math inline">\(R_{1}\rho U^{2}\text{,}\)</span> where <em>U</em> is the average flow velocity and <span class="math inline">\(R_{1}\)</span> is a dimensionless quantity called the shear friction coefficient. We can estimate the power dissipated per unit area by multiplying the stress by the velocity. Table G.9 shows the power dissipated in friction, <span class="math inline">\(R_{1}\rho U^{3}\text{,}\)</span> assuming <span class="math inline">\(R_{1} = 0.01\)</span> or <span class="math inline">\(R_{1} = 0.003\text{.}\)</span> For values of the shear friction coefficient in this range, the friction power is very similar to the estimated power that a tide farm would deliver. This is good news, because it suggests that planting a forest of underwater windmills on the sea-bottom, spaced five diameters apart, won’t radically alter the flow. The natural friction already has an effect that is in the same ballpark.</p>
 </section>
 <section id="tidal-pools-with-pumping" class="level2">
 <h2 class="anchored" data-anchor-id="tidal-pools-with-pumping">Tidal pools with pumping</h2>
-<p>“The pumping trick” artificially increases the amplitude of the tides in a tidal pool so as to amplify the power obtained. The energy cost of pumping <em>in</em> extra water at high tide is repaid with interest when the same water is let out at low tide; similarly, extra water can be pumped <em>out</em> at low tide, then let back in at high tide. The pumping trick is sometimes used at La Rance, boosting its net power generation by about 10% (Wilson and Balls, 1990). Let’s work out the theoretical limit for this technology. I’ll assume that generation has an efficiency of (<em>{} = 0.9) and that pumping has an efficiency of (</em>{} = 0.85) Let the tidal range be 2<em>h</em>. I’ll assume for simplicity that the prices of buying and selling electricity are the same at all times, so that the optimal height boost <em>b</em> to which the pool is pumped above high water is given by (marginal cost of extra pumping = marginal return of extra water):</p>
-<p>[b/<em>{} = </em>{}( {b + 2h} )]</p>
-<p>Defining the round-trip efficiency (= <em>{}</em>{}) we have</p>
-<p>[b = 2h]</p>
+<p>“The pumping trick” artificially increases the amplitude of the tides in a tidal pool so as to amplify the power obtained. The energy cost of pumping <em>in</em> extra water at high tide is repaid with interest when the same water is let out at low tide; similarly, extra water can be pumped <em>out</em> at low tide, then let back in at high tide. The pumping trick is sometimes used at La Rance, boosting its net power generation by about 10% (Wilson and Balls, 1990). Let’s work out the theoretical limit for this technology. I’ll assume that generation has an efficiency of <span class="math inline">\(\varepsilon_{\text{g}} = 0.9\)</span> and that pumping has an efficiency of <span class="math inline">\(\varepsilon_{\text{p}} = 0.85\text{.}\)</span> Let the tidal range be 2<em>h</em>. I’ll assume for simplicity that the prices of buying and selling electricity are the same at all times, so that the optimal height boost <em>b</em> to which the pool is pumped above high water is given by (marginal cost of extra pumping = marginal return of extra water):</p>
+<p><span class="math display">\[
+b/\varepsilon_{\text{p}} = \varepsilon_{\text{g}}\left( {b + 2h} \right)\text{.}
+\]</span></p>
+<p>Defining the round-trip efficiency <span class="math inline">\(\varepsilon = \varepsilon_{\text{g}}\varepsilon_{\text{p}}\text{,}\)</span> we have</p>
+<p><span class="math display">\[
+b = 2h\frac{\varepsilon}{1 - \varepsilon}\text{.}
+\]</span></p>
 <p>For example, with a tidal range of 2<em>h</em> = 4 m, and a round-trip efficiency of <em>ε</em> = 76%, the optimal boost is <em>b</em> = 13 m. This is the maximum height to which pumping can be justified if the price of electricity is constant.</p>
 <p>Let’s assume the complementary trick is used at low tide. (This requires the basin to have a vertical range of 30 m!) The delivered power per unit area is then</p>
 <p><span class="math display">\[
 \left. \left( {\frac{1}{2}\rho g\varepsilon_{\text{g}}\left( b + 2h \right)^{2} - \frac{1}{2}\rho g\frac{1}{\varepsilon_{\text{p}}}b^{2}} \right)/T \right.\text{,}
 \]</span></p>
-<p>where <em>T</em> is the time from high tide to low tide. We can express this as the maximum possible power density without pumping, ({_{}2gh^{2}}/T) scaled up by a boost factor</p>
+<p>where <em>T</em> is the time from high tide to low tide. We can express this as the maximum possible power density without pumping, <span class="math inline">\({\varepsilon_{\text{g}}2\rho gh^{2}}/T\text{,}\)</span> scaled up by a boost factor</p>
 <p><span class="math display">\[
 \left( \frac{1}{1 - \varepsilon} \right)\text{,}
 \]</span></p>
