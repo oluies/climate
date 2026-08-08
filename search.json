@@ -40,6 +40,26 @@
     ]
   },
   {
+    "objectID": "chapters/preface.html#what-has-been-added",
+    "href": "chapters/preface.html#what-has-been-added",
+    "title": "Preface",
+    "section": "What has been added",
+    "text": "What has been added\nFive new chapters. They follow MacKay’s own conventions: a number for the chapters in the main argument, a letter for the technical ones.\n\n11a · The machines behind the screen — data centres and machine learning, the demand chapter 11 could only glimpse in 2005.\n28a · The value of renewable energy as it scales — what happens to the economic value of renewable electricity as it grows to the scale MacKay’s balance sheet calls for. His book asks whether the physics permits it; this asks what happens to the price when it does.\nL · The world in 2025 — MacKay’s global stock-take, redone for the most recent complete year.\nM · Energy return on investment — the energy cost of getting energy, which chapter 3 raises and then sets aside.\nN · Peak oil, peak gas, peak uranium — chapter 23’s Jevons calculation applied to the three fuels it left out.\n\nRevised chapters. Every chapter of the original has been gone through. Where a figure has moved, the current one is given alongside MacKay’s with the source for both; where his conclusion still holds, that is said too. The largest revisions are to the chapters on transport, heating, solar, nuclear and the cost of a plan.\nFigures drawn from live data. Forty-three of this edition’s figures are generated rather than redrawn, from a data-refresh pipeline of twenty-six steps that pulls from the Energy Institute’s Statistical Review of World Energy, Our World in Data, Ember, Elexon and the ENTSO-E transparency platform. Each such figure carries a footnote naming the step that produced it, so any number in it can be traced back to its source and regenerated.\nSterling conversions. Prices taken from foreign sources are given in the source’s own currency with a sterling equivalent alongside. The rates are stated and dated once, in the Money section of chapter I, rather than repeated in every chapter.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/preface.html#copyright-and-licence",
+    "href": "chapters/preface.html#copyright-and-licence",
+    "title": "Preface",
+    "section": "Copyright and licence",
+    "text": "Copyright and licence\nThe original work is © 2008 David J. C. MacKay, licensed by him under the Creative Commons Attribution-Non-Commercial-ShareAlike 2.0 UK: England & Wales Licence, as his preface above sets out.\nNew and revised material in this edition is © 2026 Örjan Lundberg and is released under the same licence. This is not merely permitted but required: the ShareAlike term obliges any adaptation to carry a licence with the same elements. You are therefore free to copy, adapt and redistribute this edition, for non-commercial purposes, provided you attribute David MacKay for the original work and this edition’s contributors for the revisions, and license what you make onward on the same terms.\nThree things in the original are not covered by that licence, because MacKay’s own permission did not extend to them: the Private Eye cartoons, photographs credited to a named photographer, and third-party figures carrying their own rights, including the Ordnance Survey maps marked “© Crown copyright”. These are omitted here and marked where they stood.\nHow to cite this edition:\nDavid J. C. MacKay, revised by Örjan Lundberg. Sustainable Energy — Without the Hot Air, 2026 revised edition. Available free online from oluies.github.io/climate.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
+    ]
+  },
+  {
     "objectID": "chapters/chap01.html",
     "href": "chapters/chap01.html",
     "title": "1 Motivations",
@@ -3168,7 +3188,7 @@
     "href": "chapters/chapI.html",
     "title": "I Quick reference",
     "section": "",
-    "text": "SI Units\nSI units\nenergy\none joule\n1 J\npower\none watt\n1 W\nforce\none newton\n1 N\nlength\none metre\n1 m\ntime\none second\n1 s\ntemperature\none kelvin\n1 K\nTable 1.1. SI units and prefixes",
+    "text": "SI Units\nTable I.1. SI units and prefixes.",
     "crumbs": [
       "Part IV · Useful data",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>I Quick reference</span>"
@@ -3179,7 +3199,7 @@
     "href": "chapters/chapI.html#si-units",
     "title": "I Quick reference",
     "section": "",
-    "text": "The watt. This SI unit is named after James Watt. As for all SI units whose names are derived from the proper name of a person, the first letter of its symbol is uppercase (W). But when an SI unit is spelled out, it should always be written in lowercase (watt), with the exception of the “degree Celsius.”\nfrom wikipedia\n\n\nSI stands for Système International. SI units are the ones that all engineers should use, to avoid losing spacecraft.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nprefix\nkilo\nmega\ngiga\ntera\npeta\nexa\n\n\n\n\nsymbol\nk\nM\nG\nT\nP\nE\n\n\nfactor\n103\n106\n109\n1012\n1015\n1018\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nprefix\ncenti\nmilli\nmicro\nnano\npico\nfemto\n\n\n\n\nsymbol\nc\nm\nμ\nn\np\nf\n\n\nfactor\n10-2\n10-3\n10-6\n10-9\n10-12\n10-15",
+    "text": "The watt. This SI unit is named after James Watt. As for all SI units whose names are derived from the proper name of a person, the first letter of its symbol is uppercase (W). But when an SI unit is spelled out, it should always be written in lowercase (watt), with the exception of the “degree Celsius.”\nfrom wikipedia\n\n\nSI stands for Système International. SI units are the ones that all engineers should use, to avoid losing spacecraft.\n\n\n\n\nThing measured\nunit name\nsymbol\n\n\n\n\nenergy\none joule\n1 J\n\n\npower\none watt\n1 W\n\n\nforce\none newton\n1 N\n\n\nlength\none metre\n1 m\n\n\ntime\none second\n1 s\n\n\ntemperature\none kelvin\n1 K\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nprefix\nkilo\nmega\ngiga\ntera\npeta\nexa\n\n\n\n\nsymbol\nk\nM\nG\nT\nP\nE\n\n\nfactor\n103\n106\n109\n1012\n1015\n1018\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nprefix\ncenti\nmilli\nmicro\nnano\npico\nfemto\n\n\n\n\nsymbol\nc\nm\nμ\nn\np\nf\n\n\nfactor\n10-2\n10-3\n10-6\n10-9\n10-12\n10-15",
     "crumbs": [
       "Part IV · Useful data",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>I Quick reference</span>"
@@ -3190,7 +3210,7 @@
     "href": "chapters/chapI.html#my-preferred-units-for-energy-power-and-transport-efficiencies",
     "title": "I Quick reference",
     "section": "My preferred units for energy, power, and transport efficiencies",
-    "text": "My preferred units for energy, power, and transport efficiencies\nMy preferred units, expressed in SI\nenergy\none kilowatt-hour\n1 kWh\n3 600 000 J\npower\none kilowatt-hour per day\n1 kWh/d\n(1000/24) W ≅ 40 W\nforce\none kilowatt-hour per 100 km\n1 kWh/100 km\n36 N\ntime\none hour\n1 h\n3600 s\none day\n1 d\n24 × 3600 s ≅ 105 s\none year\n1 y\n365.25 × 24 × 3600 s ≅ π × 107 s\nforce per mass\nkilowatt-hour per ton-kilometre\n1 kWh/t-km\n3.6 m/s2 (≅ 0.37 g)\n\n\n\n\n\n\n\n\n\nThing measured\nunit name\nsymbol\nvalue\n\n\n\n\nhumans\nperson\np\n\n\n\nmass\nton\nt\n1 t = 1000 kg\n\n\n\ngigaton\nGt\n1 Gt = 109 × 1000 kg = 1 Pg\n\n\ntransport\nperson-kilometre\np-km\n\n\n\ntransport\nton-kilometre\nt-km\n\n\n\nvolume\nlitre\nl\n1 l = 0.001 m3\n\n\narea\nsquare kilometre\nsq km, km2\n1 sq km = 106 m2\n\n\n\nhectare\nha\n1 ha = 104 m2\n\n\n\nWales\n\n1 Wales = 21 000 km2\n\n\n\nLondon (Greater London)\n\n1 London = 1580 km2\n\n\nenergy\nDinorwig\n\n1 Dinorwig = 9 GWh",
+    "text": "My preferred units for energy, power, and transport efficiencies\nMy preferred units, expressed in SI:\n\n\n\n\n\n\n\n\n\nThing measured\nunit name\nsymbol\nvalue in SI\n\n\n\n\nenergy\none kilowatt-hour\n1 kWh\n3 600 000 J\n\n\npower\none kilowatt-hour per day\n1 kWh/d\n(1000/24) W ≅ 40 W\n\n\nforce\none kilowatt-hour per 100 km\n1 kWh/100 km\n36 N\n\n\ntime\none hour\n1 h\n3600 s\n\n\n\none day\n1 d\n24 × 3600 s ≅ 105 s\n\n\n\none year\n1 y\n365.25 × 24 × 3600 s ≅ π × 107 s\n\n\nforce per mass\nkilowatt-hour per ton-kilometre\n1 kWh/t-km\n3.6 m/s2 (≅ 0.37 g)\n\n\n\nAnd the units I use that are not SI:\n\n\n\n\n\n\n\n\n\nThing measured\nunit name\nsymbol\nvalue\n\n\n\n\nhumans\nperson\np\n\n\n\nmass\nton\nt\n1 t = 1000 kg\n\n\n\ngigaton\nGt\n1 Gt = 109 × 1000 kg = 1 Pg\n\n\ntransport\nperson-kilometre\np-km\n\n\n\ntransport\nton-kilometre\nt-km\n\n\n\nvolume\nlitre\nl\n1 l = 0.001 m3\n\n\narea\nsquare kilometre\nsq km, km2\n1 sq km = 106 m2\n\n\n\nhectare\nha\n1 ha = 104 m2\n\n\n\nWales\n\n1 Wales = 21 000 km2\n\n\n\nLondon (Greater London)\n\n1 London = 1580 km2\n\n\nenergy\nDinorwig\n\n1 Dinorwig = 9 GWh\n\n\n\nTable I.2. The units this book prefers. The upper panel gives those that are SI quantities under another name; the lower panel those that are not SI at all, kept because they are the units a reader already has a feel for.",
     "crumbs": [
       "Part IV · Useful data",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>I Quick reference</span>"
