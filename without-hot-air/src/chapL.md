@@ -221,7 +221,6 @@ boot();
 ```
 :::
 
-
 <span class="figurenumber">Figure L.1a.</span> *Added in this edition.* Energy supply per person for any of the 103 countries and regions in the Statistical Review, 1965 to 2025, in kWh per day per person.
 
 ## Electricity and income
@@ -235,8 +234,6 @@ What makes the relationship interesting is the absence of exceptions at either e
 <span class="figurenumber">Figure L.1b.</span> Per-capita electricity demand, from Our World in Data. The map view makes the eightyfold gap geographic.
 
 This is the counterweight to the framing of the whole chapter. Every earlier section has treated growth in energy demand as the problem — the thing outrunning renewables, the reason emissions keep rising. Read against income, most of that growth is people leaving poverty, and there is no historical instance of a country becoming rich while consuming 125 kWh of electricity a year. MacKay's own position was the same, and he stated it as an engineer would: the question is not whether the poor world's consumption will rise, because it will and it should, but what it will be supplied with.
-
-
 
 What that figure shows is that the world average has risen — from 34 kWh/d in 1965 to 55 — while the rich countries' averages have fallen. **Britain is now at 69 kWh/d, down 44% from the 123 of MacKay's data.** Sweden has fallen from about 200 in the 1980s to 118. America is where it was in 1965. Meanwhile China has gone from 5.7 to 87 kWh/d, a fifteenfold rise that took it past Europe in 2023, and India from 3.3 to 20. Africa, at 11 kWh/d, uses less per person than Britain did in the eighteenth century.
 
@@ -294,7 +291,7 @@ Asia has also been responsible for about **three quarters of the growth in world
 
 The reason is legible in one column of numbers. Net energy imports as a share of energy use, on the World Bank's series, with countries outside Asia marked for comparison:
 
-| | year | net energy imports, % of energy use |
+| country | year | net energy imports, % of energy use |
 |---|---|---|
 | Singapore | 2023 | +280 |
 | Japan | 2023 | +87 |
@@ -312,22 +309,22 @@ The reason is legible in one column of numbers. Net energy imports as a share of
 | Vietnam | 2022 | +34 |
 | Nepal | 2022 | +27 |
 | China | 2023 | +24 |
-| Malaysia | 2022 | **-1** |
-| United States * | 2023 | **-9** |
-| Myanmar | 2022 | **-19** |
-| Laos | 2022 | **-49** |
-| Russia * | 2022 | **-75** |
-| Indonesia | 2023 | **-90** |
-| Kazakhstan * | 2023 | **-119** |
-| Brunei | 2022 | **-173** |
-| Australia * | 2023 | **-214** |
-| Mongolia | 2022 | **-226** |
+| Malaysia | 2022 | **−1** |
+| United States * | 2023 | **−9** |
+| Myanmar | 2022 | **−19** |
+| Laos | 2022 | **−49** |
+| Russia * | 2022 | **−75** |
+| Indonesia | 2023 | **−90** |
+| Kazakhstan * | 2023 | **−119** |
+| Brunei | 2022 | **−173** |
+| Australia * | 2023 | **−214** |
+| Mongolia | 2022 | **−226** |
 
-Asterisked rows are outside Asia. Negative means net exporter.[^imports]
+Asterisked rows are outside Asia on the IEA and Ember regional definition used earlier in this section, which places Russia and Kazakhstan in Eurasia rather than Asia. Negative means net exporter.[^imports]
 
 Read down the positive half and it is the list of countries electrifying in a hurry. Read down the negative half and the incentive reverses: **every kilowatt-hour of domestic solar an exporter builds displaces a barrel it would rather have sold.** Indonesia at −90, Brunei at −173 and Mongolia at −226 are in the same region and on the opposite side of the argument, and Russia at −75 is the position taken to its conclusion. That is why this is not simply an Asian story but an *importers'* story, and why the same logic puts Japan and South Korea, at +87 and +85, in the same boat as Thailand rather than in the same boat as their neighbours.
 
-Two entries need reading carefully. **Singapore's +280 is not a typo**: it imports crude, refines it and bunkers ships, so its imports are nearly three times the energy it actually uses. And the exporters are not uniformly slow — Malaysia and Brunei both deliver a higher share of final energy as electricity than the United States does. **What the trade balance predicts is which countries have a reason to hurry, not what every one of them does.**
+Two entries need reading carefully. **Singapore's +280 is not a typo**: it imports crude, refines it and bunkers ships, so its imports are nearly three times the energy it actually uses. And the exporters are not uniformly slow — Malaysia and Brunei both deliver a higher share of final energy as electricity than the United States does, and both are named among the economies that have passed it.[^electricasia] **What the trade balance predicts is which countries have a reason to hurry, not what every one of them does.**
 
 ## What China built
 
@@ -391,9 +388,9 @@ Chapter J's tables invite a particular argument, so it is worth stating what the
 
 The argument is made in Sweden in exactly this form — that the country is the most densely populated in the world *for its latitude*, and has therefore already exceeded what its own sunlight can support.[^l3] The observation about insolation is sound and is MacKay's own point in chapters 6 and 13: northern countries have less solar resource per square metre, and a country's renewable potential scales with its area times its insolation, not its area alone. What does not follow is the policy conclusion usually attached, that the population should therefore be reduced. That inference skips the trade that has existed for as long as agriculture, treats consumption per person as fixed when this book's whole method is to ask how far it can be lowered — and figure L.1 shows Sweden's own falling by 40% while nobody left — and rests on no published carrying-capacity estimate. The physics is worth keeping. The conclusion is not a physical result and should not be presented as one.
 
-[^imports]: Net energy imports as a percentage of energy use, from the World Bank's World Development Indicators (series EG.IMP.CONS.ZS), which draws on IEA and UN energy statistics; assembled by the `energyImports` step in this edition's data-refresh script. Net imports are energy use less production, both in oil equivalents, so a negative figure is a net exporter and a figure above 100 means imports exceed domestic use — the Singapore case, where crude is imported to be refined and bunkered rather than consumed. **Two cautions.** Countries stop reporting in different years, so each row is that country's own latest and the table mixes 2021, 2022 and 2023; the ranking is robust to that but small differences between adjacent rows are not. And the indicator is measured on *primary energy*, which counts a joule of imported coal against a joule of domestic hydro without regard to what either delivers — it is a measure of dependence, not of how well an energy system works. Taiwan is absent because it is not in the World Bank series.
+[^imports]: Net energy imports as a percentage of energy use, from the World Bank's World Development Indicators (series EG.IMP.CONS.ZS), which draws on IEA and UN energy statistics; assembled by the `energyImports` step in this edition's data-refresh script. Net imports are energy use less production, both in oil equivalents, so a negative figure is a net exporter. **A figure above 100 looks impossible on that definition and is not**: the indicator's *energy use* excludes fuel supplied to ships and aircraft in international transport, while the import side includes it, so a refining and bunkering hub can import far more than it is recorded as using. That is the Singapore case, and it is a quirk of the boundary rather than a measure of dependence. **Two cautions.** Countries stop reporting in different years, so each row is that country's own latest and the table mixes 2021, 2022 and 2023; the ranking is robust to that but small differences between adjacent rows are not. And the indicator is measured on *primary energy*, which counts a joule of imported coal against a joule of domestic hydro without regard to what either delivers — it is a measure of dependence, not of how well an energy system works. Taiwan is absent because it is not in the World Bank series.
 
-[^electricasia]: Figures are from Ember's *Electric Asia: How Asia is leading the electric age*, 11 June 2026, drawing on IEA, IRENA, UN Comtrade, World Bank and Ember's own analysis. Coverage: 54% of world population against 2% of oil and 8% of gas reserves; fossil imports of about $1.1 trillion in 2024, made up of $699bn oil, $184bn coal and $176bn gas, at over 3% of the region's GDP; net oil and gas imports as a share of demand moving between 1990 and 2023 from about −75% to +30% for Southeast Asia, 40% to 72% for Greater China and 55% to 75% for South Asia, with Northeast Asia near 100% throughout; 84% of Asia ahead of the United States on electrification in 2023 and 77% ahead on electric share of new car sales in 2025; roughly 26% of final energy delivered as electricity against 21% in the West; about three quarters of world electricity demand growth since 2000; some 60% of installed solar and wind; and solar and wind resources sufficient for at least fourteen times regional energy demand. **Three things to hold in mind about this source.** Ember is an energy think-tank that advocates for electrification, and the deck is a campaigning document as well as an analytical one — the figures are sourced and checkable, the framing is not neutral, and the phrase "the Asian century" is theirs rather than this book's. "Asia" here excludes Russia, which is classed with Europe and Eurasia in the underlying IEA data; that matters for the argument in chapter 28a, since Russia is the clearest case of an exporter whose incentives run the opposite way. And the fourteen-times resource figure is a technical potential computed on land-use assumptions, not a forecast or an economic estimate — it belongs in the same category as MacKay's own maximum-conceivable stacks, which he insisted were bounds rather than plans.
+[^electricasia]: Ember, *Electric Asia: How Asia is leading the electric age*, 11 June 2026. The figures, and the cautions that go with them — that Ember advocates for electrification, that its "Asia" excludes Russia, that the "share of Asia" percentages have an unstated denominator, and that the resource multiple is a technical potential rather than a forecast — are set out in full in the corresponding note to chapter N.
 
 [^l1]: *Statistical Review of World Energy*, Energy Institute with Ember, KPMG and Kearney, 2026 edition, published 30 June 2026, covering 2025: <https://www.energyinst.org/statistical-review>. Supply, generation and emissions figures in this section are from that edition. All figures in this section are computed from the Statistical Review's consolidated workbook by the `chapterJ` step of this edition's data pipeline, not transcribed from the report's text. One trap in that workbook is worth recording for anyone repeating the exercise: on the fuel sheets each block of columns repeats, and the year label sits at the *end* of its block, not the start, so the obvious reading has 2024 and 2025 the wrong way round.
 [^l2]: ODEX and the ODYSSEE-MURE project: <https://www.odyssee-mure.eu/publications/other/odex-indicators-database-definition.html>; the European Environment Agency publishes the EU-27 series at <https://www.eea.europa.eu/data-and-maps/figures/odyssee-energy-efficiency-index-odex-1>.
