@@ -555,14 +555,22 @@ window.Quarto = {
 \]</span></p>
 <p>Both forms of energy dissipation scale as <em>v</em><sup>3</sup>. So this cartoon predicts that a driver who halves his speed <em>v</em> makes his power consumption 8 times smaller. If he ends up driving the same total distance, his journey will take twice as long, but the total energy consumed by his journey will be four times smaller.</p>
 <p>Which of the two forms of energy dissipation – brakes or air-swirling – is the bigger? It depends on the ratio of</p>
-<p>[{( {m_{c}/d} )/( {A} )}]</p>
+<p><span class="math display">\[
+{\left( {m_{c}/d} \right)/\left( {\rho A} \right)}\text{.}
+\]</span></p>
 <p>If this ratio is much bigger than 1, then more power is going into brakes; if it is smaller, more power is going into swirling air. Rearranging this ratio, it is bigger than 1 if</p>
-<p>[m_{c} &gt; Ad]</p>
+<p><span class="math display">\[
+m_{c} &gt; \rho Ad\text{.}
+\]</span></p>
 <p>Now, <em>Ad</em> is the volume of the tube of air swept out from one stop sign to the next. And <em>ρAd</em> is the mass of that tube of air. So we have a very simple situation: energy dissipation is dominated by kinetic-energy-being-dumped-into-the-brakes if the mass of the car is <em>bigger</em> than the mass of the tube of air from one stop sign to the next; and energy dissipation is dominated by making-air-swirl if the mass of the car is <em>smaller</em> (figure A.4).</p>
 <p>Let’s work out the special distance <em>d</em>* between stop signs, below which the dissipation is braking-dominated and above which it is air-swirling dominated (also known as drag-dominated). If the frontal area of the car is:</p>
-<p>[A_{} = = ^{}]</p>
-<p>and the drag coefficient is (c_{} = ) and the mass is (m_{} = 1000) then the special distance is:</p>
-<p>[d^{*} = = = ]</p>
+<p><span class="math display">\[
+A_{\text{car}} = \text{2\ m\ wide} \times \text{1.5\ m\ high} = \text{3\ m}^{\text{2}}
+\]</span></p>
+<p>and the drag coefficient is <span class="math inline">\(c_{\text{d}} = \frac{1}{3}\)</span> and the mass is <span class="math inline">\(m_{\text{c}} = 1000\text{~kg}\)</span> then the special distance is:</p>
+<p><span class="math display">\[
+d^{*} = \frac{m_{\text{c}}}{\rho c_{\text{d}}A_{\text{car}}} = \frac{\text{1000\ kg}}{\text{1.3~}{\text{kg}/{\text{m}^{\text{3}} \times \frac{\text{1}}{\text{3}} \times \text{3~}\text{m}^{\text{2}}}}} = \text{750\ m}
+\]</span></p>
 <p>So “city-driving” is dominated by kinetic energy and braking if the distance between stops is less than 750 m. Under these conditions, it’s a good idea, if you want to save energy:</p>
 <ol type="1">
 <li>to reduce the mass of your car;</li>
@@ -606,71 +614,127 @@ window.Quarto = {
 <p><span class="math display">\[
 \text{total\ power\ of\ car} \simeq 4\left\lbrack {\frac{\text{1}}{\text{2}}m_{\text{c}}v^{3}/d + \frac{\text{1}}{\text{2}}\rho Av^{3}} \right\rbrack
 \]</span></p>
-<p>Let’s check this theory of cars by plugging in plausible numbers for motorway driving. Let <em>v</em> = 70 miles per hour = 110 km/h = 31 m/s and ({A = c_{}A_{} = ^{2}}) The power consumed by the engine is estimated to be <span id="chA-80kW">roughly</span></p>
-<p>[4 Av^{3} = 2 ^{} ^{} ( 31/ )^{} = 80]</p>
-<p>Drag coefficients</p>
-<p>CARS</p>
-<p>Honda Insight</p>
-<p>0.25</p>
-<p>Prius</p>
-<p>0.26</p>
-<p>Renault 25</p>
-<p>0.28</p>
-<p>Honda Civic (2006)</p>
-<p>0.31</p>
-<p>VW Polo GTi</p>
-<p>0.32</p>
-<p>Peugeot 206</p>
-<p>0.33</p>
-<p>Ford Sierra</p>
-<p>0.34</p>
-<p>Audi TT</p>
-<p>0.35</p>
-<p>Honda Civic (2001)</p>
-<p>0.36</p>
-<p>Citroën 2CV</p>
-<p>0.51</p>
-<p>Cyclist</p>
-<p>0.9</p>
-<p>Long-distance coach</p>
-<p>0.425</p>
-<p>PLANES</p>
-<p>Cessna</p>
-<p>0.027</p>
-<p>Learjet</p>
-<p>0.022</p>
-<p>Boeing 747</p>
-<p>0.031</p>
-<p>Drag-areas (m<sup>2)</sup></p>
-<p>Land Rover Discovery</p>
-<p>1.6</p>
-<p>Volvo 740</p>
-<p>0.81</p>
-<p><strong>Typical car</strong></p>
-<p><strong>0.8</strong></p>
+<p>Let’s check this theory of cars by plugging in plausible numbers for motorway driving. Let <em>v</em> = 70 miles per hour = 110 km/h = 31 m/s and <span class="math inline">\({A = c_{\text{d}}A_{\text{car}} = \text{1\ m}^{2}}\text{.}\)</span> The power consumed by the engine is estimated to be <span id="chA-80kW">roughly</span></p>
+<p><span class="math display">\[
+4 \times \frac{\text{1}}{\text{2}}\rho Av^{3} = 2 \times 1.3{\text{~kg}/\text{m}}^{\text{3}} \times \text{1}\text{~m}^{\text{2}} \times \left( 31\text{~m}/\text{s} \right)^{\text{3}} = 80\text{~kW}
+\]</span></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>Car</th>
-<th>Drag coefficient</th>
+<th>Drag coefficient, <em>c</em><sub>d</sub></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Honda Civic</td>
-<td>0.68</td>
+<td><strong>Cars</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Honda Insight</td>
+<td>0.25</td>
+</tr>
+<tr class="odd">
+<td>Prius</td>
+<td>0.26</td>
+</tr>
+<tr class="even">
+<td>Renault 25</td>
+<td>0.28</td>
+</tr>
+<tr class="odd">
+<td>Honda Civic (2006)</td>
+<td>0.31</td>
 </tr>
 <tr class="even">
 <td>VW Polo GTi</td>
-<td>0.65</td>
+<td>0.32</td>
 </tr>
 <tr class="odd">
+<td>Peugeot 206</td>
+<td>0.33</td>
+</tr>
+<tr class="even">
+<td>Ford Sierra</td>
+<td>0.34</td>
+</tr>
+<tr class="odd">
+<td>Audi TT</td>
+<td>0.35</td>
+</tr>
+<tr class="even">
+<td>Honda Civic (2001)</td>
+<td>0.36</td>
+</tr>
+<tr class="odd">
+<td>Citroën 2CV</td>
+<td>0.51</td>
+</tr>
+<tr class="even">
+<td><strong>Other</strong></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Cyclist</td>
+<td>0.9</td>
+</tr>
+<tr class="even">
+<td>Long-distance coach</td>
+<td>0.425</td>
+</tr>
+<tr class="odd">
+<td><strong>Planes</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Cessna</td>
+<td>0.027</td>
+</tr>
+<tr class="odd">
+<td>Learjet</td>
+<td>0.022</td>
+</tr>
+<tr class="even">
+<td>Boeing 747</td>
+<td>0.031</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Drag area, <em>c</em><sub>d</sub><em>A</em><sub>car</sub> (m<sup>2</sup>)</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Land Rover Discovery</td>
+<td>1.6</td>
+</tr>
+<tr class="even">
+<td>Volvo 740</td>
+<td>0.81</td>
+</tr>
+<tr class="odd">
+<td><strong>Typical car</strong></td>
+<td><strong>0.8</strong></td>
+</tr>
+<tr class="even">
+<td>Honda Civic</td>
+<td>0.68</td>
+</tr>
+<tr class="odd">
+<td>VW Polo GTi</td>
+<td>0.65</td>
+</tr>
+<tr class="even">
 <td>Honda Insight</td>
 <td>0.47</td>
 </tr>
 </tbody>
 </table>
-<p><span class="figurenumber">Table A.7.</span> Drag coefficients and drag areas.</p>
+<p><span class="figurenumber">Table A.7.</span> Drag coefficients and drag areas. The two panels measure different things: the coefficient is dimensionless and describes the shape alone, while the drag area multiplies it by the frontal area and so is what actually enters the power calculation above. A typical car’s 0.8 m<sup>2</sup> is the figure rounded to 1 m<sup>2</sup> in the worked example.</p>
 <p>If you drive the car at this speed for one hour every day, then you travel 110 km and use <span class="red">80 kWh</span> of energy per day. If you drove at half this speed for two hours per day instead, you would travel the same distance and use up <span class="red">20 kWh</span> of energy. This simple theory seems consistent with the mileage figures for cars quoted in Chapter 3. Moreover, the theory gives insight into how the energy consumed by your car could be reduced. The theory has a couple of flaws which we’ll explore in a moment.</p>
 <p>Could we make a new car that consumes 100 times less energy and still goes at 70mph? <strong>No</strong>. Not if the car has the same shape. On the motorway at 70mph, the energy is going mainly into making air swirl. Changing the materials the car is made from makes no difference to that. A miraculous improvement to the fossil-fuel engine could perhaps boost its efficiency from 25% to 50%, bringing the energy consumption of a fossil-fuelled car down to roughly 40 kWh per 100 km.</p>
 <p>Electric vehicles have some wins: while the weight of the energy store, per useful kWh stored, is about 25 times bigger than that of petrol, the weight of an electric engine can be about 8 times smaller. <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> And the energy-chain in an electric car is much more efficient: electric motors can be 90% efficient.</p>
@@ -678,12 +742,14 @@ window.Quarto = {
 <section id="bicycles-and-the-scaling-trick" class="level3">
 <h3 class="anchored" data-anchor-id="bicycles-and-the-scaling-trick">Bicycles and the scaling trick</h3>
 <p>Here’s a fun question: what’s the energy consumption of a bicycle, in kWh per 100 km? Pushing yourself along on a bicycle requires energy for the same reason as a car: you’re making air swirl around. Now, we could do all the calculations from scratch, replacing car-numbers by bike-numbers. But there’s a simple trick we can use to get the answer for the bike from the answer for the car. The energy consumed by a car, per distance travelled, is the power-consumption associated with air-swirling,</p>
-<p>[4 Av^{3}]</p>
+<p><span class="math display">\[
+4 \times \frac{\text{1}}{\text{2}}\rho Av^{3}
+\]</span></p>
 <p>divided by the speed, <em>v</em>; that is,</p>
 <p><span class="math display">\[
 \text{energy\ per\ distance} = 4 \times \frac{\text{1}}{\text{2}}\rho Av^{2}
 \]</span></p>
-<p>The “4” came from engine inefficiency; <em>ρ</em> is the density of air; the area (A = c_{}A_{}) is the effective frontal area of a car; and <em>v</em> is its speed. Now, we can compare a bicycle with a car by dividing (4 Av^{2}) for the bicycle by (4 Av^{2}) for the car. All the fractions and <em>ρ</em> cancel, if the efficiency of the carbon-powered bicyclist’s engine is similar to the efficiency of the carbon-powered car engine (which it is). The ratio is:</p>
+<p>The “4” came from engine inefficiency; <em>ρ</em> is the density of air; the area <span class="math inline">\(A = c_{\text{d}}A_{\text{car}}\)</span> is the effective frontal area of a car; and <em>v</em> is its speed. Now, we can compare a bicycle with a car by dividing <span class="math inline">\(4 \times \frac{\text{1}}{\text{2}}\rho Av^{2}\)</span> for the bicycle by <span class="math inline">\(4 \times \frac{\text{1}}{\text{2}}\rho Av^{2}\)</span> for the car. All the fractions and <em>ρ</em> cancel, if the efficiency of the carbon-powered bicyclist’s engine is similar to the efficiency of the carbon-powered car engine (which it is). The ratio is:</p>
 <p><span class="math display">\[
 \frac{\text{energy\ per\ distance\ of\ bike}}{\text{energy\ per\ distance\ of\ car}} = \frac{c_{\text{d}}^{\text{bike}}A_{\text{bike}}v_{\text{bike}}^{2}}{c_{\text{d}}^{\text{car}}A_{\text{car}}v_{\text{car}}^{2}}
 \]</span></p>
@@ -756,9 +822,13 @@ window.Quarto = {
 <p><img src="img/without-hot-air/figure323.gif" class="img-fluid"></p>
 <p>Figure A.9 shows the theory of fuel consumption (energy per unit distance) as a function of steady speed, when we add together the air resistance and rolling resistance.</p>
 <p>The speed at which a car’s rolling resistance is equal to air resistance is given by</p>
-<p>[C_{}m_{}g = c_{}Av^{2}]</p>
+<p><span class="math display">\[
+C_{\text{rr}}m_{\text{c}}g = \frac{1}{2}\rho c_{\text{d}}Av^{2}
+\]</span></p>
 <p>that is,</p>
-<p>[v = = = ]</p>
+<p><span class="math display">\[
+v = \sqrt{2\frac{C_{\text{rr}}m_{\text{c}}g}{\rho c_{\text{d}}A}} = \text{7\ m/s} = \text{16\ miles\ per\ hour.}
+\]</span></p>
 <p><img src="img/without-hot-air/figure257.gif" class="img-fluid"></p>
 <p><span class="figurenumber">Figure A.13.</span> Powers of cars (kW) versus their top speeds (km/h). Both scales are logarithmic. The power increases as the third power of the speed. To go twice as fast requires eight times as much engine power. From Tennekes (1997).</p>
 <p><img src="img/without-hot-air/figure256.gif" class="img-fluid"></p>
@@ -771,9 +841,13 @@ window.Quarto = {
 <section id="trains" class="level5">
 <h5 class="anchored" data-anchor-id="trains"><em>Trains</em></h5>
 <p>For an eight-carriage train as depicted in figure 20.4 (<em>m</em> = 400 000 kg, <em>A</em> = 11 m<sup>2</sup>), the speed above which air resistance is greater than rolling resistance is</p>
-<p>[v = 33 = ]</p>
+<p><span class="math display">\[
+v = 33\text{~m/s} = \text{74\ miles\ per\ hour.}
+\]</span></p>
 <p>For a single-carriage train (<em>m</em> = 50 000 kg, <em>A</em> = 11 m<sup>2</sup>) , the speed above which air resistance is greater than rolling resistance is</p>
-<p>[v = 12 = ]</p>
+<p><span class="math display">\[
+v = 12\text{~m/s} = \text{26\ miles\ per\ hour.}
+\]</span></p>
 </section>
 </section>
 <section id="dependence-of-power-on-speed" class="level3">
