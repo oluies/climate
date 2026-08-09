@@ -7,8 +7,10 @@ electricity does hydrogen need to deliver one kWh of what the user actually
 wants, and what does the best alternative need? The ordering falls out of the
 ratio between those two, which is the ladder's logic restated in MacKay's unit.
 
-No input file: every number is computed here from the conversion factors, so the
-figure and the chapter cannot drift apart.
+No input file: the four plotted numbers are computed here from the conversion
+factors, so those cannot drift from the chapter. The chapter's other figures -
+the unfavourable-end car cost and the round-trip range - are derived in the text
+and are not reproduced here.
 """
 import sys, matplotlib.pyplot as plt, numpy as np
 
@@ -16,7 +18,7 @@ INK, MUTED = "#161d1b", "#8a8a85"
 H2, ALT = "#4a3aa7", "#1baf7a"
 
 ELECTROLYSIS = 0.70          # electricity into hydrogen
-COMPRESS_HI, COMPRESS_LO = 0.90, 0.70   # optimistic / unfavourable handling loss
+COMPRESS_HI = 0.90           # optimistic handling loss; the chapter gives the other end
 FUELCELL = 0.55              # hydrogen back to shaft power
 BOILER = 0.90                # hydrogen to heat
 BATTERY = 1 / 1.15           # grid to wheels, round trip
@@ -48,7 +50,7 @@ for i, (name, h2, alt, altlab) in zip(y, ROWS):
         ax.barh(i - h / 2, alt, height=h, color=ALT, zorder=3)
         ax.annotate(f"{alt:.2f}  {altlab}", xy=(alt, i - h / 2), xytext=(5, 0),
                     textcoords="offset points", va="center", fontsize=9.5, color=ALT)
-        ax.annotate(f"×{h2/alt:.0f}", xy=(max(h2, alt), i), xytext=(52, 0),
+        ax.annotate(f"×{h2/alt:.1f}", xy=(max(h2, alt), i), xytext=(52, 0),
                     textcoords="offset points", va="center", fontsize=11,
                     color=INK, fontweight="bold")
 
@@ -56,7 +58,7 @@ ax.set_yticks(y)
 ax.set_yticklabels([r[0] for r in ROWS], fontsize=10.5)
 ax.set_xlim(0, 3.2)
 ax.set_ylim(-0.75, len(ROWS) - 0.25)
-ax.set_xlabel("kWh of electricity per kWh delivered to the user", fontsize=10.5)
+ax.set_xlabel("kWh of electricity per kWh of useful output, fuel or feedstock — see caption", fontsize=10.5)
 ax.grid(axis="x", color="#ededea", lw=0.9, zorder=0)
 for s in ("top", "right", "left"): ax.spines[s].set_visible(False)
 ax.spines["bottom"].set_color("#c9c9c4")
@@ -65,8 +67,9 @@ ax.set_title("Why the ladder is ordered the way it is", loc="left",
              fontsize=12.5, fontweight="bold", pad=14)
 ax.annotate("Purple is hydrogen; green is the best alternative. A use sits low on the ladder when the alternative is cheap, not\n"
             "when hydrogen is difficult — a hydrogen boiler needs six times the electricity of a heat pump, and a fuel-cell car\n"
-            "between two and a half and three times a battery. A use sits high when there is no green bar to draw at all: nothing\n"
-            "flies a long-haul aircraft on a battery, and no other molecule reduces iron ore or fixes nitrogen. Hydrogen is not\n"
-            "efficient at the top of the ladder either — it is simply unopposed.",
+            "two and a half times a battery. A use sits high when there is no green bar to draw at all: nothing flies a long-haul\n"
+            "aircraft on a battery, and no other molecule reduces iron ore or fixes nitrogen. Hydrogen is not efficient at the top\n"
+            "of the ladder either — it is simply unopposed. The bottom two bars are measured at the point of use, the wheels and\n"
+            "the radiator; the top two at the fuel and the feedstock, because that is where the comparison stops.",
             xy=(0, -0.20), xycoords="axes fraction", va="top", fontsize=9.3, color=MUTED)
 fig.savefig(sys.argv[1], format="svg", bbox_inches="tight"); print("wrote", sys.argv[1])

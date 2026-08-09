@@ -27,11 +27,13 @@ function MyApp({ Component, pageProps }) {
     <>
       {siteConfig.goatcounter &&
         <Script
-          // beforeInteractive so a fast click through to a second route does
-          // not fire routeChangeComplete before window.goatcounter exists,
-          // which would lose the landing page. Pinned with an SRI hash because
-          // count.js is a mutable third-party URL.
-          strategy="beforeInteractive"
+          // afterInteractive, not beforeInteractive: the latter is only honoured
+          // inside pages/_document.js, which this app does not have, so Next
+          // would warn and silently fall back. A fast click can therefore fire
+          // routeChangeComplete before the script exists, which is why
+          // lib/goatcounter.js buffers the path and onLoad flushes it.
+          strategy="afterInteractive"
+          onLoad={() => goatcounter.flush()}
           src="https://gc.zgo.at/count.v4.js"
           integrity="sha384-nRw6qfbWyJha9LhsOtSb2YJDyZdKvvCFh0fJYlkquSFjUxp9FVNugbfy8q1jdxI+"
           crossOrigin="anonymous"
