@@ -83,4 +83,4 @@ format:
     number-sections: false
     fig-cap-location: bottom
     include-in-header:
-      - goatcounter.html
+      - _goatcounter.html
