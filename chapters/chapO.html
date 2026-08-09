@@ -76,8 +76,10 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <!-- Pageview counting, same GoatCounter account as the elmix site. No cookies,
-     no cross-site identifiers, nothing that needs a consent banner. -->
-<script data-goatcounter="https://oluies.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+     no cross-site identifiers, nothing that needs a consent banner.
+     Pinned to the versioned file with an SRI hash: count.js is a mutable URL
+     and this runs in <head> on every page. -->
+<script data-goatcounter="https://oluies.goatcounter.com/count" async="" src="https://gc.zgo.at/count.v4.js" integrity="sha384-nRw6qfbWyJha9LhsOtSb2YJDyZdKvvCFh0fJYlkquSFjUxp9FVNugbfy8q1jdxI+" crossorigin="anonymous"></script>
 
 
 </head>
@@ -488,10 +490,17 @@ ul.task-list li input[type="checkbox"] {
 <section id="the-arithmetic-that-produces-the-ordering" class="level2">
 <h2 class="anchored" data-anchor-id="the-arithmetic-that-produces-the-ordering">The arithmetic that produces the ordering</h2>
 <p>Hydrogen is not an energy source. It is made from something else and then used, and each conversion takes its cut. The ladder’s shape follows from where those cuts land.</p>
-<p>Electrolysis delivers about <strong>70%</strong> of the electricity into the hydrogen. Compressing or liquefying for transport takes perhaps another <strong>10 to 30%</strong>. Converting back to electricity in a fuel cell returns about <strong>50 to 60%</strong> of what is left. So the round trip from electricity, through hydrogen, back to electricity keeps something like <strong>30 to 40%</strong> — and every use of hydrogen made from electricity carries some part of that chain.</p>
+<p>Electrolysis delivers about <strong>70%</strong> of the electricity into the hydrogen. Compressing or liquefying for transport takes perhaps another <strong>10 to 30%</strong>. Converting back to electricity in a fuel cell returns about <strong>50 to 60%</strong> of what is left. So the round trip from electricity, through hydrogen, back to electricity keeps between <strong>25 and 38%</strong> — 0.70 × 0.70 × 0.50 at the unfavourable end, 0.70 × 0.90 × 0.60 at the favourable one — and every use of hydrogen made from electricity carries some part of that chain.</p>
 <p>Now put two uses through it.</p>
-<p><strong>A car.</strong> A kilowatt-hour delivered at the wheels of a fuel-cell car costs roughly 1 ÷ (0.70 × 0.90 × 0.55) ≈ <strong>2.9 kWh</strong> of electricity. The same kilowatt-hour in a battery car costs about <strong>1.15</strong>, because charging and discharging lose little. Hydrogen is therefore about two and a half times worse before anything else is considered, which is why chapter 20 finds fuel-cell cars where it does. MacKay reached the same place in 2008 with a single measurement — his BMW Hydrogen 7 at 254 kWh per 100 km against an average car’s 80.</p>
-<p><strong>A house.</strong> A heat pump at a coefficient of performance of 4 turns one kilowatt-hour of electricity into four of heat. A hydrogen boiler turns the same kilowatt-hour into 0.70 of hydrogen and then into about <strong>0.63 of heat</strong>. The ratio is more than six to one. Domestic heating sits at the bottom of the ladder for the same reason it takes up chapter 7 of this book: there is an alternative that does the job several times over.</p>
+<p><strong>A car.</strong> A kilowatt-hour delivered at the wheels of a fuel-cell car costs roughly 1 ÷ (0.70 × 0.90 × 0.55) ≈ <strong>2.9 kWh</strong> of electricity — taking the optimistic end of the compression range, since the unfavourable end gives 3.7. The same kilowatt-hour in a battery car costs about <strong>1.15</strong>, because charging and discharging lose little. Hydrogen is therefore between two and a half and three times worse before anything else is considered, which is why chapter 20 finds fuel-cell cars where it does. MacKay reached the same place in 2008 with a single measurement — his BMW Hydrogen 7 at 254 kWh per 100 km against an average car’s 80.</p>
+<p><strong>A house.</strong> A heat pump at a coefficient of performance of 4 turns one kilowatt-hour of electricity into four of heat. A hydrogen boiler turns the same kilowatt-hour into 0.70 of hydrogen, which a boiler at about 90% turns into <strong>0.63 of heat</strong>. The ratio is more than six to one. Domestic heating sits at the bottom of the ladder for the same reason it takes up chapter 7 of this book: there is an alternative that does the job several times over.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/without-hot-air/fig-hydrogen-ladder.svg" class="img-fluid figure-img"></p>
+<figcaption>Four uses with hydrogen’s electricity cost against the best alternative’s. Steel and fertilizer 1.4 with no alternative; long-haul flight 1.7 with no alternative; a car 2.9 against a battery’s 1.15; domestic heat 1.6 against a heat pump’s 0.25.</figcaption>
+</figure>
+</div>
+<p><span class="figurenumber">Figure O.1.</span> The ladder’s ordering, derived rather than reproduced. This is not Liebreich’s chart — it is the arithmetic above, drawn. Each purple bar is the electricity hydrogen needs to deliver one kilowatt-hour of what the user wants; each green bar is what the best alternative needs. The two bottom rungs have a green bar and lose to it. The two top rungs have no green bar to draw. <em>Added in the 2026 revision.</em></p>
 <p><strong>Nothing in either calculation is about hydrogen being difficult.</strong> It is about the alternative being cheap. That is the ladder’s whole logic, and it explains the top rungs as well as the bottom: fertilizer, refining, methanol and the direct reduction of iron are near the top because there is no alternative molecule, not because hydrogen is efficient there. It is not.</p>
 </section>
 <section id="both-ends-of-the-ladder-are-already-in-this-book" class="level2">

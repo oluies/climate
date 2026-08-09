@@ -76,8 +76,10 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <!-- Pageview counting, same GoatCounter account as the elmix site. No cookies,
-     no cross-site identifiers, nothing that needs a consent banner. -->
-<script data-goatcounter="https://oluies.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+     no cross-site identifiers, nothing that needs a consent banner.
+     Pinned to the versioned file with an SRI hash: count.js is a mutable URL
+     and this runs in <head> on every page. -->
+<script data-goatcounter="https://oluies.goatcounter.com/count" async="" src="https://gc.zgo.at/count.v4.js" integrity="sha384-nRw6qfbWyJha9LhsOtSb2YJDyZdKvvCFh0fJYlkquSFjUxp9FVNugbfy8q1jdxI+" crossorigin="anonymous"></script>
 
 
 </head>
@@ -509,13 +511,14 @@ ul.task-list li input[type="checkbox"] {
 <p>Two rules govern the revision. MacKay’s own text and figures are reproduced unchanged, and everything added here is marked as added. Where this edition disagrees with him, it says which number changed and why, rather than quietly overwriting him.</p>
 <section id="what-has-been-added" class="level2">
 <h2 class="anchored" data-anchor-id="what-has-been-added">What has been added</h2>
-<p><strong>Five new chapters.</strong> They follow MacKay’s own conventions: a number for the chapters in the main argument, a letter for the technical ones.</p>
+<p><strong>Six new chapters.</strong> They follow MacKay’s own conventions: a number for the chapters in the main argument, a letter for the technical ones.</p>
 <ul>
 <li><strong>11a · The machines behind the screen</strong> — data centres and machine learning, the demand chapter 11 could only glimpse in 2005.</li>
 <li><strong>28a · The value of renewable energy as it scales</strong> — what happens to the <em>economic</em> value of renewable electricity as it grows to the scale MacKay’s balance sheet calls for. His book asks whether the physics permits it; this asks what happens to the price when it does.</li>
 <li><strong>L · The world in 2025</strong> — MacKay’s global stock-take, redone for the most recent complete year.</li>
 <li><strong>M · Energy return on investment</strong> — the energy cost of getting energy, which chapter 3 raises and then sets aside.</li>
 <li><strong>N · Peak oil, peak gas, peak uranium</strong> — chapter 23’s Jevons calculation applied to the three fuels it left out.</li>
+<li><strong>O · The hydrogen ladder</strong> — which uses of hydrogen survive contact with their alternatives, derived from the conversion arithmetic rather than asserted.</li>
 </ul>
 <p><strong>Revised chapters.</strong> Every chapter of the original has been gone through. Where a figure has moved, the current one is given alongside MacKay’s with the source for both; where his conclusion still holds, that is said too. The largest revisions are to the chapters on transport, heating, solar, nuclear and the cost of a plan.</p>
 <p><strong>Figures drawn from live data.</strong> Forty-three of this edition’s figures are generated rather than redrawn, from a data-refresh pipeline of twenty-six steps that pulls from the Energy Institute’s <em>Statistical Review of World Energy</em>, Our World in Data, Ember, Elexon and the ENTSO-E transparency platform. Each such figure carries a footnote naming the step that produced it, so any number in it can be traced back to its source and regenerated.</p>

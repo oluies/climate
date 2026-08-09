@@ -76,8 +76,10 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <!-- Pageview counting, same GoatCounter account as the elmix site. No cookies,
-     no cross-site identifiers, nothing that needs a consent banner. -->
-<script data-goatcounter="https://oluies.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+     no cross-site identifiers, nothing that needs a consent banner.
+     Pinned to the versioned file with an SRI hash: count.js is a mutable URL
+     and this runs in <head> on every page. -->
+<script data-goatcounter="https://oluies.goatcounter.com/count" async="" src="https://gc.zgo.at/count.v4.js" integrity="sha384-nRw6qfbWyJha9LhsOtSb2YJDyZdKvvCFh0fJYlkquSFjUxp9FVNugbfy8q1jdxI+" crossorigin="anonymous"></script>
 
 
 </head>
@@ -893,7 +895,7 @@ ul.task-list li input[type="checkbox"] {
 <p>MacKay’s arithmetic explains why, and it has not changed: the BMW Hydrogen 7 he cites needed <strong>254 kWh per 100 km</strong>, 220% more than an average European car, and the CUTE fuel-cell buses needed 80 to 200% more energy than the diesel they replaced. A carrier that loses most of the energy put into it does not win a race against one that loses little, and eighteen years of engineering has not closed a gap of that size.</p>
 <section id="the-ladder-and-where-hydrogen-did-go" class="level3">
 <h3 class="anchored" data-anchor-id="the-ladder-and-where-hydrogen-did-go">The ladder, and where hydrogen did go</h3>
-<p>The useful framework since is Michael Liebreich’s <strong>Clean Hydrogen Ladder</strong>, which ranks uses by how likely hydrogen is to beat the alternatives. Fertilizer, hydrogen for refining, methanol and steel sit at the top, because there is no other way to do those things. <strong>Passenger cars sit on the bottom rung</strong>, alongside domestic heating, because a battery does the same job at a fraction of the energy.<a href="#fn34" class="footnote-ref" id="fnref34" role="doc-noteref"><sup>34</sup></a></p>
+<p>The useful framework since is Michael Liebreich’s <strong>Clean Hydrogen Ladder</strong>, which ranks uses by how likely hydrogen is to beat the alternatives; chapter O sets it out in full and derives the ordering from the conversion arithmetic. Fertilizer, hydrogen for refining, methanol and steel sit at the top, because there is no other way to do those things. <strong>Passenger cars sit on the bottom rung</strong>, alongside domestic heating, because a battery does the same job at a fraction of the energy.<a href="#fn34" class="footnote-ref" id="fnref34" role="doc-noteref"><sup>34</sup></a></p>
 <p>The instructive part is that this book already contains both ends of that ladder. Chapter 13’s <strong>2 kWh/d per person of fertilizer energy</strong> is hydrogen — made from natural gas by the Haber–Bosch process, and the single largest existing use of hydrogen in the world. Chapter 28a discusses the same ladder from the electricity side.</p>
 <p>So hydrogen did not fail. <strong>It went where the physics sent it</strong>, which is into the chemical industry, and stayed out of the place the hype put it, which was the car. MacKay guessed that in 2008 with a sentence and a fuel-consumption figure.</p>
 </section>
