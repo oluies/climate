@@ -27,8 +27,14 @@ function MyApp({ Component, pageProps }) {
     <>
       {siteConfig.goatcounter &&
         <Script
-          strategy="afterInteractive"
-          src="//gc.zgo.at/count.js"
+          // beforeInteractive so a fast click through to a second route does
+          // not fire routeChangeComplete before window.goatcounter exists,
+          // which would lose the landing page. Pinned with an SRI hash because
+          // count.js is a mutable third-party URL.
+          strategy="beforeInteractive"
+          src="https://gc.zgo.at/count.v4.js"
+          integrity="sha384-nRw6qfbWyJha9LhsOtSb2YJDyZdKvvCFh0fJYlkquSFjUxp9FVNugbfy8q1jdxI+"
+          crossOrigin="anonymous"
           data-goatcounter={siteConfig.goatcounter}
         />
         }

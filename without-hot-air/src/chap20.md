@@ -435,7 +435,7 @@ MacKay's arithmetic explains why, and it has not changed: the BMW Hydrogen 7 he 
 
 ### The ladder, and where hydrogen did go
 
-The useful framework since is Michael Liebreich's **Clean Hydrogen Ladder**, which ranks uses by how likely hydrogen is to beat the alternatives. Fertilizer, hydrogen for refining, methanol and steel sit at the top, because there is no other way to do those things. **Passenger cars sit on the bottom rung**, alongside domestic heating, because a battery does the same job at a fraction of the energy.[^ladder20]
+The useful framework since is Michael Liebreich's **Clean Hydrogen Ladder**, which ranks uses by how likely hydrogen is to beat the alternatives; chapter O sets it out in full and derives the ordering from the conversion arithmetic. Fertilizer, hydrogen for refining, methanol and steel sit at the top, because there is no other way to do those things. **Passenger cars sit on the bottom rung**, alongside domestic heating, because a battery does the same job at a fraction of the energy.[^ladder20]
 
 The instructive part is that this book already contains both ends of that ladder. Chapter 13's **2 kWh/d per person of fertilizer energy** is hydrogen — made from natural gas by the Haber–Bosch process, and the single largest existing use of hydrogen in the world. Chapter 28a discusses the same ladder from the electricity side.
 

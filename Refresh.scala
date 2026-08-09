@@ -1530,6 +1530,7 @@ def energyImports(): Unit = {
   val inList = want.map(c => s"'$c'").mkString(",")
   val col = "\"Energy imports, net (% of energy use)\""
   val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
+  try {
   val st = conn.createStatement()
   // Countries stop reporting in different years, so take each one's own latest.
   val rs = st.executeQuery(
@@ -1545,14 +1546,14 @@ def energyImports(): Unit = {
     sb ++= f"${rs.getString(1)},${rs.getInt(2)},${rs.getDouble(3)}%.0f\n"; n += 1
     got += rs.getString(1)
   }
-  os.write.over(dir / "energy-imports.csv", sb.toString)
-  // Entities are matched by OWID display name, and those get renamed. Without
-  // this check a rename drops a country silently and the step still reports
-  // success with a smaller n - which the hand-transcribed table would not catch.
+  // Entities are matched by OWID display name, and those get renamed. Validate
+  // before writing: a rename would otherwise drop a country silently and leave
+  // the truncated CSV on disk for whoever is transcribing the table.
   val missing = want.toSet -- got
   if (missing.nonEmpty)
     sys.error(s"energyImports: no rows for ${missing.toSeq.sorted.mkString(", ")} - " +
       "check the entity names against the OWID series before using the output")
+  os.write.over(dir / "energy-imports.csv", sb.toString)
   println(s"wrote data-refresh/energy-imports.csv ($n rows)")
-  conn.close()
+  } finally conn.close()
 }

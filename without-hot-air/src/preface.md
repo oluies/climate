@@ -44,13 +44,14 @@ Two rules govern the revision. MacKay's own text and figures are reproduced unch
 
 ## What has been added
 
-**Five new chapters.** They follow MacKay's own conventions: a number for the chapters in the main argument, a letter for the technical ones.
+**Six new chapters.** They follow MacKay's own conventions: a number for the chapters in the main argument, a letter for the technical ones.
 
 - **11a · The machines behind the screen** — data centres and machine learning, the demand chapter 11 could only glimpse in 2005.
 - **28a · The value of renewable energy as it scales** — what happens to the *economic* value of renewable electricity as it grows to the scale MacKay's balance sheet calls for. His book asks whether the physics permits it; this asks what happens to the price when it does.
 - **L · The world in 2025** — MacKay's global stock-take, redone for the most recent complete year.
 - **M · Energy return on investment** — the energy cost of getting energy, which chapter 3 raises and then sets aside.
 - **N · Peak oil, peak gas, peak uranium** — chapter 23's Jevons calculation applied to the three fuels it left out.
+- **O · The hydrogen ladder** — which uses of hydrogen survive contact with their alternatives, derived from the conversion arithmetic rather than asserted.
 
 **Revised chapters.** Every chapter of the original has been gone through. Where a figure has moved, the current one is given alongside MacKay's with the source for both; where his conclusion still holds, that is said too. The largest revisions are to the chapters on transport, heating, solar, nuclear and the cost of a plan.
 
