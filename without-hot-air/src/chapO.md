@@ -26,7 +26,7 @@ Now put two uses through it.
 
 ![Four uses with hydrogen's electricity cost against the best alternative's. Steel and fertilizer 1.4 with no alternative; long-haul flight 1.7 with no alternative; a car 2.9 against a battery's 1.15; domestic heat 1.6 against a heat pump's 0.25.](/img/without-hot-air/fig-hydrogen-ladder.svg)
 
-<span class="figurenumber">Figure O.1.</span> The ladder's ordering, derived rather than reproduced. This is not Liebreich's chart — it is the arithmetic above, drawn. Each purple bar is the electricity hydrogen needs to deliver one kilowatt-hour of what the user wants; each green bar is what the best alternative needs. The two bottom rungs have a green bar and lose to it. The two top rungs have no green bar to draw. *Added in the 2026 revision.*
+<span class="figurenumber">Figure O.1.</span> The ladder's ordering, derived rather than reproduced. This is not Liebreich's chart — it is the arithmetic above, drawn. Each purple bar is the electricity hydrogen needs to deliver one kilowatt-hour of what the user wants; each green bar is what the best alternative needs. The two bottom rungs have a green bar and lose to it. The two top rungs have no green bar to draw. The bottom two are measured at the point of use; the top two at the fuel and the feedstock, because that is where the comparison stops. *Added in the 2026 revision.*
 
 **Nothing in either calculation is about hydrogen being difficult.** It is about the alternative being cheap. That is the ladder's whole logic, and it explains the top rungs as well as the bottom: fertilizer, refining, methanol and the direct reduction of iron are near the top because there is no alternative molecule, not because hydrogen is efficient there. It is not.
 

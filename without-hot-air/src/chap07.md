@@ -293,13 +293,13 @@ The one genuinely encouraging trend in the report is the direction of travel. **
 
 ### What the machine costs to put in
 
-Everything above is about running cost. There is a second number, and in the country that in 2025 took the largest heat pump share of its space-heating sales it has gone badly wrong. **Every figure below is installed cost before any grant.**
+Everything above is about running cost. There is a second number, and in the country where heat pumps first outsold gas boilers — taking 50% of space-heating sales in 2025 — it has gone badly wrong. **Every figure below is installed cost before any grant.**
 
 **A specification-matched comparison of the same 8 kW air-to-water system in a comparable existing house gives €29 719 net in Germany against €12 095 in the United Kingdom** — a gap of 146%. Add tax and it widens, because Germany charges 19% VAT on a heat pump installation and Britain charges **zero**: €35 366 against €12 095, or **about £30 500 against £10 400**, a gap of 192%. Across Europe the German range of €23 000 to €40 000 stands against €9000 to €20 000 in comparable countries, with Poland at the bottom near €8000.[^hpcost]
 
 Between a third and a half of the gross gap is ordinary cost structure — the component ranges are wide, and the midpoint is nearer a third. German equipment is dearer, at €9000–18 000 a unit against €3000–8500 for the Asian manufacturers that hold larger shares in Britain, France and the Netherlands — though for the matched system the equipment difference is €2000–4000, not the span of those ranges. German practice requires a concrete foundation where most of Europe wall-mounts, at €976–2700 against under €500, and electrical connection work runs €1800–4000 where elsewhere it is minimal. VAT accounts for a further quarter of the gap on its own — €5647 of it.
 
-**But the interesting part is what the remaining fifth is, and when it appeared.** Before 2020 Germany was only modestly dearer than its neighbours: about **€17 000** for systems up to 15 kW in 2017–19, against roughly €12 500 in Britain and €11 000 in Sweden. Then German costs approximately **doubled**, while British costs rose 18% and Swedish 14% over the same years and through the same energy-price shock. Material costs rose about 20%. Something else moved.
+**But the interesting part is what the remaining two fifths is, and when it appeared.** Before 2020 Germany was only modestly dearer than its neighbours: about **€17 000** for systems up to 15 kW in 2017–19, against roughly €12 500 in Britain and €11 000 in Sweden. Then German costs approximately **doubled**, while British costs rose 18% and Swedish 14% over the same years and through the same energy-price shock. Material costs rose about 20%. Something else moved.
 
 What moved was the subsidy. In 2020 German support switched from a grant based on the *capacity* installed to one based on a **percentage of the cost**, and mean customer costs jumped from around €17 000 to around €40 000 at precisely that point. The study's authors conclude the change in subsidy design was the single largest driver of the increase.[^hpcost]
 
