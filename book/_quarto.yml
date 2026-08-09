@@ -70,6 +70,7 @@ book:
         - chapters/chapL.md
         - chapters/chapM.md
         - chapters/chapN.md
+        - chapters/chapO.md
         - chapters/charts.md
         - chapters/bibliography.md
     - chapters/author.md
