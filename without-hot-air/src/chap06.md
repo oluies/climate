@@ -99,6 +99,12 @@ Could this flood of solar panels co-exist with the army of windmills we imagined
 
 *False*. The <span class="green">energy yield ratio</span> (the ratio of energy delivered by a system over its lifetime, to the energy required to make it) of a roof-mounted, grid-connected solar system in Central Northern Europe is <span class="green">4</span>, for a system with a lifetime of 20 years (Richards and Watt, 2007); and more than <span class="green">7</span> in a sunnier spot such as Australia. (An energy yield ratio bigger than one means that a system is A Good Thing, energy-wise.) Wind turbines with a lifetime of 20 years have an energy yield ratio of <span class="green">80</span>.
 
+#### "Solar panels don't work in cold or cloudy climates."
+
+They work better when cold and worse when cloudy, and the two are often confused. A photovoltaic cell loses efficiency as it heats up, so a bright cold day is a good day for it; what reduces output is cloud, not temperature. This chapter's own numbers already answer the question: Britain receives roughly **110 W/m²** averaged over the year, and this chapter works with about **10 W/m²** delivered per unit of land from photovoltaics after efficiency and packing. That is a smaller number than Spain's and it is not zero, and the largest deployments in Europe have been at British and German latitudes rather than Mediterranean ones.
+
+**The honest version of the objection is seasonal, not climatic.** A British panel produces several times less in December than in June, which is the wrong shape for a country whose demand peaks in winter — and that is chapter 26's problem, not this one's.[^myths]
+
 #### Aren’t photovoltaic panels going to get more and more efficient as technology improves?
 
 I am sure that photovoltaic panels will become ever *cheaper*; I’m also sure that solar panels will become ever less energy-intensive to *manufacture*, so their energy yield ratio will improve. But this chapter’s photovoltaic estimates weren’t constrained by the economic cost of the panels, nor by the energy cost of their manufacture. This chapter was concerned with the maximum conceivable power delivered. Photovoltaic panels with 20% efficiency are already close to the theoretical limit (see this chapter’s endnotes). I’ll be surprised if this chapter’s estimate for roof-based photovoltaics ever needs a significant upward revision.
@@ -251,6 +257,8 @@ I’ll pop 24 kWh/d per person onto the green stack, emphasizing that I think th
 I think one conclusion is clear: *biofuels can’t add up* – at least, not in countries like Britain, and not as a replacement for all transport fuels. Even leaving aside biofuels’ main defects – that their production competes with food, and that the additional inputs required for farming and processing often cancel out most of the delivered energy (figure 6.14) – biofuels made from plants, in a European country like Britain, can deliver so little power, I think they are scarcely worth talking about.
 
 ## Notes and further reading
+
+[^myths]: The claim is one of 46 concerning energy and economics in the Skeptical Science catalogue of climate arguments, <https://skepticalscience.com/argument.php>, which lists 252 in all with a sourced response to each. **The answer given here is this book's own**, worked from the arithmetic in this chapter rather than restated from that source; the reference is included because the catalogue is the most complete list of what is actually argued, and because a reader meeting one of these claims deserves somewhere to go that is not this book. Chapter 31 sets out why the other 206 entries are not this book's argument.
 
 [^1]: *... compensate for the tilt between the sun and the land.* The latitude of Cambridge is θ = 52°; the intensity of midday sunlight is multiplied by cos θ ≈ 0.6. The precise factor depends on the time of year, and varies between cos(θ + 23°) = 0.26 and cos(θ - 23°) = 0.87.
 
