@@ -740,7 +740,17 @@ The main reasons why maglev is slightly better than the ICE are: the magnetic pr
 
 Incidentally, people who have seen the Transrapid train in Shanghai tell me that at full speed it is "about as quiet as a jet aircraft."
 
+### Mythconceptions
+
+#### "Electric cars are worse for the climate once you count making the battery."
+
+Making a battery does emit more than making a fuel tank, and the claim fails on the size of the two numbers rather than on the direction. This chapter's own figures settle it. A European electric car uses about **21 kWh per 100 km** at the socket in real use, against MacKay's **80 kWh per 100 km** of chemical energy for the average petrol car. The manufacturing penalty is paid once; the difference in running energy is paid every hundred kilometres, and on any ordinary lifetime it is much the larger term.
+
+**Two things are true and are worth keeping.** The gap narrows as the car gets bigger, because the battery does — a large electric pickup at 30 kWh/100 km carries far more manufacturing burden than a Citroën Ami at 7.3. And the comparison depends on what makes the electricity, which is chapter 19's question rather than this chapter's: the same car is cleaner in France than in Poland.[^myths]
+
 ## Notes and further reading
+
+[^myths]: The claim is one of 46 concerning energy and economics in the Skeptical Science catalogue of climate arguments, <https://skepticalscience.com/argument.php>, which lists 252 in all with a sourced response to each. **The answer given here is this book's own**, worked from the arithmetic in this chapter rather than restated from that source; the reference is included because the catalogue is the most complete list of what is actually argued, and because a reader meeting one of these claims deserves somewhere to go that is not this book. Chapter 31 sets out why the other 206 entries are not this book's argument.
 
 [^1]: *A widely quoted statistic says "Only 1% of fuel energy in a car goes into moving the driver."* In fact the percentage in this myth varies in size as it commutes around the urban community. Some people say "5% of the energy goes into moving the driver." Others say "A mere *three tenths of 1 percent* of fuel energy goes into moving the driver." [[<span class="websitetitle">4qgg8q</span>](http://tinyurl.com/4qgg8q)] My take, by the way, is that none of these statistics is correct or helpful.
 
