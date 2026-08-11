@@ -50,7 +50,9 @@ for i, (name, h2, alt, altlab) in zip(y, ROWS):
         ax.barh(i - h / 2, alt, height=h, color=ALT, zorder=3)
         ax.annotate(f"{alt:.2f}  {altlab}", xy=(alt, i - h / 2), xytext=(5, 0),
                     textcoords="offset points", va="center", fontsize=9.5, color=ALT)
-        ax.annotate(f"×{h2/alt:.1f}", xy=(max(h2, alt), i), xytext=(52, 0),
+        # From the printed values, so a reader dividing the two labels gets this.
+        shown = round(h2, 1) / round(alt, 2)
+        ax.annotate(f"×{shown:.1f}", xy=(max(h2, alt), i), xytext=(52, 0),
                     textcoords="offset points", va="center", fontsize=11,
                     color=INK, fontweight="bold")
 

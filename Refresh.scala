@@ -11,7 +11,7 @@
 // country / source list / output path. Data: Our World in Data (Ember + Energy
 // Institute), CC BY. The generated SVG is our own work under the edition's licence.
 
-import java.sql.DriverManager
+import java.sql.{Connection, DriverManager}
 import scala.collection.mutable.ArrayBuffer
 
 /** Open a DuckDB connection, hand it to `body`, and close it whatever happens.
@@ -22,9 +22,16 @@ import scala.collection.mutable.ArrayBuffer
   * of a bare close() means the release is stated once rather than at each call
   * site, where it was previously easy to omit and was in fact omitted sixteen
   * times. */
-def withConn[T](body: java.sql.Connection => T): T = {
-  val conn = java.sql.DriverManager.getConnection("jdbc:duckdb:")
-  try body(conn) finally conn.close()
+def withConn[T](body: Connection => T): T = {
+  val conn = DriverManager.getConnection("jdbc:duckdb:")
+  var primary: Throwable = null
+  try body(conn)
+  catch { case t: Throwable => primary = t; throw t }
+  finally
+    // A plain `finally conn.close()` lets a close-time failure replace the real
+    // one, which would discard exactly the diagnostic this helper exists to keep.
+    try conn.close()
+    catch { case t: Throwable => if (primary ne null) primary.addSuppressed(t) else throw t }
 }
 
 

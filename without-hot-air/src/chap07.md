@@ -293,7 +293,7 @@ The one genuinely encouraging trend in the report is the direction of travel. **
 
 ### What the machine costs to put in
 
-Everything above is about running cost. There is a second number, and in the country where heat pumps first outsold gas boilers — taking 50% of space-heating sales in 2025 — it has gone badly wrong. **Every figure below is installed cost before any grant.**
+Everything above is about running cost. There is a second number, and in the country where heat pumps outsold gas boilers for the first time in 2025, at 50% of space-heating sales against 44%, it has gone badly wrong. **Every figure below is installed cost before any grant.**
 
 **A specification-matched comparison of the same 8 kW air-to-water system in a comparable existing house gives €29 719 net in Germany against €12 095 in the United Kingdom** — a gap of 146%. Add tax and it widens, because Germany charges 19% VAT on a heat pump installation and Britain charges **zero**: €35 366 against €12 095, or **about £30 500 against £10 400**, a gap of 192%. Across Europe the German range of €23 000 to €40 000 stands against €9000 to €20 000 in comparable countries, with Poland at the bottom near €8000.[^hpcost]
 

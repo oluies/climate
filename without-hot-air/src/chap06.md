@@ -101,7 +101,7 @@ Could this flood of solar panels co-exist with the army of windmills we imagined
 
 #### "Solar panels don't work in cold or cloudy climates."
 
-They work better when cold and worse when cloudy, and the two are often confused. A photovoltaic cell loses efficiency as it heats up, so a bright cold day is a good day for it; what reduces output is cloud, not temperature. This chapter's own numbers already answer the question: Britain receives roughly **110 W/m²** averaged over the year, and this chapter works with about **10 W/m²** delivered per unit of land from photovoltaics after efficiency and packing. That is a smaller number than Spain's and it is not zero, and the largest deployments in Europe have been at British and German latitudes rather than Mediterranean ones.
+They work better when cold and worse when cloudy, and the two are often confused. A photovoltaic cell loses efficiency as it heats up, so a bright cold day is a good day for it; what reduces output is cloud, not temperature. This chapter's own numbers already answer the question: Britain receives roughly **100 W/m<sup>2</sup>** on flat ground averaged over the year, from which this chapter's fantasy case gets **10 W/m<sup>2</sup>** delivered per unit of land at 10% efficiency — twice what the Bavaria Solarpark actually managed at **5 W/m<sup>2</sup>**. Both are smaller than Spain's and neither is zero. **The largest national solar fleet in Europe is Germany's, not a Mediterranean country's.**
 
 **The honest version of the objection is seasonal, not climatic.** A British panel produces several times less in December than in June, which is the wrong shape for a country whose demand peaks in winter — and that is chapter 26's problem, not this one's.[^myths]
 
@@ -258,7 +258,7 @@ I think one conclusion is clear: *biofuels can’t add up* – at least, not in 
 
 ## Notes and further reading
 
-[^myths]: The claim is one of 46 concerning energy and economics in the Skeptical Science catalogue of climate arguments, <https://skepticalscience.com/argument.php>, which lists 252 in all with a sourced response to each. **The answer given here is this book's own**, worked from the arithmetic in this chapter rather than restated from that source; the reference is included because the catalogue is the most complete list of what is actually argued, and because a reader meeting one of these claims deserves somewhere to go that is not this book. Chapter 31 sets out why the other 206 entries are not this book's argument.
+[^myths]: The claim is one of the energy- and economics-related entries in the Skeptical Science catalogue of climate arguments, <https://skepticalscience.com/argument.php>. **The answer given here is this book's own**, worked from the arithmetic in this chapter rather than restated from that source; the reference is included because the catalogue is the most complete list of what is actually argued, and because a reader meeting one of these claims deserves somewhere to go that is not this book. Chapter 31 explains why most of that catalogue is not this book's argument, and carries the counts.
 
 [^1]: *... compensate for the tilt between the sun and the land.* The latitude of Cambridge is θ = 52°; the intensity of midday sunlight is multiplied by cos θ ≈ 0.6. The precise factor depends on the time of year, and varies between cos(θ + 23°) = 0.26 and cos(θ - 23°) = 0.87.
 
