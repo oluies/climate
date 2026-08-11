@@ -124,6 +124,18 @@ Pumped storage systems use cheap electricity to shove water from a downhill lake
 
 ![](/img/without-hot-air/figure218.gif)
 
+![Half-hourly GB electricity prices on three days of 2026. A January day runs from 73 to 291 pounds per MWh; a typical day from 72 to 128; an April day falls to minus 58 pounds around midday before recovering to 122 in the evening.](/img/without-hot-air/fig-gb-prices.svg)
+
+<span class="figurenumber">Figure 26.5b.</span> The same picture two decades on. *Added in the 2026 revision.*
+
+**The mechanism MacKay describes is intact and the numbers are not.** His figure 26.5 shows three days of 2006–07 to explain how a pumped storage station earns its keep: buy in the overnight trough, sell into the evening peak. On 8 January 2026 the gap between the cheapest and dearest half-hour was **£218 per MWh**. On 7 April it was £179 — and the trough was **below zero**, at −£58, so a store was *paid* to fill.
+
+**That is the return that built Britain's batteries**, and it also explains their shape. Everything in this picture is captured inside a single day, so a two-hour battery collects most of what is on offer. Nothing here pays anyone to hold energy from one week to the next, which is the storage this chapter is actually about.[^gbprices]
+
+**The four pumped storage stations of table 26.4 and figure 26.17 are the same four.** Nothing has been added to the British fleet since Dinorwig opened in 1984, and the roughly 30 GWh MacKay quotes is still the figure. What has changed is the queue behind it. **Coire Glas**, at Loch Lochy, is designed for **30 GWh at 1300 MW** — on its own it would double everything Britain has — and its 1.2 km exploratory tunnel is complete. In June 2026 Ofgem named it among **sixteen long-duration storage projects** in a minded-to decision on cap-and-floor support, the mechanism that finally addresses the problem this chapter identifies: a store that earns from a daily spread cannot finance a facility built for a week-long lull.
+
+**And the same argument is being had elsewhere.** Fortum, which already operates three small pumped stations in Värmland totalling 89.5 MW, is studying three new Swedish sites — **Lekstjärnen** in Älvdalen, and **Bastvålen** and **Höljessjön** in Torsby — on the criteria this chapter would use: head, water, and proximity to the grid. None has a published energy figure yet.[^pumpedpipeline]
+
 <span class="figurenumber">Figure 26.6</span>. Llyn Stwlan, the upper reservoir of the Ffestiniog pumped storage scheme in north Wales. Energy stored: 1.3 GWh. Photo by Adrian Pingstone.
 
 Britain has four pumped storage facilities, which can store 30 GWh between them (table 26.4, figure 26.6). They are typically used to store excess electricity at night, then return it during the day, especially at moments of peak demand – a profitable business, as figure 26.5 shows. The Dinorwig power station – an astonishing cathedral inside a mountain in Snowdonia – also plays an insurance role: it has enough oomph to restart the national grid in the event of a major failure. Dinorwig can switch on, from 0 to 1.3 GW power, in 12 seconds.
@@ -411,6 +423,10 @@ The word is the problem. **Baseload is a description of a supply, not a requirem
 ![](/img/without-hot-air/figure225.gif)
 
 <span class="figurenumber">Figure 26.18</span>. A possible site for another 7 GWh pumped storage facility. Croesor valley is in the centre-left, between the sharp peak (Cnicht) on the left and the broader peaks (the Moelwyns) on the right.
+
+[^gbprices]: Half-hourly GB market-index prices are from Elexon's balancing-mechanism reporting service, the APX index, fetched by the `gbPrices` step of this edition's data-refresh script. The three days are chosen from a sample of 49 full days across January, February, April, June and July 2026: the widest spread in that sample, the median-spread day, and the day with the lowest trough. **They are therefore illustrative rather than typical**, in exactly the way MacKay's three days of 2006–07 were, and the median day is included so the extremes are not read as ordinary. Nine of the 49 sampled days had at least one half-hour priced below zero, all of them in spring. The market index is a day-ahead price and is not what any particular generator or store receives; it is the signal storage responds to rather than its revenue, and a real operator's return depends on how much of the spread it can capture after round-trip losses.
+
+[^pumpedpipeline]: Coire Glas is SSE Renewables' proposed scheme at Loch Lochy: 30 GWh of storage at 1300 MW, described by the developer as able to run for up to 24 hours, with a 1.2 km exploratory tunnel completed and a final investment decision repeatedly deferred. In June 2026 Ofgem included it among sixteen long-duration electricity storage projects in a minded-to decision on cap-and-floor support; SSE's response was that a significant number of points of detail remain to be resolved, which is the ordinary language of a project that is not yet financed. **Nothing here is built**, and this edition records a pipeline rather than a fleet — the last British pumped storage station to be commissioned was Dinorwig in 1984, and a forty-year gap is the fact that matters. The Swedish sites are Fortum's: Lekstjärnen in Älvdalen kommun, Dalarna, and Bastvålen and Höljessjön in Torsby kommun, Värmland, announced in 2025 as a feasibility study against criteria of head, water availability and grid proximity; the company's existing Kymmen, Letten and Eggsjön stations total 89.5 MW. No energy capacity has been published for the three proposals, so they cannot yet be put in this chapter's units.
 
 [^5]: *Dinorwig’s pumped-storage efficiency is 75%.* Figure 26.17 shows data. Further information about Dinorwig and the alternate sites for pumped storage: Baines et al. (1983, 1986).
 

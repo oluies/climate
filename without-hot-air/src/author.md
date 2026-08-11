@@ -27,7 +27,7 @@ That last habit is the one the tributes kept returning to. He put *Sustainable E
 
 The same eulogy records something rarer than it sounds. When Blees brought him a fast-reactor proposal for disposing of Britain's plutonium stockpile that was being passed over in favour of a MOX solution, MacKay — then the department's chief scientific adviser — arranged for it to be heard on its merits. Whether or not one agrees with where that led, it is the behaviour this book argues for: numbers first, then the position.
 
-He was, by every account, a warm and generous friend. He was also right about most of this. This edition exists because being right in 2008 is not the same as being right in 2026, and he would have been the first to say so.
+He was right about most of this. This edition exists because being right in 2008 is not the same as being right in 2026, and he would have been the first to say so.
 
 ### Sources
 
