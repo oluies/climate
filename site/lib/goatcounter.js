@@ -7,6 +7,21 @@ const landing =
     ? window.location.pathname + window.location.search
     : null
 
+// no_onload also disables count.js's own hidden-page deferral, so a page opened
+// in a background tab or prerendered would otherwise register as a view the
+// moment the script loads. Defer to first visibility instead.
+const whenVisible = (fn) => {
+  if (typeof document === 'undefined') return
+  if (document.visibilityState === 'visible') return fn()
+  const once = () => {
+    if (document.visibilityState !== 'visible') return
+    document.removeEventListener('visibilitychange', once)
+    fn()
+  }
+  document.addEventListener('visibilitychange', once)
+}
+
+const MAX_PENDING = 20
 let started = false
 let pending = []
 
@@ -21,17 +36,22 @@ const send = (path) => {
   }, 0)
 }
 
-// Called from the script's onLoad: count the landing page, then anything that
-// happened while the script was still downloading.
+// Called from the script's onLoad. If onLoad never fires — blocked CDN, SRI
+// mismatch, content blocker — nothing is counted, which is the intended
+// failure mode: better to lose the data than to guess at it.
 export const start = () => {
   if (started || !ready()) return
   started = true
-  send(landing)
-  pending.forEach(send)
-  pending = []
+  whenVisible(() => {
+    send(landing)
+    pending.forEach(send)
+    pending = []
+  })
 }
 
 export const pageview = (url) => {
   if (started) send(url)
-  else pending.push(url)
+  // Bounded: a long SPA session must not accumulate an unbounded buffer if the
+  // script never loads.
+  else if (pending.length < MAX_PENDING) pending.push(url)
 }
