@@ -1,29 +1,37 @@
-// GoatCounter counts the first page load itself, once count.js loads. This
-// module handles client-side navigations, which never reload the page.
-//
-// The script is loaded afterInteractive, so a fast click through to a second
-// route can fire routeChangeComplete before window.goatcounter exists. Rather
-// than lose that pageview, buffer it and let the script's onLoad flush it.
-let pending = null
+// count.js is loaded with no_onload, so nothing is counted until start() runs.
+// That makes the sequence deterministic: the landing path is whatever the page
+// was opened at, captured before any client-side navigation can change it, and
+// every later route change is counted as it happens.
+const landing =
+  typeof window !== 'undefined'
+    ? window.location.pathname + window.location.search
+    : null
 
-const ready = () => typeof window !== 'undefined' && window.goatcounter && window.goatcounter.count
+let started = false
+let pending = []
 
-const send = (url) => {
+const ready = () =>
+  typeof window !== 'undefined' && window.goatcounter && window.goatcounter.count
+
+const send = (path) => {
   // Deferred a tick so next/head has committed the new <title>; without this
   // the recorded title can lag one page behind on a client-side route change.
   setTimeout(() => {
-    window.goatcounter.count({ path: url, title: document.title })
+    window.goatcounter.count({ path, title: document.title })
   }, 0)
 }
 
-export const pageview = (url) => {
-  if (ready()) send(url)
-  else pending = url
+// Called from the script's onLoad: count the landing page, then anything that
+// happened while the script was still downloading.
+export const start = () => {
+  if (started || !ready()) return
+  started = true
+  send(landing)
+  pending.forEach(send)
+  pending = []
 }
 
-export const flush = () => {
-  if (pending && ready()) {
-    send(pending)
-    pending = null
-  }
+export const pageview = (url) => {
+  if (started) send(url)
+  else pending.push(url)
 }

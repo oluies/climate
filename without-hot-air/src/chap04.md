@@ -103,12 +103,11 @@ There is a second thing this chapter's method cannot see, and it has become the 
 
 In Great Britain in 2025, against a time-weighted average market price of **£79.9/MWh**, wind captured **£72.0** and solar **£65.9** — value factors of **0.90 and 0.82**. Gas, which can choose its hours, captured £94.8, a factor of 1.19.[^capture] Every gigawatt of wind added lowers the price in precisely the hours that all the other wind is generating, so the resource this chapter sizes in W/m<sup>2</sup> is worth progressively less per unit as it grows. That is a different limit from the one MacKay identified, it binds long before the land runs out, and chapter 28a is about it.
 
-[^myths]: The claim is one of 46 concerning energy and economics in the Skeptical Science catalogue of climate arguments, <https://skepticalscience.com/argument.php>, which lists 252 in all with a sourced response to each. **The answer given here is this book's own**, worked from the arithmetic in this chapter rather than restated from that source; the reference is included because the catalogue is the most complete list of what is actually argued, and because a reader meeting one of these claims deserves somewhere to go that is not this book. Chapter 31 sets out why the other 206 entries are not this book's argument.
+[^myths]: The claim is one of the energy- and economics-related entries in the Skeptical Science catalogue of climate arguments, <https://skepticalscience.com/argument.php>. **The answer given here is this book's own**, worked from the arithmetic in this chapter rather than restated from that source; the reference is included because the catalogue is the most complete list of what is actually argued, and because a reader meeting one of these claims deserves somewhere to go that is not this book. Chapter 31 explains why most of that catalogue is not this book's argument, and carries the counts.
 
 [^ukwind]: Josh Giddings, Hannah Bloomfield, Rachel James and Michael Blair, "The impact of future UK offshore wind farm distribution and climate change on generation performance and variability", *Environmental Research Letters*, 2024, <https://doi.org/10.1088/1748-9326/ad489b>. Their ERA5-derived historical mean annual capacity factor is 48.3%, or 45.4% once wake losses and curtailment are allowed for, against an observed 45.7% for 2020 — a useful check on the 33% load factor assumed elsewhere in this chapter. The 5.5%/24.5% per decade comparison in the paragraph above is cited in Vest and Tych, discussed in chapter B.
 
 [^capture]: GB capture prices for 2025, computed from Elexon BMRS half-hourly generation by fuel type and the market index price (APXMIDP), in this edition's data pipeline. Capture price is generation-weighted revenue per MWh; the value factor is that divided by the time-weighted system average of £79.9/MWh.
-
 
 ![](/img/without-hot-air/figure28.gif)
 
@@ -148,9 +147,9 @@ Maybe. We’ll come back to this issue in Chapter 26, where we’ll look at wind
 
 #### "Wind turbines take up too much land."
 
-They take up very little land, and the confusion is between *spacing* and *footprint*. This chapter's 2 W/m² is a figure for the whole wind farm — the land a turbine needs to stand far enough from its neighbour not to steal its wind. What the machine physically occupies is its base and its access track, on the order of 1% of that area. The other 99% is still farmland, and is generally still farmed.
+They take up very little land, and the confusion is between *spacing* and *footprint*. This chapter's 2 W/m<sup>2</sup> is a figure for the whole wind farm — the land a turbine needs to stand far enough from its neighbour not to steal its wind. **The arithmetic of that spacing gives the answer.** Turbines are set about five diameters apart, so a 100 m machine occupies a cell of roughly 500 × 500 m, or 250 000 m<sup>2</sup>. Its foundation and hardstanding are of order 20 × 20 m, and a few hundred metres of access track a few metres wide adds perhaps 2000 m<sup>2</sup> more — call it 2500 m<sup>2</sup> in total, which is **about one per cent of the cell**. The other 99% is still farmland, and is generally still farmed.
 
-**The correct objection is the one this chapter actually makes**, which is not about land use but about area *per person*: at 2 W/m², supplying a serious share of British demand requires wind farms covering a country-sized fraction of the country, and that is a planning and landscape argument rather than an agricultural one. Answering the wrong version of the objection is how the right version gets ignored.[^myths]
+**The correct objection is the one this chapter actually makes**, which is not about land use but about area *per person*: at 2 W/m<sup>2</sup>, supplying a serious share of British demand requires wind farms covering a country-sized fraction of the country, and that is a planning and landscape argument rather than an agricultural one. Answering the wrong version of the objection is how the right version gets ignored.[^myths]
 
 ## Notes and further reading
 

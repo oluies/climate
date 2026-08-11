@@ -33,7 +33,12 @@ function MyApp({ Component, pageProps }) {
           // routeChangeComplete before the script exists, which is why
           // lib/goatcounter.js buffers the path and onLoad flushes it.
           strategy="afterInteractive"
-          onLoad={() => goatcounter.flush()}
+          // no_onload because count.js would otherwise self-count using
+          // location.pathname at load time - which, after a fast click, is
+          // already the second route. That double-counts B and still loses the
+          // landing page A. Counting is done entirely from onLoad instead.
+          data-goatcounter-settings='{"no_onload":true}'
+          onLoad={() => goatcounter.start()}
           src="https://gc.zgo.at/count.v4.js"
           integrity="sha384-nRw6qfbWyJha9LhsOtSb2YJDyZdKvvCFh0fJYlkquSFjUxp9FVNugbfy8q1jdxI+"
           crossOrigin="anonymous"
