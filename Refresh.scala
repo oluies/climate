@@ -1571,3 +1571,37 @@ def energyImports(): Unit = {
     println(s"wrote data-refresh/energy-imports.csv ($n rows)")
   }
 }
+
+/** Figure 26.5 remade: half-hourly GB market-index prices on three days of
+  * 2026, replacing MacKay's three days of 2006-07. The spread within a day is
+  * what pays for storage, so the days are chosen to show its range: the widest
+  * in the sample, a spring day that goes negative, and a median one. */
+@main
+def gbPrices(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  // The Elexon endpoint rejects windows longer than a week, so fetch per day.
+  val days = Seq(
+    ("2026-01-08", "widest spread in sample"),
+    ("2026-01-14", "a median day"),
+    // No commas in any label: DuckDB sniffs the delimiter when the figure reads it.
+    ("2026-04-07", "spring - prices go negative"))
+  val sb = new StringBuilder; sb ++= "day,label,period,price\n"
+  var n = 0
+  for ((d, label) <- days) {
+    val nxt = java.time.LocalDate.parse(d).plusDays(1).toString
+    val url = s"https://data.elexon.co.uk/bmrs/api/v1/balancing/pricing/market-index" +
+      s"?from=${d}T00:00Z&to=${nxt}T00:00Z&format=json"
+    val js = ujson.read(requests.get(url, readTimeout = 60000).text())
+    // APXMIDP is the APX index; the other provider reports zeros for most periods.
+    val rows = js("data").arr
+      .filter(r => r("dataProvider").str == "APXMIDP" && r("settlementDate").str == d)
+      .sortBy(_("settlementPeriod").num)
+    require(rows.length >= 44, s"gbPrices: only ${rows.length} periods for $d")
+    for (r <- rows) {
+      sb ++= f"$d,$label,${r("settlementPeriod").num.toInt},${r("price").num}%.2f\n"; n += 1
+    }
+  }
+  os.write.over(dir / "gb-prices.csv", sb.toString)
+  println(s"wrote data-refresh/gb-prices.csv ($n rows)")
+}
