@@ -11,7 +11,9 @@ Input: data-refresh/gb-prices.csv from `mill Refresh.scala gbPrices`.
 import sys, duckdb, matplotlib.pyplot as plt, numpy as np
 
 INK, MUTED = "#161d1b", "#8a8a85"
-COL = {"2026-01-08": "#4a3aa7", "2026-01-14": "#8a8a85", "2026-04-07": "#1baf7a"}
+# Indexed by series order, not keyed on literal dates, so a different set of
+# days cannot silently fall through to one indistinguishable colour.
+PALETTE = ["#4a3aa7", "#8a8a85", "#1baf7a", "#eb6834", "#eda100"]
 
 d = duckdb.sql(f"""
     -- Cast: DuckDB reads the day column as a timestamp, which breaks both the
@@ -28,13 +30,22 @@ for day, label, period, price in zip(d["day"], d["label"], d["period"], d["price
     series[str(day)]["y"].append(float(price))
 
 fig, ax = plt.subplots(figsize=(9.2, 5.4))
-for day, s in series.items():
+for i, (day, s) in enumerate(series.items()):
     lo, hi = min(s["y"]), max(s["y"])
-    ax.plot(s["x"], s["y"], color=COL.get(day, INK), lw=2.2, zorder=3,
+    ax.plot(s["x"], s["y"], color=PALETTE[i % len(PALETTE)], lw=2.2, zorder=3,
             label=f"{day}  —  £{lo:.0f} to £{hi:.0f}, spread £{hi-lo:.0f}")
 
 ax.axhline(0, color="#c9c9c4", lw=1.2, zorder=2)
-ax.annotate("paid to consume", xy=(0.4, -8), fontsize=9, color=COL["2026-04-07"], va="top")
+# Only label the zero line when something actually goes below it, and place the
+# label at the deepest trough rather than at a hard-coded point that a different
+# day's y-range would leave floating or clipped.
+troughs = [(min(s["y"]), s["x"][s["y"].index(min(s["y"]))], i)
+           for i, s in enumerate(series.values())]
+lo, at_x, at_i = min(troughs)
+if lo < 0:
+    ax.annotate("paid to consume", xy=(at_x, lo), xytext=(6, -4),
+                textcoords="offset points", fontsize=9,
+                color=PALETTE[at_i % len(PALETTE)], va="top")
 
 ax.set_xlim(0, 24)
 ax.set_xticks(range(0, 25, 3))

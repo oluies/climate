@@ -1578,9 +1578,7 @@ def energyImports(): Unit = {
   * in the sample, a spring day that goes negative, and a median one. */
 @main
 def gbPrices(): Unit = {
-  java.util.Locale.setDefault(java.util.Locale.US)
   val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
-  // The Elexon endpoint rejects windows longer than a week, so fetch per day.
   val days = Seq(
     ("2026-01-08", "widest spread in sample"),
     ("2026-01-14", "a median day"),
@@ -1589,18 +1587,35 @@ def gbPrices(): Unit = {
   val sb = new StringBuilder; sb ++= "day,label,period,price\n"
   var n = 0
   for ((d, label) <- days) {
-    val nxt = java.time.LocalDate.parse(d).plusDays(1).toString
+    require(!label.contains(","), s"gbPrices: label for $d contains a comma")
+    val date = java.time.LocalDate.parse(d)
+    // Query from the previous day: the endpoint filters on startTime, not on
+    // settlementDate, and under BST periods 1 and 2 of a day start at 23:00Z
+    // and 23:30Z the day before. A window beginning at 00:00Z silently drops
+    // them - which is exactly the overnight trough this figure is about.
     val url = s"https://data.elexon.co.uk/bmrs/api/v1/balancing/pricing/market-index" +
-      s"?from=${d}T00:00Z&to=${nxt}T00:00Z&format=json"
+      s"?from=${date.minusDays(1)}T12:00Z&to=${date.plusDays(1)}T12:00Z&format=json"
     val js = ujson.read(requests.get(url, readTimeout = 60000).text())
     // APXMIDP is the APX index; the other provider reports zeros for most periods.
     val rows = js("data").arr
       .filter(r => r("dataProvider").str == "APXMIDP" && r("settlementDate").str == d)
       .sortBy(_("settlementPeriod").num)
-    require(rows.length >= 44, s"gbPrices: only ${rows.length} periods for $d")
+    val got = rows.map(_("settlementPeriod").num.toInt).toSet
+    // 48 half-hours, except 46 and 50 on the two clock-change days.
+    val expected = (1 to 48).toSet
+    val missing = expected -- got
+    require(missing.isEmpty,
+      s"gbPrices: $d is missing settlement periods ${missing.toSeq.sorted.mkString(", ")} - " +
+        "widen the query window rather than lowering this check")
+    val prices = rows.map(_("price").num)
     for (r <- rows) {
-      sb ++= f"$d,$label,${r("settlementPeriod").num.toInt},${r("price").num}%.2f\n"; n += 1
+      val price = String.format(java.util.Locale.US, "%.2f", Double.box(r("price").num))
+      sb ++= s"$d,$label,${r("settlementPeriod").num.toInt},$price\n"; n += 1
     }
+    // Printed so a re-run surfaces any drift against the figures quoted in
+    // chapter 26 rather than leaving it to be noticed later.
+    println(String.format(java.util.Locale.US, "  %s  min %8.2f  max %8.2f  spread %7.2f",
+      d, Double.box(prices.min), Double.box(prices.max), Double.box(prices.max - prices.min)))
   }
   os.write.over(dir / "gb-prices.csv", sb.toString)
   println(s"wrote data-refresh/gb-prices.csv ($n rows)")
