@@ -8,7 +8,7 @@ import * as goatcounter from '../lib/goatcounter'
 
 
 function MyApp({ Component, pageProps }) {
-  // Count client-side navigations; the script below counts the first load.
+  // Count client-side navigations; start() below counts the landing page.
   // The hook is called unconditionally because React requires a stable hook
   // order - the config check happens inside it instead.
   const router = useRouter()

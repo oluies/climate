@@ -13,6 +13,7 @@
 
 import java.sql.{Connection, DriverManager}
 import scala.collection.mutable.ArrayBuffer
+import scala.util.Using
 
 /** Open a DuckDB connection, hand it to `body`, and close it whatever happens.
   *
@@ -22,17 +23,11 @@ import scala.collection.mutable.ArrayBuffer
   * of a bare close() means the release is stated once rather than at each call
   * site, where it was previously easy to omit and was in fact omitted sixteen
   * times. */
-def withConn[T](body: Connection => T): T = {
-  val conn = DriverManager.getConnection("jdbc:duckdb:")
-  var primary: Throwable = null
-  try body(conn)
-  catch { case t: Throwable => primary = t; throw t }
-  finally
-    // A plain `finally conn.close()` lets a close-time failure replace the real
-    // one, which would discard exactly the diagnostic this helper exists to keep.
-    try conn.close()
-    catch { case t: Throwable => if (primary ne null) primary.addSuppressed(t) else throw t }
-}
+// Using.resource already has the semantics wanted here: the body's exception
+// wins, a close-time failure is attached to it as suppressed rather than
+// replacing it, and a close failure propagates if the body succeeded.
+def withConn[T](body: Connection => T): T =
+  Using.resource(DriverManager.getConnection("jdbc:duckdb:"))(body)
 
 
 val CSV_URL = "https://ourworldindata.org/grapher/electricity-prod-source-stacked.csv?csvType=full"
