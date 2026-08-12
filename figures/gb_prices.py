@@ -29,6 +29,9 @@ for day, label, period, price in zip(d["day"], d["label"], d["period"], d["price
     series[str(day)]["x"].append((int(period) - 1) / 2.0)
     series[str(day)]["y"].append(float(price))
 
+# Fail rather than wrap the palette, which would repeat a colour silently.
+assert len(series) <= len(PALETTE), f"{len(series)} days but only {len(PALETTE)} colours"
+
 fig, ax = plt.subplots(figsize=(9.2, 5.4))
 for i, (day, s) in enumerate(series.items()):
     lo, hi = min(s["y"]), max(s["y"])
@@ -43,9 +46,15 @@ troughs = [(min(s["y"]), s["x"][s["y"].index(min(s["y"]))], i)
            for i, s in enumerate(series.values())]
 lo, at_x, at_i = min(troughs)
 if lo < 0:
-    ax.annotate("paid to consume", xy=(at_x, lo), xytext=(6, -4),
+    # Flip the label inside the axes when the trough sits near either edge,
+    # rather than letting it run off the bottom or the right-hand side.
+    y0, y1 = ax.get_ylim()
+    near_floor = (lo - y0) < 0.12 * (y1 - y0)
+    dy, va = (8, "bottom") if near_floor else (-4, "top")
+    dx, ha = (-6, "right") if at_x > 21 else (6, "left")
+    ax.annotate("paid to consume", xy=(at_x, lo), xytext=(dx, dy),
                 textcoords="offset points", fontsize=9,
-                color=PALETTE[at_i % len(PALETTE)], va="top")
+                color=PALETTE[at_i], va=va, ha=ha)
 
 ax.set_xlim(0, 24)
 ax.set_xticks(range(0, 25, 3))

@@ -33,11 +33,16 @@ let pending = []
 const ready = () =>
   typeof window !== 'undefined' && window.goatcounter && window.goatcounter.count
 
-const send = (path) => {
-  // Deferred a tick so next/head has committed the new <title>; without this
-  // the recorded title can lag one page behind on a client-side route change.
+// `title` is captured by the caller where it matters. A buffered pageview is
+// flushed when the tab is first brought to the front, by which time
+// document.title belongs to whatever page is current — so a background tab that
+// moved through several routes would otherwise record correct paths against N
+// copies of the wrong title.
+const send = ({ path, title }) => {
   setTimeout(() => {
-    window.goatcounter.count({ path, title: document.title })
+    // Deferred a tick so next/head has committed the new <title> for live
+    // navigations; buffered ones carry the title captured at the time.
+    window.goatcounter.count({ path, title: title || document.title })
   }, 0)
 }
 
@@ -48,7 +53,7 @@ export const start = () => {
   if (started || !ready()) return
   started = true
   whenVisible(() => {
-    send(landing)
+    send({ path: landing, title: document.title })
     pending.forEach(send)
     pending = []
     flushed = true
@@ -56,8 +61,11 @@ export const start = () => {
 }
 
 export const pageview = (url) => {
-  if (flushed) send(url)
+  if (flushed) send({ path: url })
   // Bounded: a long SPA session must not accumulate an unbounded buffer if the
-  // script never loads or the page is never brought to the front.
-  else if (pending.length < MAX_PENDING) pending.push(url)
+  // script never loads or the page is never brought to the front. The title is
+  // captured now, because by flush time it will belong to another page.
+  else if (pending.length < MAX_PENDING) {
+    pending.push({ path: url, title: typeof document !== "undefined" ? document.title : undefined })
+  }
 }
