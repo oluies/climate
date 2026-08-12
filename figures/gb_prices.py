@@ -35,7 +35,7 @@ assert len(series) <= len(PALETTE), f"{len(series)} days but only {len(PALETTE)}
 fig, ax = plt.subplots(figsize=(9.2, 5.4))
 for i, (day, s) in enumerate(series.items()):
     lo, hi = min(s["y"]), max(s["y"])
-    ax.plot(s["x"], s["y"], color=PALETTE[i % len(PALETTE)], lw=2.2, zorder=3,
+    ax.plot(s["x"], s["y"], color=PALETTE[i], lw=2.2, zorder=3,
             label=f"{day}  —  £{lo:.0f} to £{hi:.0f}, spread £{hi-lo:.0f}")
 
 ax.axhline(0, color="#c9c9c4", lw=1.2, zorder=2)
@@ -56,9 +56,13 @@ if lo < 0:
                 textcoords="offset points", fontsize=9,
                 color=PALETTE[at_i], va=va, ha=ha)
 
-ax.set_xlim(0, 24)
-ax.set_xticks(range(0, 25, 3))
-ax.set_xticklabels([f"{h:02d}" for h in range(0, 25, 3)], fontsize=10)
+# From the data, not hard-coded: a clock-change day is 23 or 25 hours long and
+# would otherwise be clipped. gbPrices refuses those days, so this is belt and
+# braces rather than the primary guard.
+xmax = max(max(s["x"]) for s in series.values()) + 0.5
+ax.set_xlim(0, xmax)
+ax.set_xticks(range(0, int(xmax) + 1, 3))
+ax.set_xticklabels([f"{h:02d}" for h in range(0, int(xmax) + 1, 3)], fontsize=10)
 ax.set_xlabel("hour of day", fontsize=10.5)
 ax.set_ylabel("£ per MWh", fontsize=10.5)
 ax.grid(color="#ededea", lw=0.9, zorder=0)

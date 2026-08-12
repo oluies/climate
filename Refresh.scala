@@ -1608,6 +1608,12 @@ def gbPrices(): Unit = {
     val zone = java.time.ZoneId.of("Europe/London")
     val hours = java.time.Duration.between(
       date.atStartOfDay(zone), date.plusDays(1).atStartOfDay(zone)).toHours
+    // The figure maps period to hour as (period - 1)/2, which is only right on a
+    // 24-hour day, so refuse the two clock-change days rather than emit periods
+    // the figure would mis-place or clip.
+    require(hours == 24,
+      s"gbPrices: $d is a clock-change day ($hours hours) - the figure's hour mapping " +
+        "assumes 48 periods, so pick another day")
     val expected = (1 to (hours * 2).toInt).toSet
     val missing = expected -- got
     require(missing.isEmpty,
