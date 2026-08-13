@@ -30,7 +30,7 @@ These observations lead us to six principles of vehicle design and vehicle use f
 
 ![](/img/without-hot-air/figure137.gif)
 
-<span class="figurenumber">Figure 20.2.</span> Team Crocodile’s eco-car uses <span class="mauve">1.3 kWh per 100 km</span>. Photo kindly provided by Team Crocodile. [<span class="websitetitle">www.teamcrocodile.com</span>](http://web.archive.org/web/2015/http://www.teamcrocodile.com/)
+<span class="figurenumber">Figure 20.2.</span> Team Crocodile’s eco-car uses <span class="mauve">1.3 kWh per 100 km</span>. Photo kindly provided by Team Crocodile.[^deadlinks] [<span class="websitetitle">www.teamcrocodile.com</span>](https://web.archive.org/web/20110201185547/http://www.teamcrocodile.com/)
 
 ![](/img/without-hot-air/figure138.gif)
 
@@ -784,7 +784,7 @@ Making a battery does emit more than making a fuel tank, and the claim fails on 
 
 <span class="figurenumber">Figure 20.36</span>. Trams work nicely in Istanbul and Prague too.
 
-[^deadlinks]: *Link check, 2026.* Several web addresses MacKay cites in this chapter no longer resolve, which is what an eighteen-year-old bibliography looks like. Two were live hyperlinks and have been repointed: the UK street design guide, whose own site is gone, now goes to *Manual for Streets* on gov.uk, and Team Crocodile's photo credit goes to an Internet Archive capture. Three others — **evolution.loremo.com**, **www.lightningcarcompany.co.uk** and **www.unisa.edu.au** — appear as photo credits rather than as links, and are left as MacKay wrote them, because the address there is the attribution and not a route to anything. The Loremo never entered production and its company folded; the Lightning Car Company's site is gone; the University of South Australia has reorganised its web estate and the TREV prototype pages went with it. All three are readable at the Internet Archive under those addresses. *Added in the 2026 revision.*
+[^deadlinks]: *Link check, 2026.* Five of the web addresses MacKay cites in this chapter no longer resolve, which is what an eighteen-year-old bibliography looks like. **All five were live hyperlinks**, and each has been handled on its own facts. The UK street design guide now points at *Manual for Streets* on gov.uk, the document having outlived its own website. Team Crocodile, the Lightning Car Company and the Loremo point at Internet Archive captures from 2011, 2010 and 2009 — the Loremo never entered production and its company folded, and the Lightning Car Company's site is simply gone. The University of South Australia's TREV pages are the exception: the deep link *w3.unisa.edu.au/solarcar/trev/* was never captured by the Archive, so there is nothing to point at and the address is left as text rather than as a link to nothing. **An earlier draft of this note claimed three of the five appeared only as photo credits and not as links.** That was wrong — all three also appear as hyperlinks in the body of this chapter, and the note has been corrected along with them. *Added in the 2026 revision.*
 
 [^8]: *... provision of excellent cycle facilities ...* The UK street design guide [[<span class="websitetitle">Manual for Streets</span>](https://www.gov.uk/government/publications/manual-for-streets)] encourages designing streets to make 20 miles per hour the natural speed. See also Franklin (2007).
 
@@ -846,7 +846,7 @@ Electric Smart Car "The electric version is powered by a 40 bhp motor, can go up
 
 ![](/img/without-hot-air/figure168.gif)
 
-<span class="figurenumber">Figure 20.39</span>. Lightning: <span class="mauve">11 kWh per 100 km</span>. Photo from <span class="websitetitle">www.lightningcarcompany.co.uk</span>.[^deadlinks]
+<span class="figurenumber">Figure 20.39</span>. Lightning: <span class="mauve">11 kWh per 100 km</span>. Photo from <span class="websitetitle">www.lightningcarcompany.co.uk</span>.
 
 ![](/img/without-hot-air/figure169.gif)
 
@@ -862,11 +862,11 @@ i MiEV This electric car is projected to have a range of 160 km with a 16 kWh ba
 
 EV1 The two-seater General Motors EV1 had a range of 120 to 240 km per charge, with nickel-metal hydride batteries holding 26.4 kWh. That’s an energy consumption of between <span class="mauve">11</span> and <span class="mauve">22 kWh per 100 km</span>.
 
-Lightning (figure 20.39) – has four 120 kW brushless motors, one on each wheel, regenerative braking, and fast-charging Nanosafe lithium titanate batteries. A capacity of 36 kWh gives a range of 200 miles (320 km). That’s <span class="mauve">11 kWh per 100 km</span>. [<span class="websitetitle">www.lightningcarcompany.co.uk</span>](http://www.lightningcarcompany.co.uk/)
+Lightning (figure 20.39) – has four 120 kW brushless motors, one on each wheel, regenerative braking, and fast-charging Nanosafe lithium titanate batteries. A capacity of 36 kWh gives a range of 200 miles (320 km). That’s <span class="mauve">11 kWh per 100 km</span>. [<span class="websitetitle">www.lightningcarcompany.co.uk</span>](https://web.archive.org/web/20100306025414/http://www.lightningcarcompany.co.uk/)
 
 Aptera This fantastic slippery fish is a two-seater vehicle, said to have an energy cost of <span class="mauve">6 kWh per 100 km</span>. It has a drag coefficient of 0.11 (figure 20.40). Electric and hybrid models are being developed. [<span class="websitetitle">www.aptera.com</span>](http://www.aptera.com/)
 
-Loremo Like the Aptera, the Loremo (figure 20.41) has a small frontal area and small drag coefficient (0.2) and it’s going to be available in both fossil-fuel and electric versions. It has two adult seats and two rear-facing kiddie seats. The Loremo EV will have lithium ion batteries and is predicted to have an energy cost of <span class="mauve">6 kWh per 100 km</span>, a top speed of 170 km/h, and a range of 153 km. It weighs 600 kg. [<span class="websitetitle">evolution.loremo.com</span>](http://evolution.loremo.com/)
+Loremo Like the Aptera, the Loremo (figure 20.41) has a small frontal area and small drag coefficient (0.2) and it’s going to be available in both fossil-fuel and electric versions. It has two adult seats and two rear-facing kiddie seats. The Loremo EV will have lithium ion batteries and is predicted to have an energy cost of <span class="mauve">6 kWh per 100 km</span>, a top speed of 170 km/h, and a range of 153 km. It weighs 600 kg. [<span class="websitetitle">evolution.loremo.com</span>](https://web.archive.org/web/20090917071125/http://evolution.loremo.com/)
 
 eBox The eBox has a lithium-ion battery with a capacity of 35 kWh and a weight of 280 kg; and a range of 140–180 miles. Its motor has a peak power of 120 kW and can produce a sustained power of 50 kW. Energy consumption: <span class="mauve">12 kWh per 100 km</span>.
 
@@ -888,7 +888,7 @@ Figure 20.42. The TREV. <span class="mauve">6 kWh per 100 km</span>. Photo from 
 
 Figure 20.43. Toyota RAV4 EV. Photo by Kenneth Adelman.
 
-TREV The Two-Seater Renewable Energy Vehicle (TREV) is a prototype developed by the University of South Australia (figure 20.42). This three-wheeler has a range of 150 km, a top speed of 120 km/h, a mass of 300 kg, and lithium-ion polymer batteries weighing 45 kg. During a real 3000 km trip, the energy consumption was <span class="mauve">6.2 kWh per 100 km</span>. [<span class="websitetitle">w3.unisa.edu.au/solarcar/trev/</span>](http://w3.unisa.edu.au/solarcar/trev/)
+TREV The Two-Seater Renewable Energy Vehicle (TREV) is a prototype developed by the University of South Australia (figure 20.42). This three-wheeler has a range of 150 km, a top speed of 120 km/h, a mass of 300 kg, and lithium-ion polymer batteries weighing 45 kg. During a real 3000 km trip, the energy consumption was <span class="mauve">6.2 kWh per 100 km</span>. <span class="websitetitle">w3.unisa.edu.au/solarcar/trev/</span>
 
 Venturi Fetish Has a 28 kWh battery, weighing 248 kg. The car weighs 1000 kg. Range 160–250 km. That’s <span class="mauve">11–17 kWh per 100 km</span>. [<span class="websitetitle">www.venturifetish.fr/fetish.html</span>](http://www.venturifetish.fr/fetish.html)
 
