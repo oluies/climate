@@ -1589,6 +1589,16 @@ def gbPrices(): Unit = {
   for ((d, label) <- days) {
     require(!label.contains(","), s"gbPrices: label for $d contains a comma")
     val date = java.time.LocalDate.parse(d)
+    // A settlement day is 48 half-hours. The two clock-change days are 46 and 50,
+    // and the figure maps period to hour as (period - 1)/2, which is wrong on
+    // both - so refuse them here, before the network call, rather than fetching
+    // a day that cannot be plotted.
+    val zone = java.time.ZoneId.of("Europe/London")
+    val hours = java.time.Duration.between(
+      date.atStartOfDay(zone), date.plusDays(1).atStartOfDay(zone)).toHours
+    require(hours == 24,
+      s"gbPrices: $d is a clock-change day ($hours hours) - the figure's hour mapping " +
+        "assumes 48 periods, so pick another day")
     // Query from the previous day: the endpoint filters on startTime, not on
     // settlementDate, and under BST periods 1 and 2 of a day start at 23:00Z
     // and 23:30Z the day before. A window beginning at 00:00Z silently drops
@@ -1601,20 +1611,8 @@ def gbPrices(): Unit = {
       .filter(r => r("dataProvider").str == "APXMIDP" && r("settlementDate").str == d)
       .sortBy(_("settlementPeriod").num)
     val got = rows.map(_("settlementPeriod").num.toInt).toSet
-    // A settlement day is 48 half-hours, except on the two clock-change days:
-    // 46 when the clocks go forward, 50 when they go back. Derive the count from
-    // the day's actual length rather than asserting 48, which would hard-fail in
-    // March with a message telling the reader to widen a window that cannot help.
-    val zone = java.time.ZoneId.of("Europe/London")
-    val hours = java.time.Duration.between(
-      date.atStartOfDay(zone), date.plusDays(1).atStartOfDay(zone)).toHours
-    // The figure maps period to hour as (period - 1)/2, which is only right on a
-    // 24-hour day, so refuse the two clock-change days rather than emit periods
-    // the figure would mis-place or clip.
-    require(hours == 24,
-      s"gbPrices: $d is a clock-change day ($hours hours) - the figure's hour mapping " +
-        "assumes 48 periods, so pick another day")
-    val expected = (1 to (hours * 2).toInt).toSet
+    // 48, restating the invariant the require above guarantees.
+    val expected = (1 to 48).toSet
     val missing = expected -- got
     require(missing.isEmpty,
       s"gbPrices: $d should have ${expected.size} settlement periods but is missing " +

@@ -62,6 +62,14 @@ export const pageview = (url) => {
   // Deferred a tick so next/head has committed the new <title>: routeChangeComplete
   // fires *before* the title is updated, so reading it synchronously here would
   // record the previous page's title against the new path.
+  //
+  // One case this does not fix, and cannot without guessing: browsers throttle
+  // zero-delay timers in hidden tabs, so several route changes within one
+  // throttle window wake together and all read the last route's title. Paths
+  // stay correct; buffered titles can collapse onto the final one. A microtask
+  // would dodge the throttling but relies on next/head having already committed,
+  // which is a Next internal — a wrong title on every navigation would be worse
+  // than a wrong title on background-tab bursts, so the macrotask stays.
   setTimeout(() => {
     const title = typeof document !== 'undefined' ? document.title : undefined
     if (flushed) send({ path: url, title })

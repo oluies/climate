@@ -26,6 +26,8 @@ jobs:
             book/index.qmd without-hot-air/src/chap-value-of-renewables.md
             without-hot-air/src/author.md without-hot-air/src/acknowledgments.md
             without-hot-air/src/chap06.md without-hot-air/src/chapM.md without-hot-air/src/chapN.md
+            without-hot-air/src/chap20.md
+            without-hot-air/src/chap31.md
             without-hot-air/src/chapL.md
             without-hot-air/src/chapO.md
           fail: false
