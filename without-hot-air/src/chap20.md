@@ -30,7 +30,7 @@ These observations lead us to six principles of vehicle design and vehicle use f
 
 ![](/img/without-hot-air/figure137.gif)
 
-<span class="figurenumber">Figure 20.2.</span> Team Crocodile’s eco-car uses <span class="mauve">1.3 kWh per 100 km</span>. Photo kindly provided by Team Crocodile. [<span class="websitetitle">www.teamcrocodile.com</span>](http://www.teamcrocodile.com/)
+<span class="figurenumber">Figure 20.2.</span> Team Crocodile’s eco-car uses <span class="mauve">1.3 kWh per 100 km</span>. Photo kindly provided by Team Crocodile. [<span class="websitetitle">www.teamcrocodile.com</span>](http://web.archive.org/web/2015/http://www.teamcrocodile.com/)
 
 ![](/img/without-hot-air/figure138.gif)
 
@@ -784,7 +784,9 @@ Making a battery does emit more than making a fuel tank, and the claim fails on 
 
 <span class="figurenumber">Figure 20.36</span>. Trams work nicely in Istanbul and Prague too.
 
-[^8]: *... provision of excellent cycle facilities ...* The UK street design guide [[<span class="websitetitle">www.manualforstreets.org.uk</span>](http://www.manualforstreets.org.uk/)] encourages designing streets to make 20 miles per hour the natural speed. See also Franklin (2007).
+[^deadlinks]: *Link check, 2026.* Several web addresses MacKay cites in this chapter no longer resolve, which is what an eighteen-year-old bibliography looks like. Two were live hyperlinks and have been repointed: the UK street design guide, whose own site is gone, now goes to *Manual for Streets* on gov.uk, and Team Crocodile's photo credit goes to an Internet Archive capture. Three others — **evolution.loremo.com**, **www.lightningcarcompany.co.uk** and **www.unisa.edu.au** — appear as photo credits rather than as links, and are left as MacKay wrote them, because the address there is the attribution and not a route to anything. The Loremo never entered production and its company folded; the Lightning Car Company's site is gone; the University of South Australia has reorganised its web estate and the TREV prototype pages went with it. All three are readable at the Internet Archive under those addresses. *Added in the 2026 revision.*
+
+[^8]: *... provision of excellent cycle facilities ...* The UK street design guide [[<span class="websitetitle">Manual for Streets</span>](https://www.gov.uk/government/publications/manual-for-streets)] encourages designing streets to make 20 miles per hour the natural speed. See also Franklin (2007).
 
 [^9]: *A fair and simple method for handling congestion-charging*. I learnt a brilliant way to automate congestion-charging from Stephen Salter. A simple daily congestion charge, as levied in London, sends only a crude signal to drivers; once a car-owner has decided to pay the day’s charge and drive into a congestion zone, he has no incentive to drive *little* in the zone. Nor is he rewarded with any rebate if he carefully chooses routes in the zone that are not congested. Instead of having a centralized authority that decides in advance when and where the congestion-charge zones are, with expensive and intrusive monitoring and recording of vehicle movements into and within all those zones, Salter has a simpler, decentralized, anonymous method of charging drivers for driving in heavy, slow traffic, wherever and whenever it actually exists. The system would operate nationwide. Here’s how it works. We want a device that answers the question "how congested is the traffic I am driving in?" A good measure of congestion is "how many other active vehicles are close to mine?" In fast-moving traffic, the spacing between vehicles is larger than slow-moving traffic. Traffic that’s trundling in tedious queues is the most densely packed. The number of nearby vehicles that are active can be sensed anonymously by fitting in every vehicle a radio transmitter/receiver (like a very cheap mobile phone) that transmits little radio-bleeps at a steady rate whenever the engine is running, and that counts the number of bleeps it hears from other vehicles. The congestion charge would be proportional to the number of bleeps received; this charge could be paid at refuelling stations whenever the vehicle is refuelled. The radio transmitter/receiver would replace the current UK road tax disc.
 
@@ -844,7 +846,7 @@ Electric Smart Car "The electric version is powered by a 40 bhp motor, can go up
 
 ![](/img/without-hot-air/figure168.gif)
 
-<span class="figurenumber">Figure 20.39</span>. Lightning: <span class="mauve">11 kWh per 100 km</span>. Photo from <span class="websitetitle">www.lightningcarcompany.co.uk</span>.
+<span class="figurenumber">Figure 20.39</span>. Lightning: <span class="mauve">11 kWh per 100 km</span>. Photo from <span class="websitetitle">www.lightningcarcompany.co.uk</span>.[^deadlinks]
 
 ![](/img/without-hot-air/figure169.gif)
 
