@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """Total energy supply per person, 1965 to 2025, in MacKay's kWh per day per person.
 This is the book's own unit applied to the Energy Institute's per-capita series, so
 his headline figures for Britain and America can be read straight off it.

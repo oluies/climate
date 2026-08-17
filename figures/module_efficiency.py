@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """Figure 6.18 redone: module efficiencies now, against MacKay's two assumptions.
 Input: data-refresh/module-efficiency.csv."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt

@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """World energy supply in 2025 and where that year's growth came from (seaborn).
 Two panels rather than one dual-axis chart: the stock is in hundreds of EJ, the
 flow in single EJ, and putting them on one scale would hide the flow entirely.

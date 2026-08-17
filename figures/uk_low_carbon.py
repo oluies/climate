@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["duckdb", "matplotlib", "numpy"]
+# ///
 """Figure 18.9 remade: British renewables and nuclear per person, 2006 and 2025.
 Input: data-refresh/uk-low-carbon.csv from `mill Refresh.scala ukLowCarbon`."""
 import sys, duckdb, matplotlib.pyplot as plt, numpy as np

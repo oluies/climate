@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["duckdb", "matplotlib", "numpy", "seaborn"]
+# ///
 """What it costs to build against what the output actually earned, GB.
 Input: data-refresh/lcoe-vs-capture.csv from `mill Refresh.scala lcoeVsCapture`."""
 import sys, duckdb, seaborn as sns, matplotlib.pyplot as plt, numpy as np

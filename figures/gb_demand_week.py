@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """GB electricity demand over a winter week (MacKay's Fig K.3), seaborn.
 Data from Refresh.scala chapterKDemand -> gb-demand-week.csv."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt

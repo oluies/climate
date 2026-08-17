@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """Which producers are past peak, and by how far.
 Input: data-refresh/peaks-by-country.csv from `mill Refresh.scala chapterN`."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt

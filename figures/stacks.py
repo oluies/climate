@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["duckdb", "matplotlib", "numpy"]
+# ///
 """MacKay's balance sheet against the 2026 revision: both stacks, both editions.
 Input: data-refresh/stacks.csv from `mill Refresh.scala stacks`."""
 import sys, duckdb, matplotlib.pyplot as plt, numpy as np

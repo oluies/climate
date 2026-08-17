@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """UK primary energy history, stacked area (seaborn theme + matplotlib stackplot).
 Data from Refresh.scala chapterK -> uk-primary-energy.csv."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt

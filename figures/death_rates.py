@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["duckdb", "matplotlib", "numpy"]
+# ///
 """Death rates by generation technology, remaking MacKay's figure 24.11.
 Input: data-refresh/death-rates.csv from `mill Refresh.scala deathRates`."""
 import sys, duckdb, matplotlib.pyplot as plt, numpy as np

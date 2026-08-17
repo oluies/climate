@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["duckdb", "matplotlib", "numpy"]
+# ///
 """Cartoon Britain, 2008 and 2026 — MacKay's three-legged simplification, redrawn.
 Input: data-refresh/cartoon-britain.csv from `mill Refresh.scala cartoonBritain`."""
 import sys, duckdb, matplotlib.pyplot as plt, numpy as np

@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """World installed solar PV capacity, 2000 to 2025, against MacKay's fantasy.
 Input: data-refresh/solar-capacity.csv from `mill Refresh.scala chapter06`."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt

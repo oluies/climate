@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["duckdb", "matplotlib", "numpy"]
+# ///
 """Figures I.11 and I.12: greenhouse-gas emissions per person against income
 and against energy use. Input: data-refresh/ghg-scatter.csv from
 `mill Refresh.scala ghgScatter`. Third argument picks the x-axis."""

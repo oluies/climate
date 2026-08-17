@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "numpy", "pandas", "seaborn"]
+# ///
 """MacKay's Figure J.1 regenerated: populations against land areas, both on log
 scales, with diagonals of constant population density. 2023 populations.
 Input: data-refresh/populations-areas.csv (built from the chapter J table)."""

@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """Germany's net electricity trade, 1990 to the latest full year (seaborn).
 Diverging bars around zero: above = net importer, below = net exporter.
 Input: data-refresh/de-net-trade.csv (year, twh) from `mill Refresh.scala deTrade`."""

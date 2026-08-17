@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """Render the cost-decline figure with seaborn (dataviz-validated palette).
 Data comes from Refresh.scala (DuckDB) as cost-decline.csv; this only draws it.
 Usage: python cost_decline.py <csv> <out.svg>"""

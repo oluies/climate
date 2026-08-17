@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "numpy", "pandas", "seaborn"]
+# ///
 """Figure 7.8 redone: Cambridge daily temperature, MacKay's 2006 against 2025.
 Input: data-refresh/cambridge-temperature.csv from `mill Refresh.scala chapter07Temp`."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt, numpy as np

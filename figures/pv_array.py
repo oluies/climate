@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "numpy", "pandas", "seaborn"]
+# ///
 """Figure 6.5 recalculated: MacKay's 25 m2 Cambridgeshire array, then and now.
 Input: data-refresh/pv-array-cambridge.csv from `mill Refresh.scala chapter06Figs`."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt, numpy as np

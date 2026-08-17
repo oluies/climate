@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["duckdb", "matplotlib", "numpy"]
+# ///
 """Levelised cost as ranges, not points, with nuclear split by how it is financed.
 Input: data-refresh/nuclear-costs.csv from `mill Refresh.scala nuclearCosts`."""
 import sys, duckdb, matplotlib.pyplot as plt, numpy as np

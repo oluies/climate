@@ -187,8 +187,8 @@ def costs(): Unit = {
     os.write.over(dir / "cost-decline.csv", csv.toString)
     print(tbl.toString)
     println(f"solar module USD/W: $mod2008%.2f (2008) -> $modNow%.2f ($modYr); wrote data-refresh/cost-decline.csv")
-    println("render the figure: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
-    println("  python figures/cost_decline.py data-refresh/cost-decline.csv without-hot-air/Images/fig-cost-decline.svg")
+    println("render the figure:")
+    println("  uv run figures/cost_decline.py data-refresh/cost-decline.csv without-hot-air/Images/fig-cost-decline.svg")
   }
 }
 
@@ -258,8 +258,8 @@ def chapterK(): Unit = {
     }
     os.write.over(dir / "uk-primary-energy.csv", out.toString)
     println(s"wrote data-refresh/uk-primary-energy.csv (1965-$last)")
-    println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
-    println("  python figures/uk_primary_energy.py data-refresh/uk-primary-energy.csv without-hot-air/Images/fig-uk-primary-energy.svg")
+    println("render:")
+    println("  uv run figures/uk_primary_energy.py data-refresh/uk-primary-energy.csv without-hot-air/Images/fig-uk-primary-energy.svg")
   }
 }
 
@@ -297,8 +297,8 @@ def chapterKElec(): Unit = {
     }
     os.write.over(dir / "uk-electricity-percapita.csv", out.toString)
     println(s"wrote data-refresh/uk-electricity-percapita.csv (1985-$last)")
-    println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
-    println("  python figures/uk_electricity_percapita.py data-refresh/uk-electricity-percapita.csv without-hot-air/Images/fig-uk-electricity-percapita.svg")
+    println("render:")
+    println("  uv run figures/uk_electricity_percapita.py data-refresh/uk-electricity-percapita.csv without-hot-air/Images/fig-uk-electricity-percapita.svg")
   }
 }
 
@@ -315,8 +315,8 @@ def chapterKDemand(): Unit = {
     out ++= f"${r("startTime").str},${r("initialDemandOutturn").num / 1000.0}%.2f\n"
   os.write.over(dir / "gb-demand-week.csv", out.toString)
   println("wrote data-refresh/gb-demand-week.csv")
-  println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
-  println("  python figures/gb_demand_week.py data-refresh/gb-demand-week.csv without-hot-air/Images/fig-gb-demand-week.svg")
+  println("render:")
+  println("  uv run figures/gb_demand_week.py data-refresh/gb-demand-week.csv without-hot-air/Images/fig-gb-demand-week.svg")
 }
 
 // ---- Chapter J: world energy, from the EI Statistical Review workbook ----
@@ -464,10 +464,10 @@ def chapterJ(): Unit = {
     println(f"China elec  ${cn(1985)}%.0f (1985) -> ${cn(2025)}%.0f TWh (2025), ${cn(2025) / cn(1985)}%.0fx; ${cn(2025) / wd(2025) * 100}%.0f%% of world")
     println(f"            added $cnAdd%.0f TWh since 2000 = ${cnAdd / wdAdd * 100}%.0f%% of world growth; US+Europe generate ${elecSeries("US")(2025) + elecSeries("Europe")(2025)}%.0f TWh today")
     println(f"electricity $et24%.0f -> $et25%.0f TWh (+${et25 - et24}%.0f); fossil $fos24%.0f -> $fos25%.0f (${fos25 - fos24}%+.0f), now ${fos25 / et25 * 100}%.1f%%")
-    println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
-    println("  python figures/world_energy_2025.py data-refresh/world-energy-2025.csv without-hot-air/Images/fig-world-energy-2025.svg")
-    println("  python figures/world_electricity_2025.py data-refresh/world-electricity-2025.csv without-hot-air/Images/fig-world-electricity-2025.svg")
-    println("  python figures/world_percapita.py data-refresh/world-tes-percapita.csv without-hot-air/Images/fig-world-percapita.svg")
+    println("render:")
+    println("  uv run figures/world_energy_2025.py data-refresh/world-energy-2025.csv without-hot-air/Images/fig-world-energy-2025.svg")
+    println("  uv run figures/world_electricity_2025.py data-refresh/world-electricity-2025.csv without-hot-air/Images/fig-world-electricity-2025.svg")
+    println("  uv run figures/world_percapita.py data-refresh/world-tes-percapita.csv without-hot-air/Images/fig-world-percapita.svg")
   }
 }
 
@@ -507,8 +507,8 @@ def chapter03(): Unit = {
     }
     os.write.over(dir / "ev-share.csv", out.toString)
     for (c <- want; (y, v) <- latest.get(c)) println(f"$c%-16s $y: $v%5.1f%% of new cars")
-    println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
-    println("  python figures/ev_share.py data-refresh/ev-share.csv without-hot-air/Images/fig-ev-share.svg")
+    println("render:")
+    println("  uv run figures/ev_share.py data-refresh/ev-share.csv without-hot-air/Images/fig-ev-share.svg")
   }
 }
 
@@ -568,8 +568,8 @@ def chapterJ4(): Unit = {
     }
     os.write.over(dir / "states-and-europe.csv", out.toString)
     println(s"wrote data-refresh/states-and-europe.csv ($n US states + European countries)")
-    println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
-    println("  python figures/states_and_europe.py data-refresh/states-and-europe.csv without-hot-air/Images/fig-states-and-europe.svg")
+    println("render:")
+    println("  uv run figures/states_and_europe.py data-refresh/states-and-europe.csv without-hot-air/Images/fig-states-and-europe.svg")
   }
 }
 
@@ -602,8 +602,8 @@ def deTrade(): Unit = {
     os.write.over(dir / "de-net-trade.csv", out.toString)
     println(s"wrote data-refresh/de-net-trade.csv (1990-$last)")
     println(f"largest export surplus: $minY ${-minV}%.1f TWh  |  turned net importer: $flip")
-    println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
-    println("  python figures/de_net_trade.py data-refresh/de-net-trade.csv without-hot-air/Images/fig-de-net-trade.svg")
+    println("render:")
+    println("  uv run figures/de_net_trade.py data-refresh/de-net-trade.csv without-hot-air/Images/fig-de-net-trade.svg")
   }
 }
 
@@ -796,8 +796,8 @@ def chapter06(): Unit = {
         |Cleve Hill (Kent) 2025,10.8,PV
         |""".stripMargin)
     println("wrote data-refresh/solar-capacity.csv, solar-percapita.csv, solar-power-density.csv")
-    println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
-    println("  python figures/solar_capacity.py data-refresh/solar-capacity.csv without-hot-air/Images/fig-solar-capacity.svg")
+    println("render:")
+    println("  uv run figures/solar_capacity.py data-refresh/solar-capacity.csv without-hot-air/Images/fig-solar-capacity.svg")
   }
 }
 
@@ -952,9 +952,9 @@ def chapterN(): Unit = {
     }
     os.write.over(dir / "peaks-by-country.csv", out.toString)
     println("wrote data-refresh/peaks-by-country.csv")
-    println("render (once per fuel): uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
-    println("  python figures/peaks_by_country.py data-refresh/peaks-by-country.csv without-hot-air/Images/fig-peak-oil-by-country.svg Oil")
-    println("  python figures/peaks_by_country.py data-refresh/peaks-by-country.csv without-hot-air/Images/fig-peak-gas-by-country.svg Gas")
+    println("render (once per fuel):")
+    println("  uv run figures/peaks_by_country.py data-refresh/peaks-by-country.csv without-hot-air/Images/fig-peak-oil-by-country.svg Oil")
+    println("  uv run figures/peaks_by_country.py data-refresh/peaks-by-country.csv without-hot-air/Images/fig-peak-gas-by-country.svg Gas")
   }
 }
 
@@ -1031,8 +1031,8 @@ def chapter07(): Unit = {
     out ++= "UK,0.3013,0.0846,3.56\n"
     os.write.over(dir / "heatpump-breakeven.csv", out.toString)
     println(s"wrote data-refresh/heatpump-breakeven.csv (${keep.size + 1} countries incl. UK)")
-    println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
-    println("  python figures/heatpump_breakeven.py data-refresh/heatpump-breakeven.csv without-hot-air/Images/fig-heatpump-breakeven.svg")
+    println("render:")
+    println("  uv run figures/heatpump_breakeven.py data-refresh/heatpump-breakeven.csv without-hot-air/Images/fig-heatpump-breakeven.svg")
   }
 }
 
@@ -1101,8 +1101,8 @@ def lcoeVsCapture(): Unit = {
   println("wrote data-refresh/lcoe-vs-capture.csv")
   for ((label, _, mid, _, src) <- rows)
     println(f"  $label%-24s LCOE $mid%3.0f  capture ${cap(src)}%5.1f  ${if (cap(src) > mid) "clears" else "SHORT"}")
-  println("render: uv run --with seaborn --with pandas --with matplotlib --python 3.12 \\")
-  println("  python figures/lcoe_vs_capture.py data-refresh/lcoe-vs-capture.csv without-hot-air/Images/fig-lcoe-vs-capture.svg")
+  println("render:")
+  println("  uv run figures/lcoe_vs_capture.py data-refresh/lcoe-vs-capture.csv without-hot-air/Images/fig-lcoe-vs-capture.svg")
 }
 
 // ---- The stacks: MacKay's 2008 balance sheet against the 2026 revision ----

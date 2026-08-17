@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["duckdb", "matplotlib", "numpy"]
+# ///
 """Figure 20.22 remade: the electric winners of European Car of the Year.
 Input: data-refresh/coty-efficiency.csv from `mill Refresh.scala cotyEfficiency`."""
 import sys, duckdb, matplotlib.pyplot as plt, numpy as np

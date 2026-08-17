@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """Figure 6.16 redone: annual mean sunshine on the horizontal, by location.
 Input: data-refresh/solar-locations.csv from `mill Refresh.scala chapter06Figs`."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt
