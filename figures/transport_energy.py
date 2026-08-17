@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["duckdb", "matplotlib"]
+# ///
 """Figure 20.23 remade: passenger transport energy against speed, 2008 and 2026.
 Input: data-refresh/transport-energy.csv from `mill Refresh.scala transportEnergy`."""
 import sys, duckdb, matplotlib.pyplot as plt

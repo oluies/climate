@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["duckdb", "matplotlib", "numpy"]
+# ///
 """Figure 26.5b: half-hourly GB market-index prices on three days of 2026.
 
 MacKay's figure 26.5 showed three days of 2006-07 to explain how pumped storage

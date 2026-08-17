@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """UK electricity mix line chart, seaborn. Data from Refresh.scala uk -> uk-electricity-mix.csv."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt
 df = pd.read_csv(sys.argv[1])

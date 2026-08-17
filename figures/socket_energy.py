@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["duckdb", "matplotlib", "numpy"]
+# ///
 """Figure 20.21 remade: energy taken from the socket against distance driven.
 Input: data-refresh/socket-energy.csv from `mill Refresh.scala socketEnergy`."""
 import sys, duckdb, matplotlib.pyplot as plt, numpy as np

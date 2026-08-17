@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """Solar electricity per person, in this book's units, against MacKay's two estimates.
 Input: data-refresh/solar-percapita.csv from `mill Refresh.scala chapter06`."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt

@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """World electricity generation by source in 2025 (seaborn).
 Electricity is the part of the energy system where the transition is visible, so
 it gets its own figure: solar passed wind here, and is closing on nuclear.

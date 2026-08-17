@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """Figure 6.11 rebuilt from the sources in this chapter's own endnotes.
 Input: data-refresh/biomass-density.csv."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt

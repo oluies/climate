@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "numpy", "seaborn"]
+# ///
 """Figure 6.15 redone with a 2026 flagship module beside MacKay's 2008 Sanyo.
 Power against light intensity at 25 C. Modelled from datasheet ratings: output is
 proportional to irradiance, with the small low-light efficiency droop crystalline

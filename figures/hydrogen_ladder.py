@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "numpy"]
+# ///
 """Figure O.1: why the hydrogen ladder is ordered the way it is.
 
 This is not a reproduction of Liebreich's ladder, which is his work. It is this

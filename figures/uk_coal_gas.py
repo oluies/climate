@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """UK coal vs gas consumption over time (MacKay's Fig K.7 territory), seaborn.
 Reuses data-refresh/uk-primary-energy.csv (Coal, Gas rows)."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt

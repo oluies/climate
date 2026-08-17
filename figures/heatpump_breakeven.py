@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """Where a heat pump saves money: the electricity-to-gas price ratio against the
 seasonal performance factor needed to break even.
 Input: data-refresh/heatpump-breakeven.csv from `mill Refresh.scala chapter07`."""

@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """GB capture-price bars, seaborn. Data from Refresh.scala gbCapture -> gb-capture.csv."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt
 df = pd.read_csv(sys.argv[1]).sort_values("capture", ascending=False)

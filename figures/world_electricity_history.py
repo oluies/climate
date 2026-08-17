@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """Electricity generation by region, 1985 to 2025 (seaborn).
 The point of the figure is the shape of China's curve against everyone else's.
 Input: data-refresh/world-electricity-history.csv from `mill Refresh.scala chapterJ`."""

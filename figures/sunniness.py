@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """Figure 6.13 redone: sunshine hours as a fraction of daylight hours.
 Input: data-refresh/sunniness.csv from `mill Refresh.scala chapter06Figs`."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt

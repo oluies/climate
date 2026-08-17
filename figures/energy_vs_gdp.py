@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["duckdb", "matplotlib"]
+# ///
 """Figures 18.11 and 18.12: energy per person against GDP per person, as paths.
 Input: data-refresh/energy-vs-gdp.csv or fossil-vs-gdp.csv from
 `mill Refresh.scala energyVsGdp`. Third argument sets the title wording."""

@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """Change in CO2 from energy by region, 2000 to 2025 (seaborn).
 Diverging bars around zero: the question this answers is who is driving the
 *increase*, which is a different question from who emits most, or most per person.

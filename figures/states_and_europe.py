@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "numpy", "pandas", "seaborn"]
+# ///
 """MacKay's Figure J.4 regenerated: the American states plotted against the
 countries of Europe, on the same log-log axes with constant-density diagonals.
 Input: data-refresh/states-and-europe.csv from `mill Refresh.scala chapterJ4`."""

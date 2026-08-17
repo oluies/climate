@@ -2,7 +2,7 @@ This is a work-in-progress 2026 revised edition of David MacKay’s Sustainable 
 
 MacKay’s text and his own figures are reproduced unchanged. New material added in this revision is marked in the chapter where it appears; the first such chapter is The value of renewable energy as it scales in Part II.
 
-The original book is © 2008 David J. C. MacKay and licensed CC BY-NC-SA 2.0 UK. This edition carries the same licence. Figures that carry third-party rights — the Private Eye cartoons, named-photographer photos, and the Ordnance Survey Crown Copyright maps — are omitted here and marked in place, because MacKay’s licence did not extend to them.
+The original book is © 2008 David J. C. MacKay and licensed CC BY-NC-SA 2.0 UK. New and revised material in this edition is © 2026 Örjan Lundberg and is released under that same licence, as its ShareAlike term requires. Figures that carry third-party rights — the Private Eye cartoons, named-photographer photos, and the Ordnance Survey Crown Copyright maps — are omitted here and marked in place, because MacKay’s licence did not extend to them.
 
 ## Layout
 

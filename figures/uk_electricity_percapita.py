@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas", "seaborn"]
+# ///
 """UK electricity generation per person (MacKay's kWh/d/p), seaborn.
 Data from Refresh.scala chapterKElec -> uk-electricity-percapita.csv."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt

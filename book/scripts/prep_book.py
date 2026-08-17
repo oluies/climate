@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = []
+# ///
 """Prepare MacKay chapters for the Quarto build.
 Source of truth is without-hot-air/src. This copies each chapter into book/chapters/,
 rewrites absolute /img/ paths to relative, and removes figures that carry third-party

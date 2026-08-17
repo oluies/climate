@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["duckdb", "matplotlib"]
+# ///
 """China's nuclear build against Germany's phase-out, 1965-2025.
 Input: data-refresh/nuclear-history.csv from `mill Refresh.scala nuclearHistory`."""
 import sys, duckdb, matplotlib.pyplot as plt
