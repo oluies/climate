@@ -26,7 +26,7 @@ jobs:
           lfs: true
       # uv reads the PEP 723 header in prep_book.py and fetches the interpreter
       # it asks for, so the Python version lives in the script rather than here.
-      - uses: astral-sh/setup-uv@v5
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
       - uses: quarto-dev/quarto-actions/setup@v2
       - name: Prepare chapters (rewrite image paths, strip third-party figures)
         run: uv run book/scripts/prep_book.py
