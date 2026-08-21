@@ -448,7 +448,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#about-this-edition" id="toc-about-this-edition" class="nav-link active" data-scroll-target="#about-this-edition">About this edition</a></li>
+  <li><a href="#about-this-edition" id="toc-about-this-edition" class="nav-link active" data-scroll-target="#about-this-edition">About this edition</a>
+  <ul class="collapse">
+  <li><a href="#latest-changes" id="toc-latest-changes" class="nav-link" data-scroll-target="#latest-changes">Latest changes</a></li>
+  <li><a href="#new-chapters" id="toc-new-chapters" class="nav-link" data-scroll-target="#new-chapters">New chapters</a></li>
+  <li><a href="#licence" id="toc-licence" class="nav-link" data-scroll-target="#licence">Licence</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -484,10 +489,109 @@ ul.task-list li input[type="checkbox"] {
 <section id="about-this-edition" class="level1 unnumbered">
 <h1 class="unnumbered">About this edition</h1>
 <p>This is a work-in-progress 2026 revised edition of David MacKay’s <em>Sustainable Energy — Without the Hot Air</em> (2008), rebuilt with <a href="https://quarto.org">Quarto</a> from the markdown source preserved by the <a href="https://github.com/life-itself/climate">Life Itself climate project</a>.</p>
-<p>MacKay’s text and his own figures are reproduced unchanged. New material added in this revision is marked in the chapter where it appears; the first such chapter is <em>The value of renewable energy as it scales</em> in Part II.</p>
+<p>MacKay’s text and his own figures are reproduced unchanged. New material added in this revision is marked in the chapter where it appears, and six chapters are new in their entirety.</p>
+<section id="latest-changes" class="level2">
+<h2 class="anchored" data-anchor-id="latest-changes">Latest changes</h2>
+<p>Last updated <strong>21 August 2026</strong>. The complete history is in the <a href="https://github.com/oluies/climate/commits/main">repository</a>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>What changed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>21 August 2026</td>
+<td>Chapter 6 gains a check on solar power per unit area from Chinese utility-scale data, which reaches Cleve Hill’s figure by an independent route; chapter L the land totals that go with it; chapter 31 a daily carbon dioxide series behind the “nine seconds” comparison.</td>
+</tr>
+<tr class="even">
+<td>21 August 2026</td>
+<td>Chapter 11a gains the electricity cost of a single AI answer, the land a data-centre campus stands on, who pays for its winning bid, and what generates its power.</td>
+</tr>
+<tr class="odd">
+<td>20 August 2026</td>
+<td>Chapter 28a: two claims about flexibility narrowed to what the study behind them supports.</td>
+</tr>
+<tr class="even">
+<td>19 August 2026</td>
+<td>Chapter 28a: the German flexibility study’s own figures moved into the text.</td>
+</tr>
+<tr class="odd">
+<td>17 August 2026</td>
+<td>Chapter 28a argues the agency problem from the mechanism rather than a political slogan. Figure scripts declare their dependencies and run under uv.</td>
+</tr>
+<tr class="even">
+<td>16–17 August 2026</td>
+<td>Chapter L: a third way of counting emissions and what it does to Sweden, and corrections to the carbon explorer instructions.</td>
+</tr>
+<tr class="odd">
+<td>15–16 August 2026</td>
+<td>Chapter 31: drained peat, and why filling the ditches in does not undo it.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="new-chapters" class="level2">
+<h2 class="anchored" data-anchor-id="new-chapters">New chapters</h2>
+<p>Six chapters are new. Each says so at the top, and none of them is MacKay’s writing.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Chapter</th>
+<th>What it is for</th>
+<th>Added</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>11a</strong> <em>The machines behind the screen</em></td>
+<td>Data centres, from MacKay’s 0.4 kWh/d footnote about servers to a load that outbids industry and housing for a grid connection.</td>
+<td>3 August 2026</td>
+</tr>
+<tr class="even">
+<td><strong>28a</strong> <em>The value of renewable energy as it scales</em></td>
+<td>What happens to the economic value of renewable electricity as it grows to the scale the balance sheet calls for.</td>
+<td>30 July 2026</td>
+</tr>
+<tr class="odd">
+<td><strong>L</strong> <em>The world in 2025</em></td>
+<td>MacKay’s stock-taking redone for the most recent complete year.</td>
+<td>1 August 2026</td>
+</tr>
+<tr class="even">
+<td><strong>M</strong> <em>Energy return on investment</em></td>
+<td>The question chapter 3 asks and then declines to answer properly.</td>
+<td>2 August 2026</td>
+</tr>
+<tr class="odd">
+<td><strong>N</strong> <em>Peak oil, peak gas, peak uranium</em></td>
+<td>Chapter 23’s Jevons calculation carried forward to the fuels it now matters for.</td>
+<td>2 August 2026</td>
+</tr>
+<tr class="even">
+<td><strong>O</strong> <em>The hydrogen ladder</em></td>
+<td>Which uses of hydrogen are worth the electricity they cost, ranked.</td>
+<td>9 August 2026</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="licence" class="level2">
+<h2 class="anchored" data-anchor-id="licence">Licence</h2>
 <p>The original book is © 2008 David J. C. MacKay and licensed CC BY-NC-SA 2.0 UK. New and revised material in this edition is © 2026 Örjan Lundberg and is released under that same licence, as its ShareAlike term requires. Figures that carry third-party rights — the Private Eye cartoons, named-photographer photos, and the Ordnance Survey Crown Copyright maps — are omitted here and marked in place, because MacKay’s licence did not extend to them.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

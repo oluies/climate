@@ -4,7 +4,37 @@
     "href": "index.html",
     "title": "Sustainable Energy — Without the Hot Air",
     "section": "",
-    "text": "About this edition\nThis is a work-in-progress 2026 revised edition of David MacKay’s Sustainable Energy — Without the Hot Air (2008), rebuilt with Quarto from the markdown source preserved by the Life Itself climate project.\nMacKay’s text and his own figures are reproduced unchanged. New material added in this revision is marked in the chapter where it appears; the first such chapter is The value of renewable energy as it scales in Part II.\nThe original book is © 2008 David J. C. MacKay and licensed CC BY-NC-SA 2.0 UK. New and revised material in this edition is © 2026 Örjan Lundberg and is released under that same licence, as its ShareAlike term requires. Figures that carry third-party rights — the Private Eye cartoons, named-photographer photos, and the Ordnance Survey Crown Copyright maps — are omitted here and marked in place, because MacKay’s licence did not extend to them.",
+    "text": "About this edition\nThis is a work-in-progress 2026 revised edition of David MacKay’s Sustainable Energy — Without the Hot Air (2008), rebuilt with Quarto from the markdown source preserved by the Life Itself climate project.\nMacKay’s text and his own figures are reproduced unchanged. New material added in this revision is marked in the chapter where it appears, and six chapters are new in their entirety.",
+    "crumbs": [
+      "About this edition"
+    ]
+  },
+  {
+    "objectID": "index.html#latest-changes",
+    "href": "index.html#latest-changes",
+    "title": "Sustainable Energy — Without the Hot Air",
+    "section": "Latest changes",
+    "text": "Latest changes\nLast updated 21 August 2026. The complete history is in the repository.\n\n\n\n\n\n\n\nDate\nWhat changed\n\n\n\n\n21 August 2026\nChapter 6 gains a check on solar power per unit area from Chinese utility-scale data, which reaches Cleve Hill’s figure by an independent route; chapter L the land totals that go with it; chapter 31 a daily carbon dioxide series behind the “nine seconds” comparison.\n\n\n21 August 2026\nChapter 11a gains the electricity cost of a single AI answer, the land a data-centre campus stands on, who pays for its winning bid, and what generates its power.\n\n\n20 August 2026\nChapter 28a: two claims about flexibility narrowed to what the study behind them supports.\n\n\n19 August 2026\nChapter 28a: the German flexibility study’s own figures moved into the text.\n\n\n17 August 2026\nChapter 28a argues the agency problem from the mechanism rather than a political slogan. Figure scripts declare their dependencies and run under uv.\n\n\n16–17 August 2026\nChapter L: a third way of counting emissions and what it does to Sweden, and corrections to the carbon explorer instructions.\n\n\n15–16 August 2026\nChapter 31: drained peat, and why filling the ditches in does not undo it.",
+    "crumbs": [
+      "About this edition"
+    ]
+  },
+  {
+    "objectID": "index.html#new-chapters",
+    "href": "index.html#new-chapters",
+    "title": "Sustainable Energy — Without the Hot Air",
+    "section": "New chapters",
+    "text": "New chapters\nSix chapters are new. Each says so at the top, and none of them is MacKay’s writing.\n\n\n\n\n\n\n\n\nChapter\nWhat it is for\nAdded\n\n\n\n\n11a The machines behind the screen\nData centres, from MacKay’s 0.4 kWh/d footnote about servers to a load that outbids industry and housing for a grid connection.\n3 August 2026\n\n\n28a The value of renewable energy as it scales\nWhat happens to the economic value of renewable electricity as it grows to the scale the balance sheet calls for.\n30 July 2026\n\n\nL The world in 2025\nMacKay’s stock-taking redone for the most recent complete year.\n1 August 2026\n\n\nM Energy return on investment\nThe question chapter 3 asks and then declines to answer properly.\n2 August 2026\n\n\nN Peak oil, peak gas, peak uranium\nChapter 23’s Jevons calculation carried forward to the fuels it now matters for.\n2 August 2026\n\n\nO The hydrogen ladder\nWhich uses of hydrogen are worth the electricity they cost, ranked.\n9 August 2026",
+    "crumbs": [
+      "About this edition"
+    ]
+  },
+  {
+    "objectID": "index.html#licence",
+    "href": "index.html#licence",
+    "title": "Sustainable Energy — Without the Hot Air",
+    "section": "Licence",
+    "text": "Licence\nThe original book is © 2008 David J. C. MacKay and licensed CC BY-NC-SA 2.0 UK. New and revised material in this edition is © 2026 Örjan Lundberg and is released under that same licence, as its ShareAlike term requires. Figures that carry third-party rights — the Private Eye cartoons, named-photographer photos, and the Ordnance Survey Crown Copyright maps — are omitted here and marked in place, because MacKay’s licence did not extend to them.",
     "crumbs": [
       "About this edition"
     ]
