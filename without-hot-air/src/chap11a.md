@@ -171,7 +171,7 @@ The other is on the site of Pennsylvania's largest coal station, which closed in
 
 The per-person arithmetic is milder, as it usually is. At the American grid's 2023 average of **368 g of CO2 per kWh**, an American's 1.4 kWh/d of data-centre electricity carries about **0.5 kg of CO2 a day, or 190 kg a year**.[^dccarbon]
 
-**The two projects together are the honest picture.** Demand on this scale gets served by whatever can be built at the density and the speed it wants, and the section on land gives the density: about 340 W/m<sup>2</sup>. Gas meets it on the site. Nuclear meets it where a mothballed reactor happens to be standing with a grid connection already attached. Wind at 2 W/m<sup>2</sup> and solar at 11 cannot, so they have to be bought elsewhere and carried — which puts the problem back in the connection queue.
+**The two projects together are the honest picture.** Demand on this scale gets served by whatever can be built at the density and the speed it wants, and the section on land gives the density: about 290 W/m<sup>2</sup>. Gas meets it on the site. Nuclear meets it where a mothballed reactor happens to be standing with a grid connection already attached. Wind at 2 W/m<sup>2</sup> and solar at 11 cannot, so they have to be bought elsewhere and carried — which puts the problem back in the connection queue.
 
 ## What it means for the balance sheet
 
@@ -179,7 +179,7 @@ MacKay's summary figure for chapter 11 is 5 kWh/d for a houseful of gadgets. Dat
 
 On today's American figures they would add about **1.4 kWh/d per person**, and on the 2028 projection something between 2 and 4. That is not enormous beside heating's 37 or driving's 40. **But it is new demand, arriving fast, in the one form the system finds hardest to accommodate: electricity, constant, and inflexible.**
 
-And it changes an argument the book makes elsewhere, in the way the section on jobs describes. Chapters 6, 10 and 28a are about a system where the difficulty is that supply fluctuates and demand does not follow. A data centre is demand that could follow — computation can in principle be moved in time and space more easily than heat or transport can — but is currently built to run flat out because the capital cost of the hardware dwarfs the electricity. If that ever changes, the largest new load on the grid becomes the largest new source of flexibility. Nothing in the physics forbids it. The economics, so far, point the other way.
+And it changes an argument the book makes elsewhere, in the way the grid-position note under *What is hidden* describes. Chapters 6, 10 and 28a are about a system where the difficulty is that supply fluctuates and demand does not follow. A data centre is demand that could follow — computation can in principle be moved in time and space more easily than heat or transport can — but is currently built to run flat out because the capital cost of the hardware dwarfs the electricity. If that ever changes, the largest new load on the grid becomes the largest new source of flexibility. Nothing in the physics forbids it. The economics, so far, point the other way.
 
 ## Notes and further reading
 
