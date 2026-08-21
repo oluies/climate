@@ -6,8 +6,8 @@ This is a work-in-progress 2026 revised edition of David MacKay's
 [Life Itself climate project](https://github.com/life-itself/climate).
 
 MacKay's text and his own figures are reproduced unchanged. New material added in
-this revision is marked in the chapter where it appears, and six chapters are new
-in their entirety.
+this revision is marked in the chapter where it appears, and several chapters are
+new in their entirety. The table below is the authoritative list of them.
 
 ## Latest changes
 
@@ -26,17 +26,16 @@ Last updated **21 August 2026**. The complete history is in the
 
 ## New chapters
 
-Six chapters are new. Each says so at the top, and none of them is MacKay's
-writing.
+Each of these says so at the top, and none of them is MacKay's writing.
 
 | Chapter | What it is for | Added |
 |---|---|---|
-| **11a** *The machines behind the screen* | Data centres, from MacKay's 0.4 kWh/d footnote about servers to a load that outbids industry and housing for a grid connection. | 3 August 2026 |
-| **28a** *The value of renewable energy as it scales* | What happens to the economic value of renewable electricity as it grows to the scale the balance sheet calls for. | 30 July 2026 |
-| **L** *The world in 2025* | MacKay's stock-taking redone for the most recent complete year. | 1 August 2026 |
-| **M** *Energy return on investment* | The question chapter 3 asks and then declines to answer properly. | 2 August 2026 |
-| **N** *Peak oil, peak gas, peak uranium* | Chapter 23's Jevons calculation carried forward to the fuels it now matters for. | 2 August 2026 |
-| **O** *The hydrogen ladder* | Which uses of hydrogen are worth the electricity they cost, ranked. | 9 August 2026 |
+| [**11a** *The machines behind the screen*](chapters/chap11a.md) | Data centres, from MacKay's 0.4 kWh/d footnote about servers to a load that outbids industry and housing for a grid connection. | 3 August 2026 |
+| [**28a** *The value of renewable energy as it scales*](chapters/chap-value-of-renewables.md) | What happens to the economic value of renewable electricity as it grows to the scale the balance sheet calls for. | 30 July 2026 |
+| [**L** *The world in 2025*](chapters/chapL.md) | MacKay's stock-taking redone for the most recent complete year. | 1 August 2026 |
+| [**M** *Energy return on investment*](chapters/chapM.md) | The question chapter 3 asks and then declines to answer properly. | 2 August 2026 |
+| [**N** *Peak oil, peak gas, peak uranium*](chapters/chapN.md) | Chapter 23's Jevons calculation carried forward to the fuels it now matters for. | 2 August 2026 |
+| [**O** *The hydrogen ladder*](chapters/chapO.md) | Which uses of hydrogen are worth the electricity they cost, ranked. | 9 August 2026 |
 
 ## Licence
 

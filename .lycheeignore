@@ -3,4 +3,7 @@ linkedin\.com
 x\.com
 twitter\.com
 private-eye\.co\.uk
+# PNAS is reached through a DOI, and lychee matches the URL as written in the
+# source rather than the redirect target, so the DOI form is what must be excluded.
+doi\.org/10\.1073
 pnas\.org
