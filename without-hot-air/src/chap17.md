@@ -77,6 +77,8 @@ It does not make Eisenhower wrong. His argument is about opportunity cost in pea
 
 But an account with a column for the cost of maintaining armed forces and no column for the cost of a war is incomplete, and this book is unusually well placed to say so, because both columns are denominated in the same units. **Britain's 4 kWh/d per person is a premium. Ukraine's 43.5 GW is a claim.** Whether the premium is priced correctly is not a question physics can answer, and this chapter does not attempt it. But the two numbers belong on the same page, and until now only one of them was.
 
+There is a third column, in the other unit this book uses. Chapter 31 takes the same war and counts it in tonnes of carbon dioxide — **311 Mt CO<sub>2</sub>e over four years**, of which the fighting itself is only 37% — and sets that beside what it would cost to take back out of the air.
+
 ### The cost that is not in the account
 
 And then there is the cost that this book cannot express at all.
