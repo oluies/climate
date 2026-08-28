@@ -179,7 +179,7 @@ MacKay's summary figure for chapter 11 is 5 kWh/d for a houseful of gadgets. Dat
 
 On today's American figures they would add about **1.4 kWh/d per person**, and on the 2028 projection something between 2 and 4. That is not enormous beside heating's 37 or driving's 40. **But it is new demand, arriving fast, in the one form the system finds hardest to accommodate: electricity, constant, and inflexible.**
 
-And it changes an argument the book makes elsewhere, in the way the grid-position note under *What is hidden* describes. Chapters 6, 10 and 28a are about a system where the difficulty is that supply fluctuates and demand does not follow. A data centre is demand that could follow — computation can in principle be moved in time and space more easily than heat or transport can — but is currently built to run flat out because the capital cost of the hardware dwarfs the electricity. If that ever changes, the largest new load on the grid becomes the largest new source of flexibility. Nothing in the physics forbids it. The economics, so far, point the other way.
+And it changes an argument the book makes elsewhere, in the way the grid-position note under *What is hidden* describes. Chapters 26 and 28a are about a system where the difficulty is that supply fluctuates and demand does not follow. A data centre is demand that could follow — computation can in principle be moved in time and space more easily than heat or transport can — but is currently built to run flat out because the capital cost of the hardware dwarfs the electricity. If that ever changes, the largest new load on the grid becomes the largest new source of flexibility. Nothing in the physics forbids it. The economics, so far, point the other way.
 
 ## Notes and further reading
 

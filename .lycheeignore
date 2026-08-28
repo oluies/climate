@@ -6,4 +6,8 @@ private-eye\.co\.uk
 # PNAS is reached through a DOI, and lychee matches the URL as written in the
 # source rather than the redirect target, so the DOI form is what must be excluded.
 # Kept to the one article, so that a mistyped PNAS DOI still fails the check.
+# No bare pnas\.org pattern is needed for the files linkcheck.yml actually scans.
+# bibliography.md does carry a legacy www.pnas.org/cgi/content URL that would very
+# likely fail, but that file is not in the scanned list; adding it would need this
+# exclusion widened rather than the URL being assumed absent.
 doi\.org/10\.1073/pnas\.2512930123
