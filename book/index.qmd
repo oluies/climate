@@ -16,6 +16,7 @@ Last updated **31 August 2026**. The complete history is in the
 
 | Date | What changed |
 |---|---|
+| 31 August 2026 | Chapter 1: figure 1.6 replaces MacKay's two population graphs. Britain multiplied six-fold while its coal did, then grew 69% in the 125 years since; the world went the other way. |
 | 31 August 2026 | Chapter 1: MacKay's four rectangle diagrams are numbered 1.7 to 1.10, so his own construction can be referred to and it is visible which new figure updates which. |
 | 31 August 2026 | Chapter 1: figure 1.8 adds emissions per person over time. China passed the world average in 2006, the EU in 2013 and the UK in 2014, while every wealthy bloc roughly halved and the world average went from 4.3 to 4.7. |
 | 31 August 2026 | Chapter 1: figure 1.8 adds cumulative emissions. MacKay's claim that Britain is second only to the United States among historical emitters per person is still true — 1 158 tonnes a head against 1 259 — and is the one thing in the chapter that has not moved. |
