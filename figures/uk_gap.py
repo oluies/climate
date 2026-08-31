@@ -3,7 +3,7 @@
 # requires-python = ">=3.12"
 # dependencies = ["matplotlib", "pandas", "seaborn"]
 # ///
-"""Figure 1.3a: what happened to the energy gap. MacKay's figure 1.3 is EdF's
+"""Figure 1.3: what happened to the energy gap. MacKay's own version is EdF's
 2008 projection of nuclear, coal and oil capacity falling away. The projection
 period is now entirely in the past, so it can be replaced by the outturn.
 
@@ -30,21 +30,26 @@ fig, ax = plt.subplots(figsize=(8.8, 5.2))
 ax.stackplot(w.index, *[w[c] for c in w.columns], labels=list(w.columns),
              colors=[COL[c] for c in w.columns], alpha=0.92)
 ax.axvline(2008, color=INK, lw=1.2, ls=(0, (4, 3)))
-ax.annotate("MacKay writes, and figure 1.3 projects from here", xy=(2008, 425),
+ax.annotate("MacKay writes, and EdF's projection starts here", xy=(2008, 425),
             xytext=(-8, 0), textcoords="offset points", fontsize=9.5, color=INK,
             ha="right", va="top")
 t0, t1 = w.loc[2008].sum(), w.loc[last].sum()
-ax.annotate(f"{last}: {t1:.0f} TWh, a quarter less than 2008",
+# Alla tal i figuren raknas ur serien, sa de foljer med nasta uppdatering.
+old = [c for c in ("Coal", "Nuclear") if c in w.columns]
+new = [c for c in ("Wind", "Solar") if c in w.columns]
+o0, o1 = w.loc[2008, old].sum(), w.loc[last, old].sum()
+n0, n1 = w.loc[2008, new].sum(), w.loc[last, new].sum()
+ax.annotate(f"{last}: {t1:.0f} TWh, {(1 - t1 / t0) * 100:.0f}% less than 2008",
             xy=(last, t1), xytext=(-6, 10), textcoords="offset points",
             fontsize=9.5, color=INK, ha="right", fontweight="bold")
 ax.set_ylabel("UK electricity generation, TWh per year", fontsize=10.5)
 ax.set_xlim(first, last); ax.set_ylim(0, 430)
 ax.set_xticks(range(1990, last + 1, 10))
 ax.legend(frameon=False, fontsize=9, loc="lower left", ncol=4)
-ax.set_title("Figure 1.3a. The gap closed, but not from the supply side.",
+ax.set_title("Figure 1.3. The gap closed, but not from the supply side.",
              loc="left", fontsize=12.5, fontweight="bold", pad=42)
-ax.annotate("Coal and nuclear fell from 176 TWh in 2008 to 36. Wind and solar rose from 7 to 105 —\n"
-            "and total generation fell 25%, which closed more of the gap than either.",
+ax.annotate(f"Coal and nuclear fell from {o0:.0f} TWh in 2008 to {o1:.0f}. Wind and solar rose from {n0:.0f} to {n1:.0f} —\n"
+            f"and total generation fell {(1 - t1 / t0) * 100:.0f}%, which closed more of the gap than either.",
             xy=(0, 1.015), xycoords="axes fraction", va="bottom", fontsize=9.5, color=MUTED)
 ax.annotate("Generation, not capacity: capacity by plant type is not published as a clean annual series. "
             "Source: Energy Institute Statistical Review.",

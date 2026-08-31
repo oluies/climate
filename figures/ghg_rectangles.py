@@ -8,7 +8,7 @@ population, height is greenhouse-gas emissions per person, so each rectangle's
 area is a country's total emissions and the whole figure's area is the world's.
 
 Inputs: data-refresh/owid-per-capita-ghg-emissions.csv and owid-population.csv."""
-import sys, csv, matplotlib
+import sys, csv, textwrap, matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
@@ -27,8 +27,6 @@ def load(path, idx=3):
     return out
 
 ghg, pop = load(sys.argv[1]), load(sys.argv[2])
-rows = [(c, pop[c][y], ghg[c][y]) for c in ghg if c in pop
-        for y in ()]  # placeholder
 def year(y):
     v = [(c, pop[c][y], ghg[c][y]) for c in ghg
          if c in pop and y in ghg[c] and y in pop[c] and pop[c][y] > 0]
@@ -43,14 +41,22 @@ have = {f.name for f in font_manager.fontManager.ttflist}
 FAM = next((f for f in ("Helvetica Neue", "Helvetica", "Arial") if f in have), "DejaVu Sans")
 plt.rcParams.update({"font.family": FAM})
 
+YMAX = 34
+cut = []                       # (land, ton per person, andel av arean som klipps)
 fig, axes = plt.subplots(2, 1, figsize=(8.8, 8.4), sharex=True, sharey=True)
 for ax, y in zip(axes, (Y0, Y1)):
     x = 0.0; tot = 0.0
     for c, p, pc in year(y):
         w = p / 1e9
         col = HI if pc >= 12 else (MID if pc >= 6 else LO)
-        ax.add_patch(plt.Rectangle((x, 0), w, pc, facecolor=col, edgecolor="white",
-                                   linewidth=0.35, alpha=0.9))
+        # Ett par oljestater gar over skalan. De ar harfina, sa att hoja axeln
+        # for deras skull skulle platta till hela bilden; i stallet klipps de
+        # uttalat, med en markering och en rad i fotnoten.
+        ax.add_patch(plt.Rectangle((x, 0), w, min(pc, YMAX), facecolor=col,
+                                   edgecolor="white", linewidth=0.35, alpha=0.9))
+        if pc > YMAX:
+            cut.append((c, y, pc, p * (pc - YMAX)))
+            ax.plot([x + w / 2], [YMAX], marker="^", ms=4.5, color=col, zorder=6)
         if c in LABEL and (w > 0.12 or pc > 14):
             rot = 90 if w < 0.30 else 0
             if pc > 20 and rot == 90:
@@ -65,18 +71,25 @@ for ax, y in zip(axes, (Y0, Y1)):
     ax.set_ylabel("tonnes CO$_2$e per person", fontsize=10)
     ax.set_title(f"{y}   ·   world total {tot/1e9:.0f} Gt CO$_2$e across {x:.1f} bn people",
                  loc="left", fontsize=10.5, color=MUTED, pad=10)
-    ax.set_xlim(0, 8.3); ax.set_ylim(0, 34)
+    ax.set_xlim(0, 8.3); ax.set_ylim(0, YMAX)
     ax.grid(axis="y", color=GRID, lw=1); ax.set_axisbelow(True)
     for sp in ("top", "right"):
         ax.spines[sp].set_visible(False)
 axes[1].set_xlabel("cumulative population, billions", fontsize=10)
-fig.suptitle("Figure 1.10. Every country a rectangle: width is population, height is emissions per person.",
+fig.suptitle("Figure 1.12. Every country a rectangle: width is population, height is emissions per person.",
              x=0.055, y=0.99, ha="left", fontsize=12.5, fontweight="bold")
 fig.text(0.055, 0.962, "Area is total emissions, so the whole figure is the world's. Ordered tallest first, as MacKay draws them.\n"
                        "Red is above 12 tonnes a head, amber 6 to 12, blue below 6.",
          fontsize=9.5, color=MUTED, va="top", linespacing=1.5)
-fig.text(0.055, 0.048, "All greenhouse gases in CO$_2$-equivalent including land use. Sources: Jones et al. and UN population, via Our World\n"
-                       "in Data. Only countries are drawn, so the totals sit a little below the world figure.",
+names = sorted({c for c, _, _, _ in cut})
+lost = sum(a for _, _, _, a in cut) / sum(p * pc for y in (Y0, Y1) for _, p, pc in year(y))
+cutline = (", ".join(names[:-1]) + " and " + names[-1] if len(names) > 1 else names[0]) + \
+          f" rise above the {YMAX}-tonne axis and are drawn cut off at it, with a caret; they are " \
+          f"narrow enough that the area lost is {lost * 100:.2f}% of the total."
+fig.text(0.055, 0.058, textwrap.fill(
+    "All greenhouse gases in CO$_2$-equivalent including land use. Sources: Jones et al. and UN "
+    "population, via Our World in Data. Only countries are drawn, so the totals sit a little below "
+    "the world figure. " + cutline, 118),
          fontsize=8.5, color=MUTED, va="top", linespacing=1.6)
-fig.subplots_adjust(top=0.875, bottom=0.13, left=0.09, right=0.98, hspace=0.20)
-fig.savefig(sys.argv[3], format="svg"); print("wrote", sys.argv[3])
+fig.subplots_adjust(top=0.875, bottom=0.155, left=0.09, right=0.98, hspace=0.20)
+fig.savefig(sys.argv[3], format="svg", bbox_inches="tight"); print("wrote", sys.argv[3])

@@ -3,8 +3,8 @@
 # requires-python = ">=3.12"
 # dependencies = ["matplotlib", "pandas", "seaborn"]
 # ///
-"""Figure 1.2a: North Sea oil production and the real oil price, carried forward
-from MacKay's figure 1.2. Input: data-refresh/north-sea-oil.csv.
+"""Figure 1.2: North Sea oil production and the real oil price, carried forward
+from MacKay's own version. Input: data-refresh/north-sea-oil.csv.
 
 MacKay's version ended in 2007, just as the decline began and the price was
 climbing. The point of redrawing it is what the next eighteen years show: the
@@ -53,7 +53,7 @@ ax2.annotate("real price, right axis", xy=(pk_price.year, pk_price.price_2025usd
              xytext=(6, 6), textcoords="offset points", fontsize=9.5,
              color=PRICE, ha="left")
 
-ax.set_title("Figure 1.2a. Are “our” fossil fuels running out? Yes.",
+ax.set_title("Figure 1.2. Are “our” fossil fuels running out? Yes.",
              loc="left", fontsize=12.5, fontweight="bold", pad=42)
 ax.annotate("North Sea production fell 57% from its 2000 peak while the real price went higher\n"
             "than anything on MacKay's chart. Price did not bring the oil back.",

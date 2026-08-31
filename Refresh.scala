@@ -960,6 +960,8 @@ def chapter01(): Unit = {
     println("  uv run figures/emission_paths.py data-refresh/co2-per-capita-world.csv without-hot-air/Images/fig-emission-paths.svg")
     println("  uv run figures/ghg_sectors.py data-refresh/ghg-by-sector.csv without-hot-air/Images/fig-ghg-sectors.svg")
     println("  uv run figures/population_longrun.py data-refresh/population-longrun.csv without-hot-air/Images/fig-population.svg")
+    println("  uv run figures/ghg_rectangles.py data-refresh/owid-per-capita-ghg-emissions.csv " +
+            "data-refresh/owid-population.csv without-hot-air/Images/fig-ghg-rectangles.svg")
   }
 }
 

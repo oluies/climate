@@ -3,8 +3,8 @@
 # requires-python = ">=3.12"
 # dependencies = ["matplotlib", "pandas", "seaborn"]
 # ///
-"""Figure 1.6a: UK and world coal production, 1700 to 2025, carrying MacKay's
-figure 1.6 forward. Input: data-refresh/coal-long-run.csv.
+"""Figure 1.7: UK and world coal production, 1700 to 2025, carrying MacKay's
+own version forward. Input: data-refresh/coal-long-run.csv.
 
 MacKay stops in 1960 and remarks that showing the next fifty years on the same
 scale would need a book a metre tall. This is that book, on one page: the world
@@ -46,7 +46,7 @@ ax.annotate(f"UK {int(end.year)}: {end.uk_twh:.0f} TWh, effectively nil",
             xy=(end.year, 0.4), xytext=(-8, 14), textcoords="offset points",
             fontsize=9.5, color=UK, ha="right")
 
-ax.set_title("Figure 1.6a. What happened after 1960.",
+ax.set_title("Figure 1.7. What happened after 1960.",
              loc="left", fontsize=12.5, fontweight="bold", pad=42)
 ax.annotate("MacKay stops in 1960 and says showing the next fifty years to scale would need a\n"
             "book a metre tall. Here it is on one page: Britain's curve is the flat line.",

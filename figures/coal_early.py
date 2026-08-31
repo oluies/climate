@@ -3,7 +3,7 @@
 # requires-python = ">=3.12"
 # dependencies = ["matplotlib", "pandas", "seaborn"]
 # ///
-"""Figure 1.5a: the early history of coal, MacKay's figure 1.5 redrawn large.
+"""Figure 1.5: the early history of coal, MacKay's own version redrawn large.
 Same window and same two series; the point is only that it can be read.
 Input: data-refresh/coal-long-run.csv."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt
@@ -29,7 +29,7 @@ ax.set_ylabel("coal production, TWh per year", fontsize=10.5)
 ax.set_xlim(1700, 1910); ax.set_ylim(0, 9800)
 ax.set_xticks(range(1700, 1911, 50))
 ax.legend(frameon=False, fontsize=10, loc="upper left")
-ax.set_title("Figure 1.5a. The same early history, drawn large enough to read.",
+ax.set_title("Figure 1.5. The same early history, drawn large enough to read.",
              loc="left", fontsize=12.5, fontweight="bold", pad=42)
 ax.annotate("British production doubled roughly every twenty years from 1800: the dates MacKay\n"
             "marks are labelled on the British curve.",

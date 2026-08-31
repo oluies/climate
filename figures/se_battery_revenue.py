@@ -27,14 +27,19 @@ mwh = 365 * 0.90 * 0.88 * H                              # levererade MWh per MW
 # Netto efter laddning, alltsa pengar kvar till kapitalet - samma storhet som
 # kapacitetsintakterna, som inte har nagon laddningskostnad.
 arb = lambda i, k: (i - k) * mwh / 1000 + c_hi
+
+# Reservpriserna kommer ur samma CSV som resten: FCR-D som snitt av de tre
+# manader Svenska kraftnat rapporterar, aFRR som SE3-noteringen for mars.
+fcrd = sum(d[k] for k in d if k.startswith("fcrd_upp_")) / sum(1 for k in d if k.startswith("fcrd_upp_"))
+afrr = d["afrr_upp_se3_mars"]
 # Namn, undre varde, ovre varde (None = enkel stapel), text inuti stapeln.
 GROUPS = [
     ("Paid for energy delivered", ENERGY,
      [("Arbitrage SE3", arb(d["arb_se3_intakt"], d["arb_se3_kostnad"]), None, "one cycle a day"),
       ("Arbitrage SE4", arb(d["arb_se4_intakt"], d["arb_se4_kostnad"]), None, "one cycle a day")]),
     ("Paid for power available", POWER,
-     [("FCR-D up", 7.0 * 0.9 * 8760 / 1000, None, "90% of hours"),
-      ("aFRR up SE3", 29.4 * 0.4 * 8760 / 1000, 29.4 * 0.9 * 8760 / 1000,
+     [("FCR-D up", fcrd * 0.9 * 8760 / 1000, None, "90% of hours"),
+      ("aFRR up SE3", afrr * 0.4 * 8760 / 1000, afrr * 0.9 * 8760 / 1000,
        "40% to 90% of hours")]),
 ]
 
