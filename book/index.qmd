@@ -16,6 +16,7 @@ Last updated **31 August 2026**. The complete history is in the
 
 | Date | What changed |
 |---|---|
+| 31 August 2026 | Chapter 1: figure 1.6a carries the coal chart to 2025. British coal peaked in 1913 and produced 1 TWh last year; world production is five and a half times its 1913 level and set its record in the 2020s. |
 | 31 August 2026 | Chapter 1: figure 1.2a carries MacKay's North Sea chart forward to 2025. Production is down 57% from its 2000 peak, Britain's own share down 77%, while the real price went above anything on his original. |
 | 31 August 2026 | Chapter 1 picks up the security-of-supply motivation MacKay drops: three-fifths of world oil comes from autocracies, Sweden buys 96% of its crude from democracies, and fungibility means that does not help. Chapter N contrasts it with uranium. |
 | 30 August 2026 | Chapter 26: a cheaper cell arrives with a tax advantage behind it, and changes nothing about duration — with the sodium cost claim checked against the lithium price it is measured against. |
