@@ -1,0 +1,82 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["matplotlib", "pandas"]
+# ///
+"""MacKay's rectangle construction, redrawn for 2000 and 2023. Width is
+population, height is greenhouse-gas emissions per person, so each rectangle's
+area is a country's total emissions and the whole figure's area is the world's.
+
+Inputs: data-refresh/owid-per-capita-ghg-emissions.csv and owid-population.csv."""
+import sys, csv, matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from matplotlib import font_manager
+
+INK, MUTED, GRID = "#161d1b", "#8a8a85", "#ededea"
+HI, MID, LO = "#b8402e", "#eda100", "#4a3aa7"
+Y0, Y1 = 2000, 2023
+
+def load(path, idx=3):
+    out = {}
+    for r in csv.reader(open(path)):
+        # Bara lander: aggregat saknar ISO3 eller bar OWID-prefix.
+        if len(r) > idx and r[1] and not r[1].startswith("OWID_") and len(r[1]) == 3 \
+           and r[2].lstrip("-").isdigit() and r[idx]:
+            out.setdefault(r[0], {})[int(r[2])] = float(r[idx])
+    return out
+
+ghg, pop = load(sys.argv[1]), load(sys.argv[2])
+rows = [(c, pop[c][y], ghg[c][y]) for c in ghg if c in pop
+        for y in ()]  # placeholder
+def year(y):
+    v = [(c, pop[c][y], ghg[c][y]) for c in ghg
+         if c in pop and y in ghg[c] and y in pop[c] and pop[c][y] > 0]
+    return sorted(v, key=lambda t: -t[2])
+
+LABEL = {"United States": "USA", "United Kingdom": "UK", "Russia": "Russia",
+         "China": "China", "India": "India", "Japan": "Japan", "Germany": "Germany",
+         "Indonesia": "Indonesia", "Brazil": "Brazil", "Nigeria": "Nigeria",
+         "Australia": "Australia", "Canada": "Canada", "Saudi Arabia": "Saudi"}
+
+have = {f.name for f in font_manager.fontManager.ttflist}
+FAM = next((f for f in ("Helvetica Neue", "Helvetica", "Arial") if f in have), "DejaVu Sans")
+plt.rcParams.update({"font.family": FAM})
+
+fig, axes = plt.subplots(2, 1, figsize=(8.8, 8.4), sharex=True, sharey=True)
+for ax, y in zip(axes, (Y0, Y1)):
+    x = 0.0; tot = 0.0
+    for c, p, pc in year(y):
+        w = p / 1e9
+        col = HI if pc >= 12 else (MID if pc >= 6 else LO)
+        ax.add_patch(plt.Rectangle((x, 0), w, pc, facecolor=col, edgecolor="white",
+                                   linewidth=0.35, alpha=0.9))
+        if c in LABEL and (w > 0.12 or pc > 14):
+            rot = 90 if w < 0.30 else 0
+            if pc > 20 and rot == 90:
+                # Hoga smala staplar: etiketten inuti, annars sticker den upp
+                # genom rubriken.
+                ax.text(x + w / 2, pc - 0.8, LABEL[c], ha="center", va="top",
+                        fontsize=8.5, color="white", rotation=90)
+            else:
+                ax.text(x + w / 2, pc + 0.5, LABEL[c], ha="center", va="bottom",
+                        fontsize=8.5, color=INK, rotation=rot)
+        x += w; tot += p * pc
+    ax.set_ylabel("tonnes CO$_2$e per person", fontsize=10)
+    ax.set_title(f"{y}   ·   world total {tot/1e9:.0f} Gt CO$_2$e across {x:.1f} bn people",
+                 loc="left", fontsize=10.5, color=MUTED, pad=10)
+    ax.set_xlim(0, 8.3); ax.set_ylim(0, 34)
+    ax.grid(axis="y", color=GRID, lw=1); ax.set_axisbelow(True)
+    for sp in ("top", "right"):
+        ax.spines[sp].set_visible(False)
+axes[1].set_xlabel("cumulative population, billions", fontsize=10)
+fig.suptitle("Figure 1.10. Every country a rectangle: width is population, height is emissions per person.",
+             x=0.055, y=0.99, ha="left", fontsize=12.5, fontweight="bold")
+fig.text(0.055, 0.962, "Area is total emissions, so the whole figure is the world's. Ordered tallest first, as MacKay draws them.\n"
+                       "Red is above 12 tonnes a head, amber 6 to 12, blue below 6.",
+         fontsize=9.5, color=MUTED, va="top", linespacing=1.5)
+fig.text(0.055, 0.048, "All greenhouse gases in CO$_2$-equivalent including land use. Sources: Jones et al. and UN population, via Our World\n"
+                       "in Data. Only countries are drawn, so the totals sit a little below the world figure.",
+         fontsize=8.5, color=MUTED, va="top", linespacing=1.6)
+fig.subplots_adjust(top=0.875, bottom=0.13, left=0.09, right=0.98, hspace=0.20)
+fig.savefig(sys.argv[3], format="svg"); print("wrote", sys.argv[3])

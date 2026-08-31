@@ -16,6 +16,7 @@ Last updated **31 August 2026**. The complete history is in the
 
 | Date | What changed |
 |---|---|
+| 31 August 2026 | Chapter 1: figure 1.7 redraws MacKay's rectangle construction for 2000 and 2023. China goes from the wide, low block he describes to the largest area on the chart, taller than Japan; the United States falls from 26 tonnes a head to 18. |
 | 31 August 2026 | Chapter 1 rebuilt: MacKay's superseded figures are replaced rather than duplicated, and figures 1.8 and 1.9 are new — the world is 1% above its 2007 emissions per person on paths that required a steep fall, and a third of all greenhouse gases now come from electricity and heat. |
 | 31 August 2026 | Chapter 1: figures 1.3a, 1.4a and 1.5a. The energy gap closed more by demand falling a quarter than by wind rising; CO₂ is 426 ppm against the 383 where MacKay's chart ends; and the early coal history redrawn legibly. |
 | 31 August 2026 | Chapter 1: figure 1.6a carries the coal chart to 2025. British coal peaked in 1913 and produced 1 TWh last year; world production is five and a half times its 1913 level and set its record in the 2020s. |
