@@ -925,7 +925,31 @@ def chapter01(): Unit = {
     os.write.over(dir / "ghg-by-sector.csv",
       os.read(secCsv).linesIterator.filter(l => l.startsWith("Entity") || l.startsWith("World,")).mkString("\n") + "\n")
 
-    println("wrote data-refresh/north-sea-oil.csv, coal-long-run.csv, co2-concentration.csv, " +
+    // Figur 1.6: befolkning, samma fonster som kolfigurerna sa formerna gar att
+    // lagga bredvid varandra. Langa serien med FN:s framskrivning, sa att den
+    // nar samma slutar som ovriga.
+    val popCsv = dir / "owid-population-longrun.csv"
+    if (!os.exists(popCsv))
+      os.write.over(popCsv, requests.get(
+        "https://ourworldindata.org/grapher/population-long-run-with-projections.csv?csvType=full",
+        readTimeout = 60000).text())
+    val popq = collection.mutable.Map[Int, (Double, Double)]()
+    val pq = st.executeQuery(
+      s"""SELECT "Year", "Entity",
+             COALESCE(TRY_CAST("Population (projections) (Projected)" AS DOUBLE), TRY_CAST("Population" AS DOUBLE)) AS v
+          FROM read_csv_auto('${popCsv.toString.replace("'", "''")}', all_varchar=true)
+          WHERE "Entity" IN ('United Kingdom','World') AND TRY_CAST("Year" AS INTEGER) BETWEEN 1700 AND 2025""")
+    while (pq.next()) {
+      val y = pq.getInt(1); val e = pq.getString(2); val v = pq.getDouble(3)
+      val (u, w) = popq.getOrElse(y, (0.0, 0.0))
+      popq(y) = if (e == "United Kingdom") (v, w) else (u, v)
+    }
+    val pb = new StringBuilder; pb ++= "year,uk,world\n"
+    for (y <- popq.keys.toSeq.sorted if popq(y)._1 > 0 && popq(y)._2 > 0)
+      pb ++= f"$y,${popq(y)._1}%.0f,${popq(y)._2}%.0f\n"
+    os.write.over(dir / "population-longrun.csv", pb.toString)
+
+    println("wrote data-refresh/north-sea-oil.csv, coal-long-run.csv, co2-concentration.csv, population-longrun.csv, " +
             "co2-per-capita-world.csv, ghg-by-sector.csv")
     println("render:")
     println("  uv run figures/north_sea_oil.py data-refresh/north-sea-oil.csv without-hot-air/Images/fig-north-sea-oil.svg")
@@ -935,6 +959,7 @@ def chapter01(): Unit = {
     println("  uv run figures/uk_gap.py data-refresh/uk-electricity-mix.csv without-hot-air/Images/fig-uk-gap.svg")
     println("  uv run figures/emission_paths.py data-refresh/co2-per-capita-world.csv without-hot-air/Images/fig-emission-paths.svg")
     println("  uv run figures/ghg_sectors.py data-refresh/ghg-by-sector.csv without-hot-air/Images/fig-ghg-sectors.svg")
+    println("  uv run figures/population_longrun.py data-refresh/population-longrun.csv without-hot-air/Images/fig-population.svg")
   }
 }
 
