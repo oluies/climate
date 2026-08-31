@@ -903,13 +903,38 @@ def chapter01(): Unit = {
     while (cr2.next()) cc ++= f"${cr2.getInt(1)},${cr2.getDouble(2)}%.2f\n"
     os.write.over(dir / "co2-concentration.csv", cc.toString)
 
-    println("wrote data-refresh/north-sea-oil.csv, coal-long-run.csv, co2-concentration.csv")
+    // Figur 1.7: varldens CO2 per person mot de banor MacKays figur 1.8 kraver.
+    val pcCsv = dir / "owid-co2-per-capita.csv"
+    if (!os.exists(pcCsv))
+      os.write.over(pcCsv, requests.get(
+        "https://ourworldindata.org/grapher/co-emissions-per-capita.csv?csvType=full",
+        readTimeout = 60000).text())
+    val pc = new StringBuilder; pc ++= "year,t_per_person\n"
+    val pr3 = st.executeQuery(
+      s"""SELECT "Year", "CO₂ emissions per capita" FROM read_csv_auto('${pcCsv.toString.replace("'", "''")}')
+          WHERE "Entity" = 'World' AND "Year" >= 1950 ORDER BY "Year"""")
+    while (pr3.next()) pc ++= f"${pr3.getInt(1)},${pr3.getDouble(2)}%.3f\n"
+    os.write.over(dir / "co2-per-capita-world.csv", pc.toString)
+
+    // Figur 1.8: varldens vaxthusgaser per sektor.
+    val secCsv = dir / "owid-ghg-by-sector.csv"
+    if (!os.exists(secCsv))
+      os.write.over(secCsv, requests.get(
+        "https://ourworldindata.org/grapher/ghg-emissions-by-sector.csv?csvType=full",
+        readTimeout = 60000).text())
+    os.write.over(dir / "ghg-by-sector.csv",
+      os.read(secCsv).linesIterator.filter(l => l.startsWith("Entity") || l.startsWith("World,")).mkString("\n") + "\n")
+
+    println("wrote data-refresh/north-sea-oil.csv, coal-long-run.csv, co2-concentration.csv, " +
+            "co2-per-capita-world.csv, ghg-by-sector.csv")
     println("render:")
     println("  uv run figures/north_sea_oil.py data-refresh/north-sea-oil.csv without-hot-air/Images/fig-north-sea-oil.svg")
     println("  uv run figures/coal_long_run.py data-refresh/coal-long-run.csv without-hot-air/Images/fig-coal-long-run.svg")
     println("  uv run figures/coal_early.py data-refresh/coal-long-run.csv without-hot-air/Images/fig-coal-early.svg")
     println("  uv run figures/co2_concentration.py data-refresh/co2-concentration.csv without-hot-air/Images/fig-co2-concentration.svg")
     println("  uv run figures/uk_gap.py data-refresh/uk-electricity-mix.csv without-hot-air/Images/fig-uk-gap.svg")
+    println("  uv run figures/emission_paths.py data-refresh/co2-per-capita-world.csv without-hot-air/Images/fig-emission-paths.svg")
+    println("  uv run figures/ghg_sectors.py data-refresh/ghg-by-sector.csv without-hot-air/Images/fig-ghg-sectors.svg")
   }
 }
 
