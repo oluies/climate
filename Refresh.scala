@@ -858,9 +858,34 @@ def chapter01(): Unit = {
       sb ++= f"$y,$u%.1f,$n%.1f,$d%.1f,${u + n + d}%.1f,$p\n"
     }
     os.write.over(dir / "north-sea-oil.csv", sb.toString)
-    println("wrote data-refresh/north-sea-oil.csv")
+
+    // Figur 1.6a: kolet, samma tva serier som MacKays 1.6 men hela vagen till nu.
+    // Statistical Review borjar 1981, vilket inte racker for hans fonster, sa
+    // langa serien kommer fran OWID (Our World in Data) i TWh.
+    val coalCsv = dir / "owid-coal-production.csv"
+    if (!os.exists(coalCsv))
+      os.write.over(coalCsv, requests.get(
+        "https://ourworldindata.org/grapher/coal-production-by-country.csv?csvType=full",
+        readTimeout = 60000).text())
+    val coal = collection.mutable.Map[Int, (Double, Double)]()
+    val cr = st.executeQuery(
+      s"""SELECT "Year", "Entity", "Coal" FROM read_csv_auto('${coalCsv.toString.replace("'", "''")}')
+          WHERE "Entity" IN ('United Kingdom','World') AND "Coal" IS NOT NULL""")
+    while (cr.next()) {
+      val y = cr.getInt(1); val e = cr.getString(2); val v = cr.getDouble(3)
+      val (u, w) = coal.getOrElse(y, (0.0, 0.0))
+      coal(y) = if (e == "United Kingdom") (v, w) else (u, v)
+    }
+    val cb = new StringBuilder; cb ++= "year,uk_twh,world_twh\n"
+    for (y <- coal.keys.toSeq.sorted if coal(y)._2 > 0) {
+      val (u, w) = coal(y); cb ++= f"$y,$u%.1f,$w%.1f\n"
+    }
+    os.write.over(dir / "coal-long-run.csv", cb.toString)
+
+    println("wrote data-refresh/north-sea-oil.csv, coal-long-run.csv")
     println("render:")
     println("  uv run figures/north_sea_oil.py data-refresh/north-sea-oil.csv without-hot-air/Images/fig-north-sea-oil.svg")
+    println("  uv run figures/coal_long_run.py data-refresh/coal-long-run.csv without-hot-air/Images/fig-coal-long-run.svg")
   }
 }
 
