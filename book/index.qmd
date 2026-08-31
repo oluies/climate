@@ -16,6 +16,7 @@ Last updated **31 August 2026**. The complete history is in the
 
 | Date | What changed |
 |---|---|
+| 31 August 2026 | Chapter 1: figure 1.8 adds emissions per person over time. China passed the world average in 2006, the EU in 2013 and the UK in 2014, while every wealthy bloc roughly halved and the world average went from 4.3 to 4.7. |
 | 31 August 2026 | Chapter 1: figure 1.8 adds cumulative emissions. MacKay's claim that Britain is second only to the United States among historical emitters per person is still true — 1 158 tonnes a head against 1 259 — and is the one thing in the chapter that has not moved. |
 | 31 August 2026 | Chapter 1: figure 1.7 redraws MacKay's rectangle construction for 2000 and 2023. China goes from the wide, low block he describes to the largest area on the chart, taller than Japan; the United States falls from 26 tonnes a head to 18. |
 | 31 August 2026 | Chapter 1 rebuilt: MacKay's superseded figures are replaced rather than duplicated, and figures 1.8 and 1.9 are new — the world is 1% above its 2007 emissions per person on paths that required a steep fall, and a third of all greenhouse gases now come from electricity and heat. |
