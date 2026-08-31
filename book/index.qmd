@@ -16,6 +16,7 @@ Last updated **31 August 2026**. The complete history is in the
 
 | Date | What changed |
 |---|---|
+| 31 August 2026 | Chapter 1: figure 1.2a carries MacKay's North Sea chart forward to 2025. Production is down 57% from its 2000 peak, Britain's own share down 77%, while the real price went above anything on his original. |
 | 31 August 2026 | Chapter 1 picks up the security-of-supply motivation MacKay drops: three-fifths of world oil comes from autocracies, Sweden buys 96% of its crude from democracies, and fungibility means that does not help. Chapter N contrasts it with uranium. |
 | 30 August 2026 | Chapter 26: a cheaper cell arrives with a tax advantage behind it, and changes nothing about duration — with the sodium cost claim checked against the lithium price it is measured against. |
 | 28 August 2026 | Chapter 31 gains the carbon cost of a war — four years of the war in Ukraine counted in tonnes, what removing them would cost, and the peacetime military emissions no inventory records; chapter 17 points to it. |

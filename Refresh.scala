@@ -801,6 +801,69 @@ def chapter06(): Unit = {
   }
 }
 
+// ---- Chapter 1: figure 1.2a, the North Sea carried forward ----
+// MacKay's figure 1.2 ends in 2007. This rebuilds the same two series to the
+// present from the Statistical Review: production for the three North Sea
+// producers, and the crude price in constant dollars.
+//
+// Note on the workbook: the production sheet carries three columns labelled
+// 2025 - the level, then a growth rate and a share. Reading them positionally
+// from B, as `series` does, takes the levels and stops at the right column; a
+// name-based read that keeps the last match picks up a percentage instead and
+// reports the North Sea as having stopped producing.
+@main
+def chapter01(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val xlsx = (dir / "ei-stats-review-all-data.xlsx").toString.replace("'", "''")
+  withConn { conn =>
+    val st = conn.createStatement()
+    st.execute("LOAD excel")
+
+    def row(sheet: String, region: String, firstYear: Int, lastYear: Int) = {
+      val cols = (firstYear to lastYear).map(y => "\"" + colName(1 + (y - firstYear)) + "\"").mkString(",")
+      val rs = st.executeQuery(
+        s"""SELECT $cols FROM read_xlsx('$xlsx', sheet='$sheet', header=false,
+            all_varchar=true, range='A4:${colName(1 + (lastYear - firstYear))}200')
+            WHERE A='$region'""")
+      val m = collection.mutable.Map[Int, Double]()
+      if (rs.next()) for (i <- firstYear to lastYear) {
+        val v = rs.getString(i - firstYear + 1)
+        if (v != null && v.nonEmpty) m(i) = v.toDouble
+      }
+      m.toMap
+    }
+
+    val (y0, y1) = (1965, 2025)
+    val uk = row("Oil Production - barrels", "United Kingdom", y0, y1)
+    val no = row("Oil Production - barrels", "Norway", y0, y1)
+    val dk = row("Oil Production - barrels", "Denmark", y0, y1)
+
+    // Priser: aret i kolumn A, konstanta dollar i kolumn C.
+    val price = collection.mutable.Map[Int, Double]()
+    val pr = st.executeQuery(
+      s"""SELECT A, C FROM read_xlsx('$xlsx', sheet='Oil crude prices since 1861',
+          header=false, all_varchar=true, range='A5:C300')""")
+    while (pr.next()) {
+      val y = pr.getString(1); val v = pr.getString(2)
+      if (y != null && v != null && y.forall(_.isDigit) && v.nonEmpty)
+        price(y.toInt) = v.toDouble
+    }
+
+    val sb = new StringBuilder
+    sb ++= "year,uk_kbd,no_kbd,dk_kbd,total_kbd,price_2025usd\n"
+    for (y <- y0 to y1 if uk.contains(y) && no.contains(y)) {
+      val u = uk.getOrElse(y, 0.0); val n = no.getOrElse(y, 0.0); val d = dk.getOrElse(y, 0.0)
+      val p = price.get(y).map(v => f"$v%.2f").getOrElse("")
+      sb ++= f"$y,$u%.1f,$n%.1f,$d%.1f,${u + n + d}%.1f,$p\n"
+    }
+    os.write.over(dir / "north-sea-oil.csv", sb.toString)
+    println("wrote data-refresh/north-sea-oil.csv")
+    println("render:")
+    println("  uv run figures/north_sea_oil.py data-refresh/north-sea-oil.csv without-hot-air/Images/fig-north-sea-oil.svg")
+  }
+}
+
 // ---- Chapter 6: MacKay's own figures, redone ----
 // Irradiance comes from PVGIS (JRC), which is free and needs no key. PVGIS
 // returns JSON; it is written to disk and queried with DuckDB rather than
