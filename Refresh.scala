@@ -801,7 +801,7 @@ def chapter06(): Unit = {
   }
 }
 
-// ---- Chapter 1: figure 1.2a, the North Sea carried forward ----
+// ---- Chapter 1: figure 1.2, the North Sea carried forward ----
 // MacKay's figure 1.2 ends in 2007. This rebuilds the same two series to the
 // present from the Statistical Review: production for the three North Sea
 // producers, and the crude price in constant dollars.
@@ -815,6 +815,15 @@ def chapter06(): Unit = {
 def chapter01(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
   val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  // Figur 1.12 ritas ur dessa tva. De hamtas ocksa av andra steg, men bada ar
+  // gitignorerade, sa utan detta gar render-raden nedan inte att folja pa en
+  // ren utcheckning.
+  for (slug -> file <- Seq("per-capita-ghg-emissions" -> "owid-per-capita-ghg-emissions.csv",
+                           "population" -> "owid-population.csv")) {
+    val f = dir / file
+    if (!os.exists(f)) os.write.over(f,
+      requests.get(s"https://ourworldindata.org/grapher/$slug.csv?csvType=full", readTimeout = 60000).text())
+  }
   val xlsx = (dir / "ei-stats-review-all-data.xlsx").toString.replace("'", "''")
   withConn { conn =>
     val st = conn.createStatement()
@@ -859,7 +868,7 @@ def chapter01(): Unit = {
     }
     os.write.over(dir / "north-sea-oil.csv", sb.toString)
 
-    // Figur 1.6a: kolet, samma tva serier som MacKays 1.6 men hela vagen till nu.
+    // Figur 1.7: kolet, samma tva serier som MacKays egen version men hela vagen till nu.
     // Statistical Review borjar 1981, vilket inte racker for hans fonster, sa
     // langa serien kommer fran OWID (Our World in Data) i TWh.
     val coalCsv = dir / "owid-coal-production.csv"
@@ -889,7 +898,7 @@ def chapter01(): Unit = {
     }
     os.write.over(dir / "coal-long-run.csv", cb.toString)
 
-    // Figur 1.4a/1.7a: koldioxidhalten. Iskarnor plus Mauna Loa i en serie.
+    // Figur 1.4: koldioxidhalten. Iskarnor plus Mauna Loa i en serie.
     val co2Csv = dir / "owid-co2-concentration.csv"
     if (!os.exists(co2Csv))
       os.write.over(co2Csv, requests.get(
@@ -903,7 +912,7 @@ def chapter01(): Unit = {
     while (cr2.next()) cc ++= f"${cr2.getInt(1)},${cr2.getDouble(2)}%.2f\n"
     os.write.over(dir / "co2-concentration.csv", cc.toString)
 
-    // Figur 1.7: varldens CO2 per person mot de banor MacKays figur 1.8 kraver.
+    // Figur 1.16: varldens CO2 per person mot de banor MacKays egna scenarier kraver.
     val pcCsv = dir / "owid-co2-per-capita.csv"
     if (!os.exists(pcCsv))
       os.write.over(pcCsv, requests.get(
@@ -916,7 +925,7 @@ def chapter01(): Unit = {
     while (pr3.next()) pc ++= f"${pr3.getInt(1)},${pr3.getDouble(2)}%.3f\n"
     os.write.over(dir / "co2-per-capita-world.csv", pc.toString)
 
-    // Figur 1.8: varldens vaxthusgaser per sektor.
+    // Figur 1.17: varldens vaxthusgaser per sektor.
     val secCsv = dir / "owid-ghg-by-sector.csv"
     if (!os.exists(secCsv))
       os.write.over(secCsv, requests.get(

@@ -42,17 +42,19 @@ FAM = next((f for f in ("Helvetica Neue", "Helvetica", "Arial") if f in have), "
 plt.rcParams.update({"font.family": FAM})
 
 YMAX = 34
-cut = []                       # (land, ton per person, andel av arean som klipps)
+cut = []                       # (land, ar, ton per person, klippt area)
 fig, axes = plt.subplots(2, 1, figsize=(8.8, 8.4), sharex=True, sharey=True)
 for ax, y in zip(axes, (Y0, Y1)):
     x = 0.0; tot = 0.0
     for c, p, pc in year(y):
         w = p / 1e9
         col = HI if pc >= 12 else (MID if pc >= 6 else LO)
-        # Ett par oljestater gar over skalan. De ar harfina, sa att hoja axeln
+        # Nagra fa lander gar over skalan. De ar harfina, sa att hoja axeln
         # for deras skull skulle platta till hela bilden; i stallet klipps de
-        # uttalat, med en markering och en rad i fotnoten.
-        ax.add_patch(plt.Rectangle((x, 0), w, min(pc, YMAX), facecolor=col,
+        # uttalat, med en markering och en rad i fotnoten. h anvands ocksa till
+        # etiketten, annars hamnar den utanfor axeln och ritas aldrig.
+        h = min(pc, YMAX)
+        ax.add_patch(plt.Rectangle((x, 0), w, h, facecolor=col,
                                    edgecolor="white", linewidth=0.35, alpha=0.9))
         if pc > YMAX:
             cut.append((c, y, pc, p * (pc - YMAX)))
@@ -62,10 +64,10 @@ for ax, y in zip(axes, (Y0, Y1)):
             if pc > 20 and rot == 90:
                 # Hoga smala staplar: etiketten inuti, annars sticker den upp
                 # genom rubriken.
-                ax.text(x + w / 2, pc - 0.8, LABEL[c], ha="center", va="top",
+                ax.text(x + w / 2, h - 0.8, LABEL[c], ha="center", va="top",
                         fontsize=8.5, color="white", rotation=90)
             else:
-                ax.text(x + w / 2, pc + 0.5, LABEL[c], ha="center", va="bottom",
+                ax.text(x + w / 2, h + 0.5, LABEL[c], ha="center", va="bottom",
                         fontsize=8.5, color=INK, rotation=rot)
         x += w; tot += p * pc
     ax.set_ylabel("tonnes CO$_2$e per person", fontsize=10)
@@ -81,15 +83,18 @@ fig.suptitle("Figure 1.12. Every country a rectangle: width is population, heigh
 fig.text(0.055, 0.962, "Area is total emissions, so the whole figure is the world's. Ordered tallest first, as MacKay draws them.\n"
                        "Red is above 12 tonnes a head, amber 6 to 12, blue below 6.",
          fontsize=9.5, color=MUTED, va="top", linespacing=1.5)
+# Tom om en dataomgang eller ett hogre YMAX gor att ingen langre klipps.
 names = sorted({c for c, _, _, _ in cut})
-lost = sum(a for _, _, _, a in cut) / sum(p * pc for y in (Y0, Y1) for _, p, pc in year(y))
-cutline = (", ".join(names[:-1]) + " and " + names[-1] if len(names) > 1 else names[0]) + \
-          f" rise above the {YMAX}-tonne axis and are drawn cut off at it, with a caret; they are " \
-          f"narrow enough that the area lost is {lost * 100:.2f}% of the total."
+cutline = ""
+if names:
+    lost = sum(a for _, _, _, a in cut) / sum(p * pc for y in (Y0, Y1) for _, p, pc in year(y))
+    cutline = " " + (", ".join(names[:-1]) + " and " + names[-1] if len(names) > 1 else names[0]) + \
+              f" rise above the {YMAX}-tonne axis and are drawn cut off at it, with a caret; they are " \
+              f"narrow enough that the area lost is {lost * 100:.2f}% of the total."
 fig.text(0.055, 0.058, textwrap.fill(
     "All greenhouse gases in CO$_2$-equivalent including land use. Sources: Jones et al. and UN "
     "population, via Our World in Data. Only countries are drawn, so the totals sit a little below "
-    "the world figure. " + cutline, 118),
+    "the world figure." + cutline, 118),
          fontsize=8.5, color=MUTED, va="top", linespacing=1.6)
 fig.subplots_adjust(top=0.875, bottom=0.155, left=0.09, right=0.98, hspace=0.20)
 fig.savefig(sys.argv[3], format="svg", bbox_inches="tight"); print("wrote", sys.argv[3])
