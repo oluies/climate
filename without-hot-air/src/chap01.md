@@ -91,6 +91,29 @@ Whichever of these three concerns motivates you, we need energy numbers, and pol
 
 The first two concerns are straightforward selfish motivations for drastically reducing fossil fuel use. The third concern, climate change, is a more altruistic motivation – the brunt of climate change will be borne not by us but by future generations over many hundreds of years. Some people feel that climate change is not their responsibility. They say things like "What’s the point in my doing anything? China’s out of control\!" So I’m going to discuss climate change a bit more now, because while writing this book I learned some interesting facts that shed light on these ethical questions. If you have no interest in climate change, feel free to fast-forward to the next section.
 
+## Who actually has the oil
+
+*A section added in the 2026 revision.* MacKay raises security of supply as the second motivation, jokes about "the whims of untrustworthy foreigners", and then leaves the thread there and turns to climate for the rest of the chapter. It is worth picking up, because the numbers are sharper than the joke and they do not point where the joke does.
+
+**Most of the world's oil is produced by countries that do not hold competitive elections.** Set the Energy Institute's 2025 production figures against V-Dem's regime classification and the world's 100.6 million barrels a day divides like this:
+
+| | Share of world oil production | Largest producers |
+|---|---|---|
+| Closed autocracy | **28%** | Saudi Arabia, China, UAE, Kuwait, Qatar |
+| Electoral autocracy | **32%** | Russia, Iran, Iraq, Kazakhstan |
+| Electoral democracy | 38% | United States, Canada, Brazil, Nigeria |
+| Liberal democracy | **2.6%** | Norway, Australia, Denmark |
+
+**Three-fifths of it comes from autocracies, and one fortieth from liberal democracies** — of which Norway alone is most.[^oilregime]
+
+**Now the part that makes the joke misfire.** Take Sweden, a country that buys nearly all its oil and produces none. Of the 18.2 million tonnes of crude it imported in 2024, **57% came from Norway**, 13% from the United States, 11% from Britain and 11% from Guyana. Libya at 3.6% and Côte d'Ivoire at 0.4% are the only autocratic suppliers on the list. **Four per cent of what Sweden buys comes from autocracies, against sixty per cent of what the world pumps.**
+
+A reader could conclude that Sweden has solved the problem. It has not, and the reason is the most important fact in this section: **oil is fungible**. One barrel substitutes for another, so the price is set on a world market where autocracies hold three-fifths of the volume and almost all of the spare capacity that can move the price deliberately. Sweden pays that price whoever fills its tankers. Buying Norwegian protects against a cargo not arriving; it does not protect against what the cargo costs. Norway itself is the demonstration — a large net exporter whose own consumers paid European prices through 2022 like everybody else.
+
+**And there is a second-order lesson in the same figures, for European readers particularly.** The share of Sweden's crude that comes from the European Union is **0.25%**, which is Denmark and nothing else. The share that comes from the European Economic Area is **57%**. The entire difference is Norway, which is inside the internal market and outside the Union. Whatever European energy security means, in this instance it does not mean the Union.
+
+So MacKay's second motivation survives, but not in the form he states it. The exposure is not to whose flag is on the ship. It is to a price set by a market whose largest participants are not accountable to anyone who buys from it — and no amount of choosing your supplier changes that, which is why this book keeps returning to using less rather than to sourcing better.
+
 ## The climate-change motivation
 
 The climate-change motivation is argued in three steps: one: human fossilfuel burning causes carbon dioxide concentrations to rise; two: carbon dioxide is a greenhouse gas; three: increasing the greenhouse effect increases average global temperatures (and has many other effects).
@@ -294,3 +317,5 @@ Incidentally, the observed rise in CO<sub>2</sub> concentration is nicely in lin
 [^21]: *factual assertions and ethical assertions*... Ethical assertions are also known as "normative claims" or "value judgments," and factual assertions are known as "positive claims." Ethical assertions usually contain verbs like "should" and "must," or adjectives like "fair," "right," and "wrong." For helpful further reading see Dessler and Parson (2006).
 
 [^22]: *Gordon Brown*. On 10th September, 2005, Gordon Brown said the high price of fuel posed a significant risk to the European economy and to global growth, and urged OPEC to raise oil production. Again, six months later, he said "we need ... more production, more drilling, more investment, more petrochemical investment" (22nd April, 2006) [[<span class="websitetitle">y98ys5</span>](http://tinyurl.com/y98ys5)]. Let me temper this criticism of Gordon Brown by praising one of his more recent initiatives, namely the promotion of electric vehicles and plug-in hybrids. As you’ll see later, one of this book’s conclusions is that electrification of most transport is a good part of a plan for getting off fossil fuels.
+
+[^oilregime]: Production is the Energy Institute's *Statistical Review of World Energy* 2026, oil production in thousand barrels daily for 2025; the four regime classes are V-Dem's Regimes of the World for 2025, distributed by Our World in Data, where 0 is a closed autocracy, 1 an electoral autocracy, 2 an electoral democracy and 3 a liberal democracy. **Joining the two is this edition's arithmetic and the joint is where the uncertainty lives.** Matched countries cover 99 400 of the Statistical Review's 100 590 thousand barrels daily; the 1.2% difference is regional residuals the Review does not attribute to a country, and Brunei did not match. One coding dominates the table: the United States is 21% of world production and V-Dem classes it as an electoral democracy rather than a liberal one, so counting it as liberal would take the bottom row from 2.6% to 24%. Mexico as an electoral autocracy is likewise contestable. Freedom House and the Economist Intelligence Unit draw the lines elsewhere and would give different totals — there is no neutral answer here, only an answer per classification, which is the same caution chapter L attaches to emissions boundaries. Swedish import figures are Eurostat's `nrg_ti_oil`, crude oil by partner country, 2024, the latest year available: 18 165 thousand tonnes, of which Norway 10 331, the United States 2 311, the United Kingdom 1 966, Guyana 1 942, Nigeria 810, Libya 652, Côte d'Ivoire 67 and Denmark 46. Partner country in trade statistics is the counterparty, not necessarily where the oil was lifted.
