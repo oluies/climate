@@ -142,6 +142,10 @@ Three countries supply about three-quarters of it. **Kazakhstan alone supplies m
 
 Set that beside chapter L's finding that China refines over 90% of the world's graphite and rare earths, and chapter 15's that six Chinese firms make 69% of the world's batteries, and a pattern emerges that MacKay's method is structurally blind to. His question is whether the physics permits a thing. These chapters keep arriving at a different question: whether the supply chain for it runs through countries you would rather not depend on.
 
+**Oil is the mirror image, and it makes the point better than uranium does.** Chapter 1 sets the Statistical Review's production figures against V-Dem's regime classes and finds that **three-fifths of world oil comes from autocracies** and about a fortieth from liberal democracies. But oil is fungible in a way uranium ore effectively is not, so that concentration reaches an importing country through the *price* rather than through the *pipe*. Sweden buys 96% of its crude from democracies and is exposed to the other 60% anyway.
+
+**The uranium case is the opposite and worse.** There is no world spot market deep enough to make Kazakh pounds interchangeable with Canadian ones at short notice, and enrichment capacity is scarcer than the ore. Concentration in oil is a price risk that everybody shares equally; concentration in uranium is a delivery risk that falls on whoever signed the contract. That is why the same table means something different in the two chapters.
+
 Nuclear power is often argued for on energy-security grounds — a fuel you can stockpile for years, unlike gas. That argument is sound and it is worth noticing that it is an argument about *storage*, not about *sourcing*. On sourcing, a British or European nuclear programme is more exposed to Central Asian politics than a gas plant is to Norwegian.
 
 ### 2026 supplied the demonstration

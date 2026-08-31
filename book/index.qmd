@@ -11,11 +11,12 @@ new in their entirety. The table below is the authoritative list of them.
 
 ## Latest changes
 
-Last updated **30 August 2026**. The complete history is in the
+Last updated **31 August 2026**. The complete history is in the
 [repository](https://github.com/oluies/climate/commits/main).
 
 | Date | What changed |
 |---|---|
+| 31 August 2026 | Chapter 1 picks up the security-of-supply motivation MacKay drops: three-fifths of world oil comes from autocracies, Sweden buys 96% of its crude from democracies, and fungibility means that does not help. Chapter N contrasts it with uranium. |
 | 30 August 2026 | Chapter 26: a cheaper cell arrives with a tax advantage behind it, and changes nothing about duration — with the sodium cost claim checked against the lithium price it is measured against. |
 | 28 August 2026 | Chapter 31 gains the carbon cost of a war — four years of the war in Ukraine counted in tonnes, what removing them would cost, and the peacetime military emissions no inventory records; chapter 17 points to it. |
 | 21 August 2026 | Chapter 6 gains a check on solar power per unit area from Chinese utility-scale data, which reaches Cleve Hill's figure by an independent route; chapter L the land totals that go with it; chapter 31 a daily carbon dioxide series behind the "nine seconds" comparison. |
