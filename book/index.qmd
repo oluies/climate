@@ -5,7 +5,7 @@ This is a work-in-progress 2026 revised edition of David MacKay's
 [Quarto](https://quarto.org) from the markdown source preserved by the
 [Life Itself climate project](https://github.com/life-itself/climate).
 
-MacKay's text and his own figures are reproduced unchanged. New material added in
+MacKay's text is reproduced unchanged. Most of his figures have been replaced by versions carrying the same series to the present; where a figure of his is retained, or replaced, the caption says so. New material added in
 this revision is marked in the chapter where it appears, and several chapters are
 new in their entirety. The table below is the authoritative list of them.
 
@@ -16,6 +16,7 @@ Last updated **31 August 2026**. The complete history is in the
 
 | Date | What changed |
 |---|---|
+| 31 August 2026 | Chapter 1 rebuilt: MacKay's superseded figures are replaced rather than duplicated, and figures 1.8 and 1.9 are new — the world is 1% above its 2007 emissions per person on paths that required a steep fall, and a third of all greenhouse gases now come from electricity and heat. |
 | 31 August 2026 | Chapter 1: figures 1.3a, 1.4a and 1.5a. The energy gap closed more by demand falling a quarter than by wind rising; CO₂ is 426 ppm against the 383 where MacKay's chart ends; and the early coal history redrawn legibly. |
 | 31 August 2026 | Chapter 1: figure 1.6a carries the coal chart to 2025. British coal peaked in 1913 and produced 1 TWh last year; world production is five and a half times its 1913 level and set its record in the 2020s. |
 | 31 August 2026 | Chapter 1: figure 1.2a carries MacKay's North Sea chart forward to 2025. Production is down 57% from its 2000 peak, Britain's own share down 77%, while the real price went above anything on his original. |
