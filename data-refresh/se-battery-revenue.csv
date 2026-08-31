@@ -1,0 +1,14 @@
+post,varde,enhet,kalla
+capex_global_usd_kwh,110,USD/kWh,BNEF Energy Storage Systems Cost Survey dec 2025 (4h turnkey)
+capex_sverige_eur_kwh,172,EUR/kWh,uppgivet for svenska projekt
+usd_per_eur,1.09,USD/EUR,arsmedel 2025
+fcrd_upp_mars,5.89,EUR/MW/h,Svenska kraftnat manadsrapport FCR mars 2025
+fcrd_upp_april,8.91,EUR/MW/h,Svenska kraftnat manadsrapport FCR april 2025
+fcrd_upp_oktober,6.86,EUR/MW/h,Svenska kraftnat manadsrapport FCR oktober 2025
+fcrd_ned_april,11.38,EUR/MW/h,Svenska kraftnat manadsrapport FCR april 2025
+afrr_upp_se3_mars,29.4,EUR/MW/h,Svenska kraftnat manadsrapport aFRR mars 2025
+afrr_upp_se4_mars,36.6,EUR/MW/h,Svenska kraftnat manadsrapport aFRR mars 2025
+arb_se3_kostnad,95,EUR/MWh,egen rakning pa svenskt capex
+arb_se3_intakt,86,EUR/MWh,Energy-Charts SE3 2025, snitt av dygnets 4 dyraste timmar
+arb_se4_kostnad,101,EUR/MWh,egen rakning pa svenskt capex
+arb_se4_intakt,110,EUR/MWh,Energy-Charts SE4 2025, snitt av dygnets 4 dyraste timmar
