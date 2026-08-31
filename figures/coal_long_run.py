@@ -22,9 +22,11 @@ end = df.iloc[-1]
 sns.set_theme(style="whitegrid", rc={"grid.color": GRID, "axes.edgecolor": "#c9c9c4"})
 fig, ax = plt.subplots(figsize=(8.8, 5.2))
 
-ax.plot(df.year, df.world_twh / 1000, color=WORLD, lw=2.4, label="World")
-ax.plot(df.year, df.uk_twh / 1000, color=UK, lw=2.4, label="United Kingdom")
-ax.fill_between(df.year, df.uk_twh / 1000, color=UK, alpha=0.13)
+# Varldsserien ar gles fore 1900; rita varje serie over sina egna punkter.
+wd = df.dropna(subset=["world_twh"]); ud = df.dropna(subset=["uk_twh"])
+ax.plot(wd.year, wd.world_twh / 1000, color=WORLD, lw=2.4, label="World")
+ax.plot(ud.year, ud.uk_twh / 1000, color=UK, lw=2.4, label="United Kingdom")
+ax.fill_between(ud.year, ud.uk_twh / 1000, color=UK, alpha=0.13)
 
 ax.set_ylabel("coal production, thousand TWh per year", fontsize=10.5)
 ax.set_xlim(1700, int(end.year)); ax.set_ylim(0, 55)

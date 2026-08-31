@@ -876,16 +876,40 @@ def chapter01(): Unit = {
       val (u, w) = coal.getOrElse(y, (0.0, 0.0))
       coal(y) = if (e == "United Kingdom") (v, w) else (u, v)
     }
+    // Behall ar dar NAGON av serierna finns: varldsserien borjar 1800 och den
+    // brittiska 1700, och kravet att bada finns kastade bort 1700-talet - just
+    // den period MacKays figur 1.5 handlar om. Saknat varde skrivs tomt, inte
+    // noll, sa kurvan bryts i stallet for att falla till golvet.
     val cb = new StringBuilder; cb ++= "year,uk_twh,world_twh\n"
-    for (y <- coal.keys.toSeq.sorted if coal(y)._2 > 0) {
-      val (u, w) = coal(y); cb ++= f"$y,$u%.1f,$w%.1f\n"
+    for (y <- coal.keys.toSeq.sorted if coal(y)._1 > 0 || coal(y)._2 > 0) {
+      val (u, w) = coal(y)
+      val us = if (u > 0) f"$u%.1f" else ""
+      val ws = if (w > 0) f"$w%.1f" else ""
+      cb ++= s"$y,$us,$ws\n"
     }
     os.write.over(dir / "coal-long-run.csv", cb.toString)
 
-    println("wrote data-refresh/north-sea-oil.csv, coal-long-run.csv")
+    // Figur 1.4a/1.7a: koldioxidhalten. Iskarnor plus Mauna Loa i en serie.
+    val co2Csv = dir / "owid-co2-concentration.csv"
+    if (!os.exists(co2Csv))
+      os.write.over(co2Csv, requests.get(
+        "https://ourworldindata.org/grapher/co2-long-term-concentration.csv?csvType=full",
+        readTimeout = 60000).text())
+    val cc = new StringBuilder; cc ++= "year,ppm\n"
+    val cr2 = st.executeQuery(
+      s"""SELECT "Year", "Annual average" FROM read_csv_auto('${co2Csv.toString.replace("'", "''")}')
+          WHERE "Entity" = 'World' AND "Year" >= 800 AND "Annual average" IS NOT NULL
+          ORDER BY "Year"""")
+    while (cr2.next()) cc ++= f"${cr2.getInt(1)},${cr2.getDouble(2)}%.2f\n"
+    os.write.over(dir / "co2-concentration.csv", cc.toString)
+
+    println("wrote data-refresh/north-sea-oil.csv, coal-long-run.csv, co2-concentration.csv")
     println("render:")
     println("  uv run figures/north_sea_oil.py data-refresh/north-sea-oil.csv without-hot-air/Images/fig-north-sea-oil.svg")
     println("  uv run figures/coal_long_run.py data-refresh/coal-long-run.csv without-hot-air/Images/fig-coal-long-run.svg")
+    println("  uv run figures/coal_early.py data-refresh/coal-long-run.csv without-hot-air/Images/fig-coal-early.svg")
+    println("  uv run figures/co2_concentration.py data-refresh/co2-concentration.csv without-hot-air/Images/fig-co2-concentration.svg")
+    println("  uv run figures/uk_gap.py data-refresh/uk-electricity-mix.csv without-hot-air/Images/fig-uk-gap.svg")
   }
 }
 
