@@ -1793,3 +1793,149 @@ def gbPrices(): Unit = {
   os.write.over(dir / "gb-prices.csv", sb.toString)
   println(s"wrote data-refresh/gb-prices.csv ($n rows)")
 }
+
+// ---- Chapter 26: what a battery is paid, in Sweden and in Britain ----
+// Figure 26.16a used to be drawn from numbers typed into a CSV by hand. Two of
+// them turned out not to be reproducible from the source the note named, so the
+// price side is computed here instead, from one method applied to every zone:
+// the mean over the year of each day's cheapest and dearest four hours.
+//
+// Capacity prices are the other half. Britain's come from NESO's auction
+// results, which are an open dataset; Sweden's are still hand-entered from
+// Svenska kraftnat's monthly PDFs, which are not, and stay in
+// data-refresh/se-battery-revenue.csv with the capital costs.
+@main
+def chapter26Batteries(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+
+  /** Dygnets billigaste och dyraste fyra timmar, i snitt over aret. Antalet
+    * observationer per dygn skiljer sig mellan zoner och over aret, sa fyra
+    * timmar raknas som en sjattedel av dygnets punkter i stallet for ett fast
+    * antal - annars blir en kvartstimmesdag fyra gangeromfattande fel. */
+  def lowHigh(byDay: Map[String, Seq[Double]]): (Double, Double) = {
+    val pairs = byDay.values.filter(_.size >= 20).map { v =>
+      val k = math.max(1, math.round(v.size / 6.0).toInt)
+      val s = v.sorted
+      (s.take(k).sum / k, s.takeRight(k).sum / k)
+    }.toSeq
+    require(pairs.size >= 360, s"chapter26Batteries: only ${pairs.size} usable days")
+    (pairs.map(_._1).sum / pairs.size, pairs.map(_._2).sum / pairs.size)
+  }
+
+  // Energy-Charts, som kapitlets not redan namner. Tidszonen ar zonens egen:
+  // dygnet maste brytas dar marknaden bryter det.
+  val sthlm = java.time.ZoneId.of("Europe/Stockholm")
+  def energyCharts(bzn: String): (Double, Double) = {
+    val cache = dir / "gb-cache" / s"price-$bzn-2025.json"
+    os.makeDir.all(cache / os.up)
+    if (!os.exists(cache)) os.write.over(cache, requests.get(
+      s"https://api.energy-charts.info/price?bzn=$bzn&start=2025-01-01&end=2025-12-31",
+      readTimeout = 180000).text())
+    val js = ujson.read(os.read(cache))
+    val ts = js("unix_seconds").arr.map(_.num.toLong)
+    val px = js("price").arr
+    val byDay = ts.zip(px).flatMap { case (t, p) =>
+      if (p.isNull) None else {
+        val d = java.time.Instant.ofEpochSecond(t).atZone(sthlm).toLocalDate
+        if (d.getYear == 2025) Some(d.toString -> p.num) else None
+      }
+    }.groupBy(_._1).view.mapValues(_.map(_._2).toSeq).toMap
+    lowHigh(byDay)
+  }
+
+  // Elexon, samma marknadsindex som figur 26.5b. En vecka per anrop.
+  def elexon(): (Double, Double) = {
+    val cache = dir / "gb-cache" / "mid-2025.json"
+    os.makeDir.all(cache / os.up)
+    if (!os.exists(cache)) {
+      val rows = ujson.Arr()
+      var d = java.time.LocalDate.of(2024, 12, 31)
+      val end = java.time.LocalDate.of(2026, 1, 2)
+      while (d.isBefore(end)) {
+        val nxt = Seq(d.plusDays(7), end).minBy(_.toEpochDay)
+        val js = ujson.read(requests.get(
+          s"https://data.elexon.co.uk/bmrs/api/v1/balancing/pricing/market-index" +
+            s"?from=${d}T00:00Z&to=${nxt}T00:00Z&format=json", readTimeout = 120000).text())
+        for (r <- js("data").arr if r("dataProvider").str == "APXMIDP"
+             && r("settlementDate").str.startsWith("2025"))
+          rows.arr += ujson.Obj("d" -> r("settlementDate").str, "p" -> r("price").num)
+        d = nxt
+      }
+      os.write.over(cache, ujson.write(rows))
+    }
+    val byDay = ujson.read(os.read(cache)).arr
+      .map(r => r("d").str -> r("p").num)
+      .groupBy(_._1).view.mapValues(_.map(_._2).toSeq).toMap
+    lowHigh(byDay)
+  }
+
+  /** NESO:s auktionsresultat. Kalenderaret 2025 ligger over tva brittiska
+    * budgetar, sa bada arkiven fragas och volymvagas ihop. */
+  val NESO_FY = Seq("ab130833-3ce4-4361-90fb-69fa3cf30f15",  // FY2024: jan-mars 2025
+                    "be55ee51-b79e-47da-b71e-a0f8865d9d66")  // FY2025: april-dec 2025
+  def nesoPrices(): Map[String, (Double, Double)] = {
+    val acc = collection.mutable.Map[String, (Double, Double, Int)]()
+    for (rid <- NESO_FY) {
+      val sql = s"""SELECT "auctionProduct" p, sum("clearedVolume") vol,
+                    sum("clearingPrice"*"clearedVolume") pv, count(*) n FROM "$rid"
+                    WHERE "deliveryStart" >= '2025-01-01' AND "deliveryStart" < '2026-01-01'
+                    AND "auctionProduct" IN ('DCL','DRL','DML','PQR','PBR') GROUP BY 1"""
+      val js = ujson.read(requests.get("https://api.neso.energy/api/3/action/datastore_search_sql",
+        params = Map("sql" -> sql), readTimeout = 180000).text())
+      require(js("success").bool, s"chapter26Batteries: NESO query failed for $rid")
+      for (r <- js("result")("records").arr) {
+        val p = r("p").str
+        val (v0, pv0, n0) = acc.getOrElse(p, (0.0, 0.0, 0))
+        acc(p) = (v0 + r("vol").str.toDouble, pv0 + r("pv").str.toDouble, n0 + r("n").str.toInt)
+      }
+    }
+    acc.view.mapValues { case (v, pv, n) => (pv / v, v / n) }.toMap
+  }
+
+  // ECB:s referenskurser, arsmedel 2025. Serien ar noterad som valuta per euro.
+  def ecb(cur: String): Double = {
+    val txt = requests.get(
+      s"https://data-api.ecb.europa.eu/service/data/EXR/D.$cur.EUR.SP00.A" +
+        "?startPeriod=2025-01-01&endPeriod=2025-12-31&format=csvdata", readTimeout = 120000).text()
+    val lines = txt.linesIterator.toSeq
+    val col = lines.head.split(",").indexOf("OBS_VALUE")
+    require(col >= 0, s"chapter26Batteries: no OBS_VALUE column in the ECB $cur series")
+    val v = lines.tail.flatMap(l => l.split(",").lift(col).flatMap(_.toDoubleOption))
+    require(v.size >= 200, s"chapter26Batteries: only ${v.size} ECB observations for $cur")
+    v.sum / v.size
+  }
+
+  val (se3lo, se3hi) = energyCharts("SE3")
+  val (se4lo, se4hi) = energyCharts("SE4")
+  val (gblo, gbhi) = elexon()
+  val neso = nesoPrices()
+  val gbpPerEur = ecb("GBP"); val usdPerEur = ecb("USD")
+
+  val sb = new StringBuilder; sb ++= "post,varde,enhet,kalla\n"
+  def add(k: String, v: Double, unit: String, src: String) =
+    sb ++= f"$k,$v%.3f,$unit,$src\n"
+  val ec = "Energy-Charts 2025, snitt av dygnets fyra billigaste respektive dyraste timmar"
+  add("se3_lag", se3lo, "EUR/MWh", ec); add("se3_hog", se3hi, "EUR/MWh", ec)
+  add("se4_lag", se4lo, "EUR/MWh", ec); add("se4_hog", se4hi, "EUR/MWh", ec)
+  val el = "Elexon marknadsindex APXMIDP 2025, samma rakning"
+  add("gb_lag", gblo, "GBP/MWh", el); add("gb_hog", gbhi, "GBP/MWh", el)
+  for (p <- Seq("DCL", "DRL", "DML", "PQR", "PBR"); (pris, mw) <- neso.get(p)) {
+    add(s"gb_${p.toLowerCase}", pris, "GBP/MW/h",
+        "NESO EAC auktionsresultat 2025, volymvagt")
+    add(s"gb_${p.toLowerCase}_mw", mw, "MW", "NESO EAC, snittvolym per block 2025")
+  }
+  add("gbp_per_eur", gbpPerEur, "GBP/EUR", "ECB referenskurs, arsmedel 2025")
+  add("usd_per_eur", usdPerEur, "USD/EUR", "ECB referenskurs, arsmedel 2025")
+  os.write.over(dir / "battery-prices.csv", sb.toString)
+
+  println("wrote data-refresh/battery-prices.csv")
+  println(f"  SE3 $se3lo%6.2f / $se3hi%6.2f EUR   SE4 $se4lo%6.2f / $se4hi%6.2f EUR   " +
+          f"GB $gblo%6.2f / $gbhi%6.2f GBP")
+  for ((p, (pris, mw)) <- neso.toSeq.sortBy(-_._2._1))
+    println(f"  $p%-4s $pris%6.2f GBP/MW/h   snitt $mw%6.0f MW")
+  println(f"  GBP/EUR $gbpPerEur%.4f   USD/EUR $usdPerEur%.4f")
+  println("render:")
+  println("  uv run figures/battery_revenue.py data-refresh/battery-prices.csv " +
+          "data-refresh/se-battery-revenue.csv without-hot-air/Images/fig-battery-revenue.svg")
+}
