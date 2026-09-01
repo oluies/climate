@@ -3,7 +3,8 @@
 # requires-python = ">=3.12"
 # dependencies = ["matplotlib", "pandas", "seaborn"]
 # ///
-"""Figure 1.7: world CO2 per person against the paths MacKay's figure 1.8 requires.
+"""Figure 1.16: world CO2 per person against the paths MacKay's own scenario
+figure requires.
 Input: data-refresh/co2-per-capita-world.csv.
 
 The two trajectories are drawn as MacKay describes them -- global emissions
@@ -31,14 +32,15 @@ ax.plot(df.year, df.t_per_person, color=ACT, lw=2.6, label="what actually happen
 ax.plot([base_y], [base], "o", ms=7, color=INK, zorder=5)
 ax.annotate(f"{base_y}: {base:.2f} t", xy=(base_y, base), xytext=(-10, 12),
             textcoords="offset points", fontsize=9.5, color=INK, ha="right")
-ax.annotate(f"{int(end.year)}: {end.t_per_person:.2f} t, up 1%",
+chg = (end.t_per_person / base - 1) * 100
+ax.annotate(f"{int(end.year)}: {end.t_per_person:.2f} t, up {chg:.1f}%",
             xy=(end.year, end.t_per_person), xytext=(8, 4), textcoords="offset points",
             fontsize=10, color=INK, fontweight="bold")
 ax.set_ylabel("world CO$_2$ emissions, tonnes per person per year", fontsize=10.5)
 ax.set_xlim(1990, 2058); ax.set_ylim(0, 5.6)
 ax.set_xticks(range(1990, 2051, 10))
 ax.legend(frameon=False, fontsize=9.5, loc="lower left")
-ax.set_title("Figure 1.7. The trajectories, and the line we are actually on.",
+ax.set_title("Figure 1.16. The trajectories, and the line we are actually on.",
              loc="left", fontsize=12.5, fontweight="bold", pad=42)
 ax.annotate("Seventeen of the forty-three years are gone and emissions per person have not started\n"
             "down. Both scenarios also assumed CO$_2$ would peak below 425 ppm; it passed that in 2025.",

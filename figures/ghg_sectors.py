@@ -3,8 +3,8 @@
 # requires-python = ">=3.12"
 # dependencies = ["matplotlib", "pandas", "seaborn"]
 # ///
-"""Figure 1.8: world greenhouse-gas emissions by sector, MacKay's figure 1.9
-brought from 2000 to the present. Input: data-refresh/ghg-by-sector.csv."""
+"""Figure 1.17: world greenhouse-gas emissions by sector, MacKay's 2000
+breakdown brought to the present. Input: data-refresh/ghg-by-sector.csv."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt
 
 INK, MUTED, GRID = "#161d1b", "#8a8a85", "#ededea"
@@ -34,7 +34,7 @@ for sp in ("top", "right", "bottom"):
     ax.spines[sp].set_visible(False)
 ax.set_xlabel("share of world greenhouse-gas emissions", fontsize=10.5,
               color=MUTED, labelpad=10, loc="left")
-ax.set_title(f"Figure 1.8. Where the emissions come from, {y0} and {y1}.",
+ax.set_title(f"Figure 1.17. Where the emissions come from, {y0} and {y1}.",
              loc="left", fontsize=12.5, fontweight="bold", pad=42)
 ax.annotate(f"The total rose from {sa:.0f} to {sb:.0f} gigatonnes of CO$_2$-equivalent. Electricity and heat\n"
             f"grew fastest and is now a third of everything.",

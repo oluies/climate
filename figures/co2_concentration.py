@@ -3,8 +3,8 @@
 # requires-python = ">=3.12"
 # dependencies = ["matplotlib", "pandas", "seaborn"]
 # ///
-"""Figures 1.4a and 1.7a: atmospheric CO2 for the last twelve centuries, carrying
-MacKay's figures 1.4 and 1.7 forward. Input: data-refresh/co2-concentration.csv."""
+"""Figure 1.4: atmospheric CO2 for the last twelve centuries, carrying MacKay's
+figure 1.4 and the upper panel of figure 1.15 forward. Input: data-refresh/co2-concentration.csv."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt
 
 INK, MUTED, GRID, LINE = "#161d1b", "#8a8a85", "#ededea", "#b8402e"
@@ -31,7 +31,7 @@ ax.annotate(f"{int(end.year)}: {end.ppm:.0f}", xy=(end.year, end.ppm), xytext=(-
 ax.set_ylabel("CO$_2$ concentration, parts per million", fontsize=10.5)
 ax.set_xlim(900, 2060); ax.set_ylim(250, 445)
 ax.set_xticks(range(1000, 2001, 200))
-ax.set_title("Figure 1.4a. Carbon dioxide, eighteen years further on.",
+ax.set_title("Figure 1.4. Carbon dioxide, eighteen years further on.",
              loc="left", fontsize=12.5, fontweight="bold", pad=42)
 r1800 = df[df.year <= 1800].iloc[-1].ppm
 r1960 = df[df.year <= 1960].iloc[-1].ppm

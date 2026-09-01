@@ -4,8 +4,8 @@
 # dependencies = ["matplotlib", "pandas", "seaborn"]
 # ///
 """Figure 1.6: British and world population, 1700 to 2025, replacing MacKay's two
-small population graphs. Drawn on the same window as the coal figures so the
-shapes can be laid beside each other, which is the comparison his text makes.
+small population graphs. Drawn on the same window as figure 1.7 so the shapes
+can be laid beside each other, which is the comparison his text makes.
 Input: data-refresh/population-longrun.csv."""
 import sys, pandas as pd, seaborn as sns, matplotlib.pyplot as plt
 
@@ -55,7 +55,7 @@ fig.suptitle("Figure 1.6. The population growth the coal paid for, and what happ
              x=0.055, y=0.99, ha="left", fontsize=12.5, fontweight="bold")
 uk0, uk9 = df.iloc[0].uk, float(df.loc[df.year == 1900, "uk"].iloc[0])
 w0, w9 = df.iloc[0].world, float(df.loc[df.year == 1900, "world"].iloc[0])
-fig.text(0.055, 0.930, f"Same window as the coal figures, so the shapes can be laid beside each other. Britain multiplied "
+fig.text(0.055, 0.930, f"Same window as figure 1.7, so the shapes can be laid beside each other. Britain multiplied "
                        f"{uk9/uk0:.0f}-fold while its coal did,\nthen grew {100*(last.uk/uk9-1):.0f}% in the 125 years since. "
                        f"The world went the other way: {w9/w0:.1f}-fold to 1900, then {last.world/w9:.1f}-fold.",
          fontsize=9.5, color=MUTED, va="top", linespacing=1.5)

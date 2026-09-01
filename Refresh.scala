@@ -29,6 +29,17 @@ import scala.util.Using
 def withConn[T](body: Connection => T): T =
   Using.resource(DriverManager.getConnection("jdbc:duckdb:"))(body)
 
+/** Our World in Data-grapher, cachad pa disk. Fyra steg hamtade tidigare samma
+  * sak med var sin kopia av URL-mallen och timeouten. */
+def fetch(slug: String, file: String): os.Path = {
+  val dir = os.pwd / "data-refresh"
+  os.makeDir.all(dir)
+  val p = dir / file
+  if (!os.exists(p)) os.write.over(p,
+    requests.get(s"https://ourworldindata.org/grapher/$slug.csv?csvType=full", readTimeout = 60000).text())
+  p
+}
+
 
 val CSV_URL = "https://ourworldindata.org/grapher/electricity-prod-source-stacked.csv?csvType=full"
 
@@ -154,11 +165,6 @@ def costs(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
   val dir = os.pwd / "data-refresh"
   os.makeDir.all(dir)
-  def fetch(slug: String, file: String): os.Path = {
-    val p = dir / file
-    if (!os.exists(p)) os.write.over(p, requests.get(s"https://ourworldindata.org/grapher/$slug.csv?csvType=full", readTimeout = 60000).text())
-    p
-  }
   val modCsv = fetch("solar-pv-prices", "owid-solar-module.csv")
   val lcoeCsv = fetch("levelized-cost-of-energy", "owid-lcoe.csv")
 
@@ -801,7 +807,7 @@ def chapter06(): Unit = {
   }
 }
 
-// ---- Chapter 1: figure 1.2a, the North Sea carried forward ----
+// ---- Chapter 1: figure 1.2, the North Sea carried forward ----
 // MacKay's figure 1.2 ends in 2007. This rebuilds the same two series to the
 // present from the Statistical Review: production for the three North Sea
 // producers, and the crude price in constant dollars.
@@ -815,6 +821,11 @@ def chapter06(): Unit = {
 def chapter01(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
   val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  // Figur 1.12 ritas ur dessa tva. De hamtas ocksa av andra steg, men bada ar
+  // gitignorerade, sa utan detta gar render-raden nedan inte att folja pa en
+  // ren utcheckning.
+  fetch("per-capita-ghg-emissions", "owid-per-capita-ghg-emissions.csv")
+  fetch("population", "owid-population.csv")
   val xlsx = (dir / "ei-stats-review-all-data.xlsx").toString.replace("'", "''")
   withConn { conn =>
     val st = conn.createStatement()
@@ -859,7 +870,7 @@ def chapter01(): Unit = {
     }
     os.write.over(dir / "north-sea-oil.csv", sb.toString)
 
-    // Figur 1.6a: kolet, samma tva serier som MacKays 1.6 men hela vagen till nu.
+    // Figur 1.7: kolet, samma tva serier som MacKays egen version men hela vagen till nu.
     // Statistical Review borjar 1981, vilket inte racker for hans fonster, sa
     // langa serien kommer fran OWID (Our World in Data) i TWh.
     val coalCsv = dir / "owid-coal-production.csv"
@@ -889,7 +900,7 @@ def chapter01(): Unit = {
     }
     os.write.over(dir / "coal-long-run.csv", cb.toString)
 
-    // Figur 1.4a/1.7a: koldioxidhalten. Iskarnor plus Mauna Loa i en serie.
+    // Figur 1.4: koldioxidhalten. Iskarnor plus Mauna Loa i en serie.
     val co2Csv = dir / "owid-co2-concentration.csv"
     if (!os.exists(co2Csv))
       os.write.over(co2Csv, requests.get(
@@ -903,7 +914,7 @@ def chapter01(): Unit = {
     while (cr2.next()) cc ++= f"${cr2.getInt(1)},${cr2.getDouble(2)}%.2f\n"
     os.write.over(dir / "co2-concentration.csv", cc.toString)
 
-    // Figur 1.7: varldens CO2 per person mot de banor MacKays figur 1.8 kraver.
+    // Figur 1.16: varldens CO2 per person mot de banor MacKays egna scenarier kraver.
     val pcCsv = dir / "owid-co2-per-capita.csv"
     if (!os.exists(pcCsv))
       os.write.over(pcCsv, requests.get(
@@ -916,7 +927,7 @@ def chapter01(): Unit = {
     while (pr3.next()) pc ++= f"${pr3.getInt(1)},${pr3.getDouble(2)}%.3f\n"
     os.write.over(dir / "co2-per-capita-world.csv", pc.toString)
 
-    // Figur 1.8: varldens vaxthusgaser per sektor.
+    // Figur 1.17: varldens vaxthusgaser per sektor.
     val secCsv = dir / "owid-ghg-by-sector.csv"
     if (!os.exists(secCsv))
       os.write.over(secCsv, requests.get(
@@ -925,7 +936,7 @@ def chapter01(): Unit = {
     os.write.over(dir / "ghg-by-sector.csv",
       os.read(secCsv).linesIterator.filter(l => l.startsWith("Entity") || l.startsWith("World,")).mkString("\n") + "\n")
 
-    // Figur 1.6: befolkning, samma fonster som kolfigurerna sa formerna gar att
+    // Figur 1.6: befolkning, samma fonster som figur 1.7 sa formerna gar att
     // lagga bredvid varandra. Langa serien med FN:s framskrivning, sa att den
     // nar samma slutar som ovriga.
     val popCsv = dir / "owid-population-longrun.csv"
@@ -960,6 +971,8 @@ def chapter01(): Unit = {
     println("  uv run figures/emission_paths.py data-refresh/co2-per-capita-world.csv without-hot-air/Images/fig-emission-paths.svg")
     println("  uv run figures/ghg_sectors.py data-refresh/ghg-by-sector.csv without-hot-air/Images/fig-ghg-sectors.svg")
     println("  uv run figures/population_longrun.py data-refresh/population-longrun.csv without-hot-air/Images/fig-population.svg")
+    println("  uv run figures/ghg_rectangles.py data-refresh/owid-per-capita-ghg-emissions.csv " +
+            "data-refresh/owid-population.csv without-hot-air/Images/fig-ghg-rectangles.svg")
   }
 }
 
@@ -1586,12 +1599,6 @@ def ukLowCarbon(): Unit = {
 def energyVsGdp(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
   val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
-  def fetch(slug: String, file: String): os.Path = {
-    val p = dir / file
-    if (!os.exists(p)) os.write.over(p,
-      requests.get(s"https://ourworldindata.org/grapher/$slug.csv?csvType=full", readTimeout = 60000).text())
-    p
-  }
   val total = fetch("energy-use-per-person-vs-gdp-per-capita", "owid-energy-vs-gdp.csv")
   val fossil = fetch("per-capita-fossil-energy-vs-gdp", "owid-fossil-vs-gdp.csv")
 
@@ -1633,12 +1640,6 @@ def energyVsGdp(): Unit = {
 def ghgScatter(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
   val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
-  def fetch(slug: String, file: String): os.Path = {
-    val p = dir / file
-    if (!os.exists(p)) os.write.over(p,
-      requests.get(s"https://ourworldindata.org/grapher/$slug.csv?csvType=full", readTimeout = 60000).text())
-    p
-  }
   val ghg = fetch("per-capita-ghg-emissions", "owid-per-capita-ghg-emissions.csv")
   val hdi = fetch("human-development-index", "owid-human-development-index.csv")
   // Income and energy come from the grapher figure 18.11 already uses, so the
