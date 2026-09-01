@@ -61,7 +61,7 @@ for ax, y in zip(axes, (Y0, Y1)):
             ax.plot([x + w / 2], [YMAX], marker="^", ms=4.5, color=col, zorder=6)
         if c in LABEL and (w > 0.12 or pc > 14):
             rot = 90 if w < 0.30 else 0
-            if pc > 20 and rot == 90:
+            if pc > 20 and (rot == 90 or pc > YMAX):
                 # Hoga smala staplar: etiketten inuti, annars sticker den upp
                 # genom rubriken.
                 ax.text(x + w / 2, h - 0.8, LABEL[c], ha="center", va="top",
