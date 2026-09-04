@@ -340,11 +340,11 @@ That figure has the weakness this book keeps returning to: it counts countries r
 
 ![Electricity generation per person by region from 1985 to 2025, in kWh per day. The United States runs near 30 in 1985, peaks at 40.2 in 2007 and falls to 37.6. China rises from 1.1 to 20.5, crossing Europe in 2021. Europe rises from 13.0 to 15.9, having peaked at 17.1 in 2008. The world average rises from 5.6 to 10.7, India from 0.7 to 3.9, and Africa from 1.3 to only 1.8.](/img/without-hot-air/fig-world-electricity-percapita.svg)
 
-<span class="figurenumber">Figure L.5.</span> *Added in this edition.* The same generation, per person, in the units of this book. Two of the six lines are falling, which is not visible in figure L.4 at all.
+<span class="figurenumber">Figure L.5.</span> *Added in this edition.* The same generation, per person, in the units of this book. America and Europe have been under their late-2000s peaks ever since, and Africa's line barely moves; neither is visible in figure L.4.
 
 Per person, China generates **20.5 kWh a day** against America's **37.6**. The country that makes a third of the world's electricity still makes little more than half as much of it per citizen, and the gap that closed on the totals around 2010 is still open. China passed Europe on this measure in 2021, two years before it passed Europe on total energy per person in figure L.1.
 
-The two flat lines turn out not to be flat. **America peaked in 2007** at 40.2 kWh/d and has fallen 6% since; **Europe peaked in 2008** at 17.1 and has fallen 7%. Both are generating more electricity than they were in 1985 and less of it each, and the falls are hidden in figure L.4 by population growth of 44% and 12% respectively.
+The two flat lines turn out not to be flat, and they are not flat for the same reason. **America peaked in 2007** at 40.2 kWh/d and is 6% under it now. Its total generation rose 8% over those same years, so what figure L.4 conceals is a population that grew 15%. **Europe peaked in 2008** at 17.1 and is 7% under it, but here nothing is concealed: Europe's total generation fell too, from 4 088 TWh to 3 956. One line is coming down because there are more people to divide by; the other because there is less to divide.
 
 Then there is Africa, which is the reason for drawing this at all. Africa's generation nearly quadrupled between 1985 and 2025, from 259 to 991 TWh, and on the totals only China and India grew faster. Its population nearly tripled over the same forty years. What is left after the division is a rise from **1.27 to 1.75 kWh a day**: 38% in four decades, against the world average's 93%. Africa had 23% of the world average in 1985 and has 16% of it now: it is further behind than when the chart starts.
 

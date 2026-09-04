@@ -428,13 +428,15 @@ def chapterJ(): Unit = {
     val popCsv = fetch("population-long-run-with-projections", "owid-population-longrun.csv")
     val popNeeded = List("World", "China", "United States", "India", "Africa", "Europe",
                          "Russia", "Belarus", "Moldova", "Turkey", "Georgia")
+    val elecYears = elecSeries.values.flatMap(_.keys)
+    val (elecFirst, elecLast) = (elecYears.min, elecYears.max)
     val rs7 = st.executeQuery(
       s"""SELECT "Entity", TRY_CAST("Year" AS INTEGER) AS y,
              COALESCE(TRY_CAST("Population (projections) (Projected)" AS DOUBLE),
                       TRY_CAST("Population" AS DOUBLE)) AS v
           FROM read_csv_auto('${popCsv.toString.replace("'", "''")}', all_varchar=true)
           WHERE "Entity" IN (${popNeeded.map(e => s"'$e'").mkString(", ")})
-            AND TRY_CAST("Year" AS INTEGER) BETWEEN 1985 AND 2025""")
+            AND TRY_CAST("Year" AS INTEGER) BETWEEN $elecFirst AND $elecLast""")
     val popByEntity = collection.mutable.Map[String, collection.mutable.Map[Int, Double]]()
     while (rs7.next())
       popByEntity.getOrElseUpdate(rs7.getString(1), collection.mutable.Map())(rs7.getInt(2)) = rs7.getDouble(3)
@@ -448,11 +450,15 @@ def chapterJ(): Unit = {
                        pop("Turkey", y) + pop("Georgia", y)
       case r        => pop(r, y)
     }
+    // No year is skipped: a generation year with no population behind it fails
+    // loudly in `pop` rather than shortening the series behind the reader's back.
+    // That is the failure to expect next June, when the workbook gains a year and
+    // the cached owid-population-longrun.csv has not - `fetch` never re-downloads
+    // a file it already has, so delete it before the annual run.
     val epc = new StringBuilder; epc ++= "region,year,kwh_per_day\n"
     val elecPc = scala.collection.mutable.Map[String, Map[Int, Double]]()
     for (r <- elecRegions.map(_.replace("Total ", ""))) {
-      val m = elecSeries(r).collect { case (y, twh) if popByEntity("World").contains(y) =>
-        y -> twh * 1e9 / regionPop(r, y) / 365.0 }
+      val m = elecSeries(r).map { case (y, twh) => y -> twh * 1e9 / regionPop(r, y) / 365.0 }
       elecPc(r) = m
       for ((y, v) <- m.toSeq.sorted) epc ++= f"$r,$y,$v%.2f\n"
     }
