@@ -327,6 +327,9 @@ def chapterKDemand(): Unit = {
 
 // ---- Chapter J: world energy, from the EI Statistical Review workbook ----
 // The Energy Institute's 2026 edition (published 30 June 2026, data for 2025).
+// Run once a year, after the new edition appears at the end of June: the
+// workbook is the only source here that moves, and everything this task writes
+// moves with it.
 // The workbook is behind a registration form, so it is a manual download rather
 // than a fetch: put EI-Stats-Review-ALL-data.xlsx in data-refresh/ as
 // ei-stats-review-all-data.xlsx. Note the sheet layout: each fuel block repeats,
@@ -414,6 +417,53 @@ def chapterJ(): Unit = {
     }
     os.write.over(dir / "world-electricity-history.csv", eg2.toString)
 
+    // -- the same series per person, in MacKay's kWh/d --
+    // Population year by year from OWID's long-run series, which carries the UN
+    // projection and so reaches 2025 without the extrapolation the plain
+    // population grapher would need. Beware the region names: the Statistical
+    // Review's "Europe" is not the UN's. It puts Turkey and Georgia in Europe and
+    // Russia, Belarus and Moldova in the CIS, so OWID's Europe is reshaped to
+    // match; left uncorrected the denominator is a tenth too large and Europe's
+    // line sits a tenth too low. The other five regions coincide.
+    val popCsv = fetch("population-long-run-with-projections", "owid-population-longrun.csv")
+    val popNeeded = List("World", "China", "United States", "India", "Africa", "Europe",
+                         "Russia", "Belarus", "Moldova", "Turkey", "Georgia")
+    val elecYears = elecSeries.values.flatMap(_.keys)
+    val (elecFirst, elecLast) = (elecYears.min, elecYears.max)
+    val rs7 = st.executeQuery(
+      s"""SELECT "Entity", TRY_CAST("Year" AS INTEGER) AS y,
+             COALESCE(TRY_CAST("Population (projections) (Projected)" AS DOUBLE),
+                      TRY_CAST("Population" AS DOUBLE)) AS v
+          FROM read_csv_auto('${popCsv.toString.replace("'", "''")}', all_varchar=true)
+          WHERE "Entity" IN (${popNeeded.map(e => s"'$e'").mkString(", ")})
+            AND TRY_CAST("Year" AS INTEGER) BETWEEN $elecFirst AND $elecLast""")
+    val popByEntity = collection.mutable.Map[String, collection.mutable.Map[Int, Double]]()
+    while (rs7.next())
+      popByEntity.getOrElseUpdate(rs7.getString(1), collection.mutable.Map())(rs7.getInt(2)) = rs7.getDouble(3)
+    for (e <- popNeeded if !popByEntity.contains(e))
+      sys.error(s"FEL: befolkning saknas for $e i owid-population-longrun.csv")
+    def pop(entity: String, y: Int): Double = popByEntity(entity).getOrElse(y,
+      sys.error(s"FEL: befolkning saknas for $entity $y i owid-population-longrun.csv"))
+    def regionPop(region: String, y: Int): Double = region match {
+      case "US"     => pop("United States", y)
+      case "Europe" => pop("Europe", y) - pop("Russia", y) - pop("Belarus", y) - pop("Moldova", y) +
+                       pop("Turkey", y) + pop("Georgia", y)
+      case r        => pop(r, y)
+    }
+    // No year is skipped: a generation year with no population behind it fails
+    // loudly in `pop` rather than shortening the series behind the reader's back.
+    // That is the failure to expect next June, when the workbook gains a year and
+    // the cached owid-population-longrun.csv has not - `fetch` never re-downloads
+    // a file it already has, so delete it before the annual run.
+    val epc = new StringBuilder; epc ++= "region,year,kwh_per_day\n"
+    val elecPc = scala.collection.mutable.Map[String, Map[Int, Double]]()
+    for (r <- elecRegions.map(_.replace("Total ", ""))) {
+      val m = elecSeries(r).map { case (y, twh) => y -> twh * 1e9 / regionPop(r, y) / 365.0 }
+      elecPc(r) = m
+      for ((y, v) <- m.toSeq.sorted) epc ++= f"$r,$y,$v%.2f\n"
+    }
+    os.write.over(dir / "world-electricity-percapita.csv", epc.toString)
+
     // -- CO2 from energy: who is driving the increase, and since when --
     // Column AK is 2000 and BJ is 2025 on this sheet; BK and BL are growth rates.
     val co2Regions = List("Total World", "China", "India", "US", "Total Europe", "Total Africa",
@@ -470,10 +520,21 @@ def chapterJ(): Unit = {
     println(f"China elec  ${cn(1985)}%.0f (1985) -> ${cn(2025)}%.0f TWh (2025), ${cn(2025) / cn(1985)}%.0fx; ${cn(2025) / wd(2025) * 100}%.0f%% of world")
     println(f"            added $cnAdd%.0f TWh since 2000 = ${cnAdd / wdAdd * 100}%.0f%% of world growth; US+Europe generate ${elecSeries("US")(2025) + elecSeries("Europe")(2025)}%.0f TWh today")
     println(f"electricity $et24%.0f -> $et25%.0f TWh (+${et25 - et24}%.0f); fossil $fos24%.0f -> $fos25%.0f (${fos25 - fos24}%+.0f), now ${fos25 / et25 * 100}%.1f%%")
+    val last = elecPc("World").keys.max
+    val (usPeakY, usPeakV) = elecPc("US").maxBy(_._2)
+    val afrNow = elecPc("Africa")(last)
+    val cnCross = elecPc("China").keys.toSeq.sorted.find(y => elecPc("China")(y) >= elecPc("Europe")(y))
+    val cnWhen = elecPc("China").keys.toSeq.sorted.find(y => elecPc("China")(y) >= afrNow)
+    println(f"per person  US peaked $usPeakY at $usPeakV%.1f kWh/d, now ${elecPc("US")(last)}%.1f; " +
+            f"China ${elecPc("China")(1985)}%.1f (1985) -> ${elecPc("China")(last)}%.1f, passed Europe in ${cnCross.getOrElse(0)}")
+    println(f"            Africa ${elecPc("Africa")(1985)}%.1f -> $afrNow%.1f in forty years - where China was in ${cnWhen.getOrElse(0)}; " +
+            f"India ${elecPc("India")(last)}%.1f, world ${elecPc("World")(last)}%.1f")
     println("render:")
     println("  uv run figures/world_energy_2025.py data-refresh/world-energy-2025.csv without-hot-air/Images/fig-world-energy-2025.svg")
     println("  uv run figures/world_electricity_2025.py data-refresh/world-electricity-2025.csv without-hot-air/Images/fig-world-electricity-2025.svg")
     println("  uv run figures/world_percapita.py data-refresh/world-tes-percapita.csv without-hot-air/Images/fig-world-percapita.svg")
+    println("  uv run figures/world_electricity_history.py data-refresh/world-electricity-history.csv without-hot-air/Images/fig-world-electricity-history.svg")
+    println("  uv run figures/world_electricity_percapita.py data-refresh/world-electricity-percapita.csv without-hot-air/Images/fig-world-electricity-percapita.svg")
   }
 }
 

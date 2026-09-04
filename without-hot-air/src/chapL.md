@@ -336,7 +336,21 @@ In 1985 China generated **411 TWh** of electricity, about a seventh of what the 
 
 <span class="figurenumber">Figure L.4.</span> Electricity generation by region. The United States and Europe are flat for twenty-five years; the world's growth is almost entirely the other lines.
 
-The same story is told in a material that this book has not so far mentioned, and it is the one that makes the point unarguable. The United States produced **4.2 gigatonnes of cement in the entire twentieth century**, and consumed about 4.4. China produced **4.9 gigatonnes in 2020 and 2021** — two years.[^l9] The widely repeated version of this comparison says three years, and was true when it was coined; China has since got faster, and Hannah Ritchie's recomputation from the USGS series puts it at two. China now makes about 1.9 of the world's 4.0 gigatonnes a year, roughly half. Whatever else the last three decades were, they were the largest construction event in the history of the species, and it was mostly one country pouring concrete.
+That figure has the weakness this book keeps returning to: it counts countries rather than people. China's line is on top because there are 1.4 billion Chinese, and dividing through changes which line is on top and which way several of them point.
+
+![Electricity generation per person by region from 1985 to 2025, in kWh per day. The United States runs near 30 in 1985, peaks at 40.2 in 2007 and falls to 37.6. China rises from 1.1 to 20.5, crossing Europe in 2021. Europe rises from 13.0 to 15.9, having peaked at 17.1 in 2008. The world average rises from 5.6 to 10.7, India from 0.7 to 3.9, and Africa from 1.3 to only 1.8.](/img/without-hot-air/fig-world-electricity-percapita.svg)
+
+<span class="figurenumber">Figure L.5.</span> *Added in this edition.* The same generation, per person, in the units of this book. America and Europe have been under their late-2000s peaks ever since, and Africa's line barely moves; neither is visible in figure L.4.
+
+Per person, China generates **20.5 kWh a day** against America's **37.6**. The country that makes a third of the world's electricity still makes little more than half as much of it per citizen, and the gap that closed on the totals around 2010 is still open. China passed Europe on this measure in 2021, two years before it passed Europe on total energy per person in figure L.1.
+
+The two flat lines turn out not to be flat, and they are not flat for the same reason. **America peaked in 2007** at 40.2 kWh/d and is 6% under it now. Its total generation rose 8% over those same years, so what figure L.4 conceals is a population that grew 15%. **Europe peaked in 2008** at 17.1 and is 7% under it, but here nothing is concealed: Europe's total generation fell too, from 4 088 TWh to 3 956. One line is coming down because there are more people to divide by; the other because there is less to divide.
+
+Then there is Africa, which is the reason for drawing this at all. Africa's generation nearly quadrupled between 1985 and 2025, from 259 to 991 TWh, and on the totals only China and India grew faster. Its population nearly tripled over the same forty years. What is left after the division is a rise from **1.27 to 1.75 kWh a day**: 38% in four decades, against the world average's 93%. Africa had 23% of the world average in 1985 and has 16% of it now: it is further behind than when the chart starts.
+
+It is worth putting that number in the units of chapter 9. A single 100 W bulb left burning continuously uses 2.4 kWh a day. **The entire electricity generation of Africa, divided by every African, does not run one such bulb.** The American figure runs sixteen of them. Whatever else the transition has to do, it has to be compatible with that ratio changing, and no line on this chart is yet changing it.
+
+Return to China. The same story is told in a material that this book has not so far mentioned, and it is the one that makes the point unarguable. The United States produced **4.2 gigatonnes of cement in the entire twentieth century**, and consumed about 4.4. China produced **4.9 gigatonnes in 2020 and 2021** — two years.[^l9] The widely repeated version of this comparison says three years, and was true when it was coined; China has since got faster, and Hannah Ritchie's recomputation from the USGS series puts it at two. China now makes about 1.9 of the world's 4.0 gigatonnes a year, roughly half. Whatever else the last three decades were, they were the largest construction event in the history of the species, and it was mostly one country pouring concrete.
 
 Cement matters here for a reason beyond scale: **its emissions are chemistry, not fuel.** Making cement means heating limestone until it gives up its carbon dioxide — calcium carbonate becomes calcium oxide, and the CO<sub>2</sub> leaves as gas. More than half the carbon dioxide from cement comes from that reaction rather than from the fire underneath, which means it does not appear in any figure headed "CO<sub>2</sub> from energy", and no amount of clean electricity removes it. Cement is about **4.5% of global CO<sub>2</sub> emissions** on its own. It is one of the few large emissions sources for which decarbonising the power system is simply not the answer.
 
@@ -364,13 +378,13 @@ Arguments about who is responsible go wrong by switching between questions that 
 
 <iframe src="https://ourworldindata.org/grapher/share-of-cumulative-co2?tab=line" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
 
-<span class="figurenumber">Figure L.5.</span> Share of cumulative carbon dioxide emissions, from Our World in Data — the third question drawn. Because carbon dioxide persists for centuries, this is the stock rather than the flow, and it is the chart the historical-responsibility argument rests on. Note that a country's share here can fall while its emissions rise, since the denominator is everyone's cumulative total.
+<span class="figurenumber">Figure L.6.</span> Share of cumulative carbon dioxide emissions, from Our World in Data — the third question drawn. Because carbon dioxide persists for centuries, this is the stock rather than the flow, and it is the chart the historical-responsibility argument rests on. Note that a country's share here can fall while its emissions rise, since the denominator is everyone's cumulative total.
 
 And a fourth, which is the one most often conflated with the others: **who is driving the increase?**
 
 ![Change in CO2 from energy by region between 2000 and 2025, in million tonnes a year. China rose 7 912, India 2 002, the Middle East 1 311, Africa 663 and South and Central America 358, while the United States fell 986 and Europe fell 1 274. The world total rose 12 129.](/img/without-hot-air/fig-world-co2-since-2000.svg)
 
-<span class="figurenumber">Figure L.6.</span> The change in energy-related carbon dioxide emissions by region, 2000 to 2025. Note that two regions have negative bars.
+<span class="figurenumber">Figure L.7.</span> The change in energy-related carbon dioxide emissions by region, 2000 to 2025. Note that two regions have negative bars.
 
 Since 2000 world emissions have risen 12 129 Mt a year. China accounts for 7 912 Mt of that, **65% of the global increase**, and India for a further 2 002 Mt. Over the same quarter-century United States emissions fell by 986 Mt a year and Europe's by 1 274 — declines that were more than cancelled by growth elsewhere. So the answer to the fourth question is China, and it is not close.[^l4]
 
@@ -386,7 +400,7 @@ Rather than take any of that on trust, much of the same data is below as Our Wor
 
 <iframe src="https://ourworldindata.org/explorers/co2?country=CHN~USA~IND~GBR~OWID_EU27&hideControls=false&Gas+or+warming=All+GHGs+%28CO%E2%82%82eq%29&Accounting=Territorial&Count=Per+country&Relative+to+world+total=false&tab=line" loading="lazy" style="width: 100%; height: 696px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
 
-<span class="figurenumber">Figure L.6a.</span> Greenhouse-gas emissions for China, the United States, India, the United Kingdom and the EU-27, from Our World in Data. Opens on all greenhouse gases, territorial, by country. *Accounting* is greyed out in that state; move *Gas or warming* to carbon dioxide to release it, then switch *Accounting* to consumption-based and watch the British and European lines rise and the Chinese line fall — the trade correction of the earlier section, drawn rather than described.
+<span class="figurenumber">Figure L.7a.</span> Greenhouse-gas emissions for China, the United States, India, the United Kingdom and the EU-27, from Our World in Data. Opens on all greenhouse gases, territorial, by country. *Accounting* is greyed out in that state; move *Gas or warming* to carbon dioxide to release it, then switch *Accounting* to consumption-based and watch the British and European lines rise and the Chinese line fall — the trade correction of the earlier section, drawn rather than described.
 
 All four answers are true at once, and each is a different question. The atmosphere responds only to the total, which is why an argument that answers one question with another's answer is not an argument. MacKay's rule is the way through: state the quantity, state the denominator, then argue.
 
