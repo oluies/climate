@@ -11,11 +11,12 @@ new in their entirety. The table below is the authoritative list of them.
 
 ## Latest changes
 
-Last updated **31 August 2026**. The complete history is in the
+Last updated **1 September 2026**. The complete history is in the
 [repository](https://github.com/oluies/climate/commits/main).
 
 | Date | What changed |
 |---|---|
+| 1 September 2026 | Chapter 26: figure 26.16a gains Britain, and its price side is now computed from the sources rather than typed in. Britain's day-ahead spread is wider than SE3's and earns less, because it has almost no cheap hours; its reserve markets pay about half what Sweden's do, which is what Sweden's will look like once the batteries have arrived. |
 | 31 August 2026 | Chapter 26 gains the Swedish case: day-ahead arbitrage does not cover a battery's capital even with 17% of hours under €10, while the reserve markets do — and they pay per megawatt of availability, so nothing in them rewards a fifth hour of storage. |
 | 31 August 2026 | Chapter 1: figure 1.6 replaces MacKay's two population graphs. Britain multiplied six-fold while its coal did, then grew 69% in the 125 years since; the world went the other way. |
 | 31 August 2026 | Chapter 1: MacKay's four rectangle diagrams are numbered 1.8 to 1.11, so his own construction can be referred to and it is visible which new figure updates which. |

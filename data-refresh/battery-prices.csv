@@ -1,0 +1,22 @@
+post,varde,enhet,kalla
+se3_lag,17.777,EUR/MWh,Energy-Charts 2025 - snitt av dygnets fyra billigaste respektive dyraste timmar
+se3_hog,82.147,EUR/MWh,Energy-Charts 2025 - snitt av dygnets fyra billigaste respektive dyraste timmar
+se4_lag,23.081,EUR/MWh,Energy-Charts 2025 - snitt av dygnets fyra billigaste respektive dyraste timmar
+se4_hog,106.553,EUR/MWh,Energy-Charts 2025 - snitt av dygnets fyra billigaste respektive dyraste timmar
+gb_lag,52.638,GBP/MWh,Elexon marknadsindex APXMIDP 2025 - samma rakning
+gb_hog,111.068,GBP/MWh,Elexon marknadsindex APXMIDP 2025 - samma rakning
+gb_dcl,3.926,GBP/MW/h,NESO EAC auktionsresultat 2025 - volymvagt
+gb_dcl_mw,1214.679,MW,NESO EAC - snittvolym per block 2025
+gb_drl,13.173,GBP/MW/h,NESO EAC auktionsresultat 2025 - volymvagt
+gb_drl_mw,442.810,MW,NESO EAC - snittvolym per block 2025
+gb_dml,6.511,GBP/MW/h,NESO EAC auktionsresultat 2025 - volymvagt
+gb_dml_mw,341.553,MW,NESO EAC - snittvolym per block 2025
+gb_pqr,5.463,GBP/MW/h,NESO EAC auktionsresultat 2025 - volymvagt
+gb_pqr_mw,387.130,MW,NESO EAC - snittvolym per block 2025
+gb_pbr,4.632,GBP/MW/h,NESO EAC auktionsresultat 2025 - volymvagt
+gb_pbr_mw,446.968,MW,NESO EAC - snittvolym per block 2025
+se3_andel_under_10,17.495,%,Energy-Charts 2025 - andel av arets pristimmar
+se3_andel_negativ,3.295,%,Energy-Charts 2025 - andel av arets pristimmar
+gb_andel_under_10,5.017,%,Elexon APXMIDP 2025 - andel av arets halvtimmar omraknade till euro
+gbp_per_eur,0.857,GBP/EUR,ECB referenskurs - arsmedel 2025
+usd_per_eur,1.130,USD/EUR,ECB referenskurs - arsmedel 2025

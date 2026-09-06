@@ -1,5 +1,5 @@
 owid-electricity.csv
-gb-cache/
+api-cache/
 owid-solar-module.csv
 owid-lcoe.csv
 owid-energy-by-source.csv
