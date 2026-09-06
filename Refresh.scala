@@ -1895,9 +1895,10 @@ def chapter26Batteries(): Unit = {
 
   // ECB:s referenskurser, arsmedel 2025. Serien ar noterad som valuta per euro.
   def ecb(cur: String): Double = {
-    val txt = requests.get(
+    val txt = cachedGet(
       s"https://data-api.ecb.europa.eu/service/data/EXR/D.$cur.EUR.SP00.A" +
-        "?startPeriod=2025-01-01&endPeriod=2025-12-31&format=csvdata", readTimeout = 120000).text()
+        "?startPeriod=2025-01-01&endPeriod=2025-12-31&format=csvdata",
+      dir / "gb-cache" / s"ecb-$cur-2025.csv")
     val lines = txt.linesIterator.toSeq
     val col = lines.head.split(",").indexOf("OBS_VALUE")
     require(col >= 0, s"chapter26Batteries: no OBS_VALUE column in the ECB $cur series")
@@ -1913,20 +1914,26 @@ def chapter26Batteries(): Unit = {
   val gbpPerEur = ecb("GBP"); val usdPerEur = ecb("USD")
 
   val sb = new StringBuilder; sb ++= "post,varde,enhet,kalla\n"
-  def add(k: String, v: Double, unit: String, src: String) =
+  // No commas in any kalla: the row would gain a field the header does not have,
+  // and DuckDB sniffs the delimiter when the figure reads it. Same rule as gbPrices.
+  def add(k: String, v: Double, unit: String, src: String) = {
+    require(!src.contains(","), s"chapter26Batteries: kalla for $k contains a comma")
     sb ++= f"$k,$v%.3f,$unit,$src\n"
-  val ec = "Energy-Charts 2025, snitt av dygnets fyra billigaste respektive dyraste timmar"
+  }
+  val ec = "Energy-Charts 2025 - snitt av dygnets fyra billigaste respektive dyraste timmar"
   add("se3_lag", se3lo, "EUR/MWh", ec); add("se3_hog", se3hi, "EUR/MWh", ec)
   add("se4_lag", se4lo, "EUR/MWh", ec); add("se4_hog", se4hi, "EUR/MWh", ec)
-  val el = "Elexon marknadsindex APXMIDP 2025, samma rakning"
+  val el = "Elexon marknadsindex APXMIDP 2025 - samma rakning"
   add("gb_lag", gblo, "GBP/MWh", el); add("gb_hog", gbhi, "GBP/MWh", el)
-  for (p <- Seq("DCL", "DRL", "DML", "PQR", "PBR"); (pris, mw) <- neso.get(p)) {
+  for (p <- Seq("DCL", "DRL", "DML", "PQR", "PBR")) {
+    require(neso.contains(p), s"chapter26Batteries: NESO returned no rows for $p")
+    val (pris, mw) = neso(p)
     add(s"gb_${p.toLowerCase}", pris, "GBP/MW/h",
-        "NESO EAC auktionsresultat 2025, volymvagt")
-    add(s"gb_${p.toLowerCase}_mw", mw, "MW", "NESO EAC, snittvolym per block 2025")
+        "NESO EAC auktionsresultat 2025 - volymvagt")
+    add(s"gb_${p.toLowerCase}_mw", mw, "MW", "NESO EAC - snittvolym per block 2025")
   }
-  add("gbp_per_eur", gbpPerEur, "GBP/EUR", "ECB referenskurs, arsmedel 2025")
-  add("usd_per_eur", usdPerEur, "USD/EUR", "ECB referenskurs, arsmedel 2025")
+  add("gbp_per_eur", gbpPerEur, "GBP/EUR", "ECB referenskurs - arsmedel 2025")
+  add("usd_per_eur", usdPerEur, "USD/EUR", "ECB referenskurs - arsmedel 2025")
   os.write.over(dir / "battery-prices.csv", sb.toString)
 
   println("wrote data-refresh/battery-prices.csv")
