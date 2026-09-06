@@ -640,7 +640,7 @@ def cachedGet(url: String, cache: os.Path): String =
 def gbCapture(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
   val year = 2025
-  val cache = os.pwd / "data-refresh" / "gb-cache"
+  val cache = os.pwd / "data-refresh" / "api-cache"
 
   println("GB generation by fuel type (Elexon, monthly) ...")
   val gen = scala.collection.mutable.ArrayBuffer[(String, String, Double)]()
@@ -1826,8 +1826,8 @@ def chapter26Batteries(): Unit = {
   // Energy-Charts, som kapitlets not redan namner. Tidszonen ar zonens egen:
   // dygnet maste brytas dar marknaden bryter det.
   val sthlm = java.time.ZoneId.of("Europe/Stockholm")
-  def energyCharts(bzn: String): (Double, Double) = {
-    val cache = dir / "gb-cache" / s"price-$bzn-2025.json"
+  def energyCharts(bzn: String): Map[String, Seq[Double]] = {
+    val cache = dir / "api-cache" / s"price-$bzn-2025.json"
     os.makeDir.all(cache / os.up)
     if (!os.exists(cache)) os.write.over(cache, requests.get(
       s"https://api.energy-charts.info/price?bzn=$bzn&start=2025-01-01&end=2025-12-31",
@@ -1841,33 +1841,31 @@ def chapter26Batteries(): Unit = {
         if (d.getYear == 2025) Some(d.toString -> p.num) else None
       }
     }.groupBy(_._1).view.mapValues(_.map(_._2).toSeq).toMap
-    lowHigh(byDay)
+    byDay
   }
 
-  // Elexon, samma marknadsindex som figur 26.5b. En vecka per anrop.
-  def elexon(): (Double, Double) = {
-    val cache = dir / "gb-cache" / "mid-2025.json"
-    os.makeDir.all(cache / os.up)
-    if (!os.exists(cache)) {
-      val rows = ujson.Arr()
-      var d = java.time.LocalDate.of(2024, 12, 31)
-      val end = java.time.LocalDate.of(2026, 1, 2)
-      while (d.isBefore(end)) {
-        val nxt = Seq(d.plusDays(7), end).minBy(_.toEpochDay)
-        val js = ujson.read(requests.get(
-          s"https://data.elexon.co.uk/bmrs/api/v1/balancing/pricing/market-index" +
-            s"?from=${d}T00:00Z&to=${nxt}T00:00Z&format=json", readTimeout = 120000).text())
-        for (r <- js("data").arr if r("dataProvider").str == "APXMIDP"
-             && r("settlementDate").str.startsWith("2025"))
-          rows.arr += ujson.Obj("d" -> r("settlementDate").str, "p" -> r("price").num)
-        d = nxt
-      }
-      os.write.over(cache, ujson.write(rows))
+  /** Elexon, samma marknadsindex som figur 26.5b. Veckorna hamtas med samma
+    * indelning och samma cachenamn som capturePrices, sa de tva stegen delar
+    * nedladdning i stallet for att hamta samma bytes tva ganger.
+    *
+    * Bada andpunkterna ar inklusive, sa varje veckoskarv ger en dubblerad
+    * avrakningsperiod - 52 av dygnen kom ut med 49 halvtimmar i stallet for 48.
+    * Nyckeln (dygn, period) tar bort dubbletterna. */
+  def elexon(): Map[String, Seq[Double]] = {
+    val cache = dir / "api-cache"
+    val seen = collection.mutable.LinkedHashMap[(String, Int), Double]()
+    var d = java.time.LocalDate.of(2025, 1, 1)
+    while (d.getYear == 2025) {
+      val e = d.plusDays(7)
+      val url = s"https://data.elexon.co.uk/bmrs/api/v1/balancing/pricing/market-index" +
+        s"?from=${d}T00:00Z&to=${e}T00:00Z&format=json"
+      for (r <- ujson.read(cachedGet(url, cache / s"price-$d.json"))("data").arr
+           if r("dataProvider").str == "APXMIDP" && r("settlementDate").str.startsWith("2025"))
+        seen.getOrElseUpdate((r("settlementDate").str, r("settlementPeriod").num.toInt),
+                             r("price").num)
+      d = e
     }
-    val byDay = ujson.read(os.read(cache)).arr
-      .map(r => r("d").str -> r("p").num)
-      .groupBy(_._1).view.mapValues(_.map(_._2).toSeq).toMap
-    lowHigh(byDay)
+    seen.toSeq.groupBy(_._1._1).view.mapValues(_.map(_._2)).toMap
   }
 
   /** NESO:s auktionsresultat. Kalenderaret 2025 ligger over tva brittiska
@@ -1898,7 +1896,7 @@ def chapter26Batteries(): Unit = {
     val txt = cachedGet(
       s"https://data-api.ecb.europa.eu/service/data/EXR/D.$cur.EUR.SP00.A" +
         "?startPeriod=2025-01-01&endPeriod=2025-12-31&format=csvdata",
-      dir / "gb-cache" / s"ecb-$cur-2025.csv")
+      dir / "api-cache" / s"ecb-$cur-2025.csv")
     val lines = txt.linesIterator.toSeq
     val col = lines.head.split(",").indexOf("OBS_VALUE")
     require(col >= 0, s"chapter26Batteries: no OBS_VALUE column in the ECB $cur series")
@@ -1907,11 +1905,22 @@ def chapter26Batteries(): Unit = {
     v.sum / v.size
   }
 
-  val (se3lo, se3hi) = energyCharts("SE3")
-  val (se4lo, se4hi) = energyCharts("SE4")
-  val (gblo, gbhi) = elexon()
+  val se3days = energyCharts("SE3"); val se4days = energyCharts("SE4")
+  val gbdays = elexon()
+  val (se3lo, se3hi) = lowHigh(se3days); val (se4lo, se4hi) = lowHigh(se4days)
+  val (gblo, gbhi) = lowHigh(gbdays)
   val neso = nesoPrices()
   val gbpPerEur = ecb("GBP"); val usdPerEur = ecb("USD")
+
+  /** Andelen av arets pristimmar under ett tak. Kapitlet stallde tidigare
+    * brittiska timmar under 10 pund mot svenska under 10 euro, vilket inte ar
+    * samma snitt; tacket ar i euro for bada nu och de brittiska priserna raknas
+    * om med arets referenskurs. */
+  def share(days: Map[String, Seq[Double]], eurCap: Double, toEur: Double = 1.0): Double = {
+    val v = days.values.flatten.toSeq
+    require(v.size >= 8000, s"chapter26Batteries: only ${v.size} price points for a share")
+    100.0 * v.count(_ * toEur < eurCap) / v.size
+  }
 
   val sb = new StringBuilder; sb ++= "post,varde,enhet,kalla\n"
   // No commas in any kalla: the row would gain a field the header does not have,
@@ -1932,6 +1941,11 @@ def chapter26Batteries(): Unit = {
         "NESO EAC auktionsresultat 2025 - volymvagt")
     add(s"gb_${p.toLowerCase}_mw", mw, "MW", "NESO EAC - snittvolym per block 2025")
   }
+  val ea = "Energy-Charts 2025 - andel av arets pristimmar"
+  add("se3_andel_under_10", share(se3days, 10), "%", ea)
+  add("se3_andel_negativ", share(se3days, 0), "%", ea)
+  add("gb_andel_under_10", share(gbdays, 10, 1 / gbpPerEur), "%",
+      "Elexon APXMIDP 2025 - andel av arets halvtimmar omraknade till euro")
   add("gbp_per_eur", gbpPerEur, "GBP/EUR", "ECB referenskurs - arsmedel 2025")
   add("usd_per_eur", usdPerEur, "USD/EUR", "ECB referenskurs - arsmedel 2025")
   os.write.over(dir / "battery-prices.csv", sb.toString)
