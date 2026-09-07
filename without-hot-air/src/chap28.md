@@ -24,199 +24,29 @@ Every wind farm costs a few million pounds to build and delivers a few megawatts
 
 <span class="figurenumber">Figure 28.2.</span> A plan that adds up, for Scotland, England, and Wales. The grey-green squares are wind farms. Each is 100 km<sup>2</sup> in size and is shown to scale. The red lines in the sea are wave farms, shown to scale. Light-blue lightning-shaped polygons: solar photovoltaic farms – 20 km<sup>2</sup> each, shown to scale. Blue sharp-cornered polygons in the sea: tide farms. Blue blobs in the sea (Blackpool and the Wash): tidal lagoons. Light-green land areas: woods and short-rotation coppices (to scale). Yellow-green areas: biofuel (to scale). Small blue triangles: waste incineration plants (not to scale). Big brown diamonds: clean coal power stations, with cofiring of biomass, and carbon capture and storage (not to scale). Purple dots: nuclear power stations (not to scale) – 3.3 GW average production at each of 12 sites. Yellow hexagons across the channel: concentrating solar power facilities in remote deserts (to scale, 335 km<sup>2</sup> each). The pink wiggly line in France represents new HVDC lines, 2000 km long, conveying 40 GW from remote deserts to the UK. Yellow stars in Scotland: new pumped storage facilities. Red stars: existing pumped storage facilities. Blue dots: solar panels for hot water on all roofs. [^1]
 
-Capacity
-
-Rough cost
-
-Average power delivered
-
-<span class="mauve">total</span>
-
-per person
-
-52 onshore wind farms: <span class="darkblue">5200 km<sup>2</sup></span>
-
-35 GW
-
-<span class="mauve">£27bn</span>
-
-£450
-
-<span class="green">4.2 kWh/d/p</span>
-
-– based on Lewis wind farm
-
-29 offshore wind farms: <span class="darkblue">  2900 km<sup>2</sup></span>
-
-29 GW
-
-<span class="mauve">£36bn</span>
-
-£650
-
-<span class="green">3.5 kWh/d/p</span>
-
-– based on Kentish Flats, & including £3bn investment in jack-up barges.
-
-Pumped storage: 15 facilities similar to Dinorwig
-
-30 GW
-
-<span class="mauve">£15bn</span>
-
-£250
-
-Photovoltaic farms: <span class="darkblue">  1000 km<sup>2</sup></span>
-
-48 GW
-
-<span class="mauve">£190bn</span>
-
-£3200
-
-<span class="green">2 kWh/d/p</span>
-
-– based on Solarpark in Bavaria
-
-Solar hot water panels: 1 m<sup>2</sup> of roof-mounted panel per person. (<span class="darkblue">60 km<sup>2</sup></span> total)
-
-2.5 GW(th) average
-
-<span class="mauve">£72bn</span>
-
-£1200
-
-<span class="green">1 kWh/d/p</span>
-
-Waste incinerators: 100 new 30 MW incinerators
-
-3 GW
-
-<span class="mauve">£8.5bn</span>
-
-£140
-
-<span class="green">1.1 kWh/d/p</span>
-
-– based on SELCHP
-
-Heat pumps
-
-210 GW(th)
-
-<span class="mauve">£60bn</span>
-
-£1000
-
-<span class="green">12 kWh/d/p</span>
-
-Wave farms – 2500 Pelamis, <span class="red">130 km</span> of sea
-
-1.9 GW (0.76 GW average)
-
-<span class="mauve">£6bn?</span>
-
-£100
-
-<span class="green">0.3 kWh/d/p</span>
-
-Severn barrage: <span class="darkblue">550 km<sup>2</sup></span>
-
-8 GW (2 GW average)
-
-<span class="mauve">£15bn</span>
-
-£250
-
-<span class="green">0.8 kWh/d/p</span>
-
-Tidal lagoons: <span class="darkblue">800 km<sup>2</sup></span>
-
-1.75 GW average
-
-<span class="mauve">£2.6bn?</span>
-
-£45
-
-<span class="green">0.7 kWh/d/p</span>
-
-Tidal stream: 15 000 turbines – <span class="darkblue">2000 km<sup>2</sup></span>
-
-18 GW (5.5 GW average)
-
-<span class="mauve">£21bn?</span>
-
-£350
-
-<span class="green">2.2 kWh/d/p</span>
-
-Nuclear power: 40 stations
-
-45 GW
-
-<span class="mauve">£60bn</span>
-
-£1000
-
-<span class="green">16 kWh/d/p</span>
-
-– based on Olkiluoto, Finland
-
-Clean coal
-
-8 GW
-
-<span class="mauve">£16bn</span>
-
-£270
-
-<span class="green">3 kWh/d/p</span>
-
-Concentrating solar power in deserts: <span class="darkblue">2700 km<sup>2</sup></span>
-
-40 GW average
-
-<span class="mauve">£340bn</span>
-
-£5700
-
-<span class="green">16 kWh/d/p</span>
-
-– based on Solúcar
-
-Land in Europe for 1600 km of HVDC power lines: <span class="darkblue">1200 km<sup>2</sup></span>
-
-50 GW
-
-<span class="mauve">£1bn</span>
-
-£15
-
-– assuming land costs £7500 per ha
-
-2000 km of HVDC power lines
-
-50 GW
-
-<span class="mauve">£1bn</span>
-
-£15
-
-– based on German Aerospace Center estimates
-
-Biofuels: <span class="darkblue">30 000 km<sup>2</sup></span>
-
-(cost not estimated)
-
-<span class="green">2 kWh/d/p</span>
-
-Wood/Miscanthus: <span class="darkblue">31 000 km<sup>2</sup></span>
-
-(cost not estimated)
-
-<span class="green">5 kWh/d/p</span>
-
-<span class="figurenumber">Table 28.3.</span> Areas of land and sea required by plan M, and rough costs. Costs with a question mark are for technologies where no accurate cost is yet available from prototypes. "1 GW(th)" denotes one GW of thermal power.
+| | Capacity | Rough cost, <span class="mauve">total</span> | Rough cost, per person | At 2025 prices | Average power delivered |
+|------------------------------------------------|----------|----------|--------|--------------|------------|
+| 52 onshore wind farms: <span class="darkblue">5200 km<sup>2</sup></span><br>*– based on Lewis wind farm* | 35 GW | <span class="mauve">£27bn</span> | £450 | £46bn | <span class="green">4.2 kWh/d/p</span> |
+| 29 offshore wind farms: <span class="darkblue">2900 km<sup>2</sup></span><br>*– based on Kentish Flats, & including £3bn investment in jack-up barges* | 29 GW | <span class="mauve">£36bn</span> | £650 | £87bn | <span class="green">3.5 kWh/d/p</span> |
+| Pumped storage: 15 facilities similar to Dinorwig | 30 GW | <span class="mauve">£15bn</span> | £250 | £32bn | |
+| Photovoltaic farms: <span class="darkblue">1000 km<sup>2</sup></span><br>*– based on Solarpark in Bavaria* | 48 GW | <span class="mauve">£190bn</span> | £3200 | £34bn | <span class="green">2 kWh/d/p</span> |
+| Solar hot water panels: 1 m<sup>2</sup> of roof-mounted panel per person (<span class="darkblue">60 km<sup>2</sup></span> total) | 2.5 GW(th) average | <span class="mauve">£72bn</span> | £1200 | £110bn | <span class="green">1 kWh/d/p</span> |
+| Waste incinerators: 100 new 30 MW incinerators<br>*– based on SELCHP* | 3 GW | <span class="mauve">£8.5bn</span> | £140 | £28bn | <span class="green">1.1 kWh/d/p</span> |
+| Heat pumps | 210 GW(th) | <span class="mauve">£60bn</span> | £1000 | £310bn | <span class="green">12 kWh/d/p</span> |
+| Wave farms – 2500 Pelamis, <span class="red">130 km</span> of sea | 1.9 GW (0.76 GW average) | <span class="mauve">£6bn?</span> | £100 | no price | <span class="green">0.3 kWh/d/p</span> |
+| Severn barrage: <span class="darkblue">550 km<sup>2</sup></span> | 8 GW (2 GW average) | <span class="mauve">£15bn</span> | £250 | £33bn | <span class="green">0.8 kWh/d/p</span> |
+| Tidal lagoons: <span class="darkblue">800 km<sup>2</sup></span> | 1.75 GW average | <span class="mauve">£2.6bn?</span> | £45 | £55bn | <span class="green">0.7 kWh/d/p</span> |
+| Tidal stream: 15 000 turbines – <span class="darkblue">2000 km<sup>2</sup></span> | 18 GW (5.5 GW average) | <span class="mauve">£21bn?</span> | £350 | £90bn | <span class="green">2.2 kWh/d/p</span> |
+| Nuclear power: 40 stations<br>*– based on Olkiluoto, Finland* | 45 GW | <span class="mauve">£60bn</span> | £1000 | £630bn | <span class="green">16 kWh/d/p</span> |
+| Clean coal | 8 GW | <span class="mauve">£16bn</span> | £270 | £40bn, as gas | <span class="green">3 kWh/d/p</span> |
+| Concentrating solar power in deserts: <span class="darkblue">2700 km<sup>2</sup></span><br>*– based on Solúcar* | 40 GW average | <span class="mauve">£340bn</span> | £5700 | £420bn, or £100bn as photovoltaics | <span class="green">16 kWh/d/p</span> |
+| Land in Europe for 1600 km of HVDC power lines: <span class="darkblue">1200 km<sup>2</sup></span><br>*– assuming land costs £7500 per ha* | 50 GW | <span class="mauve">£1bn</span> | £15 | £1.6bn | |
+| 2000 km of HVDC power lines<br>*– based on German Aerospace Center estimates* | 50 GW | <span class="mauve">£1bn</span> | £15 | £20bn | |
+| Biofuels: <span class="darkblue">30 000 km<sup>2</sup></span> | | (cost not estimated) | | | <span class="green">2 kWh/d/p</span> |
+| Wood/Miscanthus: <span class="darkblue">31 000 km<sup>2</sup></span> | | (cost not estimated) | | | <span class="green">5 kWh/d/p</span> |
+| **Total** | | <span class="mauve">**£870bn**</span> | **£14 500** | **£1940bn**, or **£1620bn** with photovoltaics in the desert | |
+
+<span class="figurenumber">Table 28.3.</span> Areas of land and sea required by plan M, and rough costs. Costs with a question mark are for technologies where no accurate cost is yet available from prototypes. "1 GW(th)" denotes one GW of thermal power. *The "at 2025 prices" column was added in the 2026 revision: MacKay's own quantities, priced at what Britain and the world pay for them now. It is in 2025 money and is therefore not directly comparable with his 2008 totals — his £870bn is about £1440bn in 2025 money.*[^cost25]
 
 thus have a cost in the ballpark of £300 billion. The rough costs in table 28.3 add up to £870 bn, with the solar power facilities dominating the total – the photovoltaics cost £190 bn and the concentrating solar stations cost £340 bn. Both these costs might well come down dramatically as we learn by doing. A government report leaked by the Guardian in August 2007 [^2] estimates that achieving "20% by 2020" (that is, 20% of all energy from renewables, which would require an increase in renewable power of 80 GW) could cost "up to £22 billion" (which would average out to £1.7 billion per year). Even though this estimate is smaller than the £80 billion that the rule of thumb I just mentioned would have suggested, the authors of the leaked report seem to view £22 billion as an "unreasonable" cost, preferring a target of just 9% renewables. (Another reason they give for disliking the "20% by 2020" target is that the resulting greenhouse gas savings "risk making the EU emissions trading scheme redundant." Terrifying thought\!)
 
@@ -251,7 +81,7 @@ MacKay costs 45 GW of nuclear at **£60 billion**, based on Olkiluoto — £1.33
 
 Every wind farm, every wave machine, every tidal lagoon, the Severn barrage, the heat pumps, the incinerators, the interconnectors and both solar programmes together came to £870 billion in his money. **Forty-five gigawatts of nuclear, at the price Britain is actually paying, would come to about 44% of that on its own** — one line item against everything else in the plan combined.
 
-### The bill is a bit smaller and it is a completely different bill
+### The bill is about the same and it is a completely different bill
 
 Putting the two together requires care, because a delta computed in 2025 money cannot be subtracted from a total stated in 2008 money. Doing it consistently in **MacKay's own 2008 pounds**, so that his £870 billion total stands unaltered:
 
@@ -264,11 +94,23 @@ Putting the two together requires care, because a delta computed in 2025 money c
 
 So the two do not cancel: **solar takes out rather more than nuclear puts back**, and the plan comes out about **14% cheaper** than MacKay costed it, in his own money. That is a smaller residual than either individual change, which is the point — the total moved by a seventh while its two largest components each moved by a factor of about six and a half, in opposite directions.
 
+### The rest of the plan, which nobody was watching
+
+That re-costing holds every other line at MacKay's prices, which the note to it admits is generous. Price all of them at what they cost now — the right-hand column of table 28.3 — and the generosity turns out to be large. **Sixteen of his lines can be given a 2025 price. Three came down, two held, and eleven went up.**
+
+Heat pumps are the largest movement in the table after solar and nuclear, and unlike those two nobody has been arguing about it. MacKay costs 210 GW of thermal capacity at £60bn, which is £1000 a person, or about £2400 for a household. **The Boiler Upgrade Scheme's own statistics for July 2025 give an average installed cost of £12 500 for an average 8 kW machine** — almost exactly the size his plan needs per household — so the line comes to about **£310bn**, against £99bn for his figure inflated. Some of that gap is definitional, since £2400 looks like the price of the machine and £12 500 is the price of the machine plus the pipework, the cylinder and the radiators the house turns out to need. But it is the definition Britain is paying to.
+
+The marine lines moved further in proportion and matter less in absolute terms. **Tidal lagoons rose by a factor of about thirteen** once Swansea Bay had put a real number on a lagoon, and tidal stream by about two and a half. Waste incineration doubled. Long-distance transmission, which MacKay costed at a few pence a watt, rose about twelvefold. Offshore wind rose by half and pumped storage by about a third. Onshore wind and the land under the power lines held.
+
+**Three lines fell: photovoltaics, by a factor of nine, and — mildly — solar hot water and desert concentrating solar.**
+
+Put together, the whole of plan M at 2025 prices comes to about **£1940 billion, or about £1620 billion** if the desert concentrating solar is built as photovoltaics — against **£1440 billion**, which is MacKay's own £870 billion in the same money. So the plan is not 14% cheaper. **Repriced line by line it is about 13% dearer.** Nuclear and the rest of the plan add about £930 billion between them; solar takes about £740 billion of that back off.
+
 **The headline is roughly intact and everything underneath it has inverted.** In 2008 the plan was expensive because of solar and cheap because of nuclear. In 2026 it is cheap because of solar and ruinous because of nuclear.
 
 That is worth stating plainly, because a reader who checks only the total would conclude the chapter had aged well. **It aged well largely by luck.** Two enormous errors in opposite directions is not the same as being right, and the next eighteen years will not be so obliging.
 
-**And the chapter's real argument is untouched.** MacKay's point is not the precise total but that £870 billion is comparable to things Britain does anyway — the bank bailout, the Iraq war, a few years of military spending. That comparison holds exactly as well now, and rather better: an £870 billion programme spread over forty years is roughly £22 billion a year, which is about a third of what Britain spends on defence. **The obstacle to this plan was never that the country could not afford it**, which is the same conclusion chapters 24, 25, 26 and 27 reach from their own directions.
+**And the chapter's real argument is untouched.** MacKay's point is not the precise total but that £870 billion is comparable to things Britain does anyway — the bank bailout, the Iraq war, a few years of military spending. That comparison holds exactly as well now, and rather better: an £870 billion programme spread over forty years is roughly £22 billion a year, which is about a third of what Britain spends on defence. The repriced plan does not change that: £1620 billion of 2025 money over forty years is about £40 billion a year, against a British defence budget of £62 billion in 2025/26. **The obstacle to this plan was never that the country could not afford it**, which is the same conclusion chapters 24, 25, 26 and 27 reach from their own directions.
 
 ## Other things that cost a billion
 
@@ -378,6 +220,8 @@ According to the Stern review, the global cost of averting dangerous climate cha
 [^watt26]: MacKay's implied costs are computed from his own table 28.3: onshore wind £27bn for 35 GW, offshore wind £36bn for 29 GW, photovoltaic farms £190bn for 48 GW, and nuclear £60bn for 45 GW. Inflation adjustment uses a factor of about 1.65 for UK consumer prices between 2008 and 2025; capital goods have not tracked consumer prices exactly, and construction cost inflation over the period ran higher, so this understates the real-terms fall in solar and overstates the rise in nothing. The 2025 figures are indicative capital costs rather than precise British averages: utility-scale solar around $690–700 per kW globally on IRENA figures, onshore wind near $1000–1300, UK offshore wind commonly quoted at £2500–3500 per kW, and Hinkley Point C at about £46bn for 3.26 GW, which is £14 100 per kW. Each is a range and each is sensitive to what is included — grid connection, financing during construction, and site works differ between sources. The comparison is offered as an ordering, per chapter M's warning, and the argument does not turn on any single value: solar has fallen by roughly an order of magnitude and nuclear has risen by roughly an order of magnitude, and no plausible choice within these ranges changes that.
 
     The re-costing in the table converts the 2025-price figures back into 2008 money by the same 1.65 factor so that every number in it is on MacKay's basis: both solar programmes at £135bn in 2025 money — 193 GW at £0.70 a watt — become £82bn in 2008 money, and 45 GW of nuclear at £14 a watt, £630bn in 2025 money, becomes £382bn. The "rest of the plan" row is MacKay's £870bn less his £530bn of solar and £60bn of nuclear, held constant — which is generous to him, since offshore wind has risen in real terms and would add roughly £17bn on the same basis. The re-costing of the two solar lines assumes the 40 GW *average* of desert concentrating solar is replaced by photovoltaic capacity delivering the same annual energy, which at a desert capacity factor near 28% is roughly 145 GW of panels, and prices both that and MacKay's 48 GW of British photovoltaic farms at about £0.70 per watt. It excludes storage entirely, which concentrating solar provided thermally and photovoltaics do not — chapter 26 gives the cell cost of adding it, and adding it would narrow but not close the gap. It also excludes the transmission MacKay costs separately at £2bn, which would rise.
+
+[^cost25]: Sources for the 2025-price column of table 28.3, line by line. Onshore wind, offshore wind, photovoltaic farms and nuclear use the same unit prices as the note above: £1.30, £3.00, £0.70 and £14 a watt. Nuclear at £14/W is Hinkley Point C; Sizewell C, at a baseline estimate of £38bn for 3.2 GW, is £11.90/W, so the line would be £535bn rather than £630bn on that basis. **Pumped storage:** Coire Glas, about £1.5bn for 1.4 GW, is £1.07/W. **Solar hot water:** a typical UK domestic system costs about £4500 installed, in a range from £3000 to £8000; 25 million households gives £110bn. MacKay's specification of 1 m<sup>2</sup> per person is a smaller collector than a typical install, but most of the price is the cylinder, the controls and the labour rather than the panel. **Waste incineration:** Cory's Riverside 2, about £900m for 96 MW, is £9.40/W. **Heat pumps:** Boiler Upgrade Scheme statistics for July 2025, an average of £12 500 for an average 8.0 kW installation; MacKay's 210 GW(th) across 60 million people is 3.5 kW each, or about 8.4 kW per household, so the plan is roughly 25 million installations. **Wave:** no price is given because there is no market to take one from — chapter 12 records that world installed wave capacity is about 2.3 MW. **Severn barrage:** the Severn Estuary Commission's March 2025 report costs the Cardiff–Weston scheme at £33.4bn on 2023 prices. **Tidal lagoons:** Swansea Bay, £1.82bn on a 2025 cost base for 320 MW installed and about 60 MW average, which is £30 per average watt; MacKay's 1.75 GW average is about twenty-nine Swansea Bays, hence £55bn. **Tidal stream:** MeyGen's first 6 MW cost £51m, or £8.50/W, while ORE Catapult puts a 100 MW commercial array at £2.27m per MW; 18 GW therefore spans £41bn to £153bn and £90bn is the middle of it. **Clean coal:** no coal plant with capture exists anywhere, so the line is priced as gas with capture — Net Zero Teesside's 742 MW sits inside a contract package of about £4bn that also buys the carbon dioxide transport and storage, which is roughly £5/W. **Concentrating solar:** the three plants built worldwide between 2021 and 2023 cost $4400, $6700 and $9700 per kW; at $6000/kW and a desert capacity factor near 45%, 40 GW of average output is about £420bn. The photovoltaic alternative is the one costed in the note above. **Land for the power lines:** Eurostat gives EU arable land at €15 224 per hectare in 2024, and 1200 km<sup>2</sup> is 120 000 hectares. **HVDC lines:** China's Gansu–Zhejiang link carries 8 GW over 2370 km for about $4.8bn, so six such lines running 2000 km come to roughly £20bn — MacKay's £1bn was the one badly wrong number in his table that nobody has ever complained about. The total excludes the wave line, for which no price exists, and the biofuel and wood lines, which MacKay did not cost either; his £870bn includes £6bn for wave. Every 2025 figure is a capital cost and excludes running and decommissioning costs, as his do, and each carries the same width of uncertainty his did.
 
 [^1]: *Figure 28.2.* I’ve assumed that the solar photovoltaic farms have a power per unit area of 5 W/m<sup>2</sup>, the same as the Bavaria farm on p41, so each farm on the map delivers 100 MW on average. Their total average production would be 5 GW, which requires roughly 50 GW of peak capacity (that’s 16 times Germany’s PV capacity in 2006). The yellow hexagons representing concentrating solar power have an average power of 5 GW each; it takes two of these hexagons to power one of the "blobs" of Chapter 25.
 
