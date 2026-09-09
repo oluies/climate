@@ -96,7 +96,7 @@ So the two do not cancel: **solar takes out rather more than nuclear puts back**
 
 ### The rest of the plan, which nobody was watching
 
-That re-costing holds every other line at MacKay's prices, which the note to it admits is generous. Price all of them at what they cost now — the right-hand column of table 28.3 — and the generosity turns out to be large. **Sixteen of his lines can be given a 2025 price. Three came down, two held, and eleven went up.**
+That re-costing holds every other line at MacKay's prices, which the note to it admits is generous. Price all of them at what they cost now — the right-hand column of table 28.3 — and the generosity turns out to be large. **Fifteen of his lines can be given a 2025 price. Three came down, two held, and ten went up.**
 
 Heat pumps are the largest movement in the table after solar and nuclear, and unlike those two nobody has been arguing about it. MacKay costs 210 GW of thermal capacity at £60bn, which is £1000 a person, or about £2400 for a household. **The Boiler Upgrade Scheme's own statistics for July 2025 give an average installed cost of £12 500 for an average 8 kW machine** — almost exactly the size his plan needs per household — so the line comes to about **£310bn**, against £99bn for his figure inflated. Some of that gap is definitional, since £2400 looks like the price of the machine and £12 500 is the price of the machine plus the pipework, the cylinder and the radiators the house turns out to need. But it is the definition Britain is paying to.
 
