@@ -2080,3 +2080,229 @@ def chapter11aPeakShare(): Unit = {
   println("  uv run figures/dc_peak_share.py data-refresh/dc-peak-share.csv " +
           "without-hot-air/Images/fig-dc-peak-share.svg")
 }
+
+// ---- Chapter 25: what one degree buys, in gigawatts ----
+// Thermosensitivity: the slope of daily electricity demand against daily mean
+// temperature, fitted separately on the cold arm and the hot arm.
+//
+// Method, stated here because the chapter's note states it too. Daily mean load
+// against a population-weighted daily mean temperature, weekdays only, August
+// excluded because industrial holidays move the base in Italy and France and
+// would be read as a temperature effect. Two straight lines with fixed
+// thresholds rather than fitted knots: the heating arm is every day below
+// 15 C and the cooling arm every day above 20 C. Fixed thresholds are cruder
+// than a fitted breakpoint and are used because they are the same for every
+// country, so the six numbers can be compared.
+//
+// Load is ENTSO-E, taken from the energy-charts API as the price series in
+// chapter 26 is. Great Britain is the exception: its ENTSO-E feed has been
+// incomplete since Brexit - no nuclear, no solar, no load - so GB comes from
+// NESO's own historic demand data. That also lets GB be put on the same basis
+// as the others, because NESO publishes its estimate of the distribution-
+// connected solar and wind that national demand nets off. Underlying demand
+// here is ND + EMBEDDED_SOLAR_GENERATION + EMBEDDED_WIND_GENERATION; without
+// that correction a sunny hot day looks like a fall in demand.
+@main
+def chapter25Thermosensitivity(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  import java.time.{LocalDate, Instant, ZoneId, DayOfWeek, Month}
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val cache = dir / "api-cache"
+  val FROM = LocalDate.of(2021, 1, 1)
+  val TO   = LocalDate.of(2026, 8, 31)
+  val T_HEAT = 15.0   // below this, the heating arm
+  val T_COOL = 20.0   // above this, the cooling arm
+
+  // Weights are approximate metropolitan populations in millions. They only
+  // weight the temperature average, so a rounded figure is enough.
+  case class City(slug: String, lat: Double, lon: Double, w: Double)
+  case class Land(key: String, label: String, tz: String, cities: Seq[City])
+  val LANDS = Seq(
+    Land("uk", "Great Britain", "Europe/London", Seq(
+      City("london", 51.5072, -0.1276, 9.6), City("birmingham", 52.4862, -1.8904, 2.6),
+      City("manchester", 53.4808, -2.2426, 2.7), City("leeds", 53.8008, -1.5491, 1.9),
+      City("glasgow", 55.8642, -4.2518, 1.2))),
+    Land("fr", "France", "Europe/Paris", Seq(
+      City("paris", 48.8566, 2.3522, 11.1), City("lyon", 45.7640, 4.8357, 1.7),
+      City("marseille", 43.2965, 5.3698, 1.6), City("toulouse", 43.6047, 1.4442, 1.0),
+      City("lille", 50.6292, 3.0573, 1.0))),
+    Land("de", "Germany", "Europe/Berlin", Seq(
+      City("berlin", 52.5200, 13.4050, 3.6), City("hamburg", 53.5511, 9.9937, 1.9),
+      City("munich", 48.1351, 11.5820, 1.5), City("cologne", 50.9375, 6.9603, 1.1),
+      City("frankfurt", 50.1109, 8.6821, 0.8))),
+    Land("it", "Italy", "Europe/Rome", Seq(
+      City("rome", 41.9028, 12.4964, 2.8), City("milan", 45.4642, 9.1900, 1.4),
+      City("naples", 40.8518, 14.2681, 0.9), City("turin", 45.0703, 7.6869, 0.85),
+      City("palermo", 38.1157, 13.3615, 0.63))),
+    Land("es", "Spain", "Europe/Madrid", Seq(
+      City("madrid", 40.4168, -3.7038, 3.3), City("barcelona", 41.3874, 2.1686, 1.6),
+      City("valencia", 39.4699, -0.3763, 0.8), City("seville", 37.3891, -5.9845, 0.69),
+      City("zaragoza", 41.6488, -0.8891, 0.68))),
+    Land("se", "Sweden", "Europe/Stockholm", Seq(
+      City("stockholm", 59.3293, 18.0686, 1.0), City("gothenburg", 57.7089, 11.9746, 0.6),
+      City("malmo", 55.6050, 13.0038, 0.35), City("uppsala", 59.8586, 17.6389, 0.24),
+      City("vasteras", 59.6099, 16.5448, 0.13))))
+
+  /** Population-weighted daily mean temperature, from the Open-Meteo archive
+    * (ERA5), the same source chapter 7's Cambridge figure uses. */
+  def dailyTemp(l: Land): Map[LocalDate, Double] = {
+    val acc = collection.mutable.Map[LocalDate, (Double, Double)]()
+    for (c <- l.cities) {
+      val js = ujson.read(cachedGet(
+        "https://archive-api.open-meteo.com/v1/archive" +
+          s"?latitude=${c.lat}&longitude=${c.lon}&start_date=$FROM&end_date=$TO" +
+          s"&daily=temperature_2m_mean&timezone=${l.tz.replace("/", "%2F")}",
+        cache / s"meteo-${l.key}-${c.slug}.json"))
+      val days = js("daily")("time").arr.map(_.str)
+      val temp = js("daily")("temperature_2m_mean").arr
+      require(days.size == temp.size, s"thermo: ${l.key}/${c.slug} ragged arrays")
+      for ((d, v) <- days.zip(temp) if !v.isNull) {
+        val k = LocalDate.parse(d)
+        val (s, w) = acc.getOrElse(k, (0.0, 0.0))
+        acc(k) = (s + v.num * c.w, w + c.w)
+      }
+    }
+    acc.view.mapValues { case (s, w) => s / w }.toMap
+  }
+
+  /** energy-charts is free and rate-limits, so a year that comes back 429 is
+    * waited out rather than failing the step. Only uncached years are fetched. */
+  def politeGet(url: String, f: os.Path): String =
+    if (os.exists(f)) os.read(f)
+    else {
+      var attempt = 0; var out: Option[String] = None
+      while (out.isEmpty) {
+        attempt += 1
+        try out = Some(cachedGet(url, f))
+        catch {
+          case e: Throwable if attempt < 6 =>
+            println(s"  ${f.last}: ${e.getClass.getSimpleName}, retrying in ${20 * attempt}s")
+            Thread.sleep(20000L * attempt)
+        }
+      }
+      Thread.sleep(3000)
+      out.get
+    }
+
+  /** ENTSO-E load through energy-charts, averaged over each local day. The
+    * resolution differs by country and over time, so days with fewer than 20
+    * observations are dropped rather than averaged. */
+  def entsoeLoad(l: Land): Map[LocalDate, Double] = {
+    val zone = ZoneId.of(l.tz)
+    val acc = collection.mutable.Map[LocalDate, (Double, Int)]()
+    for (y <- FROM.getYear to TO.getYear) {
+      val a = if (y == FROM.getYear) FROM else LocalDate.of(y, 1, 1)
+      val b = if (y == TO.getYear) TO else LocalDate.of(y, 12, 31)
+      val js = ujson.read(politeGet(
+        s"https://api.energy-charts.info/public_power?country=${l.key}&start=$a&end=$b",
+        cache / s"ecload-${l.key}-$y.json"))
+      val ts = js("unix_seconds").arr.map(_.num.toLong)
+      val series = js("production_types").arr.find(_("name").str == "Load")
+        .getOrElse(sys.error(s"thermo: no Load series for ${l.key} in $y"))("data").arr
+      for ((t, v) <- ts.zip(series) if !v.isNull) {
+        val d = Instant.ofEpochSecond(t).atZone(zone).toLocalDate
+        val (s, n) = acc.getOrElse(d, (0.0, 0)); acc(d) = (s + v.num, n + 1)
+      }
+    }
+    acc.collect { case (d, (s, n)) if n >= 20 => d -> s / n / 1000.0 }.toMap
+  }
+
+  val NESO = Seq(
+    2021 -> "18c69c42-f20d-46f0-84e9-e279045befc6/download/demanddata_2021.csv",
+    2022 -> "bb44a1b5-75b1-4db2-8491-257f23385006/download/demanddata_2022.csv",
+    2023 -> "bf5ab335-9b40-4ea4-b93a-ab4af7bce003/download/demanddata_2023.csv",
+    2024 -> "f6d02c0f-957b-48cb-82ee-09003f2ba759/download/demanddata_2024.csv",
+    2025 -> "b2bde559-3455-4021-b179-dfe60c0337b0/download/demanddata_2025.csv",
+    2026 -> "8a4a771c-3929-4e56-93ad-cdf13219dea5/download/demanddataupdate_2026.csv")
+  val MONTHS = Vector("JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC")
+
+  /** NESO writes the date three ways across the years - 01-JAN-2021, 01-Jan-23
+    * and 2026-08-19 - so the parser works from the parts rather than the
+    * length, and a two-digit year is read as this century. */
+  def nesoDate(s: String): LocalDate = {
+    val p = s.trim.take(11).split("-")
+    require(p.length == 3, s"thermo: cannot read NESO date '$s'")
+    if (p(0).length == 4) LocalDate.of(p(0).toInt, p(1).toInt, p(2).toInt)
+    else {
+      val m = MONTHS.indexOf(p(1).toUpperCase) + 1
+      require(m > 0, s"thermo: cannot read NESO month in '$s'")
+      val y = p(2).toInt
+      LocalDate.of(if (y < 100) 2000 + y else y, m, p(0).toInt)
+    }
+  }
+
+  def gbLoad(): Map[LocalDate, Double] = {
+    val acc = collection.mutable.Map[LocalDate, (Double, Int)]()
+    for ((y, path) <- NESO) {
+      val txt = cachedGet(
+        "https://api.neso.energy/dataset/8f2fe0af-871c-488d-8bad-960426f24601/resource/" + path,
+        cache / s"neso-demand-$y.csv")
+      val lines = txt.linesIterator.filter(_.trim.nonEmpty).toArray
+      // 2025 quotes every field, the other years quote none.
+      def cell(x: String) = x.trim.stripPrefix("\"").stripSuffix("\"")
+      val hdr = lines.head.stripPrefix("﻿").split(",").map(cell)
+      val Seq(iD, iN, iW, iS) = Seq("SETTLEMENT_DATE", "ND",
+        "EMBEDDED_WIND_GENERATION", "EMBEDDED_SOLAR_GENERATION").map(c => hdr.indexOf(c))
+      require(Seq(iD, iN, iW, iS).forall(_ >= 0), s"thermo: NESO $y is missing a column")
+      for (line <- lines.tail) {
+        val a = line.split(",", -1)
+        if (a.length > math.max(iS, iW)) {
+          val d = nesoDate(cell(a(iD)))
+          val mw = cell(a(iN)).toDouble + cell(a(iW)).toDouble + cell(a(iS)).toDouble
+          val (s, n) = acc.getOrElse(d, (0.0, 0)); acc(d) = (s + mw, n + 1)
+        }
+      }
+    }
+    acc.collect { case (d, (s, n)) if n >= 40 => d -> s / n / 1000.0 }.toMap
+  }
+
+  /** Ordinary least squares of load on temperature, with the standard error of
+    * the slope, so the text can say whether an arm is real. */
+  def slope(pts: Seq[(Double, Double)]): (Double, Double) = {
+    val n = pts.size
+    val mx = pts.map(_._1).sum / n; val my = pts.map(_._2).sum / n
+    val sxx = pts.map(p => (p._1 - mx) * (p._1 - mx)).sum
+    val b = pts.map(p => (p._1 - mx) * (p._2 - my)).sum / sxx
+    val a = my - b * mx
+    val sse = pts.map { case (x, y) => val e = y - (a + b * x); e * e }.sum
+    (b, math.sqrt(sse / (n - 2) / sxx))
+  }
+
+  val scatter = new StringBuilder; scatter ++= "country,date,temp_c,load_gw\n"
+  val fits = new StringBuilder
+  fits ++= "country,mean_load_gw,n_days,t_heat,t_cool," +
+           "heat_gw_per_c,heat_se,heat_n,heat_pct,cool_gw_per_c,cool_se,cool_n,cool_pct\n"
+
+  for (l <- LANDS) {
+    val temp = dailyTemp(l)
+    val load = if (l.key == "uk") gbLoad() else entsoeLoad(l)
+    // Weekdays only, August dropped, and only days where both series exist.
+    val days = temp.keySet.intersect(load.keySet).toSeq.sorted.filter { d =>
+      !d.isBefore(FROM) && !d.isAfter(TO) &&
+        d.getDayOfWeek.getValue <= DayOfWeek.FRIDAY.getValue && d.getMonth != Month.AUGUST
+    }
+    require(days.size >= 800, s"thermo: only ${days.size} usable days for ${l.key}")
+    for (d <- days) scatter ++= f"${l.label},$d,${temp(d)}%.2f,${load(d)}%.3f\n"
+
+    val pts = days.map(d => (temp(d), load(d)))
+    val mean = pts.map(_._2).sum / pts.size
+    val cold = pts.filter(_._1 < T_HEAT)
+    val hot  = pts.filter(_._1 > T_COOL)
+    require(cold.size >= 30, s"thermo: ${l.key} has only ${cold.size} days below $T_HEAT C")
+    val (bh, sh) = slope(cold)
+    val (bc, sc) = if (hot.size >= 30) slope(hot) else (Double.NaN, Double.NaN)
+    // The heating arm is reported per degree COLDER, so its sign is flipped.
+    fits ++= f"${l.label},$mean%.2f,${days.size},$T_HEAT%.0f,$T_COOL%.0f," +
+             f"${-bh}%.4f,$sh%.4f,${cold.size},${-100 * bh / mean}%.3f," +
+             f"$bc%.4f,$sc%.4f,${hot.size},${100 * bc / mean}%.3f\n"
+    println(f"  ${l.label}%-14s mean ${mean}%5.1f GW over ${days.size}%4d days   " +
+            f"colder ${-bh}%6.3f +-$sh%.3f GW/C (${-100 * bh / mean}%4.2f%%, n=${cold.size}%4d)   " +
+            f"hotter $bc%6.3f +-$sc%.3f GW/C (${100 * bc / mean}%5.2f%%, n=${hot.size}%4d)")
+  }
+  os.write.over(dir / "thermosensitivity.csv", scatter.toString)
+  os.write.over(dir / "thermosensitivity-fit.csv", fits.toString)
+  println("wrote data-refresh/thermosensitivity.csv and thermosensitivity-fit.csv")
+  println("render:")
+  println("  uv run figures/thermosensitivity.py data-refresh/thermosensitivity.csv " +
+          "data-refresh/thermosensitivity-fit.csv without-hot-air/Images/fig-thermosensitivity.svg")
+}
