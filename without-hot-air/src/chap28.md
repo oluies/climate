@@ -96,7 +96,7 @@ So the two do not cancel: **solar takes out rather more than nuclear puts back**
 
 ### The rest of the plan, which nobody was watching
 
-That re-costing holds every other line at MacKay's prices, which the note to it admits is generous. Price all of them at what they cost now — the right-hand column of table 28.3 — and the generosity turns out to be large. **Sixteen of his lines can be given a 2025 price. Three came down, two held, and eleven went up.**
+That re-costing holds every other line at MacKay's prices, which the note to it admits is generous. Price all of them at what they cost now — the right-hand column of table 28.3 — and the generosity turns out to be large. **Fifteen of his lines can be given a 2025 price. Three came down, two held, and ten went up.**
 
 Heat pumps are the largest movement in the table after solar and nuclear, and unlike those two nobody has been arguing about it. MacKay costs 210 GW of thermal capacity at £60bn, which is £1000 a person, or about £2400 for a household. **The Boiler Upgrade Scheme's own statistics for July 2025 give an average installed cost of £12 500 for an average 8 kW machine** — almost exactly the size his plan needs per household — so the line comes to about **£310bn**, against £99bn for his figure inflated. Some of that gap is definitional, since £2400 looks like the price of the machine and £12 500 is the price of the machine plus the pipework, the cylinder and the radiators the house turns out to need. But it is the definition Britain is paying to.
 
@@ -124,7 +124,7 @@ Look again at the comparison the chapter closes on. £870 billion spread over fo
 
 Britain has run the experiment. Hinkley Point C was financed at a cost of capital of about **9%**. Sizewell C, the same design, the same regulator, the same decade, is being built under the Regulated Asset Base model at about **4.7%**, because consumers pay during construction and so carry risk the developer would otherwise have to be paid to carry.
 
-Over a thirty-five-year recovery period, 9% money costs about **77% more per year** than 4% money for the identical station. The National Audit Office's account of the arrangement is that investors' returns may cost consumers as much as **£4 billion** early on, for a longer-term net benefit of up to **£18 billion**.
+Over a thirty-five-year recovery period, 9% money costs about **77% more per year** than 4% money for the identical station — and about **61% more** than Sizewell's 4.7%. The National Audit Office's account of the arrangement is that investors' returns may cost consumers as much as **£4 billion** early on, for a longer-term net benefit of up to **£18 billion**.
 
 Nothing about the concrete changed. **The chapter's rule of thumb — one watt, one pound — has no place to put any of this**, and it is the largest single lever anyone has pulled on British energy costs in the intervening eighteen years.
 
