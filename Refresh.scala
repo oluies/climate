@@ -2021,3 +2021,62 @@ def chapter26Batteries(): Unit = {
   println("  uv run figures/battery_revenue.py data-refresh/battery-prices.csv " +
           "data-refresh/se-battery-revenue.csv without-hot-air/Images/fig-battery-revenue.svg")
 }
+
+// ---- Chapter 11a: data-centre IT capacity against national peak load ----
+// Figure 11a.1. Hand-entered, like lcoeVsCapture and for the same reason: the
+// numbers exist only as a published chart. They are read off a dumbbell chart
+// circulated by ARdS in 2026, "How material could data centres become for
+// Europe's power systems?", which states its sources as the EUDCA European
+// Data Centre Market Monitor 2025 (capacity) and the ENTSO-E Statistical
+// Factsheet 2025 (peak load). This edition has not seen the Market Monitor
+// itself, so the chapter's note says so.
+//
+// The quantity is total data-centre IT capacity - colocation plus
+// hyperscale-owned - as a percentage of the country's 2025 national peak
+// electricity load. Both years are expressed against the 2025 peak, so the
+// 2031 column is not a forecast of the 2031 ratio: it is 2031 capacity over
+// today's peak. It is nameplate IT capacity, not consumption and not spare
+// capacity. The chapter's text does the conversion to an energy share and
+// states the assumptions it needs.
+//
+// The United Kingdom is absent from the source chart and is therefore absent
+// here rather than being filled in from a different basis.
+@main
+def chapter11aPeakShare(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  // (country, 2025, 2031 forecast), both as % of 2025 national peak load
+  val rows = Seq(
+    ("Ireland",     29.1, 46.4),
+    ("Portugal",     0.6, 16.4),
+    ("Denmark",      7.2, 14.6),
+    ("Netherlands",  6.8, 12.8),
+    ("Finland",      2.7,  9.0),
+    ("Norway",       2.0,  8.6),
+    ("Sweden",       2.5,  7.0),
+    ("Spain",        1.0,  6.9),
+    ("Germany",      2.3,  5.9),
+    ("Belgium",      2.0,  5.2),
+    ("Switzerland",  1.7,  4.5),
+    ("Italy",        0.8,  4.0),
+    ("Austria",      0.8,  3.5),
+    ("Greece",       0.7,  2.4),
+    ("Poland",       0.9,  2.3),
+    ("France",       0.9,  2.1))
+  for ((c, a, b) <- rows) require(b >= a && a > 0, s"chapter11aPeakShare: bad row for $c")
+  val out = new StringBuilder; out ++= "country,share_2025,share_2031,multiple\n"
+  for ((c, a, b) <- rows.sortBy(-_._3)) out ++= f"$c,$a%.1f,$b%.1f,${b / a}%.1f\n"
+  os.write.over(dir / "dc-peak-share.csv", out.toString)
+  println("wrote data-refresh/dc-peak-share.csv")
+  for ((c, a, b) <- rows.sortBy(-_._3)) println(f"  $c%-13s $a%5.1f%% -> $b%5.1f%%  x${b / a}%.1f")
+  // The two the chapter argues from, and the one line of arithmetic it needs.
+  // A fleet running flat out draws roughly its IT capacity once the facility's
+  // own overhead is added, so a capacity share divided by the grid's load
+  // factor is about the energy share. Sweden's load factor is near 0.60.
+  val (se25, se31) = rows.find(_._1 == "Sweden").map(r => (r._2, r._3)).get
+  println(f"  Sweden at a 0.60 load factor: ${se25 / 0.60}%.1f%% of energy now, " +
+          f"${se31 / 0.60}%.1f%% by 2031")
+  println("render:")
+  println("  uv run figures/dc_peak_share.py data-refresh/dc-peak-share.csv " +
+          "without-hot-air/Images/fig-dc-peak-share.svg")
+}
