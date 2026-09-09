@@ -15,8 +15,12 @@ ORDER = ["Sweden", "France", "Great Britain", "Germany", "Spain", "Italy"]
 
 d = pd.read_csv(sys.argv[1])
 fit = pd.read_csv(sys.argv[2]).set_index("country")
+# zip() over a hardcoded ORDER would silently drop a seventh country added to
+# LANDS in Refresh.scala, so the mismatch is an error rather than a missing panel.
+assert set(ORDER) == set(fit.index), f"ORDER {ORDER} does not match {list(fit.index)}"
 sns.set_theme(style="whitegrid", rc={"grid.color": "#ededea", "axes.edgecolor": "#c9c9c4"})
 fig, axes = plt.subplots(2, 3, figsize=(11.4, 6.6))
+assert len(ORDER) == axes.size
 
 for ax, name in zip(axes.flat, ORDER):
     p, f = d[d.country == name], fit.loc[name]
@@ -29,10 +33,12 @@ for ax, name in zip(axes.flat, ORDER):
 
     # Each arm's line is drawn only across the days it was fitted on, and only
     # when the slope is more than two standard errors from zero.
-    for lo, hi, slope, se, col, sign in (
-            (p.temp_c.min(), th, -f.heat_gw_per_c, f.heat_se, COLD, -1),
-            (tc, p.temp_c.max(), f.cool_gw_per_c, f.cool_se, HOT, +1)):
-        arm = p[(p.temp_c >= lo) & (p.temp_c <= hi)]
+    for lo, hi, slope, se, col, arm in (
+            (p.temp_c.min(), th, -f.heat_gw_per_c, f.heat_se, COLD, p[p.temp_c < th]),
+            (tc, p.temp_c.max(), f.cool_gw_per_c, f.cool_se, HOT, p[p.temp_c > tc])):
+        # Strict bounds, matching the fit in Refresh.scala: a handful of days sit
+        # exactly on 15.0 or 20.0 and inclusive bounds would move the drawn line
+        # off the fitted one.
         if len(arm) < 30 or abs(slope) < 2 * se:
             continue
         b = slope

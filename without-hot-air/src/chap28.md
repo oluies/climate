@@ -124,7 +124,7 @@ Look again at the comparison the chapter closes on. £870 billion spread over fo
 
 Britain has run the experiment. Hinkley Point C was financed at a cost of capital of about **9%**. Sizewell C, the same design, the same regulator, the same decade, is being built under the Regulated Asset Base model at about **4.7%**, because consumers pay during construction and so carry risk the developer would otherwise have to be paid to carry.
 
-Over a thirty-five-year recovery period, 9% money costs about **77% more per year** than 4% money for the identical station. The National Audit Office's account of the arrangement is that investors' returns may cost consumers as much as **£4 billion** early on, for a longer-term net benefit of up to **£18 billion**.
+Over a thirty-five-year recovery period, 9% money costs about **77% more per year** than 4% money for the identical station — and about **61% more** than Sizewell's 4.7%. The National Audit Office's account of the arrangement is that investors' returns may cost consumers as much as **£4 billion** early on, for a longer-term net benefit of up to **£18 billion**.
 
 Nothing about the concrete changed. **The chapter's rule of thumb — one watt, one pound — has no place to put any of this**, and it is the largest single lever anyone has pulled on British energy costs in the intervening eighteen years.
 

@@ -2175,7 +2175,8 @@ def chapter25Thermosensitivity(): Unit = {
         attempt += 1
         try out = Some(cachedGet(url, f))
         catch {
-          case e: Throwable if attempt < 6 =>
+          // NonFatal only: an OutOfMemoryError is not something to sleep on.
+          case scala.util.control.NonFatal(e) if attempt < 6 =>
             println(s"  ${f.last}: ${e.getClass.getSimpleName}, retrying in ${20 * attempt}s")
             Thread.sleep(20000L * attempt)
         }
@@ -2244,9 +2245,13 @@ def chapter25Thermosensitivity(): Unit = {
       val Seq(iD, iN, iW, iS) = Seq("SETTLEMENT_DATE", "ND",
         "EMBEDDED_WIND_GENERATION", "EMBEDDED_SOLAR_GENERATION").map(c => hdr.indexOf(c))
       require(Seq(iD, iN, iW, iS).forall(_ >= 0), s"thermo: NESO $y is missing a column")
+      // The in-year file carries forecast rows alongside actuals; every row is
+      // "A" today, but this file is refetched, so the filter is stated rather
+      // than assumed. The older files have no such column and keep every row.
+      val iF = hdr.indexOf("FORECAST_ACTUAL_INDICATOR")
       for (line <- lines.tail) {
         val a = line.split(",", -1)
-        if (a.length > math.max(iS, iW)) {
+        if (a.length > Seq(iD, iN, iW, iS, iF).max && (iF < 0 || cell(a(iF)) == "A")) {
           val d = nesoDate(cell(a(iD)))
           val mw = cell(a(iN)).toDouble + cell(a(iW)).toDouble + cell(a(iS)).toDouble
           val (s, n) = acc.getOrElse(d, (0.0, 0)); acc(d) = (s + mw, n + 1)
