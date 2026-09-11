@@ -2081,6 +2081,101 @@ def chapter11aPeakShare(): Unit = {
           "without-hot-air/Images/fig-dc-peak-share.svg")
 }
 
+// ---- Chapter 11a: what Finland has already committed ----
+// Figure 11a.2. Hand-entered like chapter11aPeakShare, but with a better
+// provenance than that one: five of the seven bars are in documents this
+// edition has read, and the note in the chapter says which two are not.
+//
+// The quantity is data-centre *electricity* capacity in megawatts - the grid
+// connection the facility is built around, not the IT load inside it, which is
+// smaller by the cooling and the losses. That is a different basis from figure
+// 11a.1, which counts IT capacity, and the chapter states the difference where
+// it compares the two.
+//
+// The left-hand bars are cumulative and the right-hand ones are separate
+// scenarios:
+//   285 MW   33 data centres operating in September 2025, from the government
+//            rapporteur's report (Ramboll's census: facilities over 1 MW,
+//            crypto-mining excluded).
+//   +1300    projects with an investment decision or already starting up at
+//            the end of August 2025, for completion by 2027, from the
+//            Confederation of Finnish Industries' investment dashboard as
+//            quoted in the same report. A further 2500 MW sat in planning or
+//            feasibility and is deliberately NOT in the total.
+//   +1300    Google's four Finnish sites, announced 9 September 2026. Google
+//            does not publish their capacity; this is Helsingin Sanomat's
+//            estimate from the EUR 13 billion, and is the softest bar here.
+//   2500     AFRY's strong-development case for 2030, run for the rapporteur's
+//            report. Its baseline is 1200 MW.
+//   1900     KEITO's assumption for 2050 - about 10 TWh a year in VTT
+//            Technology 442 - converted to power at 60% utilisation.
+//   7000     Luke's electrification pathway for 2055, converted the same way.
+//            Read off the source chart; this edition has not seen the Luke
+//            publication itself.
+//
+// Assembled as a comparison by Ilkka Hannula (Carbon Economics, 2026, CC BY
+// 4.0); this is our own redraw, with the numbers checked against the sources
+// above where this edition could reach them.
+@main
+def chapter11aFinlandPipeline(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  // (label, sub-label, MW, kind) - kind is what the figure does with the bar.
+  val rows = Seq(
+    ("Finland",                       "Sept 2025",  285.0, "base"),
+    ("Decided or under construction", "Aug 2025",  1300.0, "add"),
+    ("Google decision",               "Sept 2026", 1300.0, "add"),
+    ("Committed capacity",            "",          2885.0, "total"),
+    ("AFRY strong growth",            "2030",      2500.0, "scenario"),
+    ("KEITO assumption",              "2050",      1900.0, "scenario"),
+    ("Luke electrification pathway",  "2055",      7000.0, "scenario"))
+
+  val committed = rows.filter(r => r._4 == "base" || r._4 == "add").map(_._3).sum
+  val stated = rows.find(_._4 == "total").map(_._3).get
+  require(committed == stated,
+    s"chapter11aFinlandPipeline: bars sum to $committed, total says $stated")
+  require(rows.count(_._4 == "base") == 1 && rows.count(_._4 == "total") == 1,
+    "chapter11aFinlandPipeline: expected exactly one base bar and one total")
+
+  val out = new StringBuilder; out ++= "label,sublabel,mw,kind\n"
+  for ((l, s, mw, k) <- rows) out ++= f"$l,$s,$mw%.0f,$k\n"
+  os.write.over(dir / "fi-dc-pipeline.csv", out.toString)
+  println("wrote data-refresh/fi-dc-pipeline.csv")
+  for ((l, s, mw, k) <- rows) println(f"  $l%-30s $s%-10s $mw%6.0f MW  $k")
+
+  // The arithmetic the chapter does with these bars, printed so that the text
+  // and the figure cannot drift apart.
+  val planning = 2500.0            // EK dashboard, planning and feasibility, Aug 2025
+  val meteredTWh = 1.3             // Finnish tax records, data centres, 2024
+  val peakMW = 15553.0             // Fingrid, 8 January 2026, a Finnish record
+  val fiTWh = 82.0; val pop = 5.6e6 // as in the Loviisa arithmetic above
+  val googleMW = 1300.0; val contractedTWh = 6.0
+
+  val useNow = meteredTWh * 1e6 / (285.0 * 8760)   // what the built fleet runs at
+  println(f"  metered 2024 $meteredTWh%.1f TWh over 285 MW nameplate: " +
+          f"${useNow * 100}%.0f%% utilisation")
+  for (u <- Seq(useNow, 0.60, 0.85)) {
+    val twh = committed * 8760 * u / 1e6
+    println(f"  committed $committed%.0f MW at ${u * 100}%.0f%%: $twh%5.1f TWh, " +
+            f"${twh / fiTWh * 100}%4.1f%% of Finnish electricity, " +
+            f"${twh * 1e9 / pop / 365}%5.1f kWh/d per Finn")
+  }
+  for ((l, _, mw, k) <- rows if k == "scenario")
+    println(f"  committed / $l%-30s ${committed / mw}%.2f")
+  println(f"  committed against the record peak $peakMW%.0f MW: " +
+          f"${committed / peakMW * 100}%.0f%% (figure 11a.1 forecasts 9.0%% of peak for 2031)")
+  println(f"  with the 2500 MW still in planning: ${committed + planning}%.0f MW, " +
+          f"${(committed + planning) / peakMW * 100}%.0f%% of the peak")
+  for (u <- Seq(useNow, 0.60, 0.85)) {
+    val twh = googleMW * 8760 * u / 1e6
+    println(f"  Google $googleMW%.0f MW at ${u * 100}%.0f%%: $twh%.1f TWh, " +
+            f"contract covers ${contractedTWh / twh * 100}%.0f%%")
+  }
+  println("render:")
+  println("  uv run figures/fi_dc_pipeline.py data-refresh/fi-dc-pipeline.csv " +
+          "without-hot-air/Images/fig-fi-dc-pipeline.svg")
+}
+
 // ---- Chapter 25: what one degree buys, in gigawatts ----
 // Thermosensitivity: the slope of daily electricity demand against daily mean
 // temperature, fitted separately on the cold arm and the hot arm.
