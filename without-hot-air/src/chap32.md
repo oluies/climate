@@ -18,11 +18,11 @@ If you would like an honest, realistic energy policy that adds up, please tell a
 
 That is real progress and it is slower than it sounds. Thirteen points in eighteen years, on a journey that has to end near zero, is a pace that finishes some time in the 2130s. And a fair share of the fall is the demand side rather than the supply side — total British energy supply fell from 9.19 to 6.29 exajoules, a drop of nearly a third, for the mixture of efficiency, cleaner electricity and offshored industry that chapter 15 takes apart.
 
-"A 10- or 20-fold increase in green power." British renewables went from 0.164 to 0.920 exajoules — a factor of 5.6. Counted as electricity rather than primary energy the multiple is larger, because wind and solar displace thermal plant at better than one for one. Either way Britain is somewhere between a third and two-thirds of the way to the bottom of the range he asked for, in a bit under half the time available. This is the demand he has come closest to meeting, and it is the one everybody said was impossible.
+**"A 10- or 20-fold increase in green power."** British renewables went from 0.164 to 0.920 exajoules — a factor of 5.6. Counted as electricity rather than primary energy the multiple is larger, because wind and solar displace thermal plant at better than one for one. Either way Britain is somewhere between a third and two-thirds of the way to the bottom of the range he asked for, in a bit under half the time available. This is the demand he has come closest to meeting, and it is the one everybody said was impossible.
 
-"A total change in the transport fleet." Chapter 3 records that electric cars work and are arriving; chapter 20 records how little else has moved. Transport is still 2.71 EJ of oil, essentially unchanged in share.
+**"A total change in the transport fleet."** Chapter 3 records that electric cars work and are arriving; chapter 20 records how little else has moved. Transport is still 2.71 EJ of oil, essentially unchanged in share.
 
-"A complete change of most building heating systems." Chapter 7 records the position, and it is the weakest of the three. Britain sits near the bottom of the European table for heat pump installations per household, and about two homes in five are below the fabric standard that would let one work well.
+**"A complete change of most building heating systems."** Chapter 7 records the position, and it is the weakest of the three. Britain sits near the bottom of the European table for heat pump installations per household, and about two homes in five are below the fabric standard that would let one work well.
 
 So: one demand substantially met, two barely begun, and the premise moving slowly. For a book that was widely read as pessimistic, that is a better record than its author would have predicted, and a worse one than the country needed.
 

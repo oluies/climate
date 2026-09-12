@@ -56,7 +56,7 @@ Other places in the world have more promising hot dry rocks, [^4] so if you want
 
 #### Doesn’t Southampton use geothermal energy already? How much does that deliver?
 
-Yes, Southampton Geothermal District Heating Scheme [^5] was, in 2004 at least, the only geothermal heating scheme in the UK. It provides the city with a supply of hot water. The geothermal well is part of a combined heat, power, and cooling system that delivers hot and chilled water to customers, and sells electricity to the grid. Geothermal energy contributes about 15% of the 70 GWh of heat per year delivered by this system. The population of Southampton at the last census was 217 445, so the geothermal power being delivered there is 0.13kWh/d per person in Southampton.
+Yes, Southampton Geothermal District Heating Scheme [^5] was, in 2004 at least, the only geothermal heating scheme in the UK. It provides the city with a supply of hot water. The geothermal well is part of a combined heat, power, and cooling system that delivers hot and chilled water to customers, and sells electricity to the grid. Geothermal energy contributes about 15% of the 70 GWh of heat per year delivered by this system. The population of Southampton at the last census was 217 445, so the geothermal power being delivered there is **0.13kWh/d per person** in Southampton.
 
 ![](/img/without-hot-air/figure120.gif)
 

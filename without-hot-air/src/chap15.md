@@ -21,7 +21,7 @@ Let’s say we want to understand the full energy-cost of a stuff, perhaps with 
 | steel | 6 |
 <span class="figurenumber">Table 15.2</span>. Embodied energy of materials.
 
-  - **Phase R:** Making raw materials.
+  - **Phase R:** Making **raw materials**.
   This phase involves digging minerals out of the ground, melting them, purifying them, and modifying them into manufacturers’ lego: plastics, glasses, metals, and ceramics, for example. The energy costs of this phase include the transportation costs of trundling the raw materials to their next destination.
   - **Phase P: Production**.
   In this phase, the raw materials are processed into a manufactured product. The factory where the hair-dryer’s coils are wound, its graceful lines moulded, and its components carefully snapped together, uses heat and light. The energy costs of this phase include packaging and more transportation.
@@ -261,11 +261,11 @@ That is the same lesson as chapter M's, arriving in a different chapter: what yo
 
 There is a way of reducing a country's territorial emissions that involves neither efficiency nor restraint, and Britain has been doing it.
 
-Steel. British steel production is now the smallest it has been since the 1930s, following the closure of the blast furnaces at Port Talbot in 2024. Primary steelmaking in Britain has largely ended.
+**Steel.** British steel production is now the smallest it has been since the 1930s, following the closure of the blast furnaces at Port Talbot in 2024. Primary steelmaking in Britain has largely ended.
 
-Chemicals. The industry body records 25 site closures in five years, and its own survey of members reports weak demand, falling employment and the likelihood of more.
+**Chemicals.** The industry body records 25 site closures in five years, and its own survey of members reports weak demand, falling employment and the likelihood of more.
 
-Refining. Two of Britain's six refineries — Grangemouth and Lindsey — have closed since 2019, with about 820 direct jobs; Grangemouth's closure took the neighbouring Mossmorran ethylene plant with it and another 180.[^deindust]
+**Refining.** Two of Britain's six refineries — Grangemouth and Lindsey — have closed since 2019, with about 820 direct jobs; Grangemouth's closure took the neighbouring Mossmorran ethylene plant with it and another 180.[^deindust]
 
 None of that reduces demand for steel, chemicals or fuel. It relocates the making of them, and with it the energy and the emissions, which then return as imports and appear in the account described above rather than in the territorial one.
 
@@ -299,7 +299,7 @@ So the answer to whether heavy industry left Britain for cheaper countries is ye
 
 [^11]: *Britain’s share of international shipping...* Source: Anderson et al. (2006).
 
-[^12]: *Figure 15.8*. Energy consumptions of ships. The five points in the figure are a container ship (46 km/h), a dry cargo vessel (24 km/h), an oil tanker (29 km/h), an inland marine ship (24 km/h), and the NS Savannah (39 km/h).
+[^12]: *Figure 15.8*. **Energy consumptions of ships**. The five points in the figure are a container ship (46 km/h), a dry cargo vessel (24 km/h), an oil tanker (29 km/h), an inland marine ship (24 km/h), and the NS Savannah (39 km/h).
 
   - **Dry cargo vessel** 0.08 kWh/t-km.
   A vessel with a grain capacity of 5200 m<sup>3</sup> carries 3360 deadweight tons. (Deadweight tonnage is the mass of cargo that the ship can carry.) It travels at speed 13 kn (24 km/h); its one engine with 2 MW delivered power consumes 186 g of fuel-oil per kWh of delivered energy (42% efficiency). [<span class="websitetitle">conoship.com/uk/vessels/detailed/page7.htm</span>](http://conoship.com/uk/vessels/detailed/page7.htm)
@@ -312,7 +312,7 @@ So the answer to whether heavy industry left Britain for cheaper countries is ye
 
 [^14]: *Supermarkets in the UK consume 11 TWh/y*. [[<span class="websitetitle">yqbzl3</span>](http://tinyurl.com/yqbzl3)]
 
-[^15]: *Helm et al. suggest that, allowing for imports and exports, Britain’s carbon footprint is nearly doubled to about 21 tons*. Helm et al. (2007).
+[^15]: *Helm et al. suggest that, allowing for imports and exports, Britain’s carbon footprint is nearly **doubled** to about 21 tons*. Helm et al. (2007).
 
 ![](/img/without-hot-air/figure342.gif)
 

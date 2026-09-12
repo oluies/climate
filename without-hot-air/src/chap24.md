@@ -113,7 +113,7 @@ We’ll consider two ways to use uranium in a reactor: (a) the widely-used *once
 
 <span class="figurenumber">Figure 24.4</span>. Three Mile Island nuclear power plant.
 
-A once-through one-gigawatt nuclear power station uses 162 tons per year of uranium. [^3] So the known mineable resources of uranium, shared between 6 billion people, would last for 1000 years if we produced nuclear power at a rate of <span class="green">0.55 kWh per day per person</span>. This sustainable rate is the output of just 136 nuclear power stations, and is half of today’s nuclear power production. It’s very possible this is an underestimate of uranium’s potential, since, as there is not yet a uranium shortage, there is no incentive for exploration and little uranium exploration has been undertaken since the 1980s; so maybe more mineable uranium will be discovered. Indeed, one paper published in 1980 estimated that the low-grade uranium resource is more than 1000 times greater than the 27 million tons we just assumed. [^4]
+A once-through **one-gigawatt** nuclear power station uses **162 tons per year of uranium**. [^3] So the known mineable resources of uranium, shared between 6 billion people, would last for 1000 years if we produced nuclear power at a rate of <span class="green">0.55 kWh per day per person</span>. This sustainable rate is the output of just 136 nuclear power stations, and is half of today’s nuclear power production. It’s very possible this is an underestimate of uranium’s potential, since, as there is not yet a uranium shortage, there is no incentive for exploration and little uranium exploration has been undertaken since the 1980s; so maybe more mineable uranium will be discovered. Indeed, one paper published in 1980 estimated that the low-grade uranium resource is more than 1000 times greater than the 27 million tons we just assumed. [^4]
 
 Could our current once-through use of mined uranium be sustainable? It’s hard to say, since there is such uncertainty about the result of future exploration. Certainly at today’s rate of consumption, once-through reactors could keep going for hundreds of years. But if we wanted to crank up nuclear power 40-fold worldwide, in order to get off fossil fuels and to allow standards of living to rise, we might worry that once-through reactors are not a sustainable technology.
 
@@ -342,9 +342,9 @@ Fusion power is speculative and experimental. I think it is reckless to assume t
 
 The two fusion reactions that are considered the most promising are:
 
-the DT reaction, which fuses deuterium with tritium, making helium; and
+**the DT reaction**, which fuses deuterium with tritium, making helium; and
 
-the DD reaction, which fuses deuterium with deuterium.
+**the DD reaction**, which fuses deuterium with deuterium.
 
 Deuterium, a naturally occurring heavy isotope of hydrogen, can be obtained from seawater; tritium, a heavier isotope of hydrogen, isn’t found in large quantities naturally (because it has a half-life of only 12 years) but it can be manufactured from lithium.
 

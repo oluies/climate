@@ -17,9 +17,9 @@ $$
 \end{matrix}
 $$
 
-For the distance travelled per day, let’s use 50 km (30 miles). [^1]
+For the **distance travelled per day**, let’s use 50 km (30 miles). [^1]
 
-For the distance per unit of fuel, also known as the economy of the car, let’s use 33 miles per UK gallon [^2] (taken from an advertisement for a family car):
+For the **distance per unit of fuel**, also known as the **economy** of the car, let’s use 33 miles per UK gallon [^2] (taken from an advertisement for a family car):
 
 $$
 \text{33\ miles\ per\ imperial\ gallon} \simeq \text{12\ km\ per\ litre.}
@@ -31,7 +31,7 @@ $$
 
 <span class="figurenumber">Figure 3.2.</span> Want to know the energy in car fuel? Look at the label on a pack of butter or margarine. The calorific value is 3000 kJ per 100 g, or about 8 kWh per kg.
 
-What about the energy per unit of fuel (also called the calorific value or energy density)? Instead of looking it up, it’s fun to estimate this sort of quantity by a bit of lateral thinking. Automobile fuels (whether diesel or petrol) are all hydrocarbons; and hydrocarbons can also be found on our breakfast table, with the calorific value conveniently written on the side: roughly 8 kWh per kg (figure 3.2). Since we’ve estimated the economy of the car in miles per unit *volume* of fuel, we need to express the calorific value as an energy per unit *volume*. To turn our fuel’s "8 kWh per kg" (an energy per unit *mass*) into an energy per unit volume, we need to know the density of the fuel. What’s the density of butter? Well, butter just floats on water, as do fuel-spills, so its density must be a little less than water’s, which is 1 kg per litre. If we guess a density of 0.8 kg per litre [^3], we obtain a calorific value of:
+What about the **energy per unit of fuel** (also called the **calorific value** or **energy density**)? Instead of looking it up, it’s fun to estimate this sort of quantity by a bit of lateral thinking. Automobile fuels (whether diesel or petrol) are all hydrocarbons; and hydrocarbons can also be found on our breakfast table, with the calorific value conveniently written on the side: roughly 8 kWh per kg (figure 3.2). Since we’ve estimated the economy of the car in miles per unit *volume* of fuel, we need to express the calorific value as an energy per unit *volume*. To turn our fuel’s "8 kWh per kg" (an energy per unit *mass*) into an energy per unit volume, we need to know the density of the fuel. What’s the density of butter? Well, butter just floats on water, as do fuel-spills, so its density must be a little less than water’s, which is 1 kg per litre. If we guess a density of 0.8 kg per litre [^3], we obtain a calorific value of:
 
 $$
 \text{8\ kWh\ per\ kg\ ×\ 0.8\ kg\ per\ litre} \simeq \text{7\ kWh\ per\ litre.}

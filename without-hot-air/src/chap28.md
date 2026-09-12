@@ -246,7 +246,7 @@ $2000 billion or more: the cost, to the USA, of the [[<span class="websitetitle"
 
 According to the Stern review, the global cost of averting dangerous climate change (if we act now) is $440 billion per year ($440 per year per person, if shared equally between the 1 billion richest people). In 2005, the US government alone spent $480 billion on wars and preparation for wars. The total military expenditure of the 15 biggest military-spending countries was $840 billion.
 
-### Expenditure that does not run into billions
+### Expenditure that does **not** run into billions
 
 £0.012 billion per year: the smallest item displayed in figure 28.5 is the UK government’s annual investment in renewable-energy research and development. [^5] (£0.20 per person in the UK, per year.)
 

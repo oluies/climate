@@ -215,7 +215,7 @@ While it’s an untested idea, and currently illegal, I do find ocean nourishmen
 >
 > J. Hansen et al (2007)
 
-> *Avoiding dangerous climate change" is impossible – dangerous climate change is already here. The question is, can we avoid catastrophic climate change?*
+> *Avoiding dangerous climate change" is impossible – dangerous climate change is already here. The question is, can we avoid **catastrophic** climate change?*
 >
 > David King, UK Chief Scientist, 2007
 

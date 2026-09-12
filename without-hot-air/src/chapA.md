@@ -179,7 +179,7 @@ $$
 
 If you drive the car at this speed for one hour every day, then you travel 110 km and use <span class="red">80 kWh</span> of energy per day. If you drove at half this speed for two hours per day instead, you would travel the same distance and use up <span class="red">20 kWh</span> of energy. This simple theory seems consistent with the mileage figures for cars quoted in Chapter 3. Moreover, the theory gives insight into how the energy consumed by your car could be reduced. The theory has a couple of flaws which we’ll explore in a moment.
 
-Could we make a new car that consumes 100 times less energy and still goes at 70mph? No. Not if the car has the same shape. On the motorway at 70mph, the energy is going mainly into making air swirl. Changing the materials the car is made from makes no difference to that. A miraculous improvement to the fossil-fuel engine could perhaps boost its efficiency from 25% to 50%, bringing the energy consumption of a fossil-fuelled car down to roughly 40 kWh per 100 km.
+Could we make a new car that consumes 100 times less energy and still goes at 70mph? **No**. Not if the car has the same shape. On the motorway at 70mph, the energy is going mainly into making air swirl. Changing the materials the car is made from makes no difference to that. A miraculous improvement to the fossil-fuel engine could perhaps boost its efficiency from 25% to 50%, bringing the energy consumption of a fossil-fuelled car down to roughly 40 kWh per 100 km.
 
 Electric vehicles have some wins: while the weight of the energy store, per useful kWh stored, is about 25 times bigger than that of petrol, the weight of an electric engine can be about 8 times smaller. [^3] And the energy-chain in an electric car is much more efficient: electric motors can be 90% efficient.
 
@@ -234,7 +234,7 @@ $$
 \end{matrix}
 $$
 
-So a cyclist at 21 km/h consumes about 3% of the energy per kilometre of a lone car-driver on the motorway – about 2.4 kWh per 100 km.
+So a cyclist at 21 km/h consumes about 3% of the energy per kilometre of a lone car-driver on the motorway – about **2.4 kWh per 100 km**.
 
 If you would like a vehicle whose fuel efficiency is 30 times better than a car’s, it’s simple: ride a bike.
 

@@ -12,11 +12,11 @@
 
 One of the greatest dangers to society is the phone charger. The BBC News has been warning us of this since 2005: [^1]
 
-"The nuclear power stations will all be switched off in a few years. How can we keep Britain’s lights on? ... unplug your mobile-phone charger when it’s not in use."
+"The nuclear power stations will all be switched off in a few years. How can we keep Britain’s lights on? ... **unplug your mobile-phone charger when it’s not in use.**"
 
 Sadly, a year later, Britain hadn’t got the message, and the BBC was forced to report:
 
-"Britain tops energy waste league".
+"**Britain tops energy waste league**".
 
 And how did this come about? The BBC rams the message home:
 
@@ -119,7 +119,7 @@ For the rest, whose homes are heated by fossil fuels or biofuels, it’s a good 
 
 ![](/img/without-hot-air/figure82.gif)
 
-<span class="figurenumber">Figure 11.6</span>. Advertisement from the "DIY planet repairs" campaign. The text reads "Unplug. If every London household unplugged their mobile-phone chargers when not in use, we could save 31,000 tonnes of CO<sub>2</sub> and £7.75m per year." [<span class="websitetitle">london.gov.uk/diy/</span>](http://www.london.gov.uk/diy/)
+<span class="figurenumber">Figure 11.6</span>. Advertisement from the "DIY planet repairs" campaign. The text reads "**Unplug**. If every London household unplugged their mobile-phone chargers when not in use, we could save 31,000 tonnes of CO<sub>2</sub> and £7.75m per year." [<span class="websitetitle">london.gov.uk/diy/</span>](http://www.london.gov.uk/diy/)
 
 ![](/img/without-hot-air/figure410.gif)
 

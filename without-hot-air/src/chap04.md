@@ -42,7 +42,7 @@ if wind turbines were packed across the *whole* country, and assuming 2 W/m<sup>
 
 <span class="figurenumber">Figure 4.3.</span> Chapter 4’s conclusion: the maximum plausible production from on-shore windmills in the United Kingdom is 20 kWh per day per person.
 
-Let’s be realistic. What fraction of the country can we really imagine covering with windmills? Maybe 10%? Then we conclude: if we covered the windiest 10% of the country with windmills (delivering 2 W/m<sup>2</sup>), we would be able to generate <span class="green">20 kWh/d per person</span>, which is *half* of the power used by driving an average fossil-fuel car 50 km per day.
+Let’s be realistic. What fraction of the country can we really imagine covering with windmills? Maybe 10%? Then we conclude: if we covered the windiest 10% of the country with windmills (delivering 2 W/m<sup>2</sup>), we would be able to generate <span class="green">20 kWh/d per person</span>, which is ***half*** of the power used by driving an average fossil-fuel car 50 km per day.
 
 Britain’s onshore wind energy resource may be "huge," but it’s evidently not as huge as our huge consumption. We’ll come to offshore wind later.
 

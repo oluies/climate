@@ -329,13 +329,13 @@ There is a by-product that MacKay could reasonably dismiss and his successors ca
 
 The chapter so far has dealt with heat pumps that draw from the air. Two other sources matter, and one of them answers a problem this book raises elsewhere.
 
-Ground source. A borehole gives the pump a source at a steady 6 to 8°C rather than an outdoor air temperature that collapses exactly when heat is most wanted. In Sweden, where *bergvärme* is ordinary domestic equipment, rated SCOP runs between about 4.0 and 5.5 — four to five and a half units of heat per unit of electricity. British field trials measured 2.81.
+**Ground source.** A borehole gives the pump a source at a steady 6 to 8°C rather than an outdoor air temperature that collapses exactly when heat is most wanted. In Sweden, where *bergvärme* is ordinary domestic equipment, rated SCOP runs between about 4.0 and 5.5 — four to five and a half units of heat per unit of electricity. British field trials measured 2.81.
 
 That gap is worth explaining rather than splitting, because it is partly real and partly definitional. SCOP is a rated figure for space heating alone, measured on a standard test; SPF is measured in service and includes domestic hot water. Hot water has to be delivered at a much higher temperature than a radiator circuit, so including it drags the whole-year average down — which is why SPF is the more honest number for what a household actually gets, and why it is the one this chapter uses. The rest of the gap is genuine: Swedish installations are designed around low flow temperatures by decades of habit, and the British trial measured an immature market.
 
 The price of ground source is the drilling, which is most of the capital cost and the reason it remains a minority. Chapter 16 explains why the common name for these, "geothermal heat pumps", is a misnomer: the heat is stored sunshine, not the Earth's, by a factor of about 150.
 
-Water source. Where a lake, river or sea is available it is better still, because water carries heat laterally to the collector instead of waiting to be conducted through soil.
+**Water source.** Where a lake, river or sea is available it is better still, because water carries heat laterally to the collector instead of waiting to be conducted through soil.
 
 What it replaces decides the economics, not what it draws from. A Swedish study of the Saltsjöbaden Grand Hotel, which heats with two lake-source heat pumps and two oil boilers, costed replacing one of the oil boilers with a third heat pump: a saving of about 200 MWh a year for an investment near 500 000 kronor, paying back in about two and a half years. It was the largest single measure in the study, ahead of relighting, ventilation rebalancing and window replacement, and the whole package came to roughly 500 MWh a year, a 30% cut.[^saltsjo]
 

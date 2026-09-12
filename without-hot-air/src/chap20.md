@@ -36,7 +36,7 @@ These observations lead us to six principles of vehicle design and vehicle use f
 
 <span class="figurenumber">Figure 20.3.</span> "Babies on board." This mode of transportation has an energy cost of <span class="mauve">1 kWh per 100 person-km</span>.
 
-A note added in the 2026 revision. This picture now has an electric variant, and the arithmetic of it is instructive.
+*A note added in the 2026 revision.* This picture now has an electric variant, and the arithmetic of it is instructive.
 
 A loaded electric cargo bike uses about 2 kWh per 100 kilometres. Carrying a rider and two children that is 0.67 kWh per 100 person-km — slightly better than the 1 kWh MacKay gives for the bicycle and trailer above, and with the rider still contributing.
 
@@ -68,7 +68,7 @@ But whoops, now we’ve broached an ugly topic – the prospect of sharing a veh
 
 ## Public transport
 
-At its best, shared public transport is far more energy-efficient than individual car-driving. A diesel-powered coach, carrying 49 passengers and doing 10 miles per gallon at 65 miles per hour, uses <span class="mauve">6 kWh per 100 p-km</span> – 13 times better than the single-person car. Vancouver’s trolleybuses consume 270 kWh per 100 vehicle-km, and have an average speed of 15 km/h. If the trolleybus has 40 passengers on board, then its passenger transport cost is <span class="mauve">7 kWh per 100 p-km</span>. The Vancouver SeaBus has a transport cost of 83 kWh per vehicle-km at a speed of 13.5 km/h. It can seat 400 people, so its passenger transport cost when full is <span class="mauve">21 kWh per 100 p-km</span>. London underground trains, at peak times, use <span class="mauve">4.4 kWh per 100 p-km</span> – 18 times better than individual cars. [^4] Even high-speed trains, [^5] which violate two of our energy-saving principles by going twice as fast as the car and weighing a lot, are much more energy efficient: if the electric high-speed train is full, its energy cost is <span class="mauve">3 kWh per 100 p-km</span> – that’s 27 times smaller than the car’s\!
+At its best, shared public transport is far more energy-efficient than individual car-driving. A diesel-powered **coach**, carrying 49 passengers and doing 10 miles per gallon at 65 miles per hour, uses <span class="mauve">6 kWh per 100 p-km</span> – 13 times better than the single-person car. Vancouver’s **trolleybuses** consume 270 kWh per 100 vehicle-km, and have an average speed of 15 km/h. If the trolleybus has 40 passengers on board, then its passenger transport cost is <span class="mauve">7 kWh per 100 p-km</span>. The Vancouver **SeaBus** has a transport cost of 83 kWh per vehicle-km at a speed of 13.5 km/h. It can seat 400 people, so its passenger transport cost when full is <span class="mauve">21 kWh per 100 p-km</span>. London **underground trains**, at peak times, use <span class="mauve">4.4 kWh per 100 p-km</span> – 18 times better than individual cars. [^4] Even **high-speed trains**, [^5] which violate two of our energy-saving principles by going twice as fast as the car and weighing a lot, are much more energy efficient: if the electric high-speed train is full, its energy cost is <span class="mauve">3 kWh per 100 p-km</span> – that’s 27 times smaller than the car’s\!
 
 ![](/img/without-hot-air/figure142.gif)
 
@@ -323,11 +323,11 @@ Here are some other problems with hydrogen. Hydrogen is a less convenient energy
 
 *A section added in the 2026 revision.* Note 16 lists what a careful observer could see coming in 2008, and almost none of it arrived. Here is the replacement — the five best-selling battery-electric cars in each of the four places that make them, in 2025.[^ev2025]
 
-Europe. Tesla Model Y (about 151 000), then the Volkswagen ID.4 and ID.3 — counted together or separately depending on the compiler, which is why this list runs to six names — the Kia EV3, the Renault 5 E-Tech and the Škoda Elroq. Volkswagen displaced Tesla as the largest electric brand in Europe with about 274 000 sold across the EU, UK and EFTA. Electric cars took 20% of the European new-car market.
+**Europe.** Tesla Model Y (about 151 000), then the Volkswagen ID.4 and ID.3 — counted together or separately depending on the compiler, which is why this list runs to six names — the Kia EV3, the Renault 5 E-Tech and the Škoda Elroq. Volkswagen displaced Tesla as the largest electric brand in Europe with about 274 000 sold across the EU, UK and EFTA. Electric cars took 20% of the European new-car market.
 
 China, first half of 2025 throughout. Geely Galaxy (about 205 000), BYD Seagull (about 175 000), Tesla Model Y (about 171 000), BYD Yuan PLUS (about 78 000) and BYD Yuan UP (about 72 000). BYD took six of the top twenty places.
 
-The United States. Tesla Model Y (about 358 000), Chevrolet Equinox EV (about 58 000), Ford Mustang Mach-E (about 52 000), Hyundai Ioniq 5 (about 47 000) and the Tesla Model 3.
+**The United States.** Tesla Model Y (about 358 000), Chevrolet Equinox EV (about 58 000), Ford Mustang Mach-E (about 52 000), Hyundai Ioniq 5 (about 47 000) and the Tesla Model 3.
 
 Korea's manufacturers, whose home market is small but whose exports are not, sell the Hyundai Ioniq 5 and Ioniq 9 and the Kia EV3, EV5 and EV6 — the Ioniq 5 being the only non-American, non-Chinese model in the American top five.
 
@@ -345,7 +345,7 @@ A caution about comparing their consumption figures, which matters more than it 
 
 *A section added in the 2026 revision.* The rankings above are cars. Europe also has a category the American and Chinese markets barely have — the small electric workhorse — and it is where this chapter's arithmetic comes out best.
 
-The quadricycles. The Citroën Ami is the one that broke through: a two-seat, 45 km/h box with a 6 kW motor, a 5.5 kWh battery and 75 km of range, sold without a full driving licence in several countries. Over 75 000 have gone out across eighteen markets since 2020. In France it took 36% of the whole quadricycle segment and 82% of the electric part of it, and the electric share of that segment went from 5% in 2019 to 44% in 2023. Aixam has been the incumbent in this class for thirty-five years, and Goupil, now owned by Polaris, makes the municipal and grounds-maintenance versions that empty bins and sweep parks.
+**The quadricycles.** The Citroën Ami is the one that broke through: a two-seat, 45 km/h box with a 6 kW motor, a 5.5 kWh battery and 75 km of range, sold without a full driving licence in several countries. Over 75 000 have gone out across eighteen markets since 2020. In France it took 36% of the whole quadricycle segment and 82% of the electric part of it, and the electric share of that segment went from 5% in 2019 to 44% in 2023. Aixam has been the incumbent in this class for thirty-five years, and Goupil, now owned by Polaris, makes the municipal and grounds-maintenance versions that empty bins and sweep parks.
 
 Now put the Ami through this chapter's own arithmetic. 5.5 kWh divided by 75 km is 7.3 kWh per 100 km.
 
@@ -357,7 +357,7 @@ Now put the Ami through this chapter's own arithmetic. 5.5 kWh divided by 75 km 
 
 Eleven times better than the petrol car, and three times better than the average electric one. Nothing exotic is happening: it is small, light and slow, which is precisely the three terms of chapter A's model. This is the vehicle MacKay's physics has been pointing at for three hundred pages, and it took until 2020 for anybody to sell one in numbers.
 
-The vans. The best-selling electric van in Europe in 2025 was the Toyota Proace City Electric, followed by the Citroën ë-Berlingo and the Renault Kangoo E-Tech, with the Ford E-Transit Courier newly arrived. These are the vehicles that actually do the work — deliveries, trades, service calls — and they are the part of the fleet where electrification is easiest, because the duty cycle is short, predictable and returns to a depot every night.
+**The vans.** The best-selling electric van in Europe in 2025 was the Toyota Proace City Electric, followed by the Citroën ë-Berlingo and the Renault Kangoo E-Tech, with the Ford E-Transit Courier newly arrived. These are the vehicles that actually do the work — deliveries, trades, service calls — and they are the part of the fleet where electrification is easiest, because the duty cycle is short, predictable and returns to a depot every night.
 
 And one of them is in note 16. MacKay lists the *Berlingo Electrique 500E* — "an urban delivery van… 25 kWh per 100 km", from an estimate kindly supplied by an owner. Its direct descendant is now among the best-selling electric vans in Europe, with a 50 kWh battery and about 343 km of range, which is 14.6 kWh per 100 km. The consumption nearly halved while the range went from the 100 km MacKay records to 343 — more than tripling.[^smallev]
 
@@ -399,7 +399,7 @@ The cargo bike deserves its own line, because it is the only vehicle in this cha
 
 #### You’ve shown that electric cars are more energy-efficient than fossil cars. But are they better if our objective is to reduce CO<sub>2</sub> emissions, and the electricity is still generated by fossil power stations?
 
-This is quite an easy calculation to do. Assume the electric vehicle’s energy cost is 20 kWh(e) per 100 km. (I think 15 kWh(e) per 100 km is perfectly possible, but let’s play sceptical in this calculation.) If grid electricity has a carbon footprint of 500 g per kWh(e) then the effective emissions of this vehicle are 100 g CO<sub>2</sub> per km, which is as good as the best fossil cars (figure 20.9). So I conclude that switching to electric cars is *already* a good idea, even before we green our electricity supply.
+This is quite an easy calculation to do. Assume the electric vehicle’s energy cost is 20 kWh(e) per 100 km. (I think 15 kWh(e) per 100 km is perfectly possible, but let’s play sceptical in this calculation.) If grid electricity has a carbon footprint of 500 g per kWh(e) then the effective emissions of this vehicle are **100 g CO<sub>2</sub> per km**, which is as good as the best fossil cars (figure 20.9). So I conclude that switching to electric cars is *already* a good idea, even before we green our electricity supply.
 
 #### Electric cars, like fossil cars, have costs of both manufacture and use. Electric cars may cost less to use, but if the batteries don’t last very long, shouldn’t you pay more attention to the manufacturing cost?
 
@@ -429,7 +429,7 @@ World lithium reserves are estimated to be 9.5 million tons in ore deposits ([ch
 
 *A section added in the 2026 revision.* This chapter calls hydrogen "a hyped-up bandwagon" and says "I'll be delighted to be proved wrong, but I don't see how hydrogen is going to help us with our energy problems." He was not proved wrong.
 
-The record. Honda ended production of the Clarity Fuel Cell in 2021, citing low demand. Shell abandoned its American hydrogen filling stations in 2024, so there are now fewer places to refuel than five years ago — about 56 consumer stations in the whole of North America, almost all on the Californian coast. Toyota sold 147 Mirais in the United States through the third quarter of 2025, down 54% on the year. Three hydrogen cars remain on sale in America, all of them in one state.[^h2car]
+**The record.** Honda ended production of the Clarity Fuel Cell in 2021, citing low demand. Shell abandoned its American hydrogen filling stations in 2024, so there are now fewer places to refuel than five years ago — about 56 consumer stations in the whole of North America, almost all on the Californian coast. Toyota sold 147 Mirais in the United States through the third quarter of 2025, down 54% on the year. Three hydrogen cars remain on sale in America, all of them in one state.[^h2car]
 
 MacKay's arithmetic explains why, and it has not changed: the BMW Hydrogen 7 he cites needed 254 kWh per 100 km, 220% more than an average European car, and the CUTE fuel-cell buses needed 80 to 200% more energy than the diesel they replaced. A carrier that loses most of the energy put into it does not win a race against one that loses little, and eighteen years of engineering has not closed a gap of that size.
 
@@ -530,7 +530,7 @@ The Swedish firm Candela builds hydrofoiling electric boats, and the arithmetic 
 
 Against what it replaced, the comparison is starker. The P-12 named *Nova* has run route 89 between Ekerö and central Stockholm since 2024, alongside the conventional diesel vessels *Lux* and *Sunnan*. Candela's claim for the energy saving per passenger-kilometre is quoted as 66%, 80% and 84% in different places, which is itself worth noting; taken at face value it puts the diesel boats it replaced somewhere between 44 and 94 kWh per 100 passenger-km. Either end of that band is a bad number, and the P-12 is a fifth of it. The journey time fell from 55 minutes to about 30, and passenger numbers on the route rose 22.5% during the trial.[^nova]
 
-The commercial position in 2026. Over forty P-12s are on order, which makes it the best-selling electric passenger vessel; the first American one is going to Lake Tahoe, where a thirty-minute crossing replaces a drive around the lake that twenty thousand vehicles a day currently make. In the United States the leisure end has started moving too: Arc, in Los Angeles, delivers a 226 kWh electric wake boat — a battery three times the size of an ordinary electric car's, in a 23-foot boat — and at Niagara Falls the two *Maid of the Mist* catamarans have run entirely on batteries since 2020, taking about 38 kWh per trip and recharging in the seven minutes passengers take to get on and off.[^usboats]
+**The commercial position in 2026.** Over forty P-12s are on order, which makes it the best-selling electric passenger vessel; the first American one is going to Lake Tahoe, where a thirty-minute crossing replaces a drive around the lake that twenty thousand vehicles a day currently make. In the United States the leisure end has started moving too: Arc, in Los Angeles, delivers a 226 kWh electric wake boat — a battery three times the size of an ordinary electric car's, in a 23-foot boat — and at Niagara Falls the two *Maid of the Mist* catamarans have run entirely on batteries since 2020, taking about 38 kWh per trip and recharging in the seven minutes passengers take to get on and off.[^usboats]
 
 Three cautions before this is oversold. First, these are consumption figures computed from quoted ranges, and a quoted range is an upper bound, so the real consumption is at least this and probably a little more. Second, the per-passenger figures assume the seats are used; a leisure boat with two people aboard is three times worse per passenger, and the diagram shows both. Third, and most important, none of this touches the ships that matter for energy. Deep-sea shipping is already efficient per tonne-kilometre, as chapter 15 says, and nothing here scales to it: a foil cannot lift a container ship, and a battery cannot cross an ocean. What has changed is a specific, useful corner — fast passenger transport over water in and around cities — where MacKay's diagram had nothing worth having and now has something better than a bus.
 

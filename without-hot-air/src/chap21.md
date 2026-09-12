@@ -278,7 +278,7 @@ Neither is strange. Both are specific, both are measurable, and neither is physi
 
 ![](/img/without-hot-air/figure186.gif)
 
-<span class="figurenumber">Figure 21.14</span>. Advertisement from the Mayor of London’s "DIY planet repairs" campaign of 2007. The text reads "Turn down. If every London household turned down their thermostat by one degree, we could save 837 000 tons of CO<sub>2</sub> and £110m per year." [[<span class="websitetitle">london.gov.uk/diy</span>](http://london.gov.uk/diy)] Expressed in savings per person, that’s 0.12 t CO<sub>2</sub> per year per person. That’s about 1% of one person’s total (11 t), so this is good advice. Well done, Ken\!
+<span class="figurenumber">Figure 21.14</span>. Advertisement from the Mayor of London’s "DIY planet repairs" campaign of 2007. The text reads "**Turn down**. If every London household turned down their thermostat by one degree, we could save 837 000 tons of CO<sub>2</sub> and £110m per year." [[<span class="websitetitle">london.gov.uk/diy</span>](http://london.gov.uk/diy)] Expressed in savings per person, that’s 0.12 t CO<sub>2</sub> per year per person. That’s about 1% of one person’s total (11 t), so this is good advice. Well done, Ken\!
 
 [^1]: *Loft and cavity insulation reduces heat loss in a typical old house by about a quarter*. Eden and Bending (1985).
 

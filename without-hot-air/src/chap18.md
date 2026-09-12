@@ -267,15 +267,15 @@ MacKay's answer to this chapter's question was that Britain cannot live on its o
 
 In each case the technology worked, the physics held, and something else stopped it.
 
-A price ratio. Chapter 7: a heat pump moves three to five times more heat than a boiler makes, and still costs more to run in Britain, because a British household pays about 3.6 times as much for a kilowatt-hour of electricity as for one of gas. Sweden's ratio is 1.3, and Sweden's heat pumps are everywhere. The physics is identical in both countries.
+**A price ratio.** Chapter 7: a heat pump moves three to five times more heat than a boiler makes, and still costs more to run in Britain, because a British household pays about 3.6 times as much for a kilowatt-hour of electricity as for one of gas. Sweden's ratio is 1.3, and Sweden's heat pumps are everywhere. The physics is identical in both countries.
 
-A queue. Chapter 11a: houses in west London could not be connected because data centres had taken the capacity, and a data centre turning a kilowatt-hour into eighty kronor of revenue outbids a house that turns it into nothing. No price signal produced that outcome. A connection queue did.
+**A queue.** Chapter 11a: houses in west London could not be connected because data centres had taken the capacity, and a data centre turning a kilowatt-hour into eighty kronor of revenue outbids a house that turns it into nothing. No price signal produced that outcome. A connection queue did.
 
-A permit. Chapter 13: spraying from drones cuts herbicide by up to a third, and applying pesticide from a drone is prohibited in Britain under a rule written for crop-dusting aircraft, decades before the machine existed.
+**A permit.** Chapter 13: spraying from drones cuts herbicide by up to a third, and applying pesticide from a drone is prohibited in Britain under a rule written for crop-dusting aircraft, decades before the machine existed.
 
-A procurement cycle. Chapter 9: LED street lighting was technically ready around 2012 and is roughly half done, because it is not a four-pound bulb but twenty-nine separate council capital programmes, each with its own budget and borrowing constraint.
+**A procurement cycle.** Chapter 9: LED street lighting was technically ready around 2012 and is roughly half done, because it is not a four-pound bulb but twenty-nine separate council capital programmes, each with its own budget and borrowing constraint.
 
-A contract's expiry. Chapter 28a: Germany is dismantling the subsidy that built its renewables not because anyone concluded it was wrong, but because an EU state-aid approval expires on 31 December 2026.
+**A contract's expiry.** Chapter 28a: Germany is dismantling the subsidy that built its renewables not because anyone concluded it was wrong, but because an EU state-aid approval expires on 31 December 2026.
 
 And the counter-example proves the rule. Chapter 9's light bulb met none of these and completed almost totally inside a decade: a few pounds, screws into the fitting already there, no installer, no survey, no wet system, no cylinder, no permit, no favourable ratio between two fuel prices. The transitions that finish are the ones that fit the socket already in the wall.
 

@@ -280,7 +280,7 @@ There are lots of ways to store energy, and lots of criteria by which storage so
 
 <span class="figurenumber">Figure 26.13</span>. Some properties of storage systems and fuels. (a) Energy density (on a logarithmic scale) versus lifetime (number of cycles). (b) Energy density versus efficiency. The energy densities don’t include the masses of the energy systems’ containers, except in the case of "air" (compressed air storage). Taking into account the weight of a cryogenic tank for holding hydrogen, the energy density of hydrogen is reduced from 39 000Wh/kg to roughly 2400 Wh/kg. [^13]
 
-(a) Calorific values of fuels
+**(a) Calorific values of fuels**
 
 | fuel | calorific value (kWh/kg) | (MJ/l) |
 |---|---|---|
@@ -297,7 +297,7 @@ There are lots of ways to store energy, and lots of criteria by which storage so
 | hydrogen | 39.0 |  |
 | natural gas | 14.85 | 0.04 |
 
-(b) Batteries
+**(b) Batteries**
 
 | battery type | energy density (Wh/kg) | lifetime (cycles) |
 |---|---|---|
