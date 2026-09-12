@@ -1,0 +1,235 @@
+panel,label,kmh,kwh_per_100km
+car,Petrol car (MacKay's),5,11.039
+car,Petrol car (MacKay's),10,11.457
+car,Petrol car (MacKay's),15,12.154
+car,Petrol car (MacKay's),20,13.129
+car,Petrol car (MacKay's),25,14.383
+car,Petrol car (MacKay's),30,15.915
+car,Petrol car (MacKay's),35,17.727
+car,Petrol car (MacKay's),40,19.816
+car,Petrol car (MacKay's),45,22.185
+car,Petrol car (MacKay's),50,24.832
+car,Petrol car (MacKay's),55,27.757
+car,Petrol car (MacKay's),60,30.962
+car,Petrol car (MacKay's),65,34.445
+car,Petrol car (MacKay's),70,38.206
+car,Petrol car (MacKay's),75,42.246
+car,Petrol car (MacKay's),80,46.565
+car,Petrol car (MacKay's),85,51.163
+car,Petrol car (MacKay's),90,56.039
+car,Petrol car (MacKay's),95,61.194
+car,Petrol car (MacKay's),100,66.627
+car,Petrol car (MacKay's),105,72.339
+car,Petrol car (MacKay's),110,78.330
+car,Petrol car (MacKay's),115,84.599
+car,Petrol car (MacKay's),120,91.147
+car,Petrol car (MacKay's),125,97.973
+car,Petrol car (MacKay's),130,105.079
+car,Petrol car (MacKay's),135,112.463
+car,Petrol car (MacKay's),140,120.125
+car,Petrol car (MacKay's),145,128.066
+car,Petrol car (MacKay's),150,136.286
+car,Petrol car (MacKay's),155,144.784
+car,Petrol car (MacKay's),160,153.561
+car,Electric car 2025,5,5.795
+car,Electric car 2025,10,5.869
+car,Electric car 2025,15,5.992
+car,Electric car 2025,20,6.164
+car,Electric car 2025,25,6.385
+car,Electric car 2025,30,6.656
+car,Electric car 2025,35,6.975
+car,Electric car 2025,40,7.344
+car,Electric car 2025,45,7.762
+car,Electric car 2025,50,8.229
+car,Electric car 2025,55,8.745
+car,Electric car 2025,60,9.311
+car,Electric car 2025,65,9.926
+car,Electric car 2025,70,10.589
+car,Electric car 2025,75,11.302
+car,Electric car 2025,80,12.064
+car,Electric car 2025,85,12.876
+car,Electric car 2025,90,13.736
+car,Electric car 2025,95,14.646
+car,Electric car 2025,100,15.605
+car,Electric car 2025,105,16.613
+car,Electric car 2025,110,17.670
+car,Electric car 2025,115,18.776
+car,Electric car 2025,120,19.932
+car,Electric car 2025,125,21.136
+car,Electric car 2025,130,22.390
+car,Electric car 2025,135,23.693
+car,Electric car 2025,140,25.046
+car,Electric car 2025,145,26.447
+car,Electric car 2025,150,27.897
+car,Electric car 2025,155,29.397
+car,Electric car 2025,160,30.946
+car,Electric SUV 2025,5,7.731
+car,Electric SUV 2025,10,7.842
+car,Electric SUV 2025,15,8.026
+car,Electric SUV 2025,20,8.284
+car,Electric SUV 2025,25,8.616
+car,Electric SUV 2025,30,9.022
+car,Electric SUV 2025,35,9.501
+car,Electric SUV 2025,40,10.054
+car,Electric SUV 2025,45,10.681
+car,Electric SUV 2025,50,11.382
+car,Electric SUV 2025,55,12.156
+car,Electric SUV 2025,60,13.005
+car,Electric SUV 2025,65,13.927
+car,Electric SUV 2025,70,14.922
+car,Electric SUV 2025,75,15.992
+car,Electric SUV 2025,80,17.135
+car,Electric SUV 2025,85,18.352
+car,Electric SUV 2025,90,19.643
+car,Electric SUV 2025,95,21.007
+car,Electric SUV 2025,100,22.445
+car,Electric SUV 2025,105,23.957
+car,Electric SUV 2025,110,25.543
+car,Electric SUV 2025,115,27.203
+car,Electric SUV 2025,120,28.936
+car,Electric SUV 2025,125,30.743
+car,Electric SUV 2025,130,32.624
+car,Electric SUV 2025,135,34.578
+car,Electric SUV 2025,140,36.607
+car,Electric SUV 2025,145,38.709
+car,Electric SUV 2025,150,40.884
+car,Electric SUV 2025,155,43.134
+car,Electric SUV 2025,160,45.457
+bike,Bicycle (MacKay's),5,0.595
+bike,Bicycle (MacKay's),10,0.908
+bike,Bicycle (MacKay's),15,1.431
+bike,Bicycle (MacKay's),20,2.162
+bike,Bicycle (MacKay's),25,3.103
+bike,Bicycle (MacKay's),30,4.252
+bike,Bicycle (MacKay's),35,5.610
+bike,Bicycle (MacKay's),40,7.178
+bike,Bicycle (MacKay's),45,8.954
+bike,Electric bicycle,5,0.244
+bike,Electric bicycle,10,0.348
+bike,Electric bicycle,15,0.522
+bike,Electric bicycle,20,0.766
+bike,Electric bicycle,25,1.080
+bike,Electric bicycle,30,1.463
+bike,Electric bicycle,35,1.916
+bike,Electric bicycle,40,2.438
+bike,Electric bicycle,45,3.030
+train,Train full (584 seats),5,0.415
+train,Train full (584 seats),10,0.418
+train,Train full (584 seats),15,0.421
+train,Train full (584 seats),20,0.426
+train,Train full (584 seats),25,0.433
+train,Train full (584 seats),30,0.441
+train,Train full (584 seats),35,0.450
+train,Train full (584 seats),40,0.461
+train,Train full (584 seats),45,0.474
+train,Train full (584 seats),50,0.488
+train,Train full (584 seats),55,0.503
+train,Train full (584 seats),60,0.520
+train,Train full (584 seats),65,0.538
+train,Train full (584 seats),70,0.558
+train,Train full (584 seats),75,0.579
+train,Train full (584 seats),80,0.601
+train,Train full (584 seats),85,0.625
+train,Train full (584 seats),90,0.651
+train,Train full (584 seats),95,0.678
+train,Train full (584 seats),100,0.706
+train,Train full (584 seats),105,0.736
+train,Train full (584 seats),110,0.768
+train,Train full (584 seats),115,0.800
+train,Train full (584 seats),120,0.835
+train,Train full (584 seats),125,0.870
+train,Train full (584 seats),130,0.908
+train,Train full (584 seats),135,0.946
+train,Train full (584 seats),140,0.986
+train,Train full (584 seats),145,1.028
+train,Train full (584 seats),150,1.071
+train,Train full (584 seats),155,1.115
+train,Train full (584 seats),160,1.161
+train,Train full (584 seats),165,1.209
+train,Train full (584 seats),170,1.257
+train,Train full (584 seats),175,1.308
+train,Train full (584 seats),180,1.359
+train,Train full (584 seats),185,1.413
+train,Train full (584 seats),190,1.467
+train,Train full (584 seats),195,1.523
+train,Train full (584 seats),200,1.581
+train,Train full (584 seats),205,1.640
+train,Train full (584 seats),210,1.701
+train,Train full (584 seats),215,1.763
+train,Train full (584 seats),220,1.826
+train,Train full (584 seats),225,1.891
+train,Train full (584 seats),230,1.957
+train,Train full (584 seats),235,2.025
+train,Train full (584 seats),240,2.094
+train,Train full (584 seats),245,2.165
+train,Train full (584 seats),250,2.237
+train,Train full (584 seats),255,2.311
+train,Train full (584 seats),260,2.386
+train,Train full (584 seats),265,2.462
+train,Train full (584 seats),270,2.540
+train,Train full (584 seats),275,2.620
+train,Train full (584 seats),280,2.701
+train,Train full (584 seats),285,2.783
+train,Train full (584 seats),290,2.867
+train,Train full (584 seats),295,2.952
+train,Train full (584 seats),300,3.039
+train,Train at 40% of seats,5,1.037
+train,Train at 40% of seats,10,1.042
+train,Train at 40% of seats,15,1.052
+train,Train at 40% of seats,20,1.064
+train,Train at 40% of seats,25,1.081
+train,Train at 40% of seats,30,1.101
+train,Train at 40% of seats,35,1.124
+train,Train at 40% of seats,40,1.152
+train,Train at 40% of seats,45,1.182
+train,Train at 40% of seats,50,1.217
+train,Train at 40% of seats,55,1.255
+train,Train at 40% of seats,60,1.297
+train,Train at 40% of seats,65,1.343
+train,Train at 40% of seats,70,1.392
+train,Train at 40% of seats,75,1.444
+train,Train at 40% of seats,80,1.501
+train,Train at 40% of seats,85,1.561
+train,Train at 40% of seats,90,1.625
+train,Train at 40% of seats,95,1.692
+train,Train at 40% of seats,100,1.763
+train,Train at 40% of seats,105,1.837
+train,Train at 40% of seats,110,1.916
+train,Train at 40% of seats,115,1.997
+train,Train at 40% of seats,120,2.083
+train,Train at 40% of seats,125,2.172
+train,Train at 40% of seats,130,2.265
+train,Train at 40% of seats,135,2.361
+train,Train at 40% of seats,140,2.461
+train,Train at 40% of seats,145,2.565
+train,Train at 40% of seats,150,2.672
+train,Train at 40% of seats,155,2.783
+train,Train at 40% of seats,160,2.898
+train,Train at 40% of seats,165,3.016
+train,Train at 40% of seats,170,3.138
+train,Train at 40% of seats,175,3.264
+train,Train at 40% of seats,180,3.393
+train,Train at 40% of seats,185,3.526
+train,Train at 40% of seats,190,3.662
+train,Train at 40% of seats,195,3.802
+train,Train at 40% of seats,200,3.946
+train,Train at 40% of seats,205,4.093
+train,Train at 40% of seats,210,4.244
+train,Train at 40% of seats,215,4.399
+train,Train at 40% of seats,220,4.557
+train,Train at 40% of seats,225,4.719
+train,Train at 40% of seats,230,4.885
+train,Train at 40% of seats,235,5.054
+train,Train at 40% of seats,240,5.227
+train,Train at 40% of seats,245,5.403
+train,Train at 40% of seats,250,5.583
+train,Train at 40% of seats,255,5.767
+train,Train at 40% of seats,260,5.954
+train,Train at 40% of seats,265,6.145
+train,Train at 40% of seats,270,6.340
+train,Train at 40% of seats,275,6.538
+train,Train at 40% of seats,280,6.740
+train,Train at 40% of seats,285,6.946
+train,Train at 40% of seats,290,7.155
+train,Train at 40% of seats,295,7.368
+train,Train at 40% of seats,300,7.584

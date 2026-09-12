@@ -2081,6 +2081,178 @@ def chapter11aPeakShare(): Unit = {
           "without-hot-air/Images/fig-dc-peak-share.svg")
 }
 
+// ---- Chapter 4: the Cambridge rooftop, twenty years on ----
+// Figures 4.1a and 4.6a. MacKay's figures 4.1 and 4.6 are the Computer
+// Laboratory's rooftop weather station in 2006, and the station is still
+// there and still publishing: one half-hourly CSV from 30 June 1995 to now.
+// So this is the rare case where a figure can be carried forward on the same
+// instrument at the same address rather than on a substitute.
+//
+// Three things about the source, all of which the chapter's note repeats.
+//
+// The wind column is tenths of a knot, like the temperature column is tenths
+// of a degree. That is not documented; it is inferred, and the inference is
+// checked below against MacKay's own published result - he says the daily
+// mean reached 6 m/s on about 30 days of 2006, and on this reading it is 26.
+// At any other scaling his sentence is nonsense, so the scaling is right.
+//
+// The station moved to the Computer Laboratory roof in 2004 from a lower,
+// more sheltered roof, and the annual means step up by about a metre a second
+// at that point. Only years from 2004 on are comparable with 2006, which is
+// why the second panel is not from the 1990s.
+//
+// And the anemometer died. 2024 is 97% zeros and 2025 and 2026 are 100%, so
+// the last usable year is 2023 - the station's own front page says only that
+// the wind sensor has been wrong "since a power outage on 18 Jan", which
+// understates it by about two years. Even before that the share of zero
+// readings climbs from 8% in 2006 to 18% in 2023, so the later year's mean is
+// depressed by an instrument recording calms that may not be calms. That bias
+// runs downwards, and MacKay's claim is an upper bound, so it cannot rescue
+// the 6 m/s figure - but it does mean the fall from 2.7 to 1.9 m/s is not
+// evidence that Cambridge got less windy, and the chapter says so.
+@main
+def chapter4CambridgeWind(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val raw = dir / "cambridge-weather-raw.csv"      // 26 MB, gitignored, regenerable
+  if (!os.exists(raw)) {
+    println("fetching the station's whole half-hourly record (26 MB)...")
+    os.write.over(raw, requests.get(
+      "https://www.cl.cam.ac.uk/research/dtg/weather/weather-raw.csv",
+      readTimeout = 300000).text())
+  }
+  val knot = 0.514444 / 10                          // tenths of a knot -> m/s
+  val years = Seq("2006", "2023")
+
+  // (year, timestamp, speed) for the two years, and a mean per year for all of
+  // them, which is what shows the 2004 move and the sensor's death.
+  val kept = scala.collection.mutable.ArrayBuffer[(String, String, Double)]()
+  val byYear = scala.collection.mutable.Map[String, (Double, Int, Int)]()
+  for (line <- os.read.lines.stream(raw)) {
+    val f = line.split(",", -1)
+    if (f.length >= 7) {
+      val year = f(0).take(4)
+      f(5).toIntOption.foreach { tenths =>
+        val speed = tenths * knot
+        val (sum, n, zeros) = byYear.getOrElse(year, (0.0, 0, 0))
+        byYear(year) = (sum + speed, n + 1, zeros + (if (speed == 0) 1 else 0))
+        if (years.contains(year)) kept += ((year, f(0), speed))
+      }
+    }
+  }
+  println("year   readings   mean m/s   zero readings")
+  for (y <- byYear.keys.toSeq.sorted) {
+    val (sum, n, zeros) = byYear(y)
+    println(f"$y     $n%6d     ${sum / n}%5.2f     ${zeros * 100.0 / n}%5.1f%%")
+  }
+
+  val out = new StringBuilder; out ++= "year,timestamp,speed_ms\n"
+  for ((y, t, s) <- kept) out ++= f"$y,$t,$s%.2f\n"
+  os.write.over(dir / "cambridge-wind.csv", out.toString)
+  println(f"wrote data-refresh/cambridge-wind.csv (${kept.length}%d half-hourly readings)")
+
+  // Daily means, and MacKay's own test: how many days average 6 m/s or more.
+  for (y <- years) {
+    val days = kept.filter(_._1 == y).groupBy(_._2.take(10)).values
+      .filter(_.length >= 36).map(v => v.map(_._3).sum / v.length).toSeq
+    val half = kept.filter(_._1 == y).map(_._3)
+    val over = days.count(_ >= 6)
+    println(f"$y: ${days.length}%3d days, mean ${days.sum / days.length}%4.2f m/s, " +
+            f"$over%3d days at or above 6 m/s, " +
+            f"${half.count(_ >= 6) * 100.0 / half.length}%4.1f%% of half-hours above 6, " +
+            f"mean of the cube ${half.map(v => v * v * v).sum / half.length}%5.1f m3/s3")
+    if (y == "2006") require(over >= 20 && over <= 35,
+      s"chapter4CambridgeWind: 2006 gives $over days at or above 6 m/s, " +
+      "MacKay's text says about 30 - the wind column's scaling must be wrong")
+  }
+  println("render:")
+  println("  uv run figures/cambridge_wind.py data-refresh/cambridge-wind.csv " +
+          "without-hot-air/Images/fig-cambridge-wind.svg")
+  println("  uv run figures/cambridge_wind_hist.py data-refresh/cambridge-wind.csv " +
+          "without-hot-air/Images/fig-cambridge-wind-hist.svg")
+}
+
+// ---- Chapter 4: Cairngorm summit, MacKay's other wind figure ----
+// Figure 4.2a. His figure 4.2 is "six months of 2006" from the Heriot-Watt
+// automatic weather station on the summit of Cairn Gorm, 1245 m up. The
+// station is still running and its archive goes back to 1990.
+//
+// The six months turn out not to have been a choice. The 2006 file has means
+// of 0.0 and 0.1 mph for July, August and December: the anemometer failed in
+// the summer and again at the end of November, which the station's own log
+// records ("1/12/06 Suspected anemometer fault"). January to June is what
+// 2006 has, and it is what he plotted.
+//
+// The archive's file names are not consistent - YEARDATA2006.txt, YearData.txt,
+// "2010 Data.txt" - so each year's page is read for its own link. The 2006
+// file is tab-separated and starts with a date string; the current year's is
+// comma-separated and starts with the day number. Both carry mean wind in mph
+// from 1996 on, and that is the only column used here.
+@main
+def chapter4Cairngorm(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val site = "https://cairngormweather.eps.hw.ac.uk"
+  val mph = 0.44704
+  val plotted = Seq(2006 -> "2006", 2026 -> "CurrentYear")
+
+  /** The archive page for a year, scraped for whatever it calls its data file. */
+  def yearFile(year: Int): os.Path = {
+    val cache = dir / s"cairngorm-$year.txt"              // gitignored, regenerable
+    if (!os.exists(cache)) {
+      val page = requests.get(s"$site/$year", readTimeout = 60000).text()
+      val href = "href=\"([^\"]+\\.txt)\"".r.findFirstMatchIn(page)
+        .map(_.group(1)).getOrElse(sys.error(s"chapter4Cairngorm: no data link on $site/$year"))
+      val url = if (href.startsWith("http")) href else s"$site/$year/${href.replace(" ", "%20")}"
+      os.write.over(cache, requests.get(url, readTimeout = 300000).text())
+    }
+    cache
+  }
+  def currentFile(): os.Path = {
+    val cache = dir / "cairngorm-current.txt"
+    if (!os.exists(cache))
+      os.write.over(cache, requests.get(s"$site/CurrentYear.txt", readTimeout = 300000).text())
+    cache
+  }
+
+  /** (day of year, time, speed in m/s), from either of the archive's layouts. */
+  def read(file: os.Path): Seq[(Int, Int, Double)] =
+    os.read.lines(file).flatMap { line =>
+      val f = if (line.contains("\t")) line.split("\t", -1) else line.split(",", -1)
+      val off = if (line.contains("\t")) 1 else 0        // the tab layout leads with a date
+      for {
+        day <- f.lift(off).flatMap(_.trim.toDoubleOption).map(_.toInt)
+        time <- f.lift(off + 1).flatMap(_.trim.toDoubleOption).map(_.toInt)
+        v <- f.lift(off + 2).flatMap(_.trim.toDoubleOption)
+        if v >= 0 && v <= 120                            // 6999 and friends are sensor errors
+      } yield (day, time, v * mph)
+    }
+
+  val out = new StringBuilder; out ++= "year,day,time,speed_ms\n"
+  for ((year, _) <- plotted) {
+    val rows = read(if (year == 2026) currentFile() else yearFile(year))
+    for ((d, t, s) <- rows) out ++= f"$year,$d,$t,$s%.2f\n"
+    val halves = rows.filter(_._1 <= 182)
+    val days = halves.groupBy(_._1).values.filter(_.length >= 36).map(v => v.map(_._3).sum / v.length)
+    println(f"$year January-June: ${halves.length}%5d readings, ${days.size}%3d full days, " +
+            f"daily mean ${days.sum / days.size}%5.2f m/s, " +
+            f"${days.count(_ >= 6)}%3d days at or above 6 m/s")
+    if (year == 2006) require(days.count(_ >= 6) > days.size / 2,
+      "chapter4Cairngorm: 2006 should be windy - more than half its days above 6 m/s")
+  }
+  os.write.over(dir / "cairngorm-wind.csv", out.toString)
+  println("wrote data-refresh/cairngorm-wind.csv")
+
+  // A context scan over the other archive years was tried and dropped: several
+  // years (2012 reads 1.4 m/s for a Cairngorm winter, 2016 3.9) are anemometer
+  // failures rather than calm weather, and this edition has no way to tell
+  // which are which. The chapter therefore claims no trend, only the contrast
+  // with Cambridge, which is a factor of four and survives any of it.
+  println("render:")
+  println("  uv run figures/cairngorm_wind.py data-refresh/cairngorm-wind.csv " +
+          "without-hot-air/Images/fig-cairngorm-wind.svg")
+}
+
 // ---- Chapter 11a: what Finland has already committed ----
 // Figure 11a.2. Hand-entered like chapter11aPeakShare, but with a better
 // provenance than that one: five of the seven bars are in documents this
@@ -2485,4 +2657,76 @@ def chapter25Thermosensitivity(): Unit = {
   println("render:")
   println("  uv run figures/thermosensitivity.py data-refresh/thermosensitivity.csv " +
           "data-refresh/thermosensitivity-fit.csv without-hot-air/Images/fig-thermosensitivity.svg")
+}
+
+// ---- Appendix A: the steady-speed curves, with 2025 vehicles in them ----
+// Figure A.9a, which updates his figures A.9, A.10 and A.11 in one panel each.
+// The model is the one those figures are drawn from and the caption states:
+// at a steady speed there is no stop-start term, so the energy per unit
+// distance is the air resistance plus the rolling resistance, divided by the
+// efficiency of whatever is driving the wheels.
+//
+// His vehicles, from his own captions:
+//   car    efficiency 0.25, cdA 1.00 m2, 1000 kg, Crr 0.01
+//   bike   efficiency 0.25, cdA 0.75 m2,   90 kg, Crr 0.005
+//   train  efficiency 0.90, cdA 11.0 m2, 400 t,   Crr 0.002, 584 passengers
+//
+// The vehicles added here, and where their numbers come from:
+//   an electric car - efficiency 0.85 from battery to wheels rather than 0.25,
+//     cdA 0.60 m2 for a modern saloon, 1800 kg with its pack;
+//   an electric sport-utility - the same drivetrain in cdA 0.90 and 2400 kg,
+//     which is the size effect this appendix's 2026 section is about;
+//   an electric bicycle - the rider's 0.25 replaced by a motor at 0.75, and
+//     25 kg of motor and battery added;
+//   his own train at a realistic load rather than full, because a train's
+//     energy per passenger is mostly a question of how many are aboard.
+//
+// Two checks are printed. His own curves must come back where he drew them,
+// and the modern ones must land near what modern vehicles are measured to use.
+@main
+def chapterASteadySpeed(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val rho = 1.3; val g = 9.81
+
+  // (panel, label, drag-area, mass, rolling resistance, efficiency, occupants)
+  val vehicles = Seq(
+    ("car",   "Petrol car (MacKay's)",      1.00,   1000.0, 0.01,  0.25,   1),
+    ("car",   "Electric car 2025",        0.60,   1800.0, 0.01,  0.85,   1),
+    ("car",   "Electric SUV 2025",        0.90,   2400.0, 0.01,  0.85,   1),
+    ("bike",  "Bicycle (MacKay's)",         0.75,     90.0, 0.005, 0.25,   1),
+    ("bike",  "Electric bicycle",          0.75,    115.0, 0.005, 0.75,   1),
+    ("train", "Train full (584 seats)",  11.00, 400000.0, 0.002, 0.90, 584),
+    ("train", "Train at 40% of seats",          11.00, 400000.0, 0.002, 0.90, 234))
+
+  /** kWh per 100 km, per occupant, at a steady speed in km/h. */
+  def cost(cdA: Double, mass: Double, crr: Double, eff: Double, people: Int, kmh: Double) = {
+    val v = kmh / 3.6
+    val newtons = 0.5 * rho * cdA * v * v + crr * mass * g
+    newtons / eff * 1e5 / 3.6e6 / people
+  }
+
+  val out = new StringBuilder; out ++= "panel,label,kmh,kwh_per_100km\n"
+  for ((panel, label, cdA, mass, crr, eff, people) <- vehicles) {
+    val top = if (panel == "bike") 45 else if (panel == "train") 300 else 160
+    for (kmh <- 5 to top by 5)
+      out ++= f"$panel,$label,$kmh,${cost(cdA, mass, crr, eff, people, kmh)}%.3f\n"
+  }
+  os.write.over(dir / "steady-speed.csv", out.toString)
+  println("wrote data-refresh/steady-speed.csv")
+
+  println("at a steady speed, kWh per 100 km per occupant:")
+  for ((panel, label, cdA, mass, crr, eff, people) <- vehicles) {
+    val at = if (panel == "bike") Seq(15.0, 25.0) else if (panel == "train") Seq(160.0, 200.0)
+             else Seq(50.0, 110.0)
+    println(f"  $panel%-6s $label%-26s " +
+            at.map(s => f"${s.toInt}%3d km/h: ${cost(cdA, mass, crr, eff, people, s)}%6.2f").mkString("   "))
+  }
+  // MacKay's petrol car at 110 km/h is the 80 kWh/100 km this book is built on.
+  val his = cost(1.00, 1000.0, 0.01, 0.25, 1, 110)
+  require(his > 60 && his < 90, s"chapterASteadySpeed: his car gives $his kWh/100 km at 110 km/h")
+  println(f"  check: his car at 110 km/h is $his%.0f kWh/100 km, against the book's 80")
+  println("render:")
+  println("  uv run figures/steady_speed.py data-refresh/steady-speed.csv " +
+          "without-hot-air/Images/fig-steady-speed.svg")
 }
