@@ -325,7 +325,7 @@ Here are some other problems with hydrogen. Hydrogen is a less convenient energy
 
 **Europe.** Tesla Model Y (about 151 000), then the Volkswagen ID.4 and ID.3 — counted together or separately depending on the compiler, which is why this list runs to six names — the Kia EV3, the Renault 5 E-Tech and the Škoda Elroq. Volkswagen displaced Tesla as the largest electric brand in Europe with about 274 000 sold across the EU, UK and EFTA. Electric cars took 20% of the European new-car market.
 
-China, first half of 2025 throughout. Geely Galaxy (about 205 000), BYD Seagull (about 175 000), Tesla Model Y (about 171 000), BYD Yuan PLUS (about 78 000) and BYD Yuan UP (about 72 000). BYD took six of the top twenty places.
+**China, first half of 2025 throughout.** Geely Galaxy (about 205 000), BYD Seagull (about 175 000), Tesla Model Y (about 171 000), BYD Yuan PLUS (about 78 000) and BYD Yuan UP (about 72 000). BYD took six of the top twenty places.
 
 **The United States.** Tesla Model Y (about 358 000), Chevrolet Equinox EV (about 58 000), Ford Mustang Mach-E (about 52 000), Hyundai Ioniq 5 (about 47 000) and the Tesla Model 3.
 

@@ -72,7 +72,7 @@ This myth is addressed in Chapter 11.
 
 > *I expect that within another couple of years, the best advice, from the point of view of both energy efficiency and avoiding mercury pollution, will be to use LED bulbs.*
 
-It happened, faster and more completely than the chapter's cautious tone suggests. MacKay's own LED sample managed **35 lumens per watt** and he judged that "the LED industry still has a little catching up to do". Table 9.5 records the expectation that white LEDs would eventually reach 150 lm/W.
+It happened, faster and more completely than the chapter's cautious tone suggests. MacKay's own LED sample managed 35 lumens per watt and he judged that "the LED industry still has a little catching up to do". Table 9.5 records the expectation that white LEDs would eventually reach 150 lm/W.
 
 ### What happened to table 9.5
 

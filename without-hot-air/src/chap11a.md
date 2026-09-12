@@ -76,7 +76,7 @@ Four costs sit outside the electricity meter, and every one of them is the sort 
 
 **Grid position.** A data centre is a large, constant, inflexible load that wants to be built quickly. It is therefore the opposite of what chapters 26 and 28a say a renewable-heavy system needs. Where it lands, it competes for connection capacity with everything else, and because it can pay more per kilowatt-hour than a smelter or a housing estate, it wins. Ireland's grid operator has had to refuse or defer connections in Dublin for exactly this reason.
 
-The rebound that did not happen. Chapter 9 concludes that Britain kept its lighting efficiency gain because demand for light saturated. Computation has not saturated and shows no sign of it. Every efficiency improvement in computing since 1950 has been met by doing more computing, which is Jevons in its purest available form, and the AI build-out is the largest instance yet.
+**The rebound that did not happen.** Chapter 9 concludes that Britain kept its lighting efficiency gain because demand for light saturated. Computation has not saturated and shows no sign of it. Every efficiency improvement in computing since 1950 has been met by doing more computing, which is Jevons in its purest available form, and the AI build-out is the largest instance yet.
 
 ## Why the data centre wins the electron
 

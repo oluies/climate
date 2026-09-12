@@ -18,9 +18,9 @@ assuming perfectly efficient generators. Plugging in *h* = 2 m (i.e., range 4 m)
 
 power per unit area of tide-pool  ≅  <span class="green">3 W/m*2*</span>.
 
-So to generate 1 GW of power (on average), we need a tide-pool with an area of about 300 km<sup>2</sup>. A circular pool with diameter 20 km would do the trick. (For comparison, the area of the Severn estuary behind the proposed barrage is about 550 km***<sup>2</sup>***, and the area of the Wash is more than 400 km***<sup>2</sup>***.
+So to generate 1 GW of power (on average), we need a tide-pool with an area of about 300 km<sup>2</sup>. A circular pool with diameter 20 km would do the trick. (For comparison, the area of the Severn estuary behind the proposed barrage is about 550 km<sup>2</sup>, and the area of the Wash is more than 400 km<sup>2</sup>.
 
-If a tide-pool produces electricity in one direction only, the power per unit area is halved. The average power density of the tidal barrage at La Rance, where the mean tidal range is 10.9 m, has been <span class="green">2.7 W/m***<sup>2</sup>***</span> for decades ([chapter 14](../Text/chap14.xhtml#ch14n04)).
+If a tide-pool produces electricity in one direction only, the power per unit area is halved. The average power density of the tidal barrage at La Rance, where the mean tidal range is 10.9 m, has been <span class="green">2.7 W/m<sup>2</sup></span> for decades ([chapter 14](../Text/chap14.xhtml#ch14n04)).
 
 ## The raw tidal resource
 
