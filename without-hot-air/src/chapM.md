@@ -2,7 +2,7 @@
 
 *A chapter added in the 2026 revision.* Chapter 3 asks a question and then declines to answer it properly:
 
-> What about the energy-cost of producing the car's fuel?
+> **What about the energy-cost of producing the car's fuel?**
 >
 > Good point. When I estimate the energy consumed by a particular activity, I tend to choose a fairly tight "boundary" around the activity. […] It's been estimated that making each unit of petrol requires an input of 1.4 units of oil and other primary fuels.
 
