@@ -11,12 +11,22 @@ new in their entirety. The table below is the authoritative list of them.
 
 ## Latest changes
 
-Last updated **11 September 2026**. The complete history is in the
+Last updated **12 September 2026**. The complete history is in the
 [repository](https://github.com/oluies/climate/commits/main).
 
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 12 September 2026              | A            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure A.14a: the battery improved, the car got heavier"}      |
+|                                |              | Figure A.14a recomputes MacKay's electric-car range model from his own assumptions — it returns the numbers he printed, 179 km where his |
+|                                |              | text says 180 and 538 km for 500 kg of 2008 lithium — and then moves the two inputs that have changed since. A 2025 pack at 160 Wh/kg    |
+|                                |              | carries 717 km in his 740 kg car and needs 170 kg rather than 237 for the 300 km he guessed people would settle for, so his verdict that |
+|                                |              | 120 Wh/kg was already good enough has been walked past rather than overturned. But 740 kg for car and occupants is a 2008 abstraction: a |
+|                                |              | car of that class now weighs about 1500 kg before the pack goes in, and the same pack in that car still gives 500 km while the transport |
+|                                |              | cost rises from 13 to 19 kWh per 100 km — a tenth below the 21 that chapter 20 measures across 342 real electric cars. The extra density |
+|                                |              | bought permission to build a heavier car more than it bought range.                                                                      |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 11 September 2026              | 11a          | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure 11a.2: what Finland committed against its scenarios"}   |
 |                                |              | Figure 11a.2: what Finland has actually committed, against what its own scenarios assumed it would. Thirty-three data centres and 285 MW |
 |                                |              | were operating in September 2025; 1300 MW had an investment decision at the end of that August; Google's four sites are perhaps another  |

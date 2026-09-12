@@ -2176,6 +2176,86 @@ def chapter11aFinlandPipeline(): Unit = {
           "without-hot-air/Images/fig-fi-dc-pipeline.svg")
 }
 
+// ---- Appendix A: electric-car range against transport cost ----
+// Figure A.14a. This is MacKay's own model, not a new one: the figure recomputes
+// his figure A.14 from the assumptions his text states - 740 kg of car and
+// occupants without batteries, 50 km/h, a drag-area of 0.8 m2, rolling
+// resistance 0.01, 500 m between stops, regenerative braking recovering half
+// the kinetic energy, a drive efficiency of 85% and charging at 85% - and then
+// adds the two things twenty years changed.
+//
+// The first is the battery. His curves are 40 Wh/kg (lead-acid) and 120 Wh/kg
+// (the lithium cells of 2008). A 2025 pack is about 160 Wh/kg.
+//
+// The second is the car. 740 kg for car and occupants is a 2008 abstraction;
+// a 2025 electric car without its pack is more like 1500 kg with two people in
+// it, and the mass term in his own model taxes that. The fourth curve is the
+// modern pack in the heavier car, and it is the one that lands on what real
+// cars are measured to use.
+//
+// The task prints his five stated results first. They come out as he printed
+// them, which is the check that the recompute is his model and not a new one.
+@main
+def chapterAElectricRange(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val rho = 1.3; val v = 50 / 3.6; val cdA = 0.8; val crr = 0.01
+  val g = 9.81; val stops = 500.0; val regen = 0.5; val drive = 0.85; val charge = 0.85
+
+  // Newtons per metre of travel: air, rolling, and the half of each stop's
+  // kinetic energy that braking does not give back.
+  def force(mass: Double) =
+    0.5 * rho * cdA * v * v + crr * mass * g + (1 - regen) * 0.5 * mass * v * v / stops
+  // kWh per 100 km, at the battery terminals or at the wall socket.
+  def perHundred(mass: Double, atWall: Boolean) = {
+    val battery = force(mass) * 1e5 / 3.6e6 / drive
+    if (atWall) battery / charge else battery
+  }
+  def range(battKg: Double, whPerKg: Double, glider: Double) =
+    (battKg * whPerKg / 1000) / perHundred(glider + battKg, false) * 100
+  /** Battery mass for a wanted range, by bisection: the mass is on both sides
+    * of the equation, because carrying it costs range. */
+  def battFor(km: Double, whPerKg: Double, glider: Double) = {
+    var (lo, hi) = (0.1, 1e4)
+    for (_ <- 1 to 200) {
+      val mid = (lo + hi) / 2
+      if (range(mid, whPerKg, glider) < km) lo = mid else hi = mid
+    }
+    (lo + hi) / 2
+  }
+
+  // MacKay's own results, as printed in his text and caption.
+  val his = Seq((500.0, 40.0, 180.0), (500.0, 120.0, 538.0), (2000.0, 40.0, 400.0),
+                (250.0, 120.0, 300.0), (100.0, 120.0, 140.0))
+  println("MacKay's figure A.14, recomputed from his assumptions:")
+  for ((mb, dens, stated) <- his) {
+    val r = range(mb, dens, 740)
+    println(f"  $mb%6.0f kg at $dens%5.0f Wh/kg: $r%5.0f km (his text says $stated%.0f), " +
+            f"${perHundred(740 + mb, true)}%5.1f kWh/100 km at the wall")
+    require(math.abs(r - stated) / stated < 0.10,
+      s"chapterAElectricRange: $mb kg at $dens Wh/kg gives $r, his text says $stated")
+  }
+
+  // (label, pack energy density, mass of car and occupants without the pack)
+  val series = Seq(
+    ("Lead-acid 40 Wh/kg",        40.0,  740.0),   // no commas: the label is a CSV field
+    ("Lithium 2008 120 Wh/kg",   120.0,  740.0),
+    ("Pack 2025 160 Wh/kg",      160.0,  740.0),
+    ("Pack 2025 in a 2025 car",  160.0, 1500.0))
+  val out = new StringBuilder; out ++= "series,wh_per_kg,glider_kg,batt_kg,range_km,kwh_per_100km\n"
+  for ((label, dens, glider) <- series; mb <- 25 to 2000 by 25)
+    out ++= f"$label,$dens%.0f,$glider%.0f,$mb,${range(mb, dens, glider)}%.1f," +
+            f"${perHundred(glider + mb, true)}%.2f\n"
+  os.write.over(dir / "ev-range.csv", out.toString)
+  println("wrote data-refresh/ev-range.csv")
+
+  println("what the two changes do:")
+  for ((label, dens, glider) <- series)
+    println(f"  $label%-26s 500 kg pack: ${range(500, dens, glider)}%4.0f km at " +
+            f"${perHundred(glider + 500, true)}%4.1f kWh/100 km; " +
+            f"300 km wants ${battFor(300, dens, glider)}%4.0f kg of pack")
+}
+
 // ---- Chapter 25: what one degree buys, in gigawatts ----
 // Thermosensitivity: the slope of daily electricity demand against daily mean
 // temperature, fitted separately on the cold arm and the hot arm.
