@@ -17,6 +17,25 @@ Last updated **12 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 12 September 2026              | 4            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure 4.2a: Cairngorm, and why his six months were six"}      |
+|                                |              | Figure 4.2a carries MacKay's other wind figure forward on its own station, Heriot-Watt's on the summit of Cairn Gorm. His caption says   |
+|                                |              | six months of 2006, and the archive says why: that year's anemometer failed in July and again at the end of November, so January to June |
+|                                |              | is what 2006 has. Those six months averaged 11.2 m/s with 133 of 179 days at or above 6; the same months of 2026 averaged 6.5 m/s over   |
+|                                |              | 92 of 175 days. No trend is claimed — summit years vary enormously and several archive years are instrument failures rather than calm    |
+|                                |              | weather — but even the quieter half-year is more than twice the Cambridge rooftop in its windier one, which is the chapter's case for    |
+|                                |              | putting windmills on hills.                                                                                                              |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| 12 September 2026              | A            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure A.9a: the steady-speed curves with 2025 vehicles"}      |
+|                                |              | Figure A.9a redraws figures A.9, A.10 and A.11 from their own captions and puts 2025 vehicles beside MacKay's. The check is his petrol   |
+|                                |              | car at 110 km/h: 78 kWh per 100 km against the 80 this book is built on. A 2025 electric car uses 17.7 at the same speed, a factor of    |
+|                                |              | 4.4 where chapter 20 measures 3.8 on the road; an electric sport-utility of the same drivetrain uses 25.5, which is 44% more for nothing |
+|                                |              | but size. An electric bicycle costs about 1.1 kWh per 100 km of electricity against 3.1 of food for his cyclist. And his train at 40% of |
+|                                |              | its seats costs 3.9 kWh per 100 passenger-km instead of 1.6, which is a fact about occupancy rather than about trains. Figures A.12 and  |
+|                                |              | A.13 are left as printed, and the text says why: the Prius source behind A.12 is a 404 and the BMW page publishes plots rather than      |
+|                                |              | numbers, while A.13 is Tennekes' scatter and would need a new sample of cars this edition cannot cite.                                   |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 12 September 2026              | 4            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figures 4.1a and 4.6a: the same rooftop, seventeen years on"}  |
 |                                |              | Figures 4.1a and 4.6a carry MacKay's Cambridge wind year forward on the same instrument at the same address: the Computer Laboratory     |
 |                                |              | rooftop station, still publishing the half-hourly file he used. The recompute finds his own result first — 26 days with a daily mean of  |

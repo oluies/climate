@@ -4,3 +4,4 @@ out/
 
 # 26 MB of half-hourly weather, refetched by chapter4CambridgeWind
 data-refresh/cambridge-weather-raw.csv
+data-refresh/cairngorm-*.txt
