@@ -21,7 +21,7 @@ Let’s say we want to understand the full energy-cost of a stuff, perhaps with 
 | steel | 6 |
 <span class="figurenumber">Table 15.2</span>. Embodied energy of materials.
 
-  - **Phase R:** Making **raw materials**.
+  - **Phase R:** Making raw materials.
   This phase involves digging minerals out of the ground, melting them, purifying them, and modifying them into manufacturers’ lego: plastics, glasses, metals, and ceramics, for example. The energy costs of this phase include the transportation costs of trundling the raw materials to their next destination.
   - **Phase P: Production**.
   In this phase, the raw materials are processed into a manufactured product. The factory where the hair-dryer’s coils are wound, its graceful lines moulded, and its components carefully snapped together, uses heat and light. The energy costs of this phase include packaging and more transportation.
@@ -36,9 +36,9 @@ Let’s say we want to understand the full energy-cost of a stuff, perhaps with 
 
 *A note added in the 2026 revision.* That 3 kWh/d assumes the can is thrown away, and table 15.2 shows why the assumption matters so much: at 40 kWh per kg, aluminium is the most energy-dense material in the table, four times paper or glass and nearly seven times steel. It is also the one where recycling saves most, because remelting scrap aluminium takes roughly a twentieth of the energy of winning the metal from bauxite.
 
-Two countries have made that saving nearly complete, and the mechanism is a deposit rather than an appeal to virtue. Norway's Infinitum scheme returns **over 90% of all cans and bottles sold** — 92.5% of cans in 2023, and 1.6 of the 1.7 billion containers sold in 2024. Sweden's Returpack passed **3 billion containers deposited in 2025** for the first time, at an overall rate of 88.4% and **91% for cans specifically**, which is past the national target.[^pant]
+Two countries have made that saving nearly complete, and the mechanism is a deposit rather than an appeal to virtue. Norway's Infinitum scheme returns over 90% of all cans and bottles sold — 92.5% of cans in 2023, and 1.6 of the 1.7 billion containers sold in 2024. Sweden's Returpack passed 3 billion containers deposited in 2025 for the first time, at an overall rate of 88.4% and 91% for cans specifically, which is past the national target.[^pant]
 
-Put that through this chapter's arithmetic. If 91% of cans come back and a recycled can costs about a twentieth of a new one to make, five cans a day costs roughly **0.4 kWh/d instead of 3** — a sevenfold reduction in one of the items on the consumption stack, achieved without anyone drinking less. It is the same lesson as the standby regulation in chapter 22: the saving came from changing the system the object moves through, not from persuading the person holding it.
+Put that through this chapter's arithmetic. If 91% of cans come back and a recycled can costs about a twentieth of a new one to make, five cans a day costs roughly 0.4 kWh/d instead of 3 — a sevenfold reduction in one of the items on the consumption stack, achieved without anyone drinking less. It is the same lesson as the standby regulation in chapter 22: the saving came from changing the system the object moves through, not from persuading the person holding it.
 
 Two honest qualifications. The 40 kWh/kg in table 15.2 is the figure for *primary* aluminium, so a can already made from recycled metal embodies far less to begin with and the saving is not additional to that. And the deposit covers cans and bottles, not the other 4 kWh/d of packaging in this figure, which has no deposit on it and comes back at nothing like 91%.
 
@@ -94,9 +94,9 @@ What about a <span id="car">car</span>, and a road? Some of us own the former, b
 
 *A section added in the 2026 revision.* The 76 000 kWh above is the embodied energy of a car of MacKay's era: a steel body, an engine, and no battery worth speaking of. An electric car is a different object to build, and since chapter 3 now shows a third of new cars in Britain and half in China being electric, the sum is worth redoing.
 
-Almost all of the difference is the battery. Making cells is energy-intensive, and about half of a battery's manufacturing emissions are simply the electricity consumed in the factory — which means the answer depends on where the plant is and what powers it, and has been falling as those plants move onto cleaner grids. Tesla's own Impact Report puts the production emissions of a Model 3 at about **49% above a comparable combustion baseline**.[^ev15]
+Almost all of the difference is the battery. Making cells is energy-intensive, and about half of a battery's manufacturing emissions are simply the electricity consumed in the factory — which means the answer depends on where the plant is and what powers it, and has been falling as those plants move onto cleaner grids. Tesla's own Impact Report puts the production emissions of a Model 3 at about 49% above a comparable combustion baseline.[^ev15]
 
-Carry that premium across to MacKay's units and the arithmetic goes like this. If a combustion car embodies 76 000 kWh, an electric one of similar size embodies roughly **113 000 kWh**, which over a 15-year life is about **21 kWh per day** rather than 14. Making the car got substantially worse.
+Carry that premium across to MacKay's units and the arithmetic goes like this. If a combustion car embodies 76 000 kWh, an electric one of similar size embodies roughly 113 000 kWh, which over a 15-year life is about 21 kWh per day rather than 14. Making the car got substantially worse.
 
 Now put that beside chapter 3, which is where the point lands:
 
@@ -107,14 +107,14 @@ Now put that beside chapter 3, which is where the point lands:
 
 The electric car is worse to build by about 7 kWh a day and better to drive by about 32, so it wins on the total by roughly a factor of two. Chapter M sharpens that a little, and it is worth doing the arithmetic rather than asserting it.
 
-The "driving it" column above counts the energy *in* the fuel, not the energy spent making the fuel available — which is exactly the omission chapter 3's query raises. On the harmonised point-of-use figures, petrol has an EROI of about **4.2**, so delivering 40 kWh/d of fuel to a tank costs roughly another **9.5 kWh/d** of energy invested along the way. The electricity side barely moves: at a point-of-use EROI of 10 or so, delivering 7.5 kWh/d costs about 0.75 kWh/d, and even if the power came entirely from gas the figure would only reach 1.3.
+The "driving it" column above counts the energy *in* the fuel, not the energy spent making the fuel available — which is exactly the omission chapter 3's query raises. On the harmonised point-of-use figures, petrol has an EROI of about 4.2, so delivering 40 kWh/d of fuel to a tank costs roughly another 9.5 kWh/d of energy invested along the way. The electricity side barely moves: at a point-of-use EROI of 10 or so, delivering 7.5 kWh/d costs about 0.75 kWh/d, and even if the power came entirely from gas the figure would only reach 1.3.
 
 | | making it | driving it | fuel supply | total |
 |---|---|---|---|---|
 | Petrol car, 33 mpg | 14 | 40 | 9.5 | **63.5 kWh/d** |
 | Electric car, 15 kWh/100 km | 21 | 7.5 | 0.8 | **29.3 kWh/d** |
 
-So the factor of two becomes about **2.2**. That is a real widening and a modest one, and it is worth resisting the temptation to make more of it. What the correction changes is not the size of the answer but where the asymmetry comes from: the petrol car's supply chain costs nearly a quarter as much again as the fuel it delivers, while the electric car's costs a tenth of its much smaller draw.
+So the factor of two becomes about 2.2. That is a real widening and a modest one, and it is worth resisting the temptation to make more of it. What the correction changes is not the size of the answer but where the asymmetry comes from: the petrol car's supply chain costs nearly a quarter as much again as the fuel it delivers, while the electric car's costs a tenth of its much smaller draw.
 
 Two caveats. MacKay's own source put the well-to-tank ratio at 1.4 units of primary energy per unit of petrol, where the EROI route above gives about 1.24; the two use different bases — Treloar counts the crude itself as an input, the EROI figure does not — and they bracket the correction rather than agreeing on it. And the electricity figure assumes a grid whose sources sit near the harmonised values in chapter M, which is a statement about a national generating mix and not about any particular car. That margin is not delicate: it survives a considerably larger manufacturing penalty than the one assumed here, and it improves every year that battery factories run on cleaner electricity, because half the battery's burden is the grid behind the plant.
 
@@ -126,9 +126,9 @@ The wider point is the one this chapter exists to make. Chapter 3 counts only th
 
 There is a second question hiding in that table, and it is the one this chapter raises about gizmos generally: not how much energy the battery embodies, but *where* it is embodied. MacKay notes below that Britain's imported goods do not appear in its energy accounts, and that a country which used to make its own things now buys them. The battery is that argument's largest single instance.
 
-The costs are not close. BloombergNEF's 2025 survey puts the global average lithium-ion pack price at **$108/kWh (£85)**, but the average conceals the thing that matters: **China at $84/kWh (£66), Europe 56% higher, North America 44% higher**.[^packprice] And the gap is widening rather than closing. In the same year, Chinese pack prices fell 13%, European prices 8%, and North American prices 4%. A cost difference that grows while everyone is trying to close it is a structural difference, not a temporary one.
+The costs are not close. BloombergNEF's 2025 survey puts the global average lithium-ion pack price at $108/kWh (£85), but the average conceals the thing that matters: China at $84/kWh (£66), Europe 56% higher, North America 44% higher.[^packprice] And the gap is widening rather than closing. In the same year, Chinese pack prices fell 13%, European prices 8%, and North American prices 4%. A cost difference that grows while everyone is trying to close it is a structural difference, not a temporary one.
 
-Manufacturing is concentrated to match. Six Chinese firms supplied about **69% of all electric-vehicle batteries installed worldwide** in the first ten months of 2025, CATL alone accounting for roughly a third of global cell sales. Estimates of China's share of total cell *capacity* run from 75% to 85% depending on what is counted.
+Manufacturing is concentrated to match. Six Chinese firms supplied about 69% of all electric-vehicle batteries installed worldwide in the first ten months of 2025, CATL alone accounting for roughly a third of global cell sales. Estimates of China's share of total cell *capacity* run from 75% to 85% depending on what is counted.
 
 The European response has been tariffs. Definitive countervailing duties on Chinese battery-electric cars took effect on 30 October 2024 at rates from 17.0% to 35.3%, on top of the standard 10% car duty — 17.4% for BYD, 19.9% for Geely, 35.3% for SAIC and for anyone who did not cooperate with the investigation, and 9.0% for Tesla exporting from Shanghai.[^evtariff] Set the arithmetic side by side: the duty is of the same order as the cost gap it is answering. It offsets the advantage without reversing it, and it is a fixed number set against a gap that moved 5 percentage points in China's favour in a single year.
 
@@ -138,13 +138,13 @@ None of that is an energy calculation, and this book is careful to distinguish w
 
 It is natural to answer all this by looking for the raw materials, and Europe has been doing so. Two cautions are needed before that answer works, and the first is a matter of definition.
 
-**Rare earths are not battery materials.** The seventeen rare-earth elements go into permanent magnets — the motors that turn the wheels, and the generators inside wind turbines — not into lithium-ion cells. A battery needs lithium, cobalt, nickel, manganese and graphite, which is a different list with a different geography. So when LKAB announced that its Per Geijer deposit at Kiruna is Europe's largest known rare-earth find, and in 2023 revised it upward by 25% to **over 1.3 million tonnes of rare-earth oxides**, alongside 734 million tonnes of iron ore and a phosphorus grade of 2.3%, the thing being solved was the magnet, not the cell.[^pergeijer] That is worth having. It is not the battery problem.
+Rare earths are not battery materials. The seventeen rare-earth elements go into permanent magnets — the motors that turn the wheels, and the generators inside wind turbines — not into lithium-ion cells. A battery needs lithium, cobalt, nickel, manganese and graphite, which is a different list with a different geography. So when LKAB announced that its Per Geijer deposit at Kiruna is Europe's largest known rare-earth find, and in 2023 revised it upward by 25% to over 1.3 million tonnes of rare-earth oxides, alongside 734 million tonnes of iron ore and a phosphorus grade of 2.3%, the thing being solved was the magnet, not the cell.[^pergeijer] That is worth having. It is not the battery problem.
 
-The second caution is the more important one, and it applies to both lists. **The chokepoint is refining, not mining.** On the IEA's 2025 assessment China holds **over 90% of world refining capacity for graphite and for rare earths**, and about **60% for lithium and for cobalt**. For 19 of the 20 strategic minerals surveyed, China is the leading refiner, with an average share of 70%. Concentration is rising rather than falling: the combined share of the top three refining countries went from about 82% in 2020 to **86% in 2024**, with almost all the growth in Chinese capacity.[^iea25]
+The second caution is the more important one, and it applies to both lists. The chokepoint is refining, not mining. On the IEA's 2025 assessment China holds over 90% of world refining capacity for graphite and for rare earths, and about 60% for lithium and for cobalt. For 19 of the 20 strategic minerals surveyed, China is the leading refiner, with an average share of 70%. Concentration is rising rather than falling: the combined share of the top three refining countries went from about 82% in 2020 to 86% in 2024, with almost all the growth in Chinese capacity.[^iea25]
 
-That is why a deposit does not settle the question. André Månberger of Lund makes the point precisely: Swedish ore would be exported unprocessed, while China's position rests on keeping the value chain and exporting the finished magnet, generator or battery. "Rare" describes concentration rather than scarcity, so extraction is marginal by nature and depends on prices that Chinese refining capacity substantially sets. The Swedish state, he notes, would collect very little either way — the returns accrue to the mining company, with modest mineral and corporate taxes behind them. His group also finds that LKAB's existing **mining waste** alone could hold rare earths equivalent to about **30% of the EU's current import needs**, which suggests the tailings may matter as much as the new mine.[^manberger]
+That is why a deposit does not settle the question. André Månberger of Lund makes the point precisely: Swedish ore would be exported unprocessed, while China's position rests on keeping the value chain and exporting the finished magnet, generator or battery. "Rare" describes concentration rather than scarcity, so extraction is marginal by nature and depends on prices that Chinese refining capacity substantially sets. The Swedish state, he notes, would collect very little either way — the returns accrue to the mining company, with modest mineral and corporate taxes behind them. His group also finds that LKAB's existing mining waste alone could hold rare earths equivalent to about 30% of the EU's current import needs, which suggests the tailings may matter as much as the new mine.[^manberger]
 
-Then there is the timescale, which is the sort of thing this book exists to point out. LKAB applied for its extraction concession in June 2023 and says that Swedish permitting takes **10 to 15 years**, against an EU expectation of two-year approvals. A mine opening in the late 2030s is a contribution to the 2040s. It does not change what a European battery costs in 2030, and it is not a reply to a pack-price gap that widened by five percentage points last year.
+Then there is the timescale, which is the sort of thing this book exists to point out. LKAB applied for its extraction concession in June 2023 and says that Swedish permitting takes 10 to 15 years, against an EU expectation of two-year approvals. A mine opening in the late 2030s is a contribution to the 2040s. It does not change what a European battery costs in 2030, and it is not a reply to a pack-price gap that widened by five percentage points last year.
 
 So the honest summary is a stack of three separate problems that are often discussed as one. Europe has some of the rock. It has very little of the refining. And it has less of the cell manufacturing than either. Fixing the first does not touch the other two, and the other two are where the cost difference in the previous section actually comes from.
 
@@ -233,47 +233,47 @@ To summarize all these forms of stuff and stuff-transport, I will put on the con
 
 ## The imported half, revisited
 
-*A section added in the 2026 revision.* This chapter's largest claim is that "the biggest item in the average British person's energy footprint is the energy cost of making imported stuff", resting on Dieter Helm's estimate that Britain's true footprint was about **21 tonnes** of CO<sub>2</sub>e per person against an official territorial figure of 11.
+*A section added in the 2026 revision.* This chapter's largest claim is that "the biggest item in the average British person's energy footprint is the energy cost of making imported stuff", resting on Dieter Helm's estimate that Britain's true footprint was about 21 tonnes of CO<sub>2</sub>e per person against an official territorial figure of 11.
 
 Both halves of that can now be checked, and they moved in opposite directions.
 
 ### The footprint halved
 
-Britain's consumption-based emissions — the official carbon footprint, which counts imports — were **10 tonnes of CO<sub>2</sub>e per person in 2023**, down 5% on the previous year and **down 37% from a peak of 16 tonnes in 2004**. Against the roughly 21 tonnes Helm estimated when this chapter was written, that is a fall of more than half.[^footprint]
+Britain's consumption-based emissions — the official carbon footprint, which counts imports — were 10 tonnes of CO<sub>2</sub>e per person in 2023, down 5% on the previous year and down 37% from a peak of 16 tonnes in 2004. Against the roughly 21 tonnes Helm estimated when this chapter was written, that is a fall of more than half.[^footprint]
 
 ### But the imported share rose
 
-At the same time the *composition* moved the other way. The imported share of Britain's consumption-based account rose from **34% in 1990 to about 61% by 2022** — some measures put it nearer 53% for 2023, the difference depending on gas coverage and whether household or total consumption is counted — while imported emissions in absolute terms rose from 138 Mt in 1996 to 182 Mt in 2021.
+At the same time the *composition* moved the other way. The imported share of Britain's consumption-based account rose from 34% in 1990 to about 61% by 2022 — some measures put it nearer 53% for 2023, the difference depending on gas coverage and whether household or total consumption is counted — while imported emissions in absolute terms rose from 138 Mt in 1996 to 182 Mt in 2021.
 
-So MacKay's qualitative claim did not merely survive. **It became more true while the number it rested on got much better.** Britain's footprint is smaller and a larger fraction of it is made somewhere else.
+So MacKay's qualitative claim did not merely survive. It became more true while the number it rested on got much better. Britain's footprint is smaller and a larger fraction of it is made somewhere else.
 
 ### The distinction that matters here
 
 There is a trap in that improvement, and this book is unusually well placed to name it.
 
-**A carbon footprint is not an energy footprint.** A large part of the fall is that the electricity making the stuff got cleaner rather than that less stuff got made. Britain removed coal from its grid entirely, as chapter 28a records; China added more solar capacity than the world had in total when this book was written, as chapter 6 does. Decarbonising the electricity that builds a fridge reduces the carbon dioxide attached to the fridge **without reducing the kilowatt-hours**.
+A carbon footprint is not an energy footprint. A large part of the fall is that the electricity making the stuff got cleaner rather than that less stuff got made. Britain removed coal from its grid entirely, as chapter 28a records; China added more solar capacity than the world had in total when this book was written, as chapter 6 does. Decarbonising the electricity that builds a fridge reduces the carbon dioxide attached to the fridge without reducing the kilowatt-hours.
 
 This chapter's 48 kWh/d per person is denominated in energy. The statistic that halved is denominated in carbon. They are not the same improvement, and there is no reason to assume the energy figure has fallen by anything like 37%.
 
-That is the same lesson as chapter M's, arriving in a different chapter: **what you measure decides what you conclude, and two accounts of the same activity can move in opposite directions without either being wrong.** MacKay chose energy deliberately, because it is the harder quantity to move and the one the laws of physics constrain. Eighteen years later that choice looks better, not worse — the carbon number has improved considerably faster than the underlying activity, and only one of the two is a measure of how much stuff we make.
+That is the same lesson as chapter M's, arriving in a different chapter: what you measure decides what you conclude, and two accounts of the same activity can move in opposite directions without either being wrong. MacKay chose energy deliberately, because it is the harder quantity to move and the one the laws of physics constrain. Eighteen years later that choice looks better, not worse — the carbon number has improved considerably faster than the underlying activity, and only one of the two is a measure of how much stuff we make.
 
 ### The third mechanism: the making left
 
 There is a way of reducing a country's territorial emissions that involves neither efficiency nor restraint, and Britain has been doing it.
 
-**Steel.** British steel production is now the smallest it has been since the **1930s**, following the closure of the blast furnaces at Port Talbot in 2024. Primary steelmaking in Britain has largely ended.
+Steel. British steel production is now the smallest it has been since the 1930s, following the closure of the blast furnaces at Port Talbot in 2024. Primary steelmaking in Britain has largely ended.
 
-**Chemicals.** The industry body records **25 site closures in five years**, and its own survey of members reports weak demand, falling employment and the likelihood of more.
+Chemicals. The industry body records 25 site closures in five years, and its own survey of members reports weak demand, falling employment and the likelihood of more.
 
-**Refining.** Two of Britain's six refineries — **Grangemouth and Lindsey** — have closed since 2019, with about 820 direct jobs; Grangemouth's closure took the neighbouring Mossmorran ethylene plant with it and another 180.[^deindust]
+Refining. Two of Britain's six refineries — Grangemouth and Lindsey — have closed since 2019, with about 820 direct jobs; Grangemouth's closure took the neighbouring Mossmorran ethylene plant with it and another 180.[^deindust]
 
 None of that reduces demand for steel, chemicals or fuel. It relocates the making of them, and with it the energy and the emissions, which then return as imports and appear in the account described above rather than in the territorial one.
 
-**This is the third mechanism behind the halving.** The first is genuine efficiency. The second is cleaner electricity making the same goods. The third is not making the goods. Only the first two are improvements, and the accounts as usually published cannot tell them apart.
+This is the third mechanism behind the halving. The first is genuine efficiency. The second is cleaner electricity making the same goods. The third is not making the goods. Only the first two are improvements, and the accounts as usually published cannot tell them apart.
 
-Chapter 28a supplies the reason, and it is the same number that chapter runs on: of 28 IEA countries reporting industrial electricity prices for 2024, **the United Kingdom's were the highest**, at about 25.3p per kWh against an EU-14 median of 11.3p. A smelter, a refinery or a chemical works is a machine for turning electricity and gas into product, and Britain is the most expensive place in the developed world to run one. Germany's experience, recorded in the same chapter — energy-intensive output settling at about 82% of its 2021 level after its gas price rose — is the same mechanism at a slower speed.
+Chapter 28a supplies the reason, and it is the same number that chapter runs on: of 28 IEA countries reporting industrial electricity prices for 2024, the United Kingdom's were the highest, at about 25.3p per kWh against an EU-14 median of 11.3p. A smelter, a refinery or a chemical works is a machine for turning electricity and gas into product, and Britain is the most expensive place in the developed world to run one. Germany's experience, recorded in the same chapter — energy-intensive output settling at about 82% of its 2021 level after its gas price rose — is the same mechanism at a slower speed.
 
-So the answer to whether heavy industry left Britain for cheaper countries is yes, and this chapter's arithmetic is where it shows up: **as a falling territorial number, a rising imported share, and an energy total that did not move nearly as much as either.**
+So the answer to whether heavy industry left Britain for cheaper countries is yes, and this chapter's arithmetic is where it shows up: as a falling territorial number, a rising imported share, and an energy total that did not move nearly as much as either.
 
 ## Notes and further reading
 
@@ -299,7 +299,7 @@ So the answer to whether heavy industry left Britain for cheaper countries is ye
 
 [^11]: *Britain’s share of international shipping...* Source: Anderson et al. (2006).
 
-[^12]: *Figure 15.8*. **Energy consumptions of ships**. The five points in the figure are a container ship (46 km/h), a dry cargo vessel (24 km/h), an oil tanker (29 km/h), an inland marine ship (24 km/h), and the NS Savannah (39 km/h).
+[^12]: *Figure 15.8*. Energy consumptions of ships. The five points in the figure are a container ship (46 km/h), a dry cargo vessel (24 km/h), an oil tanker (29 km/h), an inland marine ship (24 km/h), and the NS Savannah (39 km/h).
 
   - **Dry cargo vessel** 0.08 kWh/t-km.
   A vessel with a grain capacity of 5200 m<sup>3</sup> carries 3360 deadweight tons. (Deadweight tonnage is the mass of cargo that the ship can carry.) It travels at speed 13 kn (24 km/h); its one engine with 2 MW delivered power consumes 186 g of fuel-oil per kWh of delivered energy (42% efficiency). [<span class="websitetitle">conoship.com/uk/vessels/detailed/page7.htm</span>](http://conoship.com/uk/vessels/detailed/page7.htm)
@@ -312,7 +312,7 @@ So the answer to whether heavy industry left Britain for cheaper countries is ye
 
 [^14]: *Supermarkets in the UK consume 11 TWh/y*. [[<span class="websitetitle">yqbzl3</span>](http://tinyurl.com/yqbzl3)]
 
-[^15]: *Helm et al. suggest that, allowing for imports and exports, Britain’s carbon footprint is nearly **doubled** to about 21 tons*. Helm et al. (2007).
+[^15]: *Helm et al. suggest that, allowing for imports and exports, Britain’s carbon footprint is nearly doubled to about 21 tons*. Helm et al. (2007).
 
 ![](/img/without-hot-air/figure342.gif)
 

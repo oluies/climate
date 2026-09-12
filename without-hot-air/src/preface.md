@@ -30,7 +30,7 @@ I welcome feedback and corrections. I am aware that I sometimes make booboos, an
 
 How to cite this book:
 
-**David J.C. MacKay.** *Sustainable Energy – without the hot air.*
+David J.C. MacKay. *Sustainable Energy – without the hot air.*
 
 UIT Cambridge, 2008. ISBN 978-0-9544529-3-3. Available free online from [<span class="websitetitle">www.withouthotair.com</span>](http://www.withouthotair.com).
 
@@ -44,7 +44,7 @@ Two rules govern the revision. MacKay's own text and figures are reproduced unch
 
 ## What has been added
 
-**Six new chapters.** They follow MacKay's own conventions: a number for the chapters in the main argument, a letter for the technical ones.
+Six new chapters. They follow MacKay's own conventions: a number for the chapters in the main argument, a letter for the technical ones.
 
 - **11a · The machines behind the screen** — data centres and machine learning, the demand chapter 11 could only glimpse in 2005.
 - **28a · The value of renewable energy as it scales** — what happens to the *economic* value of renewable electricity as it grows to the scale MacKay's balance sheet calls for. His book asks whether the physics permits it; this asks what happens to the price when it does.
@@ -53,20 +53,20 @@ Two rules govern the revision. MacKay's own text and figures are reproduced unch
 - **N · Peak oil, peak gas, peak uranium** — chapter 23's Jevons calculation applied to the three fuels it left out.
 - **O · The hydrogen ladder** — which uses of hydrogen survive contact with their alternatives, derived from the conversion arithmetic rather than asserted.
 
-**Revised chapters.** Every chapter of the original has been gone through. Where a figure has moved, the current one is given alongside MacKay's with the source for both; where his conclusion still holds, that is said too. The largest revisions are to the chapters on transport, heating, solar, nuclear and the cost of a plan.
+Revised chapters. Every chapter of the original has been gone through. Where a figure has moved, the current one is given alongside MacKay's with the source for both; where his conclusion still holds, that is said too. The largest revisions are to the chapters on transport, heating, solar, nuclear and the cost of a plan.
 
-**Figures drawn from live data.** Forty-three of this edition's figures are generated rather than redrawn, from a data-refresh pipeline of twenty-six steps that pulls from the Energy Institute's *Statistical Review of World Energy*, Our World in Data, Ember, Elexon and the ENTSO-E transparency platform. Each such figure carries a footnote naming the step that produced it, so any number in it can be traced back to its source and regenerated.
+Figures drawn from live data. Forty-three of this edition's figures are generated rather than redrawn, from a data-refresh pipeline of twenty-six steps that pulls from the Energy Institute's *Statistical Review of World Energy*, Our World in Data, Ember, Elexon and the ENTSO-E transparency platform. Each such figure carries a footnote naming the step that produced it, so any number in it can be traced back to its source and regenerated.
 
-**Sterling conversions.** Prices taken from foreign sources are given in the source's own currency with a sterling equivalent alongside. The rates are stated and dated once, in the *Money* section of chapter I, rather than repeated in every chapter.
+Sterling conversions. Prices taken from foreign sources are given in the source's own currency with a sterling equivalent alongside. The rates are stated and dated once, in the *Money* section of chapter I, rather than repeated in every chapter.
 
 ## Copyright and licence
 
 The original work is © 2008 David J. C. MacKay, licensed by him under the [Creative Commons Attribution-Non-Commercial-ShareAlike 2.0 UK: England & Wales Licence](https://creativecommons.org/licenses/by-nc-sa/2.0/uk/), as his preface above sets out.
 
-New and revised material in this edition is **© 2026 Örjan Lundberg** and is released under the same licence. This is not merely permitted but required: the ShareAlike term obliges any adaptation to carry a licence with the same elements. You are therefore free to copy, adapt and redistribute this edition, for non-commercial purposes, provided you attribute David MacKay for the original work and this edition's contributors for the revisions, and license what you make onward on the same terms.
+New and revised material in this edition is © 2026 Örjan Lundberg and is released under the same licence. This is not merely permitted but required: the ShareAlike term obliges any adaptation to carry a licence with the same elements. You are therefore free to copy, adapt and redistribute this edition, for non-commercial purposes, provided you attribute David MacKay for the original work and this edition's contributors for the revisions, and license what you make onward on the same terms.
 
-Three things in the original are **not** covered by that licence, because MacKay's own permission did not extend to them: the *Private Eye* cartoons, photographs credited to a named photographer, and third-party figures carrying their own rights, including the Ordnance Survey maps marked "© Crown copyright". These are omitted here and marked where they stood.
+Three things in the original are not covered by that licence, because MacKay's own permission did not extend to them: the *Private Eye* cartoons, photographs credited to a named photographer, and third-party figures carrying their own rights, including the Ordnance Survey maps marked "© Crown copyright". These are omitted here and marked where they stood.
 
 How to cite this edition:
 
-**David J. C. MacKay**, revised by **Örjan Lundberg**. *Sustainable Energy — Without the Hot Air, 2026 revised edition.* Available free online from [<span class="websitetitle">oluies.github.io/climate</span>](https://oluies.github.io/climate/).
+David J. C. MacKay, revised by Örjan Lundberg. *Sustainable Energy — Without the Hot Air, 2026 revised edition.* Available free online from [<span class="websitetitle">oluies.github.io/climate</span>](https://oluies.github.io/climate/).

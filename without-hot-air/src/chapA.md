@@ -179,7 +179,7 @@ $$
 
 If you drive the car at this speed for one hour every day, then you travel 110 km and use <span class="red">80 kWh</span> of energy per day. If you drove at half this speed for two hours per day instead, you would travel the same distance and use up <span class="red">20 kWh</span> of energy. This simple theory seems consistent with the mileage figures for cars quoted in Chapter 3. Moreover, the theory gives insight into how the energy consumed by your car could be reduced. The theory has a couple of flaws which we’ll explore in a moment.
 
-Could we make a new car that consumes 100 times less energy and still goes at 70mph? **No**. Not if the car has the same shape. On the motorway at 70mph, the energy is going mainly into making air swirl. Changing the materials the car is made from makes no difference to that. A miraculous improvement to the fossil-fuel engine could perhaps boost its efficiency from 25% to 50%, bringing the energy consumption of a fossil-fuelled car down to roughly 40 kWh per 100 km.
+Could we make a new car that consumes 100 times less energy and still goes at 70mph? No. Not if the car has the same shape. On the motorway at 70mph, the energy is going mainly into making air swirl. Changing the materials the car is made from makes no difference to that. A miraculous improvement to the fossil-fuel engine could perhaps boost its efficiency from 25% to 50%, bringing the energy consumption of a fossil-fuelled car down to roughly 40 kWh per 100 km.
 
 Electric vehicles have some wins: while the weight of the energy store, per useful kWh stored, is about 25 times bigger than that of petrol, the weight of an electric engine can be about 8 times smaller. [^3] And the energy-chain in an electric car is much more efficient: electric motors can be 90% efficient.
 
@@ -234,7 +234,7 @@ $$
 \end{matrix}
 $$
 
-So a cyclist at 21 km/h consumes about 3% of the energy per kilometre of a lone car-driver on the motorway – about **2.4 kWh per 100 km**.
+So a cyclist at 21 km/h consumes about 3% of the energy per kilometre of a lone car-driver on the motorway – about 2.4 kWh per 100 km.
 
 If you would like a vehicle whose fuel efficiency is 30 times better than a car’s, it’s simple: ride a bike.
 
@@ -333,13 +333,13 @@ It thus seems to me that the range problem has been solved by the advent of mode
 
 *A section added in the 2026 revision.* This chapter's model has two terms — the energy to shove air out of the way, which scales with frontal area and the square of speed, and the energy to accelerate a mass repeatedly, which scales with weight. Neither has been revised and neither will be. What is worth recording is what the model predicted about the eighteen years since, because it predicted them rather well.
 
-**The electric car did what the model says it should.** MacKay's petrol car throws away three-quarters of its fuel as heat before any of it reaches the road. Remove that and the same vehicle, on the same journey against the same air, should need roughly a quarter to a fifth as much energy. Chapter 20 records the measurement: **21 kWh per 100 km** as a real-world European average across 342 electric cars, against this chapter's **80 kWh per 100 km** petrol baseline. A factor of **3.8** — squarely inside the range the model predicts, and arrived at by measurement rather than by hope.
+The electric car did what the model says it should. MacKay's petrol car throws away three-quarters of its fuel as heat before any of it reaches the road. Remove that and the same vehicle, on the same journey against the same air, should need roughly a quarter to a fifth as much energy. Chapter 20 records the measurement: 21 kWh per 100 km as a real-world European average across 342 electric cars, against this chapter's 80 kWh per 100 km petrol baseline. A factor of 3.8 — squarely inside the range the model predicts, and arrived at by measurement rather than by hope.
 
-**And the model equally predicts why the gain has been partly eaten.** Both terms punish size: air resistance is proportional to frontal area, and the stop-start term to mass. Over the same period vehicles got taller and heavier — **sport-utility vehicles passed half of world car sales**, and the average new car in Europe gained something like two hundred kilograms. A model with area and mass in it says efficiency gains will be spent on size unless something stops them, and that is what happened.[^carsize]
+And the model equally predicts why the gain has been partly eaten. Both terms punish size: air resistance is proportional to frontal area, and the stop-start term to mass. Over the same period vehicles got taller and heavier — sport-utility vehicles passed half of world car sales, and the average new car in Europe gained something like two hundred kilograms. A model with area and mass in it says efficiency gains will be spent on size unless something stops them, and that is what happened.[^carsize]
 
-**One term this chapter does not have.** An electric car carries three to five hundred kilograms of battery, which the model taxes through the mass term while the thermal saving is not in the model at all. On balance the trade is overwhelmingly favourable — that is what 21 against 80 says — but it is why a heavy electric car is not four times better than a light petrol one.
+One term this chapter does not have. An electric car carries three to five hundred kilograms of battery, which the model taxes through the mass term while the thermal saving is not in the model at all. On balance the trade is overwhelmingly favourable — that is what 21 against 80 says — but it is why a heavy electric car is not four times better than a light petrol one.
 
-The chapter's real lesson is unchanged, and worth restating in an edition full of revised numbers: **the two terms are physics and the rest is choice.** A vehicle that is smaller, lower and lighter uses less energy whatever is under the bonnet, and no drivetrain rescues a badly shaped one.
+The chapter's real lesson is unchanged, and worth restating in an edition full of revised numbers: the two terms are physics and the rest is choice. A vehicle that is smaller, lower and lighter uses less energy whatever is under the bonnet, and no drivetrain rescues a badly shaped one.
 
 [^carsize]: The share of sport-utility vehicles in world car sales passed 50% in the mid-2020s on the International Energy Agency's classification, up from roughly a fifth in 2010; that classification is broad and includes crossovers not much larger than the saloons they replaced, so it overstates the change in frontal area. European new-car kerb mass has risen roughly 10–15% since 2008 on manufacturer-reported figures, part of it safety and emissions equipment rather than size, and part of the recent rise battery mass in electrified models. Both are indicative, and the point turns on neither, since the model's dependence on area and mass is not in dispute.
 

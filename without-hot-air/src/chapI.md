@@ -2,7 +2,7 @@
 
 ## SI Units
 
-> **The watt**. This SI unit is named after James Watt. As for all SI units whose names are derived from the proper name of a person, the first letter of its symbol is uppercase (W). But when an SI unit is spelled out, it should always be written in lowercase (watt), with the exception of the "degree Celsius."
+> The watt. This SI unit is named after James Watt. As for all SI units whose names are derived from the proper name of a person, the first letter of its symbol is uppercase (W). But when an SI unit is spelled out, it should always be written in lowercase (watt), with the exception of the "degree Celsius."
 >
 > from wikipedia
 
@@ -300,8 +300,8 @@ At room temperature, 1 *kT* per molecule = 2.5 kJ/mol.
 
 How to convert your gas-meter reading into kilowatt-hours:
 
-  - If the meter reads **100s of cubic feet**, take the number of units used, and multiply by **32.32** to get the number of kWh.
-  - If the meter reads **cubic metres**, take the number of units used, and multiply by **11.42** to get the number of kWh.
+  - If the meter reads 100s of cubic feet, take the number of units used, and multiply by 32.32 to get the number of kWh.
+  - If the meter reads cubic metres, take the number of units used, and multiply by 11.42 to get the number of kWh.
 
 ## Calorific values of fuels
 

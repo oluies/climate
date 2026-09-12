@@ -47,7 +47,7 @@ It feels like a waste, doesn’t it? Someone put resources into making the old i
 
 <span class="figurenumber">Figure 9.4</span>. Philips 11 W alongside Omicron 1.3 W LED bulb.
 
-Researchers say that LED (light-emitting diode) bulbs will soon be even more energy-efficient than compact fluorescent lights. The efficiency of a light is measured in *lumens per watt*. I checked the numbers on my latest purchases: the Philips Genie 11 W compact fluorescent bulb (figure 9.4) has a brightness of 600 lumens, which is an efficiency of **55 lumens per watt**; regular incandescent bulbs deliver **10 lumens per watt**; the Omicron 1.3 W lamp, which has 20 white LEDs hiding inside it, has a brightness of 46 lumens, which is an efficiency of **35 lumens per watt**. So this LED bulb is almost as efficient as the fluorescent bulb. The LED industry still has a little catching up to do. In its favour, the LED bulb has a life of 50 000 hours, eight times the life of the fluorescent bulb. As I write, I see that [<span class="websitetitle">www.cree.com</span>](http://www.cree.com) is selling LEDs with a power of **100 lumens per watt**. It’s projected that in the future, white LEDs will have an efficiency of over 150 lumens per watt [[<span class="websitetitle">ynjzej</span>](http://tinyurl.com/ynjzej)]. I expect that within another couple of years, the best advice, from the point of view of both energy efficiency and avoiding mercury pollution, will be to use LED bulbs.
+Researchers say that LED (light-emitting diode) bulbs will soon be even more energy-efficient than compact fluorescent lights. The efficiency of a light is measured in *lumens per watt*. I checked the numbers on my latest purchases: the Philips Genie 11 W compact fluorescent bulb (figure 9.4) has a brightness of 600 lumens, which is an efficiency of 55 lumens per watt; regular incandescent bulbs deliver 10 lumens per watt; the Omicron 1.3 W lamp, which has 20 white LEDs hiding inside it, has a brightness of 46 lumens, which is an efficiency of 35 lumens per watt. So this LED bulb is almost as efficient as the fluorescent bulb. The LED industry still has a little catching up to do. In its favour, the LED bulb has a life of 50 000 hours, eight times the life of the fluorescent bulb. As I write, I see that [<span class="websitetitle">www.cree.com</span>](http://www.cree.com) is selling LEDs with a power of 100 lumens per watt. It’s projected that in the future, white LEDs will have an efficiency of over 150 lumens per watt [[<span class="websitetitle">ynjzej</span>](http://tinyurl.com/ynjzej)]. I expect that within another couple of years, the best advice, from the point of view of both energy efficiency and avoiding mercury pollution, will be to use LED bulbs.
 
 ### Mythconceptions
 
@@ -72,7 +72,7 @@ This myth is addressed in Chapter 11.
 
 > *I expect that within another couple of years, the best advice, from the point of view of both energy efficiency and avoiding mercury pollution, will be to use LED bulbs.*
 
-It happened, faster and more completely than the chapter's cautious tone suggests. MacKay's own LED sample managed **35 lumens per watt** and he judged that "the LED industry still has a little catching up to do". Table 9.5 records the expectation that white LEDs would eventually reach 150 lm/W.
+It happened, faster and more completely than the chapter's cautious tone suggests. MacKay's own LED sample managed 35 lumens per watt and he judged that "the LED industry still has a little catching up to do". Table 9.5 records the expectation that white LEDs would eventually reach 150 lm/W.
 
 ### What happened to table 9.5
 
@@ -85,41 +85,41 @@ It happened, faster and more completely than the chapter's cautious tone suggest
 | large fluorescent | 94 lm/W | being withdrawn |
 | sodium street light | 150 lm/W | superseded by LED |
 
-Every technology in his table except the LED has now been legislated off the market, and the one he thought was behind overtook all of them. LED efficacy has improved by roughly **6 to 8 lumens per watt every year since 2010**; the best commercial lamps now test above **200 lm/W**, converting more than half their input power into light rather than heat.[^led]
+Every technology in his table except the LED has now been legislated off the market, and the one he thought was behind overtook all of them. LED efficacy has improved by roughly 6 to 8 lumens per watt every year since 2010; the best commercial lamps now test above 200 lm/W, converting more than half their input power into light rather than heat.[^led]
 
-That is six times MacKay's LED sample, nearly four times his compact fluorescent, and **twenty times the incandescent bulb** the chapter is written against. His 150 lm/W projection was not optimistic; it was passed.
+That is six times MacKay's LED sample, nearly four times his compact fluorescent, and twenty times the incandescent bulb the chapter is written against. His 150 lm/W projection was not optimistic; it was passed.
 
 ### What it did to this chapter's number
 
-MacKay estimated 4 kWh/d per person for lighting: 2.7 at home and 1.3 at work, from a household using **5.5 kWh/d** on lighting alone.
+MacKay estimated 4 kWh/d per person for lighting: 2.7 at home and 1.3 at work, from a household using 5.5 kWh/d on lighting alone.
 
-Put that beside the household of today. Average British domestic electricity consumption has fallen from **4630 kWh a year in 2008 to 3264 in 2023** — about 29% — which is **8.9 kWh/d per household for everything**: lighting, cooking, refrigeration, washing, televisions, computers and chargers together.[^ecuk9]
+Put that beside the household of today. Average British domestic electricity consumption has fallen from 4630 kWh a year in 2008 to 3264 in 2023 — about 29% — which is 8.9 kWh/d per household for everything: lighting, cooking, refrigeration, washing, televisions, computers and chargers together.[^ecuk9]
 
-**MacKay's lighting estimate alone, 5.5 kWh/d, is nearly two-thirds of what a British household now uses in total.** The change per fitting is a reduction of 80 to 90%, so on unchanged habits this chapter's 4 kWh/d per person would now be something under 1.
+MacKay's lighting estimate alone, 5.5 kWh/d, is nearly two-thirds of what a British household now uses in total. The change per fitting is a reduction of 80 to 90%, so on unchanged habits this chapter's 4 kWh/d per person would now be something under 1.
 
 ### Two cautions
 
-**The number can no longer be checked properly.** The government's *Energy Consumption in the UK* series **discontinued its Electrical Products tables in the 2025 edition**, following concerns about the models underlying the appliance-level estimates. There is no longer an official British breakdown of household electricity by end use, so the figure that replaces MacKay's 4 kWh/d has to be inferred rather than looked up. This edition has run into the same wall in chapter 8 over reservoir storage: the arithmetic in this book depends on statistics that are, in places, being withdrawn.
+The number can no longer be checked properly. The government's *Energy Consumption in the UK* series discontinued its Electrical Products tables in the 2025 edition, following concerns about the models underlying the appliance-level estimates. There is no longer an official British breakdown of household electricity by end use, so the figure that replaces MacKay's 4 kWh/d has to be inferred rather than looked up. This edition has run into the same wall in chapter 8 over reservoir storage: the arithmetic in this book depends on statistics that are, in places, being withdrawn.
 
-**And cheap light invites more light** — which deserves more than a sentence, because lighting is the single best-documented case of the rebound effect anywhere in energy.
+And cheap light invites more light — which deserves more than a sentence, because lighting is the single best-documented case of the rebound effect anywhere in energy.
 
 ### Jevons, where the record is longest
 
-Fouquet and Pearson traced the price and use of light in Britain from 1300 to 2000. The real price of light fell roughly **3000-fold between 1800 and 2000**, and consumption rose to about **40 000 times** its 1800 level. Per-person consumption of light grew faster than per-person GDP. Across seven centuries, every improvement in lighting efficiency was met by buying more light rather than banking the saving.[^rebound]
+Fouquet and Pearson traced the price and use of light in Britain from 1300 to 2000. The real price of light fell roughly 3000-fold between 1800 and 2000, and consumption rose to about 40 000 times its 1800 level. Per-person consumption of light grew faster than per-person GDP. Across seven centuries, every improvement in lighting efficiency was met by buying more light rather than banking the saving.[^rebound]
 
-Working from that series, Tsao and Waide put the price and income elasticity of demand for light at close to **unity** — a 10% fall in price raises consumption by about 10% — and predicted on that basis that solid-state lighting would produce not merely rebound but **backfire**: total energy spent on lighting rising after the efficiency gain, exactly as Jevons argued for coal in 1865.
+Working from that series, Tsao and Waide put the price and income elasticity of demand for light at close to unity — a 10% fall in price raises consumption by about 10% — and predicted on that basis that solid-state lighting would produce not merely rebound but backfire: total energy spent on lighting rising after the efficiency gain, exactly as Jevons argued for coal in 1865.
 
-**Has it?** Not in Britain, so far. Domestic electricity per household fell 29% between 2008 and 2023, and lighting is part of why. The reason is one Fouquet and Pearson identified themselves in later work: these elasticities depend on the stage of development. A poor country handed cheap light buys a great deal more of it. A rich country is already lighting everything it wants lit after dark, and further price falls buy diminishing amounts of extra illumination.
+Has it? Not in Britain, so far. Domestic electricity per household fell 29% between 2008 and 2023, and lighting is part of why. The reason is one Fouquet and Pearson identified themselves in later work: these elasticities depend on the stage of development. A poor country handed cheap light buys a great deal more of it. A rich country is already lighting everything it wants lit after dark, and further price falls buy diminishing amounts of extra illumination.
 
-So the honest position is a split one: **backfire in the historical record and probably still across much of the world; saturation in Britain.** This chapter is about Britain, and here the gain has largely been kept.
+So the honest position is a split one: backfire in the historical record and probably still across much of the world; saturation in Britain. This chapter is about Britain, and here the gain has largely been kept.
 
-**Decorative lighting is where that saturation argument is weakest**, and it is the visible exception on any winter street. Festive displays run for weeks, permanent architectural and garden lighting, illuminated signage and the lighting of things nobody previously thought to light — this is demand that would not exist at incandescent running costs, and it has appeared precisely where saturation says growth should have stopped. It remains a small share of the total, but it is the clearest domestic sighting of Jevons at work, and it is worth noticing that it grew because the running cost approached zero rather than because anyone decided they needed more light.
+Decorative lighting is where that saturation argument is weakest, and it is the visible exception on any winter street. Festive displays run for weeks, permanent architectural and garden lighting, illuminated signage and the lighting of things nobody previously thought to light — this is demand that would not exist at incandescent running costs, and it has appeared precisely where saturation says growth should have stopped. It remains a small share of the total, but it is the clearest domestic sighting of Jevons at work, and it is worth noticing that it grew because the running cost approached zero rather than because anyone decided they needed more light.
 
 ### The street lights are half done
 
 MacKay put public lighting at 0.1 kWh/d per person and set it aside as negligible. It is being converted, and slowly enough to be worth recording.
 
-England's county councils have committed about **£442 million** to LED street lighting, and a freedom-of-information survey found only **10 of 29 county schemes complete**. Scotland has roughly **900 000 street lights, of which about 35% have been converted**. Full national conversion is projected around **2035** — a quarter of a century after this book was written.[^streetled]
+England's county councils have committed about £442 million to LED street lighting, and a freedom-of-information survey found only 10 of 29 county schemes complete. Scotland has roughly 900 000 street lights, of which about 35% have been converted. Full national conversion is projected around 2035 — a quarter of a century after this book was written.[^streetled]
 
 Where it is finished the savings are large. Hertfordshire converted 117 361 lights for a 79% cut in street-lighting emissions and about £6.9 million a year; West Dunbartonshire cut its street-lighting electricity by 65%.
 
@@ -129,7 +129,7 @@ So MacKay's 0.1 kWh/d per person is on its way to something nearer 0.03. The int
 
 It is worth asking why lighting was solved so completely when heating, in chapter 7, was not. The answer is not that the physics was easier — a heat pump beats a boiler by a wider margin than an LED beats an incandescent in primary-energy terms.
 
-It is that a light bulb is a **drop-in replacement**. It costs a few pounds, screws into the fitting that is already there, needs no installer, no survey, no wet system, no cylinder, no planning, and no favourable ratio between two fuel prices. Nothing about the building has to change. Chapter 7's machine has to overcome all of those at once.
+It is that a light bulb is a drop-in replacement. It costs a few pounds, screws into the fitting that is already there, needs no installer, no survey, no wet system, no cylinder, no planning, and no favourable ratio between two fuel prices. Nothing about the building has to change. Chapter 7's machine has to overcome all of those at once.
 
 The lesson is not about lamps. It is that the energy transitions that actually complete are the ones that fit into the socket that is already in the wall.
 

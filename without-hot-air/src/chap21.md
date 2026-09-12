@@ -236,13 +236,13 @@ Another objection to heat pumps is "oh, we can’t approve of people fitting eff
 
 ### What he achieved, and what the country did
 
-His gas consumption went from **50 kWh/d** to **32** with a condensing boiler, radiator thermostats, a programmable controller and the removal of the hot water tank; then to **13 kWh/d** with cavity wall insulation, better loft insulation, two double-glazed doors, and — his emphasis — paying attention to the thermostat.
+His gas consumption went from 50 kWh/d to 32 with a condensing boiler, radiator thermostats, a programmable controller and the removal of the hot water tank; then to 13 kWh/d with cavity wall insulation, better loft insulation, two double-glazed doors, and — his emphasis — paying attention to the thermostat.
 
-That is a **74% reduction**, achieved by one attentive person in a 1940s semi.
+That is a 74% reduction, achieved by one attentive person in a 1940s semi.
 
-Britain as a whole has reduced domestic gas consumption per household by about **43% since 2008**, as chapter 7 records. So the country, over eighteen years and with the benefit of new boilers, better appliances, higher prices and warmer winters, has managed a little over half of what MacKay did to one leaky house by himself.
+Britain as a whole has reduced domestic gas consumption per household by about 43% since 2008, as chapter 7 records. So the country, over eighteen years and with the benefit of new boilers, better appliances, higher prices and warmer winters, has managed a little over half of what MacKay did to one leaky house by himself.
 
-And even that overstates the technical achievement. The European efficiency index described in chapter L, which is climate-corrected and measures efficiency rather than consumption, has households improving at about **1.6% a year across the EU from 2010 to 2023 — accelerating to 2.4% after 2019, but still only some 19% in total**. That is the honest measure of what better buildings and better boilers have delivered. The rest of the fall in what households burn is warmer weather, higher prices and smaller rooms heated less.
+And even that overstates the technical achievement. The European efficiency index described in chapter L, which is climate-corrected and measures efficiency rather than consumption, has households improving at about 1.6% a year across the EU from 2010 to 2023 — accelerating to 2.4% after 2019, but still only some 19% in total. That is the honest measure of what better buildings and better boilers have delivered. The rest of the fall in what households burn is warmer weather, higher prices and smaller rooms heated less.
 
 ### The sentence that turned out to matter most
 
@@ -250,7 +250,7 @@ Buried in the case study is this:
 
 > *It's frustratingly difficult to reduce the leakiness of an already-built house!*
 
-The numbers behind it are the important part. All that insulation work reduced his leakiness by **25%, from 7.7 to 5.8 kWh/d/°C**. The modern houses in the Carbon Trust study he cites were built to **2.7**. After cavity walls, loft and new doors, his house still lost heat **more than twice as fast** as one built to 2007 standards.
+The numbers behind it are the important part. All that insulation work reduced his leakiness by 25%, from 7.7 to 5.8 kWh/d/°C. The modern houses in the Carbon Trust study he cites were built to 2.7. After cavity walls, loft and new doors, his house still lost heat more than twice as fast as one built to 2007 standards.
 
 Which means most of his 74% did not come from the fabric at all. It came from the boiler, the controls, and the thermostat — from the machine and the occupant, not the building.
 
@@ -258,19 +258,19 @@ Which means most of his 74% did not come from the fabric at all. It came from th
 
 In 2008 this was a footnote about the difficulty of retrofit. It has since become the gate on the whole heating transition.
 
-Chapter 7 reports the British evidence review's finding that a heat pump reaches a seasonal performance factor of 3.0 — the level at which the sums in this chapter work — only in a house at **EPC band C or better**. Below that it does not, and the running-cost case collapses with it.
+Chapter 7 reports the British evidence review's finding that a heat pump reaches a seasonal performance factor of 3.0 — the level at which the sums in this chapter work — only in a house at EPC band C or better. Below that it does not, and the running-cost case collapses with it.
 
-The English housing stock in 2024: **52% of homes at band C**, up from 45% in 2022, with **56% at bands A to C** and a median score of 69, which is just inside band C. **85% of new dwellings** are rated A or B. About half of privately rented homes are still below C.[^epc]
+The English housing stock in 2024: 52% of homes at band C, up from 45% in 2022, with 56% at bands A to C and a median score of 69, which is just inside band C. 85% of new dwellings are rated A or B. About half of privately rented homes are still below C.[^epc]
 
-So roughly **two homes in five are below the standard at which a heat pump performs as this chapter assumes** — and post-war housing with cavity walls filled and loft insulated is described in the official statistics as sitting *at the C boundary*, which is precisely where MacKay's house ended up after all his work.
+So roughly two homes in five are below the standard at which a heat pump performs as this chapter assumes — and post-war housing with cavity walls filled and loft insulated is described in the official statistics as sitting *at the C boundary*, which is precisely where MacKay's house ended up after all his work.
 
-**The man who wrote the book advocating heat pumps had, after his own best retrofit, a house that would only just support one.** That is the retrofit problem stated as exactly as it can be stated.
+The man who wrote the book advocating heat pumps had, after his own best retrofit, a house that would only just support one. That is the retrofit problem stated as exactly as it can be stated.
 
 ### And "strangely rare in Britain"
 
 He writes that heat pumps are "already widely used in continental Europe, but strangely rare in Britain". The strangeness has since been resolved, and it is worth recording that the answer is not mysterious.
 
-It is a **price ratio of about 3.6 in Britain against 1.3 in Sweden**, so that the efficient machine is the expensive one to run; and a **fabric standard that two homes in five fail**, so that the machine underperforms where it is installed. Chapter 7 covers the first and this chapter covers the second.
+It is a price ratio of about 3.6 in Britain against 1.3 in Sweden, so that the efficient machine is the expensive one to run; and a fabric standard that two homes in five fail, so that the machine underperforms where it is installed. Chapter 7 covers the first and this chapter covers the second.
 
 Neither is strange. Both are specific, both are measurable, and neither is physics — which is chapter 18's finding arriving in the one chapter of Part II that is about what to actually do.
 
@@ -278,7 +278,7 @@ Neither is strange. Both are specific, both are measurable, and neither is physi
 
 ![](/img/without-hot-air/figure186.gif)
 
-<span class="figurenumber">Figure 21.14</span>. Advertisement from the Mayor of London’s "DIY planet repairs" campaign of 2007. The text reads "**Turn down**. If every London household turned down their thermostat by one degree, we could save 837 000 tons of CO<sub>2</sub> and £110m per year." [[<span class="websitetitle">london.gov.uk/diy</span>](http://london.gov.uk/diy)] Expressed in savings per person, that’s 0.12 t CO<sub>2</sub> per year per person. That’s about 1% of one person’s total (11 t), so this is good advice. Well done, Ken\!
+<span class="figurenumber">Figure 21.14</span>. Advertisement from the Mayor of London’s "DIY planet repairs" campaign of 2007. The text reads "Turn down. If every London household turned down their thermostat by one degree, we could save 837 000 tons of CO<sub>2</sub> and £110m per year." [[<span class="websitetitle">london.gov.uk/diy</span>](http://london.gov.uk/diy)] Expressed in savings per person, that’s 0.12 t CO<sub>2</sub> per year per person. That’s about 1% of one person’s total (11 t), so this is good advice. Well done, Ken\!
 
 [^1]: *Loft and cavity insulation reduces heat loss in a typical old house by about a quarter*. Eden and Bending (1985).
 

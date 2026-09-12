@@ -78,7 +78,7 @@ Tide power is not to be sneezed at\! How would it add up, if we assume that ther
 
 ## Barrages
 
-Tidal barrages are a proven technology. The famous barrage at La Rance in France, [^4] where the tidal range is a whopping 8 metres on average, has produced an average power of 60 MW since 1966. The tidal range in the Severn Estuary is also unusually large. At Cardiff the range is 11.3 m at spring tides, and 5.8 m at neaps. If a barrage were put across the mouth of the Severn Estuary (from Weston-super-Mare to Cardiff), it would make a 500 km<sup>2</sup> tide-pool (figure 14.8). Notice how much bigger this pool is than the estuary at La Rance. What power could this tide-pool deliver, if we let the water in and out at the ideal times, generating on both the flood and the ebb? According to the theoretical numbers from table 14.4, when the range is 11.3 m, the average power contributed by the barrage (at 30 W/m<sup>2</sup>) would be at most 14.5 GW, or **5.8 kWh/d per person**. When the range is 5.8 m, the average power contributed by the barrage (at 8 W/m<sup>2</sup>) would be at most 3.9 GW, or **1.6 kWh/d per person**. These numbers assume that the water is let in in a single pulse at the peak of high tide, and let out in a single pulse at low tide. In practice, the in-flow and out-flow would be spread over a few hours, which would reduce the power <span id="page85">delivered</span> a little.
+Tidal barrages are a proven technology. The famous barrage at La Rance in France, [^4] where the tidal range is a whopping 8 metres on average, has produced an average power of 60 MW since 1966. The tidal range in the Severn Estuary is also unusually large. At Cardiff the range is 11.3 m at spring tides, and 5.8 m at neaps. If a barrage were put across the mouth of the Severn Estuary (from Weston-super-Mare to Cardiff), it would make a 500 km<sup>2</sup> tide-pool (figure 14.8). Notice how much bigger this pool is than the estuary at La Rance. What power could this tide-pool deliver, if we let the water in and out at the ideal times, generating on both the flood and the ebb? According to the theoretical numbers from table 14.4, when the range is 11.3 m, the average power contributed by the barrage (at 30 W/m<sup>2</sup>) would be at most 14.5 GW, or 5.8 kWh/d per person. When the range is 5.8 m, the average power contributed by the barrage (at 8 W/m<sup>2</sup>) would be at most 3.9 GW, or 1.6 kWh/d per person. These numbers assume that the water is let in in a single pulse at the peak of high tide, and let out in a single pulse at low tide. In practice, the in-flow and out-flow would be spread over a few hours, which would reduce the power <span id="page85">delivered</span> a little.
 
 ![](/img/without-hot-air/figure1011.gif)
 
@@ -106,41 +106,41 @@ Tide power has never been used on an industrial scale in Britain, so it’s hard
 
 ## What got built
 
-*A section added in the 2026 revision.* This chapter totals **11 kWh/d per person** from tide: 9 from tidal stream farms, 1.5 from lagoons, 0.8 from a Severn barrage. Eighteen years on, the three parts have had very different fates, and none of them is the fate MacKay's arithmetic anticipated.
+*A section added in the 2026 revision.* This chapter totals 11 kWh/d per person from tide: 9 from tidal stream farms, 1.5 from lagoons, 0.8 from a Severn barrage. Eighteen years on, the three parts have had very different fates, and none of them is the fate MacKay's arithmetic anticipated.
 
 ### The barrage and the lagoons: nothing
 
-**The Severn barrage was rejected in the late 1980s, again in 2003, and scrapped by the government in 2010** on grounds of cost and environmental risk. It has been revived and set aside repeatedly since. In March 2025 the Severn Estuary Commission concluded that tidal range energy in the estuary is *feasible* — a finding, not a commitment, and no scheme has been authorised.
+The Severn barrage was rejected in the late 1980s, again in 2003, and scrapped by the government in 2010 on grounds of cost and environmental risk. It has been revived and set aside repeatedly since. In March 2025 the Severn Estuary Commission concluded that tidal range energy in the estuary is *feasible* — a finding, not a commitment, and no scheme has been authorised.
 
-**The Swansea Bay tidal lagoon was rejected on 25 June 2018**, the government judging the £1.3 billion scheme poor value for money despite the Welsh government offering £200 million towards it. The proposal was finally sunk in December 2022 when the developer lost its planning appeal.
+The Swansea Bay tidal lagoon was rejected on 25 June 2018, the government judging the £1.3 billion scheme poor value for money despite the Welsh government offering £200 million towards it. The proposal was finally sunk in December 2022 when the developer lost its planning appeal.
 
-MacKay's 0.8 plus 1.5 kWh/d per person from barrages and lagoons has therefore delivered **exactly nothing**, and the reason in both cases was cost, not physics.
+MacKay's 0.8 plus 1.5 kWh/d per person from barrages and lagoons has therefore delivered exactly nothing, and the reason in both cases was cost, not physics.
 
 ### Tidal stream: real, and very small
 
-Tidal stream is the part that exists. **MeyGen in the Pentland Firth** became the world's first tidal array to generate 50 GWh in February 2023, and had passed **84 GWh cumulatively by 2025**. In Allocation Round 6, six tidal stream projects across five sites contracted **28 MW at £172/MWh** — the lowest price since tidal was given its own budget, and the third consecutive auction in which it has needed one.[^tidenow]
+Tidal stream is the part that exists. MeyGen in the Pentland Firth became the world's first tidal array to generate 50 GWh in February 2023, and had passed 84 GWh cumulatively by 2025. In Allocation Round 6, six tidal stream projects across five sites contracted 28 MW at £172/MWh — the lowest price since tidal was given its own budget, and the third consecutive auction in which it has needed one.[^tidenow]
 
-Against this chapter's 9 kWh/d per person from tidal stream, what Britain actually gets is of the order of **0.004 kWh/d** — smaller by a factor of about two thousand.
+Against this chapter's 9 kWh/d per person from tidal stream, what Britain actually gets is of the order of 0.004 kWh/d — smaller by a factor of about two thousand.
 
 ### The seven beauties, marked
 
 MacKay ends the chapter with seven reasons to be excited about tide. Four have held, and two were wrong in a way that is worth being precise about.
 
-**Beauty 1, predictability: right, and worth more than he knew.** Tidal power is forecastable years ahead. When this chapter was written that was a nice property; chapters 26 and 28a show that in a system dominated by wind and solar the binding constraint is not energy but timing, and a resource whose output is known in advance is exactly what a cannibalised market should pay a premium for. This is the argument for tide that has strengthened since 2008, and it is not the argument MacKay leaned on.
+Beauty 1, predictability: right, and worth more than he knew. Tidal power is forecastable years ahead. When this chapter was written that was a nice property; chapters 26 and 28a show that in a system dominated by wind and solar the binding constraint is not energy but timing, and a resource whose output is known in advance is exactly what a cannibalised market should pay a premium for. This is the argument for tide that has strengthened since 2008, and it is not the argument MacKay leaned on.
 
-**Beauty 4, that tide "doesn't require high-cost hardware, in contrast to solar photovoltaic": exactly backwards.** Utility-scale solar now costs around **£34/MWh** worldwide. Tidal stream contracted at **£172/MWh**. He identified the two technologies correctly and put them the wrong way round, by a factor of five.
+Beauty 4, that tide "doesn't require high-cost hardware, in contrast to solar photovoltaic": exactly backwards. Utility-scale solar now costs around £34/MWh worldwide. Tidal stream contracted at £172/MWh. He identified the two technologies correctly and put them the wrong way round, by a factor of five.
 
-**Beauty 5, that a tide turbine might be cheaper than a wind turbine:** offshore wind cleared AR6 at about £82/MWh in today's money. Tidal stream cleared the same auction at more than double that.
+Beauty 5, that a tide turbine might be cheaper than a wind turbine: offshore wind cleared AR6 at about £82/MWh in today's money. Tidal stream cleared the same auction at more than double that.
 
-**Beauty 6, that "there is no such thing as a freak tidal storm", so tide turbines "will not require big safety factors":** the premise is true and the conclusion did not follow. There are no storms below the waves, but chapter 12 shows what the sea does to machinery regardless, and tidal stream has survived only because three consecutive auctions reserved it a budget it could not have won in open competition.
+Beauty 6, that "there is no such thing as a freak tidal storm", so tide turbines "will not require big safety factors": the premise is true and the conclusion did not follow. There are no storms below the waves, but chapter 12 shows what the sea does to machinery regardless, and tidal stream has survived only because three consecutive auctions reserved it a budget it could not have won in open competition.
 
-**That ring-fence is the single fact that summarises this chapter.** Tidal stream is not competing with wind and solar; it is being protected from them.
+That ring-fence is the single fact that summarises this chapter. Tidal stream is not competing with wind and solar; it is being protected from them.
 
 ### Why it may still matter
 
 None of this says the resource is not there. The tides are as predictable and as large as MacKay says, the power densities in table 14.7 are sound, and the Severn Estuary Commission's 2025 finding that tidal range is feasible is a finding about engineering.
 
-What has changed is which of tide's properties is valuable. In 2008 the case was made on quantity: 11 kWh/d per person, a serious slice of the green stack. **In 2026 the case, if there is one, is made on timing** — a predictable, dispatchable-by-the-almanac resource in a system that is running short of exactly that, and whose capture price should therefore hold up where wind's and solar's fall.
+What has changed is which of tide's properties is valuable. In 2008 the case was made on quantity: 11 kWh/d per person, a serious slice of the green stack. In 2026 the case, if there is one, is made on timing — a predictable, dispatchable-by-the-almanac resource in a system that is running short of exactly that, and whose capture price should therefore hold up where wind's and solar's fall.
 
 Whether that is worth £172/MWh is a different question, and one this book cannot answer with physics. But it is the right question, and it is not the one this chapter asks.
 

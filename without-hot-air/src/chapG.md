@@ -18,9 +18,9 @@ assuming perfectly efficient generators. Plugging in *h* = 2 m (i.e., range 4 m)
 
 power per unit area of tide-pool  ≅  <span class="green">3 W/m*2*</span>.
 
-So to generate 1 GW of power (on average), we need a tide-pool with an area of about 300 km<sup>2</sup>. A circular pool with diameter 20 km would do the trick. (For comparison, the area of the Severn estuary behind the proposed barrage is about 550 km***<sup>2</sup>***, and the area of the Wash is more than 400 km***<sup>2</sup>***.
+So to generate 1 GW of power (on average), we need a tide-pool with an area of about 300 km<sup>2</sup>. A circular pool with diameter 20 km would do the trick. (For comparison, the area of the Severn estuary behind the proposed barrage is about 550 km<sup>2</sup>, and the area of the Wash is more than 400 km<sup>2</sup>.
 
-If a tide-pool produces electricity in one direction only, the power per unit area is halved. The average power density of the tidal barrage at La Rance, where the mean tidal range is 10.9 m, has been <span class="green">2.7 W/m***<sup>2</sup>***</span> for decades ([chapter 14](../Text/chap14.xhtml#ch14n04)).
+If a tide-pool produces electricity in one direction only, the power per unit area is halved. The average power density of the tidal barrage at La Rance, where the mean tidal range is 10.9 m, has been <span class="green">2.7 W/m<sup>2</sup></span> for decades ([chapter 14](../Text/chap14.xhtml#ch14n04)).
 
 ## The raw tidal resource
 
@@ -441,13 +441,13 @@ A two-basin system could also function as a pumped-storage facility.
 
 ## The resource is still there and almost none of it is used
 
-*A section added in the 2026 revision.* The tidal physics in this chapter is astronomy, and astronomy does not revise. A tide pool with a 4-metre range still yields about **3 W/m²**; La Rance still produces what it produced; the bottom-friction estimate of the resource around Britain still stands.
+*A section added in the 2026 revision.* The tidal physics in this chapter is astronomy, and astronomy does not revise. A tide pool with a 4-metre range still yields about 3 W/m²; La Rance still produces what it produced; the bottom-friction estimate of the resource around Britain still stands.
 
 What has not happened is any of it. Chapter 14 records the position: British tidal generation remains too small to register beside wind or solar, the Severn barrage has been proposed and shelved repeatedly without ever being built, and tidal stream — the technology this chapter is most cautious about — is the only part with genuine recent momentum, at a scale of tens of megawatts rather than the 18 GW plan D asks for.
 
-**Tide is the clearest case in the book of a resource that is real, predictable, and unbuilt.** Everything usually offered against renewables — that the resource is speculative, that the output is unpredictable, that the physics is uncertain — is false here. The tide is known decades ahead to the minute. What it lacks is a machine that survives the sea cheaply enough, and a market that pays for predictability rather than for energy.
+Tide is the clearest case in the book of a resource that is real, predictable, and unbuilt. Everything usually offered against renewables — that the resource is speculative, that the output is unpredictable, that the physics is uncertain — is false here. The tide is known decades ahead to the minute. What it lacks is a machine that survives the sea cheaply enough, and a market that pays for predictability rather than for energy.
 
-Which is chapter 28a's point arriving from an unexpected direction. **A tidal generator's output is worth more than a wind generator's per kilowatt-hour, because it is knowable** — and no British market instrument pays for that. The barrage was never blocked by physics or even, in the end, by the birds. It was blocked by a cost of capital applied to a thirty-year construction with a hundred-year life, which is exactly the problem chapter 24 finds in nuclear and chapter M finds in the arithmetic of levelised cost.
+Which is chapter 28a's point arriving from an unexpected direction. A tidal generator's output is worth more than a wind generator's per kilowatt-hour, because it is knowable — and no British market instrument pays for that. The barrage was never blocked by physics or even, in the end, by the birds. It was blocked by a cost of capital applied to a thirty-year construction with a hundred-year life, which is exactly the problem chapter 24 finds in nuclear and chapter M finds in the arithmetic of levelised cost.
 
 ## Notes
 
