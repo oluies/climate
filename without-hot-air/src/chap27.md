@@ -166,11 +166,11 @@ Alternatively, you may conclude that we have too high a population density, and 
 
 ## Eighteen years into a forty-two-year plan
 
-*A section added in the 2026 revision.* This chapter is the book's conclusion in operational form: five ways to get Britain off fossil fuels, each producing **50 kWh per day per person of electricity** against the 18 the country had in 2008. Enough time has now passed to mark it.
+*A section added in the 2026 revision.* This chapter is the book's conclusion in operational form: five ways to get Britain off fossil fuels, each producing 50 kWh per day per person of electricity against the 18 the country had in 2008. Enough time has now passed to mark it.
 
-**Start with the number every plan depends on, because it went the wrong way.** Britain generated **11.2 kWh(e) per day per person in 2025** — not 50, and not 18 either. Electricity per person has *fallen* by nearly two-fifths since this book was written, on a path that required it to nearly triple.
+Start with the number every plan depends on, because it went the wrong way. Britain generated 11.2 kWh(e) per day per person in 2025 — not 50, and not 18 either. Electricity per person has *fallen* by nearly two-fifths since this book was written, on a path that required it to nearly triple.
 
-That sounds like total failure and it is not, for a reason chapters 18 and 19 set out. MacKay's plans triple electricity because they **electrify heating and transport**: the 40 kWh/d of petrol and the 40 of gas move onto the grid. That has barely begun. Heat pumps and electric cars are arriving now, not in 2010, so the demand they create is deferred rather than cancelled. Meanwhile British energy use *per person* fell 44%, for the mixture of efficiency, cleaner supply and offshoring that chapter 15 separates. **The electrification is late and the demand reduction was early, and the two have concealed each other in the headline figure.**
+That sounds like total failure and it is not, for a reason chapters 18 and 19 set out. MacKay's plans triple electricity because they electrify heating and transport: the 40 kWh/d of petrol and the 40 of gas move onto the grid. That has barely begun. Heat pumps and electric cars are arriving now, not in 2010, so the demand they create is deferred rather than cancelled. Meanwhile British energy use *per person* fell 44%, for the mixture of efficiency, cleaner supply and offshoring that chapter 15 separates. The electrification is late and the demand reduction was early, and the two have concealed each other in the headline figure.
 
 ### The component scorecard
 
@@ -186,25 +186,25 @@ Set what Britain actually built against what the plans asked for:
 | Tide | 3.7 | 0.7 | **~0** | |
 | "Clean coal" | 16 | 0 | **0** | |
 
-Three things stand out. **Wind is the component that worked** — Britain is close to plan E's wind target and nearly halfway to plan D's, which for a technology requiring a thirty-fold increase is a genuine achievement. **Hydroelectricity landed exactly on MacKay's number**, which it was always going to, since he assumed it would not change and it did not. And **nuclear is the catastrophic miss**: the fleet has shrunk rather than quadrupled, and chapter 24 explains why in detail — not uranium, not physics, but the cost of capital and the inability to build the same reactor twice.
+Three things stand out. Wind is the component that worked — Britain is close to plan E's wind target and nearly halfway to plan D's, which for a technology requiring a thirty-fold increase is a genuine achievement. Hydroelectricity landed exactly on MacKay's number, which it was always going to, since he assumed it would not change and it did not. And nuclear is the catastrophic miss: the fleet has shrunk rather than quadrupled, and chapter 24 explains why in detail — not uranium, not physics, but the cost of capital and the inability to build the same reactor twice.
 
 Wave and tidal power are at zero. Chapters 12 and 14 record what happened to each; neither failed on resource.
 
 ### And three of the five became arithmetically impossible
 
-Plan D asks for **16 kWh/d per person of "clean coal"** — take the existing coal fleet, retrofit carbon capture, then build another 18 GW. Plans **N and L carry the same 16 kWh/d/p on the same construction**. On **30 September 2024 Britain closed its last coal-fired power station**, at Ratcliffe-on-Soar, ending 142 years of coal-fired electricity.
+Plan D asks for 16 kWh/d per person of "clean coal" — take the existing coal fleet, retrofit carbon capture, then build another 18 GW. Plans N and L carry the same 16 kWh/d/p on the same construction. On 30 September 2024 Britain closed its last coal-fired power station, at Ratcliffe-on-Soar, ending 142 years of coal-fired electricity.
 
-There is no fleet to retrofit. **Three of MacKay's five plans can no longer be executed by anybody**, and they stopped being possible without any decision ever being taken about any of them. Only plans G and E, which do not use coal, survive the closure intact.
+There is no fleet to retrofit. Three of MacKay's five plans can no longer be executed by anybody, and they stopped being possible without any decision ever being taken about any of them. Only plans G and E, which do not use coal, survive the closure intact.
 
-That is worth noticing on its own account. **A plan can be overtaken rather than rejected**, and what overtook these three was not a considered judgement about carbon capture — chapter 23 shows capture never arrived either — but the collapse of coal's economics against gas and wind.
+That is worth noticing on its own account. A plan can be overtaken rather than rejected, and what overtook these three was not a considered judgement about carbon capture — chapter 23 shows capture never arrived either — but the collapse of coal's economics against gas and wind.
 
 ### What Britain actually did resembles none of the five
 
 The real 2025 mix is a lot of wind, a little solar, a shrinking nuclear fleet, gas for the remainder and imports at the margin. It is not plan D, N, L, G or E. It could not be, because all five are *plans*, and what happened was a market with a subsidy scheme attached — contracts for difference, a carbon price floor, and a set of planning decisions taken one at a time.
 
-**Which points at the honest verdict on this chapter.** Its arithmetic was sound and remains sound: the five plans still add up, and anyone proposing a sixth still has to make the columns balance. What the chapter did not have was a mechanism. It sets out what Britain would need to build and is almost silent on who decides, who pays, and what happens when a plan meets a planning inquiry, a cost of capital and an election. Eighteen years of evidence say that is where the whole difficulty lives — and it is the argument chapter 18 makes as this edition's central claim.
+Which points at the honest verdict on this chapter. Its arithmetic was sound and remains sound: the five plans still add up, and anyone proposing a sixth still has to make the columns balance. What the chapter did not have was a mechanism. It sets out what Britain would need to build and is almost silent on who decides, who pays, and what happens when a plan meets a planning inquiry, a cost of capital and an election. Eighteen years of evidence say that is where the whole difficulty lives — and it is the argument chapter 18 makes as this edition's central claim.
 
-**One last thing, in MacKay's favour.** His plans are built on consumption staying roughly flat — he sizes them against a demand that does not fall. He was wrong about that, and wrong in the direction that helps: British energy use per person fell 44%. **The one large variable he got backwards made his task easier rather than harder**, which is not a bad record for a forty-two-year forecast, and better than most of what was published alongside it.[^plans26]
+One last thing, in MacKay's favour. His plans are built on consumption staying roughly flat — he sizes them against a demand that does not fall. He was wrong about that, and wrong in the direction that helps: British energy use per person fell 44%. The one large variable he got backwards made his task easier rather than harder, which is not a bad record for a forty-two-year forecast, and better than most of what was published alongside it.[^plans26]
 
 ## Notes and further reading
 

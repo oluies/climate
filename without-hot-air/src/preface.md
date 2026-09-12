@@ -63,10 +63,10 @@ Two rules govern the revision. MacKay's own text and figures are reproduced unch
 
 The original work is © 2008 David J. C. MacKay, licensed by him under the [Creative Commons Attribution-Non-Commercial-ShareAlike 2.0 UK: England & Wales Licence](https://creativecommons.org/licenses/by-nc-sa/2.0/uk/), as his preface above sets out.
 
-New and revised material in this edition is **© 2026 Örjan Lundberg** and is released under the same licence. This is not merely permitted but required: the ShareAlike term obliges any adaptation to carry a licence with the same elements. You are therefore free to copy, adapt and redistribute this edition, for non-commercial purposes, provided you attribute David MacKay for the original work and this edition's contributors for the revisions, and license what you make onward on the same terms.
+New and revised material in this edition is © 2026 Örjan Lundberg and is released under the same licence. This is not merely permitted but required: the ShareAlike term obliges any adaptation to carry a licence with the same elements. You are therefore free to copy, adapt and redistribute this edition, for non-commercial purposes, provided you attribute David MacKay for the original work and this edition's contributors for the revisions, and license what you make onward on the same terms.
 
-Three things in the original are **not** covered by that licence, because MacKay's own permission did not extend to them: the *Private Eye* cartoons, photographs credited to a named photographer, and third-party figures carrying their own rights, including the Ordnance Survey maps marked "© Crown copyright". These are omitted here and marked where they stood.
+Three things in the original are not covered by that licence, because MacKay's own permission did not extend to them: the *Private Eye* cartoons, photographs credited to a named photographer, and third-party figures carrying their own rights, including the Ordnance Survey maps marked "© Crown copyright". These are omitted here and marked where they stood.
 
 How to cite this edition:
 
-**David J. C. MacKay**, revised by **Örjan Lundberg**. *Sustainable Energy — Without the Hot Air, 2026 revised edition.* Available free online from [<span class="websitetitle">oluies.github.io/climate</span>](https://oluies.github.io/climate/).
+David J. C. MacKay, revised by Örjan Lundberg. *Sustainable Energy — Without the Hot Air, 2026 revised edition.* Available free online from [<span class="websitetitle">oluies.github.io/climate</span>](https://oluies.github.io/climate/).

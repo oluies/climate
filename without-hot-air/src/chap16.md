@@ -68,29 +68,29 @@ Yes, Southampton Geothermal District Heating Scheme [^5] was, in 2004 at least, 
 
 ### Two different things with one name
 
-**This chapter is about deep geothermal**: the heat flowing out of the Earth, about 40 mW/m<sup>2</sup> from radioactive decay in the crust and about 10 mW/m<sup>2</sup> arriving from the core through the mantle, for **50 mW/m<sup>2</sup>** at the surface. That is a genuine flux from a genuinely hot source, and MacKay's finding is that it is small: at most **2 kWh/d per person** for Britain on a sustainable-forever basis.
+This chapter is about deep geothermal: the heat flowing out of the Earth, about 40 mW/m<sup>2</sup> from radioactive decay in the crust and about 10 mW/m<sup>2</sup> arriving from the core through the mantle, for 50 mW/m<sup>2</sup> at the surface. That is a genuine flux from a genuinely hot source, and MacKay's finding is that it is small: at most 2 kWh/d per person for Britain on a sustainable-forever basis.
 
-**A ground-source heat pump does something else entirely.** It uses the ground a few metres down as a reservoir at roughly 10°C and does work to lift heat from there to the 45°C a radiator wants. It belongs in chapter 7, with the other heat pumps. American usage calls it a "geothermal heat pump", which is where most of the trouble comes from.
+A ground-source heat pump does something else entirely. It uses the ground a few metres down as a reservoir at roughly 10°C and does work to lift heat from there to the 45°C a radiator wants. It belongs in chapter 7, with the other heat pumps. American usage calls it a "geothermal heat pump", which is where most of the trouble comes from.
 
 ### The arithmetic that settles it
 
-Take MacKay's own number: **0.05 W/m<sup>2</sup>** of geothermal flux at the surface.
+Take MacKay's own number: 0.05 W/m<sup>2</sup> of geothermal flux at the surface.
 
-Swedish practice, where borehole heat pumps are ordinary domestic equipment, gives the design figures directly. A borehole is drilled **90 to 200 m** deep at 140 mm diameter, and yields at most about **140 kWh per metre of water-bearing borehole per year**, with a peak draw near **50 W per metre**. Parallel boreholes must be kept **at least 20 m apart** so that they do not cool each other's ground.
+Swedish practice, where borehole heat pumps are ordinary domestic equipment, gives the design figures directly. A borehole is drilled 90 to 200 m deep at 140 mm diameter, and yields at most about 140 kWh per metre of water-bearing borehole per year, with a peak draw near 50 W per metre. Parallel boreholes must be kept at least 20 m apart so that they do not cool each other's ground.
 
-So a 200 m hole with 190 m in water delivers about **26 600 kWh a year**, and occupies roughly 400 m<sup>2</sup> of ground at that spacing. That is **7.6 W/m<sup>2</sup> as an annual average** and about **24 W/m<sup>2</sup> while running**.
+So a 200 m hole with 190 m in water delivers about 26 600 kWh a year, and occupies roughly 400 m<sup>2</sup> of ground at that spacing. That is 7.6 W/m<sup>2</sup> as an annual average and about 24 W/m<sup>2</sup> while running.
 
-Set that against 0.05 W/m<sup>2</sup>. The borehole extracts roughly **150 times** more heat than the Earth delivers to the ground above it, and nearly **500 times** at peak.[^gshp]
+Set that against 0.05 W/m<sup>2</sup>. The borehole extracts roughly 150 times more heat than the Earth delivers to the ground above it, and nearly 500 times at peak.[^gshp]
 
-It cannot be running on the Earth's heat. **It is running on stored sunshine.** The sun warms the ground through the summer, the heat pump takes it back out through the winter, and the cycle balances annually. The clearest evidence is the spacing rule itself: boreholes must be kept apart because they compete for a recharge that arrives from **above**, not from below. Undersized loops in cold climates are known to freeze their ground and lose performance year on year, which is precisely what happens when extraction outruns the solar recharge — and would be impossible if the heat were coming from the mantle.
+It cannot be running on the Earth's heat. It is running on stored sunshine. The sun warms the ground through the summer, the heat pump takes it back out through the winter, and the cycle balances annually. The clearest evidence is the spacing rule itself: boreholes must be kept apart because they compete for a recharge that arrives from above, not from below. Undersized loops in cold climates are known to freeze their ground and lose performance year on year, which is precisely what happens when extraction outruns the solar recharge — and would be impossible if the heat were coming from the mantle.
 
 ### Why the distinction matters
 
-This chapter's answer is deflating, and rightly so. Britain's sustainable geothermal resource is around 2 kWh/d per person; the Southampton scheme, the country's only geothermal district heating in 2004, delivers **0.13 kWh/d per person** to the people of Southampton. Chapter 18's table of power densities puts geothermal at **0.017 W/m<sup>2</sup>**, the lowest entry in the book.
+This chapter's answer is deflating, and rightly so. Britain's sustainable geothermal resource is around 2 kWh/d per person; the Southampton scheme, the country's only geothermal district heating in 2004, delivers 0.13 kWh/d per person to the people of Southampton. Chapter 18's table of power densities puts geothermal at 0.017 W/m<sup>2</sup>, the lowest entry in the book.
 
-**None of that applies to ground-source heat pumps.** They achieved a seasonal performance factor of **2.81** in British field trials, the best of any heat-pump type measured there, as chapter 7 records. Their limits are capital cost, the ground works and the electricity-to-gas price ratio — not the Earth's heat flow, which they were never using.
+None of that applies to ground-source heat pumps. They achieved a seasonal performance factor of 2.81 in British field trials, the best of any heat-pump type measured there, as chapter 7 records. Their limits are capital cost, the ground works and the electricity-to-gas price ratio — not the Earth's heat flow, which they were never using.
 
-A reader who takes this chapter's verdict and applies it to the heat pump in a neighbour's garden has been misled by a word. The European term, **ground-source heat pump**, is the accurate one. The American "geothermal heat pump" describes a solar collector that happens to be buried.
+A reader who takes this chapter's verdict and applies it to the heat pump in a neighbour's garden has been misled by a word. The European term, ground-source heat pump, is the accurate one. The American "geothermal heat pump" describes a solar collector that happens to be buried.
 
 ## Notes and further reading
 

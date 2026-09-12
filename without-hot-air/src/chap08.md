@@ -40,7 +40,7 @@ The actual power from hydroelectricity in the UK today is 0.2 kWh/d per person, 
 
 ### Britain's figure is where MacKay left it
 
-He put British hydroelectricity at **0.2 kWh/d per person** and said reaching his 1.5 kWh/d ceiling would need a sevenfold increase. In 2025 the United Kingdom generated **5.1 TWh** of hydroelectricity, which across 68.4 million people is **0.20 kWh/d per person**.[^ukhydro]
+He put British hydroelectricity at 0.2 kWh/d per person and said reaching his 1.5 kWh/d ceiling would need a sevenfold increase. In 2025 the United Kingdom generated 5.1 TWh of hydroelectricity, which across 68.4 million people is 0.20 kWh/d per person.[^ukhydro]
 
 Generation itself rose about a third — his 2006 figures come to 3.7 TWh — but the population grew with it, and Glendoe, which he describes as forthcoming, was built and is running. Eighteen years, one new large scheme, and the number per person is unchanged. The sevenfold increase is exactly as far away as it was.
 
@@ -54,19 +54,19 @@ MacKay's method makes the geography visible in a way that national percentages d
 | Sweden | **17.7** |
 | Norway | **72.0** |
 
-Norway gets **360 times** as much hydroelectricity per person as Britain. That is not policy, effort or virtue. It is rain falling on mountains, which is the quantity this chapter measures, and no amount of ambition will move Britain's number more than the sevenfold MacKay allows for.
+Norway gets 360 times as much hydroelectricity per person as Britain. That is not policy, effort or virtue. It is rain falling on mountains, which is the quantity this chapter measures, and no amount of ambition will move Britain's number more than the sevenfold MacKay allows for.
 
 ### Sweden: the gains come from efficiency now, because the dams are finished
 
-Sweden runs about **1700 hydro plants** totalling **16.5 GW**, producing roughly **67 TWh** a year — 68.3 TWh in 2025. It builds no new large-scale hydro at all. Four rivers are legally protected from development, and the practical position is that the resource is fully taken.
+Sweden runs about 1700 hydro plants totalling 16.5 GW, producing roughly 67 TWh a year — 68.3 TWh in 2025. It builds no new large-scale hydro at all. Four rivers are legally protected from development, and the practical position is that the resource is fully taken.
 
-So the only route left is the existing fleet, and a good deal of it is old: many plants are more than forty years old and were permitted long before modern environmental law. A study for the industry by Sweco reckons that refurbishing turbines and generators across the fleet could raise **capacity by about 24%, which it likens to three or four nuclear reactors**.[^swehydro]
+So the only route left is the existing fleet, and a good deal of it is old: many plants are more than forty years old and were permitted long before modern environmental law. A study for the industry by Sweco reckons that refurbishing turbines and generators across the fleet could raise capacity by about 24%, which it likens to three or four nuclear reactors.[^swehydro]
 
-**That comparison needs care, and the care is this chapter's whole method.** Twenty-four per cent more *capacity* is not twenty-four per cent more *energy*. The rain is unchanged and so is the annual total; what the upgrade buys is the ability to deliver the same water faster when it is wanted. In a system running on wind and solar that is worth a great deal — it is precisely the flexibility chapter 26 and chapter 28a identify as the binding constraint — but it is a different good from the kilowatt-hours this chapter counts, and quoting it in reactor-equivalents invites the confusion MacKay wrote the book to prevent.
+That comparison needs care, and the care is this chapter's whole method. Twenty-four per cent more *capacity* is not twenty-four per cent more *energy*. The rain is unchanged and so is the annual total; what the upgrade buys is the ability to deliver the same water faster when it is wanted. In a system running on wind and solar that is worth a great deal — it is precisely the flexibility chapter 26 and chapter 28a identify as the binding constraint — but it is a different good from the kilowatt-hours this chapter counts, and quoting it in reactor-equivalents invites the confusion MacKay wrote the book to prevent.
 
 ### And it is being given back at the other end
 
-Running in the opposite direction is a national relicensing programme. In June 2020 the Swedish government decided that every one of those 1700 plants would be reassessed for modern environmental conditions, a process due to finish around 2040. The plan set **1.5 TWh, about 2.3% of national hydro production**, as the figure for acceptable lost output — intended in the original decision as a ceiling, and since treated as a reference value rather than a limit, which the industry disputes. Eight of the operators fund a joint environmental fund covering the studies, the permit costs, the compensation for lost production and the cost of removing dams outright.[^swehydro]
+Running in the opposite direction is a national relicensing programme. In June 2020 the Swedish government decided that every one of those 1700 plants would be reassessed for modern environmental conditions, a process due to finish around 2040. The plan set 1.5 TWh, about 2.3% of national hydro production, as the figure for acceptable lost output — intended in the original decision as a ceiling, and since treated as a reference value rather than a limit, which the industry disputes. Eight of the operators fund a joint environmental fund covering the studies, the permit costs, the compensation for lost production and the cost of removing dams outright.[^swehydro]
 
 The two movements are not the same size, and the difference is instructive. The upgrades add capacity and roughly no energy; the relicensing removes energy and roughly no capacity. Sweden is, deliberately, trading a small amount of annual electricity for river ecology while buying flexibility it will need for the wind.
 
@@ -76,15 +76,15 @@ That is a limit MacKay's arithmetic cannot see. This chapter derives a ceiling f
 
 The obvious worry about a resource made of weather is that the weather is changing. Two mechanisms get raised: drier summers, and the loss of the glaciers that feed Alpine and Nordic rivers. The record so far says the first is violent but not yet directional, and the second is small, real and finite.
 
-**Drought moves the number enormously from year to year.** In 2022 European hydroelectricity fell to **563 TWh from 654 the year before**, a drop of 14%, and the southern falls were far worse: **Italy −37%, Spain −41%**, France −25%, Switzerland −21%. Then 2024 set a record at **694 TWh**, and 2025 came back to 619.[^eudrought]
+Drought moves the number enormously from year to year. In 2022 European hydroelectricity fell to 563 TWh from 654 the year before, a drop of 14%, and the southern falls were far worse: Italy −37%, Spain −41%, France −25%, Switzerland −21%. Then 2024 set a record at 694 TWh, and 2025 came back to 619.[^eudrought]
 
-**But there is no decline in the series.** Across 1985 to 2025 European hydro trends *upward* at about 6% a decade, and British hydro likewise. Decade means for Europe run 553, 578, 630, 638 TWh; for Britain 4.7, 4.7, 5.4, 5.6 TWh. Most of that rise is plant being added rather than rain increasing, and the flattening between the 2010s and 2020s is the only hint of anything. Against a standard deviation of about 8% year to year, it is not yet a signal.
+But there is no decline in the series. Across 1985 to 2025 European hydro trends *upward* at about 6% a decade, and British hydro likewise. Decade means for Europe run 553, 578, 630, 638 TWh; for Britain 4.7, 4.7, 5.4, 5.6 TWh. Most of that rise is plant being added rather than rain increasing, and the flattening between the 2010s and 2020s is the only hint of anything. Against a standard deviation of about 8% year to year, it is not yet a signal.
 
-**The glacier effect is the one worth naming, because it is hidden.** Since 1980, between **3 and 4% of Swiss hydroelectricity has come directly from net glacier mass loss** — from ice being spent rather than from that year's precipitation. That is not renewable in the sense the rest of this chapter uses. It is a stock being drawn down, and it appears in the statistics as though it were a flow.
+The glacier effect is the one worth naming, because it is hidden. Since 1980, between 3 and 4% of Swiss hydroelectricity has come directly from net glacier mass loss — from ice being spent rather than from that year's precipitation. That is not renewable in the sense the rest of this chapter uses. It is a stock being drawn down, and it appears in the statistics as though it were a flow.
 
-The quantity is small. Swiss studies put the eventual annual loss at roughly **1 TWh, about 2.5%** of the country's hydro, with the glacier contribution fading substantially between 2040 and 2060 as Alpine ice volume falls by about a third by 2050.[^glaciers]
+The quantity is small. Swiss studies put the eventual annual loss at roughly 1 TWh, about 2.5% of the country's hydro, with the glacier contribution fading substantially between 2040 and 2060 as Alpine ice volume falls by about a third by 2050.[^glaciers]
 
-**The seasonal shift matters more than the annual total,** and that is the part this book's method should flag. Melt arrives earlier, so spring runoff rises and late-summer runoff falls — Swiss summer hydro production is projected to fall by more than half by the end of the century, while winter output rises. The annual kilowatt-hours barely move; *when* they arrive moves a great deal. A reservoir can absorb some of that and a run-of-river plant cannot absorb any of it.
+The seasonal shift matters more than the annual total, and that is the part this book's method should flag. Melt arrives earlier, so spring runoff rises and late-summer runoff falls — Swiss summer hydro production is projected to fall by more than half by the end of the century, while winter output rises. The annual kilowatt-hours barely move; *when* they arrive moves a great deal. A reservoir can absorb some of that and a run-of-river plant cannot absorb any of it.
 
 For MacKay's balance sheet the annual figure survives. For the argument in chapters 26 and 28a it does not, because hydro's growing value is precisely its ability to deliver on demand, and a resource whose runoff is shifting away from the season of lowest rivers and highest cooling load is becoming a slightly less reliable form of that.
 

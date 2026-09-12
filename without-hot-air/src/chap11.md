@@ -58,7 +58,7 @@ The biggest guzzlers are the computer, its screen, and the television, whose con
 
 According to Jonathan Koomey (2007), the computer-servers in US datacentres and their associated plumbing (air conditioners, backup power systems, and so forth) consumed <span class="red">0.4 kWh per day per person</span> – just over 1% of US electricity consumption. That’s the consumption figure for 2005, which, by the way, is twice as big as the consumption in 2000, because the number of servers grew from 5.6 million to 10 million.
 
-*Added in the 2026 revision:* it has gone on doubling. American data centres reached **4.4% of national electricity in 2023** and Irish ones **22%**, and the tendrils are no longer hidden. Chapter 11a takes up what became of them.[^dcref]
+*Added in the 2026 revision:* it has gone on doubling. American data centres reached 4.4% of national electricity in 2023 and Irish ones 22%, and the tendrils are no longer hidden. Chapter 11a takes up what became of them.[^dcref]
 
 | Gadget | on and active | on but inactive | standby | off |
 |---|---|---|---|---|

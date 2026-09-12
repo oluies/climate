@@ -155,13 +155,13 @@ Finally, table 29.5 shows a few runners-up: some simple actions with small savin
 
 ## The carbon price arrived. The bans did the work.
 
-*A section added in the 2026 revision.* This chapter makes one recommendation and then spends three sections explaining why it will not be enough. Eighteen years later the verdict is unusually clean: **the recommendation was adopted, all three objections proved correct, and the things that actually delivered were the interventions MacKay mentions almost in passing.**
+*A section added in the 2026 revision.* This chapter makes one recommendation and then spends three sections explaining why it will not be enough. Eighteen years later the verdict is unusually clean: the recommendation was adopted, all three objections proved correct, and the things that actually delivered were the interventions MacKay mentions almost in passing.
 
 ### The price arrived, and it is real
 
 MacKay's complaint is that carbon is not priced and that there is no confidence it will be. Both halves have moved.
 
-Direct carbon pricing now covers **29% of world greenhouse gas emissions**, up from 12% a decade ago, and raised **$107 billion** in 2025 against under $30 billion in 2016. The EU allowance price went from **€9.68 in 2018 to €100 in early 2023**, settling near €80. Britain's own scheme trades lower, around €53, though the Carbon Price Support levy takes the effective British rate near €76. And the EU's **Carbon Border Adjustment Mechanism** entered its definitive phase on 1 January 2026 — an instrument that did not exist anywhere when this book was written, and that attacks the leakage problem chapter 15 identifies.[^carbonprice]
+Direct carbon pricing now covers 29% of world greenhouse gas emissions, up from 12% a decade ago, and raised $107 billion in 2025 against under $30 billion in 2016. The EU allowance price went from €9.68 in 2018 to €100 in early 2023, settling near €80. Britain's own scheme trades lower, around €53, though the Carbon Price Support levy takes the effective British rate near €76. And the EU's Carbon Border Adjustment Mechanism entered its definitive phase on 1 January 2026 — an instrument that did not exist anywhere when this book was written, and that attacks the leakage problem chapter 15 identifies.[^carbonprice]
 
 So the first half of this chapter has substantially happened. Not everywhere, and not at the level MacKay wanted, but the instrument exists, it prices, and it raises real money.
 
@@ -171,7 +171,7 @@ So the first half of this chapter has substantially happened. Not everywhere, an
 
 **Small cost differences.** Also right, and chapter 20 supplies the demonstration: flights are cheaper than trains on 54% of European cross-border routes, on a continent where aviation carries a carbon price and rail does not get one.
 
-**Larry and Tina.** This is the one that has been *solved*, and solved precisely as MacKay proposes: he suggests government might "require all flats to meet high standards." Since April 2020 no property in England or Wales may be let below EPC band E. On **21 January 2026 the government confirmed that all private tenancies must reach band C by 1 October 2030**, with landlords required to spend up to **£10 000** per property. **52% of the private rented stock currently sits below C**, which is chapter 7's two-in-five problem in its rental form.[^mees]
+**Larry and Tina.** This is the one that has been *solved*, and solved precisely as MacKay proposes: he suggests government might "require all flats to meet high standards." Since April 2020 no property in England or Wales may be let below EPC band E. On 21 January 2026 the government confirmed that all private tenancies must reach band C by 1 October 2030, with landlords required to spend up to £10 000 per property. 52% of the private rented stock currently sits below C, which is chapter 7's two-in-five problem in its rental form.[^mees]
 
 Larry and Tina did not respond to a price. They responded to a statute.
 
@@ -188,25 +188,25 @@ Set what actually moved energy use against the mechanism that moved it — the f
 | Rented housing (this chapter) | **legislation** |
 | Carbon capture (chapter 23) | 0.14% of emissions — **the price signal's clearest failure** |
 
-The last row deserves weight. Carbon capture is the ideal case for a carbon price: an abatement technology with no other product, whose entire value is the carbon it does not emit. If a price were going to call anything into existence, it would be this. The allowance price reached €100 and chapter 23 records the result — **0.6% of emissions as installed capacity and about 0.14% actually operating.**
+The last row deserves weight. Carbon capture is the ideal case for a carbon price: an abatement technology with no other product, whose entire value is the carbon it does not emit. If a price were going to call anything into existence, it would be this. The allowance price reached €100 and chapter 23 records the result — 0.6% of emissions as installed capacity and about 0.14% actually operating.
 
 ### Which inverts the chapter's own emphasis
 
-MacKay leads with the carbon tax and presents bans, standards and mandates as regrettable patches for where markets fail. **The evidence suggests the ordering should be the other way round.**
+MacKay leads with the carbon tax and presents bans, standards and mandates as regrettable patches for where markets fail. The evidence suggests the ordering should be the other way round.
 
-The carbon price did useful work at the margin, most visibly in killing coal — where a large price difference met an easy substitute already built. The transformations were delivered by **regulation applied at the point of manufacture** and by **industrial policy applied to production cost**: both act on what is available to buy, rather than on what it costs to buy once it exists.
+The carbon price did useful work at the margin, most visibly in killing coal — where a large price difference met an easy substitute already built. The transformations were delivered by regulation applied at the point of manufacture and by industrial policy applied to production cost: both act on what is available to buy, rather than on what it costs to buy once it exists.
 
 Chapter 22 puts it most sharply. MacKay hunted vampires with a meter and a notebook and recovered 45 watts. A regulation recovered a comparable amount in every household in Europe, and required nothing of anybody at all.
 
-**None of this makes the carbon price a mistake**, and this edition does not argue for abandoning it. It means that the three counter-examples MacKay wrote himself turned out to matter more than the recommendation he led with — and that he gave them second billing.
+None of this makes the carbon price a mistake, and this edition does not argue for abandoning it. It means that the three counter-examples MacKay wrote himself turned out to matter more than the recommendation he led with — and that he gave them second billing.
 
 ### And the personal list, marked
 
 Table 29.3 has held up better than most eighteen-year-old advice, but two entries have moved.
 
-**"Change lights to fluorescent or LED — 4 kWh/d"** has largely been done *for* the reader. Chapter 9 records that the 4 kWh/d MacKay allows for lighting would now be a small fraction of that, and almost none of that was individuals choosing bulbs; it was manufacturers no longer being permitted to sell the alternative.
+"Change lights to fluorescent or LED — 4 kWh/d" has largely been done *for* the reader. Chapter 9 records that the 4 kWh/d MacKay allows for lighting would now be a small fraction of that, and almost none of that was individuals choosing bulbs; it was manufacturers no longer being permitted to sell the alternative.
 
-**"Stop flying — 35 kWh/d"** remains the largest single item on the list and the one least touched by anything. Chapter 5's arithmetic is unchanged, and chapter 5 also records synthetic aviation fuel at about three times the price of kerosene with no downward trend, and no regulation anywhere restricts the number of flights a person may take. **The item that regulation removed from the list was the small one. The big one is still entirely a matter of personal choice**, which is either an argument for individual action or an indictment of everything above, depending on the reader's temperament.
+"Stop flying — 35 kWh/d" remains the largest single item on the list and the one least touched by anything. Chapter 5's arithmetic is unchanged, and chapter 5 also records synthetic aviation fuel at about three times the price of kerosene with no downward trend, and no regulation anywhere restricts the number of flights a person may take. The item that regulation removed from the list was the small one. The big one is still entirely a matter of personal choice, which is either an argument for individual action or an indictment of everything above, depending on the reader's temperament.
 
 ## Notes and further reading
 

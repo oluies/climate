@@ -86,23 +86,23 @@ Going on emotions alone, I would like to live in a country with virtually no car
 
 ### The plan, and what was built
 
-MacKay records the government's announcement of 10 December 2007 that it would permit **33 GW of offshore wind capacity**, delivering about **4.4 kWh/d per person** — a plan the wind industry itself branded "pie in the sky".
+MacKay records the government's announcement of 10 December 2007 that it would permit 33 GW of offshore wind capacity, delivering about 4.4 kWh/d per person — a plan the wind industry itself branded "pie in the sky".
 
-At the end of 2025 the United Kingdom had **17.0 GW** of offshore wind: roughly half the plan, eighteen years later. It generated **52 TWh in 2025, 17.9% of British electricity**, against 48.8 TWh the year before. Per person that is **2.1 kWh/d**.[^ukoffshore]
+At the end of 2025 the United Kingdom had 17.0 GW of offshore wind: roughly half the plan, eighteen years later. It generated 52 TWh in 2025, 17.9% of British electricity, against 48.8 TWh the year before. Per person that is 2.1 kWh/d.[^ukoffshore]
 
-So the derided plan was neither achieved nor absurd. It is about half built and still building. But set it against this chapter's own ceilings and the scale becomes clear: **2.1 kWh/d against a shallow-water potential of 16 and a total offshore potential of 48.** Britain has built something like an eighth of the shallow resource MacKay sized, and one twenty-third of the whole.
+So the derided plan was neither achieved nor absurd. It is about half built and still building. But set it against this chapter's own ceilings and the scale becomes clear: 2.1 kWh/d against a shallow-water potential of 16 and a total offshore potential of 48. Britain has built something like an eighth of the shallow resource MacKay sized, and one twenty-third of the whole.
 
 ### He was right about the area and wrong about the price
 
-His costing was £33 billion for 33 GW, which is about **£1000 per kilowatt**. Fixed-bottom offshore wind now costs roughly **$3500 to $6500 per kilowatt** — call it £2800 to £5200 — so the real figure is **three to five times** his estimate.[^offshorecost]
+His costing was £33 billion for 33 GW, which is about £1000 per kilowatt. Fixed-bottom offshore wind now costs roughly $3500 to $6500 per kilowatt — call it £2800 to £5200 — so the real figure is three to five times his estimate.[^offshorecost]
 
 That is worth putting beside chapter 6. There MacKay was wrong about cost in the other direction, and by a larger factor: solar electricity is roughly a tenth of what he assumed, while offshore wind is three to five times more. The book brackets cost out deliberately and says so; the interesting thing is that when cost did move, it moved unpredictably in both directions and by more than an order of magnitude between the two technologies. Nothing in the physics told you which.
 
 ### The proviso about deep water was right
 
-He put deep offshore on the production stack "with the proviso, as I said before, that wind experts reckon deep offshore wind is prohibitively expensive". Floating wind has since stopped being hypothetical: Scotland hosts **Hywind Scotland** and **Kincardine**, the latter the world's largest floating farm with five 9.5 MW turbines and one of 2 MW, fully operational since 2021.
+He put deep offshore on the production stack "with the proviso, as I said before, that wind experts reckon deep offshore wind is prohibitively expensive". Floating wind has since stopped being hypothetical: Scotland hosts Hywind Scotland and Kincardine, the latter the world's largest floating farm with five 9.5 MW turbines and one of 2 MW, fully operational since 2021.
 
-But floating capex runs **$6000 to $10 000 per kilowatt, roughly £4700 to £7900**, roughly double fixed-bottom. So deep offshore is no longer impossible and is not yet cheap, and his 32 kWh/d entry on the stack remains, eighteen years on, almost entirely unbuilt. The proviso has aged better than the estimate.
+But floating capex runs $6000 to $10 000 per kilowatt, roughly £4700 to £7900, roughly double fixed-bottom. So deep offshore is no longer impossible and is not yet cheap, and his 32 kWh/d entry on the stack remains, eighteen years on, almost entirely unbuilt. The proviso has aged better than the estimate.
 
 ### Britain invented it; China owns it
 
@@ -117,11 +117,11 @@ The other change is one MacKay could not have anticipated, because in 2008 offsh
 | Taiwan | 3.6 |
 | **World** | **91.4** |
 
-Britain still has the largest offshore fleet outside China and the largest in Europe. China has **nearly three times** as much, and more than half the world's total. The industry that this chapter describes as a British frontier is now mostly somewhere else.
+Britain still has the largest offshore fleet outside China and the largest in Europe. China has nearly three times as much, and more than half the world's total. The industry that this chapter describes as a British frontier is now mostly somewhere else.
 
 ### One thing that improved more than he expected
 
-MacKay's turbines have "a capacity of 3 MW but on average they deliver 1 MW" — a load factor of 33%. British offshore projects are now planned around **43%**, and the newest sites do considerably better, as chapter 4 records for Dogger Bank. The machines also stopped falling apart: this chapter's account of Horns Reef, where all eighty turbines were dismantled after eighteen months, and of Kentish Flats replacing a third of its gearboxes in the same period, describes an industry in its infancy that no longer exists.
+MacKay's turbines have "a capacity of 3 MW but on average they deliver 1 MW" — a load factor of 33%. British offshore projects are now planned around 43%, and the newest sites do considerably better, as chapter 4 records for Dogger Bank. The machines also stopped falling apart: this chapter's account of Horns Reef, where all eighty turbines were dismantled after eighteen months, and of Kentish Flats replacing a third of its gearboxes in the same period, describes an industry in its infancy that no longer exists.
 
 None of that changes the area. Chapter 4's section on larger turbines explains why: power per unit area is set by spacing, not by the machine. What the higher load factor buys is more energy from the same 17 GW, not more energy from the same sea.
 

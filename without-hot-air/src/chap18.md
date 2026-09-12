@@ -196,9 +196,9 @@ In Part II I’ll ask, "assuming that we can’t get production from renewables 
 
 ### What actually happened to British consumption
 
-MacKay puts the official United Kingdom average at **125 kWh/d per person** of primary energy, against the 195 kWh/d he builds for a typical affluent individual.
+MacKay puts the official United Kingdom average at 125 kWh/d per person of primary energy, against the 195 kWh/d he builds for a typical affluent individual.
 
-The Energy Institute's series gives British total energy supply as **9.19 EJ in 2008 and 6.29 EJ in 2025**. Across the populations of those years that is a fall from about **114 to 70 kWh per day per person** — roughly **39%**, on a slightly different boundary from the figure MacKay quotes but the same quantity.[^tes]
+The Energy Institute's series gives British total energy supply as 9.19 EJ in 2008 and 6.29 EJ in 2025. Across the populations of those years that is a fall from about 114 to 70 kWh per day per person — roughly 39%, on a slightly different boundary from the figure MacKay quotes but the same quantity.[^tes]
 
 Nothing in this book predicted that. It is the largest single change in the eighteen years, and it happened without anyone living in a cave.
 
@@ -212,11 +212,11 @@ The obvious objection is that Britain simply got poorer. It did not, and the rel
 
 <span class="figurenumber">Figure 18.12.</span> The same paths with only the fossil part counted. It falls further than total energy, because some of what replaced it was low-carbon electricity: Britain drops by 51% here against 43% in figure 18.11. France sits lowest of the rich countries for the reason chapter 24 gives. Even China's fossil path, still rising, rises by less than its total.
 
-So the fall is real decoupling, not impoverishment. **But chapter 15 supplies the half of the explanation that these charts cannot show.** A territorial energy statistic falls when a smelter closes and its output is imported, and it falls exactly as convincingly as when a house is insulated. Britain's steel production is the lowest since the 1930s, two of six refineries have closed since 2019, and the imported share of the national carbon footprint has risen from 34% to about 61%. Some of the downward movement in these charts is efficiency, some is cleaner supply, and some is that the making of things left the country. **The three are indistinguishable on this axis**, which is why chapter 15 goes to the trouble of separating them.
+So the fall is real decoupling, not impoverishment. But chapter 15 supplies the half of the explanation that these charts cannot show. A territorial energy statistic falls when a smelter closes and its output is imported, and it falls exactly as convincingly as when a house is insulated. Britain's steel production is the lowest since the 1930s, two of six refineries have closed since 2019, and the imported share of the national carbon footprint has risen from 34% to about 61%. Some of the downward movement in these charts is efficiency, some is cleaner supply, and some is that the making of things left the country. The three are indistinguishable on this axis, which is why chapter 15 goes to the trouble of separating them.
 
-There is one instrument built for exactly this separation, and chapter L describes it: **ODEX**, the energy-efficiency index of the ODYSSEE-MURE project. It is climate-corrected and, more importantly, it measures *technical* efficiency at sector level rather than energy per unit of output, so a country that closes a smelter does not thereby appear to have become efficient. Across the EU it improved **1.4% a year between 2010 and 2023, 16% in total**, with households, industry and services all near 1.6% a year and accelerating past 2.2% after 2019, while transport lagged at 0.9%.
+There is one instrument built for exactly this separation, and chapter L describes it: ODEX, the energy-efficiency index of the ODYSSEE-MURE project. It is climate-corrected and, more importantly, it measures *technical* efficiency at sector level rather than energy per unit of output, so a country that closes a smelter does not thereby appear to have become efficient. Across the EU it improved 1.4% a year between 2010 and 2023, 16% in total, with households, industry and services all near 1.6% a year and accelerating past 2.2% after 2019, while transport lagged at 0.9%.
 
-Those are real efficiency gains, and they are considerably smaller than the fall in consumption. **A 16% efficiency improvement does not produce a 39% fall in energy use.** The remainder is structure — what a country makes, buys and imports — which is the subject of chapter 15 and not of this book's method.
+Those are real efficiency gains, and they are considerably smaller than the fall in consumption. A 16% efficiency improvement does not produce a 39% fall in energy use. The remainder is structure — what a country makes, buys and imports — which is the subject of chapter 15 and not of this book's method.
 
 ### The red stack, revised
 
@@ -230,9 +230,9 @@ Where this edition has changed a consumption figure, it is because the underlyin
 | 11a Data centres | — | **0.5** | a load that did not exist |
 | 17 Public services | 4.2 | **4.7** | the NHS estate, now metered |
 
-Cars at 40, planes at 30, gadgets at 5 and stuff at 48 plus 12 for transport are unchanged. The total falls from about **192 to about 161 kWh/d** — a reduction of roughly a sixth, achieved almost entirely by two machines: the heat pump and the light-emitting diode.
+Cars at 40, planes at 30, gadgets at 5 and stuff at 48 plus 12 for transport are unchanged. The total falls from about 192 to about 161 kWh/d — a reduction of roughly a sixth, achieved almost entirely by two machines: the heat pump and the light-emitting diode.
 
-Note what that does **not** include. The single largest item, 48 kWh/d for making stuff, is untouched, because chapter 15 finds no evidence it has fallen — only that its carbon has, and that much of its energy is now spent abroad.
+Note what that does not include. The single largest item, 48 kWh/d for making stuff, is untouched, because chapter 15 finds no evidence it has fallen — only that its carbon has, and that much of its energy is now spent abroad.
 
 ### The green stack, against what was built
 
@@ -249,17 +249,17 @@ The production chapters are different in kind, because MacKay's figures there ar
 | 16 Geothermal | 2 | 0.13, in Southampton only |
 | **Total** | **136** | **4.5** |
 
-Britain generates about **3% of the renewable resource this book sizes**. Adding nuclear's 1.44 kWh/d brings all low-carbon electricity to **5.9 kWh/d per person**.
+Britain generates about 3% of the renewable resource this book sizes. Adding nuclear's 1.44 kWh/d brings all low-carbon electricity to 5.9 kWh/d per person.
 
 ### What the two columns mean together
 
 Put beside each other the tables say something MacKay's own conclusion anticipated and this edition can now quantify.
 
-**Consumption fell by more than production rose.** British energy use per person is down about 39%; renewable generation, from a base of almost nothing, has reached about 4.5 kWh/d. The red stack moved further than the green one, and it moved for reasons — efficiency, prices, deindustrialisation — that were not the subject of this book.
+Consumption fell by more than production rose. British energy use per person is down about 39%; renewable generation, from a base of almost nothing, has reached about 4.5 kWh/d. The red stack moved further than the green one, and it moved for reasons — efficiency, prices, deindustrialisation — that were not the subject of this book.
 
-**And the ceilings were never the binding constraint.** Britain has built 3% of the resource that physics permits. The section above sets out what has actually been binding: a price ratio, a queue, a permit, a procurement cycle, a contract expiry. Not one chapter of this revision found a case where Britain had reached a physical limit MacKay identified. Chapter 12's wave machines came closest, and they failed on engineering rather than on resource.
+And the ceilings were never the binding constraint. Britain has built 3% of the resource that physics permits. The section above sets out what has actually been binding: a price ratio, a queue, a permit, a procurement cycle, a contract expiry. Not one chapter of this revision found a case where Britain had reached a physical limit MacKay identified. Chapter 12's wave machines came closest, and they failed on engineering rather than on resource.
 
-MacKay's answer to this chapter's question was that Britain cannot live on its own renewables *the way we currently live*. Eighteen years later the second half of that sentence has done more work than the first: **the way we live changed by a sixth to a third depending on what you count, while the renewables reached a thirtieth of their ceiling.** The arithmetic held. It was the assumption that the arithmetic would be the difficult part that did not.
+MacKay's answer to this chapter's question was that Britain cannot live on its own renewables *the way we currently live*. Eighteen years later the second half of that sentence has done more work than the first: the way we live changed by a sixth to a third depending on what you count, while the renewables reached a thirtieth of their ceiling. The arithmetic held. It was the assumption that the arithmetic would be the difficult part that did not.
 
 ## The constraint moved
 
@@ -267,9 +267,9 @@ MacKay's answer to this chapter's question was that Britain cannot live on its o
 
 In each case the technology worked, the physics held, and something else stopped it.
 
-**A price ratio.** Chapter 7: a heat pump moves three to five times more heat than a boiler makes, and still costs more to run in Britain, because a British household pays about **3.6 times as much for a kilowatt-hour of electricity as for one of gas**. Sweden's ratio is 1.3, and Sweden's heat pumps are everywhere. The physics is identical in both countries.
+**A price ratio.** Chapter 7: a heat pump moves three to five times more heat than a boiler makes, and still costs more to run in Britain, because a British household pays about 3.6 times as much for a kilowatt-hour of electricity as for one of gas. Sweden's ratio is 1.3, and Sweden's heat pumps are everywhere. The physics is identical in both countries.
 
-**A queue.** Chapter 11a: houses in west London could not be connected because data centres had taken the capacity, and a data centre turning a kilowatt-hour into **eighty kronor** of revenue outbids a house that turns it into nothing. No price signal produced that outcome. A connection queue did.
+**A queue.** Chapter 11a: houses in west London could not be connected because data centres had taken the capacity, and a data centre turning a kilowatt-hour into eighty kronor of revenue outbids a house that turns it into nothing. No price signal produced that outcome. A connection queue did.
 
 **A permit.** Chapter 13: spraying from drones cuts herbicide by up to a third, and applying pesticide from a drone is prohibited in Britain under a rule written for crop-dusting aircraft, decades before the machine existed.
 
@@ -277,7 +277,7 @@ In each case the technology worked, the physics held, and something else stopped
 
 **A contract's expiry.** Chapter 28a: Germany is dismantling the subsidy that built its renewables not because anyone concluded it was wrong, but because an EU state-aid approval expires on 31 December 2026.
 
-And the counter-example proves the rule. Chapter 9's light bulb met none of these and completed almost totally inside a decade: a few pounds, screws into the fitting already there, no installer, no survey, no wet system, no cylinder, no permit, no favourable ratio between two fuel prices. **The transitions that finish are the ones that fit the socket already in the wall.**
+And the counter-example proves the rule. Chapter 9's light bulb met none of these and completed almost totally inside a decade: a few pounds, screws into the fitting already there, no installer, no survey, no wet system, no cylinder, no permit, no favourable ratio between two fuel prices. The transitions that finish are the ones that fit the socket already in the wall.
 
 ### What this does to the method
 
@@ -285,7 +285,7 @@ None of this invalidates the arithmetic, and it is important to say so plainly. 
 
 But this chapter asks "can we live on renewables?", and for Britain the binding question has largely stopped being *can we*. Chapter 6's solar was built at a scale MacKay called beyond the bounds of plausibility. Chapter 10's offshore wind reached half the plan he quotes as derided. Chapter 9's lighting is solved. Chapter 7's heat pumps work, and work best in the countries that price electricity sensibly against gas.
 
-**The question that now binds is whether the system will let us, and it is denominated in queues, tariffs, permits and budget cycles rather than in kilowatt-hours.**
+The question that now binds is whether the system will let us, and it is denominated in queues, tariffs, permits and budget cycles rather than in kilowatt-hours.
 
 That is not a criticism of the method. It is a consequence of its success. Once the arithmetic has established what the physics permits — which was this book's purpose, and which it achieved — everything that remains is the everything else. MacKay saw the beginning of it and called it social reality. The years since suggest it has grown large enough to deserve a balance sheet of its own, kept in the same spirit: numbers, not adjectives.
 

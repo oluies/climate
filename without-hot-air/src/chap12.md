@@ -42,27 +42,27 @@ What’s the weight of a Pelamis, and how much steel does it contain? One snake 
 
 ### The three machines
 
-Those three Pelamis units at Aguçadoura, off Portugal, began generating in **July 2008** and were **towed back to dry dock in November 2008**, four months later, with technical problems. They never returned. Babcock & Brown, the infrastructure company behind the project, went into voluntary administration in March 2009.
+Those three Pelamis units at Aguçadoura, off Portugal, began generating in July 2008 and were towed back to dry dock in November 2008, four months later, with technical problems. They never returned. Babcock & Brown, the infrastructure company behind the project, went into voluntary administration in March 2009.
 
-**Pelamis Wave Power itself went into administration in November 2014** and ceased trading; its intellectual property was bought in January 2015 by Wave Energy Scotland, a body created by the Scottish Government for the purpose. **Aquamarine Power**, whose Oyster device was the other great British hope of the period, folded the same year.[^wavefail]
+Pelamis Wave Power itself went into administration in November 2014 and ceased trading; its intellectual property was bought in January 2015 by Wave Energy Scotland, a body created by the Scottish Government for the purpose. Aquamarine Power, whose Oyster device was the other great British hope of the period, folded the same year.[^wavefail]
 
 ### The number that settles it
 
-Global installed wave energy capacity is about **2.3 MW**.
+Global installed wave energy capacity is about 2.3 MW.
 
-The three Pelamis machines MacKay was describing were rated at 750 kW each: **2.25 MW**. Eighteen years later, **the entire world wave industry is the size of the snapshot he took of it.** Ocean energy as a whole runs to roughly 513 MW, but almost all of that is tidal; wave added a fraction of a megawatt a year through the 2020s.
+The three Pelamis machines MacKay was describing were rated at 750 kW each: 2.25 MW. Eighteen years later, the entire world wave industry is the size of the snapshot he took of it. Ocean energy as a whole runs to roughly 513 MW, but almost all of that is tidal; wave added a fraction of a megawatt a year through the 2020s.
 
-For scale, a single turbine at Dogger Bank, described in chapter 10, is 13 to 14.7 MW — **about six times the world's entire wave fleet**.
+For scale, a single turbine at Dogger Bank, described in chapter 10, is 13 to 14.7 MW — about six times the world's entire wave fleet.
 
 ### Why: the machine must survive what it cannot use
 
 The reason is the one MacKay's own quotation hints at. He notes that Pelamis was "designed with survival as the key objective before power capture efficiency" — the designers put survival first, and it still was not enough.
 
-Wave power scales with the square of wave height. A machine sized to harvest a two-metre sea must survive the storm that arrives once a century, and a device with a twenty-year design life is required to withstand a **hundred-year return-period wave**. The load that matters is not even the biggest wave but the breaking one: plunging breakers govern survivability and raise peak loads by **6 to 29%** even when their crests are lower, because the damage is done by the impact mechanism rather than by height.
+Wave power scales with the square of wave height. A machine sized to harvest a two-metre sea must survive the storm that arrives once a century, and a device with a twenty-year design life is required to withstand a hundred-year return-period wave. The load that matters is not even the biggest wave but the breaking one: plunging breakers govern survivability and raise peak loads by 6 to 29% even when their crests are lower, because the damage is done by the impact mechanism rather than by height.
 
-Underneath that sits a mismatch that no amount of engineering removes. Wave energy arrives at about **0.1 Hz with forces of the order of a meganewton** — very slow, very large, and reversing. Electrical generators want the opposite: fast, small, and one-directional. Everything in between is hydraulics, seals and bearings, in salt water, unattended, for decades. That is the thing that breaks, and it is why measured conversion efficiencies end up well below 50% once every step is counted.
+Underneath that sits a mismatch that no amount of engineering removes. Wave energy arrives at about 0.1 Hz with forces of the order of a meganewton — very slow, very large, and reversing. Electrical generators want the opposite: fast, small, and one-directional. Everything in between is hydraulics, seals and bearings, in salt water, unattended, for decades. That is the thing that breaks, and it is why measured conversion efficiencies end up well below 50% once every step is counted.
 
-**A wind turbine has the same problem and solves it by feathering.** Above about 25 m/s it turns its blades edge-on and stops, shedding the load. A wave machine cannot shed the sea. It is in the water, and the water arrives whatever it does.
+A wind turbine has the same problem and solves it by feathering. Above about 25 m/s it turns its blades edge-on and stops, shedding the load. A wave machine cannot shed the sea. It is in the water, and the water arrives whatever it does.
 
 ### And nobody converged
 
@@ -70,13 +70,13 @@ There is a second reason, structural rather than physical, and it explains why e
 
 Wind converged. By about 1990 the industry had settled on the three-bladed upwind horizontal-axis turbine, and everything since has been refinement — which is precisely why chapter 4 can describe a straight line from 1 MW machines to 14 MW ones. Every failure taught everybody.
 
-Wave never converged. Attenuators, point absorbers, oscillating water columns, overtopping devices, bottom-hinged surge flaps: the concepts are not variations on a design but genuinely different machines, so a design load established for one is not reliable for another and each failure teaches only its own developer. The literature calls the result the **wave energy paradox** — too little deployment to generate learning, too little learning to attract investment, and so round again.
+Wave never converged. Attenuators, point absorbers, oscillating water columns, overtopping devices, bottom-hinged surge flaps: the concepts are not variations on a design but genuinely different machines, so a design load established for one is not reliable for another and each failure teaches only its own developer. The literature calls the result the wave energy paradox — too little deployment to generate learning, too little learning to attract investment, and so round again.
 
 ### Was he right?
 
-MacKay's arithmetic gave **4 kWh/d per person** as a deliberately extreme upper bound, requiring wave machines along half of Britain's Atlantic coast, and **1.2 kWh/d** using the developer's own predicted performance. His conclusion was that "while wave power may be useful for small communities on remote islands, I suspect it can't play a significant role in the solution to Britain's sustainable energy problem."
+MacKay's arithmetic gave 4 kWh/d per person as a deliberately extreme upper bound, requiring wave machines along half of Britain's Atlantic coast, and 1.2 kWh/d using the developer's own predicted performance. His conclusion was that "while wave power may be useful for small communities on remote islands, I suspect it can't play a significant role in the solution to Britain's sustainable energy problem."
 
-The figure Britain actually gets from wave power today is **indistinguishable from zero** at the precision this book works in. He was right, and if anything his 1.2 kWh/d was generous.
+The figure Britain actually gets from wave power today is indistinguishable from zero at the precision this book works in. He was right, and if anything his 1.2 kWh/d was generous.
 
 It is not quite dead. Wave Energy Scotland has kept development funded, Sweden's CorPower Ocean and others continue to test, and the oscillating-water-column plant at Mutriku in Spain has been running since 2011. But the honest reading of eighteen years is that this chapter's scepticism was the correct call, and that the reason was not the resource — the Atlantic really does deliver 40 kW per metre — but the machine's inability to stay in the sea.
 
