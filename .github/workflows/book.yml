@@ -6,17 +6,29 @@ on:
       - "without-hot-air/**"
       - "book/**"
       - ".github/workflows/book.yml"
+  # Same paths on a pull request, where the job renders and stops: a broken
+  # chapter or table used to fail here, on main, after the merge.
+  pull_request:
+    paths:
+      - "without-hot-air/**"
+      - "book/**"
+      - ".github/workflows/book.yml"
   workflow_dispatch:
 permissions:
   contents: write
 concurrency:
-  # Shared with main.yml: both publish to gh-pages and a concurrent
-  # push would fail non-fast-forward and lose a deploy silently.
-  group: gh-pages-deploy
-  # Queue, do not cancel: these two workflows deploy different content to the
+  # Deploying runs share one group with main.yml: both publish to gh-pages and
+  # a concurrent push would fail non-fast-forward and lose a deploy silently.
+  # A pull-request run deploys nothing, so it gets a group of its own per
+  # branch and stays out of that queue.
+  group: >-
+    ${{ github.event_name == 'pull_request'
+        && format('book-pr-{0}', github.head_ref) || 'gh-pages-deploy' }}
+  # Queue, do not cancel: book.yml and main.yml deploy different content to the
   # same branch (book to root, site to site/), so cancelling one to run the
-  # other silently drops a deploy - which is what happened to #101.
-  cancel-in-progress: false
+  # other silently drops a deploy - which is what happened to #101. A
+  # pull-request render has nothing to drop, so a new push supersedes it.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -33,6 +45,8 @@ jobs:
       - name: Render
         run: quarto render book
       - name: Deploy to gh-pages
+        # Pull requests stop at the render. Nothing they build is published.
+        if: github.event_name != 'pull_request'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
