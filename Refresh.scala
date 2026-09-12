@@ -2081,6 +2081,97 @@ def chapter11aPeakShare(): Unit = {
           "without-hot-air/Images/fig-dc-peak-share.svg")
 }
 
+// ---- Chapter 4: the Cambridge rooftop, twenty years on ----
+// Figures 4.1a and 4.6a. MacKay's figures 4.1 and 4.6 are the Computer
+// Laboratory's rooftop weather station in 2006, and the station is still
+// there and still publishing: one half-hourly CSV from 30 June 1995 to now.
+// So this is the rare case where a figure can be carried forward on the same
+// instrument at the same address rather than on a substitute.
+//
+// Three things about the source, all of which the chapter's note repeats.
+//
+// The wind column is tenths of a knot, like the temperature column is tenths
+// of a degree. That is not documented; it is inferred, and the inference is
+// checked below against MacKay's own published result - he says the daily
+// mean reached 6 m/s on about 30 days of 2006, and on this reading it is 26.
+// At any other scaling his sentence is nonsense, so the scaling is right.
+//
+// The station moved to the Computer Laboratory roof in 2004 from a lower,
+// more sheltered roof, and the annual means step up by about a metre a second
+// at that point. Only years from 2004 on are comparable with 2006, which is
+// why the second panel is not from the 1990s.
+//
+// And the anemometer died. 2024 is 97% zeros and 2025 and 2026 are 100%, so
+// the last usable year is 2023 - the station's own front page says only that
+// the wind sensor has been wrong "since a power outage on 18 Jan", which
+// understates it by about two years. Even before that the share of zero
+// readings climbs from 8% in 2006 to 18% in 2023, so the later year's mean is
+// depressed by an instrument recording calms that may not be calms. That bias
+// runs downwards, and MacKay's claim is an upper bound, so it cannot rescue
+// the 6 m/s figure - but it does mean the fall from 2.7 to 1.9 m/s is not
+// evidence that Cambridge got less windy, and the chapter says so.
+@main
+def chapter4CambridgeWind(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val raw = dir / "cambridge-weather-raw.csv"      // 26 MB, gitignored, regenerable
+  if (!os.exists(raw)) {
+    println("fetching the station's whole half-hourly record (26 MB)...")
+    os.write.over(raw, requests.get(
+      "https://www.cl.cam.ac.uk/research/dtg/weather/weather-raw.csv",
+      readTimeout = 300000).text())
+  }
+  val knot = 0.514444 / 10                          // tenths of a knot -> m/s
+  val years = Seq("2006", "2023")
+
+  // (year, timestamp, speed) for the two years, and a mean per year for all of
+  // them, which is what shows the 2004 move and the sensor's death.
+  val kept = scala.collection.mutable.ArrayBuffer[(String, String, Double)]()
+  val byYear = scala.collection.mutable.Map[String, (Double, Int, Int)]()
+  for (line <- os.read.lines.stream(raw)) {
+    val f = line.split(",", -1)
+    if (f.length >= 7) {
+      val year = f(0).take(4)
+      f(5).toIntOption.foreach { tenths =>
+        val speed = tenths * knot
+        val (sum, n, zeros) = byYear.getOrElse(year, (0.0, 0, 0))
+        byYear(year) = (sum + speed, n + 1, zeros + (if (speed == 0) 1 else 0))
+        if (years.contains(year)) kept += ((year, f(0), speed))
+      }
+    }
+  }
+  println("year   readings   mean m/s   zero readings")
+  for (y <- byYear.keys.toSeq.sorted) {
+    val (sum, n, zeros) = byYear(y)
+    println(f"$y     $n%6d     ${sum / n}%5.2f     ${zeros * 100.0 / n}%5.1f%%")
+  }
+
+  val out = new StringBuilder; out ++= "year,timestamp,speed_ms\n"
+  for ((y, t, s) <- kept) out ++= f"$y,$t,$s%.2f\n"
+  os.write.over(dir / "cambridge-wind.csv", out.toString)
+  println(f"wrote data-refresh/cambridge-wind.csv (${kept.length}%d half-hourly readings)")
+
+  // Daily means, and MacKay's own test: how many days average 6 m/s or more.
+  for (y <- years) {
+    val days = kept.filter(_._1 == y).groupBy(_._2.take(10)).values
+      .filter(_.length >= 36).map(v => v.map(_._3).sum / v.length).toSeq
+    val half = kept.filter(_._1 == y).map(_._3)
+    val over = days.count(_ >= 6)
+    println(f"$y: ${days.length}%3d days, mean ${days.sum / days.length}%4.2f m/s, " +
+            f"$over%3d days at or above 6 m/s, " +
+            f"${half.count(_ >= 6) * 100.0 / half.length}%4.1f%% of half-hours above 6, " +
+            f"mean of the cube ${half.map(v => v * v * v).sum / half.length}%5.1f m3/s3")
+    if (y == "2006") require(over >= 20 && over <= 35,
+      s"chapter4CambridgeWind: 2006 gives $over days at or above 6 m/s, " +
+      "MacKay's text says about 30 - the wind column's scaling must be wrong")
+  }
+  println("render:")
+  println("  uv run figures/cambridge_wind.py data-refresh/cambridge-wind.csv " +
+          "without-hot-air/Images/fig-cambridge-wind.svg")
+  println("  uv run figures/cambridge_wind_hist.py data-refresh/cambridge-wind.csv " +
+          "without-hot-air/Images/fig-cambridge-wind-hist.svg")
+}
+
 // ---- Chapter 11a: what Finland has already committed ----
 // Figure 11a.2. Hand-entered like chapter11aPeakShare, but with a better
 // provenance than that one: five of the seven bars are in documents this

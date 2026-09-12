@@ -17,6 +17,17 @@ Last updated **12 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 12 September 2026              | 4            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figures 4.1a and 4.6a: the same rooftop, seventeen years on"}  |
+|                                |              | Figures 4.1a and 4.6a carry MacKay's Cambridge wind year forward on the same instrument at the same address: the Computer Laboratory     |
+|                                |              | rooftop station, still publishing the half-hourly file he used. The recompute finds his own result first — 26 days with a daily mean of  |
+|                                |              | 6 m/s or more in 2006, against the about 30 in his text — which is the check that the undocumented wind column is being read in tenths   |
+|                                |              | of a knot, as he must have read it. The update comes with a warning: the anemometer failed, 2024 is 97% zeros and 2025 and 2026 entirely |
+|                                |              | so, which leaves 2023 as the last usable year, and its share of dead-calm readings had already doubled since 2006. The fall from 2.7 to  |
+|                                |              | 1.9 m/s is therefore the instrument as much as the weather, and only the direction survives — which is enough, because the bias runs     |
+|                                |              | downwards and the chapter's 6 m/s is an upper bound. The cube is the quantity that matters: averaged over 2006's half-hours it is 86     |
+|                                |              | m³/s³ against 216 for a steady 6 m/s, so the rooftop in the windier year saw about 40% of the wind power the assumption implies.         |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 12 September 2026              | A            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure A.14a: the battery improved, the car got heavier"}      |
 |                                |              | Figure A.14a recomputes MacKay's electric-car range model from his own assumptions — it returns the numbers he printed, 179 km where his |
 |                                |              | text says 180 and 538 km for 500 kg of 2008 lithium — and then moves the two inputs that have changed since. A 2025 pack at 160 Wh/kg    |
