@@ -17,6 +17,16 @@ Last updated **13 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 13 September 2026              | Q            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure Q.3: the same pathways, asked about Europe"}            |
+|                                |              | The regional files of the scenario database arrived, so chapter Q can ask its question of a continent, and Europe answers differently    |
+|                                |              | from the world. In the median 1.5 °C pathway Europe goes from 90 to 69 kWh/d per person of primary energy by 2050 against the world's 55 |
+|                                |              | to 43; coal falls 98%, oil 81% and gas 68%; solar is multiplied by nine and wind by seven, against the world's 32 and 16, because Europe |
+|                                |              | starts higher. Nuclear is the one carrier where the two point opposite ways: it roughly doubles for the world and falls 58% for Europe — |
+|                                |              | 91% on the tighter European Union cut of the same file. The spread there runs from 0.1 to 13.8 exajoules, and the chapter says why a     |
+|                                |              | number assembled before 2022 should be read as a dated input rather than a finding. For Britain and Sweden the answer is that the        |
+|                                |              | database has nothing: it holds 48 scenarios for them and none were sorted into a temperature category.                                   |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 13 September 2026              | Q            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure Q.2: what the pathways actually build"}                 |
 |                                |              | The question the chapter had to leave open — how much solar, how much nuclear — is answered from the scenario database itself. In the    |
 |                                |              | 1.5 °C category the median pathway multiplies solar by 32 and wind by 16 between 2020 and 2050, roughly doubles both nuclear and         |

@@ -10,3 +10,5 @@ data-refresh/rdw/
 
 # 345 MB of AR6 scenario timeseries, downloaded by hand from the IIASA explorer
 data-refresh/ar6-world-v1.1.csv
+data-refresh/ar6-r10-v1.1.csv
+data-refresh/ar6-iso3-v1.1.csv
