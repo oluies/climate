@@ -17,6 +17,17 @@ Last updated **13 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 13 September 2026              | P            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Chapter P: the book that starts where this one stops"}         |
+|                                |              | A new chapter, and a short one: it points at Thomas Murphy's Energy and Human Ambitions on a Finite Planet, free from the University of  |
+|                                |              | California and licensed for reuse, and reproduces the argument of its first chapter. Take the 2.3% a year that industrial energy use has |
+|                                |              | actually managed — a factor of ten a century — and extrapolate: in 400 years humanity uses every scrap of sunlight the planet receives,  |
+|                                |              | in 1,400 the entire output of the Sun, in 2,500 the galaxy, in 5,000 the visible universe. The point is not the timescales but that the  |
+|                                |              | growth rate we treat as normal runs out of universe. Figure P.1 is the limit that arrives first, recomputed here from the equilibrium    |
+|                                |              | chapter 1 already uses: today's 18 TW is 0.14 W/m² against 961 of absorbed sunlight, but grown by ten a century it boils the oceans in   |
+|                                |              | 417 years, whatever the energy source, because heat is the end of every use. The recompute lands on four of Murphy's five published rows |
+|                                |              | and disagrees with the fifth, which the note sets out.                                                                                   |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 13 September 2026              | B            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure B.1 is a table again, and B.7 is legible"}              |
 |                                |              | Figure B.1, the Beaufort scale in miles per hour, km/h and m/s, had been flattened by the 2008 conversion into a column of 57 loose      |
 |                                |              | numbers with a caption under it. It is a table again, with MacKay's own values — including the one row that carries no Beaufort force,   |
@@ -277,6 +288,7 @@ Each of these says so at the top, and none of them is MacKay's writing.
 | [**M** *Energy return on investment*](chapters/chapM.md) | The question chapter 3 asks and then declines to answer properly. | 2 August 2026 |
 | [**N** *Peak oil, peak gas, peak uranium*](chapters/chapN.md) | Chapter 23's Jevons calculation carried forward to the fuels it now matters for. | 2 August 2026 |
 | [**O** *The hydrogen ladder*](chapters/chapO.md) | Which uses of hydrogen are worth the electricity they cost, ranked. | 9 August 2026 |
+| [**P** *A book that starts where this one stops*](chapters/chapP.md) | Where MacKay's method runs out: growth, and the waste heat that stops it. Points to Tom Murphy's free textbook. | 13 September 2026 |
 
 ## Licence
 

@@ -2964,3 +2964,54 @@ def appendixBCModelCurves(): Unit = {
   println("  uv run figures/plane_thrust.py data-refresh/plane-thrust.csv " +
           "without-hot-air/Images/fig-c5-thrust.svg")
 }
+
+// ---- Chapter P: what waste heat alone does to a growing civilisation ----
+// Figure P.1. Thomas Murphy's chapter 1 adds a growing human power source to
+// the sunlight the Earth already absorbs and solves the same equilibrium
+// equation this book uses in chapter 1: in goes 0.707 x 1360 W/m2 over the
+// planet's projected disk, out goes sigma T^4 over its whole surface.
+//
+// Today's 18 TW is 0.14 W/m2 over that disk. At 2.3% a year - a factor of ten
+// a century, which is what the last few centuries have actually done - that
+// term grows until it dwarfs the Sun's.
+//
+// His table 1.4 is the check. It prints 288.1 K at a hundred years, 288.9 at
+// two hundred, 296.9 at three, 344 at four, and 373 - water boiling - at 417.
+// The recompute reproduces all of those but the 400-year row, where the same
+// equation gives 352 K rather than his 344; the chapter's note says so.
+@main
+def chapterPWasteHeat(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val solar = 0.707 * 1360.0      // absorbed, per square metre of projected disk
+  val sigma = 5.67e-8
+  val greenhouse = 33.0           // the observed 288 K less the bare 255 K
+  val today = 0.14                // 18 TW over the projected disk, in W/m2
+
+  // Murphy works in one-century chunks at "a factor of ten each century",
+  // which is what he calls 2.3% a year; compounding 1.023 exactly would give
+  // 9.73 per century and would not reproduce his table.
+  def waste(years: Double) = today * math.pow(10, years / 100)
+  def temperature(years: Double) =
+    math.pow((solar + waste(years)) / (4 * sigma), 0.25) + greenhouse
+
+  val out = new StringBuilder; out ++= "years,waste_wm2,temperature_k\n"
+  for (y <- 0 to 500 by 5)
+    out ++= f"$y,${waste(y)}%.4f,${temperature(y)}%.2f\n"
+  os.write.over(dir / "waste-heat.csv", out.toString)
+  println("wrote data-refresh/waste-heat.csv")
+
+  println("against Murphy's table 1.4:")
+  val his = Seq((100.0, 288.1), (200.0, 288.9), (300.0, 296.9), (400.0, 344.0), (417.0, 373.0))
+  for ((y, k) <- his)
+    println(f"  $y%5.0f years: ${waste(y)}%9.1f W/m2, ${temperature(y)}%6.1f K " +
+            f"(his table says $k%.1f)")
+  // Four of his five rows, including the boiling one, must come back.
+  for ((y, k) <- his if y != 400)
+    require(math.abs(temperature(y) - k) < 1.5,
+      f"chapterPWasteHeat: at $y years the equation gives ${temperature(y)}%.1f K, his table $k%.1f")
+  println(f"  water boils at ${(1 to 600).find(y => temperature(y) >= 373).get}%d years")
+  println("render:")
+  println("  uv run figures/waste_heat.py data-refresh/waste-heat.csv " +
+          "without-hot-air/Images/fig-p1-waste-heat.svg")
+}
