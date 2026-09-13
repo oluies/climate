@@ -22,7 +22,7 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
-            --no-progress --max-retries 2 --accept 200,429
+            --no-progress --max-retries 2 --accept 200,202,429
             book/index.qmd without-hot-air/src/chap-value-of-renewables.md
             without-hot-air/src/author.md without-hot-air/src/acknowledgments.md
             without-hot-air/src/chap06.md without-hot-air/src/chapM.md without-hot-air/src/chapN.md
@@ -31,4 +31,5 @@ jobs:
             without-hot-air/src/chap31.md
             without-hot-air/src/chapL.md
             without-hot-air/src/chapO.md
+            without-hot-air/src/chapP.md
           fail: false
