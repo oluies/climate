@@ -8,5 +8,5 @@ data-refresh/cairngorm-*.txt
 # RDW API responses, refetched by chapterAPowerVsTopSpeed
 data-refresh/rdw/
 
-# 360 MB of AR6 scenario timeseries, downloaded by hand from the IIASA explorer
+# 345 MB of AR6 scenario timeseries, downloaded by hand from the IIASA explorer
 data-refresh/ar6-world-v1.1.csv
