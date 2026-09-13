@@ -3194,6 +3194,59 @@ def chapterQPathways(): Unit = {
           "without-hot-air/Images/fig-q1-ar6-pathways.svg")
 }
 
+// ---- Chapter Q: the scenario database, one region at a time ----
+// Figures Q.2, Q.3 and Q.4 all ask the same question of the AR6 Scenarios
+// Database - where does a carrier start, where does the median pathway put it,
+// and how far apart are the pathways about it - so they share one row type and
+// one query, parameterised by which timeseries view and which region.
+//
+// A pathway is counted for a variable only if it reports that variable in all
+// three printed years, so the pathway count beside a row describes every number
+// in that row rather than the last column of it. Variables still differ from
+// each other - not every pathway splits out solar and wind - which is why the
+// chapter reads the spread rather than adding the medians up.
+case class MixRow(category: String, variable: String, pathways: Int,
+                  y2020: Double, y2030: Double, y2050: Double,
+                  p5: Double, p95: Double) {
+  def multiple = if (y2020 > 0) y2050 / y2020 else 0.0
+  def fallPercent = (1 - multiple) * 100
+}
+
+def gatherMix(st: java.sql.Statement, view: String, region: String,
+              variables: Seq[String]): Seq[MixRow] = {
+  val inList = variables.map(v => s"'${v.replace("'", "''")}'").mkString(",")
+  val rs = st.executeQuery(s"""
+    select m.category, d.Variable, count(*) as n,
+           median(d."2020") as y2020, median(d."2030") as y2030, median(d."2050") as y2050,
+           quantile_cont(d."2050", 0.05) as p5, quantile_cont(d."2050", 0.95) as p95
+    from $view d join meta m
+      on m.model = replace(d.Model, ',', ' ') and m.scenario = replace(d.Scenario, ',', ' ')
+    where d.Region = '$region' and d.Variable in ($inList) and m.category in ('C1', 'C3')
+      and d."2020" is not null and d."2030" is not null and d."2050" is not null
+    group by 1, 2 order by 1, 2""")
+  val rows = scala.collection.mutable.ArrayBuffer[MixRow]()
+  while (rs.next())
+    rows += MixRow(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getDouble(4),
+                   rs.getDouble(5), rs.getDouble(6), rs.getDouble(7), rs.getDouble(8))
+  rows.toSeq
+}
+
+def mixRow(rows: Seq[MixRow], cat: String, variable: String, where: String): MixRow =
+  rows.find(r => r.category == cat && r.variable == variable)
+    .getOrElse(sys.error(s"$where: no rows for $cat $variable"))
+
+// Every number chapter Q transcribes out of these tables is pinned here, in
+// the style of chapterQPathways' printedLadder: a refresh that moves one fails
+// the task rather than leaving the chapter and a committed SVG quietly wrong.
+def requireClose(what: String, got: Double, printed: Double, tolerance: Double): Unit =
+  require(math.abs(got - printed) <= tolerance,
+    f"$what is now $got%.2f; chapter Q prints $printed%.2f, and the tolerance is $tolerance%.2f")
+
+val PRIMARY_ENERGY = Seq("Primary Energy", "Primary Energy|Solar", "Primary Energy|Wind",
+  "Primary Energy|Nuclear", "Primary Energy|Hydro", "Primary Energy|Biomass",
+  "Primary Energy|Coal", "Primary Energy|Oil", "Primary Energy|Gas",
+  "Primary Energy|Non-Biomass Renewables")
+
 // ---- Chapter Q: what the pathways actually build ----
 // Figure Q.2. The report says its categories contain "different shares of
 // nuclear, biomass, non-biomass renewables, and fossil CCS across pathways"
@@ -3209,12 +3262,6 @@ def chapterQPathways(): Unit = {
 // metadata extract, whose names have had commas replaced by spaces, so the
 // same replacement is made here.
 //
-// Only pathways that report a carrier in all three printed years are counted,
-// so the pathway count beside a row describes every number in that row rather
-// than the last column of it. Carriers still differ from each other - not
-// every pathway splits out solar and wind - which is why the chapter reads
-// the spread rather than adding the medians up.
-//
 // The check is the report's own published fossil declines: C1's medians for
 // coal, oil and gas in 2050 against 2019 are about 95%, 60% and 45%, and C3's
 // about 85%, 30% and 15%. If the join or the aggregation were wrong, those
@@ -3228,11 +3275,6 @@ def chapterQEnergyMix(): Unit = {
     "chapterQEnergyMix: put AR6_Scenarios_Database_World_v1.1.csv at " +
     "data-refresh/ar6-world-v1.1.csv (345 MB, from the IIASA Scenario Explorer)")
   val meta = dir / "ar6-scenarios-meta.csv"
-  val carriers = Seq("Primary Energy", "Primary Energy|Solar", "Primary Energy|Wind",
-    "Primary Energy|Nuclear", "Primary Energy|Hydro", "Primary Energy|Biomass",
-    "Primary Energy|Coal", "Primary Energy|Oil", "Primary Energy|Gas",
-    "Primary Energy|Non-Biomass Renewables")
-  val inList = carriers.map(v => s"'$v'").mkString(",")
 
   // Primary energy is in exajoules a year; the book wants kWh per day per
   // person, and the 2050 population is the same UN projection figure Q.1 uses.
@@ -3248,27 +3290,17 @@ def chapterQEnergyMix(): Unit = {
     val st = c.createStatement()
     st.execute(s"create view db as select * from read_csv_auto('${big}', header=true, sample_size=-1)")
     st.execute(s"create view meta as select * from read_csv_auto('${meta}', header=true)")
-    val rs = st.executeQuery(s"""
-      select m.category, d.Variable, count(*) as n,
-             median(d."2020") as y2020, median(d."2030") as y2030, median(d."2050") as y2050,
-             quantile_cont(d."2050", 0.05) as p5, quantile_cont(d."2050", 0.95) as p95
-      from db d join meta m
-        on m.model = replace(d.Model, ',', ' ') and m.scenario = replace(d.Scenario, ',', ' ')
-      where d.Region = 'World' and d.Variable in ($inList) and m.category in ('C1', 'C3')
-        and d."2020" is not null and d."2030" is not null and d."2050" is not null
-      group by 1, 2 order by 1, 2""")
-    val rows = scala.collection.mutable.ArrayBuffer[(String, String, Int, Double, Double, Double, Double, Double)]()
-    while (rs.next())
-      rows += ((rs.getString(1), rs.getString(2), rs.getInt(3), rs.getDouble(4),
-                rs.getDouble(5), rs.getDouble(6), rs.getDouble(7), rs.getDouble(8)))
+    val rows = gatherMix(st, "db", "World", PRIMARY_ENERGY)
     println(f"${"cat"}%-4s ${"carrier"}%-26s ${"n"}%4s ${"2020"}%8s ${"2030"}%8s ${"2050"}%8s " +
             f"${"x2020"}%7s ${"kWh/d"}%7s   2050 spread")
-    for ((cat, v, n, y20, y30, y50, p5, p95) <- rows) {
-      val name = v.stripPrefix("Primary Energy|").replace("Primary Energy", "all sources")
-      out ++= f"$cat,$name,$n,$y20%.1f,$y30%.1f,$y50%.1f,$p5%.1f,$p95%.1f," +
-              f"${perPerson(y20, pop2020)}%.2f,${perPerson(y50, pop2050)}%.2f\n"
-      println(f"$cat%-4s $name%-26s $n%4d $y20%8.1f $y30%8.1f $y50%8.1f " +
-              f"${if (y20 > 0) y50 / y20 else 0.0}%7.1f ${perPerson(y50, pop2050)}%7.1f   $p5%.0f to $p95%.0f EJ")
+    for (r <- rows) {
+      val name = r.variable.stripPrefix("Primary Energy|").replace("Primary Energy", "all sources")
+      out ++= f"${r.category},$name,${r.pathways},${r.y2020}%.1f,${r.y2030}%.1f,${r.y2050}%.1f," +
+              f"${r.p5}%.1f,${r.p95}%.1f," +
+              f"${perPerson(r.y2020, pop2020)}%.2f,${perPerson(r.y2050, pop2050)}%.2f\n"
+      println(f"${r.category}%-4s $name%-26s ${r.pathways}%4d ${r.y2020}%8.1f ${r.y2030}%8.1f " +
+              f"${r.y2050}%8.1f ${r.multiple}%7.1f ${perPerson(r.y2050, pop2050)}%7.1f   " +
+              f"${r.p5}%.0f to ${r.p95}%.0f EJ")
     }
     // The report's own numbers, as the check on the join, run before the
     // derived table is written: a bad join must not leave a bad file behind
@@ -3278,15 +3310,24 @@ def chapterQEnergyMix(): Unit = {
     require(rows.nonEmpty, "chapterQEnergyMix: the join matched nothing - " +
       "do the model and scenario names in the timeseries file match the metadata extract?")
     for (((cat, fuel), expected) <- printed.toSeq.sortBy(_._1)) {
-      val r = rows.find(x => x._1 == cat && x._2 == s"Primary Energy|$fuel")
-        .getOrElse(sys.error(s"chapterQEnergyMix: no rows for $cat Primary Energy|$fuel"))
-      require(r._3 > 50 && r._4 > 0,
-        f"chapterQEnergyMix: $cat $fuel has ${r._3}%d pathways and ${r._4}%.1f EJ in 2020, which cannot be right")
-      val fall = (1 - r._6 / r._4) * 100
-      println(f"  check $cat $fuel%-5s falls ${fall}%4.0f%% by 2050; the report prints $expected%.0f%%")
-      require(math.abs(fall - expected) <= 8,
-        f"chapterQEnergyMix: $cat $fuel falls ${fall}%.0f%%, the report prints $expected%.0f%%")
+      val r = mixRow(rows, cat, s"Primary Energy|$fuel", "chapterQEnergyMix")
+      require(r.pathways > 50 && r.y2020 > 0,
+        f"chapterQEnergyMix: $cat $fuel has ${r.pathways}%d pathways and ${r.y2020}%.1f EJ in 2020, which cannot be right")
+      println(f"  check $cat $fuel%-5s falls ${r.fallPercent}%4.0f%% by 2050; the report prints $expected%.0f%%")
+      require(math.abs(r.fallPercent - expected) <= 8,
+        f"chapterQEnergyMix: $cat $fuel falls ${r.fallPercent}%.0f%%, the report prints $expected%.0f%%")
     }
+    // And the figures chapter Q prints in the book's own units, which the
+    // report does not publish and so nothing else would catch.
+    val world = mixRow(rows, "C1", "Primary Energy", "chapterQEnergyMix")
+    requireClose("chapterQEnergyMix: the C1 world total in 2050",
+                 perPerson(world.y2050, pop2050), 42.7, 1.0)
+    requireClose("chapterQEnergyMix: the C1 world total in 2020",
+                 perPerson(world.y2020, pop2020), 55.4, 1.0)
+    for ((carrier, printedMultiple) <- Seq("Solar" -> 32.0, "Wind" -> 16.0, "Nuclear" -> 2.1))
+      requireClose(s"chapterQEnergyMix: C1 $carrier in 2050 against 2020",
+                   mixRow(rows, "C1", s"Primary Energy|$carrier", "chapterQEnergyMix").multiple,
+                   printedMultiple, printedMultiple * 0.1)
     os.write.over(dir / "ar6-energy-mix.csv", out.toString)
     println("wrote data-refresh/ar6-energy-mix.csv")
   }
@@ -3361,11 +3402,12 @@ def chapterQMeta(): Unit = {
   }
 }
 
-// ---- Chapter Q: what the pathways build in Europe ----
-// Figure Q.3 and the Europe section. The same question as chapterQEnergyMix,
-// asked of one region rather than the world, and it comes back with a
-// different answer: world nuclear roughly doubles by 2050 in the median 1.5 C
-// pathway, and European nuclear falls by more than half.
+// ---- Chapter Q: what the pathways build in Europe, and ask of Europeans ----
+// Figures Q.3 and Q.4. The same questions as chapterQEnergyMix, asked of one
+// region rather than the world, and they come back with different answers:
+// world nuclear roughly doubles by 2050 in the median 1.5 C pathway and
+// European nuclear falls by more than half; and what separates C1 from C3 in
+// Europe is mostly how much energy is used, not what builds it.
 //
 // Two files are read, and neither is in this repository. The R10 regional
 // timeseries (1.2 GB) goes at data-refresh/ar6-r10-v1.1.csv and is the source
@@ -3382,139 +3424,213 @@ def chapterQMeta(): Unit = {
 //
 // The checks are that the region is the Europe it claims to be - about 547
 // million people in 2020, which is Europe without the former Soviet Union -
-// that its share of world primary energy in 2020 is about a ninth, and that
-// the nuclear direction the chapter prints is the direction the file gives.
+// that its share of world primary energy in 2020 is about a ninth, and then
+// every figure the chapter transcribes out of the two tables this writes.
 @main
 def chapterQEurope(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
   val dir = os.pwd / "data-refresh"
   val r10 = dir / "ar6-r10-v1.1.csv"
   val iso3 = dir / "ar6-iso3-v1.1.csv"
+  val worldMix = dir / "ar6-energy-mix.csv"
   require(os.exists(r10),
     "chapterQEurope: put AR6_Scenarios_Database_R10_regions_v1.1.csv at " +
     "data-refresh/ar6-r10-v1.1.csv (1.2 GB, from the IIASA Scenario Explorer)")
   require(os.exists(iso3),
     "chapterQEurope: put AR6_Scenarios_Database_ISO3_v1.1.csv at " +
     "data-refresh/ar6-iso3-v1.1.csv (1.1 GB, from the IIASA Scenario Explorer)")
+  require(os.exists(worldMix),
+    "chapterQEurope: data-refresh/ar6-energy-mix.csv is missing - run chapterQEnergyMix first, " +
+    "since Europe's share of world primary energy is checked against it")
   val meta = dir / "ar6-scenarios-meta.csv"
-  val carriers = Seq("Primary Energy", "Primary Energy|Solar", "Primary Energy|Wind",
-    "Primary Energy|Nuclear", "Primary Energy|Hydro", "Primary Energy|Biomass",
-    "Primary Energy|Coal", "Primary Energy|Oil", "Primary Energy|Gas",
-    "Primary Energy|Non-Biomass Renewables")
-  val inList = (carriers :+ "Population").map(v => s"'$v'").mkString(",")
+  // Final energy by sector and the generating plant behind it: figure Q.4's
+  // side of the question, which is what the pathways ask of a European rather
+  // than what they build for one.
+  val demand = Seq("Final Energy", "Final Energy|Electricity", "Final Energy|Transportation",
+    "Final Energy|Residential and Commercial", "Final Energy|Industry",
+    "Capacity|Electricity|Wind", "Capacity|Electricity|Solar", "Capacity|Electricity|Nuclear")
   def perPerson(ej: Double, millions: Double) = ej * 1e18 / 3.6e6 / (millions * 1e6) / 365
 
   val out = new StringBuilder
   out ++= "region,category,carrier,pathways,ej_2020,ej_2030,ej_2050," +
           "ej_2050_p5,ej_2050_p95,kwh_per_day_2020,kwh_per_day_2050\n"
+  val change = new StringBuilder
+  change ++= "category,variable,unit,pathways,v_2020,v_2030,v_2050," +
+             "per_person_2020,per_person_2030,per_person_2050\n"
   withConn { c =>
     val st = c.createStatement()
     st.execute(s"create view r10 as select * from read_csv_auto('${r10}', header=true, sample_size=-1)")
     st.execute(s"create view iso as select * from read_csv_auto('${iso3}', header=true, sample_size=-1)")
     st.execute(s"create view meta as select * from read_csv_auto('${meta}', header=true)")
-    // One query shape, asked of two files: R10EUROPE for the chapter's
-    // numbers and the ISO3 file's own EU aggregate as a second opinion.
-    def gather(view: String, region: String) = {
-      val rs = st.executeQuery(s"""
-        select m.category, d.Variable, count(*) as n,
-               median(d."2020") as y2020, median(d."2030") as y2030, median(d."2050") as y2050,
-               quantile_cont(d."2050", 0.05) as p5, quantile_cont(d."2050", 0.95) as p95
-        from $view d join meta m
-          on m.model = replace(d.Model, ',', ' ') and m.scenario = replace(d.Scenario, ',', ' ')
-        where d.Region = '$region' and d.Variable in ($inList) and m.category in ('C1', 'C3')
-          and d."2020" is not null and d."2030" is not null and d."2050" is not null
-        group by 1, 2 order by 1, 2""")
-      val rows = scala.collection.mutable.ArrayBuffer[(String, String, Int, Double, Double, Double, Double, Double)]()
-      while (rs.next())
-        rows += ((rs.getString(1), rs.getString(2), rs.getInt(3), rs.getDouble(4),
-                  rs.getDouble(5), rs.getDouble(6), rs.getDouble(7), rs.getDouble(8)))
-      rows.toSeq
-    }
-    val europe = gather("r10", "R10EUROPE")
+    val europe = gatherMix(st, "r10", "R10EUROPE", PRIMARY_ENERGY :+ "Population")
     require(europe.nonEmpty, "chapterQEurope: the join to R10EUROPE matched nothing - " +
       "do the model and scenario names in the regional file match the metadata extract?")
-    def find(rows: Seq[(String, String, Int, Double, Double, Double, Double, Double)],
-             cat: String, v: String) =
-      rows.find(r => r._1 == cat && r._2 == v)
-        .getOrElse(sys.error(s"chapterQEurope: no rows for $cat $v"))
+    def eu1(cat: String, v: String) = mixRow(europe, cat, v, "chapterQEurope")
 
     // The region has to be the Europe it claims to be before anything else in
     // here means much: the United Nations put Europe without the former
     // Soviet republics at about 547 million people in 2020.
-    val pop = Map("C1" -> find(europe, "C1", "Population"), "C3" -> find(europe, "C3", "Population"))
+    val pop = Map("C1" -> eu1("C1", "Population"), "C3" -> eu1("C3", "Population"))
     for ((cat, p) <- pop.toSeq.sortBy(_._1)) {
-      println(f"$cat population: ${p._4}%.0f million in 2020, ${p._6}%.0f million in 2050 (${p._3} pathways)")
-      require(p._4 > 500 && p._4 < 600,
-        f"chapterQEurope: R10EUROPE has ${p._4}%.0f million people in 2020; Europe without the " +
+      println(f"$cat population: ${p.y2020}%.0f million in 2020, ${p.y2050}%.0f million in 2050 (${p.pathways} pathways)")
+      require(p.y2020 > 500 && p.y2020 < 600,
+        f"chapterQEurope: R10EUROPE has ${p.y2020}%.0f million people in 2020; Europe without the " +
         "former Soviet Union is about 547 million, so this is not the region it should be")
     }
 
     println(f"${"cat"}%-4s ${"carrier"}%-26s ${"n"}%4s ${"2020"}%8s ${"2030"}%8s ${"2050"}%8s " +
             f"${"x2020"}%7s ${"kWh/d"}%7s   2050 spread")
-    for ((cat, v, n, y20, y30, y50, p5, p95) <- europe if v != "Population") {
-      val name = v.stripPrefix("Primary Energy|").replace("Primary Energy", "all sources")
-      val (d20, d50) = (perPerson(y20, pop(cat)._4), perPerson(y50, pop(cat)._6))
-      out ++= f"Europe,$cat,$name,$n,$y20%.2f,$y30%.2f,$y50%.2f,$p5%.2f,$p95%.2f,$d20%.2f,$d50%.2f\n"
-      println(f"$cat%-4s $name%-26s $n%4d $y20%8.2f $y30%8.2f $y50%8.2f " +
-              f"${if (y20 > 0) y50 / y20 else 0.0}%7.1f $d50%7.1f   $p5%.1f to $p95%.1f EJ")
+    for (r <- europe if r.variable != "Population") {
+      val name = r.variable.stripPrefix("Primary Energy|").replace("Primary Energy", "all sources")
+      val (d20, d50) = (perPerson(r.y2020, pop(r.category).y2020), perPerson(r.y2050, pop(r.category).y2050))
+      out ++= f"Europe,${r.category},$name,${r.pathways},${r.y2020}%.2f,${r.y2030}%.2f,${r.y2050}%.2f," +
+              f"${r.p5}%.2f,${r.p95}%.2f,$d20%.2f,$d50%.2f\n"
+      println(f"${r.category}%-4s $name%-26s ${r.pathways}%4d ${r.y2020}%8.2f ${r.y2030}%8.2f " +
+              f"${r.y2050}%8.2f ${r.multiple}%7.1f $d50%7.1f   ${r.p5}%.1f to ${r.p95}%.1f EJ")
     }
 
-    // A ninth of the world's primary energy, which is what Europe without the
-    // former Soviet Union actually uses. If the join had picked up the wrong
-    // scenarios this would not land near it.
-    val worldC1 = os.read.lines(dir / "ar6-energy-mix.csv").drop(1).map(_.split(","))
-      .find(f => f(0) == "C1" && f(1) == "all sources").map(_(3).toDouble).get
-    val share = find(europe, "C1", "Primary Energy")._4 / worldC1 * 100
+    // About a ninth of the world's primary energy, which is what Europe
+    // without the former Soviet Union actually uses. If the join had picked up
+    // the wrong scenarios this would not land near it. The world table is read
+    // by column name, not position, so a column added to it cannot silently
+    // turn this into a comparison against something else.
+    val worldLines = os.read.lines(worldMix)
+    val head = worldLines.head.split(",").zipWithIndex.toMap
+    val worldC1 = worldLines.tail.map(_.split(","))
+      .find(f => f(head("category")) == "C1" && f(head("carrier")) == "all sources")
+      .map(f => f(head("ej_2020")).toDouble)
+      .getOrElse(sys.error("chapterQEurope: no C1 'all sources' row in ar6-energy-mix.csv"))
+    val share = eu1("C1", "Primary Energy").y2020 / worldC1 * 100
     println(f"  check Europe is ${share}%.1f%% of world primary energy in 2020")
-    require(share > 9 && share < 14,
-      f"chapterQEurope: R10EUROPE is ${share}%.1f%% of world primary energy in 2020, which is not a ninth")
+    require(share > 10 && share < 13,
+      f"chapterQEurope: R10EUROPE is ${share}%.1f%% of world primary energy in 2020, which is not about a ninth")
 
     // The chapter's headline: nuclear is the one carrier that goes the other
     // way from the world's. Both cuts of Europe have to agree about that.
-    val eu = gather("iso", "EU")
+    val eu = gatherMix(st, "iso", "EU", PRIMARY_ENERGY ++ demand :+ "Population")
     require(eu.nonEmpty, "chapterQEurope: the join to the ISO3 file's EU aggregate matched nothing")
-    for ((label, rows) <- Seq("R10EUROPE" -> europe, "EU" -> eu)) {
-      val nuc = find(rows, "C1", "Primary Energy|Nuclear")
-      val fall = (1 - nuc._6 / nuc._4) * 100
-      println(f"  check $label%-9s C1 nuclear ${nuc._4}%.2f EJ in 2020 to ${nuc._6}%.2f in 2050, down ${fall}%.0f%%")
-      require(fall > 30,
-        f"chapterQEurope: $label C1 nuclear now moves ${-fall}%+.0f%% by 2050; chapter Q says " +
-        "European nuclear falls while world nuclear roughly doubles")
+    for ((label, rows, printedFall) <- Seq(("R10EUROPE", europe, 58.0), ("EU", eu, 91.0))) {
+      val nuc = mixRow(rows, "C1", "Primary Energy|Nuclear", "chapterQEurope")
+      println(f"  check $label%-9s C1 nuclear ${nuc.y2020}%.2f EJ in 2020 to ${nuc.y2050}%.2f in 2050, down ${nuc.fallPercent}%.0f%%")
+      requireClose(s"chapterQEurope: $label C1 nuclear's fall by 2050, in per cent",
+                   nuc.fallPercent, printedFall, 8.0)
     }
+
     // The second opinion is kept in the same file, on the same footing, so a
     // reader can see how much of Europe's answer depends on where its edge is
     // drawn. Its population comes from the ISO3 file's own EU rows.
-    val euPop = Map("C1" -> find(eu, "C1", "Population"), "C3" -> find(eu, "C3", "Population"))
-    for ((cat, v, n, y20, y30, y50, p5, p95) <- eu if v != "Population") {
-      val name = v.stripPrefix("Primary Energy|").replace("Primary Energy", "all sources")
-      out ++= f"EU,$cat,$name,$n,$y20%.2f,$y30%.2f,$y50%.2f,$p5%.2f,$p95%.2f," +
-              f"${perPerson(y20, euPop(cat)._4)}%.2f,${perPerson(y50, euPop(cat)._6)}%.2f\n"
+    val euPop = Map("C1" -> mixRow(eu, "C1", "Population", "chapterQEurope"),
+                    "C3" -> mixRow(eu, "C3", "Population", "chapterQEurope"))
+    for (r <- eu if r.variable.startsWith("Primary Energy")) {
+      val name = r.variable.stripPrefix("Primary Energy|").replace("Primary Energy", "all sources")
+      out ++= f"EU,${r.category},$name,${r.pathways},${r.y2020}%.2f,${r.y2030}%.2f,${r.y2050}%.2f," +
+              f"${r.p5}%.2f,${r.p95}%.2f,${perPerson(r.y2020, euPop(r.category).y2020)}%.2f," +
+              f"${perPerson(r.y2050, euPop(r.category).y2050)}%.2f\n"
+    }
+
+    // Figure Q.3's numbers, as chapter Q prints them.
+    for (cat <- Seq("C1", "C3")) {
+      val all = eu1(cat, "Primary Energy")
+      val printedTotals = Map("C1" -> (89.7, 69.2), "C3" -> (89.5, 73.7))
+      requireClose(s"chapterQEurope: Europe's $cat primary energy per person in 2020, kWh/d",
+                   perPerson(all.y2020, pop(cat).y2020), printedTotals(cat)._1, 2.0)
+      requireClose(s"chapterQEurope: Europe's $cat primary energy per person in 2050, kWh/d",
+                   perPerson(all.y2050, pop(cat).y2050), printedTotals(cat)._2, 2.0)
+    }
+    val printedC1 = Map("Coal" -> -98.0, "Oil" -> -81.0, "Gas" -> -68.0,
+                        "Solar" -> 9.3, "Wind" -> 7.0, "Biomass" -> 1.6, "Hydro" -> 1.1)
+    for ((carrier, printed) <- printedC1.toSeq.sortBy(_._1)) {
+      val r = eu1("C1", s"Primary Energy|$carrier")
+      // Growth is printed as a multiple and decline as a percentage, so each
+      // is checked in the unit the chapter and the figure actually use.
+      if (printed < 0) requireClose(s"chapterQEurope: Europe's C1 $carrier fall by 2050, in per cent",
+                                    -r.fallPercent, printed, 6.0)
+      else requireClose(s"chapterQEurope: Europe's C1 $carrier in 2050 against 2020",
+                        r.multiple, printed, printed * 0.12)
+    }
+    val nucSpread = eu1("C1", "Primary Energy|Nuclear")
+    requireClose("chapterQEurope: the low end of Europe's C1 nuclear spread in 2050, EJ",
+                 nucSpread.p5, 0.1, 0.3)
+    requireClose("chapterQEurope: the high end of Europe's C1 nuclear spread in 2050, EJ",
+                 nucSpread.p95, 13.8, 1.5)
+
+    // Figure Q.4: what the pathways ask of a European, and the plant behind it.
+    val ch = gatherMix(st, "r10", "R10EUROPE", demand)
+    require(ch.nonEmpty, "chapterQEurope: R10EUROPE has no final-energy or capacity rows")
+    println(f"\n${"cat"}%-4s ${"variable"}%-40s ${"n"}%4s ${"2020"}%9s ${"2030"}%9s ${"2050"}%9s   per person")
+    for (r <- ch) {
+      val unit = if (r.variable.startsWith("Capacity")) "GW" else "EJ/yr"
+      val pp = (y: Double, p: Double) =>
+        if (unit == "GW") y * 1000 / p          // watts per person
+        else perPerson(y, p)                     // kWh per day per person
+      val (a, b, d) = (pp(r.y2020, pop(r.category).y2020), pp(r.y2030, pop(r.category).y2030),
+                       pp(r.y2050, pop(r.category).y2050))
+      change ++= f"${r.category},${r.variable},$unit,${r.pathways},${r.y2020}%.2f,${r.y2030}%.2f," +
+                 f"${r.y2050}%.2f,$a%.2f,$b%.2f,$d%.2f\n"
+      println(f"${r.category}%-4s ${r.variable}%-40s ${r.pathways}%4d ${r.y2020}%9.2f ${r.y2030}%9.2f " +
+              f"${r.y2050}%9.2f   $a%6.1f to $d%6.1f ${if (unit == "GW") "W" else "kWh/d"}")
+    }
+    def chRow(cat: String, v: String) = mixRow(ch, cat, v, "chapterQEurope")
+    // The chapter's demand-side sentences, pinned the same way.
+    requireClose("chapterQEurope: Europe's C1 final energy per person in 2020, kWh/d",
+                 perPerson(chRow("C1", "Final Energy").y2020, pop("C1").y2020), 71.4, 2.0)
+    requireClose("chapterQEurope: Europe's C1 final energy per person in 2050, kWh/d",
+                 perPerson(chRow("C1", "Final Energy").y2050, pop("C1").y2050), 49.7, 2.0)
+    val elecShare = (cat: String, year: String) => {
+      val (fe, el) = (chRow(cat, "Final Energy"), chRow(cat, "Final Energy|Electricity"))
+      val pick = (r: MixRow) => if (year == "2020") r.y2020 else r.y2050
+      pick(el) / pick(fe) * 100
+    }
+    requireClose("chapterQEurope: electricity's share of Europe's C1 final energy in 2020, per cent",
+                 elecShare("C1", "2020"), 21.0, 2.0)
+    requireClose("chapterQEurope: electricity's share of Europe's C1 final energy in 2050, per cent",
+                 elecShare("C1", "2050"), 59.0, 3.0)
+    // The sharpest claim in the section: the two categories are three times
+    // further apart in energy used than in the plant that supplies it.
+    val feCut = (cat: String) => chRow(cat, "Final Energy").fallPercent
+    println(f"  check final energy falls ${feCut("C1")}%.0f%% in C1 and ${feCut("C3")}%.0f%% in C3 by 2050")
+    requireClose("chapterQEurope: the fall in Europe's C1 final energy by 2050, per cent",
+                 feCut("C1"), 27.0, 4.0)
+    requireClose("chapterQEurope: the fall in Europe's C3 final energy by 2050, per cent",
+                 feCut("C3"), 9.0, 4.0)
+    for ((plant, printed) <- Seq("Wind" -> 18.0, "Solar" -> 28.0)) {
+      val (c1, c3) = (chRow("C1", s"Capacity|Electricity|$plant"), chRow("C3", s"Capacity|Electricity|$plant"))
+      val apart = (c1.y2050 / c3.y2050 - 1) * 100
+      println(f"  check C1 builds ${apart}%.0f%% more $plant capacity than C3 by 2050")
+      requireClose(s"chapterQEurope: how much more $plant capacity C1 builds than C3, per cent",
+                   apart, printed, 8.0)
     }
 
     // The negative result the chapter reports: the ISO3 file has Britain and
     // Sweden in it, but none of those scenarios were vetted and sorted into a
     // temperature category, so there is no C1 or C3 answer for either.
     val rs = st.executeQuery("""
-      select d.Region, count(*) as n
+      select count(*) as n
       from iso d join meta m
         on m.model = replace(d.Model, ',', ' ') and m.scenario = replace(d.Scenario, ',', ' ')
-      where d.Region in ('GBR', 'SWE') group by 1""")
-    var categorised = 0
-    while (rs.next()) categorised += rs.getInt(2)
-    println(s"  check Britain and Sweden have $categorised rows in the vetted set")
-    require(categorised == 0,
-      s"chapterQEurope: Britain and Sweden now have $categorised categorised rows; " +
+      where d.Region in ('GBR', 'SWE')""")
+    rs.next()
+    println(s"  check Britain and Sweden have ${rs.getInt(1)} rows in the vetted set")
+    require(rs.getInt(1) == 0,
+      s"chapterQEurope: Britain and Sweden now have ${rs.getInt(1)} categorised rows; " +
       "chapter Q says the database has none and would have to be rewritten")
     val rs2 = st.executeQuery("""
       select count(distinct Model || '|' || Scenario) as n from iso
       where Region in ('GBR', 'SWE') and Variable = 'Primary Energy'""")
     rs2.next()
-    println(s"  (the file does hold ${rs2.getInt(1)} uncategorised British and Swedish scenarios)")
+    println(s"  check the file holds ${rs2.getInt(1)} uncategorised British and Swedish scenarios")
+    require(rs2.getInt(1) == 48,
+      s"chapterQEurope: the file now holds ${rs2.getInt(1)} British and Swedish scenarios; " +
+      "chapter Q and book/index.qmd both print 48")
 
     os.write.over(dir / "ar6-europe-mix.csv", out.toString)
     println("wrote data-refresh/ar6-europe-mix.csv")
+    os.write.over(dir / "ar6-europe-change.csv", change.toString)
+    println("wrote data-refresh/ar6-europe-change.csv")
   }
   println("render:")
   println("  uv run figures/ar6_europe_mix.py data-refresh/ar6-europe-mix.csv " +
           "data-refresh/ar6-energy-mix.csv without-hot-air/Images/fig-q3-ar6-europe.svg")
+  println("  uv run figures/ar6_europe_change.py data-refresh/ar6-europe-change.csv " +
+          "data-refresh/europe-build-rates.csv without-hot-air/Images/fig-q4-ar6-europe-change.svg")
 }
