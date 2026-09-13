@@ -70,7 +70,7 @@ Last updated **13 September 2026**. The complete history is in the
 |                                |              | table again. Figure C.5, the thrust a plane needs against its speed, is recomputed from the formula above it and the numbers its own     |
 |                                |              | caption prints — 319 tonnes, wingspan 64.4 m, drag coefficient 0.03, frontal area 180 m², air at 0.41 kg/m³ — with the area of the       |
 |                                |              | sausage of air the wings throw down taken as the square of the wingspan, which figure C.7's caption gives. The minimum lands at 226 m/s  |
-|                                |              | and 113 kN against the 220 m/s his caption states, and the note records that the 130 kN the chapter derives three paragraphs later uses  |
+|                                |              | and 113 kN against the 220 m/s his caption states, and the note records that the 130 kN the chapter derives later in the appendix   uses  |
 |                                |              | table C.6's fully-laden 363 tonnes instead. And figure C.7, the frontal view of a 747, had a yellow field baked in behind it where the   |
 |                                |              | drawing's transparency used to be; the background is white again.                                                                        |
 |                                |              | :::                                                                                                                                      |

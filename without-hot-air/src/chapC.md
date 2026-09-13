@@ -134,7 +134,7 @@ if the plane turned its fuel’s power into drag power and lift power perfectly 
 
 ![Thrust against speed for a jumbo jet. Ordinary drag rises as the square of speed, lift-related drag falls as the square of it, and their sum has a minimum of 113 kN at 226 m/s.](/img/without-hot-air/fig-c5-thrust.svg)
 
-<span class="figurenumber">Figure C.5.</span> The force required to keep a plane moving, as a function of its speed *v*, is the sum of an ordinary drag force <sup>1</sup>⁄<sub>2</sub>*c*<sub>d</sub>*ρA*<sub>p</sub>*v*<sup>2</sup> – which increases with speed – and the lift-related force (also known as the induced drag) <sup>1</sup>/<sub>2</sub>(*mg*)<sup>2</sup>/(*ρv*<sup>2</sup>*A*<sub>s</sub>) – which decreases with speed. There is an ideal speed, *v*<span class="smallfont2"><sub>optimal</sub></span>, at which the force required is minimized. The force is an energy per distance, so minimizing the force also minimizes the fuel per distance. To optimize the fuel efficiency, fly at *v*<span class="smallfont2"><sub>optimal</sub></span>. This graph shows our cartoon’s estimate of the thrust required, in kilonewtons, for a Boeing 747 [^1] of mass 319 t, wingspan 64.4 m, drag coefficient 0.03, and frontal area 180 m<sup>2</sup>, travelling in air of density *ρ* = 0.41 kg/m<sup>3</sup> (the density at a height of 10 km), as a function of its speed *v* in m/s. Our model has an optimal speed *v*<span class="smallfont2"><sub>optimal</sub></span> = 220 m/s (540 mph). For a cartoon based on sausages, this is a good match to real life\! *Redrawn in the 2026 revision from the formula above and the numbers in this caption — 319 t, 64.4 m of wingspan, 0.03, 180 m<sup>2</sup> and air at 0.41 kg/m<sup>3</sup> — with the sausage area taken as the square of the wingspan, which figure C.7's caption gives. The curves are MacKay's. They put the minimum at 226 m/s and 113 kN, against the 220 m/s this caption states; the 130 kN the chapter derives three paragraphs later comes from table C.6's fully-laden 363 t rather than from this figure's 319 t.*
+<span class="figurenumber">Figure C.5.</span> The force required to keep a plane moving, as a function of its speed *v*, is the sum of an ordinary drag force <sup>1</sup>⁄<sub>2</sub>*c*<sub>d</sub>*ρA*<sub>p</sub>*v*<sup>2</sup> – which increases with speed – and the lift-related force (also known as the induced drag) <sup>1</sup>/<sub>2</sub>(*mg*)<sup>2</sup>/(*ρv*<sup>2</sup>*A*<sub>s</sub>) – which decreases with speed. There is an ideal speed, *v*<span class="smallfont2"><sub>optimal</sub></span>, at which the force required is minimized. The force is an energy per distance, so minimizing the force also minimizes the fuel per distance. To optimize the fuel efficiency, fly at *v*<span class="smallfont2"><sub>optimal</sub></span>. This graph shows our cartoon’s estimate of the thrust required, in kilonewtons, for a Boeing 747 [^1] of mass 319 t, wingspan 64.4 m, drag coefficient 0.03, and frontal area 180 m<sup>2</sup>, travelling in air of density *ρ* = 0.41 kg/m<sup>3</sup> (the density at a height of 10 km), as a function of its speed *v* in m/s. Our model has an optimal speed *v*<span class="smallfont2"><sub>optimal</sub></span> = 220 m/s (540 mph). For a cartoon based on sausages, this is a good match to real life\! *Redrawn in the 2026 revision from the formula above and the numbers in this caption — 319 t, 64.4 m of wingspan, 0.03, 180 m<sup>2</sup> and air at 0.41 kg/m<sup>3</sup> — with the sausage area taken as the square of the wingspan, which figure C.7's caption gives. The curves are MacKay's. They put the minimum at 226 m/s and 113 kN, against the 220 m/s this caption states; the 130 kN the chapter derives later in this appendix comes from table C.6's fully-laden 363 t rather than from this figure's 319 t.*
 
 Real jet engines have an efficiency of about *ε* = 1/3, [^2] so the energy-per-distance of a plane travelling at speed *v* is
 
@@ -179,7 +179,7 @@ $$
 \end{matrix}
 $$
 
-| BIRD | | 747 | Albatross |
+| Bird | | 747 | Albatross |
 |---|---|---|---|
 | Designer | | Boeing | natural selection |
 | Mass (fully-laden) | *m* | 363 000 kg | 8 kg |
@@ -193,7 +193,7 @@ $$
 
 ![Frontal view of a Boeing 747 in silhouette, used to estimate the frontal area of the plane.](/img/without-hot-air/fig-c7-747-front.png)
 
-<span class="figurenumber">Figure C.7.</span> *The 2008 conversion had baked a yellow field in behind this drawing, which is white again here.* Frontal view of a Boeing 747, used to estimate the frontal area *A*<span class="smallfont2"><sub>p</sub></span> of the plane. The square has area *A*<span class="smallfont2"><sub>s</sub></span> (the square of the wingspan).
+<span class="figurenumber">Figure C.7.</span> Frontal view of a Boeing 747, used to estimate the frontal area *A*<span class="smallfont2"><sub>p</sub></span> of the plane. The square has area *A*<span class="smallfont2"><sub>s</sub></span> (the square of the wingspan). *The 2008 conversion had baked a yellow field in behind this drawing; it is white again here.*
 
 |      |  |
 | -------------- | -- |

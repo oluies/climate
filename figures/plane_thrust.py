@@ -31,7 +31,7 @@ ax.annotate(f"optimum {best[0]:.0f} m/s, {best[3]:.0f} kN",
             fontsize=9, color=INK,
             arrowprops=dict(arrowstyle="->", color=MUTED, lw=0.9))
 ax.set_xlim(100, 400)
-ax.set_ylim(0, 260)
+ax.set_ylim(0, max(r[3] for r in rows) * 1.04)   # the left branch runs high; do not clip it
 ax.set_xlabel("Speed, m/s", fontsize=10.5)
 ax.set_ylabel("Thrust, kN", fontsize=10.5)
 ax.grid(color=GRID, lw=0.8)
