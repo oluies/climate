@@ -3,6 +3,7 @@ project:
   output-dir: _book
   resources:
     - assets/tes-percapita.parquet
+    - assets/chart-marks.json
 
 book:
   title: "Sustainable Energy — Without the Hot Air"

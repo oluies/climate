@@ -3015,3 +3015,66 @@ def chapterPWasteHeat(): Unit = {
   println("  uv run figures/waste_heat.py data-refresh/waste-heat.csv " +
           "without-hot-air/Images/fig-p1-waste-heat.svg")
 }
+
+// ---- Charts: the marks on the two translation charts ----
+// MacKay's printed charts carry marks for 2004 and 1990. The interactive
+// versions carry those and today's as well, and today's are computed here
+// rather than typed in: energy per person from the same Energy Institute
+// series that chapter L's explorer uses, and CO2 per person from the Our
+// World in Data file the emissions figures are drawn from.
+//
+// The output is a small JSON the charts page fetches, so that a refresh of
+// the data moves the marks without anyone editing the page.
+@main
+def chartsMarks(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val out = os.pwd / "book" / "assets" / "chart-marks.json"
+  val energyFile = os.pwd / "book" / "assets" / "tes-percapita.parquet"
+  val co2File = os.pwd / "data-refresh" / "owid-co2-per-capita.csv"
+  require(os.exists(energyFile) && os.exists(co2File),
+    "chartsMarks: needs tes-percapita.parquet and owid-co2-per-capita.csv")
+
+  val wanted = Seq("US" -> "United States", "Sweden" -> "Sweden", "China" -> "China",
+                   "United Kingdom" -> "United Kingdom", "World" -> "World", "India" -> "India")
+  val energy = withConn { c =>
+    val year = {
+      val rs = c.createStatement().executeQuery(
+        s"select max(year) from read_parquet('${energyFile}')")
+      rs.next(); rs.getInt(1)
+    }
+    val rows = scala.collection.mutable.LinkedHashMap[String, Double]()
+    for ((key, label) <- wanted) {
+      val st = c.prepareStatement(
+        s"select kwh_per_day from read_parquet('${energyFile}') where region = ? and year = ?")
+      st.setString(1, key); st.setInt(2, year)
+      val rs = st.executeQuery()
+      if (rs.next()) rows(label) = rs.getDouble(1)
+    }
+    (year, rows)
+  }
+  println(s"energy per person, ${energy._1}, kWh/d:")
+  for ((k, v) <- energy._2) println(f"  $k%-16s $v%6.1f")
+
+  // CO2 per person: the latest year the file has for every country wanted.
+  val co2rows = os.read.lines(co2File).drop(1).map(_.split(",", -1))
+    .filter(f => f.length >= 4 && wanted.map(_._2).contains(f(0)))
+  val co2Year = wanted.map(_._2).map(c => co2rows.filter(_(0) == c).map(_(2).toInt).max).min
+  val co2 = wanted.map(_._2).map(c =>
+    c -> co2rows.find(f => f(0) == c && f(2).toInt == co2Year).map(_(3).toDouble).getOrElse(0.0))
+  println(s"CO2 per person, $co2Year, tonnes:")
+  for ((k, v) <- co2) println(f"  $k%-16s $v%6.2f")
+  require(co2.forall(_._2 > 0), "chartsMarks: a country is missing a CO2 value")
+
+  val q = (s: String) => "\"" + s + "\""
+  val json = new StringBuilder
+  json ++= "{\n"
+  json ++= s"  ${q("energyYear")}: ${energy._1},\n  ${q("co2Year")}: $co2Year,\n"
+  json ++= s"  ${q("energy")}: {" +
+    energy._2.map { case (k, v) => f"${q(k)}: $v%.1f" }.mkString(", ") + "},\n"
+  json ++= s"  ${q("co2")}: {" +
+    co2.map { case (k, v) => f"${q(k)}: $v%.2f" }.mkString(", ") + "}\n"
+  json ++= "}\n"
+  os.write.over(out, json.toString)
+  println(s"wrote book/assets/chart-marks.json")
+  println(f"  scales must reach ${energy._2.values.max}%.0f kWh/d/p and ${co2.map(_._2).max}%.1f tCO2/y/p")
+}
