@@ -72,9 +72,12 @@ for ax, cat in zip(axes, ("C1", "C3")):
 axes[0].plot([], [], "o", color=START, ms=5, label="2020")
 axes[0].plot([], [], "o", color=GROWS, ms=6, label="2050, median across pathways")
 axes[0].plot([], [], lw=5, alpha=0.22, color=GROWS, label="2050, 5th to 95th percentile")
-# Below the panel, not on top of the gas and oil rows.
-axes[0].legend(frameon=False, fontsize=9, loc="upper left", ncol=3,
-               bbox_to_anchor=(0, -0.15), handletextpad=0.5, columnspacing=1.8)
+# Below both panels and centred on the figure. Anchoring to axes[0] put the
+# three-column row wider than the left panel, so its last entry sat under the
+# right panel as if it belonged to it.
+fig.legend(*axes[0].get_legend_handles_labels(), frameon=False, fontsize=9, ncol=3,
+           loc="upper center", bbox_to_anchor=(0.5, 0.045), handletextpad=0.5,
+           columnspacing=1.8)
 fig.suptitle("The pathways agree about coal and disagree about almost everything else",
              x=0.055, ha="left", fontsize=13, fontweight="bold", color=INK)
 axes[0].annotate("Medians across the pathways in each category, from the AR6 Scenarios Database. The shaded bar is how far apart those pathways\n"

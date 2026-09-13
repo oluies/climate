@@ -33,9 +33,18 @@ ROWS = [("Final Energy", "All final energy"),
 data = {}
 for r in csv.DictReader(open(sys.argv[1])):
     data[(r["category"], r["variable"])] = r
+# The file holds two wind rows, Europe and the EU alone. Name the one meant for
+# each technology rather than trusting the row order: the EU figure is 15.1 GW
+# against Europe's 19.1, and silently swapping them would move the chapter's
+# "about two-thirds of the rate" without any error anywhere.
+WANT_AREA = {"Wind": "Europe", "Solar": "EU-27"}
+rows = list(csv.DictReader(open(sys.argv[2])))
 built = {}
-for r in csv.DictReader(open(sys.argv[2])):
-    built.setdefault(r["technology"], r)     # first row per technology is the widest area
+for tech, area in WANT_AREA.items():
+    match = [r for r in rows if r["technology"] == tech and r["area"] == area]
+    if len(match) != 1:
+        raise SystemExit(f"europe-build-rates.csv: want exactly one {tech} row for {area}, found {len(match)}")
+    built[tech] = match[0]
 
 fig, (ax, bx) = plt.subplots(1, 2, figsize=(11.4, 4.6),
                              gridspec_kw={"width_ratios": [1.35, 1.1]})
@@ -101,13 +110,14 @@ for a in (ax, bx):
         a.spines[s].set_color("#c9c9c4")
     a.tick_params(length=0, labelsize=9.5)
 
-fig.suptitle("In Europe the two categories differ more in demand than in machinery",
+fig.suptitle("The 2 °C pathways clean up supply and leave demand nearly alone",
              x=0.055, ha="left", fontsize=13, fontweight="bold", color=INK)
-ax.annotate("Medians across the AR6 pathways for R10EUROPE, each divided by the population the pathway itself carries. The rows are separate medians, so the\n"
-            "sectors do not sum to the total. Final energy falls 27% by 2050 in the 1.5 °C category and 9% in the 2 °C one, while the wind and solar capacity the two\n"
-            "build differs by only 18% and 28% — and European buildings in the 2 °C pathways use almost as much in 2050 as they do now. Right: the average rate\n"
-            "the 1.5 °C median implies, against 19.1 GW of wind built in Europe and 65.1 GW of solar built in the EU during 2025, as reported by WindEurope and\n"
-            "SolarPower Europe. Both real figures cover areas slightly different from R10EUROPE, and neither counts the plant that has to be replaced as it ages.",
+ax.annotate("Medians across the AR6 pathways for R10EUROPE, each divided by the population the pathway itself carries. The rows are separate medians, so the sectors do not\n"
+            "sum to the total. Final energy per person falls 30% by 2050 in the 1.5 °C category and 15% in the 2 °C one; in 2050 itself a European in the 1.5 °C pathways\n"
+            "uses 17% less than one in the 2 °C pathways and has a quarter more wind and a third more solar. Buildings in the 2 °C pathways go from 27 kWh/d per person to\n"
+            "26 in thirty years. Right: the average rate the 1.5 °C median implies, against 19.1 GW of wind built in Europe and 65.1 GW of solar built in the EU during\n"
+            "2025, as reported by WindEurope and SolarPower Europe. Both real figures cover areas slightly different from R10EUROPE, and neither counts the plant that has\n"
+            "to be replaced as it ages.",
             xy=(0, -0.30), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
 fig.savefig(sys.argv[3], format="svg", bbox_inches="tight")
 if len(sys.argv) > 4:
