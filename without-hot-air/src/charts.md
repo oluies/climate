@@ -2,7 +2,7 @@
 
 MacKay's two translation charts are nomograms: several scales side by side, all of them linear in the same underlying quantity, so that one horizontal line drawn across them reads the same amount in every unit at once. On paper you lay a ruler across. Here you drag the line.
 
-*Added in the 2026 revision: the charts below are interactive. MacKay's printed originals follow each one, unchanged.*
+*Added in the 2026 revision: the charts below are interactive, and they carry today's numbers as well as his. MacKay's printed originals follow each one, unchanged. His scales stopped where his own marks needed them to — 125 kWh/d per person on the power chart, 11 tonnes of CO<sub>2</sub> a year on the carbon one — and both are extended here, because an American now uses 206 kWh/d and emits 14.2 tonnes.*
 
 ## Power translation chart
 
@@ -64,40 +64,52 @@ body.quarto-dark .nomo-tick{stroke:#3a3a3a}
 // also what makes this cheap to compute rather than to draw.
 const CHARTS = {
   power: {
-    // base unit: kWh per day per person, with 60 million people to a "UK"
-    base: {max: 125, step: 5},
+    // base unit: kWh per day per person, with 60 million people to a "UK".
+    // MacKay's printed chart stops at 125, which fitted the UK of 2004; the
+    // scale here runs to 210 so that today's American can be marked on it.
+    base: {max: 210},
     scales: [
-      {name: "kWh/d/p", factor: 1, step: 10, decimals: 1},
-      {name: "GW / UK", factor: 2.5, step: 25, decimals: 1},
-      {name: "TWh/y / UK", factor: 2.5 * 8.76, step: 250, decimals: 0},
-      {name: "Mtoe/y / UK", factor: 2.5 * 8.76 / 11.63, step: 25, decimals: 1},
+      {name: "kWh/d/p", factor: 1, step: 25, decimals: 1},
+      {name: "GW / UK", factor: 2.5, step: 50, decimals: 1},
+      {name: "TWh/y / UK", factor: 2.5 * 8.76, step: 500, decimals: 0},
+      {name: "Mtoe/y / UK", factor: 2.5 * 8.76 / 11.63, step: 50, decimals: 1},
     ],
     presets: [
       ["UK total, 2004", 122], ["UK electricity fuel input, 2004", 47],
       ["UK electricity, 2004", 18.3], ["UK nuclear, 2004", 4.6],
-      ["USA today, all energy", 250 * 0.4], ["Europe today, all energy", 125],
     ],
-    hint: "Drag the line, type in any box, or take one of MacKay's own marks. " +
-          "The first four marks are read off his printed chart.",
+    // filled in from book/assets/chart-marks.json, with these as the fallback
+    live: {key: "energy", year: 2025, label: y => `, ${y}`, values:
+      {"United States": 205.6, "Sweden": 118.2, "China": 87.2,
+       "United Kingdom": 68.9, "World": 55.5, "India": 20.3}},
+    hint: "Drag the line, type in any box, or take one of the marks. The 2004 " +
+          "marks are read off MacKay's printed chart; the rest are primary " +
+          "energy per person from the series behind chapter L's figure L.1.",
   },
   carbon: {
     // base unit: tonnes of CO2 per year per person
-    base: {max: 11, step: 0.5},
+    // his chart stops at 11 tonnes, which fitted the UK of 1990; 15 is enough
+    // for today's American.
+    base: {max: 15},
     scales: [
-      {name: "kWh/d/p", factor: 1 / (0.250 * 365 / 1000), step: 10, decimals: 1},
+      {name: "kWh/d/p", factor: 1 / (0.250 * 365 / 1000), step: 20, decimals: 1},
       {name: "kWh(e)/d/p", factor: 1 / (0.445 * 365 / 1000), step: 10, decimals: 1},
       {name: "tCO₂/y/p", factor: 1, step: 1, decimals: 2},
       {name: "MtCO₂/y / UK", factor: 60, step: 100, decimals: 0},
       {name: "GtCO₂/y / World", factor: 6, step: 10, decimals: 1},
-      {name: "GtC/y / World", factor: 6 * 12 / 44, step: 2, decimals: 2},
+      {name: "GtC/y / World", factor: 6 * 12 / 44, step: 5, decimals: 2},
     ],
     presets: [
       ["UK 1990, 600 MtCO₂", 10], ["60% cut on 1990", 4],
       ["80% cut on 1990", 2], ["90% cut on 1990", 1],
       ["UK electricity, 20 kWh(e)/d", 20 * 0.445 * 365 / 1000],
     ],
-    hint: "Drag the line, type in any box, or take one of the targets. " +
-          "A 60% cut is measured on the UK's 1990 emissions, as MacKay's chart measures it.",
+    live: {key: "co2", year: 2024, label: y => `, ${y}`, values:
+      {"United States": 14.20, "China": 8.66, "World": 4.73,
+       "United Kingdom": 4.53, "Sweden": 3.59, "India": 2.20}},
+    hint: "Drag the line, type in any box, or take one of the marks. The targets " +
+          "are measured on the UK's 1990 emissions, as MacKay's chart measures " +
+          "them; the countries are CO₂ per person from this edition's own data.",
   },
 };
 const W = 820, H = 420, TOP = 34, BOTTOM = 42, PAD = 60;
@@ -163,7 +175,7 @@ function build(node, spec) {
     return input;
   });
 
-  let value = spec.presets[0][1], raf = 0;
+  let value = spec.presets[0][1], raf = 0, arrive = 0;
   function draw(skip) {
     const py = y(value);
     line.setAttribute("y1", py); line.setAttribute("y2", py);
@@ -183,7 +195,7 @@ function build(node, spec) {
   // Presets ease into place rather than jumping, so the eye can follow which
   // way every scale moved.
   function glide(target) {
-    cancelAnimationFrame(raf);
+    cancelAnimationFrame(raf); clearTimeout(arrive);
     const from = value, t0 = performance.now(), ms = 550;
     const step = now => {
       const k = Math.min(1, (now - t0) / ms);
@@ -191,6 +203,9 @@ function build(node, spec) {
       if (k < 1) raf = requestAnimationFrame(step);
     };
     raf = requestAnimationFrame(step);
+    // A background tab gets no animation frames, and a mark that never
+    // arrives is worse than one that arrives without the animation.
+    arrive = setTimeout(() => { cancelAnimationFrame(raf); set(target); }, ms + 50);
   }
   spec.presets.forEach(([name, v]) => {
     const b = document.createElement("button");
@@ -213,9 +228,30 @@ function build(node, spec) {
   draw();
 }
 
-document.querySelectorAll(".nomogram").forEach((node, i) => {
-  const spec = CHARTS[node.dataset.chart];
-  if (spec) { spec.id = `nomo-${i}`; build(node, spec); }
+// Today's marks come from book/assets/chart-marks.json, which a data task
+// writes from the same series the chapters use. The values compiled into the
+// page are the fallback, so the charts still work opened from a file.
+async function marks() {
+  try {
+    const url = new URL("../assets/chart-marks.json", document.baseURI).href;
+    const r = await fetch(url);
+    if (r.ok) return await r.json();
+  } catch (e) { /* offline or opened from disk: keep the built-in values */ }
+  return null;
+}
+marks().then(data => {
+  for (const spec of Object.values(CHARTS)) {
+    const live = spec.live;
+    if (!live) continue;
+    const values = (data && data[live.key]) || live.values;
+    const year = (data && data[live.key === "co2" ? "co2Year" : "energyYear"]) || live.year;
+    for (const [name, v] of Object.entries(values))
+      spec.presets.push([`${name}${year ? live.label(year) : ""}`, v]);
+  }
+  document.querySelectorAll(".nomogram").forEach((node, i) => {
+    const spec = CHARTS[node.dataset.chart];
+    if (spec) { spec.id = `nomo-${i}`; build(node, spec); }
+  });
 });
 </script>
 ```

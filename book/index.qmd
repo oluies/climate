@@ -17,6 +17,17 @@ Last updated **13 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 13 September 2026              | Charts       | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Today's numbers on the translation charts"}                    |
+|                                |              | The interactive charts gain marks for the present, and the scales are extended to hold them: MacKay's power chart stopped at 125 kWh/d   |
+|                                |              | per person, which fitted the Britain of 2004, and his carbon chart at 11 tonnes of CO₂ a year, which fitted the Britain of 1990. An      |
+|                                |              | American today uses 206 kWh/d and emits 14.2 tonnes, so the scales now run to 210 and 15. The marks are computed rather than typed:      |
+|                                |              | primary energy per person for 2025 comes from the same Energy Institute series as chapter L's explorer, and CO₂ per person for 2024 from |
+|                                |              | the Our World in Data file the emissions figures use, both written to a small JSON the page reads — so refreshing the data moves the     |
+|                                |              | marks. Pressing United States, 2025 reads 206 kWh/d per person, 514 GW, 4,503 TWh/y and 387 Mtoe/y for a UK-sized population. One bug    |
+|                                |              | fixed on the way: a browser gives a background tab no animation frames, so a mark pressed in one used to glide nowhere; the value now    |
+|                                |              | arrives whether the animation runs or not.                                                                                               |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 13 September 2026              | Bibliography | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="The bibliography gains the 2026 revision's sources"}           |
 |                                |              | MacKay's bibliography is his and is untouched. Under it there is now a second list: the works and data sources the 2026 material         |
 |                                |              | actually draws on, in three groups — books, papers and reviews; reports and official statistics; and the live data, registers and        |
