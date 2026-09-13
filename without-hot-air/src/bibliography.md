@@ -440,3 +440,68 @@
   The future of nuclear power in France, the EU and the world for the next quarter-century. [<span class="websitetitle">www.npec-web.org/Essays/Essay050120 Zalenski - Future of Nuclear Power.pdf</span>](http://www.npec-web.org/Essays/Essay050120%20Zalenski%20-%20Future%20of%20Nuclear%20Power.pdf). [<span class="websitetitle">tinyurl.com/32louu</span>](http://tinyurl.com/32louu).
   -  <span class="smallcaps"> Zhu, X.-G., Long, S. P.</span>, and <span class="smallcaps"> Ort, D. R.</span> (2008).
   What is the maximum efficiency with which photosynthesis can convert solar energy into biomass? *Current Opinion in Biotechnology*, 19:153–159.
+
+## Sources added in the 2026 revision
+
+*This section is new. MacKay's bibliography above is his and is unchanged.*
+
+The 2026 material cites its sources in the notes at the end of each chapter, where the particular figure, table or sentence they support can be seen. What follows is the list of the works and data sources those notes draw on, so that a reader can see at a glance what this revision is built from. Where a note and this list disagree, the note is the one that was checked.
+
+### Books, papers and reviews
+
+  -  <span class="smallcaps">Giddings, J., Bloomfield, H., James, R.</span>, and <span class="smallcaps">Blair, M.</span>
+  The impact of future UK offshore wind farm distribution and climate change on generation performance and variability. Used in chapter 4 for whether the wind itself is changing.
+  -  <span class="smallcaps">Koljonen, T., Soimakallio, S., Silfver, T.</span>, and <span class="smallcaps">Kivinen, M.</span>, editors. (2025).
+  *Kansallisen energia- ja ilmastopolitiikan uudet toimet ja skenaariot (KEITO)*. VTT Technology 442. The Finnish national scenarios, and the data-centre assumption behind figure 11a.2.
+  -  <span class="smallcaps">Liebreich, M.</span> (2023).
+  Clean Hydrogen Ladder, version 5.0. [<span class="websitetitle">liebreich.com</span>](https://liebreich.com/hydrogen-ladder/). The ranking chapter O is built on.
+  -  <span class="smallcaps">Mattila, V.-M.</span> (2025).
+  *Datakeskusten kansallinen tiekartta: Selvityshenkilön raportti*. Valtioneuvoston julkaisuja 2025:94; the English translation, *National Roadmap for Data Centres*, is 2025:95. The census and pipeline figures in chapter 11a.
+  -  <span class="smallcaps">Murphy, T. W., Jr.</span> (2021).
+  *Energy and Human Ambitions on a Finite Planet*. University of California, San Diego. ISBN 978-0-578-86717-5. [<span class="websitetitle">escholarship.org/uc/energy_ambitions</span>](https://escholarship.org/uc/energy_ambitions). Chapter P is about this book.
+  -  <span class="smallcaps">Thomas, J., Hwang, H.-L., West, B.</span>, and <span class="smallcaps">Huff, S.</span> (2013).
+  Predicting light-duty vehicle fuel economy as a function of highway speed. SAE 2013-01-1113. The 74-vehicle study behind figure A.12a, reached through the data book below rather than directly.
+  -  <span class="smallcaps">Vest, K.</span> and <span class="smallcaps">Tych, W.</span>
+  Is the apparent global stilling effect on wind power generation an artefact? Chapter 4's answer to whether British wind is dying.
+  -  <span class="smallcaps">Witt, S.</span>
+  *The New Yorker*'s estimate of the energy in a longer piece of machine writing, set beside Google's per-prompt figure in chapter 11a.
+  -  <span class="smallcaps">Yu, L.</span> (2026).
+  *The Grid We Need Now: Independent Review*. Department for Energy Security and Net Zero. Chapter 11a's British answer to the connection queue.
+
+### Reports and official statistics
+
+  -  <span class="smallcaps">BloombergNEF</span>. *Corporate Energy Market Outlook*. The corporate clean-power contracting totals in chapter 11a.
+  -  <span class="smallcaps">Brookings Institution</span>. Employment effects of data centres, in chapter 11a's jobs section.
+  -  <span class="smallcaps">Central Statistics Office, Ireland</span>. Metered electricity consumption by data centres.
+  -  <span class="smallcaps">Commission for Regulation of Utilities, Ireland</span>. (2025). Large Energy User connection policy.
+  -  <span class="smallcaps">Confederation of Finnish Industries</span>. Green-transition investment dashboard, as quoted in the rapporteur's report.
+  -  <span class="smallcaps">European Environment Agency</span> and <span class="smallcaps">Eurostat</span>. European emissions and energy-price series.
+  -  <span class="smallcaps">Gallup</span>. (2026). Americans' opinions of data centres in their own neighbourhoods.
+  -  <span class="smallcaps">Hannula, I.</span> (2026). Carbon Economics. The comparison of Finland's committed data-centre capacity against its scenarios, redrawn as figure 11a.2.
+  -  <span class="smallcaps">Intergovernmental Panel on Climate Change</span>. Sixth Assessment Report. The land-sink potential and its delivery, in chapter 31.
+  -  <span class="smallcaps">International Energy Agency</span>. *Energy and AI* (2025); *Global EV Outlook* (2025 and 2026).
+  -  <span class="smallcaps">Lawrence Berkeley National Laboratory</span>. (2024). *United States Data Center Energy Usage Report*, for the Department of Energy.
+  -  <span class="smallcaps">National Grid</span> / <span class="smallcaps">NESO</span>. *Future Energy Scenarios*.
+  -  <span class="smallcaps">Oak Ridge National Laboratory</span>. *Transportation Energy Data Book*, edition 40 (2022). Tables 4.33 and 4.34 are figure A.12a.
+  -  <span class="smallcaps">Odyssee-Mure</span>. European end-use energy indicators.
+  -  <span class="smallcaps">Ramboll</span>. (2025). The census of Finnish data centres quoted in the rapporteur's report.
+  -  <span class="smallcaps">Skeptical Science</span>. The catalogue of climate arguments behind several of the *Mythconceptions* sections.
+  -  <span class="smallcaps">Statistics Sweden</span>, <span class="smallcaps">Svenskt Näringsliv</span>, and the <span class="smallcaps">Swedish Energy Agency</span> (Energimyndigheten). Swedish population, data-centre projections and measured data-centre electricity.
+  -  <span class="smallcaps">United States Energy Information Administration</span>. American generation and price series.
+
+### Live data, registers and instruments
+
+  -  <span class="smallcaps">Argonne National Laboratory</span>. Autonomie vehicle model, through the *Transportation Energy Data Book*.
+  -  <span class="smallcaps">Cairngorm Automatic Weather Station</span>, Heriot-Watt University. The summit station of figure 4.2a, archived since 1990.
+  -  <span class="smallcaps">Cambridge Computer Laboratory weather station</span>. MacKay's own rooftop station, still publishing; figures 4.1a and 4.6a.
+  -  <span class="smallcaps">Elexon</span>. Balancing Mechanism Reporting Service: half-hourly generation by fuel type and the market index price, used for the capture prices in chapters 4, 26 and 28a.
+  -  <span class="smallcaps">Ember</span> and the <span class="smallcaps">Energy Institute</span>. *Statistical Review of World Energy* and Ember's electricity data, mostly reached through Our World in Data, which is where most of this edition's redrawn figures come from.
+  -  <span class="smallcaps">ENTSO-E</span>. Load and generation for European countries, through the energy-charts API; the basis of figure 25.9a.
+  -  <span class="smallcaps">Fingrid</span>. Finnish peak load and system statistics.
+  -  <span class="smallcaps">Met Office</span>. The Cambridge and Oxford temperature series.
+  -  <span class="smallcaps">NESO</span>. Historic demand data for Great Britain, including the embedded solar and wind that national demand nets off.
+  -  <span class="smallcaps">Open-Meteo</span> and <span class="smallcaps">ERA5</span>. Reanalysis temperatures for the thermosensitivity work in chapter 25 and the heating chapters.
+  -  <span class="smallcaps">Our World in Data</span>. The grapher series behind most redrawn figures, itself built on Ember and the Energy Institute.
+  -  <span class="smallcaps">PVGIS</span>. European Commission irradiance data, for the solar chapters.
+  -  <span class="smallcaps">RDW</span>. The Netherlands' open vehicle register: type-approval maximum design speed and maximum net power, which is figure A.13a.
+  -  <span class="smallcaps">Svenska kraftnät</span>. Swedish reserve-market auction results, for the battery revenue arithmetic in chapter 26.

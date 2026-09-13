@@ -17,6 +17,14 @@ Last updated **13 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 13 September 2026              | Bibliography | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="The bibliography gains the 2026 revision's sources"}           |
+|                                |              | MacKay's bibliography is his and is untouched. Under it there is now a second list: the works and data sources the 2026 material         |
+|                                |              | actually draws on, in three groups — books, papers and reviews; reports and official statistics; and the live data, registers and        |
+|                                |              | instruments the figures are computed from. Forty-one entries, each saying what the source is and where the edition leans on it: Murphy's |
+|                                |              | finite-planet textbook, the KEITO scenarios and the Finnish data-centre roadmap, Lucy Yu's grid review, ORNL's Transportation Energy     |
+|                                |              | Data Book, the Dutch vehicle register, the Cambridge rooftop and Cairngorm summit weather stations, Elexon, ENTSO-E, NESO, Fingrid,      |
+|                                |              | Svenska kraftnät, Open-Meteo and the rest. The precise citation for any particular number stays in the chapter's own note, which is      |
+|                                |              | where it was checked, and the list says so.                                                                                              |
 | 13 September 2026              | Charts       | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="The two translation charts are interactive"}                   |
 |                                |              | MacKay's power and carbon translation charts are nomograms — parallel scales, all linear in one underlying quantity, so a single line    |
 |                                |              | laid across them reads the same amount in every unit. On paper you use a ruler. They are now rebuilt as SVG you can drag: move the line, |
