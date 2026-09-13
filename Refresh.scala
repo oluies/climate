@@ -2730,3 +2730,160 @@ def chapterASteadySpeed(): Unit = {
   println("  uv run figures/steady_speed.py data-refresh/steady-speed.csv " +
           "without-hot-air/Images/fig-steady-speed.svg")
 }
+
+// ---- Appendix A: measured fuel economy against steady speed ----
+// Figure A.12a. MacKay's figure A.12 plots one Prius and one BMW against a
+// speed-squared curve to show that real consumption does not follow v^2. His
+// two sources have decayed - the Prius page is gone and the BMW page publishes
+// pictures rather than numbers - but a better source exists and is free.
+//
+// Oak Ridge National Laboratory's Transportation Energy Data Book, edition 40
+// (2022), tables 4.34 and 4.33, collect dynamometer measurements of fuel
+// economy at steady speeds from four studies spanning forty years, plus
+// Argonne's Autonomie model results for model year 2016. The values here are
+// hand-entered from those two tables, and the note in the chapter says so.
+//
+// Everything is converted to this book's units. A US gallon of petrol is
+// 33.7 kWh on the EPA's own convention, and 100 km is 62.137 miles, so
+// kWh per 100 km = 33.7 * 62.137 / mpg = 2094 / mpg.
+@main
+def chapterAFuelVsSpeed(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val kwhPerGallon = 33.7; val milesPer100km = 100 / 1.609344
+  def kwh(mpg: Double) = kwhPerGallon * milesPer100km / mpg
+
+  // TEDB table 4.34: fuel economy in mpg at speeds in mph, by study.
+  val studies = Seq(
+    ("1973 study (13 cars)", Seq(30 -> 21.1, 35 -> 21.1, 40 -> 21.1, 45 -> 20.3, 50 -> 19.5,
+                                 55 -> 18.5, 60 -> 17.5, 65 -> 16.2, 70 -> 14.9)),
+    ("1984 study (15 cars)", Seq(15 -> 21.1, 20 -> 25.5, 25 -> 30.0, 30 -> 31.8, 35 -> 33.6,
+                                 40 -> 33.6, 45 -> 33.5, 50 -> 31.9, 55 -> 30.3, 60 -> 27.6,
+                                 65 -> 24.9, 70 -> 22.5, 75 -> 20.0)),
+    ("1997 study (9 cars)",  Seq(15 -> 24.4, 20 -> 27.9, 25 -> 30.5, 30 -> 31.7, 35 -> 31.2,
+                                 40 -> 31.0, 45 -> 31.6, 50 -> 32.4, 55 -> 32.4, 60 -> 31.4,
+                                 65 -> 29.2, 70 -> 26.8, 75 -> 24.8)),
+    ("2012 study (74 cars)", Seq(40 -> 33.2, 50 -> 31.9, 60 -> 27.9, 70 -> 24.1, 80 -> 20.5)),
+    // TEDB table 4.33, Argonne's Autonomie model for model year 2016.
+    ("2016 model: midsize car", Seq(45 -> 43.0, 55 -> 45.0, 65 -> 38.0, 75 -> 32.0)),
+    ("2016 model: large SUV",   Seq(45 -> 35.0, 55 -> 31.0, 65 -> 29.0, 75 -> 25.0)),
+    ("2016 model: hybrid car",  Seq(45 -> 55.0, 55 -> 46.0, 65 -> 38.0, 75 -> 33.0)))
+
+  val out = new StringBuilder; out ++= "series,kmh,mpg,kwh_per_100km\n"
+  for ((label, points) <- studies; (mph, mpg) <- points)
+    out ++= f"$label,${mph * 1.609344}%.1f,$mpg%.1f,${kwh(mpg)}%.1f\n"
+  os.write.over(dir / "fuel-vs-speed.csv", out.toString)
+  println("wrote data-refresh/fuel-vs-speed.csv")
+
+  // The book's own quantity, and MacKay's claim: is this a square law?
+  for ((label, points) <- studies) {
+    val at = points.toMap
+    val best = points.minBy(p => kwh(p._2))
+    println(f"$label%-26s best ${best._1 * 1.609344}%5.0f km/h at ${kwh(best._2)}%5.1f kWh/100 km; " +
+            points.filter(p => Seq(50, 70).contains(p._1))
+                  .map(p => f"${p._1 * 1.609344}%.0f km/h ${kwh(p._2)}%.0f").mkString(", "))
+    if (at.contains(50) && at.contains(70))
+      println(f"    50 to 70 mph: consumption up ${(kwh(at(70)) / kwh(at(50)) - 1) * 100}%4.1f%%, " +
+              f"a square law would give ${(math.pow(70.0 / 50, 2) - 1) * 100}%.0f%%")
+  }
+  // TEDB prints the 2012 study's own 50-70 mph loss as 24.5%; reproduce it.
+  val s2012 = studies.find(_._1.startsWith("2012")).get._2.toMap
+  val loss = 1 - s2012(70) / s2012(50)
+  require(math.abs(loss - 0.245) < 0.01,
+    f"chapterAFuelVsSpeed: 50-70 mph loss is $loss%.3f, TEDB table 4.34 says 0.245")
+  println(f"  check: the 2012 study's 50-70 mph fuel-economy loss is ${loss * 100}%.1f%%, " +
+          "against the 24.5% printed in TEDB table 4.34")
+  println("render:")
+  println("  uv run figures/fuel_vs_speed.py data-refresh/fuel-vs-speed.csv " +
+          "without-hot-air/Images/fig-a12-fuel-speed.svg")
+}
+
+// ---- Appendix A: power against top speed, on 2020s cars ----
+// Figure A.13a. MacKay's figure A.13 is Tennekes' scatter of engine power
+// against top speed, and its caption states the law: power goes as the cube of
+// speed. The scatter itself is from a 1997 book and cannot be redrawn, but the
+// law can be tested on today's cars, because one country publishes the numbers.
+//
+// The Dutch vehicle authority RDW puts its whole register online. Two open
+// datasets are used here: the vehicle register (m9d7-ebf2), which carries the
+// type-approval maximum design speed in km/h, and the fuel register
+// (8ys7-d773), which carries maximum net power in kW - a different column for
+// combustion (nettomaximumvermogen) and for electric drive
+// (netto_max_vermogen_elektrisch).
+//
+// One car is taken per make and model, from models with at least a hundred
+// registrations first admitted since 2023, and only ordinary body types, so
+// the sample is cars people actually bought rather than one-off imports.
+@main
+def chapterAPowerVsTopSpeed(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val cache = dir / "rdw"; os.makeDir.all(cache)
+  def enc(s: String) = java.net.URLEncoder.encode(s, "UTF-8")
+
+  val where = "voertuigsoort='Personenauto' AND maximale_constructiesnelheid > 80 " +
+    "AND datum_eerste_toelating > 20230000 " +
+    "AND inrichting in ('hatchback','sedan','stationwagen','MPV','coupe','cabriolet')"
+  val modelsUrl = "https://opendata.rdw.nl/resource/m9d7-ebf2.json?" +
+    s"$$select=${enc("merk,handelsbenaming,min(kenteken) as kenteken," +
+      "avg(maximale_constructiesnelheid) as vmax,count(*) as n")}" +
+    s"&$$group=${enc("merk,handelsbenaming")}&$$where=${enc(where)}&$$limit=6000"
+  val models = ujson.read(cachedGet(modelsUrl, cache / "models.json")).arr
+    .filter(m => m.obj.contains("vmax") && m("n").str.toInt >= 100)
+  println(s"${models.length} models with a hundred registrations or more since 2023")
+
+  // Power comes from the fuel register, a hundred registrations at a time.
+  val power = scala.collection.mutable.Map[String, (Set[String], Double)]()
+  val fields = "kenteken,brandstof_omschrijving,nettomaximumvermogen," +
+    "netto_max_vermogen_elektrisch,nominaal_continu_maximumvermogen"
+  for ((batch, i) <- models.map(_("kenteken").str).grouped(100).zipWithIndex) {
+    val url = "https://opendata.rdw.nl/resource/8ys7-d773.json?" +
+      s"$$select=${enc(fields)}&$$where=${enc(batch.map(k => s"'$k'").mkString("kenteken in (", ",", ")"))}" +
+      "&$limit=500"
+    for (r <- ujson.read(cachedGet(url, cache / f"fuel-$i%02d.json")).arr) {
+      val kw = Seq("nettomaximumvermogen", "netto_max_vermogen_elektrisch",
+                   "nominaal_continu_maximumvermogen")
+        .flatMap(f => r.obj.get(f).flatMap(_.str.toDoubleOption))
+      val (fuels, best) = power.getOrElse(r("kenteken").str, (Set.empty[String], 0.0))
+      power(r("kenteken").str) =
+        (fuels + r.obj.get("brandstof_omschrijving").map(_.str).getOrElse(""),
+         (best +: kw).max)
+    }
+  }
+
+  val out = new StringBuilder; out ++= "make,model,kind,vmax_kmh,power_kw,registrations\n"
+  var rows = 0
+  for (m <- models; (fuels, kw) <- power.get(m("kenteken").str) if kw > 0) {
+    val kind = if (fuels == Set("Elektriciteit")) "Electric"
+               else if (fuels.contains("Elektriciteit")) "Hybrid" else "Combustion"
+    // A few model names carry commas, which would shift the CSV's columns.
+    val clean = (s: String) => s.replace(",", " ").trim
+    out ++= f"${clean(m("merk").str)},${clean(m("handelsbenaming").str)},$kind," +
+            f"${m("vmax").str.toDouble}%.0f,$kw%.0f,${m("n").str}\n"
+    rows += 1
+  }
+  os.write.over(dir / "power-vs-topspeed.csv", out.toString)
+  println(s"wrote data-refresh/power-vs-topspeed.csv ($rows models)")
+
+  // The law, fitted where Tennekes drew it: log power against log top speed.
+  case class Car(kind: String, v: Double, kw: Double)
+  val cars = os.read.lines(dir / "power-vs-topspeed.csv").drop(1).map(_.split(","))
+    .map(f => Car(f(2), f(3).toDouble, f(4).toDouble))
+  def exponent(sub: Seq[Car]) = {
+    val xs = sub.map(c => math.log(c.v)); val ys = sub.map(c => math.log(c.kw))
+    val mx = xs.sum / xs.length; val my = ys.sum / ys.length
+    xs.zip(ys).map { case (x, y) => (x - mx) * (y - my) }.sum / xs.map(x => math.pow(x - mx, 2)).sum
+  }
+  for (kind <- Seq("Combustion", "Hybrid", "Electric")) {
+    val sub = cars.filter(_.kind == kind)
+    println(f"  $kind%-11s n=${sub.length}%3d  power goes as speed to the ${exponent(sub)}%4.2f")
+  }
+  println(f"  all together n=${cars.length}%3d  exponent ${exponent(cars)}%4.2f")
+  println(f"  ${cars.count(_.v == 250)}%d models declare exactly 250 km/h, the German limiter")
+  val burn = cars.filter(_.kind == "Combustion")
+  require(exponent(burn) > 2.4 && exponent(burn) < 3.6,
+    s"chapterAPowerVsTopSpeed: combustion exponent ${exponent(burn)}, Tennekes says about 3")
+  println("render:")
+  println("  uv run figures/power_vs_topspeed.py data-refresh/power-vs-topspeed.csv " +
+          "without-hot-air/Images/fig-a13-power-speed.svg")
+}
