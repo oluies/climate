@@ -11,12 +11,20 @@ new in their entirety. The table below is the authoritative list of them.
 
 ## Latest changes
 
-Last updated **12 September 2026**. The complete history is in the
+Last updated **13 September 2026**. The complete history is in the
 [repository](https://github.com/oluies/climate/commits/main).
 
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 13 September 2026              | A            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figures A.9, A.10, A.11 and A.14 redrawn legibly"}             |
+|                                |              | The four model plots in appendix A were low-resolution bitmaps from the 2008 EPUB, and a reader could not take a value off them. They    |
+|                                |              | are recomputed from the assumptions printed in their own captions and redrawn as vector figures: the car, the bicycle and the train at a |
+|                                |              | steady speed, and the electric-car range curves for lead-acid at 40 Wh/kg and lithium at 120. Nothing is added and no curve moves — the  |
+|                                |              | captions say so, and the 2025 vehicles and batteries stay in figures A.9a and A.14a. The other figures in the appendix are photographs,  |
+|                                |              | cartoons, or data this edition cannot re-read, and are left as printed.                                                                  |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 12 September 2026              | 4            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure 4.2a: Cairngorm, and why his six months were six"}      |
 |                                |              | Figure 4.2a carries MacKay's other wind figure forward on its own station, Heriot-Watt's on the summit of Cairn Gorm. His caption says   |
 |                                |              | six months of 2006, and the archive says why: that year's anemometer failed in July and again at the end of November, so January to June |
