@@ -17,6 +17,17 @@ Last updated **13 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 13 September 2026              | Charts       | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="The two translation charts are interactive"}                   |
+|                                |              | MacKay's power and carbon translation charts are nomograms — parallel scales, all linear in one underlying quantity, so a single line    |
+|                                |              | laid across them reads the same amount in every unit. On paper you use a ruler. They are now rebuilt as SVG you can drag: move the line, |
+|                                |              | or type a number into any scale's box, and every other scale follows. The power chart carries kWh/d per person, GW, TWh/y and Mtoe/y per |
+|                                |              | UK; the carbon chart carries chemical and electrical kWh/d per person, tCO₂ per person, MtCO₂ for a UK, and GtCO₂ and GtC for a world.   |
+|                                |              | MacKay's own marks are buttons that glide the line into place — UK electricity in 2004 lands on 401 TWh/y where his printed chart marks  |
+|                                |              | 400, and the 60, 80 and 90% targets are measured on the UK's 1990 emissions as his chart measures them. His printed originals are kept   |
+|                                |              | underneath each one. Plain JavaScript in the page, following the pattern chapter L already uses; Scala.js would have meant adding a      |
+|                                |              | compile step to a Quarto book for 150 lines of arithmetic.                                                                               |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 13 September 2026              | P            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Chapter P: the book that starts where this one stops"}         |
 |                                |              | A new chapter, and a short one: it points at Thomas Murphy's Energy and Human Ambitions on a Finite Planet, free from the University of  |
 |                                |              | California and licensed for reuse, and reproduces the argument of its first chapter. Take the 2.3% a year that industrial energy use has |
