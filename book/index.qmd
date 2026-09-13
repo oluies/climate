@@ -17,6 +17,18 @@ Last updated **13 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 13 September 2026              | Q            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Why primary energy falls faster than anyone uses less"}        |
+|                                |              | Chapter Q gains a passage on a trap almost every summary of these pathways falls into. Europe's primary energy falls 19% by 2050 and its |
+|                                |              | final energy 27%, and neither is mostly a story about Europeans doing less. The chimneys close: a coal station wastes 60% of its fuel,   |
+|                                |              | wind and solar have no such step, and the report counts their output one for one — so Europe doubles its electricity generation while    |
+|                                |              | the primary energy behind it falls. The drivetrains change, and that saving is real: European transport gives up 11.1 EJ a year of       |
+|                                |              | liquid fuel for 3.5 of electricity, a ratio of 3.2 to one, which is appendix A's arithmetic arriving unannounced in a global model. And  |
+|                                |              | something pulls the other way — the primary-to-final ratio gets worse, 1.26 to 1.39, as chimney losses are replaced by hydrogen made     |
+|                                |              | from electricity and liquids made from biomass. That third term gets scepticism: the pathways assume a European hydrogen industry sixty  |
+|                                |              | times today's, and chapter O records the sixty major projects cancelled during 2025. If hydrogen underdelivers, the service is either    |
+|                                |              | unmet or plugged in, and plugging in is the more efficient of the two — so the overhead is the models' pessimism.                        |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 13 September 2026              | Q            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure Q.4: what Europe would have to change"}                 |
 |                                |              | The scenario database holds the demand side as well as the supply side, and that is where the two categories part company. A European in |
 |                                |              | the median 1.5 °C pathway uses 71 kWh/d of final energy in 2020 and 50 in 2050, with the electricity inside that shrinking total rising  |

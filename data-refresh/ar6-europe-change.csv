@@ -7,6 +7,11 @@ C1,Final Energy|Electricity,EJ/yr,64,10.84,12.62,22.05,15.10,17.22,29.38
 C1,Final Energy|Industry,EJ/yr,69,15.61,13.59,12.49,21.74,18.53,16.64
 C1,Final Energy|Residential and Commercial,EJ/yr,69,18.78,17.60,14.49,26.14,24.00,19.31
 C1,Final Energy|Transportation,EJ/yr,69,16.03,13.79,10.50,22.32,18.80,14.00
+C1,Final Energy|Transportation|Electricity,EJ/yr,69,0.33,1.22,3.82,0.47,1.66,5.09
+C1,Final Energy|Transportation|Liquids,EJ/yr,69,15.70,12.41,4.61,21.86,16.93,6.14
+C1,Secondary Energy|Electricity,EJ/yr,69,13.14,15.45,27.27,18.29,21.06,36.34
+C1,Secondary Energy|Hydrogen,EJ/yr,60,0.05,0.60,3.34,0.07,0.81,4.45
+C1,Secondary Energy|Liquids|Biomass,EJ/yr,57,0.56,1.82,3.57,0.78,2.49,4.76
 C3,Capacity|Electricity|Nuclear,GW,224,128.18,129.28,62.15,226.46,221.24,102.48
 C3,Capacity|Electricity|Solar,GW,204,138.49,416.80,1195.88,244.67,713.33,1971.87
 C3,Capacity|Electricity|Wind,GW,224,198.05,436.10,1021.22,349.89,746.35,1683.87
@@ -15,3 +20,8 @@ C3,Final Energy|Electricity,EJ/yr,236,11.81,13.49,20.80,15.88,17.56,26.10
 C3,Final Energy|Industry,EJ/yr,241,15.63,14.46,13.63,21.02,18.83,17.10
 C3,Final Energy|Residential and Commercial,EJ/yr,241,20.12,20.10,20.45,27.05,26.18,25.67
 C3,Final Energy|Transportation,EJ/yr,241,16.22,15.88,12.39,21.81,20.69,15.54
+C3,Final Energy|Transportation|Electricity,EJ/yr,241,0.32,0.92,3.26,0.42,1.20,4.09
+C3,Final Energy|Transportation|Liquids,EJ/yr,241,15.65,14.52,6.42,21.05,18.91,8.06
+C3,Secondary Energy|Electricity,EJ/yr,242,13.55,14.87,24.71,18.22,19.37,31.01
+C3,Secondary Energy|Hydrogen,EJ/yr,203,0.00,0.09,2.42,0.00,0.12,3.03
+C3,Secondary Energy|Liquids|Biomass,EJ/yr,192,0.60,1.10,2.50,0.80,1.43,3.13
