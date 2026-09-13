@@ -3083,3 +3083,64 @@ def chartsMarks(): Unit = {
   println(s"wrote book/assets/chart-marks.json")
   println(f"  scales must reach ${energy._2.values.max}%.0f kWh/d/p and ${co2.map(_._2).max}%.1f tCO2/y/p")
 }
+
+// ---- Chapter Q: the IPCC's scenarios in this book's units ----
+// Figure Q.1. The Sixth Assessment Report's working group III gives its
+// pathways as global totals of greenhouse gas, in gigatonnes of CO2-equivalent
+// a year. This book works in per person quantities, so the table is converted.
+//
+// The numbers are hand-entered from Table SPM.2 of the Summary for
+// Policymakers (2022), for the two categories the report itself leads with:
+// C1, which limits warming to 1.5 C with no or limited overshoot, and C3,
+// which limits it to 2 C with better than two chances in three. Modelled 2019
+// emissions, which is what the reductions are measured against, are 55
+// [53-58] GtCO2-eq.
+//
+// Population is the United Nations' medium projection as published by Our
+// World in Data, cut to the world row and carried in data-refresh.
+@main
+def chapterQPathways(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"
+  val pop = os.read.lines(dir / "world-population-projected.csv").drop(1)
+    .map(_.split(",")).map(f => f(0).toInt -> f(1).toDouble).toMap
+
+  // (category, year, median GtCO2-eq, p5, p95) from Table SPM.2
+  val table = Seq(
+    ("C1", 2030, 31.0, 21.0, 36.0), ("C1", 2040, 17.0, 6.0, 23.0), ("C1", 2050, 9.0, 1.0, 15.0),
+    ("C3", 2030, 44.0, 32.0, 55.0), ("C3", 2040, 29.0, 20.0, 36.0), ("C3", 2050, 20.0, 13.0, 26.0))
+  val base = 55.0; val baseYear = 2019
+  // Reductions the report prints, to check the conversion against.
+  val printed = Map(("C1", 2030) -> 43.0, ("C1", 2040) -> 69.0, ("C1", 2050) -> 84.0,
+                    ("C3", 2030) -> 21.0, ("C3", 2040) -> 46.0, ("C3", 2050) -> 64.0)
+  val gramsPerKwh = 250.0        // the book's own chemical exchange rate, oil or petrol
+
+  val out = new StringBuilder
+  out ++= "category,year,gt_total,gt_p5,gt_p95,people,t_per_person,t_p5,t_p95,kwh_per_day\n"
+  def perPerson(gt: Double, year: Int) = gt * 1e9 / pop(year)
+  out ++= f"history,$baseYear,$base%.1f,53.0,58.0,${pop(baseYear)}%.0f," +
+          f"${perPerson(base, baseYear)}%.3f,${perPerson(53, baseYear)}%.3f," +
+          f"${perPerson(58, baseYear)}%.3f,${perPerson(base, baseYear) * 1e6 / gramsPerKwh / 365}%.1f\n"
+  for ((cat, year, med, p5, p95) <- table)
+    out ++= f"$cat,$year,$med%.1f,$p5%.1f,$p95%.1f,${pop(year)}%.0f,${perPerson(med, year)}%.3f," +
+            f"${perPerson(p5, year)}%.3f,${perPerson(p95, year)}%.3f," +
+            f"${perPerson(med, year) * 1e6 / gramsPerKwh / 365}%.1f\n"
+  os.write.over(dir / "ar6-pathways.csv", out.toString)
+  println("wrote data-refresh/ar6-pathways.csv")
+
+  println(f"2019: $base%.0f GtCO2-eq over ${pop(baseYear) / 1e9}%.2f billion people " +
+          f"= ${perPerson(base, baseYear)}%.2f t per person")
+  for ((cat, year, med, _, _) <- table) {
+    val cut = (1 - med / base) * 100
+    val cutPerPerson = (1 - perPerson(med, year) / perPerson(base, baseYear)) * 100
+    println(f"  $cat $year: $med%4.1f Gt, ${perPerson(med, year)}%5.2f t per person, " +
+            f"${perPerson(med, year) * 1e6 / gramsPerKwh / 365}%5.1f kWh/d of fuel at 250 g/kWh; " +
+            f"cut ${cut}%4.0f%% in total, ${cutPerPerson}%4.0f%% per person")
+    require(math.abs(cut - printed((cat, year))) <= 1.5,
+      f"chapterQPathways: $cat $year gives ${cut}%.1f%%, the report prints ${printed((cat, year))}%.0f%%")
+  }
+  println("  every reduction above is within 1.5 points of the report's own printed figure")
+  println("render:")
+  println("  uv run figures/ar6_pathways.py data-refresh/ar6-pathways.csv " +
+          "without-hot-air/Images/fig-q1-ar6-pathways.svg")
+}

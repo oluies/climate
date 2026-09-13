@@ -17,6 +17,18 @@ Last updated **13 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 13 September 2026              | Q            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Chapter Q: the IPCC's pathways in kWh/d"}                      |
+|                                |              | A new chapter converting the Sixth Assessment Report's headline scenarios into this book's units. Its two lead categories cut global     |
+|                                |              | greenhouse gases by 43, 69 and 84% by 2030, 2040 and 2050 for 1.5 °C, and by 21, 46 and 64% for 2 °C, measured against 55 GtCO₂-         |
+|                                |              | equivalent in 2019. Divided by the people who have to live on them — 7.8 billion then, 9.7 billion by 2050 — that is 7.0 tonnes per      |
+|                                |              | person today falling to 0.93 or 2.07, and the per-person cut is deeper than the global one the report prints: 87% rather than 84%,       |
+|                                |              | because the denominator grows. Run through the carbon chart's own 250 g per kWh, today's 7 tonnes is 77 kWh/d of burning and C1's 2050   |
+|                                |              | budget is 10 — the whole greenhouse allowance, farming and cement included, against a British 69 kWh/d of primary energy now. The        |
+|                                |              | chapter also collects what the report says about energy itself: coal down 95% by 2050 and gas only 45%, almost all electricity zero-     |
+|                                |              | carbon, costs down 85% for solar and batteries in a decade, half the 2030 job available under $100 a tonne, demand-side measures worth   |
+|                                |              | 40 to 70%, and investment needing to run three to six times higher.                                                                      |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 13 September 2026              | Charts       | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Today's numbers on the translation charts"}                    |
 |                                |              | The interactive charts gain marks for the present, and the scales are extended to hold them: MacKay's power chart stopped at 125 kWh/d   |
 |                                |              | per person, which fitted the Britain of 2004, and his carbon chart at 11 tonnes of CO₂ a year, which fitted the Britain of 1990. An      |
@@ -319,6 +331,7 @@ Each of these says so at the top, and none of them is MacKay's writing.
 | [**N** *Peak oil, peak gas, peak uranium*](chapters/chapN.md) | Chapter 23's Jevons calculation carried forward to the fuels it now matters for. | 2 August 2026 |
 | [**O** *The hydrogen ladder*](chapters/chapO.md) | Which uses of hydrogen are worth the electricity they cost, ranked. | 9 August 2026 |
 | [**P** *A book that starts where this one stops*](chapters/chapP.md) | Where MacKay's method runs out: growth, and the waste heat that stops it. Points to Tom Murphy's free textbook. | 13 September 2026 |
+| [**Q** *The IPCC's scenarios, in this book's units*](chapters/chapQ.md) | What the Sixth Assessment Report's pathways ask of each person, in kWh/d rather than gigatonnes. | 13 September 2026 |
 
 ## Licence
 
