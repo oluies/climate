@@ -2887,3 +2887,69 @@ def chapterAPowerVsTopSpeed(): Unit = {
   println("  uv run figures/power_vs_topspeed.py data-refresh/power-vs-topspeed.csv " +
           "without-hot-air/Images/fig-a13-power-speed.svg")
 }
+
+// ---- Appendices B and C: two more of MacKay's model curves ----
+// Figures B.7a and C.5a. Both originals are small bitmaps from the 2008 EPUB,
+// and both are curves of formulas printed in their own chapters, so both can
+// be recomputed rather than squinted at.
+//
+// B.7 is wind speed against height under two standard shear formulas, with the
+// speed pinned to 6 m/s at 10 m, and the power density that follows from each.
+// The Danish Wind Industry Association's is logarithmic with a roughness
+// length z0 of 0.1 m; the National Renewable Energy Laboratory's is a power
+// law, conventionally with an exponent of a seventh.
+//
+// C.5 is the thrust a plane needs against its speed: ordinary drag, which
+// grows as the square of speed, plus the drag that comes with making lift,
+// which falls as the square of it. The jumbo jet's numbers are his table C.6 -
+// 363 tonnes, a frontal area of 180 m2, a drag coefficient of 0.03, and the
+// 0.4 kg/m3 of cruising altitude. The one number his table does not print is
+// the area of the sausage of air the wings throw down, and the figure needs
+// it, so it is set to the value that puts the optimum where his table says the
+// optimum is - 220 m/s - and the chapter's note says so.
+@main
+def appendixBCModelCurves(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val rho = 1.3
+
+  // --- B.7: wind against height ---
+  val (vRef, zRef, z0, shear) = (6.0, 10.0, 0.1, 1.0 / 7)
+  def dwia(z: Double) = vRef * math.log(z / z0) / math.log(zRef / z0)
+  def nrel(z: Double) = vRef * math.pow(z / zRef, shear)
+  val wind = new StringBuilder; wind ++= "model,height_m,speed_ms,power_density_wm2\n"
+  for (model <- Seq("DWIA", "NREL"); z <- Seq.range(10, 401, 2).map(_.toDouble)) {
+    val v = if (model == "DWIA") dwia(z) else nrel(z)
+    wind ++= f"$model,$z%.0f,$v%.3f,${0.5 * rho * v * v * v}%.1f\n"
+  }
+  os.write.over(dir / "wind-height.csv", wind.toString)
+  println("wrote data-refresh/wind-height.csv")
+  for (z <- Seq(10.0, 50.0, 100.0, 200.0))
+    println(f"  at $z%3.0f m: DWIA ${dwia(z)}%5.2f m/s (${0.5 * rho * math.pow(dwia(z), 3)}%5.0f W/m2), " +
+            f"NREL ${nrel(z)}%5.2f m/s (${0.5 * rho * math.pow(nrel(z), 3)}%5.0f W/m2)")
+  require(math.abs(dwia(zRef) - vRef) < 1e-9 && math.abs(nrel(zRef) - vRef) < 1e-9,
+    "appendixBCModelCurves: both formulas must give 6 m/s at 10 m")
+
+  // --- C.5: the thrust a jumbo jet needs ---
+  val mass = 363000.0; val g = 9.81; val rhoAir = 0.4; val ap = 180.0; val cd = 0.03
+  // The sausage area his table omits, chosen to put the optimum at his 220 m/s.
+  val as = math.pow(mass * g / rhoAir, 2) / (math.pow(220.0, 4) * cd * ap)
+  def drag(v: Double) = 0.5 * cd * rhoAir * ap * v * v
+  def lift(v: Double) = 0.5 * math.pow(mass * g, 2) / (rhoAir * v * v * as)
+  val plane = new StringBuilder; plane ++= "speed_ms,drag_kn,lift_kn,total_kn\n"
+  for (v <- Seq.range(100, 401, 2).map(_.toDouble))
+    plane ++= f"$v%.0f,${drag(v) / 1000}%.2f,${lift(v) / 1000}%.2f,${(drag(v) + lift(v)) / 1000}%.2f\n"
+  os.write.over(dir / "plane-thrust.csv", plane.toString)
+  println("wrote data-refresh/plane-thrust.csv")
+  val best = Seq.range(100, 401).map(_.toDouble).minBy(v => drag(v) + lift(v))
+  println(f"  sausage area implied: $as%.0f m2 (his wingspan of 64.4 m spans " +
+          f"${math.Pi / 4 * 64.4 * 64.4}%.0f m2 as a circle)")
+  println(f"  optimum $best%.0f m/s at ${(drag(best) + lift(best)) / 1000}%.0f kN; " +
+          f"his table says 220 m/s and his text 130 kN")
+  require(math.abs(best - 220) <= 2, s"appendixBCModelCurves: optimum at $best, should be his 220")
+  println("render:")
+  println("  uv run figures/wind_height.py data-refresh/wind-height.csv " +
+          "without-hot-air/Images/fig-b7-wind-height.svg")
+  println("  uv run figures/plane_thrust.py data-refresh/plane-thrust.csv " +
+          "without-hot-air/Images/fig-c5-thrust.svg")
+}
