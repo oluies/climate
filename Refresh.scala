@@ -3448,7 +3448,12 @@ def chapterQEurope(): Unit = {
   // than what they build for one.
   val demand = Seq("Final Energy", "Final Energy|Electricity", "Final Energy|Transportation",
     "Final Energy|Residential and Commercial", "Final Energy|Industry",
-    "Capacity|Electricity|Wind", "Capacity|Electricity|Solar", "Capacity|Electricity|Nuclear")
+    "Capacity|Electricity|Wind", "Capacity|Electricity|Solar", "Capacity|Electricity|Nuclear",
+    // The conversion chain, for the passage on why primary energy falls faster
+    // than anyone uses less: what is generated, what is made out of it, and
+    // what transport swaps for what.
+    "Secondary Energy|Electricity", "Secondary Energy|Hydrogen", "Secondary Energy|Liquids|Biomass",
+    "Final Energy|Transportation|Electricity", "Final Energy|Transportation|Liquids")
   def perPerson(ej: Double, millions: Double) = ej * 1e18 / 3.6e6 / (millions * 1e6) / 365
 
   val out = new StringBuilder
@@ -3600,6 +3605,32 @@ def chapterQEurope(): Unit = {
       requireClose(s"chapterQEurope: how much more $plant capacity C1 builds than C3, per cent",
                    apart, printed, 8.0)
     }
+
+    // Why primary energy falls faster than anyone uses less. Three of these
+    // pull the same way and the fourth pulls back, which is the passage's
+    // point, so all four are pinned.
+    val primary = eu1("C1", "Primary Energy")
+    val finalEnergy = chRow("C1", "Final Energy")
+    val ratio = (a: Double, b: Double) => a / b
+    println(f"  check primary over final energy is ${ratio(primary.y2020, finalEnergy.y2020)}%.2f in 2020 " +
+            f"and ${ratio(primary.y2050, finalEnergy.y2050)}%.2f in 2050")
+    requireClose("chapterQEurope: Europe's C1 primary-to-final ratio in 2020",
+                 ratio(primary.y2020, finalEnergy.y2020), 1.26, 0.05)
+    requireClose("chapterQEurope: Europe's C1 primary-to-final ratio in 2050",
+                 ratio(primary.y2050, finalEnergy.y2050), 1.39, 0.06)
+    val liquidsOut = chRow("C1", "Final Energy|Transportation|Liquids")
+    val electricIn = chRow("C1", "Final Energy|Transportation|Electricity")
+    val swap = (liquidsOut.y2020 - liquidsOut.y2050) / (electricIn.y2050 - electricIn.y2020)
+    println(f"  check transport drops ${liquidsOut.y2020 - liquidsOut.y2050}%.1f EJ of liquids for " +
+            f"${electricIn.y2050 - electricIn.y2020}%.1f EJ of electricity, a ratio of $swap%.1f")
+    requireClose("chapterQEurope: what a joule of transport electricity replaces, in joules of liquid fuel",
+                 swap, 3.2, 0.4)
+    val h2 = chRow("C1", "Secondary Energy|Hydrogen")
+    println(f"  check hydrogen goes from ${h2.y2020}%.2f EJ to ${h2.y2050}%.2f, a factor of ${h2.multiple}%.0f")
+    requireClose("chapterQEurope: Europe's C1 secondary hydrogen in 2050, EJ", h2.y2050, 3.34, 0.5)
+    require(h2.multiple > 30,
+      f"chapterQEurope: hydrogen now grows only ${h2.multiple}%.0f-fold by 2050; chapter Q says the " +
+      "pathways assume Europe builds a hydrogen industry it does not have")
 
     // The negative result the chapter reports: the ISO3 file has Britain and
     // Sweden in it, but none of those scenarios were vetted and sorted into a
