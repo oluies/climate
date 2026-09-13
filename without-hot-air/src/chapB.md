@@ -4,119 +4,23 @@
 
 ![](/img/without-hot-air/figure332.gif)
 
-miles/
-hour
+| miles/hour | km/h | m/s | Beaufort scale |
+|---|---|---|---|
+| 2.2 | 3.6 | 1 | force 1 |
+| 7 | 11 | 3 | force 2 |
+| 11 | 18 | 5 | force 3 |
+| 13 | 21 | 6 | force 4 |
+| 16 | 25 | 7 |  |
+| 22 | 36 | 10 | force 5 |
+| 29 | 47 | 13 | force 6 |
+| 36 | 58 | 16 | force 7 |
+| 42 | 68 | 19 | force 8 |
+| 49 | 79 | 22 | force 9 |
+| 60 | 97 | 27 | force 10 |
+| 69 | 112 | 31 | force 11 |
+| 78 | 126 | 35 | force 12 |
 
-km/h
-
-m/s
-
-Beaufort
-scale
-
-2.2
-
-3.6
-
-1
-
-force 1
-
-7
-
-11
-
-3
-
-force 2
-
-11
-
-18
-
-5
-
-force 3
-
-13
-
-21
-
-6
-
-force 4
-
-16
-
-25
-
-7
-
-22
-
-36
-
-10
-
-force 5
-
-29
-
-47
-
-13
-
-force 6
-
-36
-
-58
-
-16
-
-force 7
-
-42
-
-68
-
-19
-
-force 8
-
-49
-
-79
-
-22
-
-force 9
-
-60
-
-97
-
-27
-
-force 10
-
-69
-
-112
-
-31
-
-force 11
-
-78
-
-126
-
-35
-
-force 12
-
-<span class="figurenumber">Figure B.1.</span> Speeds.
+<span class="figurenumber">Figure B.1.</span> Speeds. *Restored to a table in the 2026 revision: the conversion from the 2008 edition had flattened it into a column of loose numbers. The values are MacKay's, including the row that carries no Beaufort force, which his own online edition has too.*
 
 I’m using this formula again:
  mass = density × volume
@@ -243,9 +147,9 @@ Two cautions before this is over-read, and the authors state both. Their own mea
 
 ### Variation of wind speed with height
 
-![](/img/without-hot-air/figure266.gif)
+![Two panels. Left: wind speed against height on a log scale, both formulas pinned to 6 m/s at 10 m, the Danish logarithmic one reaching about 9 m/s at 100 m and the American power law about 8.3. Right: power density against height, rising from 140 W/m² at 10 m to 474 and 377 W/m² respectively at 100 m.](/img/without-hot-air/fig-b7-wind-height.svg)
 
-<span class="figurenumber">Figure B.7.</span> Top: Two models of wind speed and wind power as a function of height. DWIA = Danish Wind Industry Association; NREL = National Renewable Energy Laboratory. For each model the speed at 10 m has been fixed to 6 m/s. For the Danish Wind model, the roughness length is set to *z*<span class="smallfont2"><sub>0</sub></span> = 0.1 m. Bottom: The power density (the power per unit of upright area) according to each of these models.
+<span class="figurenumber">Figure B.7.</span> Left: two models of wind speed and wind power as a function of height. DWIA = Danish Wind Industry Association; NREL = National Renewable Energy Laboratory. For each model the speed at 10 m has been fixed to 6 m/s. For the Danish Wind model, the roughness length is set to *z*<span class="smallfont2"><sub>0</sub></span> = 0.1 m. Right: the power density (the power per unit of upright area) according to each of these models. *Redrawn in the 2026 revision from the two formulas printed above; the curves are MacKay's.*
 
 Taller windmills see higher wind speeds. The way that wind speed increases with height is complicated and depends on the roughness of the surrounding terrain and on the time of day. As a ballpark figure, doubling the height typically increases wind-speed by 10% and thus increases the power of the wind by 30%.
 
