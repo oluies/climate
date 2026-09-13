@@ -3170,3 +3170,88 @@ def chapterQPathways(): Unit = {
   println("  uv run figures/ar6_pathways.py data-refresh/ar6-pathways.csv " +
           "without-hot-air/Images/fig-q1-ar6-pathways.svg")
 }
+
+// ---- Chapter Q: what the pathways actually build ----
+// Figure Q.2. The report says its categories contain "different shares of
+// nuclear, biomass, non-biomass renewables, and fossil CCS across pathways"
+// and prints no number for any of them. The numbers exist one level down, in
+// the AR6 Scenarios Database's timeseries file, and this task reads them.
+//
+// That file is 345 MB and is not in this repository: it has to be downloaded
+// by hand from the IIASA Scenario Explorer, which requires a free account, and
+// put at data-refresh/ar6-world-v1.1.csv. The derived table this writes is
+// small and is committed, so the chapter builds without it.
+//
+// The join to a scenario's category is by model and scenario name against the
+// metadata extract, whose names have had commas replaced by spaces, so the
+// same replacement is made here.
+//
+// The check is the report's own published fossil declines: C1's medians for
+// coal, oil and gas in 2050 against 2019 are about 95%, 60% and 45%, and C3's
+// about 85%, 30% and 15%. If the join or the aggregation were wrong, those
+// would not come back.
+@main
+def chapterQEnergyMix(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"
+  val big = dir / "ar6-world-v1.1.csv"
+  require(os.exists(big),
+    "chapterQEnergyMix: put AR6_Scenarios_Database_World_v1.1.csv at " +
+    "data-refresh/ar6-world-v1.1.csv (345 MB, from the IIASA Scenario Explorer)")
+  val meta = dir / "ar6-scenarios-meta.csv"
+  val carriers = Seq("Primary Energy", "Primary Energy|Solar", "Primary Energy|Wind",
+    "Primary Energy|Nuclear", "Primary Energy|Hydro", "Primary Energy|Biomass",
+    "Primary Energy|Coal", "Primary Energy|Oil", "Primary Energy|Gas",
+    "Primary Energy|Non-Biomass Renewables")
+  val inList = carriers.map(v => s"'$v'").mkString(",")
+
+  // Primary energy is in exajoules a year; the book wants kWh per day per
+  // person, and the 2050 population is the same UN projection figure Q.1 uses.
+  val pop2050 = os.read.lines(dir / "world-population-projected.csv").drop(1)
+    .map(_.split(",")).find(_(0) == "2050").map(_(1).toDouble).get
+  def perPerson(ej: Double, people: Double) = ej * 1e18 / 3.6e6 / people / 365
+
+  val out = new StringBuilder
+  out ++= "category,carrier,pathways,ej_2020,ej_2030,ej_2050,ej_2050_p5,ej_2050_p95,kwh_per_day_2050\n"
+  withConn { c =>
+    val st = c.createStatement()
+    st.execute(s"create view db as select * from read_csv_auto('${big}', header=true, sample_size=-1)")
+    st.execute(s"create view meta as select * from read_csv_auto('${meta}', header=true)")
+    val rs = st.executeQuery(s"""
+      select m.category, d.Variable, count(*) as n,
+             median(d."2020") as y2020, median(d."2030") as y2030, median(d."2050") as y2050,
+             quantile_cont(d."2050", 0.05) as p5, quantile_cont(d."2050", 0.95) as p95
+      from db d join meta m
+        on m.model = replace(d.Model, ',', ' ') and m.scenario = replace(d.Scenario, ',', ' ')
+      where d.Region = 'World' and d.Variable in ($inList) and m.category in ('C1', 'C3')
+      group by 1, 2 order by 1, 2""")
+    val rows = scala.collection.mutable.ArrayBuffer[(String, String, Int, Double, Double, Double, Double, Double)]()
+    while (rs.next())
+      rows += ((rs.getString(1), rs.getString(2), rs.getInt(3), rs.getDouble(4),
+                rs.getDouble(5), rs.getDouble(6), rs.getDouble(7), rs.getDouble(8)))
+    println(f"${"cat"}%-4s ${"carrier"}%-26s ${"n"}%4s ${"2020"}%8s ${"2030"}%8s ${"2050"}%8s " +
+            f"${"x2020"}%7s ${"kWh/d"}%7s   2050 spread")
+    for ((cat, v, n, y20, y30, y50, p5, p95) <- rows) {
+      val name = v.stripPrefix("Primary Energy|").replace("Primary Energy", "all sources")
+      out ++= f"$cat,$name,$n,$y20%.1f,$y30%.1f,$y50%.1f,$p5%.1f,$p95%.1f,${perPerson(y50, pop2050)}%.2f\n"
+      println(f"$cat%-4s $name%-26s $n%4d $y20%8.1f $y30%8.1f $y50%8.1f " +
+              f"${if (y20 > 0) y50 / y20 else 0}%7.1f ${perPerson(y50, pop2050)}%7.1f   $p5%.0f to $p95%.0f EJ")
+    }
+    os.write.over(dir / "ar6-energy-mix.csv", out.toString)
+    println("wrote data-refresh/ar6-energy-mix.csv")
+
+    // The report's own numbers, as the check on the join.
+    val printed = Map(("C1", "Coal") -> 95.0, ("C1", "Oil") -> 60.0, ("C1", "Gas") -> 45.0,
+                      ("C3", "Coal") -> 85.0, ("C3", "Oil") -> 30.0, ("C3", "Gas") -> 15.0)
+    for (((cat, fuel), expected) <- printed.toSeq.sortBy(_._1)) {
+      val r = rows.find(x => x._1 == cat && x._2 == s"Primary Energy|$fuel").get
+      val fall = (1 - r._6 / r._4) * 100
+      println(f"  check $cat $fuel%-5s falls ${fall}%4.0f%% by 2050; the report prints $expected%.0f%%")
+      require(math.abs(fall - expected) <= 8,
+        f"chapterQEnergyMix: $cat $fuel falls ${fall}%.0f%%, the report prints $expected%.0f%%")
+    }
+  }
+  println("render:")
+  println("  uv run figures/ar6_energy_mix.py data-refresh/ar6-energy-mix.csv " +
+          "without-hot-air/Images/fig-q2-ar6-energy-mix.svg")
+}
