@@ -17,6 +17,18 @@ Last updated **13 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 13 September 2026              | A            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figures A.12a and A.13a: the two that looked unupdatable"}     |
+|                                |              | Both of MacKay's sources for figures A.12 and A.13 had decayed, and better ones exist. For A.12a, ORNL's Transportation Energy Data Book |
+|                                |              | collects dynamometer measurements of fuel economy at steady speeds from four studies — 13, 15, 9 and 74 cars, from 1973 to 2012 — plus   |
+|                                |              | modelled 2016 vehicles: 111 cars against his two. They say what he said, with more authority: every curve has a minimum, and from 80 to  |
+|                                |              | 113 km/h the 74-car study costs 32% more fuel where a square law demands 96%. For A.13a, the Dutch vehicle register publishes a type-    |
+|                                |              | approval maximum design speed, which almost no other register does, alongside maximum net power: on 665 models with a hundred            |
+|                                |              | registrations or more since 2023, combustion cars still follow Tennekes' cube law at an exponent of 2.9, while electric cars sit far     |
+|                                |              | above the line at 2.3 — a 504 kW Tesla Model S declares 263 km/h where a 478 kW Porsche 911 Turbo S declares 327. And 41 models declare  |
+|                                |              | exactly 250 km/h, the German limiter. Pooled, the sample fits 1.4, which looks like a refutation of the cube law and is really a policy  |
+|                                |              | replacing a physical limit.                                                                                                              |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 13 September 2026              | A            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figures A.9, A.10, A.11 and A.14 redrawn legibly"}             |
 |                                |              | The four model plots in appendix A were low-resolution bitmaps from the 2008 EPUB, and a reader could not take a value off them. They    |
 |                                |              | are recomputed from the assumptions printed in their own captions and redrawn as vector figures: the car, the bicycle and the train at a |
