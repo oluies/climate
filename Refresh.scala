@@ -3087,17 +3087,15 @@ def chartsMarks(): Unit = {
 // ---- Chapter Q: the IPCC's scenarios in this book's units ----
 // Figure Q.1. The Sixth Assessment Report's working group III gives its
 // pathways as global totals of greenhouse gas, in gigatonnes of CO2-equivalent
-// a year. This book works in per person quantities, so the table is converted.
+// a year. This book works in per person quantities, so they are converted.
 //
-// The numbers are hand-entered from Table SPM.2 of the Summary for
-// Policymakers (2022), for the two categories the report itself leads with:
-// C1, which limits warming to 1.5 C with no or limited overshoot, and C3,
-// which limits it to 2 C with better than two chances in three. Modelled 2019
-// emissions, which is what the reductions are measured against, are 55
-// [53-58] GtCO2-eq.
+// The pathways are not read off the printed Table SPM.2 but computed from the
+// ensemble underneath it: the AR6 Scenarios Database's metadata indicators,
+// version 1.1, vetted set, 1202 scenarios, cut to the columns used here. That
+// the medians come back as the table prints them is the check.
 //
 // Population is the United Nations' medium projection as published by Our
-// World in Data, cut to the world row and carried in data-refresh.
+// World in Data, cut to the world row.
 @main
 def chapterQPathways(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
@@ -3105,42 +3103,155 @@ def chapterQPathways(): Unit = {
   val pop = os.read.lines(dir / "world-population-projected.csv").drop(1)
     .map(_.split(",")).map(f => f(0).toInt -> f(1).toDouble).toMap
 
-  // (category, year, median GtCO2-eq, p5, p95) from Table SPM.2
-  val table = Seq(
-    ("C1", 2030, 31.0, 21.0, 36.0), ("C1", 2040, 17.0, 6.0, 23.0), ("C1", 2050, 9.0, 1.0, 15.0),
-    ("C3", 2030, 44.0, 32.0, 55.0), ("C3", 2040, 29.0, 20.0, 36.0), ("C3", 2050, 20.0, 13.0, 26.0))
-  val base = 55.0; val baseYear = 2019
-  // Reductions the report prints, to check the conversion against.
+  case class Row(category: String, cuts: Map[Int, Double], netZero: Option[Double],
+                 peak: Option[Double])
+  val lines = os.read.lines(dir / "ar6-scenarios-meta.csv")
+  val head = lines.head.split(",").zipWithIndex.toMap
+  def num(f: Array[String], k: String) = f.lift(head(k)).flatMap(_.trim.toDoubleOption)
+  val all = lines.drop(1).map { l =>
+    val f = l.split(",", -1)
+    Row(f(head("category")),
+        Seq(2030, 2040, 2050).flatMap(y => num(f, s"cut_$y").map(y -> _)).toMap,
+        num(f, "netzero_co2"), num(f, "peak_warming"))
+  }
+  println(s"${all.length} vetted scenarios: " +
+    all.groupBy(_.category).toSeq.sortBy(_._1).map { case (c, rs) => s"$c ${rs.length}" }.mkString(", "))
+
+  def pct(xs: Seq[Double], p: Double) = { val s = xs.sorted; s(math.min(s.length - 1, (p * s.length).toInt)) }
+  def median(xs: Seq[Double]) = pct(xs, 0.5)
+  val base = 55.0; val baseYear = 2019     // the report's own modelled 2019 total
+  val gramsPerKwh = 250.0                  // the book's chemical exchange rate
+  def perPerson(gt: Double, year: Int) = gt * 1e9 / pop(year)
+  def asFuel(t: Double) = t * 1e6 / gramsPerKwh / 365
+
+  // What Table SPM.2 prints, to check the ensemble against.
   val printed = Map(("C1", 2030) -> 43.0, ("C1", 2040) -> 69.0, ("C1", 2050) -> 84.0,
                     ("C3", 2030) -> 21.0, ("C3", 2040) -> 46.0, ("C3", 2050) -> 64.0)
-  val gramsPerKwh = 250.0        // the book's own chemical exchange rate, oil or petrol
 
   val out = new StringBuilder
   out ++= "category,year,gt_total,gt_p5,gt_p95,people,t_per_person,t_p5,t_p95,kwh_per_day\n"
-  def perPerson(gt: Double, year: Int) = gt * 1e9 / pop(year)
   out ++= f"history,$baseYear,$base%.1f,53.0,58.0,${pop(baseYear)}%.0f," +
           f"${perPerson(base, baseYear)}%.3f,${perPerson(53, baseYear)}%.3f," +
-          f"${perPerson(58, baseYear)}%.3f,${perPerson(base, baseYear) * 1e6 / gramsPerKwh / 365}%.1f\n"
-  for ((cat, year, med, p5, p95) <- table)
-    out ++= f"$cat,$year,$med%.1f,$p5%.1f,$p95%.1f,${pop(year)}%.0f,${perPerson(med, year)}%.3f," +
-            f"${perPerson(p5, year)}%.3f,${perPerson(p95, year)}%.3f," +
-            f"${perPerson(med, year) * 1e6 / gramsPerKwh / 365}%.1f\n"
+          f"${perPerson(58, baseYear)}%.3f,${asFuel(perPerson(base, baseYear))}%.1f\n"
+  for (cat <- Seq("C1", "C3"); year <- Seq(2030, 2040, 2050)) {
+    val cuts = all.filter(_.category == cat).flatMap(_.cuts.get(year))
+    val level = (p: Double) => base * (1 - pct(cuts, p) / 100)
+    val (med, lo, hi) = (level(0.5), level(0.95), level(0.05))   // a deeper cut is a lower level
+    out ++= f"$cat,$year,$med%.1f,$lo%.1f,$hi%.1f,${pop(year)}%.0f,${perPerson(med, year)}%.3f," +
+            f"${perPerson(lo, year)}%.3f,${perPerson(hi, year)}%.3f,${asFuel(perPerson(med, year))}%.1f\n"
+    val cut = median(cuts)
+    println(f"  $cat $year: cut ${cut}%4.1f%% (table prints ${printed((cat, year))}%.0f), " +
+            f"${med}%4.1f Gt, ${perPerson(med, year)}%5.2f t per person, " +
+            f"${asFuel(perPerson(med, year))}%5.1f kWh/d as fuel; " +
+            f"per person the cut is ${(1 - perPerson(med, year) / perPerson(base, baseYear)) * 100}%4.0f%%")
+    require(math.abs(cut - printed((cat, year))) <= 1.5,
+      f"chapterQPathways: $cat $year gives ${cut}%.1f%% from the ensemble, Table SPM.2 prints ${printed((cat, year))}%.0f%%")
+  }
   os.write.over(dir / "ar6-pathways.csv", out.toString)
   println("wrote data-refresh/ar6-pathways.csv")
+  println("  every median above is within 1.5 points of the report's own printed table")
 
-  println(f"2019: $base%.0f GtCO2-eq over ${pop(baseYear) / 1e9}%.2f billion people " +
-          f"= ${perPerson(base, baseYear)}%.2f t per person")
-  for ((cat, year, med, _, _) <- table) {
-    val cut = (1 - med / base) * 100
-    val cutPerPerson = (1 - perPerson(med, year) / perPerson(base, baseYear)) * 100
-    println(f"  $cat $year: $med%4.1f Gt, ${perPerson(med, year)}%5.2f t per person, " +
-            f"${perPerson(med, year) * 1e6 / gramsPerKwh / 365}%5.1f kWh/d of fuel at 250 g/kWh; " +
-            f"cut ${cut}%4.0f%% in total, ${cutPerPerson}%4.0f%% per person")
-    require(math.abs(cut - printed((cat, year))) <= 1.5,
-      f"chapterQPathways: $cat $year gives ${cut}%.1f%%, the report prints ${printed((cat, year))}%.0f%%")
+  // The whole ladder, which the chapter prints as a table.
+  val ladder = new StringBuilder; ladder ++= "category,pathways,cut_2050,t_per_person_2050,kwh_per_day,net_zero_co2,peak_warming\n"
+  println("category  n     2050 cut  t/person  kWh/d  net zero CO2  peak warming")
+  for ((cat, rs) <- all.groupBy(_.category).toSeq.sortBy(_._1)) {
+    val cuts = rs.flatMap(_.cuts.get(2050))
+    val level = base * (1 - median(cuts) / 100)
+    val t = perPerson(level, 2050)
+    val nz = rs.flatMap(_.netZero)
+    val nzStr = if (nz.length < rs.length / 2) "" else f"${median(nz)}%.0f"
+    ladder ++= f"$cat,${rs.length},${median(cuts)}%.1f,$t%.2f,${asFuel(t)}%.1f,$nzStr,${median(rs.flatMap(_.peak))}%.2f\n"
+    println(f"  $cat%-3s ${rs.length}%4d  ${median(cuts)}%8.0f%%  $t%7.2f t  ${asFuel(t)}%5.1f  " +
+            f"${if (nzStr.isEmpty) "   none" else nzStr}%8s  ${median(rs.flatMap(_.peak))}%8.2f C")
   }
-  println("  every reduction above is within 1.5 points of the report's own printed figure")
+  os.write.over(dir / "ar6-ladder.csv", ladder.toString)
+  println("wrote data-refresh/ar6-ladder.csv")
   println("render:")
   println("  uv run figures/ar6_pathways.py data-refresh/ar6-pathways.csv " +
           "without-hot-air/Images/fig-q1-ar6-pathways.svg")
+}
+
+// ---- Chapter Q: what the pathways actually build ----
+// Figure Q.2. The report says its categories contain "different shares of
+// nuclear, biomass, non-biomass renewables, and fossil CCS across pathways"
+// and prints no number for any of them. The numbers exist one level down, in
+// the AR6 Scenarios Database's timeseries file, and this task reads them.
+//
+// That file is 345 MB and is not in this repository: it has to be downloaded
+// by hand from the IIASA Scenario Explorer, which requires a free account, and
+// put at data-refresh/ar6-world-v1.1.csv. The derived table this writes is
+// small and is committed, so the chapter builds without it.
+//
+// The join to a scenario's category is by model and scenario name against the
+// metadata extract, whose names have had commas replaced by spaces, so the
+// same replacement is made here.
+//
+// The check is the report's own published fossil declines: C1's medians for
+// coal, oil and gas in 2050 against 2019 are about 95%, 60% and 45%, and C3's
+// about 85%, 30% and 15%. If the join or the aggregation were wrong, those
+// would not come back.
+@main
+def chapterQEnergyMix(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"
+  val big = dir / "ar6-world-v1.1.csv"
+  require(os.exists(big),
+    "chapterQEnergyMix: put AR6_Scenarios_Database_World_v1.1.csv at " +
+    "data-refresh/ar6-world-v1.1.csv (345 MB, from the IIASA Scenario Explorer)")
+  val meta = dir / "ar6-scenarios-meta.csv"
+  val carriers = Seq("Primary Energy", "Primary Energy|Solar", "Primary Energy|Wind",
+    "Primary Energy|Nuclear", "Primary Energy|Hydro", "Primary Energy|Biomass",
+    "Primary Energy|Coal", "Primary Energy|Oil", "Primary Energy|Gas",
+    "Primary Energy|Non-Biomass Renewables")
+  val inList = carriers.map(v => s"'$v'").mkString(",")
+
+  // Primary energy is in exajoules a year; the book wants kWh per day per
+  // person, and the 2050 population is the same UN projection figure Q.1 uses.
+  val pop2050 = os.read.lines(dir / "world-population-projected.csv").drop(1)
+    .map(_.split(",")).find(_(0) == "2050").map(_(1).toDouble).get
+  def perPerson(ej: Double, people: Double) = ej * 1e18 / 3.6e6 / people / 365
+
+  val out = new StringBuilder
+  out ++= "category,carrier,pathways,ej_2020,ej_2030,ej_2050,ej_2050_p5,ej_2050_p95,kwh_per_day_2050\n"
+  withConn { c =>
+    val st = c.createStatement()
+    st.execute(s"create view db as select * from read_csv_auto('${big}', header=true, sample_size=-1)")
+    st.execute(s"create view meta as select * from read_csv_auto('${meta}', header=true)")
+    val rs = st.executeQuery(s"""
+      select m.category, d.Variable, count(*) as n,
+             median(d."2020") as y2020, median(d."2030") as y2030, median(d."2050") as y2050,
+             quantile_cont(d."2050", 0.05) as p5, quantile_cont(d."2050", 0.95) as p95
+      from db d join meta m
+        on m.model = replace(d.Model, ',', ' ') and m.scenario = replace(d.Scenario, ',', ' ')
+      where d.Region = 'World' and d.Variable in ($inList) and m.category in ('C1', 'C3')
+      group by 1, 2 order by 1, 2""")
+    val rows = scala.collection.mutable.ArrayBuffer[(String, String, Int, Double, Double, Double, Double, Double)]()
+    while (rs.next())
+      rows += ((rs.getString(1), rs.getString(2), rs.getInt(3), rs.getDouble(4),
+                rs.getDouble(5), rs.getDouble(6), rs.getDouble(7), rs.getDouble(8)))
+    println(f"${"cat"}%-4s ${"carrier"}%-26s ${"n"}%4s ${"2020"}%8s ${"2030"}%8s ${"2050"}%8s " +
+            f"${"x2020"}%7s ${"kWh/d"}%7s   2050 spread")
+    for ((cat, v, n, y20, y30, y50, p5, p95) <- rows) {
+      val name = v.stripPrefix("Primary Energy|").replace("Primary Energy", "all sources")
+      out ++= f"$cat,$name,$n,$y20%.1f,$y30%.1f,$y50%.1f,$p5%.1f,$p95%.1f,${perPerson(y50, pop2050)}%.2f\n"
+      println(f"$cat%-4s $name%-26s $n%4d $y20%8.1f $y30%8.1f $y50%8.1f " +
+              f"${if (y20 > 0) y50 / y20 else 0}%7.1f ${perPerson(y50, pop2050)}%7.1f   $p5%.0f to $p95%.0f EJ")
+    }
+    os.write.over(dir / "ar6-energy-mix.csv", out.toString)
+    println("wrote data-refresh/ar6-energy-mix.csv")
+
+    // The report's own numbers, as the check on the join.
+    val printed = Map(("C1", "Coal") -> 95.0, ("C1", "Oil") -> 60.0, ("C1", "Gas") -> 45.0,
+                      ("C3", "Coal") -> 85.0, ("C3", "Oil") -> 30.0, ("C3", "Gas") -> 15.0)
+    for (((cat, fuel), expected) <- printed.toSeq.sortBy(_._1)) {
+      val r = rows.find(x => x._1 == cat && x._2 == s"Primary Energy|$fuel").get
+      val fall = (1 - r._6 / r._4) * 100
+      println(f"  check $cat $fuel%-5s falls ${fall}%4.0f%% by 2050; the report prints $expected%.0f%%")
+      require(math.abs(fall - expected) <= 8,
+        f"chapterQEnergyMix: $cat $fuel falls ${fall}%.0f%%, the report prints $expected%.0f%%")
+    }
+  }
+  println("render:")
+  println("  uv run figures/ar6_energy_mix.py data-refresh/ar6-energy-mix.csv " +
+          "without-hot-air/Images/fig-q2-ar6-energy-mix.svg")
 }

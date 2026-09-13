@@ -17,6 +17,28 @@ Last updated **13 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 13 September 2026              | Q            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure Q.2: what the pathways actually build"}                 |
+|                                |              | The question the chapter had to leave open — how much solar, how much nuclear — is answered from the scenario database itself. In the    |
+|                                |              | 1.5 °C category the median pathway multiplies solar by 32 and wind by 16 between 2020 and 2050, roughly doubles nuclear, grows hydro and |
+|                                |              | biomass by about four-fifths each, and cuts coal by 95%, oil by 62% and gas by 42%; in the 2 °C category, solar by 21 and wind by 13     |
+|                                |              | with coal down 82%. In this book's units the median 1.5 °C world of 2050 runs on 43 kWh/d per person of primary energy — a third less    |
+|                                |              | than Britain uses now — of which solar is 8.5, biomass 9.3, wind 6.9, hydro 2.4 and nuclear 1.6. The spread is the point: across those   |
+|                                |              | pathways solar in 2050 runs from 31 to 200 exajoules and nuclear from 4 to 70, so the models agree that coal ends and disagree about     |
+|                                |              | what replaces it, which is why the report prints the fossil declines as numbers and the rest as words. The extraction checks itself      |
+|                                |              | against those published declines and fails if any of the six drifts more than eight points.                                              |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| 13 September 2026              | Q            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Chapter Q computes the scenarios rather than quoting them"}    |
+|                                |              | The AR6 Scenarios Database's metadata file arrived, so chapter Q's pathways are computed from the ensemble the report is built on — 1202 |
+|                                |              | vetted scenarios — instead of hand-entered from the printed Table SPM.2. The medians come back as the table prints them, to a tenth of a |
+|                                |              | point: 43.3, 68.9 and 84.2% for C1 against 43, 69 and 84, and 20.7, 46.3 and 64.5 for C3 against 21, 46 and 64, with the category counts |
+|                                |              | matching too. The chapter gains the whole eight-rung ladder, C1 to C8, each rung's median 2050 cut divided by the people then alive:     |
+|                                |              | 0.90 tonnes per person for 1.5 °C, 2.02 for 2 °C, 4.05 for 2.5 °C, and 8.31 for the top of the ladder, which is more per person in 2050  |
+|                                |              | than the world emits today. The step from two degrees to one and a half costs about 12 kWh/d per person of burning, roughly what an      |
+|                                |              | average European spends on driving. What the file cannot answer is how much solar or how much nuclear: those columns are in the          |
+|                                |              | timeseries database, not the metadata, and the chapter says so.                                                                          |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 13 September 2026              | Q            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Chapter Q: the IPCC's pathways in kWh/d"}                      |
 |                                |              | A new chapter converting the Sixth Assessment Report's headline scenarios into this book's units. Its two lead categories cut global     |
 |                                |              | greenhouse gases by 43, 69 and 84% by 2030, 2040 and 2050 for 1.5 °C, and by 21, 46 and 64% for 2 °C, measured against 55 GtCO₂-         |
