@@ -2927,25 +2927,28 @@ def appendixBCModelCurves(): Unit = {
     val v = if (model == "DWIA") dwia(z) else nrel(z)
     wind ++= f"$model,$z%.0f,$v%.3f,${0.5 * rho * v * v * v}%.1f\n"
   }
+  // Check before writing: a failed invariant should leave no file behind for
+  // a figure script to render happily from.
+  require(math.abs(dwia(zRef) - vRef) < 1e-9 && math.abs(nrel(zRef) - vRef) < 1e-9,
+    "appendixBCModelCurves: both formulas must give 6 m/s at 10 m")
   os.write.over(dir / "wind-height.csv", wind.toString)
   println("wrote data-refresh/wind-height.csv")
   for (z <- Seq(10.0, 50.0, 100.0, 200.0))
     println(f"  at $z%3.0f m: DWIA ${dwia(z)}%5.2f m/s (${0.5 * rho * math.pow(dwia(z), 3)}%5.0f W/m2), " +
             f"NREL ${nrel(z)}%5.2f m/s (${0.5 * rho * math.pow(nrel(z), 3)}%5.0f W/m2)")
-  require(math.abs(dwia(zRef) - vRef) < 1e-9 && math.abs(nrel(zRef) - vRef) < 1e-9,
-    "appendixBCModelCurves: both formulas must give 6 m/s at 10 m")
 
   // --- C.5: the thrust a jumbo jet needs ---
   val mass = 319000.0; val g = 9.81; val rhoAir = 0.41; val ap = 180.0; val cd = 0.03
   val wingspan = 64.4; val as = wingspan * wingspan   // figure C.7: a square of the wingspan
   def drag(v: Double) = 0.5 * cd * rhoAir * ap * v * v
   def lift(v: Double) = 0.5 * math.pow(mass * g, 2) / (rhoAir * v * v * as)
+  // One grid for the file and for the optimum, so the number asserted here is
+  // the number the figure and the captions publish.
+  val speeds = Seq.range(100, 401, 2).map(_.toDouble)
   val plane = new StringBuilder; plane ++= "speed_ms,drag_kn,lift_kn,total_kn\n"
-  for (v <- Seq.range(100, 401, 2).map(_.toDouble))
+  for (v <- speeds)
     plane ++= f"$v%.0f,${drag(v) / 1000}%.2f,${lift(v) / 1000}%.2f,${(drag(v) + lift(v)) / 1000}%.2f\n"
-  os.write.over(dir / "plane-thrust.csv", plane.toString)
-  println("wrote data-refresh/plane-thrust.csv")
-  val best = Seq.range(100, 401).map(_.toDouble).minBy(v => drag(v) + lift(v))
+  val best = speeds.minBy(v => drag(v) + lift(v))
   val closed = math.sqrt(cd * ap / as) * mass * g / 1000     // his own (cd fA)^1/2 mg
   println(f"  sausage area $as%.0f m2, the square of a $wingspan%.1f m wingspan")
   println(f"  optimum $best%.0f m/s at ${(drag(best) + lift(best)) / 1000}%.0f kN, " +
@@ -2958,6 +2961,8 @@ def appendixBCModelCurves(): Unit = {
     s"appendixBCModelCurves: minimum ${(drag(best) + lift(best)) / 1000} kN against his formula's $closed")
   require(math.abs(best - 220) <= 10,
     s"appendixBCModelCurves: optimum at $best m/s, his caption says 220")
+  os.write.over(dir / "plane-thrust.csv", plane.toString)
+  println("wrote data-refresh/plane-thrust.csv")
   println("render:")
   println("  uv run figures/wind_height.py data-refresh/wind-height.csv " +
           "without-hot-air/Images/fig-b7-wind-height.svg")
