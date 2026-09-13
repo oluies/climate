@@ -3087,17 +3087,15 @@ def chartsMarks(): Unit = {
 // ---- Chapter Q: the IPCC's scenarios in this book's units ----
 // Figure Q.1. The Sixth Assessment Report's working group III gives its
 // pathways as global totals of greenhouse gas, in gigatonnes of CO2-equivalent
-// a year. This book works in per person quantities, so the table is converted.
+// a year. This book works in per person quantities, so they are converted.
 //
-// The numbers are hand-entered from Table SPM.2 of the Summary for
-// Policymakers (2022), for the two categories the report itself leads with:
-// C1, which limits warming to 1.5 C with no or limited overshoot, and C3,
-// which limits it to 2 C with better than two chances in three. Modelled 2019
-// emissions, which is what the reductions are measured against, are 55
-// [53-58] GtCO2-eq.
+// The pathways are not read off the printed Table SPM.2 but computed from the
+// ensemble underneath it: the AR6 Scenarios Database's metadata indicators,
+// version 1.1, vetted set, 1202 scenarios, cut to the columns used here. That
+// the medians come back as the table prints them is the check.
 //
 // Population is the United Nations' medium projection as published by Our
-// World in Data, cut to the world row and carried in data-refresh.
+// World in Data, cut to the world row.
 @main
 def chapterQPathways(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
@@ -3105,41 +3103,69 @@ def chapterQPathways(): Unit = {
   val pop = os.read.lines(dir / "world-population-projected.csv").drop(1)
     .map(_.split(",")).map(f => f(0).toInt -> f(1).toDouble).toMap
 
-  // (category, year, median GtCO2-eq, p5, p95) from Table SPM.2
-  val table = Seq(
-    ("C1", 2030, 31.0, 21.0, 36.0), ("C1", 2040, 17.0, 6.0, 23.0), ("C1", 2050, 9.0, 1.0, 15.0),
-    ("C3", 2030, 44.0, 32.0, 55.0), ("C3", 2040, 29.0, 20.0, 36.0), ("C3", 2050, 20.0, 13.0, 26.0))
-  val base = 55.0; val baseYear = 2019
-  // Reductions the report prints, to check the conversion against.
+  case class Row(category: String, cuts: Map[Int, Double], netZero: Option[Double],
+                 peak: Option[Double])
+  val lines = os.read.lines(dir / "ar6-scenarios-meta.csv")
+  val head = lines.head.split(",").zipWithIndex.toMap
+  def num(f: Array[String], k: String) = f.lift(head(k)).flatMap(_.trim.toDoubleOption)
+  val all = lines.drop(1).map { l =>
+    val f = l.split(",", -1)
+    Row(f(head("category")),
+        Seq(2030, 2040, 2050).flatMap(y => num(f, s"cut_$y").map(y -> _)).toMap,
+        num(f, "netzero_co2"), num(f, "peak_warming"))
+  }
+  println(s"${all.length} vetted scenarios: " +
+    all.groupBy(_.category).toSeq.sortBy(_._1).map { case (c, rs) => s"$c ${rs.length}" }.mkString(", "))
+
+  def pct(xs: Seq[Double], p: Double) = { val s = xs.sorted; s(math.min(s.length - 1, (p * s.length).toInt)) }
+  def median(xs: Seq[Double]) = pct(xs, 0.5)
+  val base = 55.0; val baseYear = 2019     // the report's own modelled 2019 total
+  val gramsPerKwh = 250.0                  // the book's chemical exchange rate
+  def perPerson(gt: Double, year: Int) = gt * 1e9 / pop(year)
+  def asFuel(t: Double) = t * 1e6 / gramsPerKwh / 365
+
+  // What Table SPM.2 prints, to check the ensemble against.
   val printed = Map(("C1", 2030) -> 43.0, ("C1", 2040) -> 69.0, ("C1", 2050) -> 84.0,
                     ("C3", 2030) -> 21.0, ("C3", 2040) -> 46.0, ("C3", 2050) -> 64.0)
-  val gramsPerKwh = 250.0        // the book's own chemical exchange rate, oil or petrol
 
   val out = new StringBuilder
   out ++= "category,year,gt_total,gt_p5,gt_p95,people,t_per_person,t_p5,t_p95,kwh_per_day\n"
-  def perPerson(gt: Double, year: Int) = gt * 1e9 / pop(year)
   out ++= f"history,$baseYear,$base%.1f,53.0,58.0,${pop(baseYear)}%.0f," +
           f"${perPerson(base, baseYear)}%.3f,${perPerson(53, baseYear)}%.3f," +
-          f"${perPerson(58, baseYear)}%.3f,${perPerson(base, baseYear) * 1e6 / gramsPerKwh / 365}%.1f\n"
-  for ((cat, year, med, p5, p95) <- table)
-    out ++= f"$cat,$year,$med%.1f,$p5%.1f,$p95%.1f,${pop(year)}%.0f,${perPerson(med, year)}%.3f," +
-            f"${perPerson(p5, year)}%.3f,${perPerson(p95, year)}%.3f," +
-            f"${perPerson(med, year) * 1e6 / gramsPerKwh / 365}%.1f\n"
+          f"${perPerson(58, baseYear)}%.3f,${asFuel(perPerson(base, baseYear))}%.1f\n"
+  for (cat <- Seq("C1", "C3"); year <- Seq(2030, 2040, 2050)) {
+    val cuts = all.filter(_.category == cat).flatMap(_.cuts.get(year))
+    val level = (p: Double) => base * (1 - pct(cuts, p) / 100)
+    val (med, lo, hi) = (level(0.5), level(0.95), level(0.05))   // a deeper cut is a lower level
+    out ++= f"$cat,$year,$med%.1f,$lo%.1f,$hi%.1f,${pop(year)}%.0f,${perPerson(med, year)}%.3f," +
+            f"${perPerson(lo, year)}%.3f,${perPerson(hi, year)}%.3f,${asFuel(perPerson(med, year))}%.1f\n"
+    val cut = median(cuts)
+    println(f"  $cat $year: cut ${cut}%4.1f%% (table prints ${printed((cat, year))}%.0f), " +
+            f"${med}%4.1f Gt, ${perPerson(med, year)}%5.2f t per person, " +
+            f"${asFuel(perPerson(med, year))}%5.1f kWh/d as fuel; " +
+            f"per person the cut is ${(1 - perPerson(med, year) / perPerson(base, baseYear)) * 100}%4.0f%%")
+    require(math.abs(cut - printed((cat, year))) <= 1.5,
+      f"chapterQPathways: $cat $year gives ${cut}%.1f%% from the ensemble, Table SPM.2 prints ${printed((cat, year))}%.0f%%")
+  }
   os.write.over(dir / "ar6-pathways.csv", out.toString)
   println("wrote data-refresh/ar6-pathways.csv")
+  println("  every median above is within 1.5 points of the report's own printed table")
 
-  println(f"2019: $base%.0f GtCO2-eq over ${pop(baseYear) / 1e9}%.2f billion people " +
-          f"= ${perPerson(base, baseYear)}%.2f t per person")
-  for ((cat, year, med, _, _) <- table) {
-    val cut = (1 - med / base) * 100
-    val cutPerPerson = (1 - perPerson(med, year) / perPerson(base, baseYear)) * 100
-    println(f"  $cat $year: $med%4.1f Gt, ${perPerson(med, year)}%5.2f t per person, " +
-            f"${perPerson(med, year) * 1e6 / gramsPerKwh / 365}%5.1f kWh/d of fuel at 250 g/kWh; " +
-            f"cut ${cut}%4.0f%% in total, ${cutPerPerson}%4.0f%% per person")
-    require(math.abs(cut - printed((cat, year))) <= 1.5,
-      f"chapterQPathways: $cat $year gives ${cut}%.1f%%, the report prints ${printed((cat, year))}%.0f%%")
+  // The whole ladder, which the chapter prints as a table.
+  val ladder = new StringBuilder; ladder ++= "category,pathways,cut_2050,t_per_person_2050,kwh_per_day,net_zero_co2,peak_warming\n"
+  println("category  n     2050 cut  t/person  kWh/d  net zero CO2  peak warming")
+  for ((cat, rs) <- all.groupBy(_.category).toSeq.sortBy(_._1)) {
+    val cuts = rs.flatMap(_.cuts.get(2050))
+    val level = base * (1 - median(cuts) / 100)
+    val t = perPerson(level, 2050)
+    val nz = rs.flatMap(_.netZero)
+    val nzStr = if (nz.length < rs.length / 2) "" else f"${median(nz)}%.0f"
+    ladder ++= f"$cat,${rs.length},${median(cuts)}%.1f,$t%.2f,${asFuel(t)}%.1f,$nzStr,${median(rs.flatMap(_.peak))}%.2f\n"
+    println(f"  $cat%-3s ${rs.length}%4d  ${median(cuts)}%8.0f%%  $t%7.2f t  ${asFuel(t)}%5.1f  " +
+            f"${if (nzStr.isEmpty) "   none" else nzStr}%8s  ${median(rs.flatMap(_.peak))}%8.2f C")
   }
-  println("  every reduction above is within 1.5 points of the report's own printed figure")
+  os.write.over(dir / "ar6-ladder.csv", ladder.toString)
+  println("wrote data-refresh/ar6-ladder.csv")
   println("render:")
   println("  uv run figures/ar6_pathways.py data-refresh/ar6-pathways.csv " +
           "without-hot-air/Images/fig-q1-ar6-pathways.svg")
