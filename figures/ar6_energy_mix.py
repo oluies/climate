@@ -72,14 +72,18 @@ for ax, cat in zip(axes, ("C1", "C3")):
 axes[0].plot([], [], "o", color=START, ms=5, label="2020")
 axes[0].plot([], [], "o", color=GROWS, ms=6, label="2050, median across pathways")
 axes[0].plot([], [], lw=5, alpha=0.22, color=GROWS, label="2050, 5th to 95th percentile")
-axes[0].legend(frameon=False, fontsize=9, loc="lower right")
+# Below the panel, not on top of the gas and oil rows.
+axes[0].legend(frameon=False, fontsize=9, loc="upper left", ncol=3,
+               bbox_to_anchor=(0, -0.15), handletextpad=0.5, columnspacing=1.8)
 fig.suptitle("The pathways agree about coal and disagree about almost everything else",
              x=0.055, ha="left", fontsize=13, fontweight="bold", color=INK)
 axes[0].annotate("Medians across the pathways in each category, from the AR6 Scenarios Database. The shaded bar is how far apart those pathways\n"
                  "are in 2050: solar between 31 and 200 EJ in the 1.5 °C category, nuclear between 4 and 70 — a factor of sixteen, which is why the\n"
                  "report publishes no number for either. At the 2050 population, the median 1.5 °C world runs on 43 kWh/d per person of primary\n"
-                 "energy, of which solar is 8.5 and nuclear 1.6.",
-                 xy=(0, -0.27), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
+                 "energy; the medians for solar and for nuclear are 8.5 and 1.6, each over its own set of pathways rather than a share of that 43.",
+                 xy=(0, -0.34), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
 fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+if len(sys.argv) > 3:
+    fig.savefig(sys.argv[3], format="png", dpi=150, bbox_inches="tight")
 print("wrote", sys.argv[2], "| C1 solar",
       rows["C1"]["Solar"]["ej_2050"], "EJ, nuclear", rows["C1"]["Nuclear"]["ej_2050"], "EJ")
