@@ -3163,10 +3163,12 @@ def chapterQPathways(): Unit = {
   // The whole ladder, which the chapter prints as a table.
   val ladder = new StringBuilder; ladder ++= "category,pathways,cut_2050,t_per_person_2050,kwh_per_day,net_zero_co2,peak_warming\n"
   println("category  n     2050 cut  t/person  kWh/d  net zero CO2  peak warming")
+  val perCategory = scala.collection.mutable.LinkedHashMap[String, Double]()
   for ((cat, rs) <- all.groupBy(_.category).toSeq.sortBy(_._1)) {
     val cuts = rs.flatMap(_.cuts.get(2050))
     val level = base * (1 - median(cuts) / 100)
     val t = perPerson(level, 2050)
+    perCategory(cat) = t
     val nz = rs.flatMap(_.netZero)
     val nzStr = if (nz.isEmpty || nz.length * 2 < rs.length) "" else f"${median(nz)}%.0f"
     ladder ++= f"$cat,${rs.length},${median(cuts)}%.1f,$t%.2f,${asFuel(t)}%.1f,$nzStr,${median(rs.flatMap(_.peak))}%.2f\n"
@@ -3174,15 +3176,16 @@ def chapterQPathways(): Unit = {
             f"${if (nzStr.isEmpty) "   none" else nzStr}%8s  ${median(rs.flatMap(_.peak))}%8.2f C")
   }
   // The chapter transcribes this table, so the rows it prints are checked
-  // here: a refresh that moves them fails rather than leaving the chapter
-  // quietly wrong.
+  // here against the very figures just written into it: a refresh that moves
+  // them fails rather than leaving the chapter quietly wrong.
   val printedLadder = Map("C1" -> 0.90, "C2" -> 1.41, "C3" -> 2.02, "C4" -> 2.91,
                           "C5" -> 4.05, "C6" -> 5.42, "C7" -> 7.06, "C8" -> 8.31)
-  for ((cat, rs) <- all.groupBy(_.category)) {
-    val t = perPerson(base * (1 - median(rs.flatMap(_.cuts.get(2050))) / 100), 2050)
+  require(perCategory.keySet == printedLadder.keySet,
+    s"chapterQPathways: the ensemble has categories ${perCategory.keys.mkString(" ")}, " +
+    s"chapter Q prints ${printedLadder.keys.toSeq.sorted.mkString(" ")}")
+  for ((cat, t) <- perCategory)
     require(math.abs(t - printedLadder(cat)) < 0.02,
       f"chapterQPathways: $cat is now $t%.2f t per person in 2050; chapter Q prints ${printedLadder(cat)}%.2f")
-  }
   os.write.over(dir / "ar6-ladder.csv", ladder.toString)
   println("wrote data-refresh/ar6-ladder.csv")
   println("  the ladder matches the table printed in chapter Q")
@@ -3205,6 +3208,12 @@ def chapterQPathways(): Unit = {
 // The join to a scenario's category is by model and scenario name against the
 // metadata extract, whose names have had commas replaced by spaces, so the
 // same replacement is made here.
+//
+// Only pathways that report a carrier in all three printed years are counted,
+// so the pathway count beside a row describes every number in that row rather
+// than the last column of it. Carriers still differ from each other - not
+// every pathway splits out solar and wind - which is why the chapter reads
+// the spread rather than adding the medians up.
 //
 // The check is the report's own published fossil declines: C1's medians for
 // coal, oil and gas in 2050 against 2019 are about 95%, 60% and 45%, and C3's
@@ -3238,12 +3247,13 @@ def chapterQEnergyMix(): Unit = {
     st.execute(s"create view db as select * from read_csv_auto('${big}', header=true, sample_size=-1)")
     st.execute(s"create view meta as select * from read_csv_auto('${meta}', header=true)")
     val rs = st.executeQuery(s"""
-      select m.category, d.Variable, count(d."2050") as n,
+      select m.category, d.Variable, count(*) as n,
              median(d."2020") as y2020, median(d."2030") as y2030, median(d."2050") as y2050,
              quantile_cont(d."2050", 0.05) as p5, quantile_cont(d."2050", 0.95) as p95
       from db d join meta m
         on m.model = replace(d.Model, ',', ' ') and m.scenario = replace(d.Scenario, ',', ' ')
       where d.Region = 'World' and d.Variable in ($inList) and m.category in ('C1', 'C3')
+        and d."2020" is not null and d."2030" is not null and d."2050" is not null
       group by 1, 2 order by 1, 2""")
     val rows = scala.collection.mutable.ArrayBuffer[(String, String, Int, Double, Double, Double, Double, Double)]()
     while (rs.next())
@@ -3342,8 +3352,8 @@ def chapterQMeta(): Unit = {
       }.mkString(",") + "\n"
       n += 1
     }
+    require(n == 1202, s"chapterQMeta: $n scenarios, the vetted set has 1202")
     os.write.over(dir / "ar6-scenarios-meta.csv", out.toString)
     println(s"wrote data-refresh/ar6-scenarios-meta.csv ($n scenarios)")
-    require(n == 1202, s"chapterQMeta: $n scenarios, the vetted set has 1202")
   }
 }
