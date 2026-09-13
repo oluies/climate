@@ -28,6 +28,10 @@ power per person = <span class="green">wind power per unit area</span> × area p
 
 This figure of 6 m/s is probably an over-estimate for many locations in Britain. For example, figure 4.1 shows daily average windspeeds in Cambridge during 2006. The daily average speed reached 6 m/s on only about 30 days of the year – see figure 4.6 for a histogram. But some spots do have windspeeds above 6 m/s – for example, the summit of Cairngorm in Scotland (figure 4.2).
 
+![](/img/without-hot-air/figure28.gif)
+
+<span class="figurenumber">Figure 4.6.</span> Histogram of Cambridge average wind speed in metres per second: daily averages (left), and half-hourly averages (right).
+
 Plugging in the British population density: 250 people per square kilometre, or 4000 square metres per person, we find that wind power could <span id="page33">generate</span>
 
 2 W/m<sup>2</sup> ×4000 m<sup>2</sup>/person = 8000 W per person,
@@ -142,10 +146,6 @@ In Great Britain in 2025, against a time-weighted average market price of £79.9
 [^ukwind]: Josh Giddings, Hannah Bloomfield, Rachel James and Michael Blair, "The impact of future UK offshore wind farm distribution and climate change on generation performance and variability", *Environmental Research Letters*, 2024, <https://doi.org/10.1088/1748-9326/ad489b>. Their ERA5-derived historical mean annual capacity factor is 48.3%, or 45.4% once wake losses and curtailment are allowed for, against an observed 45.7% for 2020 — a useful check on the 33% load factor assumed elsewhere in this chapter. The 5.5%/24.5% per decade comparison in the paragraph above is cited in Vest and Tych, discussed in chapter B.
 
 [^capture]: GB capture prices for 2025, computed from Elexon BMRS half-hourly generation by fuel type and the market index price (APXMIDP), in this edition's data pipeline. Capture price is generation-weighted revenue per MWh; the value factor is that divided by the time-weighted system average of £79.9/MWh.
-
-![](/img/without-hot-air/figure28.gif)
-
-<span class="figurenumber">Figure 4.6.</span> Histogram of Cambridge average wind speed in metres per second: daily averages (left), and half-hourly averages (right).
 
 ## Queries
 
