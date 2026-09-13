@@ -3425,7 +3425,10 @@ def chapterQMeta(): Unit = {
 // The checks are that the region is the Europe it claims to be - about 547
 // million people in 2020, which is Europe without the former Soviet Union -
 // that its share of world primary energy in 2020 is about a ninth, and then
-// every figure the chapter transcribes out of the two tables this writes.
+// the figures chapter Q transcribes out of the two tables this writes - the
+// per-person totals and sectors, the per-carrier changes, the nuclear falls
+// and spread, the conversion chain, the build rates, and the count of British
+// and Swedish scenarios, which is zero in the vetted set.
 @main
 def chapterQEurope(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
@@ -3448,11 +3451,14 @@ def chapterQEurope(): Unit = {
   // than what they build for one.
   val demand = Seq("Final Energy", "Final Energy|Electricity", "Final Energy|Transportation",
     "Final Energy|Residential and Commercial", "Final Energy|Industry",
-    "Capacity|Electricity|Wind", "Capacity|Electricity|Solar", "Capacity|Electricity|Nuclear",
-    // The conversion chain, for the passage on why primary energy falls faster
-    // than anyone uses less: what is generated, what is made out of it, and
-    // what transport swaps for what.
-    "Secondary Energy|Electricity", "Secondary Energy|Hydrogen", "Secondary Energy|Liquids|Biomass",
+    "Capacity|Electricity|Wind", "Capacity|Electricity|Solar", "Capacity|Electricity|Nuclear")
+  // The conversion chain, for the passage on why primary energy falls faster
+  // than anyone uses less: what is generated, what is made out of it, and what
+  // transport swaps for what. Only the R10 gather asks for these; the ISO3 cut
+  // is a second opinion on primary energy alone and would scan 1.1 GB for rows
+  // it then discards.
+  val chain = Seq("Secondary Energy|Electricity", "Secondary Energy|Hydrogen",
+    "Secondary Energy|Liquids|Biomass",
     "Final Energy|Transportation|Electricity", "Final Energy|Transportation|Liquids")
   def perPerson(ej: Double, millions: Double) = ej * 1e18 / 3.6e6 / (millions * 1e6) / 365
 
@@ -3512,7 +3518,7 @@ def chapterQEurope(): Unit = {
 
     // The chapter's headline: nuclear is the one carrier that goes the other
     // way from the world's. Both cuts of Europe have to agree about that.
-    val eu = gatherMix(st, "iso", "EU", PRIMARY_ENERGY ++ demand :+ "Population")
+    val eu = gatherMix(st, "iso", "EU", PRIMARY_ENERGY :+ "Population")
     require(eu.nonEmpty, "chapterQEurope: the join to the ISO3 file's EU aggregate matched nothing")
     for ((label, rows, printedFall) <- Seq(("R10EUROPE", europe, 58.0), ("EU", eu, 91.0))) {
       val nuc = mixRow(rows, "C1", "Primary Energy|Nuclear", "chapterQEurope")
@@ -3560,7 +3566,7 @@ def chapterQEurope(): Unit = {
                  nucSpread.p95, 13.8, 1.5)
 
     // Figure Q.4: what the pathways ask of a European, and the plant behind it.
-    val ch = gatherMix(st, "r10", "R10EUROPE", demand)
+    val ch = gatherMix(st, "r10", "R10EUROPE", demand ++ chain)
     require(ch.nonEmpty, "chapterQEurope: R10EUROPE has no final-energy or capacity rows")
     println(f"\n${"cat"}%-4s ${"variable"}%-40s ${"n"}%4s ${"2020"}%9s ${"2030"}%9s ${"2050"}%9s   per person")
     for (r <- ch) {
@@ -3590,20 +3596,60 @@ def chapterQEurope(): Unit = {
                  elecShare("C1", "2020"), 21.0, 2.0)
     requireClose("chapterQEurope: electricity's share of Europe's C1 final energy in 2050, per cent",
                  elecShare("C1", "2050"), 59.0, 3.0)
-    // The sharpest claim in the section: the two categories are three times
-    // further apart in energy used than in the plant that supplies it.
-    val feCut = (cat: String) => chRow(cat, "Final Energy").fallPercent
-    println(f"  check final energy falls ${feCut("C1")}%.0f%% in C1 and ${feCut("C3")}%.0f%% in C3 by 2050")
-    requireClose("chapterQEurope: the fall in Europe's C1 final energy by 2050, per cent",
-                 feCut("C1"), 27.0, 4.0)
-    requireClose("chapterQEurope: the fall in Europe's C3 final energy by 2050, per cent",
-                 feCut("C3"), 9.0, 4.0)
-    for ((plant, printed) <- Seq("Wind" -> 18.0, "Solar" -> 28.0)) {
-      val (c1, c3) = (chRow("C1", s"Capacity|Electricity|$plant"), chRow("C3", s"Capacity|Electricity|$plant"))
-      val apart = (c1.y2050 / c3.y2050 - 1) * 100
-      println(f"  check C1 builds ${apart}%.0f%% more $plant capacity than C3 by 2050")
-      requireClose(s"chapterQEurope: how much more $plant capacity C1 builds than C3, per cent",
+    // The chapter states these falls per person, and Europe's population grows
+    // inside the pathways, so they are computed and pinned per person. The
+    // aggregate figures are three points smaller and are deliberately not the
+    // ones in print.
+    val feCut = (cat: String) => {
+      val r = chRow(cat, "Final Energy")
+      (1 - perPerson(r.y2050, pop(cat).y2050) / perPerson(r.y2020, pop(cat).y2020)) * 100
+    }
+    println(f"  check final energy per person falls ${feCut("C1")}%.0f%% in C1 and ${feCut("C3")}%.0f%% in C3 by 2050")
+    requireClose("chapterQEurope: the fall in Europe's C1 final energy per person by 2050, per cent",
+                 feCut("C1"), 30.4, 3.0)
+    requireClose("chapterQEurope: the fall in Europe's C3 final energy per person by 2050, per cent",
+                 feCut("C3"), 14.7, 3.0)
+    // And the like-for-like comparison the section now makes: how far apart the
+    // two categories are in 2050 itself, per person, in demand and in plant.
+    // These are commensurable with each other; a fall from 2020 is not.
+    val fe50 = (cat: String) => perPerson(chRow(cat, "Final Energy").y2050, pop(cat).y2050)
+    val demandApart = (1 - fe50("C1") / fe50("C3")) * 100
+    println(f"  check in 2050 C1 uses ${demandApart}%.0f%% less energy per person than C3")
+    requireClose("chapterQEurope: how much less energy per person C1 uses than C3 in 2050, per cent",
+                 demandApart, 17.0, 5.0)
+    for ((plant, printed) <- Seq("Wind" -> 25.0, "Solar" -> 36.0)) {
+      val perHead = (cat: String) =>
+        chRow(cat, s"Capacity|Electricity|$plant").y2050 * 1000 / pop(cat).y2050
+      val apart = (perHead("C1") / perHead("C3") - 1) * 100
+      println(f"  check in 2050 C1 has ${apart}%.0f%% more $plant capacity per person than C3")
+      requireClose(s"chapterQEurope: how much more $plant capacity per person C1 has than C3 in 2050, per cent",
                    apart, printed, 8.0)
+    }
+    // The sectors and the nuclear capacity the section prints, which nothing
+    // else would catch.
+    for ((cat, variable, a, b) <- Seq(
+        ("C1", "Final Energy|Transportation", 22.3, 14.0),
+        ("C1", "Final Energy|Residential and Commercial", 26.1, 19.3),
+        ("C1", "Final Energy|Industry", 21.7, 16.6),
+        ("C3", "Final Energy|Residential and Commercial", 27.0, 25.7))) {
+      val r = chRow(cat, variable)
+      requireClose(s"chapterQEurope: $cat ${variable.stripPrefix("Final Energy|")} per person in 2020, kWh/d",
+                   perPerson(r.y2020, pop(cat).y2020), a, 1.5)
+      requireClose(s"chapterQEurope: $cat ${variable.stripPrefix("Final Energy|")} per person in 2050, kWh/d",
+                   perPerson(r.y2050, pop(cat).y2050), b, 1.5)
+    }
+    val nuclearPlant = chRow("C1", "Capacity|Electricity|Nuclear")
+    requireClose("chapterQEurope: Europe's C1 nuclear capacity in 2020, GW", nuclearPlant.y2020, 96.0, 6.0)
+    requireClose("chapterQEurope: Europe's C1 nuclear capacity in 2050, GW", nuclearPlant.y2050, 43.0, 6.0)
+    // Figure Q.4's right-hand panel is the section's scoreboard, and the rates
+    // exist nowhere but the figure script, so they are pinned from the same
+    // arithmetic here.
+    for ((plant, firstLeg, secondLeg) <- Seq(("Wind", 31.0, 35.0), ("Solar", 61.0, 38.0))) {
+      val r = chRow("C1", s"Capacity|Electricity|$plant")
+      requireClose(s"chapterQEurope: the gigawatts of $plant a year the 2020s ask of Europe",
+                   (r.y2030 - r.y2020) / 10, firstLeg, 4.0)
+      requireClose(s"chapterQEurope: the gigawatts of $plant a year the 2030s and 2040s ask of Europe",
+                   (r.y2050 - r.y2030) / 20, secondLeg, 4.0)
     }
 
     // Why primary energy falls faster than anyone uses less. Three of these
@@ -3611,26 +3657,43 @@ def chapterQEurope(): Unit = {
     // point, so all four are pinned.
     val primary = eu1("C1", "Primary Energy")
     val finalEnergy = chRow("C1", "Final Energy")
-    val ratio = (a: Double, b: Double) => a / b
-    println(f"  check primary over final energy is ${ratio(primary.y2020, finalEnergy.y2020)}%.2f in 2020 " +
-            f"and ${ratio(primary.y2050, finalEnergy.y2050)}%.2f in 2050")
+    println(f"  check primary over final energy is ${primary.y2020 / finalEnergy.y2020}%.2f in 2020 " +
+            f"and ${primary.y2050 / finalEnergy.y2050}%.2f in 2050")
     requireClose("chapterQEurope: Europe's C1 primary-to-final ratio in 2020",
-                 ratio(primary.y2020, finalEnergy.y2020), 1.26, 0.05)
+                 primary.y2020 / finalEnergy.y2020, 1.26, 0.05)
     requireClose("chapterQEurope: Europe's C1 primary-to-final ratio in 2050",
-                 ratio(primary.y2050, finalEnergy.y2050), 1.39, 0.06)
+                 primary.y2050 / finalEnergy.y2050, 1.39, 0.06)
+    // The chapter prints both legs of the transport swap as well as the ratio,
+    // so both legs are pinned: a refresh that halved them would leave the ratio
+    // at 3.2 and the sentence wrong.
     val liquidsOut = chRow("C1", "Final Energy|Transportation|Liquids")
     val electricIn = chRow("C1", "Final Energy|Transportation|Electricity")
-    val swap = (liquidsOut.y2020 - liquidsOut.y2050) / (electricIn.y2050 - electricIn.y2020)
-    println(f"  check transport drops ${liquidsOut.y2020 - liquidsOut.y2050}%.1f EJ of liquids for " +
-            f"${electricIn.y2050 - electricIn.y2020}%.1f EJ of electricity, a ratio of $swap%.1f")
+    val (liquidsDrop, electricRise) = (liquidsOut.y2020 - liquidsOut.y2050, electricIn.y2050 - electricIn.y2020)
+    println(f"  check transport drops $liquidsDrop%.1f EJ of liquids for $electricRise%.1f EJ of " +
+            f"electricity, a ratio of ${liquidsDrop / electricRise}%.1f")
+    requireClose("chapterQEurope: the liquid fuel European transport gives up by 2050, EJ", liquidsDrop, 11.1, 1.2)
+    requireClose("chapterQEurope: the electricity European transport takes on by 2050, EJ", electricRise, 3.5, 0.5)
     requireClose("chapterQEurope: what a joule of transport electricity replaces, in joules of liquid fuel",
-                 swap, 3.2, 0.4)
+                 liquidsDrop / electricRise, 3.2, 0.4)
+    // Generation and the two fuels made out of it, all four of which the
+    // section transcribes.
+    val generated = chRow("C1", "Secondary Energy|Electricity")
+    requireClose("chapterQEurope: Europe's C1 electricity generated in 2020, EJ", generated.y2020, 13.1, 1.0)
+    requireClose("chapterQEurope: Europe's C1 electricity generated in 2050, EJ", generated.y2050, 27.3, 2.0)
+    val bioLiquids = chRow("C1", "Secondary Energy|Liquids|Biomass")
+    requireClose("chapterQEurope: Europe's C1 biomass liquids in 2020, EJ", bioLiquids.y2020, 0.56, 0.2)
+    requireClose("chapterQEurope: Europe's C1 biomass liquids in 2050, EJ", bioLiquids.y2050, 3.57, 0.6)
     val h2 = chRow("C1", "Secondary Energy|Hydrogen")
-    println(f"  check hydrogen goes from ${h2.y2020}%.2f EJ to ${h2.y2050}%.2f, a factor of ${h2.multiple}%.0f")
+    println(f"  check hydrogen goes from ${h2.y2020}%.2f EJ to ${h2.y2050}%.2f")
+    requireClose("chapterQEurope: Europe's C1 secondary hydrogen in 2020, EJ", h2.y2020, 0.05, 0.15)
     requireClose("chapterQEurope: Europe's C1 secondary hydrogen in 2050, EJ", h2.y2050, 3.34, 0.5)
-    require(h2.multiple > 30,
-      f"chapterQEurope: hydrogen now grows only ${h2.multiple}%.0f-fold by 2050; chapter Q says the " +
-      "pathways assume Europe builds a hydrogen industry it does not have")
+    // Stated on the levels rather than through MixRow.multiple, which reports
+    // zero growth from a zero baseline - and C3's 2020 median is already 0.00,
+    // so the 0.05 here is one rounding step from asserting the opposite of
+    // what happened.
+    require(h2.y2050 > 30 * h2.y2020,
+      f"chapterQEurope: hydrogen now goes from ${h2.y2020}%.2f EJ to ${h2.y2050}%.2f, less than " +
+      "thirty-fold; chapter Q says the pathways assume Europe builds a hydrogen industry it does not have")
 
     // The negative result the chapter reports: the ISO3 file has Britain and
     // Sweden in it, but none of those scenarios were vetted and sorted into a
