@@ -70,7 +70,7 @@ for ax, cat in zip(axes, ("C1", "C3")):
     ax.tick_params(length=0, labelsize=9.5)
 
 axes[0].plot([], [], "o", color=START, ms=5, label="2020")
-axes[0].plot([], [], "o", color=GROWS, ms=6, label="2050, median pathway")
+axes[0].plot([], [], "o", color=GROWS, ms=6, label="2050, median across pathways")
 axes[0].plot([], [], lw=5, alpha=0.22, color=GROWS, label="2050, 5th to 95th percentile")
 axes[0].legend(frameon=False, fontsize=9, loc="lower right")
 fig.suptitle("The pathways agree about coal and disagree about almost everything else",

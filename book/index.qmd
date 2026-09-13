@@ -33,10 +33,10 @@ Last updated **13 September 2026**. The complete history is in the
 |                                |              | vetted scenarios — instead of hand-entered from the printed Table SPM.2. The medians come back as the table prints them, to a tenth of a |
 |                                |              | point: 43.3, 68.9 and 84.2% for C1 against 43, 69 and 84, and 20.7, 46.3 and 64.5 for C3 against 21, 46 and 64, with the category counts |
 |                                |              | matching too. The chapter gains the whole eight-rung ladder, C1 to C8, each rung's median 2050 cut divided by the people then alive:     |
-|                                |              | 0.90 tonnes per person for 1.5 °C, 2.02 for 2 °C, 4.05 for 2.5 °C, and 8.31 for the top of the ladder, which is more per person in 2050  |
-|                                |              | than the world emits today. The step from two degrees to one and a half costs about 12 kWh/d per person of burning, roughly what an      |
-|                                |              | average European spends on driving. What the file cannot answer is how much solar or how much nuclear: those columns are in the          |
-|                                |              | timeseries database, not the metadata, and the chapter says so.                                                                          |
+|                                |              | 0.90 tonnes per person for 1.5 °C, 2.02 for 2 °C, 4.05 for 2.5 °C, and 8.31 for C8 at the bottom, which is more per person in 2050 than  |
+|                                |              | the world emits today. The step from two degrees to one and a half costs about 12 kWh/d per person of burning, roughly what an average   |
+|                                |              | European spends on driving. What the report does not give is a solar or nuclear number per category: the mix is per pathway rather than  |
+|                                |              | per are in the timeseries database, not the metadata, and the chapter says so.                                                           |
 |                                |              | :::                                                                                                                                      |
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 13 September 2026              | Q            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Chapter Q: the IPCC's pathways in kWh/d"}                      |
@@ -104,7 +104,7 @@ Last updated **13 September 2026**. The complete history is in the
 |                                |              | table again. Figure C.5, the thrust a plane needs against its speed, is recomputed from the formula above it and the numbers its own     |
 |                                |              | caption prints — 319 tonnes, wingspan 64.4 m, drag coefficient 0.03, frontal area 180 m², air at 0.41 kg/m³ — with the area of the       |
 |                                |              | sausage of air the wings throw down taken as the square of the wingspan, which figure C.7's caption gives. The minimum lands at 226 m/s  |
-|                                |              | and 113 kN against the 220 m/s his caption states, and the note records that the 130 kN the chapter derives later in the appendix   uses  |
+|                                |              | and 113 kN against the 220 m/s his caption states, and the note records that the 130 kN the chapter derives later in the appendix uses   |
 |                                |              | table C.6's fully-laden 363 tonnes instead. And figure C.7, the frontal view of a 747, had a yellow field baked in behind it where the   |
 |                                |              | drawing's transparency used to be; the background is white again.                                                                        |
 |                                |              | :::                                                                                                                                      |

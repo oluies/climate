@@ -3110,6 +3110,12 @@ def chapterQPathways(): Unit = {
   def num(f: Array[String], k: String) = f.lift(head(k)).flatMap(_.trim.toDoubleOption)
   val all = lines.drop(1).map { l =>
     val f = l.split(",", -1)
+    // A comma inside a model or scenario name would shift every column, which
+    // is how a category of 4182 C once appeared in this table.
+    require(f.length == head.size,
+      s"ar6-scenarios-meta.csv: a row has ${f.length} fields against ${head.size} in the header: $l")
+    require(f(head("category")).matches("C[1-8]"),
+      s"ar6-scenarios-meta.csv: '${f(head("category"))}' is not a category")
     Row(f(head("category")),
         Seq(2030, 2040, 2050).flatMap(y => num(f, s"cut_$y").map(y -> _)).toMap,
         num(f, "netzero_co2"), num(f, "peak_warming"))
@@ -3117,7 +3123,10 @@ def chapterQPathways(): Unit = {
   println(s"${all.length} vetted scenarios: " +
     all.groupBy(_.category).toSeq.sortBy(_._1).map { case (c, rs) => s"$c ${rs.length}" }.mkString(", "))
 
-  def pct(xs: Seq[Double], p: Double) = { val s = xs.sorted; s(math.min(s.length - 1, (p * s.length).toInt)) }
+  def pct(xs: Seq[Double], p: Double) = {
+    require(xs.nonEmpty, "chapterQPathways: asked for a percentile of nothing")
+    val s = xs.sorted; s(math.min(s.length - 1, (p * s.length).toInt))
+  }
   def median(xs: Seq[Double]) = pct(xs, 0.5)
   val base = 55.0; val baseYear = 2019     // the report's own modelled 2019 total
   val gramsPerKwh = 250.0                  // the book's chemical exchange rate
@@ -3159,13 +3168,24 @@ def chapterQPathways(): Unit = {
     val level = base * (1 - median(cuts) / 100)
     val t = perPerson(level, 2050)
     val nz = rs.flatMap(_.netZero)
-    val nzStr = if (nz.length < rs.length / 2) "" else f"${median(nz)}%.0f"
+    val nzStr = if (nz.isEmpty || nz.length * 2 < rs.length) "" else f"${median(nz)}%.0f"
     ladder ++= f"$cat,${rs.length},${median(cuts)}%.1f,$t%.2f,${asFuel(t)}%.1f,$nzStr,${median(rs.flatMap(_.peak))}%.2f\n"
     println(f"  $cat%-3s ${rs.length}%4d  ${median(cuts)}%8.0f%%  $t%7.2f t  ${asFuel(t)}%5.1f  " +
             f"${if (nzStr.isEmpty) "   none" else nzStr}%8s  ${median(rs.flatMap(_.peak))}%8.2f C")
   }
+  // The chapter transcribes this table, so the rows it prints are checked
+  // here: a refresh that moves them fails rather than leaving the chapter
+  // quietly wrong.
+  val printedLadder = Map("C1" -> 0.90, "C2" -> 1.41, "C3" -> 2.02, "C4" -> 2.91,
+                          "C5" -> 4.05, "C6" -> 5.42, "C7" -> 7.06, "C8" -> 8.31)
+  for ((cat, rs) <- all.groupBy(_.category)) {
+    val t = perPerson(base * (1 - median(rs.flatMap(_.cuts.get(2050))) / 100), 2050)
+    require(math.abs(t - printedLadder(cat)) < 0.02,
+      f"chapterQPathways: $cat is now $t%.2f t per person in 2050; chapter Q prints ${printedLadder(cat)}%.2f")
+  }
   os.write.over(dir / "ar6-ladder.csv", ladder.toString)
   println("wrote data-refresh/ar6-ladder.csv")
+  println("  the ladder matches the table printed in chapter Q")
   println("render:")
   println("  uv run figures/ar6_pathways.py data-refresh/ar6-pathways.csv " +
           "without-hot-air/Images/fig-q1-ar6-pathways.svg")
@@ -3218,7 +3238,7 @@ def chapterQEnergyMix(): Unit = {
     st.execute(s"create view db as select * from read_csv_auto('${big}', header=true, sample_size=-1)")
     st.execute(s"create view meta as select * from read_csv_auto('${meta}', header=true)")
     val rs = st.executeQuery(s"""
-      select m.category, d.Variable, count(*) as n,
+      select m.category, d.Variable, count(d."2050") as n,
              median(d."2020") as y2020, median(d."2030") as y2030, median(d."2050") as y2050,
              quantile_cont(d."2050", 0.05) as p5, quantile_cont(d."2050", 0.95) as p95
       from db d join meta m
@@ -3235,23 +3255,95 @@ def chapterQEnergyMix(): Unit = {
       val name = v.stripPrefix("Primary Energy|").replace("Primary Energy", "all sources")
       out ++= f"$cat,$name,$n,$y20%.1f,$y30%.1f,$y50%.1f,$p5%.1f,$p95%.1f,${perPerson(y50, pop2050)}%.2f\n"
       println(f"$cat%-4s $name%-26s $n%4d $y20%8.1f $y30%8.1f $y50%8.1f " +
-              f"${if (y20 > 0) y50 / y20 else 0}%7.1f ${perPerson(y50, pop2050)}%7.1f   $p5%.0f to $p95%.0f EJ")
+              f"${if (y20 > 0) y50 / y20 else 0.0}%7.1f ${perPerson(y50, pop2050)}%7.1f   $p5%.0f to $p95%.0f EJ")
     }
-    os.write.over(dir / "ar6-energy-mix.csv", out.toString)
-    println("wrote data-refresh/ar6-energy-mix.csv")
-
-    // The report's own numbers, as the check on the join.
+    // The report's own numbers, as the check on the join, run before the
+    // derived table is written: a bad join must not leave a bad file behind
+    // for the figure script to render from.
     val printed = Map(("C1", "Coal") -> 95.0, ("C1", "Oil") -> 60.0, ("C1", "Gas") -> 45.0,
                       ("C3", "Coal") -> 85.0, ("C3", "Oil") -> 30.0, ("C3", "Gas") -> 15.0)
+    require(rows.nonEmpty, "chapterQEnergyMix: the join matched nothing - " +
+      "do the model and scenario names in the timeseries file match the metadata extract?")
     for (((cat, fuel), expected) <- printed.toSeq.sortBy(_._1)) {
-      val r = rows.find(x => x._1 == cat && x._2 == s"Primary Energy|$fuel").get
+      val r = rows.find(x => x._1 == cat && x._2 == s"Primary Energy|$fuel")
+        .getOrElse(sys.error(s"chapterQEnergyMix: no rows for $cat Primary Energy|$fuel"))
+      require(r._3 > 50 && r._4 > 0,
+        f"chapterQEnergyMix: $cat $fuel has ${r._3}%d pathways and ${r._4}%.1f EJ in 2020, which cannot be right")
       val fall = (1 - r._6 / r._4) * 100
       println(f"  check $cat $fuel%-5s falls ${fall}%4.0f%% by 2050; the report prints $expected%.0f%%")
       require(math.abs(fall - expected) <= 8,
         f"chapterQEnergyMix: $cat $fuel falls ${fall}%.0f%%, the report prints $expected%.0f%%")
     }
+    os.write.over(dir / "ar6-energy-mix.csv", out.toString)
+    println("wrote data-refresh/ar6-energy-mix.csv")
   }
   println("render:")
   println("  uv run figures/ar6_energy_mix.py data-refresh/ar6-energy-mix.csv " +
           "without-hot-air/Images/fig-q2-ar6-energy-mix.svg")
+}
+
+// ---- Chapter Q: the scenario metadata, cut down from the workbook ----
+// The AR6 Scenarios Database publishes a metadata workbook alongside its
+// timeseries: one row per scenario, with the category it was sorted into and
+// the emissions and warming indicators chapter 3 of the report is built on.
+// The workbook is in this repository; this task cuts it to the columns
+// chapterQPathways uses and writes them as a CSV, so that extraction is a
+// step anyone can rerun rather than something done by hand once.
+//
+// Two model names contain a comma, which would shift every column of a plain
+// CSV, so commas in names are replaced by spaces here - and the reader in
+// chapterQPathways checks each row's field count anyway.
+@main
+def chapterQMeta(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"
+  val xlsx = dir / "ar6-metadata-indicators-v1.1.xlsx"
+  require(os.exists(xlsx), s"chapterQMeta: $xlsx is missing")
+  // (column in the CSV, column in the workbook)
+  val cols = Seq(
+    "model" -> "Model", "scenario" -> "Scenario", "category" -> "Category", "imp" -> "IMP_marker",
+    "ghg_2030" -> "GHG emissions 2030 Gt CO2-equiv/yr (Harmonized-Infilled)",
+    "ghg_2050" -> "GHG emissions 2050 Gt CO2-equiv/yr (Harmonized-Infilled)",
+    "cut_2030" -> "GHG emissions reductions 2019-2030 % modelled Harmonized-Infilled",
+    "cut_2040" -> "GHG emissions reductions 2019-2040 % modelled Harmonized-Infilled",
+    "cut_2050" -> "GHG emissions reductions 2019-2050 % modelled Harmonized-Infilled",
+    "netzero_co2" -> "Year of netzero CO2 emissions (Harm-Infilled) Table SPM2",
+    "cumulative_co2" -> "Cumulative net CO2 (2020 to netzero  Gt CO2) (Harm-Infilled)",
+    "peak_warming" -> "Median peak warming (MAGICCv7.5.3)",
+    "warming_2100" -> "Median warming in 2100 (MAGICCv7.5.3)")
+  withConn { c =>
+    val st = c.createStatement()
+    st.execute("INSTALL excel"); st.execute("LOAD excel")
+    val src = s"read_xlsx('${xlsx.toString.replace("'", "''")}', " +
+              "sheet='meta_Ch3vetted_withclimate', header=true, all_varchar=true)"
+    val header = {
+      val rs = st.executeQuery(s"select * from $src limit 0")
+      (1 to rs.getMetaData.getColumnCount).map(rs.getMetaData.getColumnName)
+    }
+    // The workbook's own header text is matched loosely, because a stray
+    // double space in it would otherwise silently drop a column.
+    def find(want: String) = {
+      val squash = (s: String) => s.replaceAll("[\\s,]+", " ").trim.toLowerCase
+      header.find(h => squash(h) == squash(want))
+        .getOrElse(sys.error(s"chapterQMeta: no column like '$want' in the workbook"))
+    }
+    val select = cols.map { case (name, want) =>
+      val col = "\"" + find(want).replace("\"", "\"\"") + "\""
+      if (name == "model" || name == "scenario") s"replace($col, ',', ' ') as $name"
+      else s"$col as $name"
+    }.mkString(", ")
+    val rs = st.executeQuery(s"select $select from $src where Category is not null")
+    val out = new StringBuilder; out ++= cols.map(_._1).mkString(",") + "\n"
+    var n = 0
+    while (rs.next()) {
+      out ++= (1 to cols.length).map { i =>
+        val v = rs.getString(i)
+        if (v == null || v == "NA") "" else v.trim
+      }.mkString(",") + "\n"
+      n += 1
+    }
+    os.write.over(dir / "ar6-scenarios-meta.csv", out.toString)
+    println(s"wrote data-refresh/ar6-scenarios-meta.csv ($n scenarios)")
+    require(n == 1202, s"chapterQMeta: $n scenarios, the vetted set has 1202")
+  }
 }
