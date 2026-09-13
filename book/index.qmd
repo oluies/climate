@@ -17,6 +17,17 @@ Last updated **13 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 13 September 2026              | Q            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure Q.4: what Europe would have to change"}                 |
+|                                |              | The scenario database holds the demand side as well as the supply side, and that is where the two categories part company. A European in |
+|                                |              | the median 1.5 °C pathway uses 71 kWh/d of final energy in 2020 and 50 in 2050, with the electricity inside that shrinking total rising  |
+|                                |              | from 15 to 29 — from a fifth of final energy to three-fifths. Transport falls hardest, from 22 to 14, which is appendix A's arithmetic   |
+|                                |              | arriving in a global model rather than a story about driving less. Between the categories, final energy per European falls 27% for 1.5   |
+|                                |              | °C and 9% for 2 °C while the wind and solar capacity they build differs by only 18% and 28%: three times further apart in energy used    |
+|                                |              | than in machinery. As a rate, the 1.5 °C median asks Europe for about 31 GW of wind a year now and 35 after 2030, and 61 GW of solar     |
+|                                |              | falling to 38; Europe built 19.1 GW of wind and the Union 65.1 GW of solar in 2025. Solar is ahead of the pathways, wind at two-thirds,  |
+|                                |              | and neither figure counts replacement.                                                                                                   |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 13 September 2026              | Q            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure Q.3: the same pathways, asked about Europe"}            |
 |                                |              | The regional files of the scenario database arrived, so chapter Q can ask its question of a continent, and Europe answers differently    |
 |                                |              | from the world. In the median 1.5 °C pathway Europe goes from 90 to 69 kWh/d per person of primary energy by 2050 against the world's 55 |
