@@ -17,6 +17,23 @@ Last updated **13 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 13 September 2026              | B            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure B.1 is a table again, and B.7 is legible"}              |
+|                                |              | Figure B.1, the Beaufort scale in miles per hour, km/h and m/s, had been flattened by the 2008 conversion into a column of 57 loose      |
+|                                |              | numbers with a caption under it. It is a table again, with MacKay's own values — including the one row that carries no Beaufort force,   |
+|                                |              | which his own online edition has too. Figure B.7, the two standard wind-shear formulas, was a 219-pixel bitmap; it is recomputed from    |
+|                                |              | the formulas printed on the same page and redrawn, and it gives 6 m/s at 10 m as his does.                                               |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| 13 September 2026              | C            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Table C.6 restored, C.5 redrawn, C.7 unyellowed"}              |
+|                                |              | The same conversion damage in appendix C: table C.6, the jumbo jet against the albatross, had become a column of loose lines and is a    |
+|                                |              | table again. Figure C.5, the thrust a plane needs against its speed, is recomputed from the formula above it and the numbers its own     |
+|                                |              | caption prints — 319 tonnes, wingspan 64.4 m, drag coefficient 0.03, frontal area 180 m², air at 0.41 kg/m³ — with the area of the       |
+|                                |              | sausage of air the wings throw down taken as the square of the wingspan, which figure C.7's caption gives. The minimum lands at 226 m/s  |
+|                                |              | and 113 kN against the 220 m/s his caption states, and the note records that the 130 kN the chapter derives three paragraphs later uses  |
+|                                |              | table C.6's fully-laden 363 tonnes instead. And figure C.7, the frontal view of a 747, had a yellow field baked in behind it where the   |
+|                                |              | drawing's transparency used to be; the background is white again.                                                                        |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 13 September 2026              | A            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figures A.12a and A.13a: the two that looked unupdatable"}     |
 |                                |              | Both of MacKay's sources for figures A.12 and A.13 had decayed, and better ones exist. For A.12a, ORNL's Transportation Energy Data Book |
 |                                |              | collects dynamometer measurements of fuel economy at steady speeds from four studies — 13, 15, 9 and 74 cars, from 1973 to 2012 — plus   |

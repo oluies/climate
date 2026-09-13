@@ -2887,3 +2887,80 @@ def chapterAPowerVsTopSpeed(): Unit = {
   println("  uv run figures/power_vs_topspeed.py data-refresh/power-vs-topspeed.csv " +
           "without-hot-air/Images/fig-a13-power-speed.svg")
 }
+
+// ---- Appendices B and C: two more of MacKay's model curves ----
+// Figures B.7a and C.5a. Both originals are small bitmaps from the 2008 EPUB,
+// and both are curves of formulas printed in their own chapters, so both can
+// be recomputed rather than squinted at.
+//
+// B.7 is wind speed against height under two standard shear formulas, with the
+// speed pinned to 6 m/s at 10 m, and the power density that follows from each.
+// The Danish Wind Industry Association's is logarithmic with a roughness
+// length z0 of 0.1 m; the National Renewable Energy Laboratory's is a power
+// law, conventionally with an exponent of a seventh.
+//
+// C.5 is the thrust a plane needs against its speed: ordinary drag, which
+// grows as the square of speed, plus the drag that comes with making lift,
+// which falls as the square of it. Every number it needs is printed in the
+// book, and in the figure's own caption rather than in table C.6: a 747 of
+// 319 tonnes, wingspan 64.4 m, drag coefficient 0.03 and frontal area 180 m2,
+// in air of 0.41 kg/m3, which is the density at ten kilometres. The area of
+// the sausage of air the wings throw down is the square of the wingspan,
+// which figure C.7's caption states.
+//
+// Table C.6 gives the same plane a fully-laden 363 tonnes and air of 0.4, and
+// the chapter's text uses those to get a minimum thrust of 130 kN. The figure
+// is drawn from the figure's own numbers, so it comes out at 113 kN, and the
+// chapter's note records that the book disagrees with itself about the mass.
+@main
+def appendixBCModelCurves(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val rho = 1.3
+
+  // --- B.7: wind against height ---
+  val (vRef, zRef, z0, shear) = (6.0, 10.0, 0.1, 1.0 / 7)
+  def dwia(z: Double) = vRef * math.log(z / z0) / math.log(zRef / z0)
+  def nrel(z: Double) = vRef * math.pow(z / zRef, shear)
+  val wind = new StringBuilder; wind ++= "model,height_m,speed_ms,power_density_wm2\n"
+  for (model <- Seq("DWIA", "NREL"); z <- Seq.range(10, 401, 2).map(_.toDouble)) {
+    val v = if (model == "DWIA") dwia(z) else nrel(z)
+    wind ++= f"$model,$z%.0f,$v%.3f,${0.5 * rho * v * v * v}%.1f\n"
+  }
+  os.write.over(dir / "wind-height.csv", wind.toString)
+  println("wrote data-refresh/wind-height.csv")
+  for (z <- Seq(10.0, 50.0, 100.0, 200.0))
+    println(f"  at $z%3.0f m: DWIA ${dwia(z)}%5.2f m/s (${0.5 * rho * math.pow(dwia(z), 3)}%5.0f W/m2), " +
+            f"NREL ${nrel(z)}%5.2f m/s (${0.5 * rho * math.pow(nrel(z), 3)}%5.0f W/m2)")
+  require(math.abs(dwia(zRef) - vRef) < 1e-9 && math.abs(nrel(zRef) - vRef) < 1e-9,
+    "appendixBCModelCurves: both formulas must give 6 m/s at 10 m")
+
+  // --- C.5: the thrust a jumbo jet needs ---
+  val mass = 319000.0; val g = 9.81; val rhoAir = 0.41; val ap = 180.0; val cd = 0.03
+  val wingspan = 64.4; val as = wingspan * wingspan   // figure C.7: a square of the wingspan
+  def drag(v: Double) = 0.5 * cd * rhoAir * ap * v * v
+  def lift(v: Double) = 0.5 * math.pow(mass * g, 2) / (rhoAir * v * v * as)
+  val plane = new StringBuilder; plane ++= "speed_ms,drag_kn,lift_kn,total_kn\n"
+  for (v <- Seq.range(100, 401, 2).map(_.toDouble))
+    plane ++= f"$v%.0f,${drag(v) / 1000}%.2f,${lift(v) / 1000}%.2f,${(drag(v) + lift(v)) / 1000}%.2f\n"
+  os.write.over(dir / "plane-thrust.csv", plane.toString)
+  println("wrote data-refresh/plane-thrust.csv")
+  val best = Seq.range(100, 401).map(_.toDouble).minBy(v => drag(v) + lift(v))
+  val closed = math.sqrt(cd * ap / as) * mass * g / 1000     // his own (cd fA)^1/2 mg
+  println(f"  sausage area $as%.0f m2, the square of a $wingspan%.1f m wingspan")
+  println(f"  optimum $best%.0f m/s at ${(drag(best) + lift(best)) / 1000}%.0f kN, " +
+          f"against the 220 m/s his caption states")
+  println(f"  his closed form (cd Ap / As)^1/2 mg gives $closed%.0f kN at this mass; " +
+          f"the chapter's 130 kN uses table C.6's fully-laden 363 t")
+  // Two checks with content: the curve's minimum must match his own algebra,
+  // and the speed must be the one his caption prints.
+  require(math.abs((drag(best) + lift(best)) / 1000 - closed) < 1.0,
+    s"appendixBCModelCurves: minimum ${(drag(best) + lift(best)) / 1000} kN against his formula's $closed")
+  require(math.abs(best - 220) <= 10,
+    s"appendixBCModelCurves: optimum at $best m/s, his caption says 220")
+  println("render:")
+  println("  uv run figures/wind_height.py data-refresh/wind-height.csv " +
+          "without-hot-air/Images/fig-b7-wind-height.svg")
+  println("  uv run figures/plane_thrust.py data-refresh/plane-thrust.csv " +
+          "without-hot-air/Images/fig-c5-thrust.svg")
+}
