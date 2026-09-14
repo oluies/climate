@@ -21,10 +21,11 @@ import matplotlib.pyplot as plt
 
 INK, MUTED, GRID, ZERO = "#161d1b", "#8a8a85", "#ededea", "#c9c9c4"
 COLOUR = {"United Kingdom": "#4a3aa7", "Norway": "#1baf7a",
-          "Denmark": "#eda100", "Netherlands": "#a8478f"}
-# The oil figure can draw "importing" in its warning red because no series
-# uses that colour there. Here the Netherlands is on the same panel, so the
-# label takes the muted grey and the Dutch line takes a colour of its own.
+          "Denmark": "#eda100", "Netherlands": "#bf4433"}
+# The oil figure draws "importing" in this same red, which is free there
+# because no series uses it. Here the Netherlands does, on the panel the label
+# sits on, so the label takes the muted grey instead. The three small-panel
+# lines stay red, amber and indigo: separable by hue, not only by lightness.
 SMALL = ["Netherlands", "Denmark", "United Kingdom"]
 
 series = collections.defaultdict(list)
@@ -107,8 +108,8 @@ nl = surplus_years("Netherlands")
 # runs and the gap. The Danish clause is written only when there is a gap to
 # describe, which is the same condition the shaded strip is drawn under.
 unbroken = "unbroken " if len(nl) == nl[-1] - nl[0] + 1 else ""
-danish = (f" Denmark's gap is the Tyra hub being rebuilt, {gap[0]}–{gap[-1]}, the only interruption in either figure that is\n"
-          "engineering rather than depletion." if gap else
+danish = (f" Denmark's gap is the Tyra hub being\n"
+          f"rebuilt, {gap[0]}–{gap[-1]}, the only interruption in either figure that is engineering rather than depletion." if gap else
           " Denmark's surplus runs without interruption here.")
 ax.annotate("Gas production minus each country's own consumption, per person per day, on the same basis as figure 1.2a. Note the two scales: Norway's panel goes\n"
             f"to {ax.get_ylim()[1]:.0f} kWh per day per person and the other three to {bx.get_ylim()[1]:.0f}. Britain's gas surplus ran {uk[0]}–{uk[-1]}, {len(uk)} years against the twenty-four its oil\n"
