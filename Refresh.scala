@@ -3885,6 +3885,63 @@ def chapterMOilCascade(): Unit = {
           "without-hot-air/Images/fig-m1-eroi-cascade.svg")
 }
 
+/** One country-year of a fuel's trade balance: what it produced, what it burned
+  * and how many people lived there. Figures 1.2a and 1.3a are the same
+  * arithmetic asked of oil and of gas, so they share this and the query below
+  * rather than keeping two copies that can drift apart. */
+case class TradeRow(country: String, year: Int, prod: Double, cons: Double, people: Double) {
+  def net = prod - cons
+  def netPerDay = net * 1e9 / people / 365          // kWh per day per person
+}
+
+/** Production minus inland consumption per person, from Our World in Data's
+  * republication of the Energy Institute's energy series, joined to the United
+  * Nations' population estimates and projections.
+  *
+  * `fuel` is both the OWID column name and the grapher slug's prefix, so "Oil"
+  * reads oil-production-by-country and oil-consumption-by-country. The caller
+  * gets every year both series cover, sorted by country and year. */
+def netTrade(fuel: String, countries: Seq[String], who: String): Seq[TradeRow] = {
+  val lower = fuel.toLowerCase
+  val prodCsv = fetch(s"$lower-production-by-country", s"owid-$lower-production.csv")
+  val consCsv = fetch(s"$lower-consumption-by-country", s"owid-$lower-consumption.csv")
+  val popCsv = fetch("population-with-un-projections", "owid-population-projections.csv")
+  withConn { c =>
+    val st = c.createStatement()
+    def view(name: String, p: os.Path) =
+      st.execute(s"create view $name as select * from " +
+                 s"read_csv_auto('${p.toString.replace("'", "''")}', header=true)")
+    view("prod", prodCsv); view("cons", consCsv); view("pop", popCsv)
+    val inList = countries.map(n => s"'${n.replace("'", "''")}'").mkString(",")
+    val rs = st.executeQuery(s"""
+      select p.Entity, p.Year, p."$fuel", c."$fuel",
+             coalesce(pop."Population", pop."Population (Projected)")
+      from prod p
+        join cons c on c.Entity = p.Entity and c.Year = p.Year
+        join pop on pop.Entity = p.Entity and pop.Year = p.Year
+      where p.Entity in ($inList) and p."$fuel" is not null and c."$fuel" is not null
+      order by p.Entity, p.Year""")
+    val rows = scala.collection.mutable.ArrayBuffer[TradeRow]()
+    while (rs.next())
+      rows += TradeRow(rs.getString(1), rs.getInt(2), rs.getDouble(3), rs.getDouble(4), rs.getDouble(5))
+    require(rows.nonEmpty, s"$who: the join matched nothing for $fuel")
+    require(countries.forall(n => rows.exists(_.country == n)),
+      s"$who: expected all of ${countries.mkString(", ")}, got " +
+      rows.map(_.country).distinct.mkString(", "))
+    rows.toSeq
+  }
+}
+
+/** The CSV both figures are drawn from. */
+def tradeCsv(rows: Seq[TradeRow]): String = {
+  val out = new StringBuilder
+  out ++= "country,year,prod_twh,cons_twh,net_twh,people,net_kwh_per_day\n"
+  for (r <- rows)
+    out ++= f"${r.country},${r.year},${r.prod}%.1f,${r.cons}%.1f,${r.net}%.1f," +
+            f"${r.people}%.0f,${r.netPerDay}%.2f\n"
+  out.toString
+}
+
 // ---- Chapter 1: figure 1.2a, the same three countries as exporters ----
 // Figure 1.2 asks MacKay's question with production, which is what his own
 // figure plotted. But production is not what a country has to sell: what it
@@ -3914,47 +3971,15 @@ def chapterMOilCascade(): Unit = {
 def chapter01NetExports(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
   val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
-  val prodCsv = fetch("oil-production-by-country", "owid-oil-production.csv")
-  val consCsv = fetch("oil-consumption-by-country", "owid-oil-consumption.csv")
-  val popCsv = fetch("population-with-un-projections", "owid-population-projections.csv")
   val countries = Seq("United Kingdom", "Norway", "Denmark")
+  val rows = netTrade("Oil", countries, "chapter01NetExports")
 
   withConn { c =>
     val st = c.createStatement()
-    def view(name: String, p: os.Path) =
-      st.execute(s"create view $name as select * from " +
-                 s"read_csv_auto('${p.toString.replace("'", "''")}', header=true)")
-    view("prod", prodCsv); view("cons", consCsv); view("pop", popCsv)
-    val inList = countries.map(n => s"'$n'").mkString(",")
-    val rs = st.executeQuery(s"""
-      select p.Entity, p.Year, p.Oil, c.Oil,
-             coalesce(pop."Population", pop."Population (Projected)")
-      from prod p
-        join cons c on c.Entity = p.Entity and c.Year = p.Year
-        join pop on pop.Entity = p.Entity and pop.Year = p.Year
-      where p.Entity in ($inList) and p.Oil is not null and c.Oil is not null
-      order by p.Entity, p.Year""")
-    case class Row(country: String, year: Int, prod: Double, cons: Double, people: Double) {
-      def net = prod - cons
-      def netPerDay = net * 1e9 / people / 365     // kWh per day per person
-    }
-    val rows = scala.collection.mutable.ArrayBuffer[Row]()
-    while (rs.next())
-      rows += Row(rs.getString(1), rs.getInt(2), rs.getDouble(3), rs.getDouble(4), rs.getDouble(5))
-    require(rows.nonEmpty, "chapter01NetExports: the join matched nothing")
-    require(countries.forall(n => rows.exists(_.country == n)),
-      s"chapter01NetExports: expected all of ${countries.mkString(", ")}, got " +
-      rows.map(_.country).distinct.mkString(", "))
-
     val out = new StringBuilder
-    out ++= "country,year,prod_twh,cons_twh,net_twh,people,net_kwh_per_day\n"
-    for (r <- rows)
-      out ++= f"${r.country},${r.year},${r.prod}%.1f,${r.cons}%.1f,${r.net}%.1f," +
-              f"${r.people}%.0f,${r.netPerDay}%.2f\n"
+    out ++= tradeCsv(rows)
 
-    // Each country's own story, printed and then checked. The two crossings
-    // are single sign changes in this data, so "the last year in surplus" is
-    // an honest way to describe them rather than the last of several.
+    // Each country's own story, printed and then checked.
     println("country          first  last   peak export  last in surplus   2025 net")
     val summary = for (n <- countries) yield {
       val rs2 = rows.filter(_.country == n)
@@ -4031,4 +4056,115 @@ def chapter01NetExports(): Unit = {
   println("render:")
   println("  uv run figures/north_sea_net_exports.py data-refresh/north-sea-net-exports.csv " +
           "without-hot-air/Images/fig-north-sea-net-exports.svg")
+}
+
+// ---- Chapter 1: figure 1.3a, the gas the electricity runs on ----
+// Figure 1.3 shows that Britain's feared generating gap did not appear. What
+// it does not show is what the remaining fleet burns, which is gas, and where
+// that gas comes from. So this asks figure 1.2a's question of the other fuel,
+// and the answer is a good deal shorter than the oil one.
+//
+// Britain's gas surplus lasted nine years. Its oil surplus lasted
+// twenty-four. The country went from importer to exporter and back inside a
+// decade, and it never exported much: the best year is about a fifth of what
+// oil managed at its own peak.
+//
+// The Netherlands is added here because the North Sea's gas story cannot be
+// told without Groningen, and because it ends differently from the others: a
+// fifty-three-year unbroken surplus that stops in 2017 not because the gas ran
+// out but because the earthquakes it caused made the field politically
+// impossible. Denmark is the fourth case - a surplus interrupted for four
+// years by the rebuilding of the Tyra hub and then resumed, which is what a
+// pause for engineering looks like beside three depletion stories.
+//
+// Same source, same units and the same cautions as figure 1.2a: production
+// minus inland consumption is a proxy for net trade rather than customs data,
+// and these are energy series rather than volumes.
+@main
+def chapter01GasTrade(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val countries = Seq("United Kingdom", "Norway", "Denmark", "Netherlands")
+  val rows = netTrade("Gas", countries, "chapter01GasTrade")
+
+  println("country          first  last   peak export  surplus years   last net")
+  val summary = for (n <- countries) yield {
+    val rs = rows.filter(_.country == n)
+    val peak = rs.maxBy(_.netPerDay)
+    val surplus = rs.filter(_.net > 0)
+    val last = rs.last
+    println(f"$n%-16s ${rs.head.year}   ${last.year}   ${peak.year} ${peak.netPerDay}%7.1f  " +
+            f"${surplus.length}%5d (${surplus.headOption.map(_.year.toString).getOrElse("-")}" +
+            f"-${surplus.lastOption.map(_.year.toString).getOrElse("-")})  ${last.netPerDay}%8.1f kWh/d")
+    (n, peak, surplus, last)
+  }
+  def one(n: String) = summary.find(_._1 == n).get
+  def close(what: String, got: Double, printed: Double, tol: Double) =
+    require(math.abs(got - printed) <= tol,
+      f"chapter01GasTrade: $what is now $got%.1f; chapter 1 prints $printed%.1f")
+
+  // The chapter's central comparison, and the reason the figure exists: gas
+  // gave Britain nine years where oil gave it twenty-four.
+  val ukGas = one("United Kingdom")._3
+  require(ukGas.nonEmpty && ukGas.head.year == 1995 && ukGas.last.year == 2003,
+    s"chapter01GasTrade: Britain's gas surplus now runs " +
+    s"${ukGas.headOption.map(_.year.toString).getOrElse("never")} to " +
+    s"${ukGas.lastOption.map(_.year.toString).getOrElse("never")}; chapter 1 says 1995 to 2003")
+  require(ukGas.length == 9,
+    s"chapter01GasTrade: Britain has ${ukGas.length} years of gas surplus, not the nine the chapter counts")
+  // Against the oil figure, read from its own committed table by column name.
+  val oilCsv = dir / "north-sea-net-exports.csv"
+  require(os.exists(oilCsv),
+    "chapter01GasTrade: data-refresh/north-sea-net-exports.csv is missing - run chapter01NetExports " +
+    "first, since the chapter's comparison of the two surpluses is checked against it")
+  val lines = os.read.lines(oilCsv)
+  val head = lines.head.split(",").zipWithIndex.toMap
+  val ukOilSurplus = lines.tail.map(_.split(","))
+    .filter(f => f(head("country")) == "United Kingdom" && f(head("net_twh")).toDouble > 0)
+  require(ukOilSurplus.length == 24,
+    s"chapter01GasTrade: figure 1.2a gives Britain ${ukOilSurplus.length} years of oil surplus; " +
+    "chapter 1 says twenty-four, and the comparison with gas's nine rests on it")
+  println(s"  check Britain has ${ukGas.length} years of gas surplus against ${ukOilSurplus.length} of oil")
+  // And the chapter's other cross-figure claim: Britain's best gas year is
+  // about a fifth of its best oil year, per person.
+  val ukOilPeak = lines.tail.map(_.split(","))
+    .filter(_(head("country")) == "United Kingdom")
+    .map(_(head("net_kwh_per_day")).toDouble).max
+  val share = one("United Kingdom")._2.netPerDay / ukOilPeak
+  println(f"  check Britain's best gas year is ${share}%.2f of its best oil year")
+  require(math.abs(share - 0.20) < 0.04,
+    f"chapter01GasTrade: Britain's best gas year is now ${share}%.2f of its best oil year; " +
+    "chapter 1 says about a fifth")
+
+  // The Netherlands ends its run without running out, which is the case the
+  // chapter draws the contrast with, so both ends of it are pinned.
+  val nl = one("Netherlands")._3
+  require(nl.nonEmpty && nl.head.year == 1965 && nl.last.year == 2017 && nl.length == 53,
+    s"chapter01GasTrade: the Dutch surplus is now ${nl.length} years, " +
+    s"${nl.headOption.map(_.year.toString).getOrElse("never")} to " +
+    s"${nl.lastOption.map(_.year.toString).getOrElse("never")}; chapter 1 says 53 unbroken years to 2017")
+  // Denmark's is interrupted rather than ended, which is the fourth case and
+  // the only one in either figure where a surplus comes back.
+  val dk = one("Denmark")._3
+  val dkGap = (dk.head.year to dk.last.year).toSet -- dk.map(_.year).toSet
+  println(s"  check the Danish surplus is interrupted in ${dkGap.toSeq.sorted.mkString(", ")}")
+  require(dkGap == Set(2020, 2021, 2022, 2023),
+    s"chapter01GasTrade: the Danish gas surplus is now interrupted in " +
+    s"${dkGap.toSeq.sorted.mkString(", ")}; chapter 1 says the four Tyra years, 2020 to 2023")
+  require(dk.last.year == rows.filter(_.country == "Denmark").last.year,
+    "chapter01GasTrade: Denmark is no longer in surplus in the last year; the chapter says it came back")
+
+  // And the figures the chapter transcribes.
+  close("Britain's best gas year, per person", one("United Kingdom")._2.netPerDay, 5.6, 1.0)
+  close("Britain's net gas imports in the last year, per person", one("United Kingdom")._4.netPerDay, -12.3, 2.0)
+  close("Norway's net gas exports in the last year, per person", one("Norway")._4.netPerDay, 570.8, 20.0)
+  close("the Dutch peak, per person", one("Netherlands")._2.netPerDay, 94.2, 5.0)
+  close("Dutch net gas imports in the last year, per person", one("Netherlands")._4.netPerDay, -27.3, 4.0)
+  close("Danish net gas exports in the last year, per person", one("Denmark")._4.netPerDay, 6.7, 2.0)
+
+  os.write.over(dir / "north-sea-gas-trade.csv", tradeCsv(rows))
+  println("wrote data-refresh/north-sea-gas-trade.csv")
+  println("render:")
+  println("  uv run figures/north_sea_gas_trade.py data-refresh/north-sea-gas-trade.csv " +
+          "without-hot-air/Images/fig-north-sea-gas-trade.svg")
 }
