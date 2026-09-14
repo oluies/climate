@@ -53,4 +53,4 @@ ax.annotate("The axis is logarithmic because a linear one makes every low-carbon
             "pollution as well as accidents, and the low-carbon rows count accidents only. Correcting that would widen\n"
             "the gap, not narrow it, since the low-carbon sources emit almost no pollution to attribute.",
             xy=(0, -0.215), xycoords="axes fraction", va="top", fontsize=9.3, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

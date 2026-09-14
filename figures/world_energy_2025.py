@@ -42,4 +42,4 @@ ax2.annotate("renewables added more than\nany single fossil fuel — a first\nfo
 fig.suptitle("World energy in 2025: a large fossil stock, and a growing one",
              x=0.008, ha="left", fontsize=13, fontweight="bold")
 fig.tight_layout(rect=(0, 0, 1, 0.94))
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

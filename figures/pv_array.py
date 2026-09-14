@@ -34,4 +34,4 @@ ax.annotate("Modelled from PVGIS. The 2006 array averaged 12 kWh/d measured and 
             "with 2026 modules gives 15.9 — 26 W/m² of panel against 20. December still delivers under a\n"
             "third of June, whatever the panel.",
             xy=(0, -0.20), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

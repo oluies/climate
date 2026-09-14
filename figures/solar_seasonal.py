@@ -37,4 +37,4 @@ ax.set_title("Solar intensity through the year, London and Edinburgh",
 ax.annotate("The winter trough is the problem this book keeps returning to: December\n"
             "delivers roughly a tenth of June, and no amount of panel buys it back.",
             xy=(0.03, 0.95), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

@@ -62,4 +62,4 @@ ax.annotate("Every published levelised cost is a range, and quoting the midpoint
             "not five technologies but one, financed and built five ways. For what each technology's output actually\n"
             "earned on a market, against what it cost to build, see figure 28a.4 — which does that on one market in one currency.",
             xy=(0, -0.185), xycoords="axes fraction", va="top", fontsize=9.3, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

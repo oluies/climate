@@ -57,7 +57,7 @@ for name, label, ylabel, note in (
     ax.set_ylim(0, None)
     ax.annotate(note, xy=(0, -0.26), xycoords="axes fraction", va="top",
                 fontsize=8.5, color=MUTED)
-    fig.savefig(out / name, format="svg", bbox_inches="tight")
+    fig.savefig(out / name, format="svg", bbox_inches="tight", metadata={"Date": None})
     plt.close(fig)
     print("wrote", out / name)
 
@@ -82,5 +82,5 @@ ax.annotate("740 kg of car and occupants before any battery, 50 km/h, drag-area 
             "drive efficiency, 85% charging. Dots are pack masses.",
             xy=(0, -0.20), xycoords="axes fraction", va="top",
             fontsize=8.5, color=MUTED)
-fig.savefig(out / "fig-a14-range.svg", format="svg", bbox_inches="tight")
+fig.savefig(out / "fig-a14-range.svg", format="svg", bbox_inches="tight", metadata={"Date": None})
 print("wrote", out / "fig-a14-range.svg")

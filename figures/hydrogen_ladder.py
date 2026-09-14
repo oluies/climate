@@ -78,4 +78,4 @@ ax.annotate("Purple is hydrogen; green is the best alternative. A use sits low o
             "of the ladder either — it is simply unopposed. The bottom two bars are measured at the point of use, the wheels and\n"
             "the radiator; the top two at the fuel and the feedstock, because that is where the comparison stops.",
             xy=(0, -0.20), xycoords="axes fraction", va="top", fontsize=9.3, color=MUTED)
-fig.savefig(sys.argv[1], format="svg", bbox_inches="tight"); print("wrote", sys.argv[1])
+fig.savefig(sys.argv[1], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[1])

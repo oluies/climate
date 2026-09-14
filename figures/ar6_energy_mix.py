@@ -85,7 +85,7 @@ axes[0].annotate("Medians across the pathways in each category, from the AR6 Sce
                  "report publishes no number for either. At the 2050 population, the median 1.5 °C world runs on 43 kWh/d per person of primary\n"
                  "energy; the medians for solar and for nuclear are 8.5 and 1.6, each over its own set of pathways rather than a share of that 43.",
                  xy=(0, -0.34), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 if len(sys.argv) > 3:
     fig.savefig(sys.argv[3], format="png", dpi=150, bbox_inches="tight")
 print("wrote", sys.argv[2], "| C1 solar",

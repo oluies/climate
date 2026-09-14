@@ -47,5 +47,5 @@ ax.annotate("Installed IT capacity, not electricity consumed and not spare capac
             "everywhere else the second dot is a pipeline. Both years are measured against the 2025 peak.",
             xy=(0, -0.115), xycoords="axes fraction", va="top",
             fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 print("wrote", sys.argv[2], f"({len(d)} countries, Ireland {d.share_2031.max():.1f}%)")

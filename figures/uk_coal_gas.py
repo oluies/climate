@@ -23,4 +23,4 @@ ax.grid(axis="x", visible=False)
 for s in ("top", "right"): ax.spines[s].set_visible(False)
 ax.set_title(f"UK coal and gas consumption, {int(df.year.min())}–{last}",
              loc="left", fontsize=12.5, fontweight="bold", pad=12)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

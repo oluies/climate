@@ -43,4 +43,4 @@ ax.set_title(f"Electric share of new car sales, {first}–{last}",
 ax.annotate("Norway has effectively finished; the United States has barely started.\n"
             "Battery-electric and plug-in hybrid together.",
             xy=(0.03, 0.60), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

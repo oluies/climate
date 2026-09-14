@@ -54,5 +54,5 @@ axes[0].annotate("Both formulas are pinned to 6 m/s at 10 m, as MacKay's figure 
                  "of 0.1 m and the American one an exponent of a seventh. Power density is ½ρv³ at 1.3 kg/m³. Doubling the height from\n"
                  "50 to 100 m buys about 11% more speed and 37% more power.",
                  xy=(0, -0.30), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 print("wrote", sys.argv[2])

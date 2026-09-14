@@ -53,4 +53,4 @@ ax.annotate("Bars show the range across variants; a single line means one figure
             "was a mainstream saloon rather than a £90 000 two-seater. Every bar is a test-cycle figure and every one is\n"
             "optimistic: WLTP barely loads the cabin heater, which alone draws 0.5 to 1 kW on the move.",
             xy=(0, -0.20), xycoords="axes fraction", va="top", fontsize=9.3, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

@@ -48,5 +48,5 @@ ax.annotate("The numbers are the ones MacKay's own caption to this figure prints
             "area 180 m², drag coefficient 0.03, in air of 0.41 kg/m³ — the density at ten kilometres. The sausage of air the wings throw\n"
             "down has the area of a square of the wingspan, which figure C.7 states. His caption gives the optimum as 220 m/s.",
             xy=(0, -0.20), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 print("wrote", sys.argv[2], f"| optimum {best[0]:.0f} m/s at {best[3]:.0f} kN")

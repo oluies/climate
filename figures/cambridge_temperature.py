@@ -39,5 +39,5 @@ ax.annotate(f"Lines are 7-day means, bands the daily range. Heating degree days 
             f"{(1 - hd[2025] / hd[2006]) * 100:.0f}% — part of why British gas demand fell without\n"
             f"anyone insulating anything. Summer still barely reaches the point where cooling would pay.",
             xy=(0, -0.155), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 print("wrote", sys.argv[2], f"| HDD 2006 {hd[2006]:.0f}, 2025 {hd[2025]:.0f}")

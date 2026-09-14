@@ -62,4 +62,4 @@ ax.annotate("United Kingdom, Norway and Denmark. Production: Energy Institute St
             "price in constant 2025 dollars, same source.",
             xy=(0, -0.16), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
 
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

@@ -17,7 +17,7 @@ The chapter's note says why.
 
 Input: data-refresh/eroi-oil-cascade.csv from `mill Refresh.scala
 chapterMOilCascade`."""
-import sys, csv, matplotlib
+import sys, csv, textwrap, matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.path import Path
@@ -32,6 +32,17 @@ BOUNDARY = {"mine mouth": "EROI at the wellhead",
 rows = list(csv.DictReader(open(sys.argv[1])))
 for r in rows:
     r["cost_pct"], r["remaining_pct"] = float(r["cost_pct"]), float(r["remaining_pct"])
+
+# The costs set each ribbon's thickness and the remainders set the band's
+# underside, so the two have to agree or a ribbon leaves from the wrong place.
+# The generator enforces this, but this script takes any CSV path and there is
+# a checked-in one sitting beside it.
+running = 100.0
+for r in rows:
+    running -= r["cost_pct"]
+    if abs(running - r["remaining_pct"]) > 0.05:
+        raise SystemExit(f"{sys.argv[1]}: after {r['stage']!r} the costs leave {running:.1f} "
+                         f"but the row says {r['remaining_pct']:.1f}")
 
 STEP = 1.0                       # one x unit per stage
 fig, ax = plt.subplots(figsize=(10.6, 5.0))
@@ -89,6 +100,9 @@ for i, r in enumerate(rows):
 last = {}
 for i, r in enumerate(rows):
     last[r["boundary"]] = i
+unknown = [n for n in last if n not in BOUNDARY]
+if unknown:
+    raise SystemExit(f"{sys.argv[1]}: no bracket defined for boundary {unknown[0]!r}")
 for n, (name, end) in enumerate(last.items()):
     y = 111 + 9.5 * n
     x0, x1 = 0.05, (end + 1) * STEP - 0.05
@@ -104,14 +118,22 @@ ax.set_ylim(FEET[-1] - rows[-1]["cost_pct"] - 6, 142)
 ax.axis("off")
 fig.suptitle("100 units of crude oil, and what is left doing work",
              x=0.055, ha="left", fontsize=13, fontweight="bold", color=INK)
-ax.annotate("Hall, Balogh and Murphy's arithmetic for American oil, drawn from the percentages in their own paper. Of 100 units of crude in the ground,\n"
-            "10 are spent getting it out, 10 running the refinery, 17 leave as the part of the barrel that never becomes fuel, 3 move it to where it burns,\n"
-            "and 24 build and maintain the roads it drives on. Thirty-six are still doing work — so about three units of crude for one unit of service,\n"
-            "which is where their “minimum EROI of 3:1” comes from. The widely reproduced chart of this cascade leaves 20.5 rather than 36; the note says why.",
+# Built from the rows rather than retyped, so a changed split cannot leave the
+# subtitle contradicting the bars above it.
+# The stage names, not the loss descriptions: the descriptions label the
+# branches on the right and do not read as clauses in a sentence.
+costs = [f"{r['cost_pct']:.0f} to {r['stage'].lower()}" for r in rows]
+breakdown = ", ".join(costs[:-1]) + " and " + costs[-1]
+over = rows[-1]["remaining_pct"]
+ax.annotate("Hall, Balogh and Murphy's arithmetic for American oil, drawn from the percentages in their own paper.\n"
+            + textwrap.fill(f"Of 100 units of crude in the ground the costs are {breakdown}.", 150) + "\n"
+            + textwrap.fill(f"That leaves {over:.0f} still doing work — so about {100 / over:.0f} units of crude for one unit "
+                            "of service, which is where their “minimum EROI of 3:1” comes from. The widely reproduced chart "
+                            f"of this cascade leaves 20.5 rather than {over:.0f}; the note says why.", 150),
             xy=(0, 0), xycoords=("axes fraction", "axes fraction"),
             xytext=(0, -0.02), textcoords="axes fraction", va="top",
             fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 if len(sys.argv) > 3:
     fig.savefig(sys.argv[3], format="png", dpi=150, bbox_inches="tight")
 print("wrote", sys.argv[2], "|", rows[-1]["remaining_pct"], "units left,",

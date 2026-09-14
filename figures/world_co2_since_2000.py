@@ -38,4 +38,4 @@ ax.annotate(f"world total rose {wt} Mt/year over the period;\n"
             f"United States and Europe both fell",
             xy=(0.985, 0.13), xycoords="axes fraction", ha="right",
             fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

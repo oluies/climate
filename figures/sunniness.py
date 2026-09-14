@@ -33,4 +33,4 @@ ax.annotate("MacKay quoted 34% for Cambridge, and the Cambridge record agrees, a
             "stopped reporting sunshine in 2010; Oxford's near-century series runs a little higher at 35.4% and\n"
             "has risen lately, reaching 43% in 2025. Thin lines are single years, thick lines ten-year means.",
             xy=(0, -0.155), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

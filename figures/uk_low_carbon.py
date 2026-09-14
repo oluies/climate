@@ -52,4 +52,4 @@ ax.annotate("MacKay had to scale the renewable part of this figure a hundredfold
             "than halved over the same period as the old fleet retired, so the low-carbon total rose by less than the renewable\n"
             "part alone — from 4.18 to 7.55. Hydro, the thin blue band, is unchanged at 0.2 in both columns: it was already\nbuilt. Set the whole against the 136 kWh/d this chapter finds conceivable.",
             xy=(0, -0.155), xycoords="axes fraction", va="top", fontsize=9.3, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

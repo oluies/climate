@@ -55,4 +55,4 @@ ax.annotate("Europe is the denser continent: its countries sit above the America
             "states of the same size, and no state matches the Netherlands or England.",
             xy=(0.985, 0.055), xycoords="axes fraction", ha="right",
             fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

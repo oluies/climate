@@ -55,6 +55,6 @@ ax.annotate("Today's 18 TW is 0.14 W/m² spread over the disk the Earth presents
             "waste heat; out, σT⁴ — gives this curve, with 33 K added throughout for the greenhouse effect. No source of energy\n"
             "escapes it: the heat is the end of every use.",
             xy=(0, -0.20), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 boil = next(r[0] for r in rows if r[2] >= 373)
 print("wrote", sys.argv[2], f"| boiling at {boil:.0f} years")

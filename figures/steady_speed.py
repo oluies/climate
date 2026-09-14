@@ -62,7 +62,7 @@ axes[0].annotate("Air resistance and rolling resistance at a steady speed, divid
                  "book is built on.",
                  xy=(0, -0.30), xycoords="axes fraction", va="top",
                  fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 at110 = {l: dict(p)[110.0] for l, p in series["car"].items()}
 print("wrote", sys.argv[2], "| at 110 km/h:",
       ", ".join(f"{l} {v:.1f}" for l, v in at110.items()))

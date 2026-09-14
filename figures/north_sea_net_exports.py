@@ -102,7 +102,7 @@ ax.annotate("Oil production minus each country's own consumption, divided by the
             "This is production minus inland consumption rather than customs data — Britain exports its own light crude and imports heavier grades, so its gross\n"
             "flows are much larger than the net line here. In energy rather than barrels, so the levels are not those of figure 1.2; the shapes are.",
             xy=(0, -0.19), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 if len(sys.argv) > 3:
     fig.savefig(sys.argv[3], format="png", dpi=150, bbox_inches="tight")
 print("wrote", sys.argv[2], "|", ", ".join(

@@ -54,4 +54,4 @@ ax.annotate(f"Coal and nuclear fell from {o0:.0f} TWh in 2008 to {o1:.0f}. Wind 
 ax.annotate("Generation, not capacity: capacity by plant type is not published as a clean annual series. "
             "Source: Energy Institute Statistical Review.",
             xy=(0, -0.16), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

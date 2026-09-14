@@ -28,5 +28,5 @@ for ax in g.axes.flat:
     for s in ("top", "right"): ax.spines[s].set_visible(False)
 g.figure.suptitle("Levelized cost of electricity, global weighted average",
                   x=0.02, y=1.03, ha="left", fontsize=12.5, fontweight="bold")
-g.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+g.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 print("wrote", sys.argv[2])

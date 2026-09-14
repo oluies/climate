@@ -3624,6 +3624,16 @@ def chapterQEurope(): Unit = {
                  feCut("C1"), 30.4, 3.0)
     requireClose("chapterQEurope: the fall in Europe's C3 final energy per person by 2050, per cent",
                  feCut("C3"), 14.7, 3.0)
+    // The section on why primary energy falls faster than anyone uses less
+    // quotes the Europe-wide totals rather than the per-person figures, so
+    // those are pinned too: rebasing feCut onto per person left them unguarded.
+    val primaryFall = eu1("C1", "Primary Energy").fallPercent
+    val finalFall = chRow("C1", "Final Energy").fallPercent
+    println(f"  check Europe-wide primary energy falls ${primaryFall}%.0f%% and final energy ${finalFall}%.0f%%")
+    requireClose("chapterQEurope: the fall in Europe's C1 primary energy by 2050, Europe-wide, per cent",
+                 primaryFall, 19.0, 3.0)
+    requireClose("chapterQEurope: the fall in Europe's C1 final energy by 2050, Europe-wide, per cent",
+                 finalFall, 27.0, 3.0)
     // And the like-for-like comparison the section now makes: how far apart the
     // two categories are in 2050 itself, per person, in demand and in plant.
     // These are commensurable with each other; a fall from 2020 is not.
@@ -3631,14 +3641,14 @@ def chapterQEurope(): Unit = {
     val demandApart = (1 - fe50("C1") / fe50("C3")) * 100
     println(f"  check in 2050 C1 uses ${demandApart}%.0f%% less energy per person than C3")
     requireClose("chapterQEurope: how much less energy per person C1 uses than C3 in 2050, per cent",
-                 demandApart, 17.0, 5.0)
+                 demandApart, 17.0, 3.0)
     for ((plant, printed) <- Seq("Wind" -> 25.0, "Solar" -> 36.0)) {
       val perHead = (cat: String) =>
         chRow(cat, s"Capacity|Electricity|$plant").y2050 * 1000 / pop(cat).y2050
       val apart = (perHead("C1") / perHead("C3") - 1) * 100
       println(f"  check in 2050 C1 has ${apart}%.0f%% more $plant capacity per person than C3")
       requireClose(s"chapterQEurope: how much more $plant capacity per person C1 has than C3 in 2050, per cent",
-                   apart, printed, 8.0)
+                   apart, printed, 3.0)
     }
     // The sectors and the nuclear capacity the section prints, which nothing
     // else would catch.
@@ -3698,6 +3708,16 @@ def chapterQEurope(): Unit = {
     val bioLiquids = chRow("C1", "Secondary Energy|Liquids|Biomass")
     requireClose("chapterQEurope: Europe's C1 biomass liquids in 2020, EJ", bioLiquids.y2020, 0.56, 0.2)
     requireClose("chapterQEurope: Europe's C1 biomass liquids in 2050, EJ", bioLiquids.y2050, 3.57, 0.6)
+    // The paragraph's two system-wide totals, which are sums over rows already
+    // gathered and were the only figures in it without a guard.
+    val fossilFall = Seq("Coal", "Oil", "Gas")
+      .map(f => eu1("C1", s"Primary Energy|$f")).map(r => r.y2020 - r.y2050).sum
+    val cleanRise = Seq("Non-Biomass Renewables", "Biomass")
+      .map(f => eu1("C1", s"Primary Energy|$f")).map(r => r.y2050 - r.y2020).sum
+    println(f"  check fossil primary energy falls $fossilFall%.0f EJ and renewables and biomass rise $cleanRise%.0f EJ")
+    requireClose("chapterQEurope: the fall in Europe's C1 fossil primary energy by 2050, EJ", fossilFall, 40.0, 4.0)
+    requireClose("chapterQEurope: the rise in Europe's C1 renewables and biomass by 2050, EJ", cleanRise, 26.0, 4.0)
+
     val h2 = chRow("C1", "Secondary Energy|Hydrogen")
     println(f"  check hydrogen goes from ${h2.y2020}%.2f EJ to ${h2.y2050}%.2f")
     requireClose("chapterQEurope: Europe's C1 secondary hydrogen in 2020, EJ", h2.y2020, 0.05, 0.15)
@@ -3779,10 +3799,20 @@ def chapterMOilCascade(): Unit = {
   // it falls inside). The boundary names are the paper's own.
   val steps = Seq(
     ("Extraction",       "getting the oil out of the ground",        10.0, "mine mouth"),
-    ("Refinery",         "energy to run the refinery",               10.0, "point of use"),
+    ("Refining",         "energy to run the refinery",               10.0, "point of use"),
     ("Byproducts",       "the barrel that does not become fuel",     17.0, "point of use"),
     ("Delivery",         "moving the fuel to where it is burned",     3.0, "point of use"),
     ("Roads",            "building and maintaining what it drives on", 24.0, "extended"))
+
+  // The boundary column drives the figure's brackets, and the figure keys a
+  // lookup table off it, so it is checked here to be the three expected names
+  // in nesting order rather than free text that a typo could widen.
+  val boundaries = Seq("mine mouth", "point of use", "extended")
+  require(steps.map(_._4).distinct == boundaries.filter(steps.map(_._4).contains),
+    s"chapterMOilCascade: the boundaries are ${steps.map(_._4).distinct.mkString(", ")}, " +
+    s"which is not ${boundaries.mkString(", ")} in nesting order")
+  require(steps.forall(s => boundaries.contains(s._4)),
+    s"chapterMOilCascade: unknown boundary in ${steps.map(_._4).distinct.mkString(", ")}")
 
   val pou = steps.filter(s => s._4 != "extended").map(_._3).sum
   val all = steps.map(_._3).sum
@@ -3793,8 +3823,10 @@ def chapterMOilCascade(): Unit = {
   // usable from (40 percent) plus the pro-rated energy cost of the
   // infrastructure necessary to use the fuel (24 percent) is 64 percent of the
   // initial oil in the ground".
-  require(pou == 40.0, s"chapterMOilCascade: the point-of-use costs sum to $pou, the paper says 40")
-  require(all == 64.0, s"chapterMOilCascade: all the costs sum to $all, the paper says 64")
+  require(math.abs(pou - 40.0) < 0.05,
+    s"chapterMOilCascade: the point-of-use costs sum to $pou, the paper says 40")
+  require(math.abs(all - 64.0) < 0.05,
+    s"chapterMOilCascade: all the costs sum to $all, the paper says 64")
   // And its headline, which is the whole reason the paper is cited: "the
   // energy necessary to provide the services of 1 unit of crude oil ... is
   // roughly 3 units of crude oil", so "the minimum EROI is 3:1".
@@ -3802,6 +3834,21 @@ def chapterMOilCascade(): Unit = {
   require(math.abs(perUnitOfService - 3.0) < 0.3,
     f"chapterMOilCascade: the paper's numbers now give $perUnitOfService%.1f units of crude per unit " +
     "of service; the paper says roughly 3, which is the sentence chapter M quotes")
+
+  // The three ratios the chapter prints at its three brackets. They are not
+  // read off the cascade by subtraction: the paper scales its wellhead ratio
+  // by the fraction of the barrel that survives, which is a different
+  // operation and gives a different number, so the chapter says which is being
+  // done and both are derived here rather than in prose.
+  val eroiWellhead = 10.0            // the paper's EROI_mm for American oil
+  val eroiPointOfUse = eroiWellhead * (1 - pou / 100)
+  val eroiExtended = eroiWellhead * (1 - all / 100)
+  println(f"  EROI $eroiWellhead%.1f at the wellhead, $eroiPointOfUse%.1f at the petrol tank, " +
+          f"$eroiExtended%.1f where the work happens")
+  require(math.abs(eroiPointOfUse - 6.0) < 0.3,
+    f"chapterMOilCascade: the point-of-use ratio is now $eroiPointOfUse%.1f; chapter M prints six")
+  require(math.abs(eroiExtended - 3.6) < 0.3,
+    f"chapterMOilCascade: the extended ratio is now $eroiExtended%.1f; chapter M prints about three and a half")
 
   val out = new StringBuilder
   out ++= "stage,what,cost_pct,boundary,remaining_pct\n"

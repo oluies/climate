@@ -43,4 +43,4 @@ ax.set_title(f"World electricity generation by region, {first}–{last}",
 ax.annotate("China added more generation after 2000 than the United States\n"
             "and Europe together produce in a year today",
             xy=(0.03, 0.93), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

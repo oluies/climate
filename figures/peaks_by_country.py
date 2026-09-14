@@ -43,4 +43,4 @@ note_y = -0.055 - 2.2 / len(d)
 ax.annotate(f"{n_past} of {len(d)} producers are past their own maximum — yet world output set a record in 2025.\n"
             "Peak oil is not a forecast. For most of the world it is history.",
             xy=(0, note_y), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2], f"({n_past}/{len(d)} past peak)")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2], f"({n_past}/{len(d)} past peak)")

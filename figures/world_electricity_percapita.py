@@ -51,4 +51,4 @@ matched = int(w.index[w.China >= w.Africa.iloc[-1]][0])
 ax.annotate(f"China passed Europe in {cross} and is still climbing. The United States\n"
             f"peaked in {uspeak}. Africa is where China was in {matched}.",
             xy=(0.03, 0.72), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

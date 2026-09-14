@@ -1,0 +1,4 @@
+# Deterministic SVGs: a fixed hash salt keeps matplotlib from renaming every
+# clip-path id on each render, so a re-render with unchanged data is an
+# unchanged file and a real visual change stands out in the diff.
+svg.hashsalt: without-hot-air

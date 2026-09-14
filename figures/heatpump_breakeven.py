@@ -67,5 +67,5 @@ ax.annotate(f"A heat pump wins when its seasonal performance factor beats the pr
             f"kilowatt-hour of electricity against one of gas.",
             xy=(0, -0.055 - 2.4 / len(df)), xycoords="axes fraction", va="top",
             fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 print("wrote", sys.argv[2], f"({n_win}/{len(df)} favour heat pumps at SPF 3)")

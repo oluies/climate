@@ -82,4 +82,4 @@ ax.annotate("MacKay's figure 26.5 showed the same thing for 2006–07, to explai
             "batteries. It is also why they are two-hour batteries: the spread is captured within a day, and nothing in this\n"
             "picture rewards holding energy from one week to the next.",
             xy=(0, -0.20), xycoords="axes fraction", va="top", fontsize=9.3, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

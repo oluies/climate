@@ -34,13 +34,14 @@ Last updated **14 September 2026**. The complete history is in the
 |                                |              | cascade, drawn as a Sankey diagram. Of 100 units of crude in the ground, 10 go on extraction, 10 on running the refinery, 17 leave as    |
 |                                |              | the part of the barrel that never becomes motor fuel, 3 move it to where it burns, and 24 build and maintain the roads it drives on —    |
 |                                |              | leaving 36 still doing work, which is where their much-quoted "minimum EROI of 3:1" comes from. Three nested brackets mark the           |
-|                                |              | boundaries: at the wellhead oil returns about ten for one, at the petrol tank under six, where the work happens about three. Nothing     |
-|                                |              | about the oil changes between those answers; only the question does. Chapter Q's passage on why primary energy falls faster than anyone  |
-|                                |              | uses less now points at it, since these are the same losses seen from the other end. Drawn from the 2009 paper's own percentages rather  |
-|                                |              | than from the widely reproduced 2014 chart of them, which charges 37.5 units to roads and leaves 20.5: this edition could not reconcile  |
-|                                |              | that with its cited source, since 37.5 is 64.7% of the flow before it — the source's own 64% total applied a second time — and it would  |
-|                                |              | imply five units of crude per unit of service where the same authors say three. The note says so, and the task checks the arithmetic     |
-|                                |              | against the conclusion the paper draws from it.                                                                                          |
+|                                |              | boundaries: about ten for one at the wellhead, six at the petrol tank, three and a half where the work happens — the paper scales its    |
+|                                |              | wellhead ratio by the fraction of the barrel that survives each stage, which is a different operation from reading the ratio off the     |
+|                                |              | picture, and the chapter says so. Nothing about the oil changes between those answers; only the question does. Chapter Q's passage on    |
+|                                |              | why primary energy falls faster than anyone uses less now points at it, since these are the same losses seen from the other end. Drawn   |
+|                                |              | from the 2009 paper's own percentages rather than from the widely reproduced 2014 chart of them, which charges 37.5 units to roads and   |
+|                                |              | leaves 20.5: this edition could not reconcile that with its cited source, since 37.5 is 64.7% of the flow before it — the source's own   |
+|                                |              | 64% total applied a second time — and it would imply five units of crude per unit of service where the same authors say three. The note  |
+|                                |              | says so, and the task checks the arithmetic against the conclusion the paper draws from it.                                              |
 |                                |              | :::                                                                                                                                      |
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 13 September 2026              | Q            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Why primary energy falls faster than anyone uses less"}        |

@@ -59,4 +59,4 @@ ax.annotate("The slope of each line is its consumption in kWh per 100 km, and th
             "cars is also 21. Eighteen years bought no reduction in energy per kilometre at the fleet level — the gain was\n"
             "taken as speed, size, safety and range. What is available at the efficient end is a different matter entirely.",
             xy=(0, -0.155), xycoords="axes fraction", va="top", fontsize=9.3, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

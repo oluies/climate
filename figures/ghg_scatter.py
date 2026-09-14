@@ -95,4 +95,4 @@ for target, (orig, c, xv, yv) in zip(want, placed):
                 textcoords="offset points", va="center", fontsize=9, color=INK,
                 zorder=6, fontweight="bold" if c == "United Kingdom" else "normal")
 
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

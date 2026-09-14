@@ -42,4 +42,4 @@ ax.annotate(f"The total rose from {sa:.0f} to {sb:.0f} gigatonnes of CO$_2$-equi
 ax.annotate("All greenhouse gases in CO$_2$-equivalent over 100 years. Source: Climate Watch via Our World in Data. "
             "The land-use row is the most uncertain and has been revised down sharply.",
             xy=(0, -0.12), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

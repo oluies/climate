@@ -97,4 +97,4 @@ ax.annotate("Both axes are logarithmic, unlike MacKay's original. The 2008 point
             "battery capacity and quoted range, so they are consumption floors; the diesel band is backed out of the same\n"
             "manufacturer's savings claim, which is quoted at 66%, 80% and 84% by different sources.",
             xy=(0, -0.175), xycoords="axes fraction", va="top", fontsize=9.3, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

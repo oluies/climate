@@ -94,7 +94,7 @@ ax.annotate("Medians across the C1 pathways of the AR6 Scenarios Database: 94 of
             "World nuclear roughly doubles by 2050; European nuclear falls by more than half, and by 91% on the tighter EU cut of the same file.",
             xy=(0, -0.22), xycoords="axes fraction", va="top",
             fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[3], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[3], format="svg", bbox_inches="tight", metadata={"Date": None})
 if len(sys.argv) > 4:
     fig.savefig(sys.argv[4], format="png", dpi=150, bbox_inches="tight")
 print("wrote", sys.argv[3], "| Europe C1 total",
