@@ -2255,8 +2255,10 @@ def chapter4Cairngorm(): Unit = {
 
 // ---- Chapter 11a: what Finland has already committed ----
 // Figure 11a.2. Hand-entered like chapter11aPeakShare, but with a better
-// provenance than that one: five of the seven bars are in documents this
-// edition has read, and the note in the chapter says which two are not.
+// provenance than that one: four of the seven bars are in documents this
+// edition has read, two are second hand, and the seventh is the sum of the
+// first three - so it is only as sound as the softest of them. The note in
+// the chapter says which is which.
 //
 // The quantity is data-centre *electricity* capacity in megawatts - the grid
 // connection the facility is built around, not the IT load inside it, which is
@@ -2294,15 +2296,17 @@ def chapter11aFinlandPipeline(): Unit = {
   val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
   // (label, sub-label, MW, kind) - kind is what the figure does with the bar.
   val rows = Seq(
-    ("Finland",                       "Sept 2025",  285.0, "base"),
+    ("In operation",                  "Sept 2025",  285.0, "base"),
     ("Decided or under construction", "Aug 2025",  1300.0, "add"),
-    ("Google decision",               "Sept 2026", 1300.0, "add"),
+    // Its own kind, so the figure colours the estimate on what it is rather
+    // than on it happening to be the last bar added.
+    ("Google decision",               "Sept 2026", 1300.0, "add-estimate"),
     ("Committed capacity",            "",          2885.0, "total"),
     ("AFRY strong growth",            "2030",      2500.0, "scenario"),
     ("KEITO assumption",              "2050",      1900.0, "scenario"),
     ("Luke electrification pathway",  "2055",      7000.0, "scenario"))
 
-  val committed = rows.filter(r => r._4 == "base" || r._4 == "add").map(_._3).sum
+  val committed = rows.filter(r => Seq("base", "add", "add-estimate").contains(r._4)).map(_._3).sum
   val stated = rows.find(_._4 == "total").map(_._3).get
   require(committed == stated,
     s"chapter11aFinlandPipeline: bars sum to $committed, total says $stated")
@@ -2321,10 +2325,17 @@ def chapter11aFinlandPipeline(): Unit = {
   val meteredTWh = 1.3             // Finnish tax records, data centres, 2024
   val peakMW = 15553.0             // Fingrid, 8 January 2026, a Finnish record
   val fiTWh = 82.0; val pop = 5.6e6 // as in the Loviisa arithmetic above
-  val googleMW = 1300.0; val contractedTWh = 6.0
+  val contractedTWh = 6.0
+  // Both of these are bars in the table above. Read them from it rather than
+  // retyping them: the 285 MW baseline is the one the note calls low, and if
+  // a later census revises it the bars, the total and this arithmetic have to
+  // move together or the chapter silently keeps dividing by the old number.
+  val baseMW = rows.find(_._4 == "base").map(_._3).get
+  val googleMW = rows.find(_._1 == "Google decision").map(_._3)
+    .getOrElse(sys.error("chapter11aFinlandPipeline: no Google bar to take the capacity from"))
 
-  val useNow = meteredTWh * 1e6 / (285.0 * 8760)   // what the built fleet runs at
-  println(f"  metered 2024 $meteredTWh%.1f TWh over 285 MW nameplate: " +
+  val useNow = meteredTWh * 1e6 / (baseMW * 8760)  // what the built fleet runs at
+  println(f"  metered 2024 $meteredTWh%.1f TWh over $baseMW%.0f MW nameplate: " +
           f"${useNow * 100}%.0f%% utilisation")
   for (u <- Seq(useNow, 0.60, 0.85)) {
     val twh = committed * 8760 * u / 1e6
