@@ -11,12 +11,26 @@ new in their entirety. The table below is the authoritative list of them.
 
 ## Latest changes
 
-Last updated **13 September 2026**. The complete history is in the
+Last updated **14 September 2026**. The complete history is in the
 [repository](https://github.com/oluies/climate/commits/main).
 
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 14 September 2026              | M            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure M.1: what a barrel is worth by the time a car moves"}   |
+|                                |              | Chapter M gains its first figure, and it is the one that makes the chapter's whole argument visible: Hall, Balogh and Murphy's oil       |
+|                                |              | cascade, drawn as a Sankey diagram. Of 100 units of crude in the ground, 10 go on extraction, 10 on running the refinery, 17 leave as    |
+|                                |              | the part of the barrel that never becomes motor fuel, 3 move it to where it burns, and 24 build and maintain the roads it drives on —    |
+|                                |              | leaving 36 still doing work, which is where their much-quoted "minimum EROI of 3:1" comes from. Three nested brackets mark the           |
+|                                |              | boundaries: at the wellhead oil returns about ten for one, at the petrol tank under six, where the work happens about three. Nothing     |
+|                                |              | about the oil changes between those answers; only the question does. Chapter Q's passage on why primary energy falls faster than anyone  |
+|                                |              | uses less now points at it, since these are the same losses seen from the other end. Drawn from the 2009 paper's own percentages rather  |
+|                                |              | than from the widely reproduced 2014 chart of them, which charges 37.5 units to roads and leaves 20.5: this edition could not reconcile  |
+|                                |              | that with its cited source, since 37.5 is 64.7% of the flow before it — the source's own 64% total applied a second time — and it would  |
+|                                |              | imply five units of crude per unit of service where the same authors say three. The note says so, and the task checks the arithmetic     |
+|                                |              | against the conclusion the paper draws from it.                                                                                          |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 13 September 2026              | Q            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Why primary energy falls faster than anyone uses less"}        |
 |                                |              | Chapter Q gains a passage on a trap almost every summary of these pathways falls into. Europe's primary energy falls 19% by 2050 and its |
 |                                |              | final energy 27%, and neither is mostly a story about Europeans doing less. The chimneys and the engines close: a coal station wastes    |

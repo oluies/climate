@@ -3743,3 +3743,97 @@ def chapterQEurope(): Unit = {
   println("  uv run figures/ar6_europe_change.py data-refresh/ar6-europe-change.csv " +
           "data-refresh/europe-build-rates.csv without-hot-air/Images/fig-q4-ar6-europe-change.svg")
 }
+
+// ---- Chapter M: what a barrel costs on the way to the wheel ----
+// Figure M.1. Hall, Balogh and Murphy's oil cascade: of 100 units of crude in
+// the ground, how much is still doing work by the time a car moves. It is the
+// clearest illustration in the literature of the point chapter M is about -
+// that where you draw the boundary is most of the answer - and it is also the
+// clearest illustration of chapter Q's passage on why primary energy falls
+// faster than anyone uses less, because these losses are inside primary energy
+// and outside final energy.
+//
+// Everything here is hand-entered from one open-access paper: Charles Hall,
+// Stephen Balogh and David Murphy, "What is the Minimum EROI that a
+// Sustainable Society Must Have?", Energies 2(1):25-47, 2009, sections 5.1 and
+// 5.2. There is no series to refresh; the task exists so that the arithmetic
+// is checked against the paper's own published conclusions rather than
+// transcribed once and trusted.
+//
+// This edition draws the cascade from the paper's own percentages rather than
+// from the well-known chart of it in Hall, Lambert and Balogh, "EROI of
+// different fuels and the implications for society", Energy Policy 64:141-152,
+// 2014, figure 1. That chart's first three steps are the paper's, but its
+// fourth charges 37.5 units to transport infrastructure and leaves 20.5 - and
+// the 2009 paper it cites says 24 and leaves 36. 37.5 is 64.7% of the 58 left
+// after the first three steps, which is the 2009 paper's 64% TOTAL applied a
+// second time to a flow already net of the first 42%. The check below is the
+// paper's own headline: roughly three units of crude for one unit of service,
+// which its own numbers give and the chart's do not.
+@main
+def chapterMOilCascade(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+
+  // (stage, what it costs, per cent of the original 100 units, which boundary
+  // it falls inside). The boundary names are the paper's own.
+  val steps = Seq(
+    ("Extraction",       "getting the oil out of the ground",        10.0, "mine mouth"),
+    ("Refinery",         "energy to run the refinery",               10.0, "point of use"),
+    ("Byproducts",       "the barrel that does not become fuel",     17.0, "point of use"),
+    ("Delivery",         "moving the fuel to where it is burned",     3.0, "point of use"),
+    ("Roads",            "building and maintaining what it drives on", 24.0, "extended"))
+
+  val pou = steps.filter(s => s._4 != "extended").map(_._3).sum
+  val all = steps.map(_._3).sum
+  val left = 100.0 - all
+  // The paper states both of these in words, so they are the check: "our
+  // EROI_pou is about 40 percent ... less than the EROI_mm", and "adding in
+  // the energy costs of getting the oil in the ground to the consumer in a
+  // usable from (40 percent) plus the pro-rated energy cost of the
+  // infrastructure necessary to use the fuel (24 percent) is 64 percent of the
+  // initial oil in the ground".
+  require(pou == 40.0, s"chapterMOilCascade: the point-of-use costs sum to $pou, the paper says 40")
+  require(all == 64.0, s"chapterMOilCascade: all the costs sum to $all, the paper says 64")
+  // And its headline, which is the whole reason the paper is cited: "the
+  // energy necessary to provide the services of 1 unit of crude oil ... is
+  // roughly 3 units of crude oil", so "the minimum EROI is 3:1".
+  val perUnitOfService = 100.0 / left
+  require(math.abs(perUnitOfService - 3.0) < 0.3,
+    f"chapterMOilCascade: the paper's numbers now give $perUnitOfService%.1f units of crude per unit " +
+    "of service; the paper says roughly 3, which is the sentence chapter M quotes")
+
+  val out = new StringBuilder
+  out ++= "stage,what,cost_pct,boundary,remaining_pct\n"
+  var remaining = 100.0
+  println("stage        cost  remaining  boundary")
+  for ((stage, what, cost, boundary) <- steps) {
+    remaining -= cost
+    out ++= f"$stage,$what,$cost%.1f,$boundary,$remaining%.1f\n"
+    println(f"  $stage%-12s $cost%4.1f  $remaining%8.1f  $boundary")
+  }
+  os.write.over(dir / "eroi-oil-cascade.csv", out.toString)
+  println("wrote data-refresh/eroi-oil-cascade.csv")
+  println(f"  point-of-use costs $pou%.0f%% of the barrel, all costs $all%.0f%%, " +
+          f"$left%.0f%% still doing work")
+  println(f"  check: $perUnitOfService%.1f units of crude per unit of service; the paper says about 3")
+
+  // The discrepancy with the 2014 chart, printed so the note in the chapter
+  // can be checked rather than believed. If a future reading of either paper
+  // changes these, the chapter's paragraph about it has to change too.
+  val chartInfra = 37.5
+  val chartLeft = 100.0 - 10.0 - 27.0 - 5.0 - chartInfra
+  require(math.abs(chartLeft - 20.5) < 0.1,
+    s"chapterMOilCascade: the 2014 chart is meant to leave 20.5 units, this gives $chartLeft")
+  val doubleCounted = chartInfra / (100.0 - 10.0 - 27.0 - 5.0) * 100
+  println(f"  the 2014 chart charges $chartInfra%.1f to roads and leaves $chartLeft%.1f, " +
+          f"against the 2009 paper's 24.0 and $left%.1f")
+  require(math.abs(doubleCounted - all) < 1.5,
+    f"chapterMOilCascade: the chart's road charge is $doubleCounted%.1f%% of the flow before it; " +
+    f"chapter M says that is the paper's own $all%.0f%% total applied a second time, and that " +
+    "sentence only holds while the two match")
+  println(f"  that charge is $doubleCounted%.1f%% of the 58 before it - the paper's own $all%.0f%% total, applied twice")
+  println("render:")
+  println("  uv run figures/eroi_oil_cascade.py data-refresh/eroi-oil-cascade.csv " +
+          "without-hot-air/Images/fig-m1-eroi-cascade.svg")
+}
