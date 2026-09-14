@@ -22,7 +22,11 @@ INK, MUTED, GRID = "#161d1b", "#8a8a85", "#ededea"
 BUILT, ADDED, ESTIMATE, TOTAL, SCENARIO = \
     "#1f6f9c", "#5f97b8", "#bf4433", "#14384a", "#b7bab3"
 GAP = 0.9                       # blank column between the two panels
-COLOUR = {"base": BUILT, "add": ADDED, "total": TOTAL, "scenario": SCENARIO}
+COLOUR = {"base": BUILT, "add": ADDED, "add-estimate": ESTIMATE, "total": TOTAL,
+          "scenario": SCENARIO}
+# The Google bar is an estimate rather than a disclosure, so it carries its own
+# kind and its own warning colour; it still stacks like any other addition.
+ADDS = ("add", "add-estimate")
 
 # Four digits run together and five are split, which is the book's own habit.
 num = lambda v: f"{v:,.0f}".replace(",", " ") if v >= 10000 else f"{v:.0f}"
@@ -34,21 +38,22 @@ left = [r for r in rows if r["kind"] != "scenario"]
 right = [r for r in rows if r["kind"] == "scenario"]
 total = next(r["mw"] for r in rows if r["kind"] == "total")
 
-# The Google bar is an estimate rather than a disclosure, so it is the one bar
-# drawn in the warning colour. It is identified by its kind and position, not
-# by its label, so a rename in the data does not silently lose the highlight.
-adds = [i for i, r in enumerate(left) if r["kind"] == "add"]
-estimate = adds[-1] if adds else None
+# The stack and its own total bar have to agree. The generator checks this, but
+# this script takes any CSV path and there is a checked-in one beside it, so a
+# stale or hand-edited file would otherwise render segments that do not add up
+# to the total bar and the dashed line drawn from it.
+stacked = sum(r["mw"] for r in left if r["kind"] != "total")
+if abs(stacked - total) > 1:
+    raise SystemExit(f"{sys.argv[1]}: the bars sum to {stacked:.0f} MW, "
+                     f"the total bar says {total:.0f}")
 
 fig, ax = plt.subplots(figsize=(9.6, 5.2))
 x, bottom, ticks = 0.0, 0.0, []
-for i, r in enumerate(left):
+for r in left:
     h, colour = r["mw"], COLOUR[r["kind"]]
     b = 0.0 if r["kind"] in ("base", "total") else bottom
-    if i == estimate:
-        colour = ESTIMATE
     ax.bar(x, h, bottom=b, width=0.62, color=colour, zorder=3)
-    ax.text(x, b + h + 110, ("+" if r["kind"] == "add" else "") + num(h),
+    ax.text(x, b + h + 110, ("+" if r["kind"] in ADDS else "") + num(h),
             ha="center", va="bottom", fontsize=10.5, color=INK,
             fontweight="bold" if r["kind"] == "total" else "normal")
     if r["kind"] != "total":                      # carry the running total over
