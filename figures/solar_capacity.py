@@ -51,4 +51,4 @@ ax.set_title(f"World installed solar PV capacity, {first}–{last}",
 ax.annotate("The capacity MacKay called more than a hundred times the world's entire\n"
             "photovoltaic fleet has been passed twice over — and nearly reached by China alone.",
             xy=(0.03, 0.93), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

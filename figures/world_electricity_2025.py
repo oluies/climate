@@ -35,4 +35,4 @@ ax.set_title(f"World electricity generation by source, 2025 — {tot} TWh",
 foss = df[df.source == "Fossil"].iloc[0]
 ax.annotate(f"fossil generation fell {abs(foss.change):.0f} TWh in 2025\nwhile total generation rose — all of the\ngrowth came from low-carbon sources",
             xy=(0.975, 0.13), xycoords="axes fraction", ha="right", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

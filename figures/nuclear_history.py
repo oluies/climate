@@ -58,4 +58,4 @@ ax.annotate("Germany's fleet reached 171 TWh in 2001 and was shut down completel
             f"{cross}\nand has now passed France's all-time peak: no country has ever generated more nuclear electricity than "
             "China does\nnow except the United States. Neither trajectory was decided by uranium, geology or reactor physics.",
             xy=(0, -0.14), xycoords="axes fraction", va="top", fontsize=9.4, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

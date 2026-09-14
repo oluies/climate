@@ -70,5 +70,5 @@ fig.text(0.006, -0.035,
          "Load is ENTSO-E; Great Britain is NESO national demand with distribution-connected solar and wind added back.",
          ha="left", va="top", fontsize=9, color=MUTED)
 fig.tight_layout()
-fig.savefig(sys.argv[3], format="svg", bbox_inches="tight", dpi=110)
+fig.savefig(sys.argv[3], format="svg", bbox_inches="tight", dpi=110, metadata={"Date": None})
 print("wrote", sys.argv[3])

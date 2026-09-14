@@ -82,4 +82,4 @@ if not DETAIL:
     ax.annotate(f"the world's diagonal has moved: {wd:.0f} people per km²,\nagainst 43 when this book was written",
                 xy=(0.015, 0.955), xycoords="axes fraction", va="top",
                 fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

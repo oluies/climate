@@ -34,4 +34,4 @@ ax.legend(handles, [LAB[k] for k in ("2008", "2026", "record")],
           frameon=False, fontsize=9, loc="lower right")
 ax.set_title("Solar module efficiency: MacKay's assumptions and today's product",
              loc="left", fontsize=12.5, fontweight="bold", pad=12)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

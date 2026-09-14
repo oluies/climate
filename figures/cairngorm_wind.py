@@ -66,6 +66,6 @@ axes[-1].annotate("Heriot-Watt's station at 1245 m. His six months were not a ch
                   "several archive years are instrument failures, so no trend is claimed here — only the contrast with Cambridge.",
                   xy=(0, -0.42), xycoords="axes fraction", va="top",
                   fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 print("wrote", sys.argv[2], "|", ", ".join(
     f"{y} mean {sum(s for _, s in half[y]) / len(half[y]):.2f} m/s" for y in years))

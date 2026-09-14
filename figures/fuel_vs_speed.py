@@ -61,5 +61,5 @@ ax.annotate("Dynamometer measurements collected in ORNL's Transportation Energy 
             "Every curve has a minimum, and above it none of them rises anywhere near as steeply as the dotted square law: from 80\n"
             "to 113 km/h the 74-car study rises 32%, where a square law demands 96%.",
             xy=(0, -0.17), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 print("wrote", sys.argv[2], "|", len(series), "series")

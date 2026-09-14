@@ -29,4 +29,4 @@ ax.set_title("Power per unit area: what solar farms actually achieve",
              loc="left", fontsize=12.5, fontweight="bold", pad=12)
 ax.annotate("A photovoltaic field in Kent beats a concentrating plant in the Mojave.",
             xy=(0, -0.30), xycoords="axes fraction", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

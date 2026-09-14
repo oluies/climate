@@ -108,6 +108,6 @@ ax.annotate("Left-hand bars are one running total; right-hand bars are separate 
             "The 2050 and 2055 scenarios are energy, converted to power at 60% utilisation.",
             xy=(0, -0.30), xycoords="axes fraction", va="top",
             fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 print("wrote", sys.argv[2], f"({num(total)} MW committed, "
       f"{total / max(r['mw'] for r in right):.2f} of the largest scenario)")

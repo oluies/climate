@@ -72,6 +72,6 @@ axes[-1].annotate("Computer Laboratory rooftop station, about 10 m up; wind at 5
                   "mean is partly the instrument. The bias runs downwards, and the chapter's 6 m/s is an upper bound.",
                   xy=(0, -0.42), xycoords="axes fraction", va="top",
                   fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 print("wrote", sys.argv[2], "|",
       ", ".join(f"{y} {sum(s for _, s in half[y]) / len(half[y]):.2f} m/s" for y in years))

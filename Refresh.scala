@@ -3624,6 +3624,16 @@ def chapterQEurope(): Unit = {
                  feCut("C1"), 30.4, 3.0)
     requireClose("chapterQEurope: the fall in Europe's C3 final energy per person by 2050, per cent",
                  feCut("C3"), 14.7, 3.0)
+    // The section on why primary energy falls faster than anyone uses less
+    // quotes the Europe-wide totals rather than the per-person figures, so
+    // those are pinned too: rebasing feCut onto per person left them unguarded.
+    val primaryFall = eu1("C1", "Primary Energy").fallPercent
+    val finalFall = chRow("C1", "Final Energy").fallPercent
+    println(f"  check Europe-wide primary energy falls ${primaryFall}%.0f%% and final energy ${finalFall}%.0f%%")
+    requireClose("chapterQEurope: the fall in Europe's C1 primary energy by 2050, Europe-wide, per cent",
+                 primaryFall, 19.0, 3.0)
+    requireClose("chapterQEurope: the fall in Europe's C1 final energy by 2050, Europe-wide, per cent",
+                 finalFall, 27.0, 3.0)
     // And the like-for-like comparison the section now makes: how far apart the
     // two categories are in 2050 itself, per person, in demand and in plant.
     // These are commensurable with each other; a fall from 2020 is not.
@@ -3631,14 +3641,14 @@ def chapterQEurope(): Unit = {
     val demandApart = (1 - fe50("C1") / fe50("C3")) * 100
     println(f"  check in 2050 C1 uses ${demandApart}%.0f%% less energy per person than C3")
     requireClose("chapterQEurope: how much less energy per person C1 uses than C3 in 2050, per cent",
-                 demandApart, 17.0, 5.0)
+                 demandApart, 17.0, 3.0)
     for ((plant, printed) <- Seq("Wind" -> 25.0, "Solar" -> 36.0)) {
       val perHead = (cat: String) =>
         chRow(cat, s"Capacity|Electricity|$plant").y2050 * 1000 / pop(cat).y2050
       val apart = (perHead("C1") / perHead("C3") - 1) * 100
       println(f"  check in 2050 C1 has ${apart}%.0f%% more $plant capacity per person than C3")
       requireClose(s"chapterQEurope: how much more $plant capacity per person C1 has than C3 in 2050, per cent",
-                   apart, printed, 8.0)
+                   apart, printed, 3.0)
     }
     // The sectors and the nuclear capacity the section prints, which nothing
     // else would catch.
@@ -3698,6 +3708,16 @@ def chapterQEurope(): Unit = {
     val bioLiquids = chRow("C1", "Secondary Energy|Liquids|Biomass")
     requireClose("chapterQEurope: Europe's C1 biomass liquids in 2020, EJ", bioLiquids.y2020, 0.56, 0.2)
     requireClose("chapterQEurope: Europe's C1 biomass liquids in 2050, EJ", bioLiquids.y2050, 3.57, 0.6)
+    // The paragraph's two system-wide totals, which are sums over rows already
+    // gathered and were the only figures in it without a guard.
+    val fossilFall = Seq("Coal", "Oil", "Gas")
+      .map(f => eu1("C1", s"Primary Energy|$f")).map(r => r.y2020 - r.y2050).sum
+    val cleanRise = Seq("Non-Biomass Renewables", "Biomass")
+      .map(f => eu1("C1", s"Primary Energy|$f")).map(r => r.y2050 - r.y2020).sum
+    println(f"  check fossil primary energy falls $fossilFall%.0f EJ and renewables and biomass rise $cleanRise%.0f EJ")
+    requireClose("chapterQEurope: the fall in Europe's C1 fossil primary energy by 2050, EJ", fossilFall, 40.0, 4.0)
+    requireClose("chapterQEurope: the rise in Europe's C1 renewables and biomass by 2050, EJ", cleanRise, 26.0, 4.0)
+
     val h2 = chRow("C1", "Secondary Energy|Hydrogen")
     println(f"  check hydrogen goes from ${h2.y2020}%.2f EJ to ${h2.y2050}%.2f")
     requireClose("chapterQEurope: Europe's C1 secondary hydrogen in 2020, EJ", h2.y2020, 0.05, 0.15)
@@ -3779,10 +3799,20 @@ def chapterMOilCascade(): Unit = {
   // it falls inside). The boundary names are the paper's own.
   val steps = Seq(
     ("Extraction",       "getting the oil out of the ground",        10.0, "mine mouth"),
-    ("Refinery",         "energy to run the refinery",               10.0, "point of use"),
+    ("Refining",         "energy to run the refinery",               10.0, "point of use"),
     ("Byproducts",       "the barrel that does not become fuel",     17.0, "point of use"),
     ("Delivery",         "moving the fuel to where it is burned",     3.0, "point of use"),
     ("Roads",            "building and maintaining what it drives on", 24.0, "extended"))
+
+  // The boundary column drives the figure's brackets, and the figure keys a
+  // lookup table off it, so it is checked here to be the three expected names
+  // in nesting order rather than free text that a typo could widen.
+  val boundaries = Seq("mine mouth", "point of use", "extended")
+  require(steps.map(_._4).distinct == boundaries.filter(steps.map(_._4).contains),
+    s"chapterMOilCascade: the boundaries are ${steps.map(_._4).distinct.mkString(", ")}, " +
+    s"which is not ${boundaries.mkString(", ")} in nesting order")
+  require(steps.forall(s => boundaries.contains(s._4)),
+    s"chapterMOilCascade: unknown boundary in ${steps.map(_._4).distinct.mkString(", ")}")
 
   val pou = steps.filter(s => s._4 != "extended").map(_._3).sum
   val all = steps.map(_._3).sum
@@ -3793,8 +3823,10 @@ def chapterMOilCascade(): Unit = {
   // usable from (40 percent) plus the pro-rated energy cost of the
   // infrastructure necessary to use the fuel (24 percent) is 64 percent of the
   // initial oil in the ground".
-  require(pou == 40.0, s"chapterMOilCascade: the point-of-use costs sum to $pou, the paper says 40")
-  require(all == 64.0, s"chapterMOilCascade: all the costs sum to $all, the paper says 64")
+  require(math.abs(pou - 40.0) < 0.05,
+    s"chapterMOilCascade: the point-of-use costs sum to $pou, the paper says 40")
+  require(math.abs(all - 64.0) < 0.05,
+    s"chapterMOilCascade: all the costs sum to $all, the paper says 64")
   // And its headline, which is the whole reason the paper is cited: "the
   // energy necessary to provide the services of 1 unit of crude oil ... is
   // roughly 3 units of crude oil", so "the minimum EROI is 3:1".
@@ -3802,6 +3834,21 @@ def chapterMOilCascade(): Unit = {
   require(math.abs(perUnitOfService - 3.0) < 0.3,
     f"chapterMOilCascade: the paper's numbers now give $perUnitOfService%.1f units of crude per unit " +
     "of service; the paper says roughly 3, which is the sentence chapter M quotes")
+
+  // The three ratios the chapter prints at its three brackets. They are not
+  // read off the cascade by subtraction: the paper scales its wellhead ratio
+  // by the fraction of the barrel that survives, which is a different
+  // operation and gives a different number, so the chapter says which is being
+  // done and both are derived here rather than in prose.
+  val eroiWellhead = 10.0            // the paper's EROI_mm for American oil
+  val eroiPointOfUse = eroiWellhead * (1 - pou / 100)
+  val eroiExtended = eroiWellhead * (1 - all / 100)
+  println(f"  EROI $eroiWellhead%.1f at the wellhead, $eroiPointOfUse%.1f at the petrol tank, " +
+          f"$eroiExtended%.1f where the work happens")
+  require(math.abs(eroiPointOfUse - 6.0) < 0.3,
+    f"chapterMOilCascade: the point-of-use ratio is now $eroiPointOfUse%.1f; chapter M prints six")
+  require(math.abs(eroiExtended - 3.6) < 0.3,
+    f"chapterMOilCascade: the extended ratio is now $eroiExtended%.1f; chapter M prints about three and a half")
 
   val out = new StringBuilder
   out ++= "stage,what,cost_pct,boundary,remaining_pct\n"
@@ -3836,4 +3883,152 @@ def chapterMOilCascade(): Unit = {
   println("render:")
   println("  uv run figures/eroi_oil_cascade.py data-refresh/eroi-oil-cascade.csv " +
           "without-hot-air/Images/fig-m1-eroi-cascade.svg")
+}
+
+// ---- Chapter 1: figure 1.2a, the same three countries as exporters ----
+// Figure 1.2 asks MacKay's question with production, which is what his own
+// figure plotted. But production is not what a country has to sell: what it
+// has to sell is production minus what it burns itself, and on that measure
+// the three North Sea producers stop being one story at three scales and
+// become three different stories.
+//
+// Britain and Denmark both crossed from exporter to importer within a decade
+// of each other and kept falling. Norway did not, because it consumes almost
+// nothing of what it pumps. Same sea, same decade, opposite outcomes - and the
+// difference is domestic demand, which is the half of the equation this book
+// spends most of its pages on.
+//
+// Everything is in energy rather than barrels, and from one publisher's own
+// energy series, because net exports is a difference of two quantities and
+// differencing two series converted at different factors would be arithmetic
+// on sand. That does mean the levels here cannot be read off figure 1.2: the
+// barrel counts there include natural-gas liquids, which carry less energy per
+// barrel than crude, so the two do not convert at a single factor. The shapes
+// agree, and the check below is that they do - both put the peak in 2000.
+//
+// The quantity is production minus inland consumption, which is a proxy for
+// net trade and not customs data. Britain in particular exports its own light
+// crude and imports heavier grades for its refineries, so its gross flows are
+// much larger than the net figure drawn here.
+@main
+def chapter01NetExports(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val prodCsv = fetch("oil-production-by-country", "owid-oil-production.csv")
+  val consCsv = fetch("oil-consumption-by-country", "owid-oil-consumption.csv")
+  val popCsv = fetch("population-with-un-projections", "owid-population-projections.csv")
+  val countries = Seq("United Kingdom", "Norway", "Denmark")
+
+  withConn { c =>
+    val st = c.createStatement()
+    def view(name: String, p: os.Path) =
+      st.execute(s"create view $name as select * from " +
+                 s"read_csv_auto('${p.toString.replace("'", "''")}', header=true)")
+    view("prod", prodCsv); view("cons", consCsv); view("pop", popCsv)
+    val inList = countries.map(n => s"'$n'").mkString(",")
+    val rs = st.executeQuery(s"""
+      select p.Entity, p.Year, p.Oil, c.Oil,
+             coalesce(pop."Population", pop."Population (Projected)")
+      from prod p
+        join cons c on c.Entity = p.Entity and c.Year = p.Year
+        join pop on pop.Entity = p.Entity and pop.Year = p.Year
+      where p.Entity in ($inList) and p.Oil is not null and c.Oil is not null
+      order by p.Entity, p.Year""")
+    case class Row(country: String, year: Int, prod: Double, cons: Double, people: Double) {
+      def net = prod - cons
+      def netPerDay = net * 1e9 / people / 365     // kWh per day per person
+    }
+    val rows = scala.collection.mutable.ArrayBuffer[Row]()
+    while (rs.next())
+      rows += Row(rs.getString(1), rs.getInt(2), rs.getDouble(3), rs.getDouble(4), rs.getDouble(5))
+    require(rows.nonEmpty, "chapter01NetExports: the join matched nothing")
+    require(countries.forall(n => rows.exists(_.country == n)),
+      s"chapter01NetExports: expected all of ${countries.mkString(", ")}, got " +
+      rows.map(_.country).distinct.mkString(", "))
+
+    val out = new StringBuilder
+    out ++= "country,year,prod_twh,cons_twh,net_twh,people,net_kwh_per_day\n"
+    for (r <- rows)
+      out ++= f"${r.country},${r.year},${r.prod}%.1f,${r.cons}%.1f,${r.net}%.1f," +
+              f"${r.people}%.0f,${r.netPerDay}%.2f\n"
+
+    // Each country's own story, printed and then checked. The two crossings
+    // are single sign changes in this data, so "the last year in surplus" is
+    // an honest way to describe them rather than the last of several.
+    println("country          first  last   peak export  last in surplus   2025 net")
+    val summary = for (n <- countries) yield {
+      val rs2 = rows.filter(_.country == n)
+      // Per person, because that is what the figure plots and the chapter
+      // prints. Norway's peak year differs by one from the peak in absolute
+      // energy, its population having grown through the period.
+      val peak = rs2.maxBy(_.netPerDay)
+      val surplus = rs2.filter(_.net > 0)
+      val last = rs2.last
+      println(f"$n%-16s ${rs2.head.year}   ${last.year}   ${peak.year} ${peak.netPerDay}%7.1f  " +
+              f"${if (surplus.isEmpty) "never" else surplus.last.year.toString}%15s  " +
+              f"${last.netPerDay}%8.1f kWh/d")
+      (n, peak, surplus, last)
+    }
+    def one(n: String) = summary.find(_._1 == n).get
+
+    // Each country's surplus is one unbroken run of years, which is what lets
+    // the chapter talk about a country "becoming" an importer on a date rather
+    // than flickering across the line. All three were importers before their
+    // own oil arrived, so the run has a start as well as an end.
+    for ((n, from, to) <- Seq(("United Kingdom", 1981, 2004), ("Denmark", 1998, 2014),
+                              ("Norway", 1975, 2025))) {
+      val (_, _, surplus, _) = one(n)
+      require(surplus.nonEmpty && surplus.head.year == from && surplus.last.year == to,
+        s"chapter01NetExports: $n is in surplus from " +
+        s"${surplus.headOption.map(_.year.toString).getOrElse("never")} to " +
+        s"${surplus.lastOption.map(_.year.toString).getOrElse("never")}; chapter 1 says $from to $to")
+      require(surplus.length == to - from + 1,
+        s"chapter01NetExports: $n has ${surplus.length} years in surplus between $from and $to, " +
+        s"not the ${to - from + 1} of an unbroken run; the chapter describes one crossing each way")
+    }
+    // Norway's run has not ended, which is the contrast the figure is drawn for.
+    val (_, noPeak, _, noLast) = one("Norway")
+    require(one("Norway")._3.last.year == noLast.year,
+      "chapter01NetExports: Norway is no longer in surplus in the last year of the data; " +
+      "chapter 1 says it has never stopped exporting")
+    val exported = noLast.net / noLast.prod * 100
+    println(f"  check Norway still exports ${exported}%.0f%% of what it produces in ${noLast.year}")
+    require(exported > 85,
+      f"chapter01NetExports: Norway now exports ${exported}%.0f%% of its production; " +
+      "chapter 1 says it sells about nine-tenths of it")
+
+    // The figures the chapter transcribes, each with a tolerance.
+    def close(what: String, got: Double, printed: Double, tol: Double) =
+      require(math.abs(got - printed) <= tol,
+        f"chapter01NetExports: $what is now $got%.1f; chapter 1 prints $printed%.1f")
+    close("Norway's net exports per person in the last year", noLast.netPerDay, 494.0, 15.0)
+    close("Norway's net exports per person at its peak", noPeak.netPerDay, 1074.0, 25.0)
+    require(noPeak.year == 2000,
+      s"chapter01NetExports: Norway's exports per person now peak in ${noPeak.year}; chapter 1 says 2000")
+    close("Britain's net imports per person in the last year", one("United Kingdom")._4.netPerDay, -15.4, 2.0)
+    close("Denmark's net imports per person in the last year", one("Denmark")._4.netPerDay, -16.2, 3.0)
+    close("Britain's net exports per person at its peak", one("United Kingdom")._2.netPerDay, 29.4, 3.0)
+
+    // And the tie to figure 1.2: a different publisher's unit, a different
+    // conversion, but it has to be the same sea. Both put the peak in 2000.
+    val sibling = dir / "north-sea-oil.csv"
+    require(os.exists(sibling),
+      "chapter01NetExports: data-refresh/north-sea-oil.csv is missing - run chapter01 first, " +
+      "since figure 1.2's peak year is checked against this one")
+    val lines = os.read.lines(sibling)
+    val head = lines.head.split(",").zipWithIndex.toMap
+    val peakBarrels = lines.tail.map(_.split(","))
+      .maxBy(f => f(head("total_kbd")).toDouble)(Ordering.Double.TotalOrdering)(head("year")).toInt
+    val peakEnergy = rows.groupBy(_.year).view.mapValues(_.map(_.prod).sum).toSeq.maxBy(_._2)._1
+    println(s"  check production peaks in $peakEnergy here and in $peakBarrels in figure 1.2")
+    require(peakEnergy == peakBarrels,
+      s"chapter01NetExports: this data peaks in $peakEnergy and figure 1.2 in $peakBarrels; " +
+      "the two figures are meant to be the same sea in different units")
+
+    os.write.over(dir / "north-sea-net-exports.csv", out.toString)
+    println("wrote data-refresh/north-sea-net-exports.csv")
+  }
+  println("render:")
+  println("  uv run figures/north_sea_net_exports.py data-refresh/north-sea-net-exports.csv " +
+          "without-hot-air/Images/fig-north-sea-net-exports.svg")
 }

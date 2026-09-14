@@ -76,6 +76,6 @@ ax.annotate("Medians and 5th-to-95th-percentile ranges from Table SPM.2 of the S
             "deeper than the global one the report prints: C1's 84% by 2050 is 87% each. The right-hand axis is what the tonnage\n"
             "would be if every remaining tonne were burnt fuel, which it is not — farming and industry are in these totals too.",
             xy=(0, -0.17), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 print("wrote", sys.argv[2], "| 2050:",
       ", ".join(f"{c} {p[-1][1]:.2f} t" for c, p in paths.items()))

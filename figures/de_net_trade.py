@@ -43,4 +43,4 @@ ax.annotate("last reactors closed,\nApril 2023",
 
 ax.set_title(f"Germany's net electricity trade, {first}–{last}",
              loc="left", fontsize=12.5, fontweight="bold", pad=12)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

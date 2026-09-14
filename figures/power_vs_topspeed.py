@@ -79,6 +79,6 @@ ax.annotate("Every model with at least a hundred Dutch registrations since 2023,
             "their top speed is set by gearing and cooling rather than by power — a 504 kW Tesla Model S declares 263 km/h, where a\n"
             "478 kW Porsche 911 Turbo S declares 327.",
             xy=(0, -0.17), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 print("wrote", sys.argv[2], "| exponents:",
       ", ".join(f"{k} {exponent(v)[0]:.2f}" for k, v in by.items()))

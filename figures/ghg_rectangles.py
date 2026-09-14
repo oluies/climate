@@ -97,4 +97,4 @@ fig.text(0.055, 0.058, textwrap.fill(
     "the world figure." + cutline, 118),
          fontsize=8.5, color=MUTED, va="top", linespacing=1.6)
 fig.subplots_adjust(top=0.875, bottom=0.155, left=0.09, right=0.98, hspace=0.20)
-fig.savefig(sys.argv[3], format="svg", bbox_inches="tight"); print("wrote", sys.argv[3])
+fig.savefig(sys.argv[3], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[3])

@@ -1,6 +1,6 @@
 stage,what,cost_pct,boundary,remaining_pct
 Extraction,getting the oil out of the ground,10.0,mine mouth,90.0
-Refinery,energy to run the refinery,10.0,point of use,80.0
+Refining,energy to run the refinery,10.0,point of use,80.0
 Byproducts,the barrel that does not become fuel,17.0,point of use,63.0
 Delivery,moving the fuel to where it is burned,3.0,point of use,60.0
 Roads,building and maintaining what it drives on,24.0,extended,36.0

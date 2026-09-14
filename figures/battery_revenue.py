@@ -107,4 +107,4 @@ ax.annotate("Arbitrage: mean over 2025 of each day's cheapest and dearest four h
             "Capacity: Svenska kraftnät's monthly reports and NESO's auction results for 2025, drawn at 90% availability and, for the two regulation products, over a\n"
             "40% to 90% range. Capex: BloombergNEF December 2025 and a figure reported for Swedish projects, levelised on the assumptions in the note.",
             xy=(0, -0.30), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[3], format="svg", bbox_inches="tight"); print("wrote", sys.argv[3])
+fig.savefig(sys.argv[3], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[3])

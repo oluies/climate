@@ -7,9 +7,10 @@
 to build.
 
 Left, the demand side: final energy per person per day, all of it and by
-sector, from 2020 to 2050 in the 1.5 °C and 2 °C categories. The two categories
-are three times further apart in energy used than in the plant that supplies
-it, which is the section's argument.
+sector, from 2020 to 2050 in the 1.5 °C and 2 °C categories. The 1.5 °C
+category asks twice the reduction the 2 °C one does — 30% per person against
+15% — while the 2 °C pathways move supply and barely touch demand at all,
+which is the section's argument.
 
 Right, the supply side as a rate rather than a stock: the average gigawatts a
 year the median 1.5 °C pathway implies, against what Europe actually built in
@@ -119,7 +120,7 @@ ax.annotate("Medians across the AR6 pathways for R10EUROPE, each divided by the 
             "2025, as reported by WindEurope and SolarPower Europe. Both real figures cover areas slightly different from R10EUROPE, and neither counts the plant that has\n"
             "to be replaced as it ages.",
             xy=(0, -0.30), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[3], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[3], format="svg", bbox_inches="tight", metadata={"Date": None})
 if len(sys.argv) > 4:
     fig.savefig(sys.argv[4], format="png", dpi=150, bbox_inches="tight")
 print("wrote", sys.argv[3], "|", ", ".join(

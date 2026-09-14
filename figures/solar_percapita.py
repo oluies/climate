@@ -50,4 +50,4 @@ ax.set_title(f"Solar electricity per person, {first}–{last}",
 ax.annotate("Nobody has yet reached the output MacKay assigned to roofs alone, and his 50 kWh/d\n"
             "solar farm is ten times above the top of this chart.",
             xy=(0, -0.135), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

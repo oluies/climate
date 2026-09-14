@@ -41,4 +41,4 @@ ax.annotate(f"The line MacKay draws ends at {mk.ppm:.0f} ppm. It has since risen
 ax.annotate("Ice cores to 1958, then direct measurement at Mauna Loa. Source: Our World in Data, "
             "after Bereiter et al. and NOAA.",
             xy=(0, -0.16), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

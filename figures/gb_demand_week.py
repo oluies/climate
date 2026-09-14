@@ -19,4 +19,4 @@ for s in ("top", "right"): ax.spines[s].set_visible(False)
 ax.set_title("GB electricity demand over a winter week, 13–19 January 2025",
              loc="left", fontsize=12.5, fontweight="bold", pad=12)
 fig.autofmt_xdate(rotation=0, ha="center")
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

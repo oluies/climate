@@ -44,4 +44,4 @@ ax.set_title(f"Energy supply per person, {first}–{last}, in the units of this 
 ax.annotate("MacKay put Britain at 125 kWh/d and America at 250 when he wrote.\n"
             "Britain has since fallen to 69; America is back where it was in 1965.",
             xy=(0.30, 0.965), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

@@ -62,4 +62,4 @@ fig.text(0.055, 0.930, f"Same window as figure 1.7, so the shapes can be laid be
 fig.text(0.055, 0.03, "Population to 2023 and United Nations projections thereafter. Source: Our World in Data.",
          fontsize=8.5, color=MUTED, va="top")
 fig.subplots_adjust(top=0.76, bottom=0.16, left=0.085, right=0.98, wspace=0.28)
-fig.savefig(sys.argv[2], format="svg"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", metadata={"Date": None}); print("wrote", sys.argv[2])

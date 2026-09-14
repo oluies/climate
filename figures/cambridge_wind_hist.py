@@ -58,7 +58,7 @@ axes[0].annotate("Both panels are shares, so the two years can be compared despi
                  "year is the anemometer as much as the weather: it reads calm 18% of the time against 8% in 2006.",
                  xy=(0, -0.30), xycoords="axes fraction", va="top",
                  fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 print("wrote", sys.argv[2], "|",
       ", ".join(f"{y}: {sum(1 for v in daily[y] if v >= 6)} days at or above 6 m/s"
                 for y in years))

@@ -60,4 +60,4 @@ ax.annotate("Cost is DESNZ levelised cost for projects commissioning 2035, 2024 
             "and gas with carbon capture do not clear their costs; everything else does — at today's prices, and the\n"
             "point of chapter 28a is that building more of a technology lowers the price it earns.",
             xy=(0, -0.235), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

@@ -29,4 +29,4 @@ ax.annotate("Everything here is below 1 W/m², against 10 for a solar farm on th
             "0.048 rather than the 0.02 printed in 2008.",
             xy=(0.98, 0.20), xycoords="axes fraction", ha="right", va="top",
             fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

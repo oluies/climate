@@ -91,4 +91,4 @@ tail = ("Hollow circles are 1990, filled circles 2025. Fossil energy falls furth
 ax.annotate(tail + ("\nChapter 15 supplies the caveat these paths cannot show: a territorial figure also falls when a "
                     "factory closes and its\noutput is imported." if KIND != "fossil" else ""),
             xy=(0, -0.135), xycoords="axes fraction", va="top", fontsize=9.3, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

@@ -48,4 +48,4 @@ ax.annotate("Seventeen of the forty-three years are gone and emissions per perso
 ax.annotate("Paths drawn as MacKay describes them, linearly from 2007, not reproduced from Baer and "
             "Mastrandrea's model. Source: Global Carbon Budget.",
             xy=(0, -0.16), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

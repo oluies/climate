@@ -71,4 +71,4 @@ ax.annotate("Consumption is what a typical affluent person uses, revised chapter
             "NHS estate, data centres, defence, light and gadgets. The two halves are not the same accounting and should\n"
             "not be read as a shortfall.",
             xy=(0, -0.115), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

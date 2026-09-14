@@ -77,7 +77,7 @@ ax.annotate("MacKay's model and his assumptions throughout: 50 km/h, a drag-area
             "of this size now weighs without its pack. Every dot is a pack mass: 100, 250, 500 and 1000 kg.",
             xy=(0, -0.165), xycoords="axes fraction", va="top",
             fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight")
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 hundred = {n: next(p for p in ps if p[0] == 500) for n, ps in series.items()}
 print("wrote", sys.argv[2], "| 500 kg of pack:",
       ", ".join(f"{n} {p[1]:.0f} km" for n, p in hundred.items()))

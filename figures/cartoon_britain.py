@@ -48,4 +48,4 @@ ax.annotate("Electricity is the leg that changed. It takes 7 kWh/d of fossil fue
             "against the 45 MacKay's cartoon assumed. Transport and heating are still burning what they burnt —\n"
             "which is the reverse of the order Part II proposes.",
             xy=(0, -0.155), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

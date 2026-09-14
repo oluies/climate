@@ -38,4 +38,4 @@ ax.annotate("Eighteen years and six percentage points of efficiency later the sh
             "proportional to sunlight. A better panel raises the line; it does not bend it. At a tenth of full\n"
             "sun you get about a tenth of the power.",
             xy=(0, -0.19), xycoords="axes fraction", va="top", fontsize=9.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

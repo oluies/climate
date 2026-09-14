@@ -32,4 +32,4 @@ for c, y in sorted(mids, key=lambda t: t[1]):
     ax.text(last + 1.2, yy, c, color=COL[c], fontsize=9.5, va="center")
 ax.set_title(f"UK primary energy consumption by source, {int(piv.index.min())}–{int(piv.index.max())}",
              loc="left", fontsize=12.5, fontweight="bold", pad=12)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight"); print("wrote", sys.argv[2])
+fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])
