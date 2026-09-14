@@ -2310,8 +2310,12 @@ def chapter11aFinlandPipeline(): Unit = {
   val stated = rows.find(_._4 == "total").map(_._3).get
   require(committed == stated,
     s"chapter11aFinlandPipeline: bars sum to $committed, total says $stated")
-  require(rows.count(_._4 == "base") == 1 && rows.count(_._4 == "total") == 1,
-    "chapter11aFinlandPipeline: expected exactly one base bar and one total")
+  // One of each of the three singular kinds. The estimate is in here because
+  // the figure gives that kind its own warning colour and the arithmetic below
+  // takes Google's capacity from it, so a second one would quietly break both.
+  require(rows.count(_._4 == "base") == 1 && rows.count(_._4 == "total") == 1 &&
+          rows.count(_._4 == "add-estimate") == 1,
+    "chapter11aFinlandPipeline: expected exactly one base bar, one total and one estimate")
 
   val out = new StringBuilder; out ++= "label,sublabel,mw,kind\n"
   for ((l, s, mw, k) <- rows) out ++= f"$l,$s,$mw%.0f,$k\n"
@@ -2331,8 +2335,8 @@ def chapter11aFinlandPipeline(): Unit = {
   // a later census revises it the bars, the total and this arithmetic have to
   // move together or the chapter silently keeps dividing by the old number.
   val baseMW = rows.find(_._4 == "base").map(_._3).get
-  val googleMW = rows.find(_._1 == "Google decision").map(_._3)
-    .getOrElse(sys.error("chapter11aFinlandPipeline: no Google bar to take the capacity from"))
+  val googleMW = rows.find(_._4 == "add-estimate").map(_._3)
+    .getOrElse(sys.error("chapter11aFinlandPipeline: no estimated bar to take the Google capacity from"))
 
   val useNow = meteredTWh * 1e6 / (baseMW * 8760)  // what the built fleet runs at
   println(f"  metered 2024 $meteredTWh%.1f TWh over $baseMW%.0f MW nameplate: " +
