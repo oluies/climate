@@ -15,7 +15,7 @@ in either figure that is engineering rather than depletion.
 
 Input: data-refresh/north-sea-gas-trade.csv from `mill Refresh.scala
 chapter01GasTrade`."""
-import sys, csv, collections, matplotlib
+import sys, csv, collections, textwrap, matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
@@ -61,7 +61,7 @@ ax.set_title("Norway", loc="left", fontsize=11.5, color=INK)
 ax.set_ylim(0, 700)
 ax.set_ylabel("Net gas exports, kWh per day per person", fontsize=9.5)
 
-# Right: the other three, at a twentieth of the scale, where the crossings are.
+# Right: the other three, at a seventh of the scale, where the crossings are.
 for country in SMALL:
     s = series[country]
     bx.plot([y for y, _ in s], [v for _, v in s], color=COLOUR[country], lw=2.0,
@@ -108,14 +108,21 @@ nl = surplus_years("Netherlands")
 # runs and the gap. The Danish clause is written only when there is a gap to
 # describe, which is the same condition the shaded strip is drawn under.
 unbroken = "unbroken " if len(nl) == nl[-1] - nl[0] + 1 else ""
-danish = (f" Denmark's gap is the Tyra hub being\n"
-          f"rebuilt, {gap[0]}–{gap[-1]}, the only interruption in either figure that is engineering rather than depletion." if gap else
+danish = (f" Denmark's gap is the Tyra hub being rebuilt, {gap[0]}–{gap[-1]}, the only interruption in "
+          "either figure that is engineering rather than depletion." if gap else
           " Denmark's surplus runs without interruption here.")
-ax.annotate("Gas production minus each country's own consumption, per person per day, on the same basis as figure 1.2a. Note the two scales: Norway's panel goes\n"
-            f"to {ax.get_ylim()[1]:.0f} kWh per day per person and the other three to {bx.get_ylim()[1]:.0f}. Britain's gas surplus ran {uk[0]}–{uk[-1]}, {len(uk)} years against the twenty-four its oil\n"
-            f"managed, and peaked at a fifth of oil's best year. The Dutch run is the long one — {len(nl)} {unbroken}years to {nl[-1]} — and it ends without the gas running\n"
-            f"out: Groningen was shut in because of the earthquakes it caused.{danish}\n"
-            "Production minus inland consumption is a proxy for net trade, not customs data.",
+# Wrapped rather than hand-broken, so no line can quietly grow past the figure
+# box (which pads the canvas and shrinks the chart) or fall well short of it
+# (which trims narrower than figure 1.2a, the figure this one is read beside).
+caption = textwrap.fill(
+    "Gas production minus each country's own consumption, per person per day, on the same basis as figure 1.2a. "
+    f"Note the two scales: Norway's panel goes to {ax.get_ylim()[1]:.0f} kWh per day per person and the other "
+    f"three to {bx.get_ylim()[1]:.0f}. Britain's gas surplus ran {uk[0]}–{uk[-1]}, {len(uk)} years against the "
+    f"twenty-four its oil managed, and peaked at a fifth of oil's best year. The Dutch run is the long one — "
+    f"{len(nl)} {unbroken}years to {nl[-1]} — and it ends without the gas running out: Groningen was shut in "
+    f"because of the earthquakes it caused.{danish} Production minus inland consumption is a proxy for net "
+    "trade, not customs data.", 155)
+ax.annotate(caption,
             xy=(0, -0.19), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
 fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
 if len(sys.argv) > 3:
