@@ -17,6 +17,18 @@ Last updated **14 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 14 September 2026              | 1            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure 1.2a: the North Sea as exporters, not producers"}       |
+|                                |              | Figure 1.2 plots what the three North Sea countries pump, which is what MacKay's own figure plotted. But production is not what a        |
+|                                |              | country has to sell — what it has to sell is production minus what it burns itself, and on that measure the three stop being one story   |
+|                                |              | at three scales. Britain's surplus lasted twenty-four years: it began in 1981, peaked at 29 kWh/d per person in 1999, ended in 2004, and |
+|                                |              | Britain now imports a net 15 kWh/d per person, more energy in oil than it produces. Denmark's lasted seventeen years, 1998 to 2014, and  |
+|                                |              | it now imports 16. Norway's is in its fifty-first year and has never been interrupted: 1074 kWh/d per person at its peak in 2000, about  |
+|                                |              | eight and a half times MacKay's figure for average British consumption, and still 494 in 2025. One sea, three decades, opposite outcomes |
+|                                |              | — and what differed is how much each country burned at home. Norway consumes about a tenth of what it pumps, so nine-tenths is still     |
+|                                |              | there to sell. The data task checks each surplus is a single unbroken run rather than a line flickering across zero, and that this       |
+|                                |              | figure and figure 1.2 agree on the peak year, 2000, despite being in different units.                                                    |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 14 September 2026              | M            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure M.1: what a barrel is worth by the time a car moves"}   |
 |                                |              | Chapter M gains its first figure, and it is the one that makes the chapter's whole argument visible: Hall, Balogh and Murphy's oil       |
 |                                |              | cascade, drawn as a Sankey diagram. Of 100 units of crude in the ground, 10 go on extraction, 10 on running the refinery, 17 leave as    |

@@ -3837,3 +3837,151 @@ def chapterMOilCascade(): Unit = {
   println("  uv run figures/eroi_oil_cascade.py data-refresh/eroi-oil-cascade.csv " +
           "without-hot-air/Images/fig-m1-eroi-cascade.svg")
 }
+
+// ---- Chapter 1: figure 1.2a, the same three countries as exporters ----
+// Figure 1.2 asks MacKay's question with production, which is what his own
+// figure plotted. But production is not what a country has to sell: what it
+// has to sell is production minus what it burns itself, and on that measure
+// the three North Sea producers stop being one story at three scales and
+// become three different stories.
+//
+// Britain and Denmark both crossed from exporter to importer within a decade
+// of each other and kept falling. Norway did not, because it consumes almost
+// nothing of what it pumps. Same sea, same decade, opposite outcomes - and the
+// difference is domestic demand, which is the half of the equation this book
+// spends most of its pages on.
+//
+// Everything is in energy rather than barrels, and from one publisher's own
+// energy series, because net exports is a difference of two quantities and
+// differencing two series converted at different factors would be arithmetic
+// on sand. That does mean the levels here cannot be read off figure 1.2: the
+// barrel counts there include natural-gas liquids, which carry less energy per
+// barrel than crude, so the two do not convert at a single factor. The shapes
+// agree, and the check below is that they do - both put the peak in 2000.
+//
+// The quantity is production minus inland consumption, which is a proxy for
+// net trade and not customs data. Britain in particular exports its own light
+// crude and imports heavier grades for its refineries, so its gross flows are
+// much larger than the net figure drawn here.
+@main
+def chapter01NetExports(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val prodCsv = fetch("oil-production-by-country", "owid-oil-production.csv")
+  val consCsv = fetch("oil-consumption-by-country", "owid-oil-consumption.csv")
+  val popCsv = fetch("population-with-un-projections", "owid-population-projections.csv")
+  val countries = Seq("United Kingdom", "Norway", "Denmark")
+
+  withConn { c =>
+    val st = c.createStatement()
+    def view(name: String, p: os.Path) =
+      st.execute(s"create view $name as select * from " +
+                 s"read_csv_auto('${p.toString.replace("'", "''")}', header=true)")
+    view("prod", prodCsv); view("cons", consCsv); view("pop", popCsv)
+    val inList = countries.map(n => s"'$n'").mkString(",")
+    val rs = st.executeQuery(s"""
+      select p.Entity, p.Year, p.Oil, c.Oil,
+             coalesce(pop."Population", pop."Population (Projected)")
+      from prod p
+        join cons c on c.Entity = p.Entity and c.Year = p.Year
+        join pop on pop.Entity = p.Entity and pop.Year = p.Year
+      where p.Entity in ($inList) and p.Oil is not null and c.Oil is not null
+      order by p.Entity, p.Year""")
+    case class Row(country: String, year: Int, prod: Double, cons: Double, people: Double) {
+      def net = prod - cons
+      def netPerDay = net * 1e9 / people / 365     // kWh per day per person
+    }
+    val rows = scala.collection.mutable.ArrayBuffer[Row]()
+    while (rs.next())
+      rows += Row(rs.getString(1), rs.getInt(2), rs.getDouble(3), rs.getDouble(4), rs.getDouble(5))
+    require(rows.nonEmpty, "chapter01NetExports: the join matched nothing")
+    require(countries.forall(n => rows.exists(_.country == n)),
+      s"chapter01NetExports: expected all of ${countries.mkString(", ")}, got " +
+      rows.map(_.country).distinct.mkString(", "))
+
+    val out = new StringBuilder
+    out ++= "country,year,prod_twh,cons_twh,net_twh,people,net_kwh_per_day\n"
+    for (r <- rows)
+      out ++= f"${r.country},${r.year},${r.prod}%.1f,${r.cons}%.1f,${r.net}%.1f," +
+              f"${r.people}%.0f,${r.netPerDay}%.2f\n"
+
+    // Each country's own story, printed and then checked. The two crossings
+    // are single sign changes in this data, so "the last year in surplus" is
+    // an honest way to describe them rather than the last of several.
+    println("country          first  last   peak export  last in surplus   2025 net")
+    val summary = for (n <- countries) yield {
+      val rs2 = rows.filter(_.country == n)
+      // Per person, because that is what the figure plots and the chapter
+      // prints. Norway's peak year differs by one from the peak in absolute
+      // energy, its population having grown through the period.
+      val peak = rs2.maxBy(_.netPerDay)
+      val surplus = rs2.filter(_.net > 0)
+      val last = rs2.last
+      println(f"$n%-16s ${rs2.head.year}   ${last.year}   ${peak.year} ${peak.netPerDay}%7.1f  " +
+              f"${if (surplus.isEmpty) "never" else surplus.last.year.toString}%15s  " +
+              f"${last.netPerDay}%8.1f kWh/d")
+      (n, peak, surplus, last)
+    }
+    def one(n: String) = summary.find(_._1 == n).get
+
+    // Each country's surplus is one unbroken run of years, which is what lets
+    // the chapter talk about a country "becoming" an importer on a date rather
+    // than flickering across the line. All three were importers before their
+    // own oil arrived, so the run has a start as well as an end.
+    for ((n, from, to) <- Seq(("United Kingdom", 1981, 2004), ("Denmark", 1998, 2014),
+                              ("Norway", 1975, 2025))) {
+      val (_, _, surplus, _) = one(n)
+      require(surplus.nonEmpty && surplus.head.year == from && surplus.last.year == to,
+        s"chapter01NetExports: $n is in surplus from " +
+        s"${surplus.headOption.map(_.year.toString).getOrElse("never")} to " +
+        s"${surplus.lastOption.map(_.year.toString).getOrElse("never")}; chapter 1 says $from to $to")
+      require(surplus.length == to - from + 1,
+        s"chapter01NetExports: $n has ${surplus.length} years in surplus between $from and $to, " +
+        s"not the ${to - from + 1} of an unbroken run; the chapter describes one crossing each way")
+    }
+    // Norway's run has not ended, which is the contrast the figure is drawn for.
+    val (_, noPeak, _, noLast) = one("Norway")
+    require(one("Norway")._3.last.year == noLast.year,
+      "chapter01NetExports: Norway is no longer in surplus in the last year of the data; " +
+      "chapter 1 says it has never stopped exporting")
+    val exported = noLast.net / noLast.prod * 100
+    println(f"  check Norway still exports ${exported}%.0f%% of what it produces in ${noLast.year}")
+    require(exported > 85,
+      f"chapter01NetExports: Norway now exports ${exported}%.0f%% of its production; " +
+      "chapter 1 says it sells about nine-tenths of it")
+
+    // The figures the chapter transcribes, each with a tolerance.
+    def close(what: String, got: Double, printed: Double, tol: Double) =
+      require(math.abs(got - printed) <= tol,
+        f"chapter01NetExports: $what is now $got%.1f; chapter 1 prints $printed%.1f")
+    close("Norway's net exports per person in the last year", noLast.netPerDay, 494.0, 15.0)
+    close("Norway's net exports per person at its peak", noPeak.netPerDay, 1074.0, 25.0)
+    require(noPeak.year == 2000,
+      s"chapter01NetExports: Norway's exports per person now peak in ${noPeak.year}; chapter 1 says 2000")
+    close("Britain's net imports per person in the last year", one("United Kingdom")._4.netPerDay, -15.4, 2.0)
+    close("Denmark's net imports per person in the last year", one("Denmark")._4.netPerDay, -16.2, 3.0)
+    close("Britain's net exports per person at its peak", one("United Kingdom")._2.netPerDay, 29.4, 3.0)
+
+    // And the tie to figure 1.2: a different publisher's unit, a different
+    // conversion, but it has to be the same sea. Both put the peak in 2000.
+    val sibling = dir / "north-sea-oil.csv"
+    require(os.exists(sibling),
+      "chapter01NetExports: data-refresh/north-sea-oil.csv is missing - run chapter01 first, " +
+      "since figure 1.2's peak year is checked against this one")
+    val lines = os.read.lines(sibling)
+    val head = lines.head.split(",").zipWithIndex.toMap
+    val peakBarrels = lines.tail.map(_.split(","))
+      .maxBy(f => f(head("total_kbd")).toDouble)(Ordering.Double.TotalOrdering)(head("year")).toInt
+    val peakEnergy = rows.groupBy(_.year).view.mapValues(_.map(_.prod).sum).toSeq.maxBy(_._2)._1
+    println(s"  check production peaks in $peakEnergy here and in $peakBarrels in figure 1.2")
+    require(peakEnergy == peakBarrels,
+      s"chapter01NetExports: this data peaks in $peakEnergy and figure 1.2 in $peakBarrels; " +
+      "the two figures are meant to be the same sea in different units")
+
+    os.write.over(dir / "north-sea-net-exports.csv", out.toString)
+    println("wrote data-refresh/north-sea-net-exports.csv")
+  }
+  println("render:")
+  println("  uv run figures/north_sea_net_exports.py data-refresh/north-sea-net-exports.csv " +
+          "without-hot-air/Images/fig-north-sea-net-exports.svg")
+}
