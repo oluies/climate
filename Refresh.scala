@@ -4159,9 +4159,12 @@ def chapter01GasTrade(): Unit = {
   require(noGas._3.length == noYears,
     s"chapter01GasTrade: Norway is in surplus in ${noGas._3.length} of its $noYears years; " +
     "chapter 1 says its line never crosses zero")
-  require(noGas._3.head.year == 1977 && noGas._3.last.year == noGas._4.year,
-    s"chapter01GasTrade: Norway's gas surplus now runs ${noGas._3.head.year} to ${noGas._3.last.year}; " +
-    s"chapter 1 says it covers the whole series, 1977 to ${noGas._4.year}")
+  // The run's start year, which the footnote prints. Its end needs no check:
+  // the length test above already establishes that the surplus is the whole
+  // series, so the last surplus year is the last year by construction.
+  require(noGas._3.head.year == 1977,
+    s"chapter01GasTrade: Norway's gas series now starts in ${noGas._3.head.year}; " +
+    "the footnote in chapter 1 says 1977")
   // The chapter used to call this series "still climbing", which its own figure
   // contradicted: it peaked in 2017 and has wandered since. The peak year and
   // the fact that the last year is below it are both pinned now.
