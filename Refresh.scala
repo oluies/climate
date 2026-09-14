@@ -3974,11 +3974,7 @@ def chapter01NetExports(): Unit = {
   val countries = Seq("United Kingdom", "Norway", "Denmark")
   val rows = netTrade("Oil", countries, "chapter01NetExports")
 
-  withConn { c =>
-    val st = c.createStatement()
-    val out = new StringBuilder
-    out ++= tradeCsv(rows)
-
+  {
     // Each country's own story, printed and then checked.
     println("country          first  last   peak export  last in surplus   2025 net")
     val summary = for (n <- countries) yield {
@@ -4050,7 +4046,7 @@ def chapter01NetExports(): Unit = {
       s"chapter01NetExports: this data peaks in $peakEnergy and figure 1.2 in $peakBarrels; " +
       "the two figures are meant to be the same sea in different units")
 
-    os.write.over(dir / "north-sea-net-exports.csv", out.toString)
+    os.write.over(dir / "north-sea-net-exports.csv", tradeCsv(rows))
     println("wrote data-refresh/north-sea-net-exports.csv")
   }
   println("render:")
@@ -4157,7 +4153,23 @@ def chapter01GasTrade(): Unit = {
   // And the figures the chapter transcribes.
   close("Britain's best gas year, per person", one("United Kingdom")._2.netPerDay, 5.6, 1.0)
   close("Britain's net gas imports in the last year, per person", one("United Kingdom")._4.netPerDay, -12.3, 2.0)
-  close("Norway's net gas exports in the last year, per person", one("Norway")._4.netPerDay, 570.8, 20.0)
+  val noGas = one("Norway")
+  require(noGas._3.last.year == noGas._4.year,
+    "chapter01GasTrade: Norway is no longer in surplus in the last year of the data; " +
+    "chapter 1 says its line never crosses zero")
+  // The chapter used to call this series "still climbing", which its own figure
+  // contradicted: it peaked in 2017 and has wandered since. The peak year and
+  // the fact that the last year is below it are both pinned now.
+  require(noGas._2.year == 2017,
+    s"chapter01GasTrade: Norway's gas exports per person now peak in ${noGas._2.year}; chapter 1 says 2017")
+  require(noGas._4.netPerDay < noGas._2.netPerDay,
+    f"chapter01GasTrade: Norway's last year (${noGas._4.netPerDay}%.0f kWh/d) is now at or above its " +
+    f"2017 peak (${noGas._2.netPerDay}%.0f); chapter 1 says it peaked in 2017 and has wandered since")
+  close("Norway's net gas exports in the last year, per person", noGas._4.netPerDay, 570.8, 20.0)
+  close("Norway's peak gas exports, per person", noGas._2.netPerDay, 611.8, 20.0)
+  require(one("Netherlands")._2.year == 1976,
+    s"chapter01GasTrade: the Dutch peak is now ${one("Netherlands")._2.year}; chapter 1 says 1976, " +
+    "and 1977 is within a third of a per cent of it")
   close("the Dutch peak, per person", one("Netherlands")._2.netPerDay, 94.2, 5.0)
   close("Dutch net gas imports in the last year, per person", one("Netherlands")._4.netPerDay, -27.3, 4.0)
   close("Danish net gas exports in the last year, per person", one("Denmark")._4.netPerDay, 6.7, 2.0)
