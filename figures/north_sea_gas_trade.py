@@ -27,6 +27,11 @@ COLOUR = {"United Kingdom": "#4a3aa7", "Norway": "#1baf7a",
 # sits on, so the label takes the muted grey instead. The three small-panel
 # lines stay red, amber and indigo: separable by hue, not only by lightness.
 SMALL = ["Netherlands", "Denmark", "United Kingdom"]
+# Characters, not points: about 750 pt of caption at 8.5 pt, which is where
+# figure 1.2a trims to. The assertion at the foot of this file is what holds
+# the two figures to the same scale; this is only the starting guess.
+CAPTION_WRAP = 155
+PAIRED_WIDTH_PT = 752.3          # figure 1.2a's trimmed width, same figsize
 
 series = collections.defaultdict(list)
 for r in csv.DictReader(open(sys.argv[1])):
@@ -111,20 +116,34 @@ unbroken = "unbroken " if len(nl) == nl[-1] - nl[0] + 1 else ""
 danish = (f" Denmark's gap is the Tyra hub being rebuilt, {gap[0]}–{gap[-1]}, the only interruption in "
           "either figure that is engineering rather than depletion." if gap else
           " Denmark's surplus runs without interruption here.")
-# Wrapped rather than hand-broken, so no line can quietly grow past the figure
-# box (which pads the canvas and shrinks the chart) or fall well short of it
-# (which trims narrower than figure 1.2a, the figure this one is read beside).
+# Wrapped rather than hand-broken. Hand-breaking a caption that interpolates
+# numbers drifts in both directions as the numbers change: too wide pads the
+# canvas and shrinks the chart, too narrow trims narrower than figure 1.2a,
+# which this figure is read beside. The wrap bounds characters while what
+# matters is rendered points, so the check after savefig is what actually holds
+# the pairing; this number only has to land in its neighbourhood.
+# A tilde joins a quantity to its unit so the wrapper cannot split them. NBSP
+# and NUL both look like separators to textwrap's Unicode-aware regex.
 caption = textwrap.fill(
     "Gas production minus each country's own consumption, per person per day, on the same basis as figure 1.2a. "
-    f"Note the two scales: Norway's panel goes to {ax.get_ylim()[1]:.0f} kWh per day per person and the other "
+    f"Note the two scales: Norway's panel goes to {ax.get_ylim()[1]:.0f}~kWh~per~day~per~person and the other "
     f"three to {bx.get_ylim()[1]:.0f}. Britain's gas surplus ran {uk[0]}–{uk[-1]}, {len(uk)} years against the "
     f"twenty-four its oil managed, and peaked at a fifth of oil's best year. The Dutch run is the long one — "
     f"{len(nl)} {unbroken}years to {nl[-1]} — and it ends without the gas running out: Groningen was shut in "
     f"because of the earthquakes it caused.{danish} Production minus inland consumption is a proxy for net "
-    "trade, not customs data.", 155)
+    "trade, not customs data.", CAPTION_WRAP).replace("~", " ")
 ax.annotate(caption,
             xy=(0, -0.19), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
 fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
+# The caption is the widest element, so an edit to it rescales the whole figure
+# relative to figure 1.2a. Measure what was actually written rather than trust
+# the character count, and fail rather than drift.
+width_pt = fig.get_tightbbox(fig.canvas.get_renderer()).width * 72
+if abs(width_pt - PAIRED_WIDTH_PT) > 25:
+    raise SystemExit(
+        f"{sys.argv[2]}: this figure trims to {width_pt:.0f} pt against figure 1.2a's "
+        f"{PAIRED_WIDTH_PT:.0f}; they are printed as a pair and would render at different "
+        f"scales. Adjust CAPTION_WRAP (currently {CAPTION_WRAP}) until it lands within 25 pt.")
 if len(sys.argv) > 3:
     fig.savefig(sys.argv[3], format="png", dpi=150, bbox_inches="tight", metadata={"Date": None})
 print("wrote", sys.argv[2], "|", ", ".join(
