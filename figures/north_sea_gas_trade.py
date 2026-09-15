@@ -15,7 +15,7 @@ in either figure that is engineering rather than depletion.
 
 Input: data-refresh/north-sea-gas-trade.csv from `mill Refresh.scala
 chapter01GasTrade`."""
-import sys, csv, collections, textwrap, matplotlib
+import sys, csv, collections, pathlib, re, textwrap, matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
@@ -31,7 +31,12 @@ SMALL = ["Netherlands", "Denmark", "United Kingdom"]
 # figure 1.2a trims to. The assertion at the foot of this file is what holds
 # the two figures to the same scale; this is only the starting guess.
 CAPTION_WRAP = 155
-PAIRED_WIDTH_PT = 752.3          # figure 1.2a's trimmed width, same figsize
+# Figure 1.2a, which this one is printed beside and has to match in scale. Its
+# own rendered width is read from its SVG when that exists, so an edit there
+# re-points this check instead of quietly invalidating it; the literal is the
+# value at the time of writing, for a checkout that has not built it yet.
+PAIRED_FIGURE = "without-hot-air/Images/fig-north-sea-net-exports.svg"
+PAIRED_WIDTH_PT = 752.3
 
 series = collections.defaultdict(list)
 for r in csv.DictReader(open(sys.argv[1])):
@@ -134,16 +139,37 @@ caption = textwrap.fill(
     "trade, not customs data.", CAPTION_WRAP).replace("~", " ")
 ax.annotate(caption,
             xy=(0, -0.19), xycoords="axes fraction", va="top", fontsize=8.5, color=MUTED)
-fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
+def svg_width_pt(path):
+    """The width in points of a rendered SVG, read from the file itself.
+
+    The renderer's own get_tightbbox is the wrong quantity in two ways at once:
+    it excludes the padding savefig adds (0.1 in a side) and it is measured with
+    Agg's text metrics, which differ from the SVG backend's by rather more than
+    that padding. The two errors run opposite ways and very nearly cancel, which
+    is worse than either alone. So both sides of the comparison are read from
+    written files, where they mean the same thing."""
+    head = pathlib.Path(path).read_text(encoding="utf-8")[:2000]
+    m = re.search(r'width="([0-9.]+)pt"', head)
+    if not m:
+        raise SystemExit(f"{path}: no width found in the SVG header")
+    return float(m.group(1))
+
 # The caption is the widest element, so an edit to it rescales the whole figure
-# relative to figure 1.2a. Measure what was actually written rather than trust
-# the character count, and fail rather than drift.
-width_pt = fig.get_tightbbox(fig.canvas.get_renderer()).width * 72
-if abs(width_pt - PAIRED_WIDTH_PT) > 25:
+# against figure 1.2a. Render to a temporary file first: a figure that fails the
+# check must not land in the book, and the earlier exits in this script all fire
+# before anything is written.
+target = pathlib.Path(sys.argv[2])
+staged = target.with_suffix(".staged.svg")
+fig.savefig(staged, format="svg", bbox_inches="tight", metadata={"Date": None})
+paired = svg_width_pt(PAIRED_FIGURE) if pathlib.Path(PAIRED_FIGURE).exists() else PAIRED_WIDTH_PT
+width_pt = svg_width_pt(staged)
+if abs(width_pt - paired) > 25:
+    staged.unlink()
     raise SystemExit(
-        f"{sys.argv[2]}: this figure trims to {width_pt:.0f} pt against figure 1.2a's "
-        f"{PAIRED_WIDTH_PT:.0f}; they are printed as a pair and would render at different "
-        f"scales. Adjust CAPTION_WRAP (currently {CAPTION_WRAP}) until it lands within 25 pt.")
+        f"{target}: this figure renders {width_pt:.0f} pt wide against figure 1.2a's "
+        f"{paired:.0f}; they are printed as a pair and would appear at different scales. "
+        f"Adjust CAPTION_WRAP (currently {CAPTION_WRAP}) until it lands within 25 pt.")
+staged.replace(target)
 if len(sys.argv) > 3:
     fig.savefig(sys.argv[3], format="png", dpi=150, bbox_inches="tight", metadata={"Date": None})
 print("wrote", sys.argv[2], "|", ", ".join(
