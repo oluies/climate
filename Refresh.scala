@@ -1464,7 +1464,14 @@ def transportEnergy(): Unit = {
 
   // 2026.
   add("2026", "land", "E-bike", 25, 0.6, "best")
-  add("2026", "land", "Efficient EV (Model 3)", 50, 14.7, "best")
+  // The best car on sale and an ordinary family one, both on the WLTP cycle and
+  // both therefore optimistic in the way the chapter sets out. The Mercedes is
+  // the most efficient of the recent Car of the Year winners in figure 20.22b;
+  // the ID.7 is given as the range Volkswagen itself publishes across variants,
+  // with the point at the geometric mean of the two ends.
+  val id7Lo = 14.1; val id7Hi = 16.3
+  add("2026", "land", "Most efficient EV (Mercedes CLA)", 50, 12.2, "best")
+  add("2026", "land", "Family EV (VW ID.7)", 50, math.sqrt(id7Lo * id7Hi), "best", id7Lo, id7Hi)
   add("2026", "land", "EV (real-world average)", 50, 21.0, "typical")
   add("2026", "air", "787/A350 (full)", 900, 32.0, "best")
   add("2026", "water", "Candela P-12 (30 seats)", p12Kmh, p12Seat, "best")
@@ -1581,27 +1588,34 @@ def deathRates(): Unit = {
   println(f"  coal is ${24.6 / 0.03}%.0f times nuclear; coal ${24.6 * 8.76}%.0f deaths/GWy, nuclear ${0.03 * 8.76}%.2f")
 }
 
-// ---- Figure 20.21 remade: energy at the socket against distance ----
-// MacKay measured 19 recharges of a G-Wiz and got 21 kWh/100 km. Same axes,
-// with what is on sale now. Slope is the consumption; the lines are what a
-// driver actually pays for at the wall.
+// ---- Figure 20.21 remade, and MacKay's own folded into it ----
+// His figure 20.21 is a scatter of 19 G-Wiz recharges with three guide lines
+// through it, at 16, 21 and 33 kWh/100 km. Rather than print his chart and a
+// second one beside it, the three numbers he draws are carried here: the 21 as
+// a line, the 16 and the 33 as the edges of a band. All three are his own, from
+// the text of this chapter - "the average transport cost of this G-Wiz is 21
+// kWh per 100 km ... The best result was 16 ... and the worst was 33" - so
+// nothing is read off his axes.
 @main
 def socketEnergy(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
   val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
-  val out = new StringBuilder; out ++= "label,kwh_per_100km,era,note\n"
-  def add(l: String, v: Double, era: String, n: String) =
-    out ++= f"$l,$v%.2f,$era,$n\n"
+  val out = new StringBuilder; out ++= "label,kwh_per_100km,era,kind,note\n"
+  def add(l: String, v: Double, era: String, kind: String, n: String) =
+    out ++= f"$l,$v%.2f,$era,$kind,$n\n"
   // No commas in any field: bare CSV, DuckDB sniffs the delimiter.
-  add("E-bike (light assist)", 0.62, "2026", "500 Wh over 80 km")
-  add("Citroen Ami", 7.33, "2026", "5.5 kWh over 75 km")
-  add("Best in class (Kona Electric)", 13.4, "2026", "WLTP")
-  add("Electric fleet average", 21.0, "2026", "real-world across 342 European cars")
-  add("MacKay's G-Wiz", 21.0, "2008", "measured over 19 recharges")
-  add("Large electric pickup", 30.0, "2026", "indicative")
+  add("E-bike (light assist)", 0.62, "2026", "line", "500 Wh over 80 km")
+  add("Citroen Ami", 7.33, "2026", "line", "5.5 kWh over 75 km")
+  add("Best in class (Kona Electric)", 13.4, "2026", "line", "WLTP")
+  add("Electric fleet average", 21.0, "2026", "line", "real-world across 342 European cars")
+  add("MacKay's G-Wiz", 21.0, "2008", "line", "mean of his 19 recharges")
+  add("MacKay's best recharge", 16.0, "2008", "band", "best of the same 19")
+  add("MacKay's worst recharge", 33.0, "2008", "band", "worst of the same 19")
+  add("Large electric pickup", 30.0, "2026", "line", "indicative")
   os.write.over(dir / "socket-energy.csv", out.toString)
   println("wrote data-refresh/socket-energy.csv")
   println(f"  petrol car at 80 kWh/100km reaches 45 kWh after ${45.0 / 80 * 100}%.0f km")
+  println("  MacKay's own spread, 16 to 33, is drawn as a band: a factor of 2.1 across one car")
 }
 
 // ---- Figure 20.22 remade: European Car of the Year, when it was electric ----
@@ -4199,4 +4213,149 @@ def chapter01GasTrade(): Unit = {
   println("render:")
   println("  uv run figures/north_sea_gas_trade.py data-refresh/north-sea-gas-trade.csv " +
           "without-hot-air/Images/fig-north-sea-gas-trade.svg")
+}
+
+// ---- Figure 20.9 remade: the carbon pollution of Europe's new cars ----
+// MacKay's figure 20.9 is a histogram of the carbon pollution of cars on sale in
+// the UK in 2006, counted off a car-buying website, with a second scale in kWh
+// per 100 km at 240 g CO2 per kWh. The equivalent record today is the register
+// each member state must keep under Regulation (EU) 2019/631 - one row per new
+// car registered, with its type-approval CO2 figure - which the EEA republishes
+// through Discodata. That is a heavier basis than his: registrations rather than
+// models on sale, and the EU plus Norway and Iceland rather than Britain. The
+// caption says so; the figure is drawn as a share of registrations so that the
+// two years plotted can be compared to each other rather than to him.
+@main
+def carCo2(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val cache = dir / "api-cache"
+
+  // `Ft` is the fuel type as the member state reported it. Full hybrids are
+  // reported as plain petrol, so in practice 'petrol/electric' is the plug-in
+  // hybrid - which the averages below confirm: a full hybrid could not average
+  // 25 g/km on the test cycle, and a plug-in hybrid does, because the cycle
+  // credits it with electric running it does not do on the road.
+  val KLASS =
+    "CASE WHEN Ft IN ('electric','hydrogen') THEN 'zero' " +
+    "WHEN Ft IN ('petrol/electric','diesel/electric') THEN 'phev' " +
+    "ELSE 'ice' END"
+
+  def disco(query: String, cacheName: String): ujson.Value = {
+    val f = cache / cacheName
+    if (!os.exists(f)) {
+      val r = requests.get("https://discodata.eea.europa.eu/sql",
+        params = Map("query" -> query, "p" -> "1", "nrOfHits" -> "5000"),
+        readTimeout = 300000, connectTimeout = 30000)
+      os.makeDir.all(cache); os.write.over(f, r.text())
+      Thread.sleep(3000)
+    }
+    val js = ujson.read(os.read(f))
+    // Discodata answers 200 with an `errors` array rather than a status code,
+    // so a failed query would otherwise be cached as an empty result set.
+    if (js.obj.contains("errors")) { os.remove(f); sys.error(s"discodata: ${js("errors")}") }
+    js("results")
+  }
+
+  /** One row per (5 g/km bin, powertrain class): how many cars were registered. */
+  def histogram(table: String): Seq[(Int, String, Long)] = {
+    val bin = "(CAST([Ewltp (g/km)] AS int)/5)*5"
+    val q = s"SELECT $bin AS bin, $KLASS AS klass, COUNT(*) AS n " +
+            s"FROM [CO2Emission].[latest].[$table] " +
+            s"WHERE [Ewltp (g/km)] IS NOT NULL GROUP BY $bin, $KLASS ORDER BY bin"
+    disco(q, s"eea-$table-hist.json").arr
+      .map(r => (r("bin").num.toInt, r("klass").str, r("n").num.toLong)).toSeq
+  }
+
+  // 2025 is the preliminary data - the final set is published a year later and
+  // moves the total by well under a percent - and 2020 is final. Both are in the
+  // WLTP era, so the two histograms are on one test procedure; MacKay's 2006
+  // figures are NEDC and are not, which the note spells out.
+  val YEARS = Seq((2020, "co2cars_2020Fv22"), (2025, "co2cars_2025Pv31"))
+
+  val out = new StringBuilder; out ++= "year,bin,klass,n\n"
+  val summary = collection.mutable.Map[Int, (Long, Double, Double, Double, Double)]()
+  for ((year, table) <- YEARS) {
+    val rows = histogram(table)
+    require(rows.nonEmpty, s"carCo2: no rows for $table")
+    val tot = rows.map(_._3).sum
+    require(tot > 8e6 && tot < 14e6, s"carCo2: $year total $tot is not a European year of registrations")
+    // The bin is the lower edge, so a car in it emits between bin and bin+5;
+    // the midpoint is the honest representative value for a mean.
+    def mid(b: Int) = b + 2.5
+    val mean = rows.map { case (b, _, n) => mid(b) * n }.sum / tot
+    def share(k: String) = rows.filter(_._2 == k).map(_._3).sum.toDouble / tot
+    for ((b, k, n) <- rows.sortBy(r => (r._1, r._2))) out ++= s"$year,$b,$k,$n\n"
+    summary(year) = (tot, mean, share("zero"), share("phev"),
+      rows.filter(_._1 >= 200).map(_._3).sum.toDouble / tot)
+    println(f"  $year  ${tot}%,d cars   mean ${mean}%5.1f g/km   " +
+            f"zero ${100 * share("zero")}%4.1f%%   plug-in hybrid ${100 * share("phev")}%4.1f%%   " +
+            f"at or above 200 g/km ${100 * summary(year)._5}%4.1f%%")
+  }
+  os.write.over(dir / "car-co2-distribution.csv", out.toString)
+  println("wrote data-refresh/car-co2-distribution.csv")
+
+  // The official average of a year's registrations, exactly rather than from
+  // the bins, and the same average with each of its three conventions replaced
+  // by a measurement. The replacements are quoted rather than computed here;
+  // the note names all three sources.
+  val stats = disco(
+    s"SELECT $KLASS AS klass, COUNT(*) AS n, AVG(CAST([Ewltp (g/km)] AS float)) AS mean " +
+    s"FROM [CO2Emission].[latest].[${YEARS.last._2}] " +
+    s"WHERE [Ewltp (g/km)] IS NOT NULL GROUP BY $KLASS", "eea-2025-classmeans.json").arr
+    .map(r => r("klass").str -> (r("n").num.toLong, r("mean").num)).toMap
+  val rows2025 = histogram(YEARS.last._2)
+  val tot2025 = rows2025.map(_._3).sum
+  val G_PER_KWH = 240.0   // MacKay's own conversion on the second scale of figure 20.9
+  val n25 = stats.values.map(_._1).sum
+  val official = stats.values.map { case (n, m) => n * m }.sum / n25
+  require(math.abs(official - summary(2025)._2) < 3.0,
+    f"carCo2: exact mean $official%.2f and binned mean ${summary(2025)._2}%.2f disagree")
+
+  // 21 kWh per 100 km at 213 g per kWh is 4473 g per 100 km, so divide by 100
+  // to get grams per kilometre - the unit the rest of the figure is in.
+  val BEV_GRID  = 21.0 * 213.0 / 100.0  // real-world consumption x EU grid intensity
+  val PHEV_REAL = 145.0                 // on-board monitoring, 2024 registrations
+  val ICE_REAL  = 169.0                 // the same source, conventional cars
+  def swap(zero: Double, phev: Double, ice: Double) =
+    (stats("zero")._1 * zero + stats("phev")._1 * phev + stats("ice")._1 * ice) / n25
+  val onRoad = swap(BEV_GRID, PHEV_REAL, ICE_REAL)
+  for ((k, (n, m)) <- stats.toSeq.sortBy(-_._2._1))
+    println(f"  2025 $k%-5s ${n}%,10d cars  official mean ${m}%5.1f g/km")
+  println(f"  2025 official mean                                ${official}%5.1f g/km")
+  println(f"  ... zeros at ${BEV_GRID}%.0f, the rest official                 ${swap(BEV_GRID, stats("phev")._2, stats("ice")._2)}%5.1f g/km")
+  println(f"  ... and plug-in hybrids at $PHEV_REAL%.0f                      ${swap(BEV_GRID, PHEV_REAL, stats("ice")._2)}%5.1f g/km")
+  println(f"  ... and combustion cars at $ICE_REAL%.0f                      ${onRoad}%5.1f g/km")
+  println(f"  the whole correction is a factor of ${onRoad / official}%.2f")
+
+  // MacKay's own legislative proposal, scored against what Europe actually
+  // bought. He suggests banning the sale of any car over 80 kWh per 100 km,
+  // then 60, then 40; at his own 240 g per kWh those are 192, 144 and 96 g/km.
+  // Twice: as the type-approval figure reports each car, and with the same
+  // three substitutions as above, where a combustion car is scaled by the ratio
+  // the on-board meters show rather than car by car - a crude correction, and
+  // the note says so.
+  val iceScale = ICE_REAL / stats("ice")._2
+  for (kwh <- Seq(80, 60, 40)) {
+    val lim = kwh * G_PER_KWH / 100.0
+    def over(f: (Int, String) => Double) =
+      100.0 * rows2025.filter { case (b, k, _) => f(b, k) >= lim }.map(_._3).sum / tot2025
+    val paper = over((b, _) => b + 2.5)
+    val road = over((b, k) => k match {
+      case "zero" => BEV_GRID; case "phev" => PHEV_REAL; case _ => (b + 2.5) * iceScale })
+    println(f"  MacKay's ceiling of $kwh%2d kWh/100 km (${lim}%.0f g/km): " +
+            f"$paper%4.1f%% of 2025 registrations fail on paper, $road%4.1f%% on the road")
+  }
+
+  // The figure needs these five numbers as well as the histogram, and they are
+  // written beside it so the script that draws it quotes rather than recomputes.
+  val ann = new StringBuilder; ann ++= "name,value\n"
+  for ((k, v) <- Seq("official_mean" -> official, "onroad_mean" -> onRoad,
+                     "bev_grid" -> BEV_GRID, "phev_real" -> PHEV_REAL, "ice_real" -> ICE_REAL))
+    ann ++= f"$k,$v%.2f\n"
+  os.write.over(dir / "car-co2-annotations.csv", ann.toString)
+  println("wrote data-refresh/car-co2-annotations.csv")
+  println("render:")
+  println("  uv run figures/car_co2.py data-refresh/car-co2-distribution.csv " +
+          "data-refresh/car-co2-annotations.csv without-hot-air/Images/fig-car-co2.svg")
 }
