@@ -11,12 +11,42 @@ new in their entirety. The table below is the authoritative list of them.
 
 ## Latest changes
 
-Last updated **14 September 2026**. The complete history is in the
+Last updated **20 September 2026**. The complete history is in the
 [repository](https://github.com/oluies/climate/commits/main).
 
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 20 September 2026              | 20           | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure 20.9b: what Europe's new cars actually emit"}           |
+|                                |              | MacKay counted the carbon pollution of the cars in one British showroom in 2006 off a car-buying website; every member state now keeps   |
+|                                |              | the same register by law, so his figure 20.9 is redrawn from the 10.8 million new cars registered in the EU, Norway and Iceland in 2025. |
+|                                |              | The histogram has marched left — his UK average of 168 g CO2 per km against Europe's 97 — and grown a spike at zero holding a fifth of   |
+|                                |              | all registrations. That spike is an accounting convention: those cars emit about 45 g/km on the European grid, the plug-in hybrids       |
+|                                |              | beside them are typed at 32 and metered at 145, and the petrol and diesel cars are metered at 169 against a type approval of 132.        |
+|                                |              | Corrected, the 97 becomes 143. His own proposed ceilings can now be marked against the register: the first has arrived without being     |
+|                                |              | legislated, the second is half-arrived on paper and not at all on the road, and the third would still ban seven cars in ten.             |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| 20 September 2026              | 20           | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure 20.21: MacKay's G-Wiz measurement folded in"}           |
+|                                |              | His figure 20.21 plotted nineteen recharges of one G-Wiz with guide lines at 16, 21 and 33 kWh per 100 km. Rather than print it beside   |
+|                                |              | the 2026 version, the remade figure carries all three of his numbers — the 21 as a line, the 16 and the 33 as the edges of a grey wedge  |
+|                                |              | — and the two figures become one. All three numbers are quoted from his own text, so nothing is read off his axes; what is lost is where |
+|                                |              | within the wedge his nineteen points fell. The wedge turns out to be the most useful thing on the chart: one car, one driver and one     |
+|                                |              | city produced a factor of 2.1 between the best recharge and the worst, which is about the spread between the best and worst vehicles     |
+|                                |              | drawn on it.                                                                                                                             |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| 20 September 2026              | 20           | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="The family cargo bike, and e-bikes that regenerate"}           |
+|                                |              | Germany sold 220 300 cargo bikes in 2025, 84% of them electric, and has 17.2 million e-bikes in use against 2.03 million battery-        |
+|                                |              | electric cars — the electrification of German transport happened on two wheels, more than eight to one. The Swiss survey of 696 owners   |
+|                                |              | is the best evidence that the thing replaces a car, and the most equivocal: 31% gave up one, but the mode it substituted most was public |
+|                                |              | transport, and 31% now walk less. Babboe's 22 000-frame recall is what it looks like when a bicycle is really a vehicle. On              |
+|                                |              | regeneration, the chapter's rule is sharpened: what blocks it is the freewheel and not the motor's position, which is why Valeo's        |
+|                                |              | gearbox mid-drive can recover where a derailleur cannot, and the arithmetic is redone for 250 kg — three fifths of the descent reaches   |
+|                                |              | the brakes rather than two, and the case for fitting it is the brake heat rather than the eight hundred metres of range. Figure 20.23b   |
+|                                |              | gains the most efficient car on sale and a VW ID.7 as an ordinary family one.                                                            |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 14 September 2026              | 1            | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure 1.3a: North Sea gas, and Britain's nine years"}         |
 |                                |              | Figure 1.3 shows that Britain's feared generating gap never appeared. What it does not show is what the surviving fleet burns — gas — or |
 |                                |              | where that gas comes from, so figure 1.2a's question is now asked of the other fuel. Britain's gas surplus lasted nine years: 1995 to    |

@@ -3,21 +3,43 @@
 # requires-python = ">=3.12"
 # dependencies = ["duckdb", "matplotlib", "numpy"]
 # ///
-"""Figure 20.21 remade: energy taken from the socket against distance driven.
+"""Figure 20.21 remade, with MacKay's own chart folded into it.
+His figure plots 19 G-Wiz recharges with guide lines at 16, 21 and 33 kWh per
+100 km; those three numbers are carried here, the 21 as a line and the other two
+as the edges of a band, so his measurement and today's cars share one pair of axes.
 Input: data-refresh/socket-energy.csv from `mill Refresh.scala socketEnergy`."""
 import sys, duckdb, matplotlib.pyplot as plt, numpy as np
 
 INK, MUTED = "#161d1b", "#8a8a85"
-NOW, THEN, PETROL = "#1baf7a", "#8a8a85", "#7a5c3e"
-d = duckdb.sql(f"""
-    SELECT label, kwh_per_100km AS v, era, note
+NOW, THEN, PETROL, BAND = "#1baf7a", "#8a8a85", "#7a5c3e", "#d8d8d3"
+rows = duckdb.sql(f"""
+    SELECT label, kwh_per_100km AS v, era, kind, note
     FROM read_csv_auto('{sys.argv[1]}') ORDER BY v
 """).fetchnumpy()
+keep = rows["kind"] == "line"
+d = {k: rows[k][keep] for k in rows}
+band = sorted(float(v) for v, k in zip(rows["v"], rows["kind"]) if k == "band")
 
 LABEL_DY = {"MacKay's G-Wiz": -11, "Electric fleet average": 9}
 XMAX, YMAX = 200.0, 45.0
 x = np.array([0.0, XMAX])
 fig, ax = plt.subplots(figsize=(9.2, 5.8))
+
+# MacKay's own figure, folded in: the wedge between his best and his worst
+# recharge of the same car. Its width is the point - one vehicle, one driver,
+# one city, and a factor of two between the good days and the bad ones.
+lo, hi = band
+xb = np.linspace(0, XMAX, 200)
+ax.fill_between(xb, xb * lo / 100.0, np.minimum(xb * hi / 100.0, YMAX),
+                color=BAND, alpha=0.55, lw=0, zorder=1)
+for v in band:
+    # The edges carry no label: the top one would land under the pickup's, and
+    # the annotation below names both numbers anyway.
+    xe = min(XMAX, YMAX / v * 100.0)
+    ax.plot([0, xe], [0, xe * v / 100.0], color=MUTED, lw=0.9, alpha=0.8, zorder=2)
+ax.annotate("The grey wedge is MacKay's own spread: across nineteen recharges of\n"
+            "one G-Wiz his best was 16 kWh per 100 km and his worst 33.",
+            xy=(122, 6.4), fontsize=8.8, color=MUTED, va="top", zorder=5)
 
 for i, lab in enumerate(d["label"]):
     v = float(d["v"][i])
@@ -54,9 +76,10 @@ for s in ("top", "right"): ax.spines[s].set_visible(False)
 for s in ("bottom", "left"): ax.spines[s].set_color("#c9c9c4")
 ax.set_title("What it costs at the wall, 2026", loc="left",
              fontsize=12.5, fontweight="bold", pad=14)
-ax.annotate("The slope of each line is its consumption in kWh per 100 km, and the number in brackets is that slope. MacKay\n"
-            "measured a real G-Wiz over nineteen recharges and got 21; the real-world average across 342 European electric\n"
-            "cars is also 21. Eighteen years bought no reduction in energy per kilometre at the fleet level — the gain was\n"
-            "taken as speed, size, safety and range. What is available at the efficient end is a different matter entirely.",
+ax.annotate("This replaces MacKay's own figure 20.21 and carries its three numbers. The slope of each line is its consumption in\n"
+            "kWh per 100 km, and the number in brackets is that slope. MacKay measured a real G-Wiz over nineteen recharges and\n"
+            "got 21; the real-world average across 342 European electric cars is also 21. Eighteen years bought no reduction in\n"
+            "energy per kilometre at the fleet level — the gain was taken as speed, size, safety and range. What is available at\n"
+            "the efficient end is a different matter entirely, and the width of his wedge is a warning about any single figure here.",
             xy=(0, -0.155), xycoords="axes fraction", va="top", fontsize=9.3, color=MUTED)
 fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None}); print("wrote", sys.argv[2])

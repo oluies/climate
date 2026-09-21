@@ -30,9 +30,10 @@ OFF = {
 # the interesting coincidence but makes an unreadable pile. These get leader lines
 # out to the empty band on the right; positions are in data coordinates.
 CALLOUT = {
-    "EV (real-world average)": (250, 24.0), "Candela P-12 (30 seats)": (250, 17.0),
-    "Efficient EV (Model 3)": (250, 12.0), "Electric car (Roadster)": (250, 8.5),
-    "Underground": (250, 6.0), "Candela C-8 (6 aboard)": (250, 4.2),
+    "EV (real-world average)": (250, 25.0), "Candela P-12 (30 seats)": (250, 18.0),
+    "Family EV (VW ID.7)": (250, 13.0), "Most efficient EV (Mercedes CLA)": (250, 9.4),
+    "Electric car (Roadster)": (250, 6.8), "Underground": (250, 4.9),
+    "Candela C-8 (6 aboard)": (250, 3.5),
 }
 # CALLOUT wins over OFF in the loop below, so an entry in both would be a silent no-op,
 # and a key matching no mode (a rename in Refresh.scala) would silently fall back to the default.
