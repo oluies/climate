@@ -17,6 +17,16 @@ Last updated **22 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 22 September 2026              | 11a          | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Brussels asked to see the meter"}                              |
+|                                |              | The Commission adopted a rating scheme on 21 September: a label for every data centre over 500 kW, showing power and water efficiency,   |
+|                                |              | low-carbon energy, waste-heat readiness, grid services and whether it has paid for new clean generation. The report published beside it  |
+|                                |              | is the first look at what the 2024 reporting duty produced: only 36% of obliged sites answered, and six member states reported none.     |
+|                                |              | Water averages 0.58 L/kWh, well below the industry figure. Heat reuse is where the press release and the report part company — half the  |
+|                                |              | waste heat could warm four million homes, and 1.8% of it actually does. The 86% renewable share rests largely on certificates and        |
+|                                |              | contracts the regulator itself says are not tied to new plant. The chapter's table gains an EU row: 68 TWh, 2.5% of the Union's          |
+|                                |              | electricity, and 0.41 kWh/d per person — MacKay's figure exactly.                                                                        |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 22 September 2026              | 20, 13       | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Heavy trucks: change the battery, or charge it"}               |
 |                                |              | Chapter 20 gains the road half of MacKay's freight priority. An electric 40-tonne truck uses about 103 kWh per 100 km against roughly    |
 |                                |              | 300 for a diesel, the same factor of three as cars; the problem is the working day, not the kilometre. China has written its answer into |
