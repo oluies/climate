@@ -11,12 +11,23 @@ new in their entirety. The table below is the authoritative list of them.
 
 ## Latest changes
 
-Last updated **20 September 2026**. The complete history is in the
+Last updated **22 September 2026**. The complete history is in the
 [repository](https://github.com/oluies/climate/commits/main).
 
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 22 September 2026              | 20, 13       | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Heavy trucks: change the battery, or charge it"}               |
+|                                |              | Chapter 20 gains the road half of MacKay's freight priority. An electric 40-tonne truck uses about 103 kWh per 100 km against roughly    |
+|                                |              | 300 for a diesel, the same factor of three as cars; the problem is the working day, not the kilometre. China has written its answer into |
+|                                |              | an eleven-department plan of 12 June 2026: 40% of heavy-truck sales by 2030, 1.6 million trucks and about 3000 charging and swapping     |
+|                                |              | stations — a target the market already touched in December 2025, at 54%. In August CATL bought a quarter of the state-owned Qiyuan       |
+|                                |              | network, so the battery maker now holds much of the swap network on both competing formats. Europe standardised the charger and is now   |
+|                                |              | hedging, with Swaptopus in Britain and a CATL–DHL memorandum. Swapping wins where routes are fixed and machines never stop, which leads  |
+|                                |              | chapter 13 into the forest: a Swedish RISE project built an automatic swap station for a forestry machine and a farm machine in 2021–23, |
+|                                |              | so the book's case for swapping off-road is no longer only its own inference.                                                            |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 20 September 2026              | 20           | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Figure 20.9b: what Europe's new cars actually emit"}           |
 |                                |              | MacKay counted the carbon pollution of the cars in one British showroom in 2006 off a car-buying website; every member state now keeps   |
 |                                |              | the same register by law, so his figure 20.9 is redrawn from the 10.8 million new cars registered in the EU, Norway and Iceland in 2025. |
