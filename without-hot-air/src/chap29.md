@@ -171,7 +171,7 @@ Take the admission barrier. MacKay imagines a low-carbon product that would win 
 
 On small cost differences he was also right, and chapter 20 supplies the demonstration: flights are cheaper than trains on 54% of European cross-border routes, on a continent where aviation carries a carbon price and rail does not get one.
 
-Larry and Tina are the objection that has been *solved*, and solved precisely as MacKay proposes: he suggests government might "require all flats to meet high standards." Since April 2020 no property in England or Wales may be let below EPC band E. On 21 January 2026 the government confirmed that all private tenancies must reach band C by 1 October 2030, with landlords required to spend up to £10 000 per property. 52% of the private rented stock currently sits below C, which is chapter 7's two-in-five problem in its rental form.[^mees]
+The Larry-and-Tina objection is the one that has been *solved*, and solved precisely as MacKay proposes: he suggests government might "require all flats to meet high standards." Since April 2020 no property in England or Wales may be let below EPC band E. On 21 January 2026 the government confirmed that all private tenancies must reach band C by 1 October 2030, with landlords required to spend up to £10 000 per property. 52% of the private rented stock currently sits below C, which is chapter 7's two-in-five problem in its rental form.[^mees]
 
 Larry and Tina did not respond to a price. They responded to a statute.
 

@@ -261,7 +261,7 @@ That is the same lesson as chapter M's, arriving in a different chapter: what yo
 
 There is a way of reducing a country's territorial emissions that involves neither efficiency nor restraint, and Britain has been doing it.
 
-Take steel. British steel production is now the smallest it has been since the 1930s, following the closure of the blast furnaces at Port Talbot in 2024. Primary steelmaking in Britain has largely ended.
+In steel, British production is now the smallest it has been since the 1930s, following the closure of the blast furnaces at Port Talbot in 2024. Primary steelmaking in Britain has largely ended.
 
 In chemicals, the industry body records 25 site closures in five years, and its own survey of members reports weak demand, falling employment and the likelihood of more.
 
