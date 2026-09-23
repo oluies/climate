@@ -55,7 +55,7 @@ Six new chapters have been added. They follow MacKay's own conventions: a number
 
 Every chapter of the original has been gone through. Where a figure has moved, the current one is given alongside MacKay's with the source for both; where his conclusion still holds, that is said too. The largest revisions are to the chapters on transport, heating, solar, nuclear and the cost of a plan.
 
-The figures are drawn from live data. Forty-three of this edition's are generated rather than redrawn, from a data-refresh pipeline of twenty-six steps that pulls from the Energy Institute's *Statistical Review of World Energy*, Our World in Data, Ember, Elexon and the ENTSO-E transparency platform. Each such figure carries a footnote naming the step that produced it, so any number in it can be traced back to its source and regenerated.
+Forty-three of this edition's figures are drawn from live data: they are generated rather than redrawn, from a data-refresh pipeline of twenty-six steps that pulls from the Energy Institute's *Statistical Review of World Energy*, Our World in Data, Ember, Elexon and the ENTSO-E transparency platform. Each such figure carries a footnote naming the step that produced it, so any number in it can be traced back to its source and regenerated.
 
 Prices taken from foreign sources are given in the source's own currency with a sterling equivalent alongside. The rates are stated and dated once, in the *Money* section of chapter I, rather than repeated in every chapter.
 
