@@ -261,11 +261,11 @@ That is the same lesson as chapter M's, arriving in a different chapter: what yo
 
 There is a way of reducing a country's territorial emissions that involves neither efficiency nor restraint, and Britain has been doing it.
 
-**Steel.** British steel production is now the smallest it has been since the 1930s, following the closure of the blast furnaces at Port Talbot in 2024. Primary steelmaking in Britain has largely ended.
+Take steel. British steel production is now the smallest it has been since the 1930s, following the closure of the blast furnaces at Port Talbot in 2024. Primary steelmaking in Britain has largely ended.
 
-**Chemicals.** The industry body records 25 site closures in five years, and its own survey of members reports weak demand, falling employment and the likelihood of more.
+In chemicals, the industry body records 25 site closures in five years, and its own survey of members reports weak demand, falling employment and the likelihood of more.
 
-**Refining.** Two of Britain's six refineries — Grangemouth and Lindsey — have closed since 2019, with about 820 direct jobs; Grangemouth's closure took the neighbouring Mossmorran ethylene plant with it and another 180.[^deindust]
+In refining, two of Britain's six refineries — Grangemouth and Lindsey — have closed since 2019, with about 820 direct jobs; Grangemouth's closure took the neighbouring Mossmorran ethylene plant with it and another 180.[^deindust]
 
 None of that reduces demand for steel, chemicals or fuel. It relocates the making of them, and with it the energy and the emissions, which then return as imports and appear in the account described above rather than in the territorial one.
 

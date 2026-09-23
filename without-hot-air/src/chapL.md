@@ -362,9 +362,7 @@ In July 2026 China published its 15th Five-Year Plan for National Response to Cl
 
 The one new headline number is a 17% cut in carbon intensity across the five years, with a 3% cut in intensity per unit of product for the industries inside the national carbon market, and a non-CO<sub>2</sub> "reduction capacity" of 30 MtCO<sub>2</sub>e by 2030.
 
-An intensity target is not an emissions target, and this book's habit is to ask what the difference amounts to. Carbon intensity is emissions divided by output, so emissions fall only if intensity falls faster than output rises. Over five years a 17% intensity cut multiplies emissions by 0.83; growth at *g* multiplies them by (1+*g*)⁵. Setting the product to one gives the growth rate at which the target delivers flat emissions:
-
-**3.8% a year.**
+An intensity target is not an emissions target, and this book's habit is to ask what the difference amounts to. Carbon intensity is emissions divided by output, so emissions fall only if intensity falls faster than output rises. Over five years a 17% intensity cut multiplies emissions by 0.83; growth at *g* multiplies them by (1+*g*)⁵. Setting the product to one gives the growth rate at which the target delivers flat emissions: 3.8% a year.
 
 Above that, emissions rise while the target is met. At 4.5% growth they rise about 3%; at 5%, about 6%. Below it they fall — at 3% growth, by nearly 4%. So the plan is compatible with Chinese emissions rising through 2030 and with them falling, and which one happens is decided by the growth rate rather than by the climate target.[^cn15fyp]
 
