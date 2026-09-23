@@ -448,9 +448,7 @@ This chapter's method applies directly, and the numbers are unusually easy to ch
 
 Start with the spot size, because it is not a design choice. The Sun is not a point: it subtends about half a degree, or 9.3 milliradians. Any flat mirror reflects an image of the Sun, so the patch of ground it lights cannot be smaller than that angle times the range. At 600 km that is 5.6 km across. The company quotes about 5 km, which is slightly *below* the flat-mirror limit — implying either a curved mirror or the lower end of its stated altitude range, both of which help a little and neither of which escapes the constraint. They are within a few per cent of the physical limit, and no engineering makes the spot much smaller. It follows that the only way to raise the intensity is to add mirrors.
 
-Now the intensity from one mirror. 324 m² intercepting 1361 W/m² of sunlight, at 90% reflectivity, is about 400 kW of light. Spread over the company's own 5 km spot — nearly 20 million square metres, and the figure most favourable to it — that is:
-
-**0.02 watts per square metre.**
+Now the intensity from one mirror. 324 m² intercepting 1361 W/m² of sunlight, at 90% reflectivity, is about 400 kW of light. Spread over the company's own 5 km spot — nearly 20 million square metres, and the figure most favourable to it — that is 0.02 watts per square metre.
 
 For comparison, a full moon delivers roughly 0.003 W/m². One satellite is about six moons. It would be visible, and pretty, and it would generate essentially nothing: a solar farm under it would produce about fifty-thousandth of what it produces at noon.
 
@@ -474,9 +472,9 @@ The honest summary is the one this chapter keeps reaching. The resource is real 
 
 Between those two arithmetics sits a gap worth stating plainly, because it is where most of the enthusiasm lives.
 
-**What has flown.** Caltech's Space Solar Power Demonstrator carried MAPLE, an array of lightweight microwave transmitters, and in March 2023 it beamed power between a transmitter and two receivers about a foot apart, lighting a pair of LEDs. It also aimed a beam at the ground, where it was detected at Caltech. Both are genuine firsts and neither is a power supply: the achievement is that the hardware works at all, and it is the lightest integrated prototype of its kind by an order of magnitude.
+Start with what has flown. Caltech's Space Solar Power Demonstrator carried MAPLE, an array of lightweight microwave transmitters, and in March 2023 it beamed power between a transmitter and two receivers about a foot apart, lighting a pair of LEDs. It also aimed a beam at the ground, where it was detected at Caltech. Both are genuine firsts and neither is a power supply: the achievement is that the hardware works at all, and it is the lightest integrated prototype of its kind by an order of magnitude.
 
-**What is proposed.** A one-gigawatt station needs a collector of more than one square kilometre — over a hundred times the size of the International Space Station, which took a decade to assemble with people on site, and which this one would have to match robotically. The European Space Agency's assessment is that the cells must reach a power-to-weight ratio fifty times that of ordinary silicon, and that end-to-end conversion must reach 10 to 15%. Fifty times is not an increment. It is the difference between a technology that needs engineering and one that needs a different material.
+Now set that against what is proposed. A one-gigawatt station needs a collector of more than one square kilometre — over a hundred times the size of the International Space Station, which took a decade to assemble with people on site, and which this one would have to match robotically. The European Space Agency's assessment is that the cells must reach a power-to-weight ratio fifty times that of ordinary silicon, and that end-to-end conversion must reach 10 to 15%. Fifty times is not an increment. It is the difference between a technology that needs engineering and one that needs a different material.
 
 And the beaming itself has a record, which is the cleanest scale check available. In May 2025 a DARPA programme transmitted more than 800 watts over 8.6 kilometres for thirty seconds by laser — with better than 20% end-to-end efficiency demonstrated at shorter ranges — and did it horizontally through the thickest part of the atmosphere rather than straight up. That obliterated the previous mark of 230 watts at 1.7 km. Across the whole test campaign more than a megajoule was transferred.
 
