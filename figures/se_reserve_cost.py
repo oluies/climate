@@ -28,33 +28,47 @@ fits = ymax * 0.055
 base = [0.0] * len(wide)
 for col in wide.columns:
     ax.bar(years, wide[col], bottom=base, width=0.54, color=COL[col], label=None, zorder=3)
-    for x, v, b in zip(years, wide[col], base):
-        if v >= fits:                      # comfortably inside the segment
-            ax.text(x, b + v / 2, f"{int(round(v)):,}".replace(",", " "), ha="center",
-                    va="center", fontsize=9.5, color="white" if col != "aFRR" else INK,
-                    fontweight="bold")
-        else:                              # too short to hold digits: set it beside the bar
-            ax.annotate(f"{int(round(v)):,}".replace(",", " "), xy=(x + 0.29, b + v / 2),
-                        xytext=(8, 0), textcoords="offset points", va="center",
-                        fontsize=9, color=INK,
-                        arrowprops=dict(arrowstyle="-", color="#c9c9c4", lw=0.8,
-                                        shrinkA=0, shrinkB=2))
     base = [b + v for b, v in zip(base, wide[col])]
 
-for x, t in zip(years, totals):
-    ax.text(x, t + ymax * 0.022, f"{int(round(t)):,}".replace(",", " "), ha="center",
+# Labels in two passes. A segment tall enough holds its value inside; the rest go in a
+# column beside the bar, de-collided against each other, because two short segments in the
+# same bar otherwise land within a few pixels. The series labels get a column further out
+# again: an earlier version shared a column with the fallback labels and drew "377" on
+# top of "aFRR".
+SEP = ymax * 0.052                      # one line of 9pt text, in data units
+for xi, yr in enumerate(years):
+    run, outside = 0.0, []
+    for col in wide.columns:
+        v = float(wide.loc[yr, col]); mid = run + v / 2; run += v
+        txt = f"{int(round(v)):,}".replace(",", " ")
+        if v >= fits:
+            ax.text(yr, mid, txt, ha="center", va="center", fontsize=9.5,
+                    color="white" if col != "aFRR" else INK, fontweight="bold")
+        else:
+            outside.append([mid, txt])
+    for i in range(1, len(outside)):    # push apart, keeping order
+        if outside[i][0] - outside[i - 1][0] < SEP:
+            outside[i][0] = outside[i - 1][0] + SEP
+    for mid, txt in outside:
+        ax.annotate(txt, xy=(yr + 0.29, mid), xytext=(8, 0), textcoords="offset points",
+                    va="center", fontsize=9, color=INK,
+                    arrowprops=dict(arrowstyle="-", color="#c9c9c4", lw=0.8,
+                                    shrinkA=0, shrinkB=2))
+
+for x, tot in zip(years, totals):
+    ax.text(x, tot + ymax * 0.022, f"{int(round(tot)):,}".replace(",", " "), ha="center",
             fontsize=10, color=INK)
 
-# Direct series labels beside the last bar, so no legend box sits over the data.
+# Direct series labels, in their own column clear of the fallback column above.
 last = wide.iloc[-1]
 run = 0.0
 for col in wide.columns:
-    ax.text(years[-1] + 0.35, run + last[col] / 2, col, va="center", fontsize=10,
+    ax.text(years[-1] + 0.78, run + last[col] / 2, col, va="center", fontsize=10,
             color=COL[col], fontweight="bold")
     run += last[col]
 
 ax.set_xticks(years)
-ax.set_xlim(years[0] - 0.45, years[-1] + 0.95)
+ax.set_xlim(years[0] - 0.45, years[-1] + 1.35)
 ax.set_ylabel("MSEK a year, net")
 ax.grid(axis="x", visible=False)
 for s in ("top", "right"): ax.spines[s].set_visible(False)
