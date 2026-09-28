@@ -33,9 +33,10 @@ ax.set_xlabel(""); ax.set_ylabel("EUR million a year")
 ax.set_ylim(0, 950); ax.set_xlim(2008.3, 2024.7)
 ax.set_xticks(range(2009, 2025, 3))
 for s in ("top", "right"): ax.spines[s].set_visible(False)
-ax.text(0.0, 1.14, "German balancing-reserve procurement, 2009 to 2024",
+# The reactor-count digits sit at y = 1.02, so the subtitle clears them at 1.085.
+ax.text(0.0, 1.18, "German balancing-reserve procurement, 2009 to 2024",
         transform=ax.transAxes, ha="left", fontsize=12.5, fontweight="bold")
-ax.text(0.0, 1.055, "Red rules mark the years reactors closed; the number is how many",
+ax.text(0.0, 1.085, "Red rules mark the years reactors closed; the number is how many",
         transform=ax.transAxes, ha="left", fontsize=9.5, color=INK)
 
 fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})
