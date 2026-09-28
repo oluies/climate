@@ -678,9 +678,11 @@ def deTrade(): Unit = {
 // Regelleistungsvorhaltung, the cost of holding FCR + aFRR + mFRR available, as stated
 // in the joint Bundesnetzagentur / Bundeskartellamt Monitoringbericht series. There is no
 // open series and no API: each report states the reporting year and the one before it, so
-// the numbers below are transcribed from eight reports and the report is named per year.
-// The 2009 and 2010 Monitoringberichte were not retrievable, so the series starts at 2009
-// (from the 2011 report) rather than at 2006.
+// the numbers below are transcribed from seven reports and the report is named per year.
+// Each report states its reporting year and the one before it in the text, and carries a
+// four-year cost table, which is why the 2025 report supplies 2021 through 2024. The 2009
+// and 2010 reports, which would have carried 2007 and 2008, were not retrievable, so the
+// series starts at 2009 (from the 2011 report) rather than at 2006.
 
 @main
 def balancingCost(): Unit = {
@@ -708,10 +710,10 @@ def balancingCost(): Unit = {
     2021 -> (3, 4058), // Brokdorf, Grohnde, Gundremmingen C
     2023 -> (3, 4055)) // Isar 2, Emsland, Neckarwestheim 2 -- the final exit
 
-  val out = new StringBuilder; out ++= "year,cost_meur,reactors,mw\n"
-  for ((y, c, _) <- cost) {
+  val out = new StringBuilder; out ++= "year,cost_meur,reactors,mw,source\n"
+  for ((y, c, src) <- cost) {
     val (n, mw) = shut.getOrElse(y, (0, 0))
-    out ++= f"$y,$c%.1f,$n,$mw\n"
+    out ++= f"$y,$c%.1f,$n,$mw,$src\n"
   }
   os.write.over(dir / "balancing-cost.csv", out.toString)
   println(s"wrote data-refresh/balancing-cost.csv (${cost.head._1}-${cost.last._1})")
@@ -720,6 +722,10 @@ def balancingCost(): Unit = {
   val totalMw = shut.values.map(_._2).sum; val totalUnits = shut.values.map(_._1).sum
   println(f"peak ${hi._1} ${hi._2}%.1f M EUR  |  trough ${lo._1} ${lo._2}%.1f M EUR  |  fall ${(1 - lo._2 / hi._2) * 100}%.0f%%")
   println(f"reactors closed over the window: $totalUnits units, $totalMw MW net")
+  // The 85% fall runs 2009-2018, so report what closed inside that window separately:
+  // pairing the fall with the whole phase-out overstates it (a review caught exactly that).
+  val inFall = shut.filter { case (y, _) => y >= cost.head._1 && y <= lo._1 }.values
+  println(f"closed between ${cost.head._1} and ${lo._1}, the years of the fall: ${inFall.map(_._1).sum} units, ${inFall.map(_._2).sum} MW")
   println("render:")
   println("  uv run figures/balancing_cost.py data-refresh/balancing-cost.csv without-hot-air/Images/fig-balancing-cost.svg")
 }
@@ -759,6 +765,61 @@ def reserveVolumes(): Unit = {
   println(f"restoration $r25%4d -> $r30%4d MW  (${(r30 - r25) * 100.0 / r25}%+.0f%%)")
   println("render:")
   println("  uv run figures/reserve_volumes.py data-refresh/reserve-volumes.csv without-hot-air/Images/fig-reserve-volumes.svg")
+}
+
+// ---- Svenska kraftnaet's ancillary-service cost by product (chapter 28a) ----
+// Svenska kraftnaet does not publish a per-product cost table. It publishes two business
+// segments, each with a stated net ancillary total and a stated mFRR figure, plus footnotes
+// saying which products each segment covers: Transmissionsnaet is FCR-D and mFRR (note 51),
+// Balansering is FCR-N, FCR-D, aFRR and mFRR (note 53). FCR-D for Transmissionsnaet and
+// aFRR for Balansering are therefore derived by subtraction, not quoted. The check below
+// reconciles the result against the published net totals.
+
+@main
+def seReserveCost(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+
+  // year -> (Transmissionsnaet total, its mFRR, Balansering total, its mFRR, its FCR)
+  val seg = Map(
+    2023 -> (3285, 37, 2570, 63, 1974),
+    2024 -> (2346, 960, 2611, 907, 1259),
+    2025 -> (5516, 5018, 3156, 2151, 628))
+
+  // Net ancillary total per year as printed in the annual reports, transcribed separately
+  // from the segment figures above, because re-summing the inputs is an identity and could
+  // not catch anything. What this actually covers, having been tested by corrupting each
+  // input in turn: the total check catches an error in either segment total, since the sum
+  // reduces to tTot + bTot. It cannot catch an error in tM, bM or bFcr, which only move
+  // value between products - bFcr in particular cancels, appearing with + in FCR and - in
+  // aFRR. The non-negativity guards below catch gross errors in those three, because they
+  // drive a derived figure below zero, but not small ones. Three of five inputs are
+  // therefore checked only for plausibility, not for value.
+  val publishedNet = Map(2023 -> 5855, 2024 -> 4957, 2025 -> 8672)
+
+  val out = new StringBuilder; out ++= "product,year,msek\n"
+  val byYear = seg.toList.sortBy(_._1).map { case (y, (tTot, tM, bTot, bM, bFcr)) =>
+    val fcrD = tTot - tM          // derived: Transmissionsnaet covers only FCR-D and mFRR
+    val aFrr = bTot - bM - bFcr   // derived: Balansering residual after FCR and mFRR
+    require(fcrD >= 0, s"$y: derived FCR-D is negative ($fcrD) - check the transcription")
+    require(aFrr >= 0, s"$y: derived aFRR is negative ($aFrr) - check the transcription")
+    (y, bFcr + fcrD, aFrr, tM + bM, publishedNet(y))
+  }
+  for ((y, fcr, _, _, _) <- byYear) out ++= s"FCR,$y,$fcr\n"
+  for ((y, _, a, _, _) <- byYear) out ++= s"aFRR,$y,$a\n"
+  for ((y, _, _, m, _) <- byYear) out ++= s"mFRR,$y,$m\n"
+  os.write.over(dir / "se-reserve-cost.csv", out.toString)
+  println("wrote data-refresh/se-reserve-cost.csv")
+
+  var bad = 0
+  for ((y, fcr, a, m, published) <- byYear) {
+    val sum = fcr + a + m
+    val ok = if (sum == published) "ok" else { bad += 1; s"MISMATCH (annual report says $published)" }
+    println(f"$y  FCR $fcr%5d  aFRR $a%4d  mFRR $m%5d  total $sum%5d  $ok")
+  }
+  require(bad == 0, s"$bad year(s) do not reconcile against the published net totals")
+  println("render:")
+  println("  uv run figures/se_reserve_cost.py data-refresh/se-reserve-cost.csv without-hot-air/Images/fig-se-reserve-cost.svg")
 }
 
 // ---- GB capture prices (the cannibalization figure) from Elexon BMRS ----

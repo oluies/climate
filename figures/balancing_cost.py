@@ -24,17 +24,23 @@ for _, r in shut.iterrows():
 ax.plot(df["year"], df["cost_meur"], color=LINE, lw=2.0, zorder=3)
 ax.scatter(df["year"], df["cost_meur"], color=LINE, s=22, zorder=4)
 
-for yr, note, dx, dy in [(2009, "825", 0, 34), (2018, "123", 0, -30), (2023, "644", 0, 26)]:
-    v = float(df.loc[df["year"] == yr, "cost_meur"].iloc[0])
-    ax.annotate(note, xy=(yr, v), xytext=(dx, dy), textcoords="offset points",
-                ha="center", fontsize=10, color=INK)
+# Annotate first year, trough and post-trough peak by position, not by literal year,
+# so the figure survives the next Monitoringbericht adding rows.
+first = df.iloc[0]
+trough = df.loc[df["cost_meur"].idxmin()]
+after = df[df["year"] > trough["year"]]
+peak = after.loc[after["cost_meur"].idxmax()] if len(after) else None
+for row, dy in [(first, 34), (trough, -30)] + ([(peak, 26)] if peak is not None else []):
+    ax.annotate(f"{row['cost_meur']:.0f}", xy=(row["year"], row["cost_meur"]), xytext=(0, dy),
+                textcoords="offset points", ha="center", fontsize=10, color=INK)
 
 ax.set_xlabel(""); ax.set_ylabel("EUR million a year")
-ax.set_ylim(0, 950); ax.set_xlim(2008.3, 2024.7)
-ax.set_xticks(range(2009, 2025, 3))
+y0, y1 = int(df["year"].min()), int(df["year"].max())
+ax.set_ylim(0, df["cost_meur"].max() * 1.16); ax.set_xlim(y0 - 0.7, y1 + 0.7)
+ax.set_xticks(range(y0, y1 + 1, 3))
 for s in ("top", "right"): ax.spines[s].set_visible(False)
 # The reactor-count digits sit at y = 1.02, so the subtitle clears them at 1.085.
-ax.text(0.0, 1.18, "German balancing-reserve procurement, 2009 to 2024",
+ax.text(0.0, 1.18, f"German balancing-reserve procurement, {y0} to {y1}",
         transform=ax.transAxes, ha="left", fontsize=12.5, fontweight="bold")
 ax.text(0.0, 1.085, "Red rules mark the years reactors closed; the number is how many",
         transform=ax.transAxes, ha="left", fontsize=9.5, color=INK)
