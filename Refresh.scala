@@ -677,10 +677,10 @@ def deTrade(): Unit = {
 // ---- German balancing-reserve cost against the nuclear phase-out (chapter 28a) ----
 // Regelleistungsvorhaltung, the cost of holding FCR + aFRR + mFRR available, as stated
 // in the joint Bundesnetzagentur / Bundeskartellamt Monitoringbericht series. There is no
-// open series and no API: each report states the reporting year and the one before it, so
-// the numbers below are transcribed from seven reports and the report is named per year.
-// Each report states its reporting year and the one before it in the text, and carries a
-// four-year cost table, which is why the 2025 report supplies 2021 through 2024. The 2009
+// open series and no API: each report states its reporting year and the one before it in
+// the text and carries a four-year cost table, which is why the 2025 report supplies 2021
+// through 2024, so the numbers below are transcribed from seven reports and the report is
+// named per year. The 2009
 // and 2010 reports, which would have carried 2007 and 2008, were not retrievable, so the
 // series starts at 2009 (from the 2011 report) rather than at 2006.
 
@@ -803,14 +803,15 @@ def seReserveCost(): Unit = {
     val aFrr = bTot - bM - bFcr   // derived: Balansering residual after FCR and mFRR
     require(fcrD >= 0, s"$y: derived FCR-D is negative ($fcrD) - check the transcription")
     require(aFrr >= 0, s"$y: derived aFRR is negative ($aFrr) - check the transcription")
-    (y, bFcr + fcrD, aFrr, tM + bM, publishedNet(y))
+    val net = publishedNet.getOrElse(y,
+      sys.error(s"$y: no published net total transcribed - add the year to publishedNet"))
+    (y, bFcr + fcrD, aFrr, tM + bM, net)
   }
   for ((y, fcr, _, _, _) <- byYear) out ++= s"FCR,$y,$fcr\n"
   for ((y, _, a, _, _) <- byYear) out ++= s"aFRR,$y,$a\n"
   for ((y, _, _, m, _) <- byYear) out ++= s"mFRR,$y,$m\n"
-  os.write.over(dir / "se-reserve-cost.csv", out.toString)
-  println("wrote data-refresh/se-reserve-cost.csv")
-
+  // Reconcile before writing. The figure script reads the CSV from disk, so a mismatch
+  // that aborted after the write would still reach the figure on the next render.
   var bad = 0
   for ((y, fcr, a, m, published) <- byYear) {
     val sum = fcr + a + m
@@ -818,6 +819,9 @@ def seReserveCost(): Unit = {
     println(f"$y  FCR $fcr%5d  aFRR $a%4d  mFRR $m%5d  total $sum%5d  $ok")
   }
   require(bad == 0, s"$bad year(s) do not reconcile against the published net totals")
+
+  os.write.over(dir / "se-reserve-cost.csv", out.toString)
+  println("wrote data-refresh/se-reserve-cost.csv")
   println("render:")
   println("  uv run figures/se_reserve_cost.py data-refresh/se-reserve-cost.csv without-hot-air/Images/fig-se-reserve-cost.svg")
 }
