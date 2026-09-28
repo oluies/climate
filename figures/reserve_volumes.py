@@ -44,7 +44,7 @@ ax.axhline(split - 0.5, color="#c9c9c4", lw=1.0)
 # Centre each caption on its own group, derived from the divider rather than hardcoded,
 # and place it clear of that group's longest bar.
 for lab, col, lo, hi in [("containment\nFCR-D set by the\nreference incident", INK, 0, split),
-                         ("restoration\nnormal imbalance plus\nthe reference incident", THEN, split, len(df))]:
+                         ("restoration\nnormal imbalance, plus\nthe reference incident in mFRR", THEN, split, len(df))]:
     ax.text(1600, (lo + hi - 1) / 2, lab, ha="right", va="center", fontsize=9,
             color=col, linespacing=1.4)
 ax.text(0.0, 1.10, "What Svenska kraftnat must hold, 2025 and 2030",
