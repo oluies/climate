@@ -43,13 +43,13 @@ split = (df["category"] == "Containment").sum()
 ax.axhline(split - 0.5, color="#c9c9c4", lw=1.0)
 # Centre each caption on its own group, derived from the divider rather than hardcoded,
 # and place it clear of that group's longest bar.
-for lab, col, lo, hi in [("containment\nlargely set by the\ndimensioning fault", INK, 0, split),
-                         ("restoration\nset by area imbalance\nand market design", THEN, split, len(df))]:
+for lab, col, lo, hi in [("containment\nFCR-D set by the\nreference incident", INK, 0, split),
+                         ("restoration\nnormal imbalance plus\nthe reference incident", THEN, split, len(df))]:
     ax.text(1600, (lo + hi - 1) / 2, lab, ha="right", va="center", fontsize=9,
             color=col, linespacing=1.4)
 ax.text(0.0, 1.10, "What Svenska kraftnat must hold, 2025 and 2030",
         transform=ax.transAxes, ha="left", fontsize=12.5, fontweight="bold")
-ax.text(0.0, 1.035, "Containment is flat to 2030; only the imbalance-driven reserves grow",
+ax.text(0.0, 1.035, "Containment is flat to 2030; the reference incident sizes FCR-D and mFRR alike",
         transform=ax.transAxes, ha="left", fontsize=9.5, color=INK)
 
 fig.savefig(sys.argv[2], format="svg", bbox_inches="tight", metadata={"Date": None})

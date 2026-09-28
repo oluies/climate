@@ -22,10 +22,12 @@ Last updated **28 September 2026**. The complete history is in the
 |                                |              | falls after a fault; ancillary services are what the operator buys; the balancing market is where energy is activated per area and per   |
 |                                |              | quarter-hour. Svenska kraftnät sizes FCR-D up against Oskarshamn 3 at 1450 MW and FCR-D down against 1400 MW of lost export over         |
 |                                |              | NordLink or North Sea Link, so the two largest instantaneous faults the Nordic system plans for are a reactor and a cable, not a wind    |
-|                                |              | farm. Its published volumes then settle it: containment is flat at 1290 MW in every year to 2030, of which 1066 MW is set by the         |
-|                                |              | dimensioning fault, while restoration grows by about half to 3150 MW, and the 2025 cost went to mFRR. Germany's reserve bill fell 85%    |
-|                                |              | over 2009 to 2018, the years in which ten of its seventeen reactors closed, and ended 2024 some 37% below 2009. Chapter 26 gains the     |
-|                                |              | counterpart, Svenska kraftnät's frequency-containment cost falling three years running with storage named among the causes.              |
+|                                |              | farm. The Nordic FRR dimensioning rules put the same reference incident inside mFRR as well: mFRR alone carries the disturbance          |
+|                                |              | component, which must cover at least the control area's largest single loss of a plant, a demand facility or an HVDC link. Published     |
+|                                |              | volumes: containment flat at 1290 MW to 2030, of which 1066 MW is set by the reference incident, restoration growing by about half to    |
+|                                |              | 3150 MW, and the 2025 cost went to mFRR in the year a new market opened. Germany's reserve bill fell 85% over 2009 to 2018, the years in |
+|                                |              | which ten of its seventeen reactors closed, and ended 2024 some 37% below 2009. Chapter 26 gains the counterpart, Svenska kraftnät's     |
+|                                |              | frequency-containment cost falling three years running with storage named among the causes.                                              |
 |                                |              | New figures: fig-reserve-volumes.svg, fig-balancing-cost.svg and fig-se-reserve-cost.svg.                                                |
 |                                |              | :::                                                                                                                                      |
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
