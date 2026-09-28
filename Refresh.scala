@@ -674,6 +674,56 @@ def deTrade(): Unit = {
   }
 }
 
+// ---- German balancing-reserve cost against the nuclear phase-out (chapter 28a) ----
+// Regelleistungsvorhaltung, the cost of holding FCR + aFRR + mFRR available, as stated
+// in the joint Bundesnetzagentur / Bundeskartellamt Monitoringbericht series. There is no
+// open series and no API: each report states the reporting year and the one before it, so
+// the numbers below are transcribed from eight reports and the report is named per year.
+// The 2009 and 2010 Monitoringberichte were not retrievable, so the series starts at 2009
+// (from the 2011 report) rather than at 2006.
+
+@main
+def balancingCost(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+
+  // year -> (cost in million EUR, source report)
+  val cost = List(
+    (2009, 825.0, "Monitoringbericht 2011"), (2010, 697.0, "Monitoringbericht 2011"),
+    (2011, 588.0, "Monitoringbericht 2013"), (2012, 417.0, "Monitoringbericht 2013"),
+    (2013, 594.0, "Monitoringbericht 2015"), (2014, 437.0, "Monitoringbericht 2015"),
+    (2015, 316.0, "Monitoringbericht 2017"), (2016, 198.0, "Monitoringbericht 2017"),
+    (2017, 145.5, "Monitoringbericht 2019"), (2018, 123.3, "Monitoringbericht 2019"),
+    (2019, 285.7, "Monitoringbericht 2021"), (2020, 152.4, "Monitoringbericht 2021"),
+    (2021, 568.6, "Monitoringbericht 2025"), (2022, 628.6, "Monitoringbericht 2025"),
+    (2023, 644.0, "Monitoringbericht 2025"), (2024, 518.0, "Monitoringbericht 2025"))
+
+  // German reactor shutdowns in the same window: year -> (units, net MW)
+  val shut = Map(
+    2011 -> (8, 8422), // Biblis A and B, Brunsbuettel, Isar 1, Kruemmel, Neckarwestheim 1,
+                       // Philippsburg 1, Unterweser -- the post-Fukushima moratorium
+    2015 -> (1, 1275), // Grafenrheinfeld
+    2017 -> (1, 1284), // Gundremmingen B
+    2019 -> (1, 1402), // Philippsburg 2
+    2021 -> (3, 4058), // Brokdorf, Grohnde, Gundremmingen C
+    2023 -> (3, 4055)) // Isar 2, Emsland, Neckarwestheim 2 -- the final exit
+
+  val out = new StringBuilder; out ++= "year,cost_meur,reactors,mw\n"
+  for ((y, c, _) <- cost) {
+    val (n, mw) = shut.getOrElse(y, (0, 0))
+    out ++= f"$y,$c%.1f,$n,$mw\n"
+  }
+  os.write.over(dir / "balancing-cost.csv", out.toString)
+  println(s"wrote data-refresh/balancing-cost.csv (${cost.head._1}-${cost.last._1})")
+
+  val lo = cost.minBy(_._2); val hi = cost.maxBy(_._2)
+  val totalMw = shut.values.map(_._2).sum; val totalUnits = shut.values.map(_._1).sum
+  println(f"peak ${hi._1} ${hi._2}%.1f M EUR  |  trough ${lo._1} ${lo._2}%.1f M EUR  |  fall ${(1 - lo._2 / hi._2) * 100}%.0f%%")
+  println(f"reactors closed over the window: $totalUnits units, $totalMw MW net")
+  println("render:")
+  println("  uv run figures/balancing_cost.py data-refresh/balancing-cost.csv without-hot-air/Images/fig-balancing-cost.svg")
+}
+
 // ---- GB capture prices (the cannibalization figure) from Elexon BMRS ----
 // Half-hourly GB generation by fuel type and the market-index price (APXMIDP),
 // joined on the settlement period. Capture price = sum(generation*price)/sum(generation);

@@ -11,12 +11,21 @@ new in their entirety. The table below is the authoritative list of them.
 
 ## Latest changes
 
-Last updated **22 September 2026**. The complete history is in the
+Last updated **28 September 2026**. The complete history is in the
 [repository](https://github.com/oluies/climate/commits/main).
 
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 28 September 2026              | 28a, 26      | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="What it costs to hold the system at fifty hertz"}              |
+|                                |              | Chapter 28a gains the system-cost half of the value argument, and it does not go the way the story does. The Bundesnetzagentur has       |
+|                                |              | published the cost of holding Germany's three balancing reserves every year since 2009: it fell from 825 to 123 million euros between    |
+|                                |              | 2009 and 2018, a fall of 85% across the closure of seventeen reactors and 20.5 GW, before the gas price took it back to 644 million in   |
+|                                |              | 2023. Sweden's 78% jump in 2025 is the mFRR energy-activation market of 4 March 2025, not the reactors, and Finland closed nothing yet   |
+|                                |              | saw its bill triple, because it lost 1300 MW of Russian imports in May 2022. Chapter 26 gains the counterpart: Svenska kraftnät's        |
+|                                |              | frequency-containment cost has fallen three years running, and it names energy storage among the causes.                                 |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 22 September 2026              | 11a          | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Brussels asked to see the meter"}                              |
 |                                |              | The Commission adopted a rating scheme on 21 September: a label for every data centre over 500 kW, showing power and water efficiency,   |
 |                                |              | low-carbon energy, waste-heat readiness, grid services and whether it has paid for new clean generation. The report published beside it  |
