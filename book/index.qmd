@@ -17,13 +17,15 @@ Last updated **28 September 2026**. The complete history is in the
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
-| 28 September 2026              | 28a, 26      | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="What it costs to hold the system at fifty hertz"}              |
-|                                |              | Chapter 28a gains the system-cost half of the value argument, and it does not go the way the story does. The Bundesnetzagentur has       |
-|                                |              | published the cost of holding Germany's three balancing reserves every year since 2009: it fell from 825 to 123 million euros between    |
-|                                |              | 2009 and 2018, a fall of 85% across the closure of seventeen reactors and 20.5 GW, before the gas price took it back to 644 million in   |
-|                                |              | 2023. Sweden's 78% jump in 2025 is the mFRR energy-activation market of 4 March 2025, not the reactors, and Finland closed nothing yet   |
-|                                |              | saw its bill triple, because it lost 1300 MW of Russian imports in May 2022. Chapter 26 gains the counterpart: Svenska kraftnät's        |
-|                                |              | frequency-containment cost has fallen three years running, and it names energy storage among the causes.                                 |
+| 28 September 2026              | 28a, 26      | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Inertia, ancillary services and the balancing market"}         |
+|                                |              | Chapter 28a gains a section separating three things the argument usually runs together. Rotational energy governs how fast the frequency |
+|                                |              | falls after a fault; ancillary services are what the operator buys; the balancing market is where energy is activated per area and per   |
+|                                |              | quarter-hour. Svenska kraftnät sizes FCR-D up against Oskarshamn 3 at 1450 MW and FCR-D down against 1400 MW of lost export over         |
+|                                |              | NordLink or North Sea Link, so the two largest instantaneous faults the Nordic system plans for are a reactor and a cable, not a wind    |
+|                                |              | farm. Its published volumes then settle it: containment is flat at 1290 MW in every year to 2030 while restoration grows by half, 2090   |
+|                                |              | to 3150 MW, and the 2025 cost went to mFRR. Germany's reserve bill fell 85% across its own phase-out. New figures: fig-reserve-          |
+|                                |              | volumes.svg and fig-balancing-cost.svg. Chapter 26 gains the counterpart, Svenska kraftnät's frequency-containment cost falling three    |
+|                                |              | years running with storage named among the causes.                                                                                       |
 |                                |              | :::                                                                                                                                      |
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 22 September 2026              | 11a          | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Brussels asked to see the meter"}                              |

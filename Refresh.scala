@@ -724,6 +724,43 @@ def balancingCost(): Unit = {
   println("  uv run figures/balancing_cost.py data-refresh/balancing-cost.csv without-hot-air/Images/fig-balancing-cost.svg")
 }
 
+// ---- Svenska kraftnaet's reserve volume requirement by product (chapter 28a) ----
+// Sweden's share of the Nordic requirement, from Svenska kraftnaet's "Framtida volymbehov".
+// Published as a web table rather than an open series, so the numbers are transcribed.
+// The containment products (FCR-N, FCR-D up and down) are flat in every year 2025-2030;
+// only the restoration products grow. FFR is deliberately absent: it is the one product
+// with no flat forward figure, being derived from expected rotational energy together with
+// the dimensioning fault (Sweden carries 38% of the Nordic need, 113 MW for 2026).
+
+@main
+def reserveVolumes(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+
+  // product, category, MW 2025, MW 2030
+  val rows = List(
+    ("FCR-N", "Containment", 224, 224),     // Nordic 600 MW, stable; set by historical imbalance
+    ("FCR-D up", "Containment", 542, 542),  // dimensioning fault: Oskarshamn 3, 1450 MW
+    ("FCR-D down", "Containment", 524, 524),// dimensioning fault: 1400 MW, full export NordLink/NSL
+    ("aFRR up", "Restoration", 150, 300),   // source range 120-200 for 2025, 160-400 for 2030
+    ("aFRR down", "Restoration", 150, 300),
+    ("mFRR up", "Restoration", 800, 1400),  // source range 580-1300 for 2025, 1100-1850 thereafter
+    ("mFRR down", "Restoration", 990, 1150))
+
+  val out = new StringBuilder; out ++= "product,category,mw2025,mw2030\n"
+  for ((p, c, a, b) <- rows) out ++= s"$p,$c,$a,$b\n"
+  os.write.over(dir / "reserve-volumes.csv", out.toString)
+  println("wrote data-refresh/reserve-volumes.csv")
+
+  def sum(cat: String, f: ((String, String, Int, Int)) => Int) = rows.filter(_._2 == cat).map(f).sum
+  val c25 = sum("Containment", _._3); val c30 = sum("Containment", _._4)
+  val r25 = sum("Restoration", _._3); val r30 = sum("Restoration", _._4)
+  println(f"containment $c25%4d -> $c30%4d MW  (${(c30 - c25) * 100.0 / c25}%+.0f%%)")
+  println(f"restoration $r25%4d -> $r30%4d MW  (${(r30 - r25) * 100.0 / r25}%+.0f%%)")
+  println("render:")
+  println("  uv run figures/reserve_volumes.py data-refresh/reserve-volumes.csv without-hot-air/Images/fig-reserve-volumes.svg")
+}
+
 // ---- GB capture prices (the cannibalization figure) from Elexon BMRS ----
 // Half-hourly GB generation by fuel type and the market-index price (APXMIDP),
 // joined on the settlement period. Capture price = sum(generation*price)/sum(generation);
