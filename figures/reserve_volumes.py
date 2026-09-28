@@ -35,7 +35,7 @@ for i, r in df.iterrows():
 ax.set_yticks(list(y)); ax.set_yticklabels(df["product"])
 ax.invert_yaxis()
 ax.set_xlabel("megawatts, Sweden's share of the Nordic requirement")
-ax.set_xlim(0, 1620)
+ax.set_xlim(0, float(df[["mw2025", "mw2030"]].max().max()) * 1.10)
 ax.grid(axis="y", visible=False)
 for s in ("top", "right"): ax.spines[s].set_visible(False)
 
