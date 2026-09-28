@@ -1,0 +1,8 @@
+product,category,mw2025,mw2030
+FCR-N,Containment,224,224
+FCR-D up,Containment,542,542
+FCR-D down,Containment,524,524
+aFRR up,Restoration,150,300
+aFRR down,Restoration,150,300
+mFRR up,Restoration,800,1400
+mFRR down,Restoration,990,1150

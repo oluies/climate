@@ -674,6 +674,93 @@ def deTrade(): Unit = {
   }
 }
 
+// ---- German balancing-reserve cost against the nuclear phase-out (chapter 28a) ----
+// Regelleistungsvorhaltung, the cost of holding FCR + aFRR + mFRR available, as stated
+// in the joint Bundesnetzagentur / Bundeskartellamt Monitoringbericht series. There is no
+// open series and no API: each report states the reporting year and the one before it, so
+// the numbers below are transcribed from eight reports and the report is named per year.
+// The 2009 and 2010 Monitoringberichte were not retrievable, so the series starts at 2009
+// (from the 2011 report) rather than at 2006.
+
+@main
+def balancingCost(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+
+  // year -> (cost in million EUR, source report)
+  val cost = List(
+    (2009, 825.0, "Monitoringbericht 2011"), (2010, 697.0, "Monitoringbericht 2011"),
+    (2011, 588.0, "Monitoringbericht 2013"), (2012, 417.0, "Monitoringbericht 2013"),
+    (2013, 594.0, "Monitoringbericht 2015"), (2014, 437.0, "Monitoringbericht 2015"),
+    (2015, 316.0, "Monitoringbericht 2017"), (2016, 198.0, "Monitoringbericht 2017"),
+    (2017, 145.5, "Monitoringbericht 2019"), (2018, 123.3, "Monitoringbericht 2019"),
+    (2019, 285.7, "Monitoringbericht 2021"), (2020, 152.4, "Monitoringbericht 2021"),
+    (2021, 568.6, "Monitoringbericht 2025"), (2022, 628.6, "Monitoringbericht 2025"),
+    (2023, 644.0, "Monitoringbericht 2025"), (2024, 518.0, "Monitoringbericht 2025"))
+
+  // German reactor shutdowns in the same window: year -> (units, net MW)
+  val shut = Map(
+    2011 -> (8, 8422), // Biblis A and B, Brunsbuettel, Isar 1, Kruemmel, Neckarwestheim 1,
+                       // Philippsburg 1, Unterweser -- the post-Fukushima moratorium
+    2015 -> (1, 1275), // Grafenrheinfeld
+    2017 -> (1, 1284), // Gundremmingen B
+    2019 -> (1, 1402), // Philippsburg 2
+    2021 -> (3, 4058), // Brokdorf, Grohnde, Gundremmingen C
+    2023 -> (3, 4055)) // Isar 2, Emsland, Neckarwestheim 2 -- the final exit
+
+  val out = new StringBuilder; out ++= "year,cost_meur,reactors,mw\n"
+  for ((y, c, _) <- cost) {
+    val (n, mw) = shut.getOrElse(y, (0, 0))
+    out ++= f"$y,$c%.1f,$n,$mw\n"
+  }
+  os.write.over(dir / "balancing-cost.csv", out.toString)
+  println(s"wrote data-refresh/balancing-cost.csv (${cost.head._1}-${cost.last._1})")
+
+  val lo = cost.minBy(_._2); val hi = cost.maxBy(_._2)
+  val totalMw = shut.values.map(_._2).sum; val totalUnits = shut.values.map(_._1).sum
+  println(f"peak ${hi._1} ${hi._2}%.1f M EUR  |  trough ${lo._1} ${lo._2}%.1f M EUR  |  fall ${(1 - lo._2 / hi._2) * 100}%.0f%%")
+  println(f"reactors closed over the window: $totalUnits units, $totalMw MW net")
+  println("render:")
+  println("  uv run figures/balancing_cost.py data-refresh/balancing-cost.csv without-hot-air/Images/fig-balancing-cost.svg")
+}
+
+// ---- Svenska kraftnaet's reserve volume requirement by product (chapter 28a) ----
+// Sweden's share of the Nordic requirement, from Svenska kraftnaet's "Framtida volymbehov".
+// Published as a web table rather than an open series, so the numbers are transcribed.
+// The containment products (FCR-N, FCR-D up and down) are flat in every year 2025-2030;
+// only the restoration products grow. FFR is deliberately absent: it is the one product
+// with no flat forward figure, being derived from expected rotational energy together with
+// the dimensioning fault (Sweden carries 38% of the Nordic need, 113 MW for 2026).
+
+@main
+def reserveVolumes(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+
+  // product, category, MW 2025, MW 2030
+  val rows = List(
+    ("FCR-N", "Containment", 224, 224),     // Nordic 600 MW, stable; set by historical imbalance
+    ("FCR-D up", "Containment", 542, 542),  // dimensioning fault: Oskarshamn 3, 1450 MW
+    ("FCR-D down", "Containment", 524, 524),// dimensioning fault: 1400 MW, full export NordLink/NSL
+    ("aFRR up", "Restoration", 150, 300),   // source range 120-200 for 2025, 160-400 for 2030
+    ("aFRR down", "Restoration", 150, 300),
+    ("mFRR up", "Restoration", 800, 1400),  // source range 580-1300 for 2025, 1100-1850 thereafter
+    ("mFRR down", "Restoration", 990, 1150))
+
+  val out = new StringBuilder; out ++= "product,category,mw2025,mw2030\n"
+  for ((p, c, a, b) <- rows) out ++= s"$p,$c,$a,$b\n"
+  os.write.over(dir / "reserve-volumes.csv", out.toString)
+  println("wrote data-refresh/reserve-volumes.csv")
+
+  def sum(cat: String, f: ((String, String, Int, Int)) => Int) = rows.filter(_._2 == cat).map(f).sum
+  val c25 = sum("Containment", _._3); val c30 = sum("Containment", _._4)
+  val r25 = sum("Restoration", _._3); val r30 = sum("Restoration", _._4)
+  println(f"containment $c25%4d -> $c30%4d MW  (${(c30 - c25) * 100.0 / c25}%+.0f%%)")
+  println(f"restoration $r25%4d -> $r30%4d MW  (${(r30 - r25) * 100.0 / r25}%+.0f%%)")
+  println("render:")
+  println("  uv run figures/reserve_volumes.py data-refresh/reserve-volumes.csv without-hot-air/Images/fig-reserve-volumes.svg")
+}
+
 // ---- GB capture prices (the cannibalization figure) from Elexon BMRS ----
 // Half-hourly GB generation by fuel type and the market-index price (APXMIDP),
 // joined on the settlement period. Capture price = sum(generation*price)/sum(generation);
