@@ -41,12 +41,14 @@ for s in ("top", "right"): ax.spines[s].set_visible(False)
 
 split = (df["category"] == "Containment").sum()
 ax.axhline(split - 0.5, color="#c9c9c4", lw=1.0)
-# Centre each caption on its own group, derived from the divider rather than hardcoded,
-# and place it clear of that group's longest bar.
+# Group captions sit OUTSIDE the axes: get_yaxis_transform puts x in axes fraction and
+# y in data coordinates, so a caption can never overlap a bar or its value label however
+# long the bars get. An earlier version anchored them at x = 1600 in data units and the
+# restoration caption landed on the 1400 MW mFRR label.
 for lab, col, lo, hi in [("containment\nFCR-D set by the\nreference incident", INK, 0, split),
-                         ("restoration\nnormal imbalance, plus\nthe reference incident in mFRR", THEN, split, len(df))]:
-    ax.text(1600, (lo + hi - 1) / 2, lab, ha="right", va="center", fontsize=9,
-            color=col, linespacing=1.4)
+                         ("restoration\nnormal imbalance, plus\nthe reference\nincident in mFRR", THEN, split, len(df))]:
+    ax.text(1.015, (lo + hi - 1) / 2, lab, transform=ax.get_yaxis_transform(),
+            ha="left", va="center", fontsize=9, color=col, linespacing=1.4)
 ax.text(0.0, 1.10, "What Svenska kraftnat must hold, 2025 and 2030",
         transform=ax.transAxes, ha="left", fontsize=12.5, fontweight="bold")
 ax.text(0.0, 1.035, "Containment is flat to 2030; the reference incident sizes FCR-D and mFRR alike",

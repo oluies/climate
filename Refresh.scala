@@ -678,7 +678,7 @@ def deTrade(): Unit = {
 // Regelleistungsvorhaltung, the cost of holding FCR + aFRR + mFRR available, as stated
 // in the joint Bundesnetzagentur / Bundeskartellamt Monitoringbericht series. There is no
 // open series and no API: each report states the reporting year and the one before it, so
-// the numbers below are transcribed from eight reports and the report is named per year.
+// the numbers below are transcribed from seven reports and the report is named per year.
 // Each report states its reporting year and the one before it in the text, and carries a
 // four-year cost table, which is why the 2025 report supplies 2021 through 2024. The 2009
 // and 2010 reports, which would have carried 2007 and 2008, were not retrievable, so the
@@ -786,11 +786,24 @@ def seReserveCost(): Unit = {
     2024 -> (2346, 960, 2611, 907, 1259),
     2025 -> (5516, 5018, 3156, 2151, 628))
 
+  // Net ancillary total per year as printed in the annual reports, transcribed separately
+  // from the segment figures above, because re-summing the inputs is an identity and could
+  // not catch anything. What this actually covers, having been tested by corrupting each
+  // input in turn: the total check catches an error in either segment total, since the sum
+  // reduces to tTot + bTot. It cannot catch an error in tM, bM or bFcr, which only move
+  // value between products - bFcr in particular cancels, appearing with + in FCR and - in
+  // aFRR. The non-negativity guards below catch gross errors in those three, because they
+  // drive a derived figure below zero, but not small ones. Three of five inputs are
+  // therefore checked only for plausibility, not for value.
+  val publishedNet = Map(2023 -> 5855, 2024 -> 4957, 2025 -> 8672)
+
   val out = new StringBuilder; out ++= "product,year,msek\n"
   val byYear = seg.toList.sortBy(_._1).map { case (y, (tTot, tM, bTot, bM, bFcr)) =>
     val fcrD = tTot - tM          // derived: Transmissionsnaet covers only FCR-D and mFRR
     val aFrr = bTot - bM - bFcr   // derived: Balansering residual after FCR and mFRR
-    (y, bFcr + fcrD, aFrr, tM + bM, tTot + bTot)
+    require(fcrD >= 0, s"$y: derived FCR-D is negative ($fcrD) - check the transcription")
+    require(aFrr >= 0, s"$y: derived aFRR is negative ($aFrr) - check the transcription")
+    (y, bFcr + fcrD, aFrr, tM + bM, publishedNet(y))
   }
   for ((y, fcr, _, _, _) <- byYear) out ++= s"FCR,$y,$fcr\n"
   for ((y, _, a, _, _) <- byYear) out ++= s"aFRR,$y,$a\n"
@@ -798,11 +811,13 @@ def seReserveCost(): Unit = {
   os.write.over(dir / "se-reserve-cost.csv", out.toString)
   println("wrote data-refresh/se-reserve-cost.csv")
 
+  var bad = 0
   for ((y, fcr, a, m, published) <- byYear) {
     val sum = fcr + a + m
-    val ok = if (sum == published) "ok" else s"MISMATCH (published $published)"
+    val ok = if (sum == published) "ok" else { bad += 1; s"MISMATCH (annual report says $published)" }
     println(f"$y  FCR $fcr%5d  aFRR $a%4d  mFRR $m%5d  total $sum%5d  $ok")
   }
+  require(bad == 0, s"$bad year(s) do not reconcile against the published net totals")
   println("render:")
   println("  uv run figures/se_reserve_cost.py data-refresh/se-reserve-cost.csv without-hot-air/Images/fig-se-reserve-cost.svg")
 }

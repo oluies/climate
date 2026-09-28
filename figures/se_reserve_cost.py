@@ -20,7 +20,7 @@ base = [0.0] * len(wide)
 for col in wide.columns:
     ax.bar(wide.index, wide[col], bottom=base, width=0.54, color=COL[col], label=col, zorder=3)
     for x, v, b in zip(wide.index, wide[col], base):
-        if v > 380:
+        if v > 300:   # 377 is the smallest aFRR segment; keep all three labelled
             ax.text(x, b + v / 2, f"{int(round(v)):,}".replace(",", " "), ha="center", va="center",
                     fontsize=9.5, color="white" if col != "aFRR" else INK, fontweight="bold")
     base = [b + v for b, v in zip(base, wide[col])]
@@ -29,15 +29,16 @@ for x, t in zip(wide.index, base):
     ax.text(x, t + 220, f"{int(round(t)):,}".replace(",", " "), ha="center", fontsize=10, color=INK)
 
 # direct series labels beside the 2025 bar, so no legend box sits over the data
-y25 = wide.loc[2025]
-for col, y in [("mFRR", y25["FCR"] + y25["aFRR"] + y25["mFRR"] / 2),
-               ("aFRR", y25["FCR"] + y25["aFRR"] / 2),
-               ("FCR", y25["FCR"] / 2)]:
-    ax.text(2025.35, y, col, va="center", fontsize=10, color=COL[col], fontweight="bold")
+last = wide.iloc[-1]
+lastyear = int(wide.index.max())
+for col, y in [("mFRR", last["FCR"] + last["aFRR"] + last["mFRR"] / 2),
+               ("aFRR", last["FCR"] + last["aFRR"] / 2),
+               ("FCR", last["FCR"] / 2)]:
+    ax.text(lastyear + 0.35, y, col, va="center", fontsize=10, color=COL[col], fontweight="bold")
 
 ax.set_xticks(list(wide.index))
-ax.set_xlim(2022.55, 2025.95)
-ax.set_ylim(0, 10400)
+ax.set_xlim(wide.index.min() - 0.45, lastyear + 0.95)
+ax.set_ylim(0, float(base.max() if hasattr(base, "max") else max(base)) * 1.20)
 ax.set_ylabel("MSEK a year, net")
 ax.grid(axis="x", visible=False)
 for s in ("top", "right"): ax.spines[s].set_visible(False)
