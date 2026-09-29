@@ -36,7 +36,7 @@ for col in wide.columns:
 # again: an earlier version shared a column with the fallback labels and drew "377" on
 # top of "aFRR".
 SEP = ymax * 0.052                      # one line of 9pt text, in data units
-for xi, yr in enumerate(years):
+for yr in years:
     run, outside = 0.0, []
     for col in wide.columns:
         v = float(wide.loc[yr, col]); mid = run + v / 2; run += v
@@ -45,15 +45,29 @@ for xi, yr in enumerate(years):
             ax.text(yr, mid, txt, ha="center", va="center", fontsize=9.5,
                     color="white" if col != "aFRR" else INK, fontweight="bold")
         else:
-            outside.append([mid, txt])
-    for i in range(1, len(outside)):    # push apart, keeping order
-        if outside[i][0] - outside[i - 1][0] < SEP:
-            outside[i][0] = outside[i - 1][0] + SEP
-    for mid, txt in outside:
-        ax.annotate(txt, xy=(yr + 0.29, mid), xytext=(8, 0), textcoords="offset points",
-                    va="center", fontsize=9, color=INK,
-                    arrowprops=dict(arrowstyle="-", color="#c9c9c4", lw=0.8,
-                                    shrinkA=0, shrinkB=2))
+            outside.append({"mid": mid, "txt": txt, "col": col})
+    if not outside:
+        continue
+    # Spread the labels apart, re-centre the group on its own midpoints rather than
+    # only pushing upward, and keep the whole group inside the bar so it can never
+    # collide with the total above it.
+    target = [o["mid"] for o in outside]
+    for i in range(1, len(target)):
+        target[i] = max(target[i], target[i - 1] + SEP)
+    shift = (sum(o["mid"] for o in outside) - sum(target)) / len(target)
+    target = [ty + shift for ty in target]
+    top = float(totals.loc[yr])
+    if target[-1] > top:
+        target = [ty - (target[-1] - top) for ty in target]
+    if target[0] < 0:
+        target = [ty - target[0] for ty in target]
+    for o, ty in zip(outside, target):
+        # The leader stays anchored on the segment it names even when the text is
+        # displaced, and is tinted with that product's colour so the pairing survives.
+        ax.annotate(o["txt"], xy=(yr + 0.29, o["mid"]), xytext=(yr + 0.42, ty),
+                    textcoords="data", va="center", ha="left", fontsize=9, color=INK,
+                    arrowprops=dict(arrowstyle="-", color=COL[o["col"]], lw=0.9,
+                                    shrinkA=0, shrinkB=3))
 
 for x, tot in zip(years, totals):
     ax.text(x, tot + ymax * 0.022, f"{int(round(tot)):,}".replace(",", " "), ha="center",

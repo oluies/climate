@@ -36,9 +36,12 @@ ax.set_yticks(list(y)); ax.set_yticklabels(df["product"])
 ax.invert_yaxis()
 ax.set_xlabel("megawatts, Sweden's share of the Nordic requirement")
 # Headroom must hold the value label beside the longest bar, which is an absolute
-# offset plus text width, so a purely proportional margin shrinks too far on small data.
+# offset plus a text width, so a purely proportional margin shrinks too far on small
+# data. The floor is in the unit of the input, megawatts, and would need revisiting if
+# this figure were ever fed a series in another unit.
+MIN_HEADROOM_MW = 200
 _mx = float(df[["mw2025", "mw2030"]].max().max())
-ax.set_xlim(0, _mx + max(_mx * 0.10, 200))
+ax.set_xlim(0, _mx + max(_mx * 0.10, MIN_HEADROOM_MW))
 ax.grid(axis="y", visible=False)
 for s in ("top", "right"): ax.spines[s].set_visible(False)
 
