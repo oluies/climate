@@ -35,7 +35,10 @@ for i, r in df.iterrows():
 ax.set_yticks(list(y)); ax.set_yticklabels(df["product"])
 ax.invert_yaxis()
 ax.set_xlabel("megawatts, Sweden's share of the Nordic requirement")
-ax.set_xlim(0, float(df[["mw2025", "mw2030"]].max().max()) * 1.10)
+# Headroom must hold the value label beside the longest bar, which is an absolute
+# offset plus text width, so a purely proportional margin shrinks too far on small data.
+_mx = float(df[["mw2025", "mw2030"]].max().max())
+ax.set_xlim(0, _mx + max(_mx * 0.10, 200))
 ax.grid(axis="y", visible=False)
 for s in ("top", "right"): ax.spines[s].set_visible(False)
 

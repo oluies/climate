@@ -677,12 +677,12 @@ def deTrade(): Unit = {
 // ---- German balancing-reserve cost against the nuclear phase-out (chapter 28a) ----
 // Regelleistungsvorhaltung, the cost of holding FCR + aFRR + mFRR available, as stated
 // in the joint Bundesnetzagentur / Bundeskartellamt Monitoringbericht series. There is no
-// open series and no API: each report states its reporting year and the one before it in
-// the text and carries a four-year cost table, which is why the 2025 report supplies 2021
-// through 2024, so the numbers below are transcribed from seven reports and the report is
-// named per year. The 2009
-// and 2010 reports, which would have carried 2007 and 2008, were not retrievable, so the
-// series starts at 2009 (from the 2011 report) rather than at 2006.
+// open series and no API, so the numbers below are transcribed by hand from seven reports,
+// each named per year in the source column. Each report states its reporting year and the
+// one before it in the text, and carries a four-year cost table, which is why the 2025
+// report supplies 2021 through 2024. The 2009 and 2010 reports, which would have carried
+// 2007 and 2008, were not retrievable, so the series starts at 2009 (from the 2011 report)
+// rather than at 2006.
 
 @main
 def balancingCost(): Unit = {
