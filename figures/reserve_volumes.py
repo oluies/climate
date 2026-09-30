@@ -25,20 +25,23 @@ tagrow = int(df[["mw2025", "mw2030"]].max(axis=1).idxmin())
 
 # The two series are labelled directly on the top row rather than with a legend box:
 # a legend inside the axes collides with the 1400 MW mFRR bar at lower right.
+# Both the gap between a bar and its value label and the headroom floor below are
+# absolute lengths in the unit of the input, megawatts, and would need revisiting
+# together if this figure were ever fed a series in another unit.
+LABEL_GAP_MW = 18
 for i, r in df.iterrows():
     tag25, tag30 = ("  2025", "  2030") if i == tagrow else ("", "")
-    ax.text(r["mw2025"] + 18, i + h / 2, f"{int(r['mw2025'])}{tag25}", va="center",
+    ax.text(r["mw2025"] + LABEL_GAP_MW, i + h / 2, f"{int(r['mw2025'])}{tag25}", va="center",
             fontsize=9, color=INK)
-    ax.text(r["mw2030"] + 18, i - h / 2, f"{int(r['mw2030'])}{tag30}", va="center", fontsize=9,
-            color=THEN, fontweight="bold" if r["mw2030"] != r["mw2025"] else "normal")
+    ax.text(r["mw2030"] + LABEL_GAP_MW, i - h / 2, f"{int(r['mw2030'])}{tag30}", va="center",
+            fontsize=9, color=THEN,
+            fontweight="bold" if r["mw2030"] != r["mw2025"] else "normal")
 
 ax.set_yticks(list(y)); ax.set_yticklabels(df["product"])
 ax.invert_yaxis()
 ax.set_xlabel("megawatts, Sweden's share of the Nordic requirement")
-# Headroom must hold the value label beside the longest bar, which is an absolute
-# offset plus a text width, so a purely proportional margin shrinks too far on small
-# data. The floor is in the unit of the input, megawatts, and would need revisiting if
-# this figure were ever fed a series in another unit.
+# Headroom must hold the value label beside the longest bar, which is LABEL_GAP_MW
+# plus a text width, so a purely proportional margin shrinks too far on small data.
 MIN_HEADROOM_MW = 200
 _mx = float(df[["mw2025", "mw2030"]].max().max())
 ax.set_xlim(0, _mx + max(_mx * 0.10, MIN_HEADROOM_MW))
