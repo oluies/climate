@@ -1,0 +1,35 @@
+country,direction,eur_mw_h,gwh,hours_held,eur_per_mwh_demand,source
+Austria,down,14.187,156.396,672,0.889,ENTSO-E
+Austria,up,8.145,183.016,672,0.889,ENTSO-E
+Belgium,down,3.437,70.992,672,0.217,ENTSO-E
+Belgium,up,14.425,73.432,672,0.217,ENTSO-E
+Czechia,down,0.182,137.100,672,0.302,ENTSO-E
+Czechia,up,7.712,171.760,672,0.302,ENTSO-E
+Denmark east,down,0.260,26.470,672,0.294,ENTSO-E
+Denmark east,up,7.036,44.820,672,0.294,ENTSO-E
+Denmark west,down,0.012,13.516,672,0.060,ENTSO-E
+Denmark west,up,1.740,60.640,672,0.060,ENTSO-E
+Estonia,down,6.816,40.900,672,0.733,ENTSO-E
+Estonia,up,5.443,20.727,563,0.733,ENTSO-E
+Finland,down,1.107,76.529,672,0.023,ENTSO-E
+Finland,up,1.008,48.456,672,0.023,ENTSO-E
+France,down,5.241,511.429,672,0.411,ENTSO-E
+France,up,15.431,588.363,672,0.411,ENTSO-E
+Germany,down,16.340,1256.156,672,1.069,ENTSO-E
+Germany,up,12.243,1343.520,672,1.069,ENTSO-E
+Latvia,down,1.409,36.812,672,1.199,ENTSO-E
+Latvia,up,13.530,43.955,672,1.199,ENTSO-E
+Lithuania,down,5.076,25.876,656,0.662,ENTSO-E
+Lithuania,up,11.849,40.595,672,0.662,ENTSO-E
+Netherlands,down,8.773,350.868,672,1.489,ENTSO-E
+Netherlands,up,21.606,300.316,672,1.489,ENTSO-E
+Poland,down,70.367,282.436,672,4.672,ENTSO-E
+Poland,up,124.046,285.706,672,4.672,ENTSO-E
+Portugal,down,24.860,210.999,672,3.093,ENTSO-E
+Portugal,up,35.567,211.994,672,3.093,ENTSO-E
+Romania,down,3.310,362.763,672,1.045,ENTSO-E
+Romania,up,7.054,354.818,672,1.045,ENTSO-E
+Spain,down,3.286,857.917,672,0.855,ENTSO-E
+Spain,up,15.991,847.730,672,0.855,ENTSO-E
+Sweden,down,20.589,17.273,348,0.041,Svenska kraftnat
+Sweden,up,16.830,0.323,40,0.041,Svenska kraftnat

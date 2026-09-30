@@ -826,6 +826,456 @@ def seReserveCost(): Unit = {
   println("  uv run figures/se_reserve_cost.py data-refresh/se-reserve-cost.csv without-hot-air/Images/fig-se-reserve-cost.svg")
 }
 
+// ---- What a megawatt of aFRR capacity costs across Europe (chapter 28a) ----
+// ENTSO-E Transparency, "procured balancing capacity" (article 12.3.F of the electricity
+// balancing guideline). It is the only European reserve dataset every procuring TSO fills
+// in on one schema, and unlike everything else in this file it needs a key: a free
+// Transparency account, read from ENTSOE_API_KEY or, failing that, from the macOS keychain
+// under the same name.
+//
+// One accepted bid is one TimeSeries: a quantity in MW and a price over a period whose
+// length the document states. Both the quantity and the price carry the unit "MAW", which
+// is where the dataset is easy to get wrong - the price is per settlement period, not per
+// hour, and nothing in the schema says so. The conversion below is therefore pinned by an
+// external check rather than assumed: regelleistung.net publishes the same auction in
+// (EUR/MW)/h, and the step refuses to write a file unless Germany and Austria come out of
+// ENTSO-E at the price regelleistung prints for them.
+//
+// Two further things the raw data will not tell you, both handled below. Some TSOs procure
+// on a weekly or annual contract, where the figure is the price for the whole contract and
+// the per-settlement-period reading is nonsense (Switzerland's weekly aFRR would come out
+// at some 5000 EUR/MW/h); those series are dropped and counted. And Sweden is simply not
+// there: Svenska kraftnaet does not publish procured aFRR capacity to the platform at all,
+// so the Swedish row comes from its own open data service instead.
+
+val AFRR_AREAS = List(
+  "Germany" -> "10Y1001A1001A82H", "France" -> "10YFR-RTE------C",
+  "Netherlands" -> "10YNL----------L", "Belgium" -> "10YBE----------2",
+  "Austria" -> "10YAT-APG------L", "Switzerland" -> "10YCH-SWISSGRIDZ",
+  "Czechia" -> "10YCZ-CEPS-----N", "Slovakia" -> "10YSK-SEPS-----K",
+  "Hungary" -> "10YHU-MAVIR----U", "Poland" -> "10YPL-AREA-----S",
+  "Romania" -> "10YRO-TEL------P", "Greece" -> "10YGR-HTSO-----Y",
+  "Spain" -> "10YES-REE------0", "Portugal" -> "10YPT-REN------W",
+  "Finland" -> "10YFI-1--------U", "Denmark west" -> "10YDK-1--------W",
+  "Denmark east" -> "10YDK-2--------M", "Estonia" -> "10Y1001A1001A39I",
+  "Latvia" -> "10YLV-1001A00074", "Lithuania" -> "10YLT-1001A0008Q")
+
+def entsoeKey(): String =
+  sys.env.get("ENTSOE_API_KEY").map(_.trim).filter(_.nonEmpty).getOrElse {
+    val r = os.proc("security", "find-generic-password", "-s", "ENTSOE_API_KEY", "-w")
+      .call(check = false, stderr = os.Pipe)
+    val k = r.out.trim()
+    if (r.exitCode == 0 && k.nonEmpty) k
+    else sys.error("afrrPrices needs a free ENTSO-E Transparency key. Register at " +
+      "transparency.entsoe.eu, then put the token in ENTSOE_API_KEY or in the macOS " +
+      "keychain as a generic password with service name ENTSOE_API_KEY.")
+  }
+
+/** The platform allows 400 requests a minute and answers the 401st with a ten-minute ban,
+  * so the whole step goes through one budget however many threads are fetching. */
+object AfrrBudget {
+  private val PER_MINUTE = 240
+  private val seen = collection.mutable.Queue[Long]()
+  def take(): Unit = {
+    var waiting = true
+    while (waiting) {
+      val wait = synchronized {
+        val now = System.currentTimeMillis()
+        while (seen.nonEmpty && now - seen.head > 60000) seen.dequeue()
+        if (seen.size < PER_MINUTE) { seen.enqueue(now); 0L } else 60000 - (now - seen.head) + 50
+      }
+      if (wait > 0) Thread.sleep(wait) else waiting = false
+    }
+  }
+}
+
+/** One Transparency Platform document, cached on disk as it came off the wire. */
+def entsoeDoc(token: String, params: Map[String, String], name: String,
+              cache: os.Path): Array[Byte] = {
+  val f = cache / s"$name.zip"
+  if (os.exists(f)) os.read.bytes(f)
+  else {
+    var tries = 0
+    var got: Option[Array[Byte]] = None
+    while (got.isEmpty) {
+      tries += 1
+      AfrrBudget.take()
+      val r = requests.get("https://web-api.tp.entsoe.eu/api", check = false,
+        params = params + ("securityToken" -> token),
+        readTimeout = 240000, connectTimeout = 30000)
+      if (r.statusCode == 200) got = Some(r.bytes)
+      else if (r.statusCode == 429 && tries < 12) {
+        // The body carries the instant the ban lifts; sleeping to it beats guessing.
+        val until = "banned until '([^']+)'".r.findFirstMatchIn(r.text())
+          .map(m => java.time.Instant.parse(m.group(1)).toEpochMilli)
+        val nap = until.map(_ - System.currentTimeMillis() + 5000).getOrElse(60000L)
+        println(s"  rate-limited, waiting ${math.max(nap, 5000) / 1000} s")
+        Thread.sleep(math.max(nap, 5000))
+      } else sys.error(s"ENTSO-E answered ${r.statusCode} for $name")
+    }
+    os.makeDir.all(cache); os.write.over(f, got.get); got.get
+  }
+}
+
+/** One page of procured balancing capacity. The platform answers a request for more than
+  * a hundred series with a refusal rather than a truncation, so a day is walked in pages
+  * of a hundred until a short page. */
+def afrrPage(token: String, area: String, from: String, to: String,
+             offset: Int, cache: os.Path): Array[Byte] =
+  entsoeDoc(token, Map("documentType" -> "A15", "processType" -> "A51", "area_Domain" -> area,
+    "periodStart" -> from, "periodEnd" -> to, "offset" -> offset.toString),
+    s"${area}_${from}_${to}_$offset", cache)
+
+/** Actual total load for the same area and day, which is the denominator that turns a
+  * price per megawatt of reserve into a cost per megawatt-hour of demand. */
+def afrrLoad(token: String, area: String, from: String, to: String,
+             cache: os.Path): Array[Byte] =
+  entsoeDoc(token, Map("documentType" -> "A65", "processType" -> "A16",
+    "outBiddingZone_Domain" -> area, "periodStart" -> from, "periodEnd" -> to),
+    s"load_${area}_${from}_${to}", cache)
+
+/** How many series a page holds, or -1 if the platform refused it. */
+def afrrPageSize(raw: Array[Byte]): Int = {
+  val docs = afrrDocs(raw)
+  if (docs.exists(_.contains("Acknowledgement_MarketDocument"))) -1
+  else docs.map(d => "<TimeSeries>".r.findAllIn(d).size).sum
+}
+
+/** Walk every (area, day) to the end of its paging and leave the pages on disk, several
+  * at a time, so that a cold run is bounded by the request budget rather than by the
+  * platform's few seconds of latency per page: half an hour rather than most of a day.
+  * Everything that adds up the numbers afterwards then runs single-threaded off the cache.
+  * `loadJobs` are the demand documents, which are one request each rather than a walk. */
+def afrrPrefetch(token: String, jobs: Seq[(String, String, String)],
+                 loadJobs: Seq[(String, String, String)], cache: os.Path): Unit = {
+  val pool = java.util.concurrent.Executors.newFixedThreadPool(6)
+  val done = new java.util.concurrent.atomic.AtomicInteger(0)
+  val total = jobs.size + loadJobs.size
+  val failed = new java.util.concurrent.atomic.AtomicReference[Throwable](null)
+  def submit(body: => Unit): Unit = pool.execute(() => {
+    try if (failed.get() == null) body
+    catch { case t: Throwable => failed.compareAndSet(null, t) }
+    val d = done.incrementAndGet()
+    if (d % 100 == 0) println(s"  fetched $d of $total documents")
+  })
+  for ((area, from, to) <- jobs) submit {
+    var offset = 0; var more = true
+    while (more && failed.get() == null) {
+      val n = afrrPageSize(afrrPage(token, area, from, to, offset, cache))
+      if (n < 100) more = false else offset += 100
+    }
+  }
+  for ((area, from, to) <- loadJobs) submit { afrrLoad(token, area, from, to, cache) }
+  pool.shutdown()
+  pool.awaitTermination(12, java.util.concurrent.TimeUnit.HOURS)
+  Option(failed.get()).foreach(throw _)
+}
+
+/** The platform zips anything large and sends the rest as bare XML. */
+def afrrDocs(raw: Array[Byte]): Seq[String] =
+  if (raw.length > 1 && raw(0) == 'P' && raw(1) == 'K') {
+    val zis = new java.util.zip.ZipInputStream(new java.io.ByteArrayInputStream(raw))
+    val out = ArrayBuffer[String]()
+    while (zis.getNextEntry() != null) out += new String(zis.readAllBytes(), "UTF-8")
+    zis.close(); out.toSeq
+  } else Seq(new String(raw, "UTF-8"))
+
+/** European Central Bank daily reference rates, cached. Four of the twenty operators
+  * report their procurement prices in their own currency - Switzerland in francs, Hungary
+  * in forints, Poland in zloty, Romania in lei - and the document says which, so a step
+  * that adds the numbers up as euros is out by a factor of four hundred on Hungary. */
+def ecbRates(dir0: os.Path): Map[String, Map[String, Double]] = {
+  val f = dir0 / "ecb-eurofxref-hist.zip"
+  if (!os.exists(f)) os.write.over(f,
+    requests.get("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.zip",
+      readTimeout = 180000, connectTimeout = 30000).bytes)
+  val zis = new java.util.zip.ZipInputStream(new java.io.ByteArrayInputStream(os.read.bytes(f)))
+  zis.getNextEntry()
+  val lines = new String(zis.readAllBytes(), "UTF-8").linesIterator.toVector
+  zis.close()
+  val head = lines.head.split(",").map(_.trim)
+  lines.tail.filter(_.nonEmpty).map { line =>
+    val c = line.split(",", -1).map(_.trim)
+    c(0) -> head.indices.drop(1).flatMap { i =>
+      if (i < c.length && c(i).nonEmpty && c(i) != "N/A") Some(head(i) -> c(i).toDouble) else None
+    }.toMap
+  }.toMap
+}
+
+/** MW procured and what it cost, for one direction of one country. */
+class AfrrAcc {
+  var cost = 0.0      // EUR, over the window
+  var mwh  = 0.0      // MW of capacity times the hours it was held for
+  var bids = 0L
+  def add(mw: Double, hours: Double, eurPerMwH: Double): Unit = {
+    cost += mw * hours * eurPerMwH; mwh += mw * hours; bids += 1
+  }
+  def price = if (mwh > 0) cost / mwh else Double.NaN
+}
+
+@main
+def afrrPrices(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val cache = dir / "entsoe-afrr"
+  val token = entsoeKey()
+
+  // Four weeks, so that every weekday is counted the same number of times, ending with the
+  // last complete week before this edition's cut-off. The days are central European, which
+  // is the day the continental auctions are cleared for; the Baltic and Balkan TSOs publish
+  // on their own midnight, an hour earlier, and a series is counted in the window its own
+  // period starts in, so nothing is counted twice and nothing is dropped in between.
+  val day0 = java.time.Instant.parse("2026-08-31T22:00:00Z")   // 1 September 2026, 00:00 CEST
+  val DAYS = 28
+  val fmt = java.time.format.DateTimeFormatter.ofPattern("yyyyMMddHHmm")
+    .withZone(java.time.ZoneOffset.UTC)
+  val winEnd = day0.plus(java.time.Duration.ofDays(DAYS))
+
+  val TS_RE  = "(?s)<TimeSeries>.*?</TimeSeries>".r
+  val PT_RE  = "(?s)<Point>.*?</Point>".r
+  def tag(s: String, t: String): Option[String] =
+    s"<$t>([^<]*)</$t>".r.findFirstMatchIn(s).map(_.group(1))
+
+  // The platform writes its instants without seconds ("2026-08-31T22:00Z"), which
+  // Instant.parse rejects and the offset-date-time format accepts.
+  def instant(t: String): java.time.Instant =
+    java.time.OffsetDateTime.parse(t, java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+      .toInstant
+
+  def resMinutes(r: String): Int = r match {
+    case "PT15M" => 15; case "PT30M" => 30; case "PT60M" | "PT1H" => 60
+    case "P1D"   => 1440
+    case other   => sys.error(s"afrrPrices: unknown resolution $other")
+  }
+
+  val WINDOWS = (0 until DAYS).map { d =>
+    val a = day0.plus(java.time.Duration.ofDays(d))
+    (fmt.format(a), fmt.format(a.plus(java.time.Duration.ofDays(1))))
+  }
+  // Demand over the same window and the same days, from the same platform, so that the
+  // reserve bill can be put beside the electricity it covers. Sweden is fetched too: its
+  // prices come from elsewhere, but its denominator does not have to.
+  val LOAD_AREAS = AFRR_AREAS :+ ("Sweden" -> "10YSE-1--------K")
+  afrrPrefetch(token,
+    for ((_, area) <- AFRR_AREAS; (a, b) <- WINDOWS) yield (area, a, b),
+    for ((_, area) <- LOAD_AREAS; (a, b) <- WINDOWS) yield (area, a, b), cache)
+
+  val demandMwh = collection.mutable.Map[String, Double]()
+  for ((country, area) <- LOAD_AREAS; (from, to) <- WINDOWS) {
+    for (doc <- afrrDocs(afrrLoad(token, area, from, to, cache))
+         if !doc.contains("Acknowledgement_MarketDocument");
+         tsRaw <- TS_RE.findAllIn(doc.replaceAll("\\s+", " "))) {
+      val start = instant(tag(tsRaw, "start").get)
+      if (!start.isBefore(day0) && start.isBefore(winEnd)) {
+        val res = resMinutes(tag(tsRaw, "resolution").get)
+        for (p <- PT_RE.findAllIn(tsRaw); q <- tag(p, "quantity"))
+          demandMwh(country) = demandMwh.getOrElse(country, 0.0) + q.toDouble * res / 60.0
+      }
+    }
+  }
+  for ((c, _) <- LOAD_AREAS) require(demandMwh.getOrElse(c, 0.0) > 0,
+    s"afrrPrices: no load returned for $c - the demand denominator would be zero")
+
+  val fx = ecbRates(dir)
+  /** The reference rate for the day the contract starts, or the last one published before
+    * it, because the Bank publishes on working days only. */
+  def toEur(amount: Double, cur: String, day: java.time.Instant): Double = {
+    if (cur == "EUR") amount
+    else {
+      var d = java.time.LocalDate.ofInstant(day, java.time.ZoneOffset.UTC)
+      var rate = Option.empty[Double]
+      var back = 0
+      while (rate.isEmpty && back < 10) {
+        rate = fx.get(d.toString).flatMap(_.get(cur)); d = d.minusDays(1); back += 1
+      }
+      amount / rate.getOrElse(sys.error(s"afrrPrices: no ECB reference rate for $cur near $day"))
+    }
+  }
+
+  val acc = collection.mutable.Map[(String, String), AfrrAcc]()
+  // Which hours of the window the country held capacity for at all, so that a price struck
+  // in a handful of hours is not read beside one struck in every hour of four weeks.
+  val held = collection.mutable.Map[(String, String), collection.mutable.Set[Int]]()
+  // The one auction the conversion is checked against, kept separately as it is parsed.
+  val check = collection.mutable.Map[(String, String), AfrrAcc]()
+  var longContracts = 0L
+  // How much capacity each country bought on a contract longer than a day. Where that is
+  // most of what it bought, what is left is not that country's market and is dropped.
+  val longMwh = collection.mutable.Map[String, Double]()
+
+  for ((country, area) <- AFRR_AREAS) {
+    var pages = 0
+    for ((from, to) <- WINDOWS) {
+      var offset = 0; var more = true
+      while (more) {
+        val docs = afrrDocs(afrrPage(token, area, from, to, offset, cache))
+        pages += 1
+        if (docs.exists(_.contains("Acknowledgement_MarketDocument"))) more = false
+        else {
+          var n = 0
+          for (doc <- docs; tsRaw <- TS_RE.findAllIn(doc.replaceAll("\\s+", " "))) {
+            n += 1
+            val dir0 = tag(tsRaw, "flowDirection.direction").getOrElse("?")
+            val direction = if (dir0 == "A01") "up" else "down"
+            val cur = tag(tsRaw, "currency_Unit.name").getOrElse("EUR")
+            val start = instant(tag(tsRaw, "start").get)
+            val end   = instant(tag(tsRaw, "end").get)
+            val periodMin = java.time.Duration.between(start, end).toMinutes.toInt
+            val res = resMinutes(tag(tsRaw, "resolution").get)
+            // A series belongs to the window its period starts in, which is what keeps the
+            // documents that straddle a boundary from being counted in both.
+            val inWindow = !start.isBefore(day0) && start.isBefore(winEnd)
+            if (inWindow && periodMin > 24 * 60) {
+              longContracts += 1
+              for (p <- PT_RE.findAllIn(tsRaw); q <- tag(p, "quantity"); mw = q.toDouble if mw > 0)
+                longMwh(country) = longMwh.getOrElse(country, 0.0) + mw * periodMin / 60.0
+            }
+            else if (inWindow) {
+              val slots = periodMin / res
+              val pts = PT_RE.findAllIn(tsRaw).toSeq.flatMap { p =>
+                for (pos <- tag(p, "position"); q <- tag(p, "quantity");
+                     pr <- tag(p, "procurement_Price.amount"))
+                  yield (pos.toInt, q.toDouble, pr.toDouble)
+              }.sortBy(_._1)
+              // The points are a variable-sized block curve: a value holds until the next
+              // position, and the last holds to the end of the period. Several operators
+              // put one point per accepted bid, all of them at the same position, so the
+              // span has to run to the next DISTINCT position - measured to the next point,
+              // those bids get a duration of zero and fall out of the average silently.
+              val poss = pts.map(_._1).distinct.sorted
+              val nextPos = poss.zipWithIndex.map { case (p, i) =>
+                p -> (if (i + 1 < poss.length) poss(i + 1) else slots + 1) }.toMap
+              for ((pos, mw, amount) <- pts if mw > 0) {
+                val until = nextPos(pos)
+                val hrs = (until - pos) * res / 60.0
+                val eurPerMwH = toEur(amount, cur, start) * 60.0 / res
+                acc.getOrElseUpdate((country, direction), new AfrrAcc).add(mw, hrs, eurPerMwH)
+                val from0 = java.time.Duration.between(day0, start).toMinutes.toInt + (pos - 1) * res
+                val hs = held.getOrElseUpdate((country, direction), collection.mutable.Set[Int]())
+                for (h <- from0 / 60 to math.max(from0, from0 + (until - pos) * res - 1) / 60) hs += h
+                if (start == day0 && (country == "Germany" || country == "Austria"))
+                  check.getOrElseUpdate((country, direction), new AfrrAcc).add(mw, hrs, eurPerMwH)
+              }
+            }
+          }
+          if (n < 100) more = false else offset += 100
+        }
+      }
+    }
+    val u = acc.get((country, "up")); val dn = acc.get((country, "down"))
+    println(f"$country%-13s pages $pages%5d   up ${u.map(_.price).getOrElse(Double.NaN)}%7.2f EUR/MW/h" +
+            f" on ${u.map(_.mwh / 1000).getOrElse(0.0)}%7.1f GWh   " +
+            f"down ${dn.map(_.price).getOrElse(Double.NaN)}%7.2f on ${dn.map(_.mwh / 1000).getOrElse(0.0)}%7.1f GWh")
+  }
+
+  // The check. regelleistung.net's result overview for the 00:00-04:00 block of
+  // 1 September 2026 prints an average capacity price in (EUR/MW)/h and an allocated volume
+  // per country, plus how much of it each country exported to the others; the volume
+  // procured from a country's own bidders, which is what the platform reports, is the
+  // allocated volume plus its export. If either of these drifts, the price is not per
+  // settlement period after all and everything above is wrong by a factor of four.
+  val REG = List(
+    ("Germany", "up", 2.30, 1967.0), ("Germany", "down", 0.68, 1743.0),
+    ("Austria", "up", 2.28, 135.0),  ("Austria", "down", 0.78, 205.0))
+  for ((country, direction, price, mw) <- REG) {
+    val a = check.getOrElse((country, direction),
+      sys.error(s"afrrPrices: nothing parsed for $country $direction in the check auction"))
+    val gotMw = a.mwh / 4.0   // the block is four hours long
+    println(f"  check $country%-8s $direction%-4s  ${a.price}%5.2f EUR/MW/h vs $price%5.2f" +
+            f"   ${gotMw}%6.0f MW vs $mw%6.0f")
+    require(math.abs(a.price - price) < 0.05,
+      f"afrrPrices: $country $direction came out at ${a.price}%.2f EUR/MW/h where " +
+      f"regelleistung.net prints $price%.2f - the price is not per settlement period")
+    require(math.abs(gotMw - mw) / mw < 0.05,
+      f"afrrPrices: $country $direction came out at ${gotMw}%.0f MW where regelleistung.net " +
+      f"prints $mw%.0f")
+  }
+  println(s"  dropped $longContracts series procured on a contract longer than a day")
+
+  // Sweden, from Svenska kraftnaet's own open data service, because the platform has
+  // nothing for it. Hourly rows, a marginal price in EUR/MW and a volume in MW, published
+  // only for the hours in which Sweden procured aFRR locally - which is most of the hours
+  // for the downward product and very few of them for the upward one.
+  val seCsv = dir / "se-afrr-capacity.csv"
+  if (!os.exists(seCsv)) os.write.over(seCsv, requests.get(
+    "https://data.svk.se/datastore/dump/6351d2cc-1657-43eb-b112-b8408c700529?format=csv",
+    readTimeout = 300000, connectTimeout = 30000).text())
+  val seLines = os.read.lines(seCsv)
+  val seHead = seLines.head.split(",").toList
+  def col(n: String) = { val i = seHead.indexOf(n); require(i >= 0, s"no column $n"); i }
+  val (cT, cD, cP, cV) = (col("start_time_utc"), col("reserve_direction"), col("price"), col("volume"))
+  var seRows = 0
+  for (line <- seLines.tail if line.nonEmpty) {
+    val f = line.split(",", -1)
+    require(f.length > math.max(cV, cP), s"afrrPrices: short row in the Swedish dump: $line")
+    val t = java.time.Instant.parse(f(cT) + "Z")
+    if (!t.isBefore(day0) && t.isBefore(winEnd)) {
+      seRows += 1
+      acc.getOrElseUpdate(("Sweden", f(cD)), new AfrrAcc).add(f(cV).toDouble, 1.0, f(cP).toDouble)
+      held.getOrElseUpdate(("Sweden", f(cD)), collection.mutable.Set[Int]()) +=
+        (java.time.Duration.between(day0, t).toHours.toInt)
+    }
+  }
+  require(seRows > 0, "afrrPrices: no Swedish rows inside the window - has the dump moved?")
+
+  // One country's series cannot be read on the same basis as the rest, and the reason is
+  // computable rather than a matter of taste, so it is computed rather than asserted.
+  // Switzerland buys almost all of its aFRR on weekly contracts, whose figure is the price
+  // of the contract and not of a settlement period; those series are dropped above, and
+  // what is left is a remnant of the Swiss market rather than the Swiss market. Coverage
+  // is deliberately NOT a gate: Sweden holds upward capacity in forty hours of the
+  // window, and that is a fact about Sweden worth showing, not a defect to hide. The
+  // figure carries the volume beside the price so a thin one reads as thin.
+  val WINDOW_HOURS = DAYS * 24
+  // The second gate. A country's whole aFRR capacity bill, divided by the electricity it
+  // was bought to keep on frequency, is a quantity no unit convention can hide in: this
+  // chapter already quotes Germany's entire reserve procurement at 1.1 euros per
+  // megawatt-hour of demand, and Germany's aFRR alone comes out here at 0.97 of that, so
+  // the reading is sound where the arithmetic lands near it. Five euros is five times
+  // that whole German bill, and about a tenth of a wholesale price: a series that implies
+  // more is not being read on the same basis as the rest, whatever its basis is.
+  val MAX_EUR_PER_MWH = 5.0
+  val dropped = collection.mutable.Map[String, String]()
+  for (c <- acc.keys.map(_._1).toSeq.distinct.sorted) {
+    val kept = acc.collect { case ((cc, _), a) if cc == c => a.mwh }.sum
+    val long = longMwh.getOrElse(c, 0.0)
+    val cover = held.collect { case ((cc, _), h) if cc == c => h.size }.maxOption.getOrElse(0)
+    val bill = acc.collect { case ((cc, _), a) if cc == c => a.cost }.sum
+    val perMwh = bill / demandMwh.getOrElse(c, Double.NaN)
+    if (long > kept)
+      dropped(c) = f"${100 * long / (long + kept)}%.0f%% of its capacity bought on contracts longer than a day"
+    else if (perMwh > MAX_EUR_PER_MWH)
+      dropped(c) = f"implies ${perMwh}%.1f EUR per MWh of demand for aFRR capacity alone"
+    println(f"  $c%-13s kept ${kept / 1000}%8.1f GWh, long ${long / 1000}%8.1f GWh, " +
+            f"held $cover%3d of $WINDOW_HOURS h, bill ${perMwh}%6.2f EUR/MWh of demand")
+  }
+  for ((c, why) <- dropped.toSeq.sorted) println(s"  excluded $c: $why")
+
+  val out = new StringBuilder
+  out ++= "country,direction,eur_mw_h,gwh,hours_held,eur_per_mwh_demand,source\n"
+  val rows = acc.toSeq.filterNot { case ((c, _), _) => dropped.contains(c) }
+                      .sortBy { case ((c, d), _) => (c, d) }
+  for (((country, direction), a) <- rows) {
+    val src = if (country == "Sweden") "Svenska kraftnat" else "ENTSO-E"
+    // The last number is the country's whole aFRR capacity bill over the window per
+    // megawatt-hour of its demand over the same window, so it repeats down both rows of
+    // a country. It is what the second gate is applied to, and what lets the text put a
+    // price per megawatt beside the electricity that megawatt was held for.
+    val perMwh = acc.collect { case ((cc, _), x) if cc == country => x.cost }.sum / demandMwh(country)
+    out ++= f"$country,$direction,${a.price}%.3f,${a.mwh / 1000}%.3f," +
+            f"${held((country, direction)).size},${perMwh}%.3f,$src\n"
+  }
+  os.write.over(dir / "afrr-capacity-price.csv", out.toString)
+  println(s"wrote data-refresh/afrr-capacity-price.csv (${rows.size} rows, $DAYS days from ${fmt.format(day0)})")
+
+  val ups = rows.collect { case ((c, "up"), a) if a.mwh > 0 => c -> a.price }.sortBy(-_._2)
+  println(f"dearest upward capacity: ${ups.head._1} at ${ups.head._2}%.1f EUR/MW/h; " +
+          f"cheapest ${ups.last._1} at ${ups.last._2}%.2f; a factor of ${ups.head._2 / ups.last._2}%.0f")
+  println("render:")
+  println("  uv run figures/afrr_capacity_price.py data-refresh/afrr-capacity-price.csv " +
+          "without-hot-air/Images/fig-afrr-capacity-price.svg")
+}
+
 // ---- GB capture prices (the cannibalization figure) from Elexon BMRS ----
 // Half-hourly GB generation by fuel type and the market-index price (APXMIDP),
 // joined on the settlement period. Capture price = sum(generation*price)/sum(generation);

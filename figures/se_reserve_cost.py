@@ -48,19 +48,27 @@ for yr in years:
             outside.append({"mid": mid, "txt": txt, "col": col})
     if not outside:
         continue
-    # Spread the labels apart, re-centre the group on its own midpoints rather than
-    # only pushing upward, and keep the whole group inside the bar so it can never
-    # collide with the total above it.
+    # Spread the labels apart and re-centre the group on its own midpoints rather than
+    # only pushing upward.
     target = [o["mid"] for o in outside]
     for i in range(1, len(target)):
         target[i] = max(target[i], target[i - 1] + SEP)
     shift = (sum(o["mid"] for o in outside) - sum(target)) / len(target)
     target = [ty + shift for ty in target]
+    # Then keep the text boxes inside the bar, not merely their centres: the labels are
+    # drawn va="center", so half a line stands above the topmost centre and below the
+    # bottom one, and clamping the centre to the bar top still leaves the top label level
+    # with the total printed above it. A group taller than the bar cannot satisfy both
+    # ends at once, and lifting it clear of the bottom would then undo the clamp at the
+    # top, so the rise is capped by whatever headroom the top clamp has left.
     top = float(totals.loc[yr])
-    if target[-1] > top:
-        target = [ty - (target[-1] - top) for ty in target]
-    if target[0] < 0:
-        target = [ty - target[0] for ty in target]
+    hi, lo = top - SEP / 2, SEP / 2
+    if target[-1] > hi:
+        target = [ty - (target[-1] - hi) for ty in target]
+    if target[0] < lo:
+        rise = min(lo - target[0], hi - target[-1])
+        if rise > 0:
+            target = [ty + rise for ty in target]
     for o, ty in zip(outside, target):
         # The leader stays anchored on the segment it names even when the text is
         # displaced, and is tinted with that product's colour so the pairing survives.

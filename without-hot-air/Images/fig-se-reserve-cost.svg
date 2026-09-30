@@ -805,26 +805,26 @@ z
     </g>
    </g>
    <g id="patch_14">
-    <path d="M 154.585311 140.362497 
-Q 150.254819 139.692054 145.924326 139.02161 
+    <path d="M 154.585311 143.151557 
+Q 150.166818 141.407633 145.748324 139.663709 
 " style="fill: none; stroke: #c9ccd4; stroke-width: 0.9; stroke-linecap: round"/>
    </g>
    <g id="text_12">
     <!-- 533 -->
-    <g style="fill: #52514e" transform="translate(157.084057 144.240721) scale(0.09 -0.09)">
+    <g style="fill: #52514e" transform="translate(157.084057 149.429905) scale(0.09 -0.09)">
      <use xlink:href="#ArialMT-18"/>
      <use xlink:href="#ArialMT-16" transform="translate(55.609375 0)"/>
      <use xlink:href="#ArialMT-16" transform="translate(111.21875 0)"/>
     </g>
    </g>
    <g id="patch_15">
-    <path d="M 154.585311 131.976788 
-Q 150.269012 132.168117 145.952713 132.359446 
+    <path d="M 154.585311 134.765848 
+Q 150.243464 133.916838 145.901616 133.067828 
 " style="fill: none; stroke: #e34948; stroke-width: 0.9; stroke-linecap: round"/>
    </g>
    <g id="text_13">
     <!-- 100 -->
-    <g style="fill: #52514e" transform="translate(157.084057 133.862353) scale(0.09 -0.09)">
+    <g style="fill: #52514e" transform="translate(157.084057 139.051537) scale(0.09 -0.09)">
      <use xlink:href="#ArialMT-14"/>
      <use xlink:href="#ArialMT-13" transform="translate(55.609375 0)"/>
      <use xlink:href="#ArialMT-13" transform="translate(111.21875 0)"/>
