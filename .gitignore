@@ -12,3 +12,9 @@ data-refresh/rdw/
 data-refresh/ar6-world-v1.1.csv
 data-refresh/ar6-r10-v1.1.csv
 data-refresh/ar6-iso3-v1.1.csv
+
+# ~900 MB of per-bid aFRR procurement XML, and 14 MB of Swedish aFRR rows,
+# both refetched by afrrPrices
+data-refresh/entsoe-afrr/
+data-refresh/se-afrr-capacity.csv
+data-refresh/ecb-eurofxref-hist.zip

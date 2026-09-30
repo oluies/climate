@@ -11,12 +11,25 @@ new in their entirety. The table below is the authoritative list of them.
 
 ## Latest changes
 
-Last updated **28 September 2026**. The complete history is in the
+Last updated **30 September 2026**. The complete history is in the
 [repository](https://github.com/oluies/climate/commits/main).
 
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
+| 30 September 2026              | 28a          | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="What a megawatt of reserve costs, across Europe"}              |
+|                                |              | Chapter 28a gains the European price comparison the section was missing. Over the four weeks from 1 to 28 September 2026 a megawatt of   |
+|                                |              | upward aFRR capacity cost 1.01 euros an hour in Finland and 124 in Poland, a factor of 123 for a product the same European regulation    |
+|                                |              | defines. Germany, with more weather-dependent generation than any of the seventeen systems shown, sits mid-range at 12.24 and buys by    |
+|                                |              | far the most of it, close to 2 000 megawatts each hour; its whole aFRR bill works out at 1.07 euros per megawatt-hour of demand, which   |
+|                                |              | is what all of German reserve procurement came to in 2024. Sweden is not on the platform at all and barely buys the product: 0.32        |
+|                                |              | gigawatt-hours of upward capacity in forty of the window's 672 hours, against Germany's 1 344, and it pays more to absorb than to        |
+|                                |              | deliver. The footnote sets out the three traps in the source that the figure had to avoid - a price quoted per settlement period rather  |
+|                                |              | than per hour, four operators reporting in their own currency, and bids published at a shared position - and the two stated tests that   |
+|                                |              | leave Switzerland, Hungary, Greece and Slovakia out.                                                                                     |
+|                                |              | New figure: fig-afrr-capacity-price.svg.                                                                                                 |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 28 September 2026              | 28a, 26      | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="Inertia, ancillary services and the balancing market"}         |
 |                                |              | Chapter 28a gains a section separating three things the argument usually runs together. Rotational energy governs how fast the frequency |
 |                                |              | falls after a fault; ancillary services are what the operator buys; the balancing market is where energy is activated per area and per   |
