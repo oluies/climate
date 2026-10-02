@@ -866,7 +866,8 @@ def entsoeKey(): String =
       .call(check = false, stderr = os.Pipe)
     val k = r.out.trim()
     if (r.exitCode == 0 && k.nonEmpty) k
-    else sys.error("afrrPrices needs a free ENTSO-E Transparency key. Register at " +
+    // Three steps share this now, so the message names none of them.
+    else sys.error("this step needs a free ENTSO-E Transparency key. Register at " +
       "transparency.entsoe.eu, then put the token in ENTSOE_API_KEY or in the macOS " +
       "keychain as a generic password with service name ENTSOE_API_KEY.")
   }
@@ -2695,6 +2696,322 @@ def chapter11aPeakShare(): Unit = {
   println("render:")
   println("  uv run figures/dc_peak_share.py data-refresh/dc-peak-share.csv " +
           "without-hot-air/Images/fig-dc-peak-share.svg")
+}
+
+// ---- Chapter 11a: Swedish load per bidding zone ----
+// The denominator a per-zone reading of figure 11a.1 would need. That figure
+// divides data-centre IT capacity by a *national* peak, which hides where the
+// machines sit: the Swedish connection queue is concentrated in Malardalen,
+// Stockholm, Uppsala and Gavleborg, every one of them inside SE3, while SE1's
+// entire peak is a tenth of the national one. The same megawatts mean something
+// different in each zone, and only the zonal peak says how different.
+//
+// This step supplies the denominator and nothing else. There is no published
+// count of data-centre capacity per Swedish bidding zone - the EUDCA monitor
+// behind figure 11a.1 is national, and the one SE3 figure in circulation is the
+// one the chapter's own note sets aside as unreconcilable - so nothing here
+// divides by it. What it can do is show how far the answer moves with the
+// denominator, which is the argument for wanting the zonal count rather than a
+// substitute for having it.
+//
+// Two sources were tried and one survives.
+//
+// Svenska kraftnat does publish consumption per elomrade, hourly, through
+// Mimer's public statistics page. It stops at the end of 2022: every month from
+// January 2023 on comes back empty for SN1 to SN4, while the national SN0
+// series and the per-zone *production* series both run on into 2025. And
+// data.svk.se, the open data service the aFRR step uses for Swedish reserve
+// prices, carries no load or consumption dataset at all - ten datasets, all of
+// them balancing markets, prices or cross-border flows. So Svenska kraftnat
+// cannot answer this for a chapter about 2025 and 2031. What it can do is check
+// the source that can, and seZonalPeakSvkCheck below is that check.
+//
+// The series is therefore ENTSO-E Actual Total Load (A65/A16), asked for one
+// bidding zone at a time through the same Transparency helpers the aFRR step
+// already uses.
+//
+// Two things about the data, both handled below.
+//
+// The resolution changes inside the window. The platform moved Sweden to a
+// fifteen-minute market time unit during 2025, so the early part of a winter
+// year is hourly and the late part quarter-hourly. Each Period is read at its
+// own resolution, and the CSV carries the resolution each peak was found at,
+// because a shorter measuring interval finds a higher peak in the same demand:
+// a 2026 peak and a 2024 peak are not the same measurement and the chapter has
+// to say so.
+//
+// And one day is corrupt. On 28 March 2026 load is reallocated between zones
+// for eighteen hours - SE1 and SE2 rise two- to fourfold while SE3 and SE4
+// fall, SE4 to 703 MW against a 2453 MW mean, and the national total reads
+// 19 GW in late March where the week before reads 14 GW. Left in, it inflates
+// SE1's peak by 79% and SE2's by 61%. The platform's own national series is no
+// help: it is the sum of the four zonal ones to the megawatt, which the step
+// checks and prints, so it carries the fault rather than contradicting it. The
+// gate below finds the day from the shape of the fault rather than from its
+// date, which is what makes it still useful next year.
+val SE_ZONES = List("SE1" -> "10Y1001A1001A44P", "SE2" -> "10Y1001A1001A45N",
+                    "SE3" -> "10Y1001A1001A46L", "SE4" -> "10Y1001A1001A47J")
+val SE_NATIONAL = "10YSE-1--------K"
+
+/** Every (instant, MW, minutes) in one Actual Total Load document, each Period read
+  * at its own resolution and each Point placed by the position the document gives it
+  * rather than by the order it arrives in. The aFRR step only ever sums load, so it
+  * can ignore both of those; a peak has to know when. */
+def loadPoints(raw: Array[Byte]): Seq[(java.time.Instant, Double, Int)] = {
+  val PERIOD = "(?s)<Period>.*?</Period>".r
+  val POINT  = "(?s)<Point>.*?</Point>".r
+  def tag(s: String, t: String) = s"<$t>([^<]*)</$t>".r.findFirstMatchIn(s).map(_.group(1))
+  def mins(r: String) = r match {
+    case "PT15M" => 15; case "PT30M" => 30; case "PT60M" | "PT1H" => 60
+    case other   => sys.error(s"loadPoints: unknown resolution $other")
+  }
+  for {
+    doc <- afrrDocs(raw) if !doc.contains("Acknowledgement_MarketDocument")
+    per <- PERIOD.findAllIn(doc.replaceAll("\\s+", " ")).toSeq
+    res  = mins(tag(per, "resolution").getOrElse(sys.error("loadPoints: a Period with no resolution")))
+    t0   = java.time.OffsetDateTime.parse(
+             tag(per, "start").getOrElse(sys.error("loadPoints: a Period with no start")),
+             java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME).toInstant
+    pt  <- POINT.findAllIn(per).toSeq
+    pos <- tag(pt, "position")
+    q   <- tag(pt, "quantity")
+  } yield (t0.plus(java.time.Duration.ofMinutes(res.toLong * (pos.toInt - 1))), q.toDouble, res)
+}
+
+@main
+def seZonalPeak(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val cache = dir / "entsoe-load-se"
+  val token = entsoeKey()
+  val stamp = java.time.format.DateTimeFormatter.ofPattern("yyyyMMddHHmm")
+    .withZone(java.time.ZoneOffset.UTC)
+  def utcDay(t: java.time.Instant) = t.atZone(java.time.ZoneOffset.UTC).toLocalDate
+  // The CSV keeps the full ISO instant; the printed column is narrower than that.
+  val shown = java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+    .withZone(java.time.ZoneOffset.UTC)
+  // A winter year rather than a calendar one, because a Swedish peak is a
+  // January or February morning and a window cut at the new year would split
+  // the thing being measured in half. Pinned rather than rolling: these numbers
+  // get quoted, so the window has to be the same the next time it is run. The
+  // platform refuses a range longer than a year, so this is a day short of one.
+  val from = java.time.Instant.parse("2025-07-01T00:00:00Z")
+  val to   = java.time.Instant.parse("2026-06-30T00:00:00Z")
+  def load(name: String, eic: String) = loadPoints(entsoeDoc(token,
+    Map("documentType" -> "A65", "processType" -> "A16", "outBiddingZone_Domain" -> eic,
+        "periodStart" -> stamp.format(from), "periodEnd" -> stamp.format(to)),
+    s"load_${name}_${stamp.format(from)}", cache))
+
+  println(s"ENTSO-E actual total load per bidding zone, ${utcDay(from)} to ${utcDay(to)}")
+  val series = SE_ZONES.map { case (zone, eic) =>
+    val pts = load(zone, eic)
+    // A year is 8760 points hourly and 35040 quarter-hourly, so anything under
+    // eight thousand means the platform answered with a fragment.
+    require(pts.size > 8000,
+      s"seZonalPeak: only ${pts.size} points for $zone - the platform answered with a fragment")
+    zone -> pts.map(p => p._1 -> (p._2, p._3)).toMap
+  }.toMap
+  val common = SE_ZONES.map { case (z, _) => series(z).keySet }.reduce(_ intersect _)
+    .toSeq.sortBy(_.toEpochMilli)
+  require(common.size > 8000,
+    s"seZonalPeak: only ${common.size} instants where all four zones report")
+
+  // Not a source but a check on one, and it comes out negative: if the
+  // platform's national series is the sum of the zonal ones then it cannot
+  // corroborate them, and neither the chapter nor the gate below may treat it
+  // as a second opinion.
+  val nat = load("SE", SE_NATIONAL).map(p => p._1 -> p._2).toMap
+  val shared = common.filter(nat.contains)
+  require(shared.nonEmpty, "seZonalPeak: the national series shares no instant with the zonal ones")
+  val gaps = shared.map(t => SE_ZONES.map { case (z, _) => series(z)(t)._1 }.sum - nat(t))
+  println(f"  the national series against the sum of the four zones, over ${shared.size} shared " +
+          f"instants: mean ${gaps.sum / gaps.size}%+.1f MW, worst ${gaps.maxBy(math.abs)}%+.0f MW")
+
+  // The fault is a split rather than a level, so the detector has to be one
+  // too. Each northern zone's load as a fraction of SE3's barely moves with the
+  // weather, because a cold morning lifts all four zones together: the genuine
+  // cold snap of 27 December 2025 reaches 2.2 times the median SE2/SE3 and sits
+  // in a continuum with the other cold days of that month, while 28 March 2026
+  // reaches 5.2 and is the only day anywhere past three. Three times the median
+  // is a gap in the data, not a threshold chosen to fit it.
+  def med(xs: Seq[Double]) = { val s = xs.sorted; s(s.length / 2) }
+  val FLAG = 3.0
+  val bad = (for {
+    zone   <- List("SE1", "SE2")
+    rs      = common.map(t => t -> series(zone)(t)._1 / series("SE3")(t)._1)
+    m       = med(rs.map(_._2))
+    (t, r) <- rs if r > FLAG * m
+  } yield utcDay(t)).distinct.sortBy(_.toEpochDay)
+  for (d <- bad) println(f"  dropping $d: the split between zones passes $FLAG%.0f times its " +
+    f"median at ${common.count(t => utcDay(t) == d)} instants of that day")
+  // The list is cut short on purpose: when this gate fires it is usually firing
+  // on most of the year, and three hundred dates in an exception message hide
+  // the sentence that says what to do about them.
+  require(bad.size <= 3, s"seZonalPeak: ${bad.size} days carry the zone-reallocation signature " +
+    s"(${bad.take(5).mkString(", ")}${if (bad.size > 5) ", ..." else ""}). That is no longer a " +
+    "handful of faults to drop, so what the platform means by a zonal series has changed and " +
+    "none of these numbers should be quoted until someone has looked.")
+  val clean = common.filterNot(t => bad.contains(utcDay(t)))
+
+  // The national peak is computed from the zones rather than taken from the
+  // national series, which the check above showed to be the same thing with the
+  // bad day still in it.
+  val (natAt, natPeak) = clean.map(t => t -> SE_ZONES.map { case (z, _) => series(z)(t)._1 }.sum).maxBy(_._2)
+  require(natPeak > 20000 && natPeak < 32000,
+    f"seZonalPeak: a Swedish coincident peak of ${natPeak}%.0f MW is outside anything the " +
+    "grid has met - the series is not what this step thinks it is")
+
+  case class Z(zone: String, peak: Double, at: java.time.Instant, res: Int,
+               mean: Double, twh: Double, share: Double)
+  val rows = for ((zone, _) <- SE_ZONES) yield {
+    val s = series(zone)
+    val (at, (peak, res)) = clean.map(t => t -> s(t)).maxBy(_._2._1)
+    val mwh  = clean.map(t => s(t)._1 * s(t)._2 / 60.0).sum
+    val hrs  = clean.map(t => s(t)._2 / 60.0).sum
+    val mean = mwh / hrs
+    // A zone that reports a mean above its peak, or a load factor outside the
+    // range any grid region lives in, is not being read correctly.
+    require(mean < peak && mean / peak > 0.2 && mean / peak < 0.95,
+      f"seZonalPeak: $zone comes out at a load factor of ${mean / peak}%.2f on a peak of " +
+      f"${peak}%.0f MW, which is not a reading of a grid region's demand")
+    Z(zone, peak, at, res, mean, mwh / 1e6, 100 * s(natAt)._1 / natPeak)
+  }
+
+  val out = new StringBuilder
+  out ++= "zone,peak_mw,peak_at_utc,peak_resolution_min,mean_mw,twh,load_factor,share_of_national_peak_pct\n"
+  println("  zone  peak MW           at (UTC)  res  mean MW     TWh    LF   % nat pk")
+  for (r <- rows) {
+    println(f"  ${r.zone}%-4s ${r.peak}%8.0f  ${shown.format(r.at)}%16s  ${r.res}%3d " +
+            f"${r.mean}%8.0f ${r.twh}%7.1f ${r.mean / r.peak}%5.2f ${r.share}%10.1f")
+    out ++= f"${r.zone},${r.peak}%.0f,${r.at},${r.res},${r.mean}%.0f,${r.twh}%.1f," +
+            f"${r.mean / r.peak}%.2f,${r.share}%.1f\n"
+  }
+  val natMwh = clean.map(t => SE_ZONES.map { case (z, _) => series(z)(t)._1 }.sum * series("SE3")(t)._2 / 60.0).sum
+  val natHrs = clean.map(t => series("SE3")(t)._2 / 60.0).sum
+  val natMean = natMwh / natHrs
+  println(f"  ${"SE"}%-4s ${natPeak}%8.0f  ${shown.format(natAt)}%16s  ${series("SE3")(natAt)._2}%3d " +
+          f"${natMean}%8.0f ${natMwh / 1e6}%7.1f ${natMean / natPeak}%5.2f ${100.0}%10.1f")
+  out ++= f"SE,${natPeak}%.0f,${natAt},${series("SE3")(natAt)._2},${natMean}%.0f," +
+          f"${natMwh / 1e6}%.1f,${natMean / natPeak}%.2f,100.0\n"
+  os.write.over(dir / "se-zonal-peak.csv", out.toString)
+  println("wrote data-refresh/se-zonal-peak.csv")
+
+  // Zonal peaks do not add up to the national one and the chapter has to say so,
+  // because a reader will otherwise add the per-zone percentages and get a
+  // number that means nothing.
+  val sumPeaks = rows.map(_.peak).sum
+  println(f"  the four zonal peaks fall on four different days and sum to ${sumPeaks}%.0f MW, " +
+          f"${100 * (sumPeaks / natPeak - 1)}%.0f%% above the coincident national ${natPeak}%.0f MW")
+
+  // Figure 11a.1's Sweden row in megawatts, and the same megawatts against
+  // SE3's own peak. Read from the file that step writes rather than copied, so
+  // that the two cannot drift apart.
+  val shareCsv = dir / "dc-peak-share.csv"
+  require(os.exists(shareCsv), "seZonalPeak: run chapter11aPeakShare first - this step reads " +
+    "Sweden's row out of data-refresh/dc-peak-share.csv rather than keeping a second copy of it")
+  val seRow = os.read.lines(shareCsv).tail.map(_.split(",")).find(_(0) == "Sweden")
+    .getOrElse(sys.error("seZonalPeak: no Sweden row in dc-peak-share.csv"))
+  val se3 = rows.find(_.zone == "SE3").get
+  for ((label, col) <- List("2025" -> 1, "2031" -> 2)) {
+    val share = seRow(col).toDouble
+    val mw = share / 100 * natPeak
+    println(f"  figure 11a.1's $label Sweden row is $share%.1f%% of ${natPeak}%.0f MW = ${mw}%.0f MW " +
+            f"of IT capacity; against SE3's own ${se3.peak}%.0f MW peak the same megawatts are " +
+            f"${100 * mw / se3.peak}%.1f%%")
+  }
+}
+
+// The one cross-check available on the series above, and the record of why
+// Svenska kraftnat cannot supply that series itself. Mimer publishes consumption
+// per elomrade hourly, as balance-settled energy in kWh, signed negative, with
+// the hour labelled in Swedish local time - all three undone below - but only
+// through the end of 2022. So the two sources overlap for one period and nowhere
+// near the years the chapter is about, which is worth knowing in both
+// directions: it is why figure 11a.1's denominator has to come from ENTSO-E, and
+// it is the only evidence that ENTSO-E's zonal series measures what Svenska
+// kraftnat measures.
+val MIMER_SORTS = List("TL" -> "timmatt forbrukning", "SL" -> "schablonforbrukning",
+                       "UF" -> "uppmatta forluster", "SF" -> "schablonforluster",
+                       "AL" -> "avkopplingsbar forbrukning")
+
+/** One Mimer consumption series as hourly megawatts. The export wants its dates
+  * in US order and percent-encoded - an unescaped slash is accepted and answered
+  * with an empty file rather than an error, which is the trap here - and needs no
+  * session cookie. */
+def mimerConsumption(area: String, sort: String, from: LocalDate, to: LocalDate,
+                     cache: os.Path): Map[java.time.Instant, Double] = {
+  val d = java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy 00:00:00")
+  val f = cache / s"mimer-$area-$sort-$from.csv"
+  if (!os.exists(f)) {
+    val q = Seq("PeriodFrom" -> d.format(from), "PeriodTo" -> d.format(to),
+                "ConstraintAreaId" -> area, "ProductionSortId" -> sort, "IsConsumption" -> "True")
+      .map { case (k, v) => s"$k=${java.net.URLEncoder.encode(v, "UTF-8")}" }.mkString("&")
+    val body = requests.get(s"https://mimer.svk.se/ProductionConsumption/DownloadText?$q",
+      readTimeout = 180000, connectTimeout = 30000).text()
+    // An out-of-range period comes back as a header and nothing else, and that
+    // is not an answer worth keeping: cached, it would go on reporting a gap in
+    // Mimer long after Svenska kraftnat had filled it in.
+    if (body.linesIterator.exists(_.startsWith("20"))) {
+      os.makeDir.all(cache); os.write.over(f, body)
+    } else return Map.empty
+  }
+  val rows = os.read.lines(f).filter(_.startsWith("20")).map(_.split(";"))
+  rows.map { c =>
+    // Swedish local time, which is the zone's own offset on the day in question.
+    val lt = java.time.LocalDateTime.parse(c(0).replace(' ', 'T'))
+    lt.atZone(java.time.ZoneId.of("Europe/Stockholm")).toInstant -> math.abs(c(1).replace(',', '.').toDouble) / 1000.0
+  }.toMap
+}
+
+@main
+def seZonalPeakSvkCheck(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val cache = dir / "entsoe-load-se"
+  val token = entsoeKey()
+  val stamp = java.time.format.DateTimeFormatter.ofPattern("yyyyMMddHHmm")
+    .withZone(java.time.ZoneOffset.UTC)
+
+  // Where Mimer's per-zone consumption stops. Probed rather than asserted,
+  // because the whole argument for using ENTSO-E rests on it, and because the
+  // day Svenska kraftnat backfills these years this step should start saying so.
+  println("Mimer per-zone consumption (SN3, timmatt forbrukning), one week per probe:")
+  for (y <- List(2022, 2023, 2024, 2025)) {
+    val a = LocalDate.of(y, 12, 24)
+    val n = mimerConsumption("SN3", "TL", a, a.plusDays(7), cache).size
+    println(f"  $a  ${if (n > 0) s"$n hours" else "empty"}")
+  }
+
+  // The overlap: the last week Mimer covers, against the same hours from the
+  // platform. All five consumption categories, because Mimer splits what
+  // ENTSO-E reports as one number.
+  val a = LocalDate.of(2022, 12, 24)
+  val svk = MIMER_SORTS.map { case (s, _) => mimerConsumption("SN3", s, a, a.plusDays(7), cache) }
+    .reduce((x, y) => x ++ y.map { case (k, v) => k -> (x.getOrElse(k, 0.0) + v) })
+  require(svk.nonEmpty, "seZonalPeakSvkCheck: Mimer returned nothing for the overlap week - " +
+    "an unescaped slash in the date would do that silently, so check the query before the data")
+  val ent = loadPoints(entsoeDoc(token,
+    Map("documentType" -> "A65", "processType" -> "A16",
+        "outBiddingZone_Domain" -> "10Y1001A1001A46L",
+        "periodStart" -> stamp.format(a.atStartOfDay(java.time.ZoneId.of("Europe/Stockholm")).toInstant),
+        "periodEnd"   -> stamp.format(a.plusDays(7).atStartOfDay(java.time.ZoneId.of("Europe/Stockholm")).toInstant)),
+    "load_SE3_check_2022", cache)).map(p => p._1 -> p._2).toMap
+
+  val both = (svk.keySet intersect ent.keySet).toSeq.sortBy(_.toEpochMilli)
+  require(both.size > 150, s"seZonalPeakSvkCheck: only ${both.size} hours overlap, expected ~192")
+  val rel = both.map(t => 100 * (svk(t) - ent(t)) / ent(t))
+  val mean = rel.sum / rel.size
+  val sd = math.sqrt(rel.map(r => (r - mean) * (r - mean)).sum / rel.size)
+  println(f"SE3 over ${both.size} hours from $a: Svenska kraftnat against ENTSO-E " +
+          f"mean ${mean}%+.2f%%, sd ${sd}%.2f%%, worst ${rel.maxBy(math.abs)}%+.1f%%")
+  // Settled energy and metered load are not defined identically, so they are not
+  // expected to agree exactly; a few per cent apart with a tight scatter says
+  // they are the same quantity, and that is all this check is for.
+  require(math.abs(mean) < 6 && sd < 4,
+    f"seZonalPeakSvkCheck: the two sources differ by ${mean}%+.2f%% with an sd of ${sd}%.2f%%, " +
+    "which is too far apart to call them the same quantity - the zonal series should not be " +
+    "trusted on this evidence")
+  println("  close enough, and with a tight enough scatter, to read the two as the same quantity")
 }
 
 // ---- Chapter 4: the Cambridge rooftop, twenty years on ----
