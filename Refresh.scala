@@ -981,6 +981,31 @@ def afrrDocs(raw: Array[Byte]): Seq[String] =
     zis.close(); out.toSeq
   } else Seq(new String(raw, "UTF-8"))
 
+/** `<tag>value</tag>`, for the one-level-deep fields these documents use. The
+  * pattern is compiled once per tag name rather than once per call: the zonal
+  * load step asks for four of them per Point over some twenty-four thousand
+  * points a document, and compiling there cost more than the parse did. */
+val TAG_RE = new java.util.concurrent.ConcurrentHashMap[String, scala.util.matching.Regex]()
+def tag(s: String, t: String): Option[String] =
+  TAG_RE.computeIfAbsent(t, (k: String) => s"<$k>([^<]*)</$k>".r)
+    .findFirstMatchIn(s).map(_.group(1))
+
+/** The platform writes its instants without seconds ("2026-08-31T22:00Z"), which
+  * Instant.parse rejects and the offset-date-time format accepts. */
+def instant(t: String): java.time.Instant =
+  java.time.OffsetDateTime.parse(t, java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+    .toInstant
+
+/** A market time unit in minutes. P1D is here because a balancing-capacity
+  * contract can genuinely run for a whole day; a load series at that resolution
+  * is not a thing, which is why loadPoints refuses it rather than placing points
+  * a day apart. */
+def resMinutes(r: String): Int = r match {
+  case "PT15M" => 15; case "PT30M" => 30; case "PT60M" | "PT1H" => 60
+  case "P1D"   => 1440
+  case other   => sys.error(s"unknown ENTSO-E resolution $other")
+}
+
 /** European Central Bank daily reference rates, cached. Four of the twenty operators
   * report their procurement prices in their own currency - Switzerland in francs, Hungary
   * in forints, Poland in zloty, Romania in lei - and the document says which, so a step
@@ -1034,20 +1059,8 @@ def afrrPrices(): Unit = {
 
   val TS_RE  = "(?s)<TimeSeries>.*?</TimeSeries>".r
   val PT_RE  = "(?s)<Point>.*?</Point>".r
-  def tag(s: String, t: String): Option[String] =
-    s"<$t>([^<]*)</$t>".r.findFirstMatchIn(s).map(_.group(1))
-
-  // The platform writes its instants without seconds ("2026-08-31T22:00Z"), which
-  // Instant.parse rejects and the offset-date-time format accepts.
-  def instant(t: String): java.time.Instant =
-    java.time.OffsetDateTime.parse(t, java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME)
-      .toInstant
-
-  def resMinutes(r: String): Int = r match {
-    case "PT15M" => 15; case "PT30M" => 30; case "PT60M" | "PT1H" => 60
-    case "P1D"   => 1440
-    case other   => sys.error(s"afrrPrices: unknown resolution $other")
-  }
+  // tag, instant and resMinutes are top-level, beside afrrDocs: the zonal load
+  // step needs the same three and a second copy had already drifted.
 
   val WINDOWS = (0 until DAYS).map { d =>
     val a = day0.plus(java.time.Duration.ofDays(d))
@@ -2757,26 +2770,21 @@ val SE_NATIONAL = "10YSE-1--------K"
   * at its own resolution and each Point placed by the position the document gives it
   * rather than by the order it arrives in. The aFRR step only ever sums load, so it
   * can ignore both of those; a peak has to know when. */
-def loadPoints(raw: Array[Byte]): Seq[(java.time.Instant, Double, Int)] = {
-  val PERIOD = "(?s)<Period>.*?</Period>".r
-  val POINT  = "(?s)<Point>.*?</Point>".r
-  def tag(s: String, t: String) = s"<$t>([^<]*)</$t>".r.findFirstMatchIn(s).map(_.group(1))
-  def mins(r: String) = r match {
-    case "PT15M" => 15; case "PT30M" => 30; case "PT60M" | "PT1H" => 60
-    case other   => sys.error(s"loadPoints: unknown resolution $other")
-  }
+val PERIOD_RE = "(?s)<Period>.*?</Period>".r
+val POINT_RE  = "(?s)<Point>.*?</Point>".r
+
+def loadPoints(raw: Array[Byte]): Seq[(java.time.Instant, Double, Int)] =
   for {
     doc <- afrrDocs(raw) if !doc.contains("Acknowledgement_MarketDocument")
-    per <- PERIOD.findAllIn(doc.replaceAll("\\s+", " ")).toSeq
-    res  = mins(tag(per, "resolution").getOrElse(sys.error("loadPoints: a Period with no resolution")))
-    t0   = java.time.OffsetDateTime.parse(
-             tag(per, "start").getOrElse(sys.error("loadPoints: a Period with no start")),
-             java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME).toInstant
-    pt  <- POINT.findAllIn(per).toSeq
+    per <- PERIOD_RE.findAllIn(doc.replaceAll("\\s+", " ")).toSeq
+    res  = resMinutes(tag(per, "resolution").getOrElse(sys.error("loadPoints: a Period with no resolution")))
+    _    = require(res <= 60, s"loadPoints: a load Period at a resolution of $res minutes - " +
+             "a daily market time unit is a balancing-capacity contract, not a demand series")
+    t0   = instant(tag(per, "start").getOrElse(sys.error("loadPoints: a Period with no start")))
+    pt  <- POINT_RE.findAllIn(per).toSeq
     pos <- tag(pt, "position")
     q   <- tag(pt, "quantity")
   } yield (t0.plus(java.time.Duration.ofMinutes(res.toLong * (pos.toInt - 1))), q.toDouble, res)
-}
 
 @main
 def seZonalPeak(): Unit = {
@@ -2797,18 +2805,27 @@ def seZonalPeak(): Unit = {
   // platform refuses a range longer than a year, so this is a day short of one.
   val from = java.time.Instant.parse("2025-07-01T00:00:00Z")
   val to   = java.time.Instant.parse("2026-06-30T00:00:00Z")
+  // Both endpoints in the name, as afrrLoad does it. With only the start in
+  // there, moving `to` alone returns the old document verbatim and the header
+  // and CSV describe a window the numbers are not from.
+  def cacheName(name: String) = s"load_${name}_${stamp.format(from)}_${stamp.format(to)}"
   def load(name: String, eic: String) = loadPoints(entsoeDoc(token,
     Map("documentType" -> "A65", "processType" -> "A16", "outBiddingZone_Domain" -> eic,
         "periodStart" -> stamp.format(from), "periodEnd" -> stamp.format(to)),
-    s"load_${name}_${stamp.format(from)}", cache))
+    cacheName(name), cache))
 
   println(s"ENTSO-E actual total load per bidding zone, ${utcDay(from)} to ${utcDay(to)}")
   val series = SE_ZONES.map { case (zone, eic) =>
     val pts = load(zone, eic)
-    // A year is 8760 points hourly and 35040 quarter-hourly, so anything under
-    // eight thousand means the platform answered with a fragment.
+    // entsoeDoc caches any 200, and the platform answers some requests with an
+    // acknowledgement rather than data - loadPoints drops those, so a cached one
+    // reads as an empty series for ever. Hence the file name in the message:
+    // this is the one failure here that needs a deletion, not a retry. The real
+    // coverage gate is below, once the dropped days are known.
     require(pts.size > 8000,
-      s"seZonalPeak: only ${pts.size} points for $zone - the platform answered with a fragment")
+      s"seZonalPeak: only ${pts.size} points for $zone. If this is zero the cached " +
+      s"document is an acknowledgement rather than a series: delete " +
+      s"data-refresh/entsoe-load-se/${cacheName(zone)}.zip and run again")
     zone -> pts.map(p => p._1 -> (p._2, p._3)).toMap
   }.toMap
   val common = SE_ZONES.map { case (z, _) => series(z).keySet }.reduce(_ intersect _)
@@ -2822,7 +2839,13 @@ def seZonalPeak(): Unit = {
   // as a second opinion.
   val nat = load("SE", SE_NATIONAL).map(p => p._1 -> p._2).toMap
   val shared = common.filter(nat.contains)
-  require(shared.nonEmpty, "seZonalPeak: the national series shares no instant with the zonal ones")
+  // This comparison is load-bearing - it is the reason the national series may
+  // not be cited as a second opinion and the reason the peak is recomputed from
+  // the zones - so it has to rest on most of the window rather than on whatever
+  // instants happen to line up.
+  require(shared.size > 0.9 * common.size,
+    s"seZonalPeak: the national series lines up with only ${shared.size} of ${common.size} " +
+    "zonal instants, too few to establish whether it is independent of them")
   val gaps = shared.map(t => SE_ZONES.map { case (z, _) => series(z)(t)._1 }.sum - nat(t))
   println(f"  the national series against the sum of the four zones, over ${shared.size} shared " +
           f"instants: mean ${gaps.sum / gaps.size}%+.1f MW, worst ${gaps.maxBy(math.abs)}%+.0f MW")
@@ -2861,38 +2884,69 @@ def seZonalPeak(): Unit = {
     f"seZonalPeak: a Swedish coincident peak of ${natPeak}%.0f MW is outside anything the " +
     "grid has met - the series is not what this step thinks it is")
 
+  // How much of the window these numbers actually rest on. Two separate
+  // quantities, because they are not the same and the weaker one was silently
+  // in use: each zone covers 99.3% or better of its own hours, while the
+  // intersection of all four covers 97.3%, the zones' small gaps falling on
+  // different instants. So energy is summed over each zone's own hours - where
+  // the figure belongs, since nothing about a zone's annual energy needs the
+  // other three - and only the coincident peak and the share of it are taken
+  // from the intersection, which is the one quantity that does.
+  //
+  // The point counts above cannot do this job: a year is 8760 points hourly and
+  // 35040 quarter-hourly, so a flat threshold is either useless against a
+  // quarter-hourly series or impossible against an hourly one. Hours are the
+  // measure that does not move with the resolution.
+  val elapsedHrs = java.time.Duration.between(from, to).toHours.toDouble
+  def hoursIn(ts: Seq[java.time.Instant], zone: String) = ts.map(series(zone)(_)._2 / 60.0).sum
+  val commonHrs = hoursIn(clean, "SE3")
+  println(f"  the four-zone intersection covers ${commonHrs}%.0f of the window's " +
+          f"${elapsedHrs}%.0f hours (${100 * commonHrs / elapsedHrs}%.2f%%), the dropped days " +
+          f"${hoursIn(common.filter(t => bad.contains(utcDay(t))), "SE3")}%.0f of them")
+  require(commonHrs > 0.95 * elapsedHrs,
+    f"seZonalPeak: the four zones report together for only ${commonHrs}%.0f of the window's " +
+    f"${elapsedHrs}%.0f hours. A gap that size can hide a January peak, so the coincident " +
+    "national peak and the shares of it are not safe to take from it")
+
   case class Z(zone: String, peak: Double, at: java.time.Instant, res: Int,
-               mean: Double, twh: Double, share: Double)
+               mean: Double, twh: Double, hrs: Double, share: Double)
   val rows = for ((zone, _) <- SE_ZONES) yield {
     val s = series(zone)
     val (at, (peak, res)) = clean.map(t => t -> s(t)).maxBy(_._2._1)
-    val mwh  = clean.map(t => s(t)._1 * s(t)._2 / 60.0).sum
-    val hrs  = clean.map(t => s(t)._2 / 60.0).sum
+    val own  = s.keys.toSeq.filterNot(t => bad.contains(utcDay(t)))
+    val hrs  = hoursIn(own, zone)
+    val mwh  = own.map(t => s(t)._1 * s(t)._2 / 60.0).sum
     val mean = mwh / hrs
+    require(hrs > 0.98 * elapsedHrs,
+      f"seZonalPeak: $zone covers only ${hrs}%.0f of the window's ${elapsedHrs}%.0f hours, so " +
+      f"its energy column would understate the year by ${100 * (1 - hrs / elapsedHrs)}%.1f%%")
     // A zone that reports a mean above its peak, or a load factor outside the
     // range any grid region lives in, is not being read correctly.
     require(mean < peak && mean / peak > 0.2 && mean / peak < 0.95,
       f"seZonalPeak: $zone comes out at a load factor of ${mean / peak}%.2f on a peak of " +
       f"${peak}%.0f MW, which is not a reading of a grid region's demand")
-    Z(zone, peak, at, res, mean, mwh / 1e6, 100 * s(natAt)._1 / natPeak)
+    Z(zone, peak, at, res, mean, mwh / 1e6, hrs, 100 * s(natAt)._1 / natPeak)
   }
 
   val out = new StringBuilder
-  out ++= "zone,peak_mw,peak_at_utc,peak_resolution_min,mean_mw,twh,load_factor,share_of_national_peak_pct\n"
-  println("  zone  peak MW           at (UTC)  res  mean MW     TWh    LF   % nat pk")
+  out ++= "zone,peak_mw,peak_at_utc,peak_resolution_min,mean_mw,twh,hours_covered," +
+          "load_factor,share_of_national_peak_pct\n"
+  println("  zone  peak MW           at (UTC)  res  mean MW     TWh   hours    LF   % nat pk")
   for (r <- rows) {
     println(f"  ${r.zone}%-4s ${r.peak}%8.0f  ${shown.format(r.at)}%16s  ${r.res}%3d " +
-            f"${r.mean}%8.0f ${r.twh}%7.1f ${r.mean / r.peak}%5.2f ${r.share}%10.1f")
-    out ++= f"${r.zone},${r.peak}%.0f,${r.at},${r.res},${r.mean}%.0f,${r.twh}%.1f," +
+            f"${r.mean}%8.0f ${r.twh}%7.1f ${r.hrs}%7.0f ${r.mean / r.peak}%5.2f ${r.share}%10.1f")
+    out ++= f"${r.zone},${r.peak}%.0f,${r.at},${r.res},${r.mean}%.0f,${r.twh}%.1f,${r.hrs}%.0f," +
             f"${r.mean / r.peak}%.2f,${r.share}%.1f\n"
   }
+  // The national row is the one that cannot leave the intersection: adding four
+  // zones needs all four present. Its hours column is therefore the smaller
+  // number, and the gap against the zonal rows is the price of the sum.
   val natMwh = clean.map(t => SE_ZONES.map { case (z, _) => series(z)(t)._1 }.sum * series("SE3")(t)._2 / 60.0).sum
-  val natHrs = clean.map(t => series("SE3")(t)._2 / 60.0).sum
-  val natMean = natMwh / natHrs
+  val natMean = natMwh / commonHrs
   println(f"  ${"SE"}%-4s ${natPeak}%8.0f  ${shown.format(natAt)}%16s  ${series("SE3")(natAt)._2}%3d " +
-          f"${natMean}%8.0f ${natMwh / 1e6}%7.1f ${natMean / natPeak}%5.2f ${100.0}%10.1f")
+          f"${natMean}%8.0f ${natMwh / 1e6}%7.1f ${commonHrs}%7.0f ${natMean / natPeak}%5.2f ${100.0}%10.1f")
   out ++= f"SE,${natPeak}%.0f,${natAt},${series("SE3")(natAt)._2},${natMean}%.0f," +
-          f"${natMwh / 1e6}%.1f,${natMean / natPeak}%.2f,100.0\n"
+          f"${natMwh / 1e6}%.1f,${commonHrs}%.0f,${natMean / natPeak}%.2f,100.0\n"
   os.write.over(dir / "se-zonal-peak.csv", out.toString)
   println("wrote data-refresh/se-zonal-peak.csv")
 
@@ -2998,7 +3052,16 @@ def seZonalPeakSvkCheck(): Unit = {
     "load_SE3_check_2022", cache)).map(p => p._1 -> p._2).toMap
 
   val both = (svk.keySet intersect ent.keySet).toSeq.sortBy(_.toEpochMilli)
-  require(both.size > 150, s"seZonalPeakSvkCheck: only ${both.size} hours overlap, expected ~192")
+  // From the window rather than from a constant: the week is 168 hours, the
+  // figure here used to say 192, and a threshold of 150 would have accepted
+  // losing a ninth of it - which is the partial Mimer answer the comment above
+  // warns about, waved through by the check meant to catch it.
+  val want = java.time.temporal.ChronoUnit.HOURS.between(
+    a.atStartOfDay(java.time.ZoneId.of("Europe/Stockholm")),
+    a.plusDays(7).atStartOfDay(java.time.ZoneId.of("Europe/Stockholm")))
+  require(both.size > 0.98 * want,
+    s"seZonalPeakSvkCheck: only ${both.size} of $want hours overlap - one of the two sources " +
+    "answered for part of the week, and a cross-check on part of a week is not one")
   val rel = both.map(t => 100 * (svk(t) - ent(t)) / ent(t))
   val mean = rel.sum / rel.size
   val sd = math.sqrt(rel.map(r => (r - mean) * (r - mean)).sum / rel.size)
