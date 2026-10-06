@@ -2837,7 +2837,15 @@ def seZonalPeak(): Unit = {
   // platform's national series is the sum of the zonal ones then it cannot
   // corroborate them, and neither the chapter nor the gate below may treat it
   // as a second opinion.
-  val nat = load("SE", SE_NATIONAL).map(p => p._1 -> p._2).toMap
+  val natPts = load("SE", SE_NATIONAL)
+  // Same guard as the zonal fetches, and for the same reason: without it a
+  // cached acknowledgement fails the independence check below, which would
+  // report on the series' independence rather than on the stale file.
+  require(natPts.size > 8000,
+    s"seZonalPeak: only ${natPts.size} points for the national series. If this is zero the " +
+    s"cached document is an acknowledgement rather than a series: delete " +
+    s"data-refresh/entsoe-load-se/${cacheName("SE")}.zip and run again")
+  val nat = natPts.map(p => p._1 -> p._2).toMap
   val shared = common.filter(nat.contains)
   // This comparison is load-bearing - it is the reason the national series may
   // not be cited as a second opinion and the reason the peak is recomputed from
@@ -2903,23 +2911,36 @@ def seZonalPeak(): Unit = {
   println(f"  the four-zone intersection covers ${commonHrs}%.0f of the window's " +
           f"${elapsedHrs}%.0f hours (${100 * commonHrs / elapsedHrs}%.2f%%), the dropped days " +
           f"${hoursIn(common.filter(t => bad.contains(utcDay(t))), "SE3")}%.0f of them")
-  require(commonHrs > 0.95 * elapsedHrs,
-    f"seZonalPeak: the four zones report together for only ${commonHrs}%.0f of the window's " +
-    f"${elapsedHrs}%.0f hours. A gap that size can hide a January peak, so the coincident " +
-    "national peak and the shares of it are not safe to take from it")
+  // Two-sided, because hours accumulate per point while points dedupe on the
+  // instant: a document publishing an hourly Period alongside a quarter-hourly
+  // one over the same span - the shape the mid-window transition invites - would
+  // credit up to 1.75 hours per hour of clock and inflate the energy column with
+  // nothing to stop it. No document in the window does this today, which is why
+  // the upper bound is a guard rather than a fix.
+  require(commonHrs > 0.95 * elapsedHrs && commonHrs < 1.01 * elapsedHrs,
+    f"seZonalPeak: the four zones report together for ${commonHrs}%.0f of the window's " +
+    f"${elapsedHrs}%.0f hours. Short of it, a gap that size can hide a January peak and the " +
+    "coincident national peak is not safe to take from it; past it, Periods are overlapping " +
+    "and the hours are being counted twice")
 
   case class Z(zone: String, peak: Double, at: java.time.Instant, res: Int,
                mean: Double, twh: Double, hrs: Double, share: Double)
   val rows = for ((zone, _) <- SE_ZONES) yield {
     val s = series(zone)
-    val (at, (peak, res)) = clean.map(t => t -> s(t)).maxBy(_._2._1)
+    // Everything on this row except the share comes from the zone's own hours.
+    // Searching the peak on the intersection instead was costing a real number:
+    // SE2's maximum is 4641 MW at 15:15 on 27 December 2025, an instant where
+    // one of the other three is silent, and the row published 4551 MW at 15:00
+    // beside an hours column that described the wider basis. Nothing about one
+    // zone's own maximum needs the other three.
     val own  = s.keys.toSeq.filterNot(t => bad.contains(utcDay(t)))
+    val (at, (peak, res)) = own.map(t => t -> s(t)).maxBy(_._2._1)
     val hrs  = hoursIn(own, zone)
     val mwh  = own.map(t => s(t)._1 * s(t)._2 / 60.0).sum
     val mean = mwh / hrs
-    require(hrs > 0.98 * elapsedHrs,
-      f"seZonalPeak: $zone covers only ${hrs}%.0f of the window's ${elapsedHrs}%.0f hours, so " +
-      f"its energy column would understate the year by ${100 * (1 - hrs / elapsedHrs)}%.1f%%")
+    require(hrs > 0.98 * elapsedHrs && hrs < 1.01 * elapsedHrs,
+      f"seZonalPeak: $zone covers ${hrs}%.0f of the window's ${elapsedHrs}%.0f hours, which is " +
+      f"${100 * (hrs / elapsedHrs - 1)}%+.1f%% - its energy column would be wrong by about that much")
     // A zone that reports a mean above its peak, or a load factor outside the
     // range any grid region lives in, is not being read correctly.
     require(mean < peak && mean / peak > 0.2 && mean / peak < 0.95,
@@ -2938,15 +2959,24 @@ def seZonalPeak(): Unit = {
     out ++= f"${r.zone},${r.peak}%.0f,${r.at},${r.res},${r.mean}%.0f,${r.twh}%.1f,${r.hrs}%.0f," +
             f"${r.mean / r.peak}%.2f,${r.share}%.1f\n"
   }
-  // The national row is the one that cannot leave the intersection: adding four
-  // zones needs all four present. Its hours column is therefore the smaller
-  // number, and the gap against the zonal rows is the price of the sum.
-  val natMwh = clean.map(t => SE_ZONES.map { case (z, _) => series(z)(t)._1 }.sum * series("SE3")(t)._2 / 60.0).sum
-  val natMean = natMwh / commonHrs
+  // Only the coincident peak needs all four zones present at one instant. Annual
+  // energy does not - it is the sum of four per-zone energies - and neither does
+  // mean power, since average powers add. Summing the national row over the
+  // intersection instead left a 2.6 TWh hole in a 130 TWh total and made the CSV
+  // non-additive: the SE row read 127.4 against zonal rows summing to 130.0. So
+  // both come from the rows, and the hours column is the effective hours those
+  // two imply, which keeps mean x hours = energy true on every row.
+  val natMwh = rows.map(_.twh).sum * 1e6
+  val natMean = rows.map(_.mean).sum
+  val natHrs = natMwh / natMean
   println(f"  ${"SE"}%-4s ${natPeak}%8.0f  ${shown.format(natAt)}%16s  ${series("SE3")(natAt)._2}%3d " +
-          f"${natMean}%8.0f ${natMwh / 1e6}%7.1f ${commonHrs}%7.0f ${natMean / natPeak}%5.2f ${100.0}%10.1f")
+          f"${natMean}%8.0f ${natMwh / 1e6}%7.1f ${natHrs}%7.0f ${natMean / natPeak}%5.2f ${100.0}%10.1f")
   out ++= f"SE,${natPeak}%.0f,${natAt},${series("SE3")(natAt)._2},${natMean}%.0f," +
-          f"${natMwh / 1e6}%.1f,${commonHrs}%.0f,${natMean / natPeak}%.2f,100.0\n"
+          f"${natMwh / 1e6}%.1f,${natHrs}%.0f,${natMean / natPeak}%.2f,100.0\n"
+  // The CSV says it adds up, so check that it does rather than trusting the
+  // arithmetic above to stay this shape.
+  require(math.abs(natMwh / 1e6 - rows.map(_.twh).sum) < 0.05,
+    "seZonalPeak: the national energy row is not the sum of the zonal ones")
   os.write.over(dir / "se-zonal-peak.csv", out.toString)
   println("wrote data-refresh/se-zonal-peak.csv")
 
