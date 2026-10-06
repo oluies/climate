@@ -2867,14 +2867,22 @@ def seZonalPeak(): Unit = {
   // is a gap in the data, not a threshold chosen to fit it.
   def med(xs: Seq[Double]) = { val s = xs.sorted; s(s.length / 2) }
   val FLAG = 3.0
-  val bad = (for {
+  // Over each zone's own overlap with SE3, not the four-way intersection. Peaks
+  // are drawn from `own`, which includes the instants where one of the other
+  // three is silent, so a detector confined to the intersection leaves instants
+  // a published peak can come from uninspected. The load factor is no safety
+  // net there: the known bad day inflates SE1's peak by 79%, which takes its
+  // load factor to about 0.27 - still inside the 0.2 to 0.95 band.
+  val flagged = (for {
     zone   <- List("SE1", "SE2")
-    rs      = common.map(t => t -> series(zone)(t)._1 / series("SE3")(t)._1)
+    dom     = (series(zone).keySet intersect series("SE3").keySet).toSeq
+    rs      = dom.map(t => t -> series(zone)(t)._1 / series("SE3")(t)._1)
     m       = med(rs.map(_._2))
     (t, r) <- rs if r > FLAG * m
-  } yield utcDay(t)).distinct.sortBy(_.toEpochDay)
+  } yield t).distinct
+  val bad = flagged.map(utcDay).distinct.sortBy(_.toEpochDay)
   for (d <- bad) println(f"  dropping $d: the split between zones passes $FLAG%.0f times its " +
-    f"median at ${common.count(t => utcDay(t) == d)} instants of that day")
+    f"median at ${flagged.count(t => utcDay(t) == d)} instants of that day")
   // The list is cut short on purpose: when this gate fires it is usually firing
   // on most of the year, and three hundred dates in an exception message hide
   // the sentence that says what to do about them.
@@ -2925,6 +2933,11 @@ def seZonalPeak(): Unit = {
 
   case class Z(zone: String, peak: Double, at: java.time.Instant, res: Int,
                mean: Double, twh: Double, hrs: Double, share: Double)
+  // peak_basis_hours is the hours the maximum was searched over and
+  // hours_covered the hours the energy was summed over. They are equal on a
+  // zonal row and deliberately not on the SE row, whose coincident peak needs
+  // all four zones at once while its energy does not - so the file says which
+  // is which rather than leaving the stdout line as the only record.
   val rows = for ((zone, _) <- SE_ZONES) yield {
     val s = series(zone)
     // Everything on this row except the share comes from the zone's own hours.
@@ -2950,33 +2963,59 @@ def seZonalPeak(): Unit = {
   }
 
   val out = new StringBuilder
-  out ++= "zone,peak_mw,peak_at_utc,peak_resolution_min,mean_mw,twh,hours_covered," +
-          "load_factor,share_of_national_peak_pct\n"
-  println("  zone  peak MW           at (UTC)  res  mean MW     TWh   hours    LF   % nat pk")
+  out ++= "zone,peak_mw,peak_at_utc,peak_resolution_min,peak_basis_hours,mean_mw,twh," +
+          "hours_covered,load_factor,share_of_national_peak_pct\n"
+  println("  zone  peak MW           at (UTC)  res  pk hrs  mean MW     TWh   hours    LF   % nat pk")
   for (r <- rows) {
-    println(f"  ${r.zone}%-4s ${r.peak}%8.0f  ${shown.format(r.at)}%16s  ${r.res}%3d " +
+    println(f"  ${r.zone}%-4s ${r.peak}%8.0f  ${shown.format(r.at)}%16s  ${r.res}%3d ${r.hrs}%7.0f " +
             f"${r.mean}%8.0f ${r.twh}%7.1f ${r.hrs}%7.0f ${r.mean / r.peak}%5.2f ${r.share}%10.1f")
-    out ++= f"${r.zone},${r.peak}%.0f,${r.at},${r.res},${r.mean}%.0f,${r.twh}%.1f,${r.hrs}%.0f," +
-            f"${r.mean / r.peak}%.2f,${r.share}%.1f\n"
+    out ++= f"${r.zone},${r.peak}%.0f,${r.at},${r.res},${r.hrs}%.0f,${r.mean}%.0f,${r.twh}%.1f," +
+            f"${r.hrs}%.0f,${r.mean / r.peak}%.2f,${r.share}%.1f\n"
   }
   // Only the coincident peak needs all four zones present at one instant. Annual
   // energy does not - it is the sum of four per-zone energies - and neither does
   // mean power, since average powers add. Summing the national row over the
   // intersection instead left a 2.6 TWh hole in a 130 TWh total and made the CSV
   // non-additive: the SE row read 127.4 against zonal rows summing to 130.0. So
-  // both come from the rows, and the hours column is the effective hours those
-  // two imply, which keeps mean x hours = energy true on every row.
+  // both come from the rows. This row's hours_covered is therefore the effective
+  // hours mean and energy imply - it keeps mean x hours = energy true, but it is
+  // not a coverage figure, and peak_basis_hours beside it is the intersection
+  // the coincident peak really was searched over.
   val natMwh = rows.map(_.twh).sum * 1e6
   val natMean = rows.map(_.mean).sum
   val natHrs = natMwh / natMean
   println(f"  ${"SE"}%-4s ${natPeak}%8.0f  ${shown.format(natAt)}%16s  ${series("SE3")(natAt)._2}%3d " +
-          f"${natMean}%8.0f ${natMwh / 1e6}%7.1f ${natHrs}%7.0f ${natMean / natPeak}%5.2f ${100.0}%10.1f")
-  out ++= f"SE,${natPeak}%.0f,${natAt},${series("SE3")(natAt)._2},${natMean}%.0f," +
-          f"${natMwh / 1e6}%.1f,${natHrs}%.0f,${natMean / natPeak}%.2f,100.0\n"
-  // The CSV says it adds up, so check that it does rather than trusting the
-  // arithmetic above to stay this shape.
-  require(math.abs(natMwh / 1e6 - rows.map(_.twh).sum) < 0.05,
-    "seZonalPeak: the national energy row is not the sum of the zonal ones")
+          f"${commonHrs}%7.0f ${natMean}%8.0f ${natMwh / 1e6}%7.1f ${natHrs}%7.0f " +
+          f"${natMean / natPeak}%5.2f ${100.0}%10.1f")
+  out ++= f"SE,${natPeak}%.0f,${natAt},${series("SE3")(natAt)._2},${commonHrs}%.0f," +
+          f"${natMean}%.0f,${natMwh / 1e6}%.1f,${natHrs}%.0f,${natMean / natPeak}%.2f,100.0\n"
+
+  // --- #1 the previous commit got wrong: its additivity check compared natMwh
+  // with the expression natMwh was built from, so it could not fail, and the
+  // test that "proved" it fired had edited that definition rather than breaking
+  // the property. This one is recomputed from `series` instead of from `rows`,
+  // so moving either side back to the intersection basis trips it.
+  val zonalMwh = SE_ZONES.map { case (z, _) =>
+    val zs = series(z)
+    zs.keys.toSeq.filterNot(t => bad.contains(utcDay(t)))
+      .map(t => zs(t)._1 * zs(t)._2 / 60.0).sum
+  }.sum
+  require(math.abs(natMwh - zonalMwh) / zonalMwh < 1e-9,
+    f"seZonalPeak: the SE energy row (${natMwh / 1e6}%.2f TWh) is not the sum of the zonal " +
+    f"energies (${zonalMwh / 1e6}%.2f TWh)")
+  // And a check on what is actually written, since the column is rounded to a
+  // tenth of a terawatt-hour: four zonal values rounding the same way can drift
+  // from the SE value by a quarter of one without any number being wrong, so
+  // the tolerance is that drift and anything past it is a basis error.
+  val emitted = out.toString.linesIterator.toList
+  val head = emitted.head.split(",").toList
+  val (iZone, iTwh) = (head.indexOf("zone"), head.indexOf("twh"))
+  val recs = emitted.tail.filter(_.nonEmpty).map(_.split(","))
+  val wZonal = recs.filter(_(iZone) != "SE").map(_.apply(iTwh).toDouble).sum
+  val wNat = recs.find(_(iZone) == "SE").get.apply(iTwh).toDouble
+  require(math.abs(wZonal - wNat) <= 0.25,
+    f"seZonalPeak: the written zonal energies sum to $wZonal%.1f TWh against an SE row of " +
+    f"$wNat%.1f TWh, which is past what rounding to a tenth can explain")
   os.write.over(dir / "se-zonal-peak.csv", out.toString)
   println("wrote data-refresh/se-zonal-peak.csv")
 
