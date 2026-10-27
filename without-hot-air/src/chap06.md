@@ -153,7 +153,15 @@ At the end of 2025 the world had 2392 GW: 267 times the 2007 fleet, and 1.9 time
 
 <span class="figurenumber">Figure 6.20.</span> Installed solar PV capacity. MacKay's "more than 100 times all the photovoltaics in the whole world" is the dashed line; the world crossed it around 2022 and China has nearly reached it alone. Energy Institute *Statistical Review of World Energy* 2026.
 
+::: {.content-hidden when-format="epub,pdf"}
 <iframe src="https://ourworldindata.org/grapher/solar-energy-consumption-by-region?tab=chart" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+
+:::
+
+::: {.content-visible when-format="epub,pdf"}
+*Interactive figure. View it live at [Our World in Data](https://ourworldindata.org/grapher/solar-energy-consumption-by-region?tab=chart).*
+
+:::
 
 <span class="figurenumber">Figure 6.20b.</span> Solar energy consumption by region, from Our World in Data — capacity is what gets built, this is what it delivers, and where.
 

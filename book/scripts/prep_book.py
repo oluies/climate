@@ -81,13 +81,23 @@ def add_alt(line, lines, i):
     with no caption at all is marked decorative with an empty alt, which is
     what a chapter-opening illustration is. This is a floor, not a
     substitute: writing a real description for each of MacKay's figures is
-    editorial work and cannot be done here."""
+    editorial work and cannot be done here.
+
+    The alt text is escaped on the way in. A straight double quote would
+    otherwise close the attribute early, and pandoc then prints the whole
+    {fig-alt=...} block into the chapter as literal text and leaves the image
+    with no alt at all - the failure this function exists to prevent. No
+    source triggers it today; the descriptions on the 2026 figures are long
+    enough that one eventually will."""
+    def attr(value):
+        return value.replace("\\", "\\\\").replace('"', '\\"')
+
     if IMG_ALT.search(line):
-        return IMG_ALT.sub(lambda m: '![](%s){fig-alt="%s"}' % (m.group(2), m.group(1)), line)
+        return IMG_ALT.sub(lambda m: '![](%s){fig-alt="%s"}' % (m.group(2), attr(m.group(1))), line)
     if not IMG_BARE.search(line):
         return line
     num = FIGNUM.search(" ".join(lines[i + 1:i + 4]))
-    label = num.group(1).rstrip(".").strip() if num else ""
+    label = attr(num.group(1).rstrip(".").strip()) if num else ""
     return IMG_BARE.sub(lambda m: '![](%s){fig-alt="%s"}' % (m.group(1), label), line)
 
 

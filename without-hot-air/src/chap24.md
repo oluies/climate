@@ -225,7 +225,15 @@ By April 2005, *<span class="darkblue">22 tons</span>* of uranium had leaked, bu
 
 <span class="figurenumber">Figure 24.11b.</span> Deaths per unit of electricity generated, on current figures. *Added in the 2026 revision.* MacKay's figure 24.11 used ExternE and Paul Scherrer estimates that predate this book; the ordering has not changed, but the sources have improved and the numbers can now be given in both his unit and the one the literature uses. Coal is about eight hundred times nuclear.[^deaths] One harm is missing from every row of it, and it falls on coal hardest: the methane that leaks out of a mine rather than the smoke that leaves a furnace.[^cmmdeaths]
 
+::: {.content-hidden when-format="epub,pdf"}
 <iframe src="https://ourworldindata.org/grapher/death-rates-from-energy-production-per-twh?tab=chart" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+
+:::
+
+::: {.content-visible when-format="epub,pdf"}
+*Interactive figure. View it live at [Our World in Data](https://ourworldindata.org/grapher/death-rates-from-energy-production-per-twh?tab=chart).*
+
+:::
 
 <span class="figurenumber">Figure 24.11c.</span> The same comparison, live from Our World in Data, which maintains the underlying series. The figure above is drawn from it and will not update; this one will.
 

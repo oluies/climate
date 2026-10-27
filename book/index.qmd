@@ -14,6 +14,13 @@ new in their entirety. The table below is the authoritative list of them.
 Last updated **30 September 2026**. The complete history is in the
 [repository](https://github.com/oluies/climate/commits/main).
 
+:::: {.content-visible when-format="epub,pdf"}
+The change log is a long table of collapsible entries, which is a device the web
+edition has and this one does not. It is published with the web edition at
+<https://oluies.github.io/climate/>, and in full in the repository linked above.
+::::
+
+:::: {.content-hidden when-format="epub,pdf"}
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | Date                           | Chapter      | What changed                                                                                                                             |
 +================================+==============+==========================================================================================================================================+
@@ -230,6 +237,8 @@ Last updated **30 September 2026**. The complete history is in the
 |                                |              | Data Book, the Dutch vehicle register, the Cambridge rooftop and Cairngorm summit weather stations, Elexon, ENTSO-E, NESO, Fingrid,      |
 |                                |              | Svenska kraftnät, Open-Meteo and the rest. The precise citation for any particular number stays in the chapter's own note, which is      |
 |                                |              | where it was checked, and the list says so.                                                                                              |
+|                                |              | :::                                                                                                                                      |
++--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | 13 September 2026              | Charts       | ::: {.callout-note collapse="true" appearance="minimal" icon=false title="The two translation charts are interactive"}                   |
 |                                |              | MacKay's power and carbon translation charts are nomograms — parallel scales, all linear in one underlying quantity, so a single line    |
 |                                |              | laid across them reads the same amount in every unit. On paper you use a ruler. They are now rebuilt as SVG you can drag: move the line, |
@@ -499,6 +508,8 @@ Last updated **30 September 2026**. The complete history is in the
 |                                |              | Drained peat, and why filling the ditches in does not undo it.                                                                           |
 |                                |              | :::                                                                                                                                      |
 +--------------------------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+
+
+::::
 
 ## New chapters
 

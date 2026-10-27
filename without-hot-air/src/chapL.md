@@ -229,7 +229,15 @@ There is a companion to figure L.1 that says something the energy totals do not,
 
 What makes the relationship interesting is the absence of exceptions at either end. There is no wealthy country with low electricity consumption: the lowest is Romania at 2 845 kWh per person, and its income is $15 692, only just inside the high-income band. And there is no low-income country above 500 kWh per person. The few apparent outliers — Mozambique, Tajikistan, Iceland — are countries whose consumption is dominated by an energy-intensive export industry such as aluminium smelting, and adjusting for that trade tightens the correlation rather than loosening it.
 
+::: {.content-hidden when-format="epub,pdf"}
 <iframe src="https://ourworldindata.org/grapher/per-capita-electricity-demand?tab=map" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+
+:::
+
+::: {.content-visible when-format="epub,pdf"}
+*Interactive figure. View it live at [Our World in Data](https://ourworldindata.org/grapher/per-capita-electricity-demand?tab=map).*
+
+:::
 
 <span class="figurenumber">Figure L.1b.</span> Per-capita electricity demand, from Our World in Data. The map view makes the eightyfold gap geographic.
 
@@ -374,7 +382,15 @@ Carbon dioxide from energy rose 1.1% in 2025, to 35 806 million tonnes. The OECD
 
 Arguments about who is responsible go wrong by switching between questions that have different answers, so it is worth separating them. Who emits most now? China, at 11 220 Mt, about 2.4 times the United States' 4 755. Who emits most per person? Not China: an American emits roughly 14 tonnes a year against a Chinese citizen's 8.7. Who put most of it there? The industrialised countries, by a wide margin, since carbon dioxide persists for centuries and they burned first.
 
+::: {.content-hidden when-format="epub,pdf"}
 <iframe src="https://ourworldindata.org/grapher/share-of-cumulative-co2?tab=line" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+
+:::
+
+::: {.content-visible when-format="epub,pdf"}
+*Interactive figure. View it live at [Our World in Data](https://ourworldindata.org/grapher/share-of-cumulative-co2?tab=line).*
+
+:::
 
 <span class="figurenumber">Figure L.6.</span> Share of cumulative carbon dioxide emissions, from Our World in Data — the third question drawn. Because carbon dioxide persists for centuries, this is the stock rather than the flow, and it is the chart the historical-responsibility argument rests on. Note that a country's share here can fall while its emissions rise, since the denominator is everyone's cumulative total.
 
@@ -396,7 +412,15 @@ So the same country is −0.7 tonnes a person and 7.6 tonnes a person, a year ap
 
 Rather than take any of that on trust, much of the same data is below as Our World in Data's emissions explorer, which is the rare interactive that lets a reader change the thing being argued about. Its Accounting control switches between territorial and consumption-based, but only while carbon dioxide is the gas selected; Gas or warming switches between carbon dioxide and all greenhouse gases in CO<sub>2</sub>-equivalent, which is what brings methane and nitrous oxide back inside the fence — cement is already inside it, because the explorer's carbon dioxide series counts industrial process emissions alongside fuel; and Count switches between national totals and per person. Most of this section can be checked, or broken, by moving those three controls, but not all of it. The −0.7 tonne net balance and the 7.6 and 10 tonne consumption footprints are national inventory and input-output work that no global dataset carries, and the 39.4 Mt energy figure is narrower than anything the explorer holds — fuel alone, where the explorer's carbon dioxide counts process emissions as well — besides being a 2025 number, past where these series stop. The net balance is the one most likely to mislead. Set the panel to all greenhouse gases, territorial, per person and add Sweden, and it reads about +5.4 tonnes, not −0.7, because the global series puts Swedish land use on the emitting side of the ledger where the national inventory finds a sink large enough to carry the whole country negative. That disagreement is about forests rather than about arithmetic.
 
+::: {.content-hidden when-format="epub,pdf"}
 <iframe src="https://ourworldindata.org/explorers/co2?country=CHN~USA~IND~GBR~OWID_EU27&hideControls=false&Gas+or+warming=All+GHGs+%28CO%E2%82%82eq%29&Accounting=Territorial&Count=Per+country&Relative+to+world+total=false&tab=line" loading="lazy" style="width: 100%; height: 696px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+
+:::
+
+::: {.content-visible when-format="epub,pdf"}
+*Interactive figure. View it live at [Our World in Data](https://ourworldindata.org/explorers/co2?country=CHN~USA~IND~GBR~OWID_EU27&hideControls=false&Gas+or+warming=All+GHGs+%28CO%E2%82%82eq%29&Accounting=Territorial&Count=Per+country&Relative+to+world+total=false&tab=line).*
+
+:::
 
 <span class="figurenumber">Figure L.7a.</span> Greenhouse-gas emissions for China, the United States, India, the United Kingdom and the EU-27, from Our World in Data. Opens on all greenhouse gases, territorial, by country. *Accounting* is greyed out in that state; move *Gas or warming* to carbon dioxide to release it, then switch *Accounting* to consumption-based and watch the British and European lines rise and the Chinese line fall — the trade correction of the earlier section, drawn rather than described.
 

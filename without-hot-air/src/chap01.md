@@ -253,14 +253,30 @@ The change that matters is one rectangle. In 2000 China is the wide, low block M
 
 MacKay's question in the text above — "what about China, that naughty *out of control* country?" — had an answer in 2000 that was about width. It now has an answer about height, and the honest version of his argument has to be made differently as a result. Chapter L separates the four questions this figure runs together; the historical ranking in figure 1.11 above is the one that has moved least, as figure 1.14 confirms.[^rects]
 
+::: {.content-hidden when-format="epub,pdf"}
 <iframe src="https://ourworldindata.org/grapher/co-emissions-per-capita?tab=line" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+
+:::
+
+::: {.content-visible when-format="epub,pdf"}
+*Interactive figure. View it live at [Our World in Data](https://ourworldindata.org/grapher/co-emissions-per-capita?tab=line).*
+
+:::
 
 <span class="figurenumber">Figure 1.13.</span> *Added in the 2026 revision.* The heights of the previous figure, over time and for any country. This is the movement between its two snapshots, and three crossings are worth finding on it: China passed the world average in 2006, the European Union in 2013 and the United Kingdom in 2014.
 
 The other thing to look for is what the rich lines did. Between 1990 and 2024 the United States fell from 20.3 tonnes a head to 14.2, the United Kingdom from 10.5 to 4.5 and the European Union from 9.2 to 5.4 — each of them roughly halved or better. Over the same period the world average went from 4.3 to 4.7. Every wealthy bloc on the chart came down substantially and the line that matters did not move, because the falls were roughly matched by more people arriving at a middle income. Chapter L pursues that arithmetic; chapter 15 asks how much of the rich-world fall is real and how much is imported goods counted elsewhere.[^percap]
 
 
+::: {.content-hidden when-format="epub,pdf"}
 <iframe src="https://ourworldindata.org/grapher/cumulative-co-emissions?tab=line" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+
+:::
+
+::: {.content-visible when-format="epub,pdf"}
+*Interactive figure. View it live at [Our World in Data](https://ourworldindata.org/grapher/cumulative-co-emissions?tab=line).*
+
+:::
 
 <span class="figurenumber">Figure 1.14.</span> *Added in the 2026 revision.* Cumulative carbon dioxide emissions since 1750, from Our World in Data. Because carbon dioxide persists for centuries this is the stock rather than the flow, and it is the chart the historical-responsibility argument actually rests on. The United States has emitted 435 gigatonnes, China 285 and the United Kingdom 80.
 
