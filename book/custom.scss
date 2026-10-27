@@ -1,0 +1,37 @@
+/*-- scss:rules --*/
+
+// Two WCAG 2.2 AA repairs to the cosmo theme. Both are small and both affect
+// every chapter, which is why they are here rather than in a chapter.
+
+// 1.4.3 Contrast (Minimum). Cosmo sets quoted text and figure captions in
+// #6d7a86, which is 4.39:1 against white - just under the 4.5:1 that normal-
+// sized text requires. #667079 is 5.05:1 and is barely distinguishable from
+// it by eye.
+blockquote,
+blockquote p,
+.blockquote,
+.blockquote-footer,
+figcaption,
+.figure-caption,
+.quarto-figure figcaption {
+  color: #667079;
+}
+
+// MacKay's in-page anchors used to sit inside heading text, which put the
+// same id on the page twice once quarto copied the heading into the table of
+// contents; prep_book.py now lifts them out, and each arrives as a paragraph
+// holding nothing but the anchor. Take its margin away so the headings do not
+// drift apart.
+p:has(> span[id]:empty:only-child) {
+  margin: 0;
+}
+
+// 1.4.10 Reflow. Several notes cite a source by printing its URL, and a long
+// one cannot break, so at 320 CSS pixels it pushes the whole page sideways -
+// chapter 20 overflowed by 138px. Wrapping is confined to the chapter body so
+// that the navigation and the table of contents keep breaking on words.
+#quarto-document-content a,
+#quarto-document-content .websitetitle,
+#quarto-document-content .uri {
+  overflow-wrap: anywhere;
+}
