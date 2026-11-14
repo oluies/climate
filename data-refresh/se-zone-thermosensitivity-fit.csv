@@ -1,0 +1,5 @@
+zone,population,mean_temp_c,mean_load_mw,mean_w_per_person,n_days,t_heat,t_cool,heat_mw_per_c,heat_se,heat_n,heat_w_per_person,cool_mw_per_c,cool_se,cool_n,cool_w_per_person
+SE1,248620,2.19,1251.5,5033.7,1342,15,20,21.96,0.39,1189,88.34,NaN,NaN,28,NaN
+SE2,655435,3.58,1789.0,2729.5,1344,15,20,41.30,0.78,1185,63.01,NaN,NaN,28,NaN
+SE3,7894455,7.05,10058.3,1274.1,1344,15,20,277.31,2.94,1085,35.13,-138.07,80.66,38,-17.49
+SE4,1789200,8.67,2671.9,1493.3,1344,15,20,92.31,1.46,1046,51.59,NaN,NaN,29,NaN

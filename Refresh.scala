@@ -1313,6 +1313,15 @@ def cachedGet(url: String, cache: os.Path): String =
     os.makeDir.all(cache / os.up); os.write.over(cache, t); t
   }
 
+/** cachedGet for the APIs that take their query as a JSON body, SCB's PxWeb among them. */
+def cachedPost(url: String, body: String, cache: os.Path): String =
+  if (os.exists(cache)) os.read(cache)
+  else {
+    val t = requests.post(url, data = body, headers = Map("Content-Type" -> "application/json"),
+      readTimeout = 120000, connectTimeout = 30000).text()
+    os.makeDir.all(cache / os.up); os.write.over(cache, t); t
+  }
+
 @main
 def gbCapture(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
@@ -3529,6 +3538,19 @@ def chapterAElectricRange(): Unit = {
 // connected solar and wind that national demand nets off. Underlying demand
 // here is ND + EMBEDDED_SOLAR_GENERATION + EMBEDDED_WIND_GENERATION; without
 // that correction a sunny hot day looks like a fall in demand.
+/** Ordinary least squares of load on temperature, with the standard error of
+  * the slope, so the text can say whether an arm is real. Shared by the
+  * national step and the Swedish per-zone one, so the two fits are one fit. */
+def thermoSlope(pts: Seq[(Double, Double)]): (Double, Double) = {
+  val n = pts.size
+  val mx = pts.map(_._1).sum / n; val my = pts.map(_._2).sum / n
+  val sxx = pts.map(p => (p._1 - mx) * (p._1 - mx)).sum
+  val b = pts.map(p => (p._1 - mx) * (p._2 - my)).sum / sxx
+  val a = my - b * mx
+  val sse = pts.map { case (x, y) => val e = y - (a + b * x); e * e }.sum
+  (b, math.sqrt(sse / (n - 2) / sxx))
+}
+
 @main
 def chapter25Thermosensitivity(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
@@ -3688,18 +3710,6 @@ def chapter25Thermosensitivity(): Unit = {
     acc.collect { case (d, (s, n)) if n >= 40 => d -> s / n / 1000.0 }.toMap
   }
 
-  /** Ordinary least squares of load on temperature, with the standard error of
-    * the slope, so the text can say whether an arm is real. */
-  def slope(pts: Seq[(Double, Double)]): (Double, Double) = {
-    val n = pts.size
-    val mx = pts.map(_._1).sum / n; val my = pts.map(_._2).sum / n
-    val sxx = pts.map(p => (p._1 - mx) * (p._1 - mx)).sum
-    val b = pts.map(p => (p._1 - mx) * (p._2 - my)).sum / sxx
-    val a = my - b * mx
-    val sse = pts.map { case (x, y) => val e = y - (a + b * x); e * e }.sum
-    (b, math.sqrt(sse / (n - 2) / sxx))
-  }
-
   val scatter = new StringBuilder; scatter ++= "country,date,temp_c,load_gw\n"
   val fits = new StringBuilder
   fits ++= "country,mean_load_gw,n_days,t_heat,t_cool," +
@@ -3721,8 +3731,8 @@ def chapter25Thermosensitivity(): Unit = {
     val cold = pts.filter(_._1 < T_HEAT)
     val hot  = pts.filter(_._1 > T_COOL)
     require(cold.size >= 30, s"thermo: ${l.key} has only ${cold.size} days below $T_HEAT C")
-    val (bh, sh) = slope(cold)
-    val (bc, sc) = if (hot.size >= 30) slope(hot) else (Double.NaN, Double.NaN)
+    val (bh, sh) = thermoSlope(cold)
+    val (bc, sc) = if (hot.size >= 30) thermoSlope(hot) else (Double.NaN, Double.NaN)
     // The heating arm is reported per degree COLDER, so its sign is flipped.
     fits ++= f"${l.label},$mean%.2f,${days.size},$T_HEAT%.0f,$T_COOL%.0f," +
              f"${-bh}%.4f,$sh%.4f,${cold.size},${-100 * bh / mean}%.3f," +
@@ -3737,6 +3747,240 @@ def chapter25Thermosensitivity(): Unit = {
   println("render:")
   println("  uv run figures/thermosensitivity.py data-refresh/thermosensitivity.csv " +
           "data-refresh/thermosensitivity-fit.csv without-hot-air/Images/fig-thermosensitivity.svg")
+}
+
+// ---- Chapter 25: Sweden's thermosensitivity per bidding zone, per person ----
+// The national step above weights Sweden's temperature by Stockholm, Gothenburg,
+// Malmo, Uppsala and Vasteras, so nothing north of Vasteras is in it: SE1 and SE2
+// are present in the load and absent from the weather. Sweden spans more climate
+// than any other country in that figure, and a country-level slope cannot show
+// it. This step fits the same two arms per bidding zone instead, each zone's
+// load against its own population-weighted temperature, and divides by each
+// zone's population so the zones can be compared per person.
+//
+// Load is ENTSO-E Actual Total Load per zone, the same series and helpers as
+// seZonalPeak, fetched a year at a time because the platform refuses longer.
+// The same zone-reallocation fault applies - 28 March 2026, and whatever else
+// carries its signature - and is dropped by the same test, a northern zone's
+// share of SE3 passing three times its median.
+//
+// Population is SCB's county count, and the zones do not follow county lines.
+// Each county is put whole into the zone holding most of its people; the counties
+// the zone borders cut are listed in SE_SPLIT_COUNTIES, and the step prints how
+// far each zone's per-person slope moves if they are moved to the other side.
+// The slope per zone in MW does not depend on this; only the per-person figure
+// does.
+//
+// Level per person is not comparable across zones and the CSV says so by
+// carrying it beside the slope rather than instead of it. SE1 holds the LKAB
+// mines and the Lulea steelworks; SE2 holds the Sundsvall and Skelleftea smelters
+// and pulp mills. Their load per head is industry divided by a few hundred
+// thousand people. The slope per degree is much less exposed, because a smelter
+// draws the same in January as in June.
+
+/** County code -> bidding zone. Whole counties; see SE_SPLIT_COUNTIES. */
+val SE_COUNTY_ZONE = Map(
+  "25" -> "SE1",                                                // Norrbotten
+  "24" -> "SE2", "23" -> "SE2", "22" -> "SE2",                  // Vasterbotten, Jamtland, Vasternorrland
+  "01" -> "SE3", "03" -> "SE3", "04" -> "SE3", "05" -> "SE3",   // Stockholm, Uppsala, Sodermanland, Ostergotland
+  "06" -> "SE3", "08" -> "SE3", "09" -> "SE3", "13" -> "SE3",   // Jonkoping, Kalmar, Gotland, Halland
+  "14" -> "SE3", "17" -> "SE3", "18" -> "SE3", "19" -> "SE3",   // Vastra Gotaland, Varmland, Orebro, Vastmanland
+  "20" -> "SE3", "21" -> "SE3",                                 // Dalarna, Gavleborg
+  "07" -> "SE4", "10" -> "SE4", "12" -> "SE4")                  // Kronoberg, Blekinge, Skane
+
+/** Counties the zone borders cut, with the zone their minority side lies in:
+  * northern Gavleborg and Dalarna are SE2, southern Halland and Kalmar are SE4. */
+val SE_SPLIT_COUNTIES = Seq("21" -> "SE2", "20" -> "SE2", "13" -> "SE4", "08" -> "SE4")
+
+@main
+def chapter25ThermosensitivitySeZones(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  import java.time.{LocalDate, ZoneId, DayOfWeek, Month}
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val cache = dir / "api-cache"
+  val loadCache = dir / "entsoe-load-se"
+  val token = entsoeKey()
+  // The national step's window and arm boundaries, so the two are comparable.
+  val FROM = LocalDate.of(2021, 1, 1)
+  val TO   = LocalDate.of(2026, 8, 31)
+  val T_HEAT = 15.0
+  val T_COOL = 20.0
+  val POP_YEAR = 2024
+  val se = ZoneId.of("Europe/Stockholm")
+
+  // Weights are municipal populations in thousands, rounded; as in the national
+  // step they only weight the temperature average.
+  case class City(slug: String, lat: Double, lon: Double, w: Double)
+  val CITIES = Map(
+    "SE1" -> Seq(City("lulea", 65.5848, 22.1547, 80), City("pitea", 65.3172, 21.4794, 43),
+                 City("boden", 65.8252, 21.6886, 28), City("kiruna", 67.8558, 20.2253, 22)),
+    "SE2" -> Seq(City("umea", 63.8258, 20.2630, 133), City("sundsvall", 62.3908, 17.3069, 100),
+                 City("skelleftea", 64.7507, 20.9528, 76), City("ostersund", 63.1792, 14.6357, 65),
+                 City("ornskoldsvik", 63.2909, 18.7153, 56)),
+    "SE3" -> Seq(City("stockholm", 59.3293, 18.0686, 1000), City("gothenburg", 57.7089, 11.9746, 600),
+                 City("uppsala", 59.8586, 17.6389, 240), City("linkoping", 58.4108, 15.6214, 165),
+                 City("orebro", 59.2753, 15.2134, 160), City("vasteras", 59.6099, 16.5448, 130)),
+    "SE4" -> Seq(City("malmo", 55.6050, 13.0038, 360), City("helsingborg", 56.0465, 12.6945, 150),
+                 City("lund", 55.7047, 13.1910, 130), City("vaxjo", 56.8777, 14.8091, 97),
+                 City("kristianstad", 56.0294, 14.1567, 87), City("karlskrona", 56.1612, 15.5869, 67)))
+
+  def dailyTemp(zone: String): Map[LocalDate, Double] = {
+    val acc = collection.mutable.Map[LocalDate, (Double, Double)]()
+    for (c <- CITIES(zone)) {
+      val js = ujson.read(cachedGet(
+        "https://archive-api.open-meteo.com/v1/archive" +
+          s"?latitude=${c.lat}&longitude=${c.lon}&start_date=$FROM&end_date=$TO" +
+          "&daily=temperature_2m_mean&timezone=Europe%2FStockholm",
+        cache / s"meteo-se-${c.slug}.json"))
+      val days = js("daily")("time").arr.map(_.str)
+      val temp = js("daily")("temperature_2m_mean").arr
+      require(days.size == temp.size, s"seZones: $zone/${c.slug} ragged arrays")
+      for ((d, v) <- days.zip(temp) if !v.isNull) {
+        val k = LocalDate.parse(d)
+        val (s, w) = acc.getOrElse(k, (0.0, 0.0))
+        acc(k) = (s + v.num * c.w, w + c.w)
+      }
+    }
+    acc.view.mapValues { case (s, w) => s / w }.toMap
+  }
+
+  // ---- load: every instant per zone, a year per request ----
+  val stamp = java.time.format.DateTimeFormatter.ofPattern("yyyyMMddHHmm")
+    .withZone(java.time.ZoneOffset.UTC)
+  val windows = (FROM.getYear to TO.getYear).map { y =>
+    val a = (if (y == FROM.getYear) FROM else LocalDate.of(y, 1, 1)).atStartOfDay(se).toInstant
+    val b = (if (y == TO.getYear) TO.plusDays(1) else LocalDate.of(y + 1, 1, 1)).atStartOfDay(se).toInstant
+    (a, b)
+  }
+  println(s"ENTSO-E actual total load per Swedish zone, $FROM to $TO, ${windows.size} requests a zone")
+  val series = SE_ZONES.map { case (zone, eic) =>
+    val pts = windows.flatMap { case (a, b) =>
+      val name = s"load_${zone}_${stamp.format(a)}_${stamp.format(b)}"
+      val p = loadPoints(entsoeDoc(token,
+        Map("documentType" -> "A65", "processType" -> "A16", "outBiddingZone_Domain" -> eic,
+            "periodStart" -> stamp.format(a), "periodEnd" -> stamp.format(b)), name, loadCache))
+      // The guard seZonalPeak carries, for the same reason: a cached
+      // acknowledgement reads as an empty year for ever.
+      require(p.size > 2000, s"seZones: only ${p.size} points for $zone from $a. If this is " +
+        s"zero the cached document is an acknowledgement: delete " +
+        s"data-refresh/entsoe-load-se/$name.zip and run again")
+      p
+    }
+    zone -> pts.map(p => p._1 -> (p._2, p._3)).toMap
+  }.toMap
+
+  // ---- the reallocation fault, found by its shape as in seZonalPeak ----
+  def med(xs: Seq[Double]) = { val s = xs.sorted; s(s.length / 2) }
+  val FLAG = 3.0
+  val bad = (for {
+    zone   <- List("SE1", "SE2")
+    dom     = (series(zone).keySet intersect series("SE3").keySet).toSeq
+    rs      = dom.map(t => t -> series(zone)(t)._1 / series("SE3")(t)._1)
+    m       = med(rs.map(_._2))
+    (t, r) <- rs if r > FLAG * m
+  } yield t.atZone(se).toLocalDate).distinct.sortBy(_.toEpochDay)
+  for (d <- bad) println(s"  dropping $d: the split between zones passes ${FLAG.toInt} times its median")
+  // Six windows rather than seZonalPeak's one, so the allowance is larger; past
+  // it the fault is a change of meaning, not a handful of bad days.
+  require(bad.size <= 10, s"seZones: ${bad.size} days carry the zone-reallocation signature " +
+    s"(${bad.take(5).mkString(", ")}). Look before quoting any of this.")
+
+  /** Mean MW over each local day, kept only if the points cover 22 of its hours. */
+  def dailyLoad(zone: String): Map[LocalDate, Double] = {
+    val acc = collection.mutable.Map[LocalDate, (Double, Double)]()
+    for ((t, (mw, res)) <- series(zone)) {
+      val d = t.atZone(se).toLocalDate
+      val (e, h) = acc.getOrElse(d, (0.0, 0.0)); acc(d) = (e + mw * res / 60.0, h + res / 60.0)
+    }
+    acc.collect { case (d, (e, h)) if h >= 22 && h <= 25.01 && !bad.contains(d) => d -> e / h }.toMap
+  }
+
+  // ---- population per zone, from SCB ----
+  val scb = ujson.read(cachedPost(
+    "https://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0101/BE0101A/BefolkningNy",
+    ujson.write(ujson.Obj(
+      "query" -> ujson.Arr(
+        ujson.Obj("code" -> "Region", "selection" -> ujson.Obj("filter" -> "vs:RegionLän07",
+          "values" -> ujson.Arr.from(SE_COUNTY_ZONE.keys.toSeq.sorted))),
+        ujson.Obj("code" -> "ContentsCode", "selection" -> ujson.Obj("filter" -> "item",
+          "values" -> ujson.Arr("BE0101N1"))),
+        ujson.Obj("code" -> "Tid", "selection" -> ujson.Obj("filter" -> "item",
+          "values" -> ujson.Arr(POP_YEAR.toString)))),
+      "response" -> ujson.Obj("format" -> "json"))),
+    cache / s"scb-county-population-$POP_YEAR.json"))
+  val county = scb("data").arr.map(r => r("key")(0).str -> r("values")(0).str.toDouble).toMap
+  require(county.keySet == SE_COUNTY_ZONE.keySet,
+    s"seZones: SCB returned counties ${county.keySet.toSeq.sorted.mkString(",")}")
+  val national = county.values.sum
+  require(national > 10.0e6 && national < 11.5e6, f"seZones: Sweden's population reads $national%.0f")
+  def zonePop(m: Map[String, String]) = county.groupMapReduce(c => m(c._1))(_._2)(_ + _)
+  val pop = zonePop(SE_COUNTY_ZONE)
+
+  // ---- the fit ----
+  val scatter = new StringBuilder; scatter ++= "zone,date,temp_c,load_mw\n"
+  val fits = new StringBuilder
+  fits ++= "zone,population,mean_temp_c,mean_load_mw,mean_w_per_person,n_days,t_heat,t_cool," +
+           "heat_mw_per_c,heat_se,heat_n,heat_w_per_person,cool_mw_per_c,cool_se,cool_n,cool_w_per_person\n"
+  val heat = collection.mutable.Map[String, Double]()
+  for ((zone, _) <- SE_ZONES) {
+    val temp = dailyTemp(zone); val load = dailyLoad(zone)
+    // Weekdays only and August dropped, as in the national step.
+    val days = temp.keySet.intersect(load.keySet).toSeq.sorted.filter { d =>
+      !d.isBefore(FROM) && !d.isAfter(TO) &&
+        d.getDayOfWeek.getValue <= DayOfWeek.FRIDAY.getValue && d.getMonth != Month.AUGUST
+    }
+    require(days.size >= 1200, s"seZones: only ${days.size} usable days for $zone")
+    for (d <- days) scatter ++= f"$zone,$d,${temp(d)}%.2f,${load(d)}%.1f\n"
+    val pts = days.map(d => (temp(d), load(d)))
+    val meanT = pts.map(_._1).sum / pts.size
+    val mean = pts.map(_._2).sum / pts.size
+    val cold = pts.filter(_._1 < T_HEAT); val hot = pts.filter(_._1 > T_COOL)
+    require(cold.size >= 30, s"seZones: $zone has only ${cold.size} days below $T_HEAT C")
+    val (bh, sh) = thermoSlope(cold)
+    val (bc, sc) = if (hot.size >= 30) thermoSlope(hot) else (Double.NaN, Double.NaN)
+    val wpp = 1e6 / pop(zone)    // MW -> W per person
+    heat(zone) = -bh
+    fits ++= f"$zone,${pop(zone)}%.0f,$meanT%.2f,$mean%.1f,${mean * wpp}%.1f,${days.size},$T_HEAT%.0f,$T_COOL%.0f," +
+             f"${-bh}%.2f,$sh%.2f,${cold.size},${-bh * wpp}%.2f,$bc%.2f,$sc%.2f,${hot.size},${bc * wpp}%.2f\n"
+    println(f"  $zone ${pop(zone) / 1e6}%5.2f M people, ${meanT}%4.1f C  mean ${mean}%6.0f MW " +
+            f"(${mean * wpp}%5.0f W/p)  colder ${-bh}%5.1f +-$sh%.1f MW/C = ${-bh * wpp}%5.1f W/p/C (n=${cold.size}%4d)  " +
+            f"hotter ${bc}%6.1f +-$sc%.1f MW/C (n=${hot.size}%3d)")
+  }
+
+  // The national step fits all of Sweden's load against southern temperature;
+  // the zones fit each part against its own. The sum of the zone slopes is not
+  // the same quantity, but a factor of two between them would mean one of the
+  // two steps is not measuring what it says.
+  val zoneSum = heat.values.sum
+  val natFit = dir / "thermosensitivity-fit.csv"
+  val nat = if (!os.exists(natFit)) None else {
+    val rows = os.read.lines(natFit).map(_.split(","))
+    rows.find(_(0) == "Sweden").map(r => 1000 * r(rows.head.indexOf("heat_gw_per_c")).toDouble)
+  }
+  nat match {
+    case Some(n) =>
+      require(zoneSum > n / 2 && zoneSum < 2 * n,
+        f"seZones: the zones add to ${zoneSum}%.0f MW/C and the national fit is ${n}%.0f")
+      println(f"  sum of zone heating slopes ${zoneSum}%.0f MW/C, national step's fit for Sweden ${n}%.0f MW/C")
+    case None =>
+      println(f"  sum of zone heating slopes ${zoneSum}%.0f MW/C; run chapter25Thermosensitivity to compare")
+  }
+
+  // How far the per-person heating slope moves with the split counties moved.
+  for ((c, other) <- SE_SPLIT_COUNTIES) {
+    val home = SE_COUNTY_ZONE(c)
+    val p2 = zonePop(SE_COUNTY_ZONE.updated(c, other))
+    println(f"  county $c wholly in $other instead of $home: " +
+            f"$home ${1e6 * heat(home) / pop(home)}%.1f -> ${1e6 * heat(home) / p2(home)}%.1f W/p/C, " +
+            f"$other ${1e6 * heat(other) / pop(other)}%.1f -> ${1e6 * heat(other) / p2(other)}%.1f W/p/C")
+  }
+
+  os.write.over(dir / "se-zone-thermosensitivity.csv", scatter.toString)
+  os.write.over(dir / "se-zone-thermosensitivity-fit.csv", fits.toString)
+  println("wrote data-refresh/se-zone-thermosensitivity.csv and se-zone-thermosensitivity-fit.csv")
+  println("render:")
+  println("  uv run figures/se_zone_thermosensitivity.py data-refresh/se-zone-thermosensitivity.csv " +
+          "data-refresh/se-zone-thermosensitivity-fit.csv without-hot-air/Images/fig-se-zone-thermosensitivity.svg")
 }
 
 // ---- Appendix A: the steady-speed curves, with 2025 vehicles in them ----
