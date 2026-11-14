@@ -3966,13 +3966,20 @@ def chapter25ThermosensitivitySeZones(): Unit = {
       println(f"  sum of zone heating slopes ${zoneSum}%.0f MW/C; run chapter25Thermosensitivity to compare")
   }
 
-  // How far the per-person heating slope moves with the split counties moved.
-  for ((c, other) <- SE_SPLIT_COUNTIES) {
-    val home = SE_COUNTY_ZONE(c)
-    val p2 = zonePop(SE_COUNTY_ZONE.updated(c, other))
-    println(f"  county $c wholly in $other instead of $home: " +
-            f"$home ${1e6 * heat(home) / pop(home)}%.1f -> ${1e6 * heat(home) / p2(home)}%.1f W/p/C, " +
-            f"$other ${1e6 * heat(other) / pop(other)}%.1f -> ${1e6 * heat(other) / p2(other)}%.1f W/p/C")
+  // How far the per-person heating slopes move with the split counties moved,
+  // one at a time and together. The joint moves are the ones that bound the
+  // answer: moving Gavleborg and Dalarna together takes SE2 below SE3, and all
+  // four inverts SE2, SE3 and SE4, so a claim about their order has to hold
+  // across every row here rather than across the single moves alone.
+  val placements =
+    SE_SPLIT_COUNTIES.map { case (c, z) => s"county $c in $z" -> Seq(c -> z) } ++ Seq(
+      "northern pair in SE2" -> SE_SPLIT_COUNTIES.filter(_._2 == "SE2"),
+      "southern pair in SE4" -> SE_SPLIT_COUNTIES.filter(_._2 == "SE4"),
+      "all four moved" -> SE_SPLIT_COUNTIES)
+  for ((label, moves) <- ("as placed" -> Seq.empty[(String, String)]) +: placements) {
+    val p2 = zonePop(moves.foldLeft(SE_COUNTY_ZONE)((m, cz) => m.updated(cz._1, cz._2)))
+    println(f"  $label%-22s " + SE_ZONES.map { case (z, _) => f"$z ${1e6 * heat(z) / p2(z)}%5.1f" }
+      .mkString("  ") + " W/p/C")
   }
 
   os.write.over(dir / "se-zone-thermosensitivity.csv", scatter.toString)

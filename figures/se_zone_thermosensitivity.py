@@ -18,24 +18,32 @@ d = pd.read_csv(sys.argv[1])
 fit = pd.read_csv(sys.argv[2]).set_index("zone")
 assert set(ORDER) == set(fit.index), f"ORDER {ORDER} does not match {list(fit.index)}"
 sns.set_theme(style="whitegrid", rc={"grid.color": "#ededea", "axes.edgecolor": "#c9c9c4"})
-# Shared axes, in watts per person: the point of the figure is that the zones
-# can be laid on one scale, which megawatts per zone cannot do.
-fig, axes = plt.subplots(1, 4, figsize=(12.4, 4.2), sharex=True)
+# One scale for all four, so the drawn steepness is the slope. Each zone is
+# drawn as demand per person above its own mild-day level (the mean of its
+# 15-20 C days): SE1's industry puts its level at 4 kW a head, and on a shared
+# axis of raw demand the other three panels would be flat lines along the floor.
+fig, axes = plt.subplots(1, 4, figsize=(12.4, 4.2), sharex=True, sharey=True)
 assert len(ORDER) == axes.size
 
 for ax, z in zip(axes.flat, ORDER):
     f = fit.loc[z]
     p = d[d.zone == z]
     wpp = p.load_mw * 1e6 / f.population
+    mild = wpp[(p.temp_c >= f.t_heat) & (p.temp_c <= f.t_cool)]
+    assert len(mild) >= 30, f"{z}: only {len(mild)} days between {f.t_heat} and {f.t_cool} C"
+    level = mild.mean()
+    wpp = wpp - level
     th, tc = f.t_heat, f.t_cool
     band = [COLD if t < th else HOT if t > tc else MID for t in p.temp_c]
     ax.scatter(p.temp_c, wpp, s=5, c=band, alpha=0.45, linewidths=0, rasterized=True)
 
-    # The heating arm only: no zone has the thirty hot weekdays a summer arm needs.
+    # The heating arm only. SE1, SE2 and SE4 have fewer than thirty hot weekdays
+    # outside August, and SE3's 38 give a summer slope indistinguishable from
+    # zero, so no panel has a summer arm worth drawing.
     arm = p[p.temp_c < th]
     if len(arm) >= 30 and f.heat_mw_per_c >= 2 * f.heat_se:
         b = -f.heat_w_per_person
-        y = arm.load_mw * 1e6 / f.population
+        y = wpp[p.temp_c < th]
         a = y.mean() - b * arm.temp_c.mean()
         lo = arm.temp_c.min()
         ax.plot([lo, th], [a + b * lo, a + b * th], color=COLD, lw=2.2, zorder=4)
@@ -43,22 +51,22 @@ for ax, z in zip(axes.flat, ORDER):
     ax.text(0.97, 0.95, f"{f.heat_w_per_person:.0f} W per person\nper °C colder",
             transform=ax.transAxes, va="top", ha="right", fontsize=9, color=COLD,
             fontweight="bold")
-    ax.text(0.97, 0.05, f"{f.population / 1e6:.2f} M people\nmean {f.mean_temp_c:.1f} °C",
+    ax.text(0.97, 0.05, f"{f.population / 1e6:.2f} M people, mean {f.mean_temp_c:.1f} °C\nmild-day level {level:,.0f} W",
             transform=ax.transAxes, va="bottom", ha="right", fontsize=8.5, color=MUTED)
     ax.set_title(NAME[z], loc="left", fontsize=11.5, fontweight="bold", pad=6)
-    ax.set_xlim(-25, 25)
-    ax.set_ylim(bottom=0)
+    ax.set_xlim(min(-25, d.temp_c.min() - 1), 25)
     ax.tick_params(labelsize=8.5)
     ax.set_xlabel("Daily mean temperature (°C)", fontsize=9.5)
     for s in ("top", "right"): ax.spines[s].set_visible(False)
 
-axes[0].set_ylabel("Daily mean demand (W per person)", fontsize=9.5)
+axes[0].set_ylabel("Demand above the zone's mild-day level\n(W per person)", fontsize=9.5)
 fig.suptitle("One country, four climates: Swedish demand per person against temperature, 2021–2026",
              x=0.006, y=1.02, ha="left", fontsize=13, fontweight="bold")
 fig.text(0.006, -0.06,
-         "Weekdays only, August excluded. Lines are least squares on the days below 15 °C. Load is ENTSO-E per bidding zone;\n"
-         "temperature is ERA5 weighted by each zone's towns; population is SCB 2024 by county, counties placed whole in one zone.\n"
-         "SE1 and SE2 levels are mostly mines, smelters and pulp mills divided by few people; compare their slopes, not their levels.",
+         "Weekdays only, August excluded. Each zone is drawn above its own mean on days of 15–20 °C. Lines are least squares on the\n"
+         "days below 15 °C. Load is ENTSO-E per bidding zone; "
+         "temperature is ERA5 weighted by each zone's towns; population is SCB 2024 by county,\n"
+         "counties placed whole in one zone.",
          ha="left", va="top", fontsize=9, color=MUTED)
 fig.tight_layout()
 fig.savefig(sys.argv[3], format="svg", bbox_inches="tight", dpi=110, metadata={"Date": None})
