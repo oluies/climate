@@ -1,0 +1,9 @@
+label,group,year_now,share_now,year_then,share_then_low,share_then_high
+World energy,world,2024,0.25,2030,0.57,0.57
+World electricity,world,2024,1.50,2030,3.00,3.00
+European Union,national,2024,2.50,2030,3.20,3.20
+United Kingdom,national,2025,2.50,2030,7.00,7.00
+United States,national,2023,4.40,2028,6.70,12.00
+Sweden,national,2025,3.00,2030,10.00,10.00
+Ireland,national,2024,22.00,,,
+Virginia,local,2023,25.59,2030,29.28,46.00

@@ -2720,6 +2720,65 @@ def chapter11aPeakShare(): Unit = {
           "without-hot-air/Images/fig-dc-peak-share.svg")
 }
 
+// ---- Chapter 11a: data centres as a share of electricity and of all energy ----
+// Figure 11a.1b. The electricity rows are the shares the chapter already
+// quotes, each from its own source and with its own years. The one row the
+// chapter does not state is the share of all the world's energy, and that is
+// computed here: the IEA's data-centre electricity divided by the Energy
+// Institute's world total energy supply, read from the CSV that chapterJ
+// writes. The forecast is set against the 2025 supply, the latest there is.
+@main
+def chapter11aWorldShare(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; os.makeDir.all(dir)
+  val tesCsv = dir / "world-energy-2025.csv"
+  if (!os.exists(tesCsv)) {
+    System.err.println("FEL: data-refresh/world-energy-2025.csv saknas. Kor `mill Refresh.scala chapterJ` forst.")
+    sys.exit(1)
+  }
+  val tes = os.read.lines(tesCsv).drop(1).map(_.split(","))
+  val (ej24, ej25) = (tes.map(_(1).toDouble).sum, tes.map(_(2).toDouble).sum)
+  val TWH_PER_EJ = 1e18 / 3.6e15
+  val (tes24, tes25) = (ej24 * TWH_PER_EJ, ej25 * TWH_PER_EJ)
+  // IEA, Energy and AI (2025): 415 TWh in 2024, about 950 TWh in 2030.
+  val (dc24, dc30) = (415.0, 950.0)
+  val energyNow = dc24 / tes24 * 100; val energyThen = dc30 / tes25 * 100
+
+  // (label, group, year now, share now, year then, low then, high then) in %.
+  // The scale runs from the world down to one American state, which is where
+  // the load lands. Ireland has no energy forecast in the chapter's sources,
+  // so its forecast is left empty (NaN) and the figure draws one dot.
+  val NA = Double.NaN
+  val rows = Seq(
+    ("World energy",      "world",    2024, energyNow, 2030, energyThen, energyThen),
+    ("World electricity", "world",    2024, 1.5,       2030, 3.0,        3.0),
+    ("European Union",    "national", 2024, 2.5,       2030, 3.2,        3.2),
+    ("United Kingdom",    "national", 2025, 2.5,       2030, 7.0,        7.0),
+    ("United States",     "national", 2023, 4.4,       2028, 6.7,        12.0),
+    ("Sweden",            "national", 2025, 3.0,       2030, 10.0,       10.0),
+    ("Ireland",           "national", 2024, 22.0,      0,    NA,         NA),
+    // EPRI, Powering Intelligence (May 2024), table 2: 25.59% in 2023, and
+    // 29.28% to 46.00% in 2030 across its low- and higher-growth scenarios.
+    ("Virginia",          "local",    2023, 25.59,     2030, 29.28,      46.0))
+  for (r <- rows) require(r._6.isNaN || (r._6 > r._4 && r._7 >= r._6), s"chapter11aWorldShare: bad row for ${r._1}")
+  val out = new StringBuilder
+  out ++= "label,group,year_now,share_now,year_then,share_then_low,share_then_high\n"
+  def opt(v: Double) = if (v.isNaN) "" else f"$v%.2f"
+  for ((l, g, y0, a, y1, lo, hi) <- rows)
+    out ++= s"$l,$g,$y0,${opt(a)},${if (lo.isNaN) "" else y1},${opt(lo)},${opt(hi)}\n"
+  os.write.over(dir / "dc-world-share.csv", out.toString)
+  println("wrote data-refresh/dc-world-share.csv")
+  println(f"  world energy supply  $ej24%.1f EJ = $tes24%.0f TWh (2024), $ej25%.1f EJ = $tes25%.0f TWh (2025)")
+  println(f"  data centres         $dc24%.0f TWh = $energyNow%.2f%% of 2024 supply; " +
+          f"$dc30%.0f TWh = $energyThen%.2f%% of 2025 supply")
+  // What each row implies for the electricity behind it, as a sanity check
+  // that the IEA's two shares sit on a plausible world grid.
+  println(f"  implied world electricity  ${dc24 / 0.015}%.0f TWh (2024), ${dc30 / 0.03}%.0f TWh (2030)")
+  println("render:")
+  println("  uv run figures/dc_world_share.py data-refresh/dc-world-share.csv " +
+          "without-hot-air/Images/fig-dc-world-share.svg")
+}
+
 // ---- Chapter 11a: Swedish load per bidding zone ----
 // The denominator a per-zone reading of figure 11a.1 would need. That figure
 // divides data-centre IT capacity by a *national* peak, which hides where the
