@@ -1039,6 +1039,122 @@ class AfrrAcc {
   def price = if (mwh > 0) cost / mwh else Double.NaN
 }
 
+// ---- Chapter 28a: Finnish electric boilers in district heating, against the tax ----
+// Figure 28a.3b. Finnish Energy (Energiateollisuus) publishes one workbook of
+// district-heating tables a year. Three numbers come out of each: the
+// electricity consumed by electric boilers (table 3, a fuel column), district
+// heat delivered (table 1) and, from 2023, thermal storage (table 9). The 2025
+// workbook's unit list (table 4) gives every electric boiler with the year it
+// started, which is the build-out. The URLs carry upload dates and revision
+// suffixes, so they are listed rather than templated.
+val FI_DH_TABLES = Seq(
+  2019 -> "2023/08/Vuositaulukot_19_ENG_updated_20220708.xlsx",
+  2020 -> "2023/08/Vuositaulukot_20_ENG_Paivitetty_20220531.xlsx",
+  2021 -> "2023/08/Vuositaulukot_21_ENG_updated_30012023.xlsx",
+  2022 -> "2023/06/Vuositaulukot_22_ENG.xlsx",
+  2023 -> "2024/11/Vuositaulukot_23_ENG_updated20241212.xlsx",
+  2024 -> "2026/06/DH_Vuositaulukot_24_ENG_updated_20260612.xlsx",
+  2025 -> "2026/10/DH_Vuositaulukot_25_ENG.xlsx")
+
+/** A workbook sheet as a grid of strings, null for empty cells. */
+def xlsxGrid(conn: Connection, xlsx: os.Path, sheet: String, range: String): Vector[Vector[String]] = {
+  val st = conn.createStatement()
+  st.execute("INSTALL excel"); st.execute("LOAD excel")
+  val rs = st.executeQuery(s"""SELECT * FROM read_xlsx('${xlsx.toString.replace("'", "''")}',
+      sheet='$sheet', header=false, all_varchar=true, range='$range')""")
+  val n = rs.getMetaData.getColumnCount
+  val out = Vector.newBuilder[Vector[String]]
+  while (rs.next()) out += Vector.tabulate(n)(i => rs.getString(i + 1))
+  out.result()
+}
+
+/** The TOTAL row's value in the column whose header cell reads `label`. */
+def totalUnder(grid: Vector[Vector[String]], label: String, where: String): Double = {
+  val col = grid.flatMap(_.zipWithIndex.collect {
+    case (v, j) if v != null && v.trim.equalsIgnoreCase(label) => j }).headOption
+    .getOrElse(sys.error(s"$where: no column headed '$label'"))
+  val total = grid.find(_.exists(v => v != null && v.trim == "TOTAL"))
+    .getOrElse(sys.error(s"$where: no TOTAL row"))
+  total(col).toDouble
+}
+
+@main
+def chapter28aFiBoilers(): Unit = {
+  java.util.Locale.setDefault(java.util.Locale.US)
+  val dir = os.pwd / "data-refresh"; val cache = dir / "api-cache"; os.makeDir.all(cache)
+  val files = FI_DH_TABLES.map { case (y, path) =>
+    val f = cache / s"fi-dh-${path.split('/').last}"
+    if (!os.exists(f)) os.write.over(f, requests.get(s"https://energia.fi/wp-content/uploads/$path",
+      readTimeout = 120000, connectTimeout = 30000).bytes)
+    y -> f
+  }
+  withConn { conn =>
+    val out = new StringBuilder; out ++= "year,eboiler_gwh,dh_delivery_gwh,storage_mwh\n"
+    val rows = for ((y, f) <- files) yield {
+      val boiler = totalUnder(xlsxGrid(conn, f, "Taul3", "A1:EZ2000"),
+        "Electricity consumed by electric boilers", s"chapter28aFiBoilers $y table 3")
+      val delivery = totalUnder(xlsxGrid(conn, f, "Taul1", "A1:EZ2000"), "DH delivery",
+        s"chapter28aFiBoilers $y table 1")
+      // Table 9 is thermal storage only from the 2023 workbook; before that the
+      // last table is residents. Its first number on the TOTAL row is MWh.
+      val storage =
+        if (y < 2023) Double.NaN
+        else {
+          val g = xlsxGrid(conn, f, "Taul9", "A1:Z200")
+          require(g.flatten.exists(v => v != null && v.toUpperCase.contains("THERMAL ENERGY STORAGE")),
+            s"chapter28aFiBoilers: $y table 9 is not the storage table")
+          g.find(_.exists(v => v != null && v.trim == "TOTAL")).get
+            .flatMap(v => Option(v).flatMap(_.toDoubleOption)).head
+        }
+      out ++= f"$y,$boiler%.1f,$delivery%.0f,${if (storage.isNaN) "" else f"$storage%.0f"}\n"
+      (y, boiler, delivery, storage)
+    }
+    os.write.over(dir / "fi-eboilers.csv", out.toString)
+    println("wrote data-refresh/fi-eboilers.csv")
+    for ((y, b, d, s) <- rows)
+      println(f"  $y  electric boilers $b%7.1f GWh = ${b / d * 100}%4.1f%% of DH delivered" +
+              (if (s.isNaN) "" else f"   storage ${s / 1000}%.1f GWh"))
+
+    // Table 4, 2025 workbook: column M is the main fuel, 'säh' electricity;
+    // F is the year started, I the heat output direct from boilers in MW.
+    val units = xlsxGrid(conn, files.last._2, "Taul4", "A1:Z3000")
+      .filter(r => r.length > 12 && r(12) == "säh")
+      .flatMap(r => for (y <- Option(r(5)).flatMap(_.toDoubleOption); mw <- Option(r(8)).flatMap(_.toDoubleOption))
+                    yield (y.toInt, mw))
+    val byYear = units.groupMapReduce(_._1)(_._2)(_ + _).toSeq.sorted
+    val cap = new StringBuilder; cap ++= "start_year,mw\n"
+    for ((y, mw) <- byYear) cap ++= f"$y,$mw%.1f\n"
+    os.write.over(dir / "fi-eboiler-capacity.csv", cap.toString)
+    val total = units.map(_._2).sum
+    val since22 = units.filter(u => u._1 >= 2022 && u._1 <= 2025).map(_._2).sum
+    println(f"wrote data-refresh/fi-eboiler-capacity.csv: ${units.size} units, $total%.0f MW listed, " +
+            f"$since22%.0f MW started 2022-2025")
+    val b25 = rows.last._2
+    println(f"  2025 load factor on the full listed fleet: ${b25 * 1000 / (total * 8760) * 100}%.0f%%")
+  }
+
+  // The tax on the electricity a district-heating boiler uses, in euros per MWh.
+  // Finland: Hannula, "The electric boiler boom", Abated, 7 July 2026, for the
+  // rates either side of 1 July 2022 and the heating-season transmission fee.
+  // Sweden: Skatteverket, 43.9 ore/kWh in 2025 and 36.0 from 1 January 2026,
+  // converted at 11 kronor to the euro.
+  val SEK_PER_EUR = 11.0
+  def ore(o: Double) = o * 10 / SEK_PER_EUR
+  val tax = Seq(
+    ("Finland before July 2022", 22.5,     0.0),
+    ("Finland since July 2022",  0.63,     9.7),
+    ("Sweden 2025",              ore(43.9), 0.0),
+    ("Sweden 2026",              ore(36.0), 0.0))
+  val t = new StringBuilder; t ++= "label,tax_eur_mwh,fee_eur_mwh\n"
+  for ((l, x, fee) <- tax) t ++= f"$l,$x%.2f,$fee%.1f\n"
+  os.write.over(dir / "fi-se-boiler-tax.csv", t.toString)
+  println("wrote data-refresh/fi-se-boiler-tax.csv")
+  for ((l, x, fee) <- tax) println(f"  $l%-26s $x%6.2f EUR/MWh" + (if (fee > 0) f" + $fee%.1f transmission fee" else ""))
+  println("render:")
+  println("  uv run figures/fi_eboilers.py data-refresh/fi-eboilers.csv data-refresh/fi-eboiler-capacity.csv " +
+          "data-refresh/fi-se-boiler-tax.csv without-hot-air/Images/fig-fi-eboilers.svg")
+}
+
 @main
 def afrrPrices(): Unit = {
   java.util.Locale.setDefault(java.util.Locale.US)
